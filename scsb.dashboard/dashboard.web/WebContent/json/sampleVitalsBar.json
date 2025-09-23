@@ -1,0 +1,163 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "month",
+          "label": "month",
+          "categories": [
+            "January 2014",
+            "February 2014",
+            "March 2014",
+            "April 2014",
+            "May 2014",
+            "June 2014",
+            "July 2014",
+            "August 2014",
+            "September 2014",
+            "October 2014",
+            "November 2014",
+            "December 2014"
+          ]
+        },
+        {
+          "id": "numVisits",
+          "label": "# of Visits per Month",
+          "categories": [
+            "Once per month",
+            "Once per week",
+            "Twice per week",
+            "3-4 times a week",
+            "Daily"
+          ]
+        },
+        {"id": "numUsers", "label": "# of Users"}
+      ],
+      "rows": [
+        [ 4, 0, 1566 ],
+        [ 4, 1, 856 ],
+        [ 4, 2, 501 ],
+        [ 4, 3, 653 ],
+        [ 4, 4, 2038 ],
+        [ 5, 0, 3153 ],
+        [ 5, 1, 1995 ],
+        [ 5, 2, 1171 ],
+        [ 5, 3, 957 ],
+        [ 5, 4, 2339 ],
+        [ 6, 0, 3187 ],
+        [ 6, 1, 2421 ],
+        [ 6, 2, 2021 ],
+        [ 6, 3, 1182 ],
+        [ 6, 4, 3045 ]
+      ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [
+        {
+          "input": {"$ref": "month"},
+          "output": {"id": "fMonth"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "fVisits"},
+          "input": {"$ref": "numVisits"}
+        },
+        {
+          "field": {
+            "id": "percentUsers",
+            "format": {"suffix": "%"}
+          },
+          "input": {"$ref": "numUsers"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {"id": "fUsers"},
+          "input": {"$ref": "numUsers"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "95%",
+        "height": "95%",
+        "center": true,
+        "right": "-4%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"tickDelta": 10} ]},
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.2, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {"font": {"size": "12pt"}}
+            }
+          },
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {
+              "tickStyle": {"font": {"size": "16pt"}}
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "fVisits"},
+                "\n",
+                {"$ref": "fUsers"},
+                " users"
+              ],
+              "style": {
+                "font": {"size": "12pt", "weight": "bold"},
+                "location": "inside"
+              }
+            }
+          ],
+          "data": {"$ref": "percentified"},
+          "position": [
+            {"field": {"$ref": "percentUsers"}},
+            {"field": {"$ref": "fMonth"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fVisits"},
+              "scale": {"local": false}
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "fVisits"} ]}
+          ],
+          "style": {
+            "fill": {"a": 0.7},
+            "stroke": {"width": 1.5},
+            "width": "80%",
+            "outline": {
+              "a": 0.85,
+              "dSaturation": 0.1,
+              "dValue": -0.25
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 1300, "height": 800},
+  "version": "6.0",
+  "style": {"fill": "white"}
+}

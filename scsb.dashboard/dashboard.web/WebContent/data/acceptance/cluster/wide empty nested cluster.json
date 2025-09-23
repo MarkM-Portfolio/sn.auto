@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Division",
+          "categories": [ "First", "Empty" ]
+        },
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping",
+            "Golf",
+            "Mountaineering",
+            "Outdoor Protection"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [
+            "Web",
+            "Phone",
+            "Store",
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [ [ 0, 0, 1, 63 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "categoryStructure": {"align": "start"},
+              "local": false
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {  "local": false,"categoryStructure": {"nest": true}},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {
+                "width": {"preferred": 50},
+                "nest": true
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Division"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Order method"},
+              "palette": [ "blue", "green", "red" ]
+            }
+          ],
+          "style": {
+            "fill": {},
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

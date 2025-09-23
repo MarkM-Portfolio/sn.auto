@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Wikis" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="true"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto109.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Wikis" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.wikis.test"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.wikis.test.WikisOrgAdminAPITest"/>
+      <class name="com.ibm.lconn.automation.framework.services.wikis.test.WikisPopulate"/>
+    </classes>
+  </test> <!-- Wikis -->
+  <test thread-count="1" name="Wikis IMPERSONATEDTEST" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.wikis.impersonated"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.wikis.impersonated.WikisImpersonatedTest"/>
+    </classes>
+  </test> <!-- Wikis IMPERSONATEDTEST -->
+</suite> <!-- Wikis -->

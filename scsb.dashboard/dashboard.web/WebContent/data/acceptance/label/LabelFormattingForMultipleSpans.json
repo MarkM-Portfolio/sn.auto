@@ -1,0 +1,350 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "series1",
+          "label": "",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories"
+          ]
+        },
+        {
+          "id": "categories1",
+          "label": "categories1",
+          "categories": [ "Web", "Phone", "Store", "Event" ],
+          "format": {"prefix": "rave3_"}
+        },
+        {
+          "id": "size1",
+          "label": "size1",
+          "min": 0,
+          "max": 40,
+          "format": {"prefix": "rave1_"}
+        }
+      ],
+      "rows": [
+        [ 0, 0, 15 ],
+        [ 0, 1, 17 ],
+        [ 0, 2, 16 ],
+        [ 0, 3, 12 ],
+        [ 1, 0, 24 ],
+        [ 1, 1, 22 ],
+        [ 1, 2, 26 ],
+        [ 1, 3, 19 ],
+        [ 2, 0, 28 ],
+        [ 2, 1, 16 ],
+        [ 2, 2, 18 ],
+        [ 2, 3, 14 ],
+        [ 3, 0, 14 ],
+        [ 3, 1, 18 ],
+        [ 3, 2, 14 ],
+        [ 3, 3, 12 ],
+        [ 4, 0, 12 ],
+        [ 4, 1, 15 ],
+        [ 4, 2, 13 ],
+        [ 4, 3, 10 ]
+      ]
+    },
+    {
+      "id": "data2",
+      "fields": [
+        {
+          "id": "series2",
+          "label": "",
+          "categories": [
+            "Hats",
+            "Coats",
+            "Shoes",
+            "Pants",
+            "Shirts"
+          ]
+        },
+        {
+          "id": "categories2",
+          "label": "",
+          "categories": [ "Web", "Phone", "Store", "Event" ]
+        },
+        {
+          "id": "size2",
+          "label": "size2",
+          "min": 0,
+          "max": 70,
+          "format": {"prefix": "rave2_"}
+        }
+      ],
+      "rows": [
+        [ 0, 0, 40 ],
+        [ 0, 1, 47 ],
+        [ 0, 2, 66 ],
+        [ 0, 3, 71 ],
+        [ 1, 0, 59 ],
+        [ 1, 1, 66 ],
+        [ 1, 2, 58 ],
+        [ 1, 3, 45 ],
+        [ 2, 0, 30 ],
+        [ 2, 1, 60 ],
+        [ 2, 2, 50 ],
+        [ 2, 3, 65 ],
+        [ 3, 0, 55 ],
+        [ 3, 1, 70 ],
+        [ 3, 2, 54 ],
+        [ 3, 3, 35 ],
+        [ 4, 0, 70 ],
+        [ 4, 1, 52 ],
+        [ 4, 2, 40 ],
+        [ 4, 3, 60 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"outRange": {"min": 0, "max": 1}},
+                {"outRange": {"min": 0, "max": 1}}
+              ]
+            },
+            "axis": [
+              {
+                "gridStyle": {
+                  "fill": "#d5d5d5",
+                  "stroke": {"style": "Dash"}
+                },
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {"family": "Arial", "size": "8pt"},
+                  "padding": 3
+                },
+                "title": [ {"$ref": "size1"} ],
+                "titleStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "8pt",
+                    "weight": "bold"
+                  }
+                }
+              },
+              {
+                "gridStyle": {
+                  "fill": "#d5d5d5",
+                  "stroke": {"width": "0.4 pt"}
+                },
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {"family": "Arial", "size": "8pt"},
+                  "padding": 3
+                },
+                "title": [ {"$ref": "size2"} ],
+                "titleStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "8pt",
+                    "weight": "bold"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "scale": {
+              "categoryStructure": {"gap": "5%"},
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {
+              "lineStyle": {"fill": "#d5d5d5"},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": "#898989",
+                "font": {"family": "Arial", "size": "8pt"},
+                "padding": 3
+              },
+              "title": [ {"$ref": "categories1"} ],
+              "titleStyle": {
+                "fill": "#898989",
+                "font": {
+                  "family": "Arial",
+                  "size": "8pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          },
+          {}
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "size1"}, "span": 0},
+            {
+              "field": {
+                "$ref": "categories1",
+                "format": {"prefix": "rave5_"}
+              }
+            },
+            {"field": {"$ref": "series1"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "series1"},
+              "modifies": "both",
+              "palette": [
+                "#1183ad",
+                "#39b2ac",
+                "#60942c",
+                "#d4a600",
+                "#d15c00",
+                "#b2293d",
+                "#532f8c",
+                "#a64c8b",
+                "#53abcc",
+                "#86b347",
+                "#f0cc00",
+                "#e2515b",
+                "#764da8",
+                "#6ecfc7",
+                "#e6944a",
+                "#c767ae",
+                "#84c7e0",
+                "#b3d66d",
+                "#ffe36a",
+                "#e88686",
+                "#9a77ce",
+                "#9ce3e0",
+                "#fabe79",
+                "#de92ca",
+                "#bfe2ef",
+                "#cfe68a",
+                "#fff69b",
+                "#f2bcbc",
+                "#c6b5e5",
+                "#c0f5f0",
+                "#fdd6b0",
+                "#f9bcf3"
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "series1"},
+                "Value: ",
+                {"$ref": "size1"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.3},
+            "width": "90%",
+            "outline": {"dValue": -0.25}
+          }
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {
+              "field": {
+                "$ref": "size2",
+                "format": {"prefix": "rave4_"}
+              },
+              "span": 1
+            },
+            {"field": {"$ref": "categories2"}},
+            {"value": "50%"}
+          ],
+          "color": [
+            {
+              "id": "colorId2",
+              "field": {"$ref": "series2"},
+              "modifies": "both",
+              "palette": [
+                "#e88686",
+                "#9a77ce",
+                "#9ce3e0",
+                "#fabe79",
+                "#de92ca",
+                "#bfe2ef",
+                "#84c7e0",
+                "#b3d66d",
+                "#cfe68a",
+                "#ffe36a",
+                "#fff69b",
+                "#f2bcbc",
+                "#c6b5e5",
+                "#c0f5f0",
+                "#fdd6b0",
+                "#f9bcf3",
+                "#1183ad",
+                "#39b2ac",
+                "#b2293d",
+                "#60942c",
+                "#d4a600",
+                "#d15c00",
+                "#532f8c",
+                "#a64c8b",
+                "#53abcc",
+                "#86b347",
+                "#f0cc00",
+                "#e2515b",
+                "#764da8",
+                "#6ecfc7",
+                "#e6944a",
+                "#c767ae"
+              ]
+            }
+          ],
+          "symbolStyle": {"fill": "#B3B3B3"},
+          "style": {"fill": "#B3B3B3", "size": 1}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "transparent",
+        "padding": {"left": 10}
+      },
+      "itemStyle": {"outline": "transparent"},
+      "labelStyle": {
+        "fill": "#898989",
+        "font": {"family": "Arial", "size": "8pt"}
+      },
+      "location": {"width": "20%"},
+      "titleStyle": {
+        "fill": "#898989",
+        "align": "start",
+        "font": {
+          "family": "Arial",
+          "size": "8pt",
+          "weight": "bold"
+        },
+        "padding": {"bottom": 5}
+      }
+    }
+  ],
+  "size": {"width": 750, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "transparent", "padding": 20}
+}

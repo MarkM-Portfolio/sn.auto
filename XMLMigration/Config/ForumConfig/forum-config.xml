@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright IBM Corp. 2009, 2011  All Rights Reserved.              -->
+
+<!-- 5724-S68                                                          -->
+<config version="4" id="forum-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="forum-config.xsd">
+
+    <!--  Forums Configuration   -->
+
+    <!--
+        The Event Broker is used to control the transmission of events to the Homepage
+    -->
+    <eventBroker>
+        <!-- Maintain this XML formatting for the subscriber element so it can be handled by the installer -->
+        <!-- This provider sends Audit / News events to the Homepage when data changing events occur -->
+        <subscriber class="com.ibm.lconn.forum.internal.service.core.AuditEventDispatcher">
+           <events>
+              <event>com.ibm.lconn.forum.events.ForumPublishedEvent</event>
+           </events>
+        </subscriber>
+    </eventBroker>
+
+    <scheduledTasks>
+      <!-- cluster scoped jobs -->
+
+      <!-- TrashAutoPurgeJob - weekly on Sundays at 2:00AM  0 0 2 ? * SUN  -->
+      <task name="TrashAutoPurgeJob" description="Permanently removes Forums Trash"
+            interval="0 0 2 ? * SUN" startby=""
+            enabled="true" scope="cluster" type="class"
+            targetName="com.ibm.lconn.forum.internal.jobs.TrashAutoPurgeJobWS"
+            mbeanMethodName="" serverName="unsupported" >
+            <!-- trashRetentionInDays: Specify the number of days that deleted content is left in the
+                 database as soft deleted. Note: the <trashRetentionInDays> element value must be 1 or
+                 greater. If the value is less than 1 the trash will not be purged by this job
+                 runTimeInMin: Specify the time (in minutes) the task should run. -->
+            <args>
+                <property name="trashRetentionInDays">90</property>
+                <property name="runTimeInMin">120</property>
+            </args>
+      </task>
+    </scheduledTasks>
+
+    <!-- used to configure deployment enableNonMemberContributor="false" mode 'with categories' or 'no categories' -->
+    <deployment enableNonMemberContributor="false" enableCategory="false" />
+    
+    <!--
+        The Object Store is used to store attachments. Multiple object stores can be specified, but
+        only one can be marked as "default". The default store is used for all new content. The "id"
+        element must be a unique name, it does not need to specify a specific type or be a keyword
+        like "filesystem".
+    -->
+    
+    <objectStore>
+        <!-- Maintain this XML formatting for the store element so it can be handled by the installer -->
+        <store default="true" class="com.ibm.lconn.forum.internal.objectstore.filesystem.FileSystemObjectStore">
+            <id>filesystem</id>
+            <property name="root.directory">${FORUM_CONTENT_DIR}</property>
+        </store>
+        <!-- Setting a size limit on content, by mime type or filename, will prevent the content from being accepted and
+            stored if the content's size is larger than specified. Use a regular expression to match the desired
+            mime type or filename. If none of the expressions match, then there's no size limit on that type of content.
+            These settings apply to all content store objects for new data.
+
+            The size limit should be denoted in bytes.
+            1024 bytes equals 1 Kb. 1,048,576 bytes equal 1 MB. -->
+        <sizeLimits>
+            <limit mimeFilenameRegex=".*\.exe">0</limit>
+            <limit mimeFilenameRegex=".*\.bat">0</limit>
+            <limit mimeFilenameRegex=".*\.sh">0</limit>
+            <limit mimeFilenameRegex=".*\.oa">0</limit>
+            <limit mimeFilenameRegex=".*">10485760</limit>
+        </sizeLimits>
+        
+        <max-number-attachment-per-post>6</max-number-attachment-per-post>
+        <!-- Used to open/close the upload function.  -->
+        <allow-upload>true</allow-upload>
+    </objectStore>
+
+    <!-- used to be 'management'-->
+    <registerMbeans>
+        <jmx enabled="true" />
+    </registerMbeans>
+
+    <!-- Define content that will be removed from forum data -->
+    <activeContentFilter enabled="true">
+        <mimeTypes>
+            <mimeType>text/html</mimeType>
+            <mimeType>application/xhtml+xml</mimeType>
+        </mimeTypes>
+    </activeContentFilter>
+
+</config>

@@ -1,0 +1,65 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "x", "unit": "categorical"},
+        {"id": "y", "min": -0.5, "max": 7},
+        {"id": "a"},
+        {"id": "b"},
+        {"id": "c"},
+        {"id": "d"}
+      ],
+      "rows": [
+        [ 1, 1, -0.5, 0, 2, 3 ],
+        [ 4, 4, 2, 3, 5, 6 ],
+        [ 3, 3, 1, 2, 5, 7 ],
+        [ 5, 1.5, 0.5, 0.75, 1.75, 2.7 ],
+        [ 2, 2, 0.5, 1, 2.5, 3.5 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "#ddf"}}},
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "schema:boxplot",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [
+            {"field": {"$ref": "x"}},
+            {
+              "field": {"$ref": "x"},
+              "modifies": {"part": "upperWhisker"}
+            },
+            {
+              "field": {"$ref": "x"},
+              "modifies": {"part": "lowerWhisker"}
+            },
+            {
+              "field": {"$ref": "y"},
+              "modifies": {"part": "median"}
+            }
+          ],
+          "components": [
+            {"field": {"$ref": "a"}},
+            {"field": {"$ref": "b"}},
+            {"field": {"$ref": "c"}},
+            {"field": {"$ref": "d"}}
+          ],
+          "style": {"width": "50%"}
+        }
+      ]
+    }
+  ],
+  "version": "1.2"
+}

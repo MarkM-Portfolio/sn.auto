@@ -1,0 +1,262 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Product 1",
+            "Product 2",
+            "Product 3",
+            "Product 4",
+            "Product 5"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store", "Event" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 15 ],
+        [ 1, 2, 26 ],
+        [ 1, 3, 19 ],
+        [ 2, 0, 28 ],
+        [ 2, 1, 16 ],
+        [ 2, 2, 18 ],
+        [ 2, 3, 14 ],
+        [ 3, 0, 14 ],
+        [ 3, 1, 18 ],
+        [ 3, 2, 14 ],
+        [ 3, 3, 12 ],
+        [ 4, 0, 12 ],
+        [ 4, 1, 15 ],
+        [ 4, 2, 13 ],
+        [ 4, 3, 10 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": "85%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "markStyle": {
+                "fill": "red",
+                "stroke": {"width": 5}
+              },
+              "tickStyle": {"padding": 10}
+            }
+          },
+          {"axis": {}}
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {
+              "gaps": [ "5%" ],
+              "nest": [ true ]
+            }
+          },
+          {"type": "transpose"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Order method"}},
+            {"field": {"$ref": "Product line"}}
+          ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Product line"},
+              "palette": [
+                {
+                  "fill": {
+                    "h": 0.6222,
+                    "s": 0.72,
+                    "v": 0.81
+                  },
+                  "outline": {
+                    "h": 0.6222,
+                    "s": 0.72,
+                    "v": 0.81
+                  }
+                },
+                {
+                  "fill": {"h": 0.2833, "s": 0.71, "v": 0.7},
+                  "outline": {
+                    "h": 0.2833,
+                    "s": 0.71,
+                    "v": 0.7
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.1416,
+                    "s": 0.85,
+                    "v": 0.85
+                  },
+                  "outline": {
+                    "h": 0.1416,
+                    "s": 0.85,
+                    "v": 0.85
+                  }
+                },
+                {
+                  "fill": {"h": 0.0888, "s": 0.85, "v": 0.9},
+                  "outline": {
+                    "h": 0.0888,
+                    "s": 0.85,
+                    "v": 0.9
+                  }
+                },
+                {
+                  "fill": {"h": 0.0, "s": 0.73, "v": 0.77},
+                  "outline": {
+                    "h": 0.0,
+                    "s": 0.73,
+                    "v": 0.77
+                  }
+                },
+                {
+                  "fill": {"h": 0.8, "s": 0.7, "v": 0.78},
+                  "outline": {"h": 0.8, "s": 0.7, "v": 0.78}
+                },
+                {
+                  "fill": {
+                    "h": 0.7722,
+                    "s": 0.75,
+                    "v": 0.68
+                  },
+                  "outline": {
+                    "h": 0.7722,
+                    "s": 0.75,
+                    "v": 0.68
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.3194,
+                    "s": 0.73,
+                    "v": 0.44
+                  },
+                  "outline": {
+                    "h": 0.3194,
+                    "s": 0.73,
+                    "v": 0.44
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.2083,
+                    "s": 0.75,
+                    "v": 0.65
+                  },
+                  "outline": {
+                    "h": 0.2083,
+                    "s": 0.75,
+                    "v": 0.65
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.5833,
+                    "s": 0.52,
+                    "v": 0.75
+                  },
+                  "outline": {
+                    "h": 0.5833,
+                    "s": 0.52,
+                    "v": 0.75
+                  }
+                },
+                {
+                  "fill": {"h": 0.5138, "s": 0.33, "v": 0.8},
+                  "outline": {
+                    "h": 0.5138,
+                    "s": 0.33,
+                    "v": 0.8
+                  }
+                },
+                {
+                  "fill": {"h": 0.6583, "s": 0.8, "v": 0.48},
+                  "outline": {
+                    "h": 0.6583,
+                    "s": 0.8,
+                    "v": 0.48
+                  }
+                },
+                {
+                  "fill": {"h": 0.0666, "s": 0.8, "v": 0.66},
+                  "outline": {
+                    "h": 0.0666,
+                    "s": 0.8,
+                    "v": 0.66
+                  }
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "Product line"},
+                "\n",
+                {"$ref": "Quantity"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "colors": [
+                {
+                  "color": {
+                    "a": 0.9,
+                    "dSaturation": 0.05,
+                    "dValue": 0.1
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.9,
+                    "dSaturation": 0.2,
+                    "dValue": -0.15
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "stroke": {"width": 0.3},
+            "width": "80%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 900, "height": 500},
+  "version": "1.2",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

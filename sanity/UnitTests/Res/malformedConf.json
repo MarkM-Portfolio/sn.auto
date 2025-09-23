@@ -1,0 +1,15 @@
+{
+	"tests":[
+		{
+			"name":"testOne",
+			"location":"Tests/testOne.py",
+			"children":[]
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"testOne.param1":"foobar",
+		"testTwo.param1":"rebar",
+		"testOne.childTestOne.param1":"crowbar"
+	}
+}

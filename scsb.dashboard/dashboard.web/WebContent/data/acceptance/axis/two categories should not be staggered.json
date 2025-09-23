@@ -1,0 +1,67 @@
+{
+    "version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "fX",
+					"label" : "Price"
+				}, {
+					"id" : "facet2",
+					"label" : "Also for faceting",
+					"categories" : ["How long can a category label get before it is just ridiculous, it should wrap by now", "How long can a category label get before it is just ridiculous, it should wrap by now"]
+				}
+			],
+			"rows" : [[22, 0], [1999, 1]]
+		}
+	],
+	"copyright" : "(C) Copyright IBM Corp. 2012",
+	"grammar" : [{
+			"coordinates" : {
+				"dimensions" : [{
+						"axis" : {
+							"gridStyle" : {
+								"fill" : "gray",
+								"stroke" : {
+									"width" : 1
+								}
+							}
+						}
+					}, {
+						"axis" : {
+							"gridStyle" : {
+								"fill" : "gray",
+								"stroke" : {
+									"width" : 1
+								}
+							}
+						}
+					}
+				],
+				"style" : {
+					"fill" : "white",
+					"outline" : "black"
+				}
+			},
+			"elements" : [{
+					"type" : "point",
+					"position" : [{
+							"field" : {
+								"$ref" : "fX"
+							}
+						}, {
+							"field" : {
+								"$ref" : "facet2"
+							}
+						}
+					]
+				}
+			],
+			"style" : {
+				"fill" : "lightyellow"
+			}
+		}
+	],
+	"size" : {
+		"width" : 550
+	}
+}

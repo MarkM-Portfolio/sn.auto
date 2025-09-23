@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2009, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.ibm.com/connections/files/files-config/1.0"
+    xmlns:tns="http://www.ibm.com/connections/files/files-config/1.0"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+	<xsd:element name="config">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element ref="tns:security" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:activeContentFilter" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:cache" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="db" type="tns:db" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:search" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:download" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:file" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:directory" minOccurs="1" maxOccurs="1" />
+            	<xsd:element ref="tns:api" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:emailNotification" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="publicMedia" type="tns:publicMedia" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:scheduledTasks" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		<xsd:attribute name="id" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:simpleType name="intGTE0">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="intGTE1">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="intGTE100">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="security">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="logout" type="tns:logout" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="inlineDownload" type="tns:inlineDownload" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+			<xsd:attribute name="reauthenticateAndSaveSupported" type="xsd:boolean" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="activeContentFilter">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="mimeTypes" type="tns:mimeTypes" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+			<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="mimeTypes">
+		<xsd:sequence>
+			<xsd:element ref="tns:mimeType" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="mimeType" type="xsd:string"/>
+
+	<xsd:complexType name="logout">
+		<xsd:attribute name="href" type="xsd:anyURI" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="inlineDownload">
+	    <xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+	</xsd:complexType>	
+	
+	<xsd:element name="cache">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="user" type="tns:user" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="http" type="tns:http" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="user">
+		<xsd:attribute name="timeout" type="tns:intGTE1" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="http">
+		<xsd:attribute name="publicContentMaxAgeInSecs" type="tns:intGTE0" use="required"/>
+		<xsd:attribute name="publicFeedMaxAgeInSecs" type="tns:intGTE0" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="db">
+		<xsd:attribute name="dialect" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="DB2" />
+					<xsd:enumeration value="Oracle" />
+					<xsd:enumeration value="SQL Server" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	<xsd:element name="search">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element ref="tns:seedlist" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="seedlist">
+		<xsd:complexType>
+			<xsd:attribute name="maximumIncrementalQuerySpanInDays" type="tns:intGTE1" use="required"/>
+			<xsd:attribute name="maximumPageSize" type="tns:intGTE100" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="emailNotification">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="addOnMediaDownload" type="tns:addOnMediaDownload" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+		
+	<xsd:complexType name="addOnMediaDownload">
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="download">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="modIBMLocalRedirect" type="tns:modIBMLocalRedirect" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:stats" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="modIBMLocalRedirect">
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+		<xsd:attribute name="hrefPathPrefix" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="stats">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="logging" type="tns:logging" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="logging">
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="file">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="versioning" type="tns:versioning" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="storage" type="tns:storage" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="media" type="tns:media" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="page" type="tns:page" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="attachment" type="tns:attachment" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:restrictions" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="renditions" type="tns:renditions" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="versioning">
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="storage">
+		<xsd:attribute name="rootDirectory" type="xsd:string" use="required"/>
+		<xsd:attribute name="allowOperatingSystemVirusScan" type="xsd:boolean"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="media">
+		<xsd:attribute name="maximumSizeInKb" type="tns:intGTE1" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="page">
+		<xsd:attribute name="maximumSizeInKb" type="tns:intGTE1" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="attachment">
+		<xsd:attribute name="maximumSizeInKb" type="tns:intGTE1" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="restrictions">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="extensions" type="tns:extensions" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+			<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+			<xsd:attribute name="mode" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" >
+						<xsd:enumeration value="allow" />
+						<xsd:enumeration value="deny" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+	<xsd:complexType  name="renditions">
+		<xsd:all>
+			<xsd:element name="small" type="tns:rendition" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="medium" type="tns:rendition" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="large" type="tns:rendition" minOccurs="1" maxOccurs="1" />
+		</xsd:all>
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="rendition">
+		<xsd:attribute name="format" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string" >
+					<xsd:enumeration value="JPG" />
+					<xsd:enumeration value="PNG" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="width" type="xsd:int" use="required"/>
+		<xsd:attribute name="height" type="xsd:int" use="required"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="extensions">
+		<xsd:sequence>
+			<xsd:element ref="tns:extension" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="extension" type="xsd:string"/>
+	
+	<xsd:element name="directory">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="typeaheadSearch" type="tns:typeaheadSearch" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:group" minOccurs="1" maxOccurs="1" />
+				<xsd:element ref="tns:community" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="typeaheadSearch">
+		<xsd:attribute name="maximumResults" type="tns:intGTE1" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:element name="group">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="membershipCache" type="tns:membershipCache" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="community">
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="membershipCache" type="tns:membershipCache" minOccurs="1" maxOccurs="1" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+	<xsd:complexType name="membershipCache">
+		<xsd:attribute name="maximumAgeOnLoginInSeconds" type="tns:intGTE0" use="required" />
+		<xsd:attribute name="maximumAgeOnRequestInSeconds" type="tns:intGTE0" use="required" />
+	</xsd:complexType>
+	
+   <xsd:element name="api">
+      <xsd:complexType>
+         <xsd:all>
+            <xsd:element name="indent" type="tns:indent" minOccurs="1" maxOccurs="1" />
+         </xsd:all>
+      </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:complexType name="indent">
+      <xsd:attribute name="enabled" type="xsd:boolean" use="required"/>
+   </xsd:complexType>
+	
+	
+	<xsd:complexType name="publicMedia">
+		<xsd:attribute name="maximumResults" type="tns:intGTE100" use="required" />
+	</xsd:complexType>
+	
+	<xsd:element name="scheduledTasks">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tns:task" minOccurs="1"  maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="task">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element ref="tns:args"  minOccurs="0" maxOccurs="1" />
+			</xsd:sequence>
+			<xsd:attribute name="name" type="xsd:string" use="required" />
+			<xsd:attribute name="interval" type="xsd:string" use="required" />
+			<xsd:attribute name="startby" type="xsd:string"/>
+			<xsd:attribute name="type" type="xsd:string" use="required" />
+			<xsd:attribute name="enabled" type="xsd:boolean" use="required" />
+			<xsd:attribute name="targetName" type="xsd:string" />
+			<xsd:attribute name="mbeanMethodName" type="xsd:string" />
+			<xsd:attribute name="scope" type="xsd:string" />
+			<xsd:attribute name="serverName" type="xsd:string" />
+			<xsd:attribute name="description" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="args">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tns:property" minOccurs="0"  maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="property">
+		<xsd:complexType mixed="true">
+			<xsd:attribute name="name" type="xsd:NMTOKEN"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>

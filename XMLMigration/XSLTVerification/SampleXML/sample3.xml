@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<persons>
+  <person username="JS1">
+    <name>John</name>
+    <family-name>Smith</family-name>
+    <car>
+    	<make>
+    		<model>
+    			<year>
+    				<color>
+    					<ac>
+    						yes
+    					</ac>
+    				</color>
+    			</year>
+    		</model>
+    	</make>
+    </car>
+  </person>
+</persons>

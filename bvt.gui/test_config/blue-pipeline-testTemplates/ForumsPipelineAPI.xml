@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Forums" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="true"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto113.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Forums" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.forums.test"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.forums.test.ForumsPopulate"/>
+    </classes>
+  </test> <!-- Forums -->
+  <test thread-count="1" name="Forums IMPERSONATEDTEST" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.forums.impersonated"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.forums.impersonated.ForumsImpersonatedTest"/>
+    </classes>
+  </test> <!-- Forums IMPERSONATEDTEST -->
+</suite> <!-- Forums -->

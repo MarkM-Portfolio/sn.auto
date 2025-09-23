@@ -1,0 +1,135 @@
+{
+    "version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dDelimitedFileSource",
+		"fields": [{
+			"id": "fCategories",
+			"label": "Store",
+			"categories": ["Illinois",
+			"California is by far the most populous U.S. state, and the third-largest by land area (after Alaska and Texas)",
+			"New York is bordered by New Jersey and Pennsylvania to the south, and by Connecticut, Massachusetts and Vermont to the east",
+			"Texas"]
+		},
+		{
+			"id": "fValues",
+			"label": "Price"
+		}],
+		"rows": [[3,
+		3672],
+		[2,
+		3972],
+		[1,
+		3427],
+		[0,
+		3785]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"tickStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"align": "start",
+						"font": {
+							"family": "Technical, Times New Roman",
+							"size": "11"
+						},
+						"padding": 1
+					},
+					"title": ["A Definitely way too long vertical Axis Title"],
+					"titleStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"font": {
+							"family": "Technical, Times New Roman",
+							"size": "18"
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"title": ["A Probably way too long horizontal Axis Title"],
+					"titleStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"font": {
+							"family": "Technical, Times New Roman",
+							"size": "18"
+						}
+					}
+				}
+			}]
+		},
+		"elements": [{
+			"type": "point",
+			"label": [{
+				"content": [{
+					"$ref": "fCategories"
+				}],
+				"style": {
+					"align": "start",
+					"font": {
+						"size": 10
+					},
+					"location": "inside",
+					"valign": "start"
+				}
+			}],
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fCategories"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "fValues"
+				}
+			}],
+			"meta": [{
+				"field": {
+					"$ref": "fCategories"
+				},
+				"key": "category"
+			}],
+			"tooltip": [{
+				"content": [{
+					"$ref": "fCategories"
+				}]
+			}],
+			"style": {
+				"fill": "blue",
+				"outline": {
+					"a": 0.0,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				},
+				"symbol": "rectangle"
+			}
+		}]
+	}],
+	"size": {
+		"width": 400.0,
+		"height": 300.0
+	}
+}

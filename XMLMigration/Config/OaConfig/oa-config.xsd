@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2006, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- 5724-L21                                                          -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+ <xs:annotation>
+  <xs:documentation>
+    Activities - IBM Lotus Social Networking Software. 
+    Licensed Materials - Property of IBM.
+    (C) Copyright IBM Corp. 2006. All Rights Reserved. 
+    US Government Users Restricted Rights - Use, duplication or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+  </xs:documentation>
+ </xs:annotation>
+ 
+ <xs:element name='config'>
+  <xs:complexType>
+   <xs:all>
+     <xs:element ref='email' minOccurs='0'/>
+     <xs:element ref='eventBroker' minOccurs='0'/>
+     <xs:element ref='objectStore' minOccurs='0'/>
+     <xs:element ref='management' minOccurs='0'/>
+     <xs:element ref='stats' minOccurs='0'/>
+     <xs:element ref='activeContentFilter' minOccurs='0'/>
+     <xs:element ref='clusterScheduler' minOccurs='0'/>
+     <xs:element ref='localScheduler' minOccurs='0'/>
+     <xs:element ref='PublishFile' minOccurs='0'/>
+     <xs:element ref="scheduledTasks" minOccurs="1" maxOccurs="1" />
+     <xs:element ref="memberPickers" minOccurs="0" maxOccurs="1" />
+     <xs:element ref='dojo' minOccurs='0'/>
+     <xs:element ref='WidgetRedirectWhitelist' minOccurs='0'/>
+     <xs:element ref='FederatedSearchOptions' minOccurs='0' />
+     <xs:element ref='customEntryFields' minOccurs='0'/>
+     <xs:element name='testOrganizations' type="customFeature" minOccurs='0'/>
+     <xs:element name='enableLotusLiveFeatures' type="customFeature" minOccurs='0'/>
+     <xs:element name='cacheExtensionPoint' type="customClass" minOccurs='0'/>
+     <xs:element name='exposeEmailInTheAPI' type="customFeature" minOccurs='0'/>
+     <xs:element name='inviteModel' type="customFeature" minOccurs='0'/>
+     <xs:element name="customPeopleDatastore" type="customClass" minOccurs='0'/>
+     <xs:element name="customPeopleTypeaheadWidget" type="customClass" minOccurs='0'/>
+     <xs:element ref="Cache" minOccurs="0" />
+     <xs:element ref="Autosave" minOccurs="0" />
+     <xs:element name="invalidMemberDialog" type="customClass" minOccurs="0"/>
+     <xs:element ref="ifModSinceInterval" minOccurs="0" />
+	 <xs:element name="todoFuture" type="customFeature" minOccurs="0"/>
+	 <xs:element name="OrganizationCheck" minOccurs="0"/>
+	 <xs:element name="UseGuestOrg" type="customFeature" minOccurs="0"/>
+	 <xs:element name='IgnoreMemberTypeaheadService' type="customFeature" minOccurs='0'/>
+	 <xs:element name="publicEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="alternativeActivitiesTypeaheadService" type="customFeature" minOccurs='0'/>
+	 <xs:element name="orgEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="orgIsPublic" type="customFeature" minOccurs='0'/>
+	 <xs:element name="businessOwnerEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="additionalEvents" type="customFeature" minOccurs='0'/>
+	 <xs:element name="guestsEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="relatedMembersEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="lazyMigrationEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="isMultiTenantEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="emailLookupsByOrgEnabled" type="customFeature" minOccurs='0'/>
+	 <xs:element name="contentChecksumEnabled" type="customFeature" minOccurs='0'/>
+ </xs:all>
+   <xs:attribute name='id' use='required' type='xs:NMTOKEN'/>
+   <xs:attribute name='version' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name='accept-filter'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='to-cc-bcc-headers-expression'/>
+     <xs:element ref='size-limit'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='activeContentFilter'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='tags'  minOccurs='0'/>
+     <xs:element ref='mimeTypes'/>
+   </xs:sequence>
+   <xs:attribute name='class' use='optional' type='xs:NMTOKEN'/>
+   <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='any-header-expression'>
+  <xs:complexType mixed='true'>
+  <xs:attribute name='header' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='databaseType'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='email'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='activities-admin-email-address' minOccurs='0'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='error'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='event'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='eventBroker'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='subscriber' minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='activities-admin-email-address'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='events'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='event' minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+  <xs:element name='statsDirectory'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='field'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='fields'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='field' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='file'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='filter'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='property' maxOccurs='unbounded'/>
+   </xs:sequence>
+  <xs:attribute name='class' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='header'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='host'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='id'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='incoming'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='host'/>
+     <xs:element ref='authentry' minOccurs='0'/>
+     <xs:element ref='user' minOccurs='0'/>
+     <xs:element ref='password' minOccurs='0'/>
+     <xs:element ref='accept-filter'/>
+     <xs:element ref='reject-filter'/>
+     <xs:element ref='javamail'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='isClustered'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='javamail'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='property' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='jmx'>
+  <xs:complexType>
+  <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='jobStore'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='databaseType'/>
+     <xs:element ref='isClustered'/>
+   </xs:sequence>
+  <xs:attribute name='useDatabase' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='limit'>
+  <xs:complexType mixed='true'>
+  <xs:attribute name='mimeFilenameRegex' use='required'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='management'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='jmx'/>
+     <xs:element ref='statistics' minOccurs='0'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='max-concurrent-downloads' type='xs:nonNegativeInteger'/>
+ <xs:element name='mimeType'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='mimeTypes'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='mimeType' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='notify'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='objectStore'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='store' maxOccurs='unbounded'/>
+     <xs:element ref='sizeLimits' minOccurs='0'/>
+     <xs:element ref='max-concurrent-downloads' minOccurs='0'/>
+     <xs:element ref='fileUploadQuota' minOccurs='0'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='outgoing-reply-to-expression'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='password'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='authentry'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='property'>
+  <xs:complexType mixed='true'>
+  <xs:attribute name='name' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='reject-filter'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='any-header-expression'/>
+   </xs:sequence>
+  <xs:attribute name='deleteMatches' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='samples'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='clusterScheduler'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='jobStore'/>
+   </xs:sequence>
+  <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='localScheduler'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='jobStore'/>
+   </xs:sequence>
+  <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='sizeLimits'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='limit' minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='stat'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='fields'/>
+     <xs:element ref='file'/>
+     <xs:element ref='samples'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='statistics'>
+  <xs:complexType>
+  <xs:attribute name='saveOnExit' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='stats'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='statsDirectory' minOccurs='0'/>
+     <xs:element ref='stat' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='store'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='id'/>
+     <xs:element ref='property' maxOccurs='unbounded'/>
+   </xs:sequence>
+  <xs:attribute name='class' use='required' type='xs:NMTOKEN'/>
+  <xs:attribute name='default' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+  <xs:element name='fileUploadQuota'>
+  <xs:complexType>
+  <xs:attribute name='class' use='required' type='xs:NMTOKEN'/>
+  <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='subscriber'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='events'/>
+     <xs:element ref='property' minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+  <xs:attribute name='class' use='required' type='xs:NMTOKEN'/>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='tag'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='tags'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='tag'  minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='to-cc-bcc-headers-expression'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name='size-limit'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element> 
+ <xs:element name='user'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='PublishFile'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='server' minOccurs='0' maxOccurs='unbounded'/>
+   </xs:sequence>
+   <xs:attribute name='enabled' use='required' type='xs:boolean'/>
+   <xs:attribute name='allowCustomServers' use='required' type='xs:boolean'/>
+   <xs:attribute name='requireSSO' use='required' type='xs:boolean'/>
+   </xs:complexType>
+ </xs:element>
+ <xs:element name='server'>
+  <xs:complexType mixed='true'>
+  </xs:complexType>
+ </xs:element>
+ 
+
+ <xs:element name='scheduledTasks'>
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="task" minOccurs="1"  maxOccurs='unbounded' />
+        </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+    
+ <xs:element name='task'>
+    <xs:complexType>
+        <xs:sequence>
+        <xs:element ref='args'  minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="interval" type="xs:string" use="required" />
+        <xs:attribute name="startby" type="xs:string" use="required" />
+
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:attribute name="enabled" type="xs:boolean" use="required" />
+        <xs:attribute name="targetName" type="xs:string" use="required" />
+        <xs:attribute name="mbeanMethodName" type="xs:string" use="required" />
+        <xs:attribute name="scope" type="xs:string" use="required" />
+        <xs:attribute name="serverName" type="xs:string" use="required" />
+        <xs:attribute name="description" type="xs:string" use="required" />
+    </xs:complexType>
+ </xs:element>
+
+ <xs:element name='args'>
+    <xs:complexType>
+       <xs:sequence>
+          <xs:element ref='property' minOccurs='0'  maxOccurs='unbounded'/>
+       </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+
+ <xs:element name='dojo'>
+    <xs:complexType>
+       <xs:attribute name='url' use='optional' type='xs:string'/>
+    </xs:complexType>
+ </xs:element>
+    
+ <xs:element name='FederatedSearchOptions'>
+    <xs:complexType>
+    <xs:attribute name='disabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='customEntryFields'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name='bookmarkField' minOccurs='0' maxOccurs='unbounded' type='customClass'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- simple item value pairs -->
+    <xs:complexType name='item'>
+        <xs:attribute name='name' type='xs:string' use='required' />
+        <xs:attribute name='value' type='xs:string' use='required' />
+    </xs:complexType>
+    <!-- Generic custom class - a class name, and enabled or disabled.  
+    can contain some item/value pairs-->
+  <xs:complexType name='customClass'>
+    <xs:sequence>
+      <xs:element name='item' type="item" minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+    <xs:attribute name='class' type='xs:NMTOKEN' use='required'/>
+    <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional'/>
+  </xs:complexType>
+
+  <!-- generic optional customFeature - enabled true or false (false by default) -->
+    <xs:complexType name='customFeature'>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+
+  <xs:element name='memberPickers'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name='memberPicker' minOccurs='1' maxOccurs='unbounded' type='customClass'/>
+        <xs:element name='memberRenderer' minOccurs='1' maxOccurs='1' type='customClass'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='WidgetRedirectWhitelist'>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="domain" >
+                <xs:complexType mixed="true"/>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+  </xs:element>
+  
+ <xs:element name="Cache">
+ 	<xs:complexType>
+ 		<xs:attribute name="noStore" use="optional" type="xs:boolean" />
+ 	</xs:complexType>
+ </xs:element>
+ 
+  <xs:element name="Autosave">
+    <xs:complexType>
+        <xs:attribute name="interval" default="5" use="optional" type="xs:positiveInteger" />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="ifModSinceInterval">
+    <xs:complexType>
+        <xs:attribute name="interval" default="2" use="optional" type="xs:positiveInteger" />
+    </xs:complexType>
+ </xs:element>
+
+  <xs:element name="OrganizationCheck">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='true' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+     
+ <xs:element name="publicEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='true' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+  
+ <xs:element name="alternativeActivitiesTypeaheadService">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='true' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+
+ <xs:element name="orgEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="orgIsPublic">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="businessOwnerEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="additionalEvents">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="guestsEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="relatedMembersEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='true' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>    
+     
+ <xs:element name="lazyMigrationEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="isMultiTenantEnabled">
+    <xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+    </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="emailLookupsByOrgEnabled">
+ 	<xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+ 	</xs:complexType>
+ </xs:element>
+ 
+ <xs:element name="contentChecksumEnabled">
+ 	<xs:complexType>
+        <xs:attribute name='enabled' default='false' type='xs:boolean' use='optional' />
+ 	</xs:complexType>
+ </xs:element>      
+     
+</xs:schema>
+

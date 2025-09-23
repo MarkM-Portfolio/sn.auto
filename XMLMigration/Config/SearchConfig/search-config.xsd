@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2008, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<schema targetNamespace="http://www.ibm.com/LotusConnectionsSearch"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:lcSearch="http://www.ibm.com/LotusConnectionsSearch">
+
+	<element name="indexingSchedule"
+		type="lcSearch:ScheduleComplexType">
+		<unique name="uniqueOptimizeTaskName">
+			<selector xpath="lcSearch:optimizeTask" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+
+	<element name="indexingTask"
+		type="lcSearch:IndexingTaskComplexType">
+	</element>
+
+	<element name="optimizeTask"
+		type="lcSearch:OptimizeTaskComplexType">
+	</element>
+
+	<attributeGroup name="TaskAttributeGroup">
+		<attribute name="name" type="string" use="required"></attribute>
+		<attribute name="interval" type="lcSearch:CRONString"
+			use="required">
+		</attribute>
+		<attribute name="startby" type="lcSearch:CRONString"></attribute>
+	</attributeGroup>
+
+	<complexType name="ScheduleComplexType">
+		<sequence maxOccurs="unbounded" minOccurs="0">
+			<element ref="lcSearch:indexingTask" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element ref="lcSearch:optimizeTask" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="connectionsService"
+		type="lcSearch:ConnectionsServiceComplexType">
+	</element>
+
+	<element name="service"
+		type="lcSearch:serviceSettingsComplexType">
+	</element>
+
+	<element name="seedlistURL" type="string"></element>
+
+	<complexType name="TaskComplexType">
+		<attributeGroup ref="lcSearch:TaskAttributeGroup"></attributeGroup>
+	</complexType>
+	<complexType name="IndexingTaskComplexType">
+		<complexContent>
+			<extension base="lcSearch:TaskComplexType">
+				<sequence maxOccurs="unbounded" minOccurs="1">
+					<choice maxOccurs="1" minOccurs="1">
+						<element ref="lcSearch:connectionsService"></element>
+						<element ref="lcSearch:service"></element>
+					</choice>
+				</sequence>
+				<attribute name="optimize" type="boolean"
+					default="false">
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OptimizeTaskComplexType">
+		<complexContent>
+			<extension base="lcSearch:TaskComplexType"></extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ConnectionsServiceComplexType">
+		<attribute name="name" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="all_installed"></enumeration>
+					<enumeration value="all_configured"></enumeration>
+					<enumeration value="activities"></enumeration>
+					<enumeration value="blogs"></enumeration>
+					<enumeration value="communities"></enumeration>
+					<enumeration value="dogear"></enumeration>
+					<enumeration value="forums"></enumeration>
+					<enumeration value="profiles"></enumeration>
+					<enumeration value="files"></enumeration>
+					<enumeration value="wikis"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<element name="indexSettings"
+		type="lcSearch:IndexSettingsComplexType">
+	</element>
+
+	<complexType name="IndexSettingsComplexType">
+		<attribute name="location" type="string" use="required"></attribute>
+		<attribute name="maxIndexSize" type="unsignedLong"
+			use="optional" default="1610612736">
+		</attribute>
+		<attribute name="maxIndexerThreads" type="nonNegativeInteger" use="required"></attribute>
+		<attribute name="allowResumption" type="boolean" default="false" use="optional"></attribute>
+		<attribute name="fsDirectoryClass" type="string" default="DEFAULT" use="optional"></attribute>
+	</complexType>
+
+	<element name="crawlerSettings" type="lcSearch:CrawlerSettingsComplexType">
+	</element>
+	
+	<complexType name="CrawlerSettingsComplexType">
+		<attribute name="persistenceLocation" type="string" use="required"/>
+		<attribute name="maxPagePersistenceAgeInHours" type="nonNegativeInteger" use="optional"/>
+		<attribute name="deletePersistedPagesAfterSuccessfulIncrementalIndex" type="boolean" default="true" use="optional"/>
+		<attribute name="maxCrawlerThreads" type="nonNegativeInteger" use="required"/>
+		<attribute name="pageSize" type="int" use="required"></attribute>
+		<attribute name="startDate" type="string"></attribute>
+	</complexType>
+	
+	<element name="config" type="lcSearch:configType">
+		<key name="contentSourceKey">
+			  	<selector xpath="./lcSearch:contentSources/*"/>
+      			<field xpath="@name"/>		
+		</key>
+		<keyref name="contentSourceKeyRef" refer="lcSearch:contentSourceKey">
+		 		<selector xpath="./lcSearch:services/*"/>
+   				<field xpath="@contentSource"/>
+		</keyref>	
+	</element>
+
+	<complexType name="configType">
+		<sequence>
+			<element ref="lcSearch:indexingSchedule" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element ref="lcSearch:indexSettings" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element ref="lcSearch:crawlerSettings" maxOccurs="1" minOccurs="1"/>
+			<element ref="lcSearch:languageSupport" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element ref="lcSearch:services" maxOccurs="1"
+				minOccurs="1" />
+			<element ref="lcSearch:contentSources" maxOccurs="1"
+				minOccurs="1" />
+			<element ref="lcSearch:sandTuning" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:attachmentHandling" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element ref="lcSearch:sandConfiguration" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element ref="lcSearch:backupSettings" minOccurs="1" maxOccurs="1"></element>
+			<element ref="lcSearch:profilesSearch" minOccurs="0" maxOccurs="1"></element>
+			<element ref="lcSearch:verboseLogging" minOccurs="1" maxOccurs="1"></element>
+			<element ref="lcSearch:trendsSettings" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="version" type="string" use="optional"></attribute>
+		<attribute name="buildlevel" type="string" use="required"></attribute>
+	</complexType>
+
+	<simpleType name="CRONString">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<element name="dictionary" type="lcSearch:dictionaryType"></element>
+
+	<complexType name="dictionaryType">
+		<attribute name="locale" type="string" use="required"></attribute>
+		<attribute name="path" type="string" use="required"></attribute>
+	</complexType>
+
+	<element name="languageSupport" type="lcSearch:languagesType">
+		<key name="defaultLocaleKey">
+			<selector xpath="lcSearch:dictionary" />
+			<field xpath="@locale" />
+		</key>
+		<keyref name="defaultLocaleRef"
+			refer="lcSearch:defaultLocaleKey">
+			<selector xpath="." />
+			<field xpath="@defaultLocale" />
+		</keyref>
+	</element>
+
+	<complexType name="languagesType">
+		<sequence>
+			<element ref="lcSearch:dictionary" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+		</sequence>
+		<attribute name="defaultLocale" type="string" use="required" />
+	</complexType>
+
+	<complexType name="serviceSettingsComplexType">
+		<sequence>
+			<element name="alternateURL" type="string" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+		<attribute name="name" type="string" use="required"></attribute>
+		<attribute name="pageSize" type="string" use="optional"></attribute>
+		<attribute name="startDate" type="string" use="optional"></attribute>
+		<attribute name="servletLocation" type="string"
+			use="optional">
+		</attribute>
+	</complexType>
+	
+	<element name="services" type = "lcSearch:ServicesComplexType">
+		<unique name="uniqueServiceName">
+					<selector xpath="./*" />
+					<field xpath="@name" />
+		</unique>
+	</element>
+	<element name="connService" type="lcSearch:connService"/>
+	<element name="extService" type="lcSearch:extService"/>
+	<element name="contentSources" type="lcSearch:contentSources">
+		<unique name="uniqueContentSourceName">
+					<selector xpath="./*" />
+					<field xpath="@name" />
+		</unique>		
+	</element>
+	<element name="seedlist" type="lcSearch:seedlist"/>
+	<element name="source" type="lcSearch:source"/>
+ 	
+	<complexType name="ServicesComplexType">
+		<sequence>
+			<element ref="lcSearch:connService" maxOccurs="unbounded" minOccurs="0"/>
+			<element ref="lcSearch:extService" maxOccurs="unbounded" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	
+	<complexType name="serviceType">
+		<attributeGroup ref="lcSearch:ServiceAttributeGroup"/>
+	</complexType>
+	
+	<attributeGroup name="ServiceAttributeGroup">
+		<attribute name="contentSource" type="string" use="required"/>
+	</attributeGroup>
+
+	<complexType name="connService">
+		<complexContent>
+			<extension base="lcSearch:serviceType">
+				<attribute name="name" use="required">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="all_installed"></enumeration>
+							<enumeration value="all_configured"></enumeration>
+							<enumeration value="activities"></enumeration>
+							<enumeration value="blogs"></enumeration>
+							<enumeration value="communities"></enumeration>
+							<enumeration value="dogear"></enumeration>
+							<enumeration value="forums"></enumeration>
+							<enumeration value="profiles"></enumeration>
+							<enumeration value="files"></enumeration>
+							<enumeration value="wikis"></enumeration>
+							<enumeration value="status_updates"></enumeration>
+							<enumeration value="calendar"></enumeration>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="extService">
+		<complexContent>
+			<extension base="lcSearch:serviceType">
+				<attribute name="name" use="required">
+					<simpleType>
+						<restriction base="string">
+							<pattern value="([a-zA-Z0-9])*" />
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="indexer" type="string" use="required"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="contentSources">
+		<sequence>
+			<element ref="lcSearch:seedlist" maxOccurs="unbounded"
+				minOccurs="0"/>			
+			<element ref="lcSearch:source" maxOccurs="unbounded"
+				minOccurs="0"/>
+		</sequence>
+	</complexType>
+		
+		
+	<complexType name="ContentSourceType">
+		<attributeGroup ref="lcSearch:ContentSourceAttributeGroup"></attributeGroup>
+	</complexType>
+	
+	<attributeGroup name="ContentSourceAttributeGroup">
+		<attribute name="name" use="required">
+ 			<simpleType>
+				<restriction base="string">
+      					<pattern value="([a-zA-Z0-9])*"/>
+				</restriction>	
+			</simpleType>	
+ 		</attribute>
+ 		<attribute name="pageSize" type="string" use="optional" /> 		 		
+	</attributeGroup>
+
+	<complexType name="seedlist">
+		<complexContent>
+			<extension base="lcSearch:ContentSourceType">
+				<attribute name="aliasName" type="string" use="optional" />
+				<attribute name="startDate" type="string" use="optional" />
+				<attribute name="seedlistLocation" type="string" use="optional" />
+				<attribute name="baseURL" type="string" use="optional" />
+				<attribute name="seedlistURL" type="string" use="optional" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="source">
+		<complexContent>
+			<extension base="lcSearch:ContentSourceType">
+				<attribute name="class" type="string" use="required"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>	
+
+
+
+	<element name="attachmentHandling"
+		type="lcSearch:AttachmentHandlingSettingsComplexType">
+	</element>
+
+	<complexType name="AttachmentHandlingSettingsComplexType">
+		<sequence>
+			<element ref="lcSearch:mimeSupport" maxOccurs="1"
+				minOccurs="1">
+				</element>
+			<element ref="lcSearch:attachmentCache" maxOccurs="1">		
+			</element>
+            <element ref="lcSearch:attachmentConversion" maxOccurs="1"
+                minOccurs="1">
+            </element>
+		</sequence>
+		<attribute name="enabled" type="boolean"></attribute>
+		<attribute name="maxAttachmentSize" type="long"></attribute>
+		<attribute name="downloadFromSharedFS" type="boolean"></attribute>
+	</complexType>
+
+	<element name="mimeType" type="lcSearch:mimeTypeComplex"/>
+
+	<complexType name="mimeTypeComplex">
+		<attribute name="name" type="string" use="required"></attribute>
+		<attribute name="processor" type="string" use="required"></attribute>
+	</complexType>
+
+	<element name="mimeSupport" type="lcSearch:mimeTypes"/>
+
+	<complexType name="mimeTypes">
+		<sequence>
+			<element ref="lcSearch:mimeType" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="attachmentCache" type="lcSearch:attachmentCacheType"/>
+
+	<complexType name="attachmentCacheType">
+		<attribute name="cacheExpiryTime" type="integer"></attribute>
+		<attribute name="cacheFileSize" type="long"></attribute>
+		<attribute name="maxCacheEntries" type="integer" default="100000"></attribute>
+	</complexType>
+	
+	<element name="attachmentConversion" type="lcSearch:attachmentConversionType"/>
+
+    <complexType name="attachmentConversionType">
+        <attribute name="maxConcurrentDownloads" type="integer"></attribute>
+        <attribute name="maxTempDirSize" type="long"></attribute>
+        <attribute name="downloadThrottle" type="long"></attribute>
+    </complexType>
+    
+    <element name="sandTuning" type="lcSearch:sandTuningType" />
+    
+    <complexType name="sandTuningType">
+    	<sequence>
+    		<element name="sandComponent" type="lcSearch:sandIndexerTuningType" maxOccurs="unbounded" minOccurs="0" />
+    	</sequence>
+    </complexType>
+    
+    <complexType name="sandIndexerTuningType">
+    	<attribute name="name" use="required">
+    		<simpleType>
+				<restriction base="string">
+					<enumeration value="graph"></enumeration>
+					<enumeration value="tags"></enumeration>
+					<enumeration value="evidence"></enumeration>
+					<enumeration value="manageremployees"></enumeration>					
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="iterations" use="required" type="integer" />
+    </complexType>
+    
+    <element name="sandConfiguration" type="lcSearch:sandConfigurationType"/>
+    
+    <complexType name="sandConfigurationType">
+		<sequence>
+			<element name="associations" type="lcSearch:associations" maxOccurs="1" minOccurs="0">
+				<unique name="uniqueAssociationName">
+					<selector xpath="lcSearch:association" />
+					<field xpath="@name" />
+				</unique>
+				<unique name="uniqueOrdinal">
+					<selector xpath="lcSearch:association" />
+					<field xpath="@ordinal" />
+				</unique>
+			</element>
+			<element name="relationships" type="lcSearch:relationships" maxOccurs="1" minOccurs="0">
+				<unique name="uniqueRelationshipName">
+					<selector xpath="lcSearch:relationship" />
+					<field xpath="@name" />
+				</unique>
+			</element>
+            <element name="relationships-sets" type="lcSearch:relationships-sets" maxOccurs="1" minOccurs="1">
+            	<unique name="uniqueSetName">
+					<selector xpath="lcSearch:set" />
+					<field xpath="@name" />
+				</unique>
+            </element>
+		</sequence>
+	</complexType>
+	<complexType name="associations">
+		<sequence>
+			<element name="association" maxOccurs="unbounded" minOccurs="1" type="lcSearch:association"/>
+		</sequence>
+	</complexType>
+	<complexType name="association">
+		<attribute name="name" type="string"/>
+		<attribute name="ordinal" type="integer"/>
+		<attribute name="weight" type="float"/>
+	</complexType>
+	<complexType name="relationships">
+		<sequence>
+			<element name="relationship" maxOccurs="unbounded" minOccurs="1" type="lcSearch:relationship"/>
+		</sequence>
+	</complexType>
+	<complexType name="relationship">
+		<sequence maxOccurs="1" minOccurs="0">
+			<element name="desc" type="string"/>
+		</sequence>
+		<attribute name="name" type="string"/>
+		<attribute name="doctype" type="string"/>
+		<attribute name="querytype" type="string"/>
+		<attribute name="facettype" type="string"/>
+		<attribute name="maxvalue" type="integer"/>
+		<attribute name="norm" type="string"/>	
+	</complexType>
+	<complexType name="relationships-sets">
+		<sequence>
+			<element name="set" maxOccurs="unbounded" minOccurs="0" type="lcSearch:set">
+				<unique name="uniqueEntryName">
+					<selector xpath="lcSearch:entry" />
+					<field xpath="@name" />
+				</unique>
+			</element>	
+		</sequence>
+	</complexType>
+	<complexType name="set">
+		<sequence>
+			<element name="entry" maxOccurs="unbounded" minOccurs="1" type="lcSearch:setEntry" />
+		</sequence>
+		<attribute name="name" type="string"/>
+	</complexType>
+	<complexType name="setEntry">
+		<attribute name="key" type="string" />
+		<attribute name="value" type="float" />
+	</complexType>
+
+	<element name="backupSettings" type="lcSearch:BackupSettingsType"></element>
+
+	<complexType name="BackupSettingsType">
+		<attribute name="type" use="required">
+			<simpleType>
+				<restriction base="lcSearch:backupTypeAttributeEnum">
+					<enumeration value="new"></enumeration>
+					<enumeration value="overwrite"></enumeration>
+					<enumeration value="dual"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="oncomplete" type="string" use="optional"></attribute>
+		<attribute name="location" type="string" use="required"></attribute>
+	</complexType>
+
+	<simpleType name="backupTypeAttributeEnum">
+		<restriction base="string"></restriction>
+	</simpleType>
+	
+	<element name="profilesSearch" type="lcSearch:ProfilesSearchType"></element>
+	
+	<complexType name="ProfilesSearchType">
+		<attribute name="includeInactiveUsers" use="optional" type="boolean" default="false" />
+	</complexType>
+	
+	<element name="verboseLogging" type="lcSearch:VerboseLoggingType"/>
+	
+
+	
+	<complexType name="VerboseLoggingType">
+		<sequence>
+			<element ref="lcSearch:seedlistRequests" maxOccurs="1" minOccurs="1" />
+			<element ref="lcSearch:initial" maxOccurs="1" minOccurs="1" />
+			<element ref="lcSearch:incrementalCrawling" maxOccurs="1" minOccurs="1" />
+			<element ref="lcSearch:incrementalBuilding" maxOccurs="1" minOccurs="1" />
+		</sequence>
+		<attribute name="enabled" use="optional" type="boolean" default="true" />
+	</complexType>
+	
+	<element name="seedlistRequests" type="lcSearch:SeedlistRequestsLoggingType"/>
+	<element name="initial" type="lcSearch:InitialLoggingType"/>
+	<element name="incrementalCrawling" type="lcSearch:IncrementalCrawlingLoggingType"/>
+	<element name="incrementalBuilding" type="lcSearch:IncrementalBuildingLoggingType"/>
+
+	<complexType name="SeedlistRequestsLoggingType">
+		<attribute name="interval" type="nonNegativeInteger" use="required"/>
+	</complexType>
+
+	<complexType name="InitialLoggingType">
+		<attribute name="interval" type="nonNegativeInteger" use="required"/>
+	</complexType>
+
+	<complexType name="IncrementalCrawlingLoggingType">
+		<attribute name="interval" type="nonNegativeInteger" use="required"/>
+	</complexType>
+	
+	<complexType name="IncrementalBuildingLoggingType">
+		<attribute name="interval" type="nonNegativeInteger" use="required"/>
+	</complexType>
+	
+	
+	<element name="trendsSettings" type="lcSearch:TrendsSettingsType"/>
+
+	<complexType name="TrendsSettingsType">
+		<sequence>
+			<element ref="lcSearch:maxTermsInTrend" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:KLExponentCoefficient" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:rebuildIntervalHours" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:maxTermPercentage" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:minIndexSize" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:scoreThresholdPercentage" maxOccurs="1" minOccurs="0" />
+			<element ref="lcSearch:expirationDays" maxOccurs="1" minOccurs="0" />			
+		</sequence>
+	</complexType>
+	
+	<element name="maxTermsInTrend" type="lcSearch:NonNegativeIntegerType"/>
+	<element name="KLExponentCoefficient" type="lcSearch:FloatType"/>
+	<element name="rebuildIntervalHours" type="lcSearch:NonNegativeIntegerType" />
+	<element name="maxTermPercentage" type="lcSearch:FloatType" />
+	<element name="minIndexSize" type="lcSearch:NonNegativeIntegerType" />
+	<element name="scoreThresholdPercentage" type="lcSearch:FloatType" />
+	<element name="expirationDays" type="lcSearch:NonNegativeIntegerType" />	
+	
+	
+	<complexType name="NonNegativeIntegerType">
+		<attribute name="val" type="nonNegativeInteger" use="required"/>
+	</complexType>	
+	
+	<complexType name="FloatType">
+		<attribute name="val" type="float" use="required"/>
+	</complexType>	
+		
+	
+</schema>

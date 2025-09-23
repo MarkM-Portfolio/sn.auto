@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright IBM Corp. 2009, 2011  All Rights Reserved.              --><config id="files" xmlns="http://www.ibm.com/connections/files/files-config/1.0" xmlns:tns="http://www.ibm.com/connections/files/files-config/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/connections/files/files-config/1.0 files-config.xsd">
+
+
+	<security reauthenticateAndSaveSupported="true">
+		<logout href="/files/ibm_security_logout"/>
+		<inlineDownload enabled="false"/>
+	</security>
+
+	<activeContentFilter enabled="true">
+   		<mimeTypes>
+       		<mimeType>text/html</mimeType>
+       		<mimeType>application/xhtml+xml</mimeType>
+   		</mimeTypes>
+   	</activeContentFilter>	
+
+	<cache>
+		<user timeout="43200000"/>
+		<http publicContentMaxAgeInSecs="604800" publicFeedMaxAgeInSecs="30"/>
+	</cache>
+
+	<db dialect="DB2"/>
+
+	<search>
+		<seedlist maximumIncrementalQuerySpanInDays="30" maximumPageSize="1000"/>
+	</search>
+
+	<emailNotification>
+		<addOnMediaDownload enabled="true"/>
+	</emailNotification>
+	
+	<download>
+		<modIBMLocalRedirect enabled="false" hrefPathPrefix="admin_replace"/>
+		<stats>
+			<logging enabled="true"/>
+		</stats>
+	</download>
+
+	<file>
+		<versioning enabled="true"/>
+		<storage rootDirectory="${FILES_CONTENT_DIR}"/>
+		<page maximumSizeInKb="1024"/>
+		<attachment maximumSizeInKb="76800"/>
+		<media maximumSizeInKb="512000"/>
+		<restrictions enabled="false" mode="deny">
+	   	  <extensions>
+		   	  <extension/>
+	   	  </extensions>
+	   	</restrictions>
+	</file>
+
+	<directory>
+		<typeaheadSearch maximumResults="100"/>
+		
+		<group>
+			<membershipCache maximumAgeOnLoginInSeconds="120" maximumAgeOnRequestInSeconds="120"/>
+		</group>
+
+		<community>
+			<membershipCache maximumAgeOnLoginInSeconds="120" maximumAgeOnRequestInSeconds="120"/>
+		</community>
+	</directory>
+	
+	<api>
+	  <indent enabled="false"/>
+	</api>
+	
+	<publicMedia maximumResults="1000"/>
+	
+	<scheduledTasks>
+		<task enabled="true" interval="0 0 0,8,16 * * ?" name="SearchClearDeletionHistory" type="internal"/>
+		<task enabled="true" interval="0 0 0 * * ?" name="MetricsDailyCollection" type="internal"/>
+		<task enabled="true" interval="0 0 0-22/2 * * ?" name="TagUpdateFrequency" type="internal"/>
+		<task enabled="true" interval="0 0 * * * ?" name="DirectoryGroupSynch" type="internal">
+		   <args>
+				<property name="maximumDataAgeInHours">48</property>
+				<property name="pauseInMillis">50</property>
+		   </args>
+		</task>
+		<task enabled="true" interval="0 0 0-23/3 * * ?|0 30 1-23/3 * * ?" name="FileActuallyDelete" type="internal">
+			<args>
+                <property name="softDeleteMinimumPendingTimeInMins">720</property>			
+			</args>
+		</task>
+	</scheduledTasks>
+
+</config>

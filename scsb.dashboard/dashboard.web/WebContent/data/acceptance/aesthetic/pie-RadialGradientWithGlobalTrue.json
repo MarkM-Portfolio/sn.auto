@@ -1,0 +1,569 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Population",
+          "format": {"numericPattern": "0,000,000"}
+        },
+        {
+          "id": "y",
+          "label": "Cities",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        }
+      ],
+      "rows": [
+        [ 78000000, 0 ],
+        [ 55000000, 1 ],
+        [ 58000000, 2 ],
+        [ 48000000, 3 ],
+        [ 42000000, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "x"} ],
+              "style": {
+                "fill": {"h": 0, "l": 1, "s": 0},
+                "align": "middle",
+                "effect": {"shadow": {"dy": 1, "stdDev": 1}},
+                "font": {
+                  "family": "Arial",
+                  "size": 15.0,
+                  "weight": "bold"
+                },
+                "padding": 20,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [ {"field": {"$ref": "y"}} ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "y"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.625,
+                          "l": 0.6985,
+                          "s": 0.9237
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.625,
+                          "l": 0.3837,
+                          "s": 0.5038
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.0917,
+                          "l": 0.638,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.09166,
+                          "l": 0.3763,
+                          "s": 0.7007
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.2305,
+                          "l": 0.5389,
+                          "s": 0.449
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.2305,
+                          "l": 0.2326,
+                          "s": 0.487
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.2,
+                          "l": 0.6421,
+                          "s": 0.8156
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.2,
+                          "l": 0.3404,
+                          "s": 0.5686
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.6056,
+                          "l": 0.6911,
+                          "s": 0.851
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.6056,
+                          "l": 0.3736,
+                          "s": 0.4826
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.6222,
+                          "l": 0.805,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.6222,
+                          "l": 0.5126,
+                          "s": 0.3413
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.8694,
+                          "l": 0.4917,
+                          "s": 0.4215
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.8694,
+                          "l": 0.1953,
+                          "s": 0.5302
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.8639,
+                          "l": 0.6919,
+                          "s": 0.7728
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.8639,
+                          "l": 0.3678,
+                          "s": 0.4409
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.7528,
+                          "l": 0.789,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.7528,
+                          "l": 0.5076,
+                          "s": 0.3642
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.1,
+                          "l": 0.4252,
+                          "s": 0.5613
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.1,
+                          "l": 0.1558,
+                          "s": 0.6935
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.1111,
+                          "l": 0.6045,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.1111,
+                          "l": 0.3399,
+                          "s": 0.8034
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.125,
+                          "l": 0.724,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.125,
+                          "l": 0.4765,
+                          "s": 0.4837
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.5083,
+                          "l": 0.5169,
+                          "s": 0.3769
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.5083,
+                          "l": 0.2061,
+                          "s": 0.4503
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.4361,
+                          "l": 0.7191,
+                          "s": 0.7116
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.4361,
+                          "l": 0.3801,
+                          "s": 0.3652
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.4944,
+                          "l": 0.8375,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.4944,
+                          "l": 0.5197,
+                          "s": 0.292
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.0028,
+                          "l": 0.572,
+                          "s": 0.6075
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.0028,
+                          "l": 0.2754,
+                          "s": 0.5686
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.0472,
+                          "l": 0.655,
+                          "s": 0.9913
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.0472,
+                          "l": 0.3623,
+                          "s": 0.6474
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                },
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "h": 0.0806,
+                          "l": 0.7875,
+                          "s": 1.0
+                        },
+                        "offset": 0
+                      },
+                      {
+                        "color": {
+                          "h": 0.0806,
+                          "l": 0.472,
+                          "s": 0.3559
+                        },
+                        "offset": 1
+                      }
+                    ],
+                    "global": true
+                  },
+                  "stroke": {"width": 0}
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "y"},
+                " :\n",
+                {"$ref": "x"}
+              ]
+            }
+          ]
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": "20%", "right": "100%", "top": 0},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "swatchStyle": {"padding": 5},
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": "4.5%"
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "version": "1.2",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

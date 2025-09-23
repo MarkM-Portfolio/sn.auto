@@ -1,0 +1,264 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Brands",
+          "categories": [
+            "Nike",
+            "Reebok",
+            "Adidas",
+            "Fila",
+            "Converse"
+          ]
+        },
+        {"id": "fY1", "label": "Sales"},
+        {
+          "id": "categories",
+          "label": "Categories",
+          "categories": [ "U.S.", "Int'l", "Licensed" ]
+        }
+      ],
+      "rows": [
+        [ 0, 3768, 0 ],
+        [ 1, 1227, 0 ],
+        [ 2, 488, 0 ],
+        [ 3, 484, 0 ],
+        [ 4, 285, 0 ],
+        [ 0, 2668, 1 ],
+        [ 1, 1092, 1 ],
+        [ 2, 1169, 1 ],
+        [ 3, 401, 1 ],
+        [ 4, 164, 1 ],
+        [ 0, 0, 2 ],
+        [ 1, 315, 2 ],
+        [ 2, 216, 2 ],
+        [ 3, 141, 2 ],
+        [ 4, 141, 2 ]
+      ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [
+        {"input": {"$ref": "fX"}, "output": {"id": "X"}}
+      ],
+      "output": [
+        {
+          "field": {"id": "Y1"},
+          "input": {"$ref": "fY1"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {"id": "categories_p"},
+          "input": {"$ref": "categories"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "alternateWeightData",
+      "fields": [
+        {"id": "categoryIndex"},
+        {
+          "id": "categoryWeight",
+          "label": "Category Weighting",
+          "unit": "dollar"
+        }
+      ],
+      "rows": [
+        [ 0, 6437 ],
+        [ 1, 2635 ],
+        [ 2, 1874 ],
+        [ 3, 1031 ],
+        [ 4, 590 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "bounds": {"width": "80%", "left": 0, "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": {"a": 0}},
+              "lineStyle": {"fill": {"a": 0}},
+              "markStyle": {"fill": "#898989"},
+              "minorStyle": {"fill": {"a": 0}},
+              "tickAs": "percentage",
+              "tickStyle": {
+                "fill": "#898989",
+                "font": {"family": "Arial", "size": "10pt"},
+                "padding": 3
+              }
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {
+                  "categoryWeights": {
+                    "categories": {"$ref": "categoryIndex"},
+                    "weights": {"$ref": "categoryWeight"}
+                  },
+                  "outRange": {"min": 0, "max": 1}
+                },
+                {
+                  "categoryWeights": {
+                    "categories": {"$ref": "categoryIndex"},
+                    "weights": {"$ref": "categoryWeight"}
+                  },
+                  "outRange": {"min": 0, "max": 1},
+                  "tickLabel": [
+                    {
+                      "$ref": "categoryWeight",
+                      "format": {
+                        "numericPattern": "###,###"
+                      },
+                      "method": "data"
+                    }
+                  ]
+                }
+              ]
+            },
+            "axis": [
+              {
+                "lineStyle": {"stroke": {"width": 0}},
+                "markStyle": {"fill": {"a": 0}},
+                "minorStyle": {"fill": {"a": 0}},
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "10pt"
+                  }
+                },
+                "method": "horizontal"
+              },
+              {
+                "lineStyle": {"stroke": {"width": 0}},
+                "markStyle": {"fill": {"a": 0}},
+                "minorStyle": {"fill": {"a": 0}},
+                "tickAs": "normal",
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "10pt"
+                  }
+                },
+                "method": "horizontal"
+              }
+            ]
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "categories_p"} ],
+              "style": {
+                "fill": "#FFFFFF",
+                "font": {"family": "Arial", "size": "10pt"}
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "Y1"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "styleBy": [
+            {
+              "field": {"$ref": "categories"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 90,
+                    "colors": [
+                      {"color": "#175394", "offset": 0},
+                      {"color": "#3373AB", "offset": 1}
+                    ]
+                  },
+                  "outline": "white"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 90,
+                    "colors": [
+                      {"color": "#C7471C", "offset": 0},
+                      {"color": "#E06C2D", "offset": 1}
+                    ]
+                  },
+                  "outline": "white"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 90,
+                    "colors": [
+                      {"color": "#1C877F", "offset": 0},
+                      {"color": "#42B09C", "offset": 1}
+                    ]
+                  },
+                  "outline": "white"
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories_p"},
+                ": ",
+                {"$ref": "fY1"}
+              ]
+            }
+          ]
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 800, "height": 400},
+  "titles": [
+    {
+      "type": "title",
+      "content": [ "Footwear Sales in Millions" ],
+      "style": {
+        "fill": "#636363",
+        "align": "start",
+        "font": {
+          "family": "Arial",
+          "size": "10pt",
+          "weight": "bold"
+        }
+      }
+    }
+  ],
+  "version": "4.2",
+"style": {
+		"fill": {
+			"h": 0,
+			"l": 1,
+			"s": 0
+		}
+	}
+}

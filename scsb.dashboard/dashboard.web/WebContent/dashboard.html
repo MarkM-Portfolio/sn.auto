@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<title>Dashboard</title>
+	<!-- Bootstrap and SB-admin css -->
+	<!-- This version of bootstrap has customized screen cutoffs: md:1024, lg:1600 -->
+	<link rel="stylesheet" href="bootstrap-custom/css/bootstrap.min.css"/>
+	<!-- <link rel="stylesheet" href="sb-admin-v2/css/sb-admin.css" />
+	<link rel="stylesheet" href="sb-admin-v2/font-awesome/css/font-awesome.min.css" /> -->
+	<!-- Datepicker css -->
+	<link href="datepicker/css/datepicker3.css" rel="stylesheet"/>
+	<!-- my css -->
+	<link rel="stylesheet" href="css/dashboard.css" />
+	
+	<!-- Initializing Dojo for RAVE -->
+	<script src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<!-- jquery -->
+	<script src="jquery-1.11.1.js"></script>
+	<!-- my js -->
+	<script src="js/dashboard.js"></script>
+	
+	<script src="datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="sb-admin-v2/js/sb-admin.js"></script>
+	<script src="sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="bootstrap-custom/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="margin-bottom: 0">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" data-toggle="pill" href="#home" onclick="switchTab(null,null)">Dashboard</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<div class="nav navbar-top-links">
+					<ul id="top-menu" class="nav navbar-nav navbar-top-links">
+						<li class="dropdown" id="app-dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Applications<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" id="app-menu">
+								
+							</ul>
+						</li>
+					</ul>
+					<!-- for testing only -->
+					<button type="button" class="btn navbar-btn btn-info" onclick="logVisJSONs()">Log visJSON's</button>
+					<div class="navbar-form navbar-right">
+						<div class="form-group">
+							<button class="btn btn-primary" id="tooltipbutton" type="button" onclick="toggleTooltips()">Hide Tooltips</button>
+						</div>
+						<div class="form-group">
+							<select class="form-control" style="width:100px;" id="timeUnit" onChange="changeUnit()">
+								<option>hour</option>
+								<option>day</option>
+								<option>month</option>
+								<option>year</option>
+								<option>all time</option>
+							</select>
+						</div>
+						<div id="datepicker" class="form-group">
+						</div>
+						<div id="button-holder" class="form-group">
+						</div>
+						<div class="form-group">
+							<div class="checkbox navbar-text">
+								<label>
+									<input type="checkbox" id="uniqueHits" onclick="toggleUnique()" checked> View Unique Hits
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div id="app-tabs-content" class="tab-content">
+		<div class="tab-pane active" id="home">
+			<div class="container-fluid">
+				<div class="row">
+					<ol class="breadcrumb">
+						<li class="active">Home</li>
+					</ol>
+				</div>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visHomeEnv" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visHomeApps" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visHomeOS" style="width: 100%; height: 500px;"></div>
+							</div>
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visHomeClient" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="env">
+			<div class="container-fluid">
+				<div class="row">
+					<ol class="breadcrumb">
+						<li><a href="#home" data-toggle="pill" onclick="switchTab(null,null)">Home</a></li>
+						<li class="active cur-env"></li>
+					</ol>
+				</div>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvApps" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvLine" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvOS" style="width: 100%; height: 500px;"></div>
+							</div>
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvClient" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id ="app">
+			<div class="container-fluid">
+				<div class="row">
+					<ol class="breadcrumb">
+						<li><a data-toggle="pill" href="#home" onclick="switchTab(null,null)">Home</a></li>
+						<li class="active cur-app"></li>
+					</ol>
+				</div>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visApp" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visAppLine" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visAppOS" style="width: 100%; height: 500px;"></div>
+							</div>
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visAppClient" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="envApp">
+			<div class="container-fluid">
+				<div class="row">
+					<ol class="breadcrumb">
+						<li><a href="#home" data-toggle="pill" onclick="switchTab(null,null)">Home</a></li>
+						<li><a href="#env" data-toggle="pill" class="cur-env" onclick="switchTab(currentEnv,null)"></a></li>
+						<li class="active cur-app"></li>
+					</ol>
+				</div>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvApp" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvAppLine" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvAppOS" style="width: 100%; height: 500px;"></div>
+							</div>
+							<div class="col-lg-12">
+								<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnvAppClient" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

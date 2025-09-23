@@ -1,0 +1,156 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {
+          "id": "type",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 1, 0 ],
+        [ 2, 3, 1 ],
+        [ 4, 5, 2 ],
+        [ 6, 7, 3 ],
+        [ 8, 9, 4 ],
+        [ 10, 11, 5 ],
+        [ 12, 13, 6 ],
+        [ 14, 15, 7 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {"id": "name", "unit": "categorical"}
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 1 ],
+        [ 2, 2 ],
+        [ 3, 3 ],
+        [ 4, 4 ],
+        [ 5, 5 ],
+        [ 6, 6 ],
+        [ 7, 7 ],
+        [ 8, 8 ],
+        [ 9, 9 ],
+        [ 10, 10 ],
+        [ 11, 11 ],
+        [ 12, 12 ],
+        [ 13, 13 ],
+        [ 14, 14 ],
+        [ 15, 15 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "navy",
+                "font": {"size": 15.0, "weight": "bold"}
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "dag",
+            "orientation": "bottom-to-top",
+            "to": {"$ref": "to"}
+          },
+          "style": {"fill": "white", "size": 50}
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "link",
+            "orientation": "bottom-to-top",
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "type"},
+              "palette": [
+                {
+                  "fill": "#7FC97F",
+                  "endArrow": "arrow",
+                  "startArrow": "filledArrow"
+                },
+                {
+                  "fill": "#BEAED4",
+                  "endArrow": "circle",
+                  "startArrow": "arrow"
+                },
+                {
+                  "fill": "#FDC086",
+                  "endArrow": "filledCircle",
+                  "startArrow": "circle"
+                },
+                {
+                  "fill": "#FFFF99",
+                  "endArrow": "diamond",
+                  "startArrow": "filledCircle"
+                },
+                {
+                  "fill": "#386CB0",
+                  "endArrow": "filledDiamond",
+                  "startArrow": "diamond"
+                },
+                {
+                  "fill": "#F0027F",
+                  "endArrow": "square",
+                  "startArrow": "filledDiamond"
+                },
+                {
+                  "fill": "#BF5B17",
+                  "endArrow": "filledSquare",
+                  "startArrow": "square"
+                },
+                {
+                  "fill": "#666666",
+                  "endArrow": "filledArrow",
+                  "startArrow": "filledSquare"
+                }
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 10},
+            "symbol": "straight"
+          }
+        }
+      ],
+      "style": {"fill": "darkgray", "padding": 40}
+    }
+  ],
+  "size": {"width": 640, "height": 400},
+  "version": "1.3"
+}

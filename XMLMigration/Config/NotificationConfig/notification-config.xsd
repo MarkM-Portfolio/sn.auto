@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2008, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xs:element name='config'>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref='properties' minOccurs='0' maxOccurs="1"/>
+				<xs:element ref='handlers' />				
+				<xs:element ref='channelConfigs' />
+				<xs:element ref='defaultEmailPreferences'/>
+				<xs:element ref='templates' minOccurs='0' />
+			</xs:sequence>
+			<xs:attribute name='id' use='required' type='xs:NMTOKEN' />
+			<xs:attribute name='buildlevel' type="xs:string" use='required'/>
+			<xs:attribute name='version' use='required'
+				type='xs:NMTOKEN' />
+			<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="properties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="property" maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="handlers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="handler" maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element> 
+
+	<xs:element name="handler">
+		<xs:complexType>
+			<xs:attribute name="class" type="xs:string" />
+			<xs:attribute name="name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="defaultEmailPreferences">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="allowEmailAddressOverride" minOccurs='1' maxOccurs='1' type="xs:boolean" />
+				<xs:element name="useLanguageFromCallingComponent" minOccurs='1' maxOccurs='1' type="xs:boolean"/>
+				<xs:element name='defaultLanguage' minOccurs='1' maxOccurs='1' type="xs:string"/>
+				<xs:element name="sendEmailsForDirectNotifications" minOccurs='1' maxOccurs="1" type="xs:boolean"/>
+				<xs:element name="defaultEmailFormat" minOccurs='0' maxOccurs="1">
+					<xs:simpleType>
+                    	<xs:restriction base="xs:string">
+                        	<xs:enumeration value="HTML"/>
+                        	<xs:enumeration value="PLAIN"/>
+                   		</xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+				<xs:element name="defaultResponsesFrequency" minOccurs="1" maxOccurs="1">
+					<xs:simpleType>
+	                    <xs:restriction base="xs:string">
+	                        <xs:enumeration value="NONE"/>
+	                        <xs:enumeration value="INDIVIDUAL"/>
+	                        <xs:enumeration value="DAILY"/>
+	                        <xs:enumeration value="WEEKLY"/>
+	                    </xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+				<xs:element name="defaultTagFollowFrequency" minOccurs="1" maxOccurs="1">
+					<xs:simpleType>
+	                    <xs:restriction base="xs:string">
+	                        <xs:enumeration value="NONE"/>
+	                        <xs:enumeration value="INDIVIDUAL"/>
+	                        <xs:enumeration value="DAILY"/>
+	                        <xs:enumeration value="WEEKLY"/>
+	                    </xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+				<xs:element name="defaultMentionsFollowFrequency" minOccurs="0" maxOccurs="1">
+					<xs:simpleType>
+	                    <xs:restriction base="xs:string">
+	                        <xs:enumeration value="NONE"/>
+	                        <xs:enumeration value="INDIVIDUAL"/>
+	                        <xs:enumeration value="DAILY"/>
+	                        <xs:enumeration value="WEEKLY"/>
+	                    </xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+				<xs:element name="defaultTopicsFollowFrequency" minOccurs="0" maxOccurs="1">
+					<xs:simpleType>
+	                    <xs:restriction base="xs:string">
+	                        <xs:enumeration value="NONE"/>
+	                        <xs:enumeration value="INDIVIDUAL"/>
+	                        <xs:enumeration value="DAILY"/>
+	                        <xs:enumeration value="WEEKLY"/>
+	                    </xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+				<xs:element name="replyToEnabled" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+				<xs:element name="digestItemsPerCategory" minOccurs="1" maxOccurs="1">
+					<xs:simpleType>
+	                    <xs:restriction base="xs:integer">
+	                    	<xs:minInclusive value="5"/>
+ 							<xs:maxInclusive value="25"/>
+	                    </xs:restriction>
+                	</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+	<xs:element name="templates">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="source" maxOccurs="unbounded"
+					minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="source">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="type" maxOccurs="unbounded"
+					minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" />
+			<xs:attribute name="imagesURL" type="xs:string" />
+			<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+			<xs:attribute name="defaultFollowFrequency">
+				<xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="NONE"/>
+                        <xs:enumeration value="INDIVIDUAL"/>
+                        <xs:enumeration value="DAILY"/>
+                        <xs:enumeration value="WEEKLY"/>
+                    </xs:restriction>
+                </xs:simpleType>			
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="type">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="channel" maxOccurs="unbounded"
+					minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" />
+			<xs:attribute name="notificationType">
+				<xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="DIRECTED"/>
+                        <xs:enumeration value="FOLLOW"/>
+                        <xs:enumeration value="BROADCAST"/>
+                        <xs:enumeration value="DIGEST"/>
+                        <xs:enumeration value="RESPONSE"/>
+                        <xs:enumeration value="MODERATION"/>
+                    </xs:restriction>
+                </xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="channel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="property" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" />
+			<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="channelConfigs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="emailChannelConfig" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="emailChannelConfig">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="useJavaMailProvider" minOccurs='0' maxOccurs="1"
+					type="xs:boolean" />
+				<xs:element name='smtpJNDILookup' minOccurs='0' maxOccurs="1" />
+				<xs:element name="maxRecipients" minOccurs='0' maxOccurs="1" type="xs:int"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="smtpJNDILookup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="smtpJNDILookupURL" type="xs:string" />
+				<xs:element name="authentry" type="xs:string" />
+				<xs:element name="user" type="xs:string" />
+				<xs:element name="password" type="xs:string" />
+				<xs:element name="javamail" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="javamail">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="property" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="property">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string"></xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+
+</xs:schema>

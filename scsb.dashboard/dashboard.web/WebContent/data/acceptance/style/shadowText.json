@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "name", "key": true},
+        {"id": "fX", "min": 0, "max": 10},
+        {"id": "fY", "min": 0, "max": 100}
+      ],
+      "rows": [ [ 0, 2.8, 82 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ "L A B E L" ],
+              "style": {
+                "fill": "pink",
+                "effect": {
+                  "shadow": {"dx": 4, "dy": 4, "stdDev": 1}
+                },
+                "font": {"size": 24}
+              }
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "width": 120,
+            "effect": {
+              "shadow": {"dx": 8, "dy": 6, "stdDev": 3}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.2"
+}

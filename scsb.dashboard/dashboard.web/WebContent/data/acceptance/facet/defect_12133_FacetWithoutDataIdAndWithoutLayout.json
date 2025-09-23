@@ -1,0 +1,135 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "group", "categories": [ "Male", "Female" ]},
+        {
+          "id": "cat",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ]
+        },
+        {"id": "dy"}
+      ],
+      "rows": [
+        [ 0, 0, -4 ],
+        [ 0, 2, 6 ],
+        [ 0, 3, -4 ],
+        [ 0, 4, -4 ],
+        [ 0, 6, 3 ],
+        [ 1, 0, 5 ],
+        [ 1, 4, 6 ]
+      ]
+    },
+    {
+      "id": "wf",
+      "source": {"$ref": "data"},
+      "type": "integrate",
+      "group": [
+        {"input": {"$ref": "group"}, "output": {"id": "g"}}
+      ],
+      "input": [
+        {"field": {"$ref": "cat"}, "role": "x"},
+        {"field": {"$ref": "dy"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "y"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "x", "unit": "categorical"},
+          "parameters": {"addTotalCategory": "Total"},
+          "role": "x"
+        },
+        {
+          "field": {"id": "from", "unit": "categorical"},
+          "role": "from"
+        },
+        {
+          "field": {
+            "id": "type",
+            "categories": [
+              "zero",
+              "add",
+              "sub",
+              "netv_zero",
+              "netv_add",
+              "netv_sub"
+            ]
+          },
+          "role": "type"
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": true},
+            "axis": {"markStyle": {}}
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ],
+        "style": {"fill": "white", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "y"} ],
+              "style": {"location": "outside"}
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "scale": {"local": false},
+              "palette": [
+                "gray",
+                "lightgreen",
+                "pink",
+                "#ff8",
+                "#ff8",
+                "#ff8"
+              ]
+            }
+          ],
+          "style": {"size": "60%"}
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "from"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "style": {"padding": "30%"}
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "g"}, "axis": {}} ],
+        "method": "panel"
+      }
+    }
+  ],
+  "version": "3.0",
+  "style": {"fill": "#eee", "padding": 10}
+}

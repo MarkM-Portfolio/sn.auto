@@ -1,0 +1,98 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "f1",
+          "categories": [ "A", "B", "C", "D", "E" ]
+        },
+        {"id": "f2"},
+        {"id": "f3"}
+      ],
+      "rows": [
+        [ 0, 0, 950 ],
+        [ 0, 1, 977 ],
+        [ 0, 2, 888 ],
+        [ 0, 3, 406 ],
+        [ 1, 0, 389 ],
+        [ 1, 1, 954 ],
+        [ 1, 2, 197 ],
+        [ 1, 3, 746 ],
+        [ 2, 0, 872 ],
+        [ 2, 1, 768 ],
+        [ 2, 2, 438 ],
+        [ 2, 3, 135 ],
+        [ 3, 0, 571 ],
+        [ 3, 1, 713 ],
+        [ 3, 2, 327 ],
+        [ 3, 3, 223 ],
+        [ 4, 0, 371 ],
+        [ 4, 1, 713 ],
+        [ 4, 2, 227 ],
+        [ 4, 3, 223 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"left": "0%", "top": "0%"},
+      "coordinates": {
+        "style": {"fill": {"a": 1, "h": 0, "l": 0, "s": 0}}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dData"},
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "f1"},
+              "modifies": "fill",
+              "palette": [
+                {"b": 255, "g": 0, "r": 0},
+                {"b": 255, "g": 255, "r": 0},
+                {"b": 0, "g": 255, "r": 0},
+                {"b": 0, "g": 255, "r": 255},
+                {"b": 0, "g": 0, "r": 255}
+              ]
+            }
+          ],
+          "positioning": {
+            "layout": "squarify",
+            "leafOnly": false,
+            "levelStyles": {
+              "internal": [
+                {
+                  "stroke": {"width": 3.0},
+                  "outline": "#000"
+                }
+              ],
+              "leaf": {
+                "stroke": {"width": 2.0},
+                "outline": "#fff"
+              }
+            },
+            "levels": [ {"$ref": "f1"}, {"$ref": "f2"} ],
+            "method": "treemap",
+            "size": {"$ref": "f3"}
+          },
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 45,
+              "colors": [
+                {"color": {}, "offset": 0},
+                {"color": {"dValue": -0.5}, "offset": 1.0}
+              ]
+            },
+            "stroke": {"width": 1},
+            "outline": "#0000ff"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.2"
+}

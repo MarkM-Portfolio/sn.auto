@@ -1,0 +1,20 @@
+<component name="lc.data.pop.adapter"
+    description="Connections Data Population Framework Adapter for Scripting"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+                preferredInstallLocation="/"
+                location="${env.LWP_COMP_BUILD}/lib/lc.data.pop.adapter.jar" />
+    </output-group>
+    
+    <output-group name="to_war">
+        <output type="jar" visibility="public" platform="all"
+                preferredInstallLocation="WEB-INF/lib"
+                location="${env.LWP_COMP_BUILD}/lib/lc.data.pop.adapter.jar" />
+    </output-group>
+
+	<dependency name="lc.data.pop" type="jar" version="1.0" />
+	<dependency name="libs.auto/apache-abdera-1.1.2" type="jar" version="1.1.2" />
+	<dependency name="libs.auto/junit" type="jar" version="4.5" />
+</component>

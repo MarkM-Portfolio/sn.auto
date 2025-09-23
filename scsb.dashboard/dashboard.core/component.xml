@@ -1,0 +1,25 @@
+<component name="scsb.dashboard/dashboard.core"
+    description="SmartCloud Dashbaord Core"
+    type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/lib/dashboard.core.jar"
+            preferredInstallLocation="/lib"/>
+		<output type="dir" visibility="public" platform="all" location="${env.LWP_COMP_BUILD}/properties" 
+		preferredInstallLocation="properties" />
+    </output-group>
+
+    <output-group name="to_war">
+        <output type="jar" visibility="public" platform="all"
+            preferredInstallLocation="WEB-INF/lib"
+            location="${env.LWP_COMP_BUILD}/lib/dashboard.core.jar" />
+   		<output type="dir" visibility="public" platform="all" location="${env.LWP_COMP_BUILD}/properties" 
+   		preferredInstallLocation="/" />
+   	</output-group>
+	<dependency name="libs.auto/json4j" type="jar" version="1.0" />
+    <dependency name="libs.auto/httpcore" type="jar" version="4.0" />
+	<dependency name="libs.auto/httpclient" type="jar" version="4.0" />
+	<dependency name="libs.auto/commons-io" type="jar" version="1.4" />
+	<dependency name="scsb.dashboard/dashboard.prereqs" type="jar" version="1.0" />
+</component>

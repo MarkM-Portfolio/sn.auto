@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION  2015.01.28-1800
+-->
+
+<suite thread-count="1" name="API BVT OnPremise" parallel="tests" >
+  <suite-files>
+  
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>    
+
+    <suite-file path="Activities.xml" />
+    <suite-file path="ActivityStreams.xml" />
+    <suite-file path="ASS.xml" />
+    <suite-file path="Blogs.xml" />
+    <suite-file path="Catalog.xml" />
+    <suite-file path="Communities.xml" />
+    <suite-file path="Cre.xml" />
+    <suite-file path="CrossService.xml" />
+    <suite-file path="Dogear.xml" />
+    <suite-file path="Files.xml" />
+    <suite-file path="Forums.xml" />
+    <suite-file path="News.xml" />
+    <suite-file path="Profiles.xml" />
+    <suite-file path="ProfilesAdmin.xml" />
+    <!--<suite-file path="SearchOnCloud.xml" />-->
+    <suite-file path="SearchOnPremise.xml" />
+    <!--<suite-file path="SearchSolr.xml" />-->
+    <suite-file path="UBlogs.xml" />
+    <suite-file path="Wikis.xml" />
+  
+  </suite-files>
+</suite>

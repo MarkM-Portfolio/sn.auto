@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California, here I come.",
+            "Illinois",
+            "Washington",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [ [ 185, 60, 3 ], [ 495, 30, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "fY"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {"spans": [ {"fit": "exact"} ]}
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": 200
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [
+    {"boundsStyle": {"outline": "red"}, "method": "axis"}
+  ], "size":{"height":300, "width":600},
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

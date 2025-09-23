@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="8" name="Complete BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+  <groups>
+    <run>
+      <include name="level2" />
+    </run>
+  </groups>
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!-- 
+  <parameter name="server_is_grid_hub" value="true"/>
+  <parameter name="server_host" value="lcrft04.cnx.cwp.pnp-hcl.com" />
+  <parameter name="server_port" value="5555"/>
+    -->
+  <!-- To run tests locally -->
+ 
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+
+  
+  <!-- PRODUCT TO TEST -->
+  <!-- 
+  <parameter name="product_name" value="onprem" />
+  -->
+  <parameter name="product_name" value="cloud" />
+
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="cloud" />
+
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+   <!--
+  <parameter name="browser_url" value="https://lc45linux1.swg.usma.ibm.com/" />
+   -->
+
+  <parameter name="browser_url" value="https://apps.collabservdaily.swg.usma.ibm.com/" />
+
+    <!--
+  <parameter name="browser_url" value="https://apps.acdev1.swg.usma.ibm.com/" />
+    -->
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_19_Windows" />
+  
+  <!-- Connections properties-->
+  <!--  
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties" />
+  -->
+  <!-- Smart Cloud properties for apps.collabservdaily-->
+
+  <parameter name="default_app_properties" value="test_config/app/appCloud.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/smart_cloud.properties" />
+
+  <!-- Smart Cloud properties for apps.collabservdaily-->
+  <!-- 
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/smart_cloud.properties" />
+  -->
+
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+  <!-- 
+  TESTS
+  Specify test structure below. A test is a collection of test classes. 
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+	<test name="Media Gallery" preserve-order="true" enabled="false">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_MG">
+				<methods>
+					<include name="testMediaGallery_UploadPhoto"/>
+					<include name="testMediaGallery_UploadVideo"/>
+					<include name="testMediaGallery_UploadPhoto_AddComments"/>
+					<include name="testMediaGallery_UploadPhoto_EditComments"/>
+					<include name="testMediaGallery_UploadPhoto_DeleteComments"/>
+					<include name="testMediaGallery_UploadPhoto_Recommendation"/>
+					<include name="testMediaGallery_UploadPhoto_EditProperties"/>
+					<include name="testMediaGallery_UploadPhoto_AboutThisFile"/>
+					<include name="MediaGallery_UploadPhoto_ReplaceFile"/>
+					<include name="testMediaGalleryFromLeftNavLink"/>
+					<include name="testMediaGallery_Delete_Photo"/>
+					<include name="testMediaGallery_Delete_Video"/>
+					<include name="MediaGallery_Delete_MediaGallery"/>
+				</methods>
+			</class>
+		</classes>
+  </test>
+
+   <test name="Gallery" preserve-order="true" enabled="false">
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery">
+            <methods>
+               <include name="testShowAllFiles"/>
+            </methods>
+         </class>
+      </classes>
+  </test>
+  
+  <test name="SingleTest" preserve-order="true" enabled="false">
+<!--    <parameter name="browser_url" value="http://linux276.rtp.raleigh.ibm.com/" />-->
+	<parameter name="browser_url" value="http://c14-32.swg.usma.ibm.com/" /> 
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Moderation" />
+    </classes>
+  </test>
+  
+  <test name="SingleTest2" preserve-order="true" enabled="true">
+
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.Smoke_Communities" />
+    </classes>
+  </test>
+  
+    <test name="SingleTest2" preserve-order="true" enabled="false">
+
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_MG" />
+    </classes>
+  </test>
+  
+    <test name="SingleTest2" preserve-order="true" enabled="false">
+
+    <classes>
+      <class name="com.ibm.conn.auto.sandbox.community.BVT_Cloud_Communities" />
+    </classes>
+  </test>
+  
+  <test name="SandBox" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.sandbox.community" />
+    </packages>
+  </test>
+
+
+  <test name="Activities" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.activities" />
+    </packages>
+  </test>
+  
+  <test name="Blogs" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.blogs" />
+    </packages>
+  </test>
+  
+   <test name="Communities" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.communities" />
+    </packages>
+  </test>
+  
+   <test name="Dogear" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.dogear" />
+    </packages>
+  </test>
+
+  <test name="Files" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.files" />
+    </packages>
+  </test>
+  
+  <test name="Forums" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.forums" />
+    </packages>
+  </test>
+  
+  <test name="Globalsearch" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.globalsearch" />
+    </packages>
+  </test>
+  
+  <test name="Homepage" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.homepage" />
+    </packages>
+  </test>
+  
+  <test name="Profiles" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.profiles" />
+    </packages>
+  </test>
+  
+  <test name="ShareBox" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.atmn.wdlc.testcases.sharebox" />
+    </packages>
+  </test>
+  
+  <test name="Wikis" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.wikis" />
+    </packages>
+  </test>
+
+  
+</suite>

@@ -1,0 +1,64 @@
+JAVA=/opt/IBM/WebSphere/AppServer/java/jre/bin/java
+REMOTE_HOST="lc30linux4.swg.usma.ibm.com"
+REMOTE_WAS_OWN_BY_ROOT="no"
+REMOTE_USER='lcuser'
+REMOTE_SCRIPT_HOME='/local/home/lcuser/lc-update'
+REMOTE_SCRIPT_UPDATE_CMD="git pull"
+#REMOTE_SCRIPT_UPDATE_CMD="svn update"
+DB_SERVER="${DB_SERVER:-$REMOTE_HOST}"
+DB_OWNER="oracle"
+REMOTE_WAS_HOME="/local/IBM/WebSphere/AppServer"
+REMOTE_WAS_TYPE="standalone"
+REMOTE_WAS_PROFILE="AppSrv01"
+REMOTE_WAS_SERVER="server1"
+REMOTE_WAS_USER="wasadmin"
+REMOTE_WAS_PSWD="lcsecret"
+REMOTE_IHS_HOME="/local/IBM/HTTPServer"
+REMOTE_LC_DATA_DIR="/local/LotusConnections/data"
+TEAMRM_SERVER_DOC="lc30linux4.swg.usma.ibm.com"
+REMOTE_HTTP_DOC_DIR="$REMOTE_IHS_HOME/htdocs"
+COGNOS_SERVER="lcuser@lc30linux6.swg.usma.ibm.com"
+
+DB_TYPE=oracle
+DB_HOST=lc30linux4.swg.usma.ibm.com
+DB_PORT=1521
+DB_NAME=lsconn
+DB_PASSWORD=lcsecret
+DB_USER=profuser
+ORACLE_INST_HOME=/local/home/lcuser/lc-update-40/TDI_TESTS/instantclient_11_2/
+
+LDAP_SERVER=sunldap7.swg.usma.ibm.com
+LDAP_SERVER_MODIFY=sunldap7.swg.usma.ibm.com
+LDAP_PORT=389
+LDAP_USER="uid=fvtbind,cn=users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_PASSWORD="fvtbind"
+LDAP_MODIFY_USER="uid=fvtadmin,cn=Users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_MODIFY_PASSWORD="fvtadmin"
+LDAP_BASE="cn=users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_FILTER="(\\&(objectClass=inetOrgPerson)(!(carLicense=api)))"
+
+API_AUTOMATION_HOME=$HOME/janet_remote
+API_AUTOMATION_ARGS=lc30linux4
+
+DATA_POPULATION_HOME=${HOME}/lc.data.pop
+DATA_POPULATION_URL=http://lc30linux4.swg.usma.ibm.com
+
+WORK_ITEM_TOOL_HOME=${HOME}/sn.auto/tool/Workitem_automation
+GUI_AUTOMATION_HOME=${HOME}/sn.auto/tool/GUI_BVT_automation
+
+# for EMMA code coverage tool on remote machine
+DIR_WAS_BIN=${REMOTE_WAS_HOME}/bin
+DIR_WAS_JRE_LIB_EXT=${REMOTE_WAS_HOME}/java/jre/lib/ext
+DIR_EARS=${REMOTE_WAS_HOME}/profiles/${REMOTE_WAS_PROFILE}/installedApps/lc30linux4Node01Cell
+DIR_EMMA_HOME=/local/home/lcuser/emma
+DIR_JARS_INSTRUMENTED=${DIR_EMMA_HOME}/jars_instrumented
+EMMA_JAR=${DIR_EMMA_HOME}/emma.jar
+EMMA_SCRIPT_DIR=${DIR_EMMA_HOME}/scripts
+EMMA_FILTER_FILE=${DIR_EMMA_HOME}/emma_filter.txt
+EMMA_METADATA_DIR=${DIR_EMMA_HOME}/coverage_metadata
+EMMA_RUNTIMEDATA_DIR=${DIR_EMMA_HOME}/coverage_runtimedata
+EMMA_REPORTS_DIR=${DIR_EMMA_HOME}/reports
+EMMA_REPORTS_HTML_DIR=${EMMA_REPORTS_DIR}/html_reports
+EMMA_REPORTS_XML_DIR=${EMMA_REPORTS_DIR}/xml_reports
+EMMA_REPORTS_SUMMARY_DIR=${EMMA_REPORTS_DIR}/summary_reports
+JAVA_EXE=${REMOTE_WAS_HOME}/java/jre/bin/java

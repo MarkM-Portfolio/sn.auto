@@ -1,0 +1,2339 @@
+# Module Verification configuration for IBM Lotus Connections 5.0
+
+# Lines starting with "#" are comment lines - the entire line will be ignored.
+# Lines starting with "!" are configuration items. The format is 
+#          !key: value
+
+###############################################################################
+# User defined version used for reporting purposes. May be incremented/changed
+# when the content of this file changes.
+###############################################################################
+!config_spec_version: 6
+
+###############################################################################
+# Descriptive information about the cataloged modules.
+###############################################################################
+!module_listing_version: IBM Connections 6.0 OSSC Approved Module Listing dated Feb 14, 2017
+
+###############################################################################
+# Work area for the tool. The verification tool will deposit temporary files
+# here during its processing. The account that runs this tool must have
+# read, write, and delete privleges on this directory.
+###############################################################################
+!work_area: /home/lcuser/tmp
+
+###############################################################################
+# Java packages that match the following regular expression are considered
+# this product's source
+###############################################################################
+# look for org/springframework/social/connections/*, org/tiling/memo/*, org/apache/roller*,
+# look for com/ibm/ followed by any of
+#        bl,sn,connections,directory,dogear,lconn,forum,lotus/connections,jse/util,
+#        lotus/search,openactivities,tango,peoplepages,profiles,ventura,workplacesecurity,
+#        ilel,search,es/nuvo,cue,research/cue,idf/rsl
+#      follewd by any characters
+#
+!source_packages_regex: ((org/springframework/social/connections)|(com/ibm/lc/install)|(com/ibm/smartcloud)|(com/ibm/ws/ejbdeploy)|(org/omg/stub/)|(com/ibm/ejs/container/)|(org/apache/struts2/plugins/AbderaResult.class)|(org/apache/struts2/plugins/JSONResult.class)|(net/jazz/ajax/AbstractBootstrapProperties.class)|(org/apache/struts2/dispatcher/mapper/HomepageActionMapper.class)|(test/route)|(test/servlet)|(org/tiling/memo/)|(org/apache/roller)|(org/wikimodel/wem)|(org/apache/struts2/dispatcher/mapper)|(lc/core/mobile))+|((com/ibm/)+((sc)|(config/shared)|(conn/ecm)|(lcomm/recomm)|(social/)|(socmail/)|(oneui/ckeditor)|(wiki)|(bl)|(sn)|(connections)|(ic)|(directory)|(dogear)|(lconn)|(forum)|(lotus/connections)|(jse/util)|(lotus/mobile)|(lotus/catalog)|(lotus/search)|(lotus/quickr)|(lotus/cmis)|(openactivities)|(tango)|(peoplepages)|(profiles)|(ventura)|(quickr/lw)|(social/sharebox)|(quickr/communitylibrary)|(quickr/share)|(quickr/servlet)|(quickr/serviceregistry)|(lotus/quickr/ecm)|(workplace/security)|(ilel)|(search)|(es/nuvo)|(cue)|(research/cue)|(idf/rsl)|(tk/rproxysvc)|(com/ibm/trl/html))+)
+
+
+
+###############################################################################
+# Java packages that match the following regular expression are ibm developed.
+# That is, they are not developed by the product team and typically require
+# a COO.
+###############################################################################
+# currently look for com/ibm/ followed by any of
+#       json, hursley/devetools, lex/lapapp
+# followed by any characters
+# 10/17/2008: Added com/ibm/lwp, com/ibm/wkplc, com/ibm/wplc, com/ibm/wps for install packages
+# 04/09/2012: Added shindig
+#   
+!ibm_packages_regex: ((org/eclipse/equinox/servletbridge)|(org/apache/shindig)|((com/ibm/)+((trl/acf)|(trl/html)|(ccl)|(lucenepa)|(tivoli/reporting)|(wkplc/pla)|(portal/fileParser)|(security/vulcan)|(ws/ajaxproxy)|(json)|(hursley/devtools)|(lex/lapapp)|(rcp)|(lwp)|(wplc)|(wkplc)|(wps)|(mashups)|(mm)|(websphere)|(sametime)|(connectors)|(vulcan)|(cre))))+
+
+###############################################################################
+# Handler classes that process files with the designated extensions. Default
+# values are
+#     !handler_javascript: js  com.ibm.lconn.tools.verification.JsHandler
+#     !handler_jar:        jar com.ibm.lconn.tools.verification.JarHandler
+# USERS ONLY CHANGE THESE IF THEY WRITE A CUSTOM IMPLEMENTATION.
+###############################################################################
+!handler_javascript: js  com.ibm.wplc.tools.ossc.JsHandler
+!handler_jar:        jar com.ibm.wplc.tools.ossc.JarHandler
+
+
+###############################################################################
+# The module definitions. The format is
+#      artifact_name   MD5_hash   version    comment
+# The artifact_name, MD5_hash and version must have no white space.
+###############################################################################
+
+# 07/03/08: Jay, added Dojo 1.1.1
+# 10/06/08: JTW, added dlt.jar as per homepage and Mark Levins' instructions this is languageware 7 code
+#
+#
+
+#From Rob's original 1.0 list  
+abdera.core.0.2.2-incubating.retro.jar        03B6FA04EA470436DDB20442F8724101    Abdera_0.2.2    (as shipped with Blogs 1.0)
+abdera.extensions.0.2.2-incubating.retro.jar  32C1558B059F561591B102BFB86B2ECD    Abdera_0.2.2    (as shipped with Blogs 1.0)
+abdera.parser.0.2.2-incubating.retro.jar      BCEBB9594A6F468BACE872E734BD3C87    Abdera_0.2.2    (as shipped with Blogs 1.0)
+abdera.protocol.0.2.2-incubating.retro.jar    5554B9E7F51C815E84C38C08FDDD81CE    Abdera_0.2.2    (as shipped with Blogs 1.0)
+abdera.server.0.2.2-incubating.retro.jar      847A9F64E9D1E1B7F45BF8872552C044    Abdera_0.2.2    (as shipped with Blogs 1.0)
+commons-beanutils.jar                         79F469610DC0F76EE27A74F198858B6B    Commons_Bean_Utils_1.6
+commons-codec-1.3-minus-mp.jar  C9B838E3F042030B87362F930DFF8B6F    Commons_Codec_1.3 (with modifications)
+commons-collections-3.1.jar     D1DCB0FBEE884BB855BB327B8190AF36    Commons_Collections_3.1
+commons-collections.jar         9B47AE4871F91707617DDA4EF1509B2C    Commons_Collections_2.1.1
+commons-configuration-1.1.jar   7631BDF77843465AB2A39CFE9621CE6B    Commons_Configuration_1.1
+commons-dbcp-1.2.1.jar          2666CFEB7BE74B1C2D8A1665AE21192C    Commons_DBCP_1.2.1
+commons-digester.jar            4BAB2D22AA4DC855B13780237831D1F4    Commons_Digester_1.5
+commons-fileupload.jar          1112FC5E1E8BE8D9C76C2BBE995EACC6    Commons_File_Upload_1.0
+commons-lang-2.0.jar            4A9688BC0035BCB2B581AB018998DB31    Commons_Lang_2.0
+commons-logging.jar             8A507817B28077E0478ADD944C64586A    Commons_Logging_1.04
+commons-pool-1.2.jar            07F3697C37AE0B14D6CC429A3202E64C    Commons_Pool_1.2
+commons-validator-1.1.4.jar     1A9EBA900011B387CA5D6618C7083015    Commons_Validator_1.1.4
+concurrent-1.3.2.jar            CA1159F0419D3EEF371E9093C7360F6B    Util.Concurrent_1.3.2
+ibatis-common-2.jar             DB3E1789A706F5C1239CCC288B1DB32B    iBatis_2.1.5    (with a minor bug fix)
+ibatis-sqlmap-2.jar             59A3A366756F2867810CFC91CF8F63E8    iBatis_2.1.5    (with a minor bug fix - Blogs 1.0 version)
+jakarta-oro.jar                 42E940D5D2D822F4DC04C65053E630AB    ORO_2.0.8
+jaxen-core.jar                  627A258DD5AFE6CE4C2F34F11B994C83    Jaxen_1.0
+jdom.jar                        0B8F97DE82FC9529B1028A77125CE4F8    Jdom_1.0
+jstl.jar                        C2CED5F8505FE9D1CAE685201E9CBA07    JSTL_1.1.2
+log4j-1.2.12.jar                223504F742ADDD3F631ED8BDF689F1C9    Log4j_1.2.12
+lucene-1.4.3.jar                9E63F898D71BE8E7F79C0AAB62CF6B36    Lucene_1.4.3
+rome-0.8.jar                    1D3AAC0C2AC94E4DBA34B4DC11D700C2    ROME_0.8
+saxpath-1.0.jar                 CFB45909E9B6DAD02FC4F01CEBB862E9    Saxpath_1.0
+spring.jar                      AF3D6E47CB35052096282B37BACF1C8D    Spring_1.2.8
+standard.jar                    65351D0487AD57EDDA9171BB3B46B98C    JSTL_1.1.2
+struts.jar                      F802C73F47109F7F085D150793BC9530    Struts_1.2.4
+taglibs-string.jar              C6398BE20400F83324D7871BD50FEE42    Tagslibs-String_v1.0.1
+velocity-1.4.jar                362824C4F03B48D7E3D0FC776F5AC4B8    Velocity_1.4
+velocity-dep-1.4.jar            2436797A103DE7C0BFB5BCCEFBAEBE12    Velocity_1.4
+xmlrpc-1.2-b1.jar               9F3DB1864D469D7BF1173E3BF57A9463    XML-RPC_1.2b-1
+axiom-api-1.2.1.jar             44D416D6933130A09B0EC9F8CB6422A2    Axiom_1.2.1
+axiom-impl-1.2.1.jar            220BE0E543EB5ECDC553E4D0F1690A8C    Axiom_1.2.1
+retroweaver-rt-1.2.3.jar        AA4C55A3AB0140F86DE74A09E499BF97    Retroweaver_1.2.3
+
+#blogs 1.0
+cglib-nodep-2.1_3.jar           DB0E461169599AF137EB24478C5292CE    CGLib_2.1_3
+
+
+#from activities 1.0
+castor-1.0.5-xml.jar            BE9B845DFFC4ACFF31C2711F1A18D4A0    Castor_1.0.5
+commons-httpclient-3.0.jar      CD69C70D6C078F4340BD5E867EC6F1B6    HTTP_Client_3.0
+commons-validator.jar           504677CFC2FEE7B5922145B83CCE5A3A    Commons_Validator_1.1.3
+ibatis-dao-2.jar                D66C85AC97436E06CA92CBDC748CBD12    iBatis_2.1.5    (with bug fixes, SN.INFRA version)
+ibatis-sqlmap-2.jar             22135684FE4D5B4EC0A1D4A077E69988    iBatis_2.1.5    (with bug fixes, SN.INFRA version)
+ibatis-common-2.jar             1B70A748B3A1F01ADAE614829908C00B    iBatis_2.1.5    (with bug fixes, SN.INFRA version)
+jtidy-04aug2000r7-dev.jar       2571FC0705FE914A4488A71CA9B87FF2    JTidy_04aug2000r7
+quartz-1.5.0.jar                02B9E82D15C16BD18E6F36F6D1CD93FA    Quartz_1.5.0
+soap.jar                        AA1845E01FEE94FE4A63BBCAA55AD486    Apache_Soap_2.3.1
+acf.jar                         7F62A8530237236D3B5455C9AAF0A96E    Tokyo_ACF_V1
+
+
+#From Dogear 1.0.1
+backport-util-concurrent.jar    B0E73FEA8979AC4D6272FD61B1CE5B1E    Backport_Util_Concurrent_2.2
+commons-fileupload-1.1.jar      DD7407036437BB67BE02772EC321A570    Commons_File_Upload_1.1
+commons-httpclient-3.0-rc4.jar  78A27A90B41EEFD50E1B02834F300046    Commons_HTTP_Client_3.0_RC4
+commons-io-1.1.jar              FFD27D70F20214E49F9B796BF6FE32F4    Commons_IO_1.1
+commons-logging-api-1.0.4.jar   0B98E0895CD4E66C3EB4C511DE112163    Commons_Logging_1.0.4
+icu4j_3_4_3.jar                 B72B1352D1313262039E42F4C0FDCA3A    IBM_ICU4J_3.4.3
+lucene-core-1.9.1.jar           2CA832538D596DFAC9A37B462811EE78    Lucene_1.9.1
+
+#From Communities 1.0.2
+commons-beanutils.jar                           0F18ACF5FA857F9959675E14D901A7CE    Commons_Bean_Utils_1.7
+commons-digester-1.7.jar                        27E2EADEF1E2CD8942B9651D00830C69    Commons_Digester_1.7
+abdera.client.0.2.2-incubating.retro.jar        BFC79EB891AD17AE35C5FD99348BF981    Abdera_0.2.2    (Communities 1.0.2)
+abdera.core.0.2.2-incubating.retro.patched.jar  F64A5DEA83B515A829CFB51F2BB24DFA    Abdera_0.2.2    (Communities 1.0.2)
+abdera.extensions.0.2.2-incubating.retro.jar    4068D06E092E24F61323B94BFFFAE497    Abdera_0.2.2    (Communities 1.0.2)
+abdera.parser.0.2.2-incubating.retro.jar        DB09653A89AA35352960B5CCC9CB93BE    Abdera_0.2.2    (Communities 1.0.2)
+abdera.protocol.0.2.2-incubating.retro.jar      D9C5BD3838185FBAD5A712FB768A967F    Abdera_0.2.2    (Communities 1.0.2)
+abdera.server.0.2.2-incubating.retro.jar        85A975C099E21AE7A9FFEB1910E941B9    Abdera_0.2.2    (Communities 1.0.2)
+
+
+#From Dogear 1.0.2
+stax-api.jar                    69437F986CDBF7847BCE11A7F2B7F41B    IBM_StAX-APIs
+xlxpScanner.jar                 A4A040528DF3212B3A2428DEDFBE7954    XLXP_J_1.1.0
+xlxpScannerUtils.jar            DA2DE08CEFEEDBE33664D2C3BC281CBD    XLXP_J_1.1.0
+xlxpWASParsers.jar              5FAC1E683488939FD80C0A85DC369B24    XLXP_J_1.1.0
+xml-apis.jar                    973BD9562F34EBCFD23930115AF8F83A    IBM_XML_APIs_1.3
+
+# New with Connections 2.0
+abdera.extensions.main.0.3.0-incubating.jar         2219A8F1B8FAF9D7BFAA483B9597EFDD    Abdera_0.3.0
+abdera.extensions.opensearch.0.3.0-incubating.jar   502A117A7AC0317B6EB5E70CAD4E5567    Abdera_0.3.0
+abdera-i18n-0.3.0-incubating.jar      79F89FDB66E043A5EE62965458ECEA1E    Abdera_0.3.0
+abdera.core.0.3.0-incubating.jar      EA26D570BCA5C25075E507BB27602B83    Abdera_0.3.0
+abdera.parser.0.3.0-incubating.jar    6F9156D9EB20F81624BAC777129055A4    Abdera_0.3.0
+abdera.protocol.0.3.0-incubating.jar  0DFD63FC4D64D9EB9C8C0574D42C6E40    Abdera_0.3.0
+abdera.server.0.3.0-incubating.jar    63A898B10AD1A069C92E2F38DF833F6D    Abdera_0.3.0
+axiom-api-1.2.5.jar                   6753E0DBCCD6B7BECB8D90C67EAB17D8    Axiom_1.2.5 (packaged with Abdera 0.3.0)
+axiom-impl-1.2.5.jar                  87F327C9E5FEADA7C79EE5812C3A6C7F    Axiom_1.2.5 (packaged with Abdera 0.3.0)
+jaxen-1.1-beta-7.jar                  9F09076B4CD6C07923DBE64643E5F59D    Jaxen_1.1_Beta_7    (packaged with Abdera 0.2.2)
+commons-httpclient-3.0.1.jar          456245A3B1B49EB51C57D037ACEBFEFC    HTTP_Client_3.0.1
+juru_4.1.1.18.jar                     465F5D2F4FA2C0F0E061D37901E54E79    Juru_4.1.1.18
+mm.base.jar                           3B7A811C9CEE12F5D33207DFE0437C40    IBM_Mashup_Maker_1.0
+mm.iwidget.jar                        66F3E73DE2927862DC78B4318D73900E    IBM_Mashup_Maker_1.0
+mm.proxy.common.jar                   B76399B263883A98C676847F12EC5095    IBM_Mashup_Maker_1.0
+mm.proxy.servlet.jar                  0D26728DF926EAF1FF10AD5E74732259    IBM_Mashup_Maker_1.0
+serializer.jar                        7A9CCA36A3FA1697E08D6B90F33D6B14    XSLT4J_Version_2.7.4    (Dogear)
+b2bxml.jar                            BBADA49ADF0273E7037723E65D76BB59    XSLT4J_Version_2.7.4    (Dogear)
+xalan.jar                             9FD07B2ED0F1C7B5E110F713F8A74623    XSLT4J_Version_2.7.4    (Dogear)
+xercesImpl.jar                        C9B5610646C1DD90F3415E34EE20CB32    XSLT4J_Version_2.7.4    (Dogear)
+xml-apis.jar                          BE4A028E5BDA7CA8B9215952D25803DB    XSLT4J_Version_2.7.4    (Dogear)
+acfv2.jar                             DD34027B6706A6DA16FCFBCE457619B3    Tokyo_ACF_V2
+
+# Official Scriptaculous 1.5.3
+controls.js         1C2CDA41010A5C0A96485AC13A16355C    Scriptaculous_1.5.3
+dragdrop.js         966386DA714F65EC177E1BF68033759C    Scriptaculous_1.5.3
+effects.js          D63E7F26DC85288745B585A8A8126108    Scriptaculous_1.5.3
+scriptaculous.js    CC1C373156E28AF76601E9138CFCABB0    Scriptaculous_1.5.3
+unittest.js         85E3D6873774598803D6F098AECF00C1    Scriptaculous_1.5.3
+
+# Official Scriptaculous 1.6.1
+# builder.js & slider.js names collide with Dojo - - don't check
+#builder.js         6B737ECCA99B73E70149195653627E4A    Scriptaculous_1.6.1
+#slider.js          E1169FC74B36A0C1529A15A85FEDA299    Scriptaculous_1.6.1
+controls.js         23CEF7404FFE6D410B0C235433771D51    Scriptaculous_1.6.1
+dragdrop.js         2A8BA7D2631729BB53B42530D522FF08    Scriptaculous_1.6.1
+effects.js          5723EF231FD913FA981A3DC5A2492131    Scriptaculous_1.6.1
+scriptaculous.js    BA6E48C926618BB08B6A5853EFEB2463    Scriptaculous_1.6.1
+unittest.js         19E5E5117633A8BC41724D0BC67E4162    Scriptaculous_1.6.1
+
+# Activities version of Scriptaculous 1.6.1 has different whitespace
+#builder.js         A44684A3D746EA55ADF9638EE293B6DC    Scriptaculous_1.6.1 (Activities)
+#slider.js          4C0EAEF882911ABD7C72358123D6B57D    Scriptaculous_1.6.1 (Activities)
+controls.js         0D4A02C0F7CBD0F0E29938FBA70240C0    Scriptaculous_1.6.1 (Activities)
+dragdrop.js         17D73163F9102EFE3F0A4305B7A3D9A8    Scriptaculous_1.6.1 (Activities)
+effects.js          02E569C05B36C8427972714738624CA2    Scriptaculous_1.6.1 (Activities)
+scriptaculous.js    B63E3B2519DC8A52234C6DA335BCD3D6    Scriptaculous_1.6.1 (Activities)
+unittest.js         789DC2AEE8940E8CB17728D792CBD7BF    Scriptaculous_1.6.1 (Activities)
+
+# Dogear's version has different whitespace
+unittest.js         DE833580018EA0B32AD1C2428CAB75D0    Scriptaculous_1.6.1 (Dogear)
+controls.js         05CE06829AAB452D6B9E3823FD19EA6A    Scriptaculous_1.5.3 (Dogear)
+dragdrop.js         4459A64FE95664D2F2781A2BDCE6593C    Scriptaculous_1.5.3 (Dogear)
+scriptaculous.js    3ED17CD3193159D8F78DB2F8417E4A20    Scriptaculous_1.5.3 (Dogear)
+unittest.js         D2C0A44BF9E1C723A1139B3D0CFABF41    Scriptaculous_1.5.3 (Dogear)
+
+# Profiles' version has different whitespace
+controls.js         E33217E4A54FBFD76D9DAF0143518793    Scriptaculous_1.6.1 (Profiles)
+
+#Blog's version
+controls.js         EAB98903FC75917A083F6AC1E7A9C19A    Scriptaculous_1.6.1 (Blogs edit)
+effects.js          F46B157C8FB5E0051C1F15087D3D6A14    Scriptaculous_1.5.3 (Blogs)
+
+#Homepage
+dlt.jar             0D5C1D460FA7B286962A3A326F8960A7    LanguageWare_7 (Homepage)
+
+
+# Profiles util jar
+com.ibm.jse.util.jar  6DFBF1271A4244E5C57B60FFCDBBBF20    Profiles_util_jar
+
+# Mike Cross, from SN.INFRA
+ibatis-2.3.0.677.jar  B752993EC84DE7F2256AA2FFC37CEBEB    iBatis_2.3.0.677
+ibatis-dao-2.jar      B01BCC222FC0443DF4690C1B57440BFE    iBatis_DAO_2.2.0.638
+
+# Used by Hannover Client, verified from SN.INFRA
+activation.jar        A980C7AC3EAB9FCBCBC107B8DD595878    IBM_JavaBeans_Activation_Framework_(JAF)_1.0.2
+mail.jar              F926A860FB8B1279E3A3C8DE5BAEA661    IBM_Java_Mail_1.3.3
+ehcache-1.2.2.jar     59217414B26F83289E77C77A7B8CD742    Ehcache_1.2.2
+
+# Federated Search
+lucene-highlighter-2.2.0.jar   A5487FF9FCD9C700A5D119EAA67B6ED6    Lucene_Term_Highlighter_2.2.0
+lucene-core-2.2.0.jar          D5A0DC499DF4DF7E5ABDB36CF9329225    IBM_Lucene_Java SDK_(ILJS)_2.2
+icu4j.jar                      550A35E1EFDF2CD49413E3A14233E0BA    ICU4J_3.6 (IBM LanguageWare V 7)    
+dashboard.search.faceted.jar   128AB44EA76439F0333C5E4D0B069468    Seedlist_Servlet_Framework_(IBM_Haifa)_1.1.0
+facetedLibrary.jar             8C4FCF072673ABFA5FEDAC51EF99A587    Seedlist_Servlet_Framework_(IBM_Haifa)_1.1.0
+
+
+prototype.js    F8DD8D78CEBD5D5407A3804E11B175D3    Prototype_1.5.0 (line feeds exchanged)
+prototype.js    41E188EC530A40D874151E301BFAB929    Prototype_1.5.0
+
+#Jay downloaded Abdera 0.4.0 on 4/22/2008 from
+#http://verano.atg.ibm.com/abdera/apache-abdera-0.4.0-incubating-IBM.tar.gz Abdera_0.4.0
+abdera-extensions-opensearch-0.4.0-incubating.jar   006E8326E50C1A1691C3BB73D90C3F9D    Abdera_0.4.0
+abdera-extensions-main-0.4.0-incubating.jar         2703DC56E5F37E90A080E493B89E8847    Abdera_0.4.0
+abdera-client-0.4.0-incubating.jar  9F39D02EE17E9BDD1109437843F41398    Abdera_0.4.0
+abdera-core-0.4.0-incubating.jar    9C77C730F9183AC642D2C323DD159364    Abdera_0.4.0
+abdera-i18n-0.4.0-incubating.jar    EBD10A3608DC126D52C88B00999EC464    Abdera_0.4.0
+abdera-parser-0.4.0-incubating.jar  B8DCC8B7095DC487E33FF1A45A71ED08    Abdera_0.4.0
+abdera-server-0.4.0-incubating.jar  86AC5F76BDF36E51B614964C9EA1CA1C    Abdera_0.4.0
+
+# Jay, 06/03/09
+abdera-client-0.4.0-incubating.jar  B81CBE9A40677F625D77DEAB1AC61C3D    Abdera_0.4.0-plug-abdera-bugfix-224
+abdera-extensions-json-0.4.0-incubating.jar  21872AED3039E25935E48BA8A3970C90  Abdera_0.4.0
+
+
+# From James' Abdera 0.4.4 
+commons-codec-1.3.jar   8E149C1053741C03736A52DF83974DCC    Jakarta_Commons_Codec_1.3
+stax-api.jar            20D57D1657C93C10529667EF6A00FEF2    StAX_APIs_1.0.0
+xlxpscanner.jar         39EA9F3AECE321191A051F5F97393A36    IBM_XLXP_1.1.6
+xlxpscannerutils.jar    FF0071426B4AC68E30C4818578F42239    IBM_XLXP_1.1.6
+xlxpwasparsers.jar      0E82122B80340EEE19DA390BE64E22E9    IBM_XLXP_1.1.6
+jaxen-1.1.1.jar         261D1AA59865842ECC32B3848B0C6538    Jaxen_1.1.1
+
+# Communities, Lamont Bowens, 4/22
+ws-commons-util-1.0.jar A7E38534B633ACD4C754310809DCECB3    WS-Commons-Utils_1.0
+
+# Communities, Lamont Bowens, 4/22
+xmlrpc-client-3.1.jar   4EF5312A7A6A3609D9D0F2FB7FEB0020    Apache_XMLRPC_Client_3.1
+xmlrpc-common-3.1.jar   A2B1AA278470CD2B88111205B2094196    Apache_XMLRPC_Client_3.1
+
+#Dojo versions
+dojo.js   6824    Dojo_0.4.1
+dojo.js   10315   Dojo_0.9.0
+dojo.js   11832   Dojo_1.0.2
+dojo.js   13231   Dojo_1.1.0
+dojo.js   13707   Dojo_1.1.1
+dojo.js   15997   Dojo_1.2.3
+dojo.js   21254   Dojo_1.4
+dojo.js   21629   Dojo_1.4.3-20100519
+dojo.js   22681   Dojo_1.4.3-daily-dev-build
+
+# File list provided by Roge on 4/23/2008
+parser.jar                          0005879C36D32A3D8AFEB72ADB05A111    WPLC_Configuration_Engine_(containing_JDOM)
+dtfj.jar                            00640B2E90E5C801C36137549B08D530    IBM_JRE_5.0(SR6b)-aix
+ibmjsseprovider2.jar                00FC734DC6BD1DA10C830DA43371F5F4    IBM_JRE_5.0(SR6b)
+ibmjcefw.jar                        06FCFCF927C37FA11C9C15DA6500C58A    IBM_JRE_5.0(SR6b)
+jawbridge.jar                       07B1B033CBA3A9583C3FE8C2D1C0B55A    IBM_JRE_5.0(SR6b)-win
+ibmjaasactivelm.jar                 07C368C9A4ADA3B74A5D1F253E471068    IBM_JRE_5.0(SR6b)-win
+ibmcertpathprovider.jar             084A2076436594B417476E04E5CF25CB    IBM_JRE_5.0(SR6b)
+tools.jar                           099FB1EADF2F20B3A824B842D2DED175    WPLC_Configuration_Engine_(containing_JDOM)
+jdmpview.jar                        0A52D895F0B42AFCE4E767AFCA7C3AE8    IBM_JRE_5.0(SR6b)-win
+ibmpkcs11impl.jar                   0CEAFA1D733A561A86FB283E1D5F8DF1    IBM_JRE_5.0(SR6b)
+org.eclipse.core.commands.jar       0F04CA1BA93253210E7F2CFC2EF2656F    IBM_IES_3.3.x
+wkplc.comp.registry.jar             1433476466F692FC1233486747B03CA8    WPLC_Configuration_Engine_(containing_JDOM)
+jdom.jar                            1ABA3240ABA8687A06A454BA397EB24E    WPLC_Configuration_Engine_(containing_JDOM)
+jaccess.jar                         202017D0C869667C703561324FB5C099    IBM_JRE_5.0(SR6b)
+server.jar                          22106BDC43F29B19F956AADDC3FF48C0    IBM_JRE_5.0(SR6b)-linux
+dtfj.jar                            22DF5F35ABAA1981BA1961CAD93FB1E5    IBM_JRE_5.0(SR6b)-win
+security.jar                        23D1FBEA2876CA59ECAE27BE6A352828    IBM_JRE_5.0(SR6b)-aix
+ibmjaaslm.jar                       2D5BAEE0302C0C33D7A04DDC1BBF5ECE    IBM_JRE_5.0(SR6b)-aix
+ibmjaaslm.jar                       2FA7FED37E6755EDDE24D7A22519EECD    IBM_JRE_5.0(SR6b)-win
+javaws.jar                          35CCBA4748FC15A261A8FFFD9A4237A8    IBM_JRE_5.0(SR6b)-linux
+ibmjcefips.jar                      3B8A213F67EF0C502F37D12ECB8F16FA    IBM_JRE_5.0(SR6b)
+wp.depcheck.jar                     3C5B6627991A33529BE78BD9575646BD    WPLC_dependency_check
+charsets.jar                        3E5DB5799DEDD6718B5C78DBAC3D25D6    IBM_JRE_5.0(SR6b)-linux
+jdmpview.jar                        41D6E2B844DF437982F2F5A1AE80DCAA    IBM_JRE_5.0(SR6b)-aix
+deploy.jar                          41F2CE9D1B2F0FBF1F7F0CB46CA424F2    IBM_JRE_5.0(SR6b)-linux
+ibmjgssprovider.jar                 4483CECAA0793C44815E63DA2794B5FD    IBM_JRE_5.0(SR6b)
+indicim.jar                         44A630D69DB21AC1CA170A174AD3A1CF    IBM_JRE_5.0(SR6b)-aix
+jdmpview.jar                        46F7476F8F606FFF7F662F26273627F2    IBM_JRE_5.0(SR6b)-linux
+vm.jar                              520CD0EC4B5F0F1BB7F061633BB5710E    IBM_JRE_5.0(SR6b)-linux
+ibmorbapi.jar                       56BE47EF78F965DC289C302A4DC6DA72    IBM_JRE_5.0(SR6b)
+graphics.jar                        5A4402AE6D9B78ADE7EA59108F572BAE    IBM_JRE_5.0(SR6b)-aix
+javaplugin.jar                      5EBFD99959CE107BB2C0DC3D904DF4E7    IBM_JRE_5.0(SR6b)-aix
+server.jar                          5FC0811ECDE5C412EB879AEDDF0B518C    IBM_JRE_5.0(SR6b)-aix
+ibmjceprovider.jar                  617187AC3380CFDE7E1FD3B9EE9566C9    IBM_JRE_5.0(SR6b)
+ibmjaaslm.jar                       6AE5BD7935A4FE4357411153E236EEE9    IBM_JRE_5.0(SR6b)-linux
+vm.jar                              6E4BCC4B639CE3571937345604986A01    IBM_JRE_5.0(SR6b)-aix
+deploy.jar                          6FA87553AFB89B9CAA2D57EDB6858440    IBM_JRE_5.0(SR6b)-aix
+charsets.jar                        745F0B89AE0AA655F65B1C534EFFA6C1    IBM_JRE_5.0(SR6b)-aix
+vm.jar                              74AFAA8E703BE6A3F09A97FE5DD3E4BD    IBM_JRE_5.0(SR6b)-win
+wp.xml.client.jar                   784D9A4141945790EC1CD0675738667D    WPLC_Configuration_Engine_(containing_JDOM)
+ibmorb.jar                          7B8C8F69BBC538A3B3C0D0781D156327    IBM_JRE_5.0(SR6b)
+org.eclipse.swt.gtk.linux.x86.jar   7C22ED7AECD18C72935711BB177C432F    IBM_IES_3.3.x
+core.jar                            7FF477DED31188B8BF28F0F4CC5E1B61    IBM_JRE_5.0(SR6b)-aix
+wkplc.misc.jar                      82965B98C6D6576CDA00B2E34FF4EE32    WPLC_Configuration_Engine_(containing_JDOM)
+server.jar                          8784B31852CD56D58DDFF70EC33339BC    IBM_JRE_5.0(SR6b)-win
+javaplugin.jar                      8871DBE2F930E01629346EAED7A02B8F    IBM_JRE_5.0(SR6b)-linux
+wkplc.tools.jar                     88A461A0898FD77A9A5DCA49CB60E7C4    WPLC_Configuration_Engine_(containing_JDOM)
+bd.jar                              89D169A3FF26BF152A54700068CE7086    IBM_JRE_5.0(SR6b)-linux
+ibmkeycert.jar                      8C6A9FB60436FD3EDCFFB5A5777A3AD5    IBM_JRE_5.0(SR6b)
+dtfj-interface.jar                  8ECE4D261A981882852613CE5EDAD62A    IBM_JRE_5.0(SR6b)-aix
+xml.jar                             9015E2B88F7C04E0ACC3456B77F00C80    IBM_JRE_5.0(SR6b)-win
+graphics.jar                        91D286FC30B5E6F58D9E21BA2F8FD731    IBM_JRE_5.0(SR6b)-win
+engine.jar                          95BD018B2B5C164C487153932DCEECDA    WPLC_Configuration_Engine_(containing_JDOM)
+ibmpkcs11.jar                       98C34BBC505E0D2841D53E3E823F9135    IBM_JRE_5.0(SR6b)
+indicim.jar                         9A1B0D27D1F6644021148995C3D1B2BE    IBM_JRE_5.0(SR6b)-win
+core.jar                            9D9C460B145C7EA156F889670B70500B    IBM_JRE_5.0(SR6b)-win
+graphics.jar                        9DE1A7CDA28207D65A12858E2B15BAD6    IBM_JRE_5.0(SR6b)-linux
+wp.config.jar                       A43BDD601D91780A8AD37E25FC682A24    WPLC_Configuration_Engine_(containing_JDOM)
+ibmcfw.jar                          A68556B8F834851570F0EE4A0EDD2C5A    IBM_JRE_5.0(SR6b)
+dbupdate.jar                        A889E0F8BBA2EB1BE2471A0319CDC523    WPLC_Configuration_Engine_(containing_JDOM)
+org.eclipse.swt.motif.aix.ppc.jar   AB287EBCCD02DBF1AFD46F68AB1E0C30    IBM_IES_3.3.x
+core.jar                            B07A6E8F5E85B7A13C6E3EA9CE8C16B5    IBM_JRE_5.0(SR6b)-linux
+ibmcmsprovider.jar                  B4408A4BFFEE47CDA4DE115853F55DDA    IBM_JRE_5.0(SR6b)
+org.eclipse.swt.win32.win32.x86.jar B68B5487325ED68058806F98B8A25B6F    IBM_IES_3.3.x
+gskikm.jar                          B74BA30B603CC20A024A614822831D06    IBM_JRE_5.0(SR6b)
+itkdepcheck.jar                     C14254889269B9469C1446DA74943AB8    WPLC_dependency_check
+security.jar                        C3101ED030740D0CB18AC3AE668FA338    IBM_JRE_5.0(SR6b)-linux
+dtfj-interface.jar                  C388D774CDACDCD90489B223DA2D346B    IBM_JRE_5.0(SR6b)-win
+dtfj-interface.jar                  C3AD20644281D2F5DD732AC2687ECE92    IBM_JRE_5.0(SR6b)-linux
+javaws.jar                          CCCE1E1E5B944D367CFE20E9E96FBDDD    IBM_JRE_5.0(SR6b)-win
+bootstrap.jar                       CF912A5DDF6EF24C0DF62E30715EBD96    WPLC_Configuration_Engine_(containing_JDOM)
+xml.jar                             D0EDD969DF425321FC59909EDD918CD6    IBM_JRE_5.0(SR6b)-linux
+org.eclipse.jface.jar               D6B9305D99084D913C6197771C598BC4    IBM_IES_3.3.x
+charsets.jar                        D6CB8DDC8BD3746539F57CD1B2DCB32D    IBM_JRE_5.0(SR6b)-win
+ibmjs.jar                           D72572F2F9C9BBA0CEE6C05FD450DAA7    IBM_Javascript_engine_0.8  pure IBM source
+xml.jar                             DB368649E6C80A3071BB2CFAD1F0F3ED    IBM_JRE_5.0(SR6b)-aix
+plugin.jar                          DB873322AB7692A1BB91407468B39C88    IBM_JRE_5.0(SR6b)-win
+jt400native.jar                     DCF3ED918F7D381DC8DCA98010C15CF6    WPLC_Configuration_Engine_(containing_JDOM)
+deploy.jar                          E1454BEA086B4D2F3107420948FC6817    IBM_JRE_5.0(SR6b)-win
+ibmsaslprovider.jar                 E1AEACE7A970BEBD8B02305DB93098DD    IBM_JRE_5.0(SR6b)
+bd.jar                              E29555ECCBCBD8AE3F6B5D13C7D71B4C    IBM_JRE_5.0(SR6b)-aix
+indicim.jar                         E55FC36BE04284E2BAD8BD118BFDBC19    IBM_JRE_5.0(SR6b)-linux
+jt400.jar                           E78CB4305EAA2E4F9A8721661CCD9811    WPLC_Configuration_Engine_(containing_JDOM)
+ibmkeymanagementserver.jar          EF2AA949EAB65005ABBE7854788AA952    IBM_JRE_5.0(SR6b)
+security.jar                        EF7F4F983EC02ABA7146D9FA3A086455    IBM_JRE_5.0(SR6b)-win
+ibmpkcs.jar                         F165225DE34D4E52B6C08A6601E543C8    IBM_JRE_5.0(SR6b)
+org.eclipse.equinox.common.jar      F606AAE857F674A956097771E10B8B76    IBM_IES_3.3.x
+dtfj.jar                            F760B9915EA5EA6EC27F0CE068A9B7BA    IBM_JRE_5.0(SR6b)-linux
+dbt.jar                             FB9C76DA06B58F2DFB8E328CAE3E1A1F    WPLC_Configuration_Engine_(containing_JDOM)
+bd.jar                              FCF7065F22C431C0F9B3B60B998256B6    IBM_JRE_5.0(SR6b)-win
+cmpcrmf.jar                         FF145FA1559F376F38FDF290EC62D11E    IBM_JRE_5.0(SR6b)
+behaviour.js                        AFCBDF27BCB45E2862502AB7BBDB6741    Behaviour_1.1
+
+
+# Added by Jay, 2/26/2009
+# Per Karim Heredia, 12/01/2009
+commons-collections-3.2.1.jar       13BC641AFD7FD95E09B260F69C1E4C91    Apache_Commons_Collection_3.2.1
+commons-lang-2.4.jar                237A8E845441BAD2E535C57D985C8204    Apache_Commons_Lang_2.4
+
+#RTC 167743: PSIRT Advisory 4202 CODE BLUE Apache Commons Collections issue
+commons-collections-3.2.1.jar   AB4F73F783913A5D682100617E95D3D8    Apache_Commons_Collection_3.2.1
+
+# Added by Jay, 2/26/2009
+jawr-2.5.1.jar                      5828A1F6FE16F735363FD9224047BDAB    JAWR_2.5.1 
+# Jay, 6/3/2009 SPR  JQSN7QB7Z8_fix._Remove_Etag_from_header._Fixes_Edge_Server
+jawr-2.5.1.jar                      3A0B5D61AB4FFFF907C0C651AB075BB5    JAWR_2.5.1-with-etags-removed
+
+# Added by Jay, 2/26/2009
+commons-configuration-1.5-plus-node-clone.jar AFD6E093D443702649667556B0280E57 Apache_Commons_Configuration_1.5_(modified)
+acf.jar                             60B02708646FFE546DCBABC761B85950    Tokyo_Research_Lab's_ACF_version_2.2.0-5
+html-parser.jar                     B8A92E6DB6A1DC3E140EC9E35FB447C1    Tokyo_Research_Lab's_HTML_distributed_with_ACF_2.2.0-5
+spring.jar                          39DC029B3015B401C1B84B5FDF9C4AF0    Sprint_2.5.4
+log4j-1.2.11.jar                    1F441DC337A302406BC697EC1B57AC40    Log4j_1.2.11
+
+
+# Per Ross Finch, 1/29,2009
+lucene-core-2.4.0.jar               C5BA96926343496EEEEF52C65066A922   IBM_Lucene_Java_SDK_(ILJS)_2.4
+lucene-core-2.3.2.jar               545C81EACE47FE506ACDE304B6D1542C   IBM Lucene Java SDK 2.3.2 
+
+# Per Karim Heredia, 2/3/2009, https://cs.opensource.ibm.com/frs/?group_id=2806
+JSON4J.jar                          64076CB4FC6E59390BD35842F2046B17   JSON4J_1.0.0.1
+
+# Jay, 6/3/09, I updated these myself, Josh Woods pulled them for me about 5/12/2009 from the IBM Site
+xlxpScanner.jar          C5538D1C46E408E89500AA7042B22BFB  XLXP_1.1.12
+xlxpScannerUtils.jar     32997829C4482530C76E4EC41E9C4077  XLXP_1.1.12
+xlxpWASParsers.jar   03B2D5223A3EBF96CD6F083B7C7D265A  XLXP_1.1.12
+
+
+# Jay, 6/3/09  ACF
+acf.jar   BFB4F8EB399DABA3AB230D6F7EDB0565  ACF_2.2.0.7
+html-parser.jar 57FF0DCB70EF6EBA0825CECC052E8806 ACF_2.2.0.7
+
+# Jay, 6/4/09, Jar's obtained by Jesse Hill, part of the Struts 2.0.11 approval
+ognl-2.6.9.jar FB4D30EAB3ED221ADA77479685D608C2  OGNL_2.6.9
+xwork-2.0.4.jar  9ACFAF3AA2B5BE93446FE6BCFCF5AE2A XWorks_2.0.4
+
+
+# Jay, 6/5/09, Jar's obtained by Jesse Hill, Mobile, modifications to remove java.util.resource bundle class from Tiles 
+# and struts dependency on framemaker
+struts2-core-2.0.11.jar           F209A546BB308C0589D3CDF51C6E0A4F   Struts2-core-2.0.11-with-mods
+struts2-tiles-plugin-2.0.11.jar   E9D92F6D5EACD7E093D245F82ADD39DE   Struts2-tiles-plugin-2.0.11-with-mods
+tiles-api-2.0.4.jar               E930FCFB5F61F620D63B9E1AEDC80596   Tiles-api-2.0.4
+tiles-core-2.0.4.jar              8A3DF9545E35BD29232C830882DB31EB   Tiles-core-2.0.4
+tiles-jsp-2.0.4.jar               474A16C942E640BE0BAF88922FC9448E   Tiles-jsp-2.0.4
+
+# Jay, 6/5/09, Jar obtain by Mark Levins, Search
+export.jar 43CCA1289256DCA7DD38913927AA1B22  IBM_DCS-June-2009
+
+# Jay, 6/5/09, obtained from Share platform
+commons-fileupload-1.2.1.jar      5AD1AB0C8A813B45FE9014F54A341A2A   Commons-fileupload-1.2.1
+commons-io-1.3.2.jar    903C04D1FB5D4DC81D95E4BE93FF7ECD             Commons-IO-1.3.2
+icu4j-4_0.jar           08397653119558593204474FD5A9A7E3             ICU4J-4.0
+icu4j-charsets-4_0.jar  5DD1D6AAFFA6762E09541B3BB412D8EE             ICU4J-4.0
+icu4j-localespi-4_0.jar BA7C2AAB71419FA88470BAD30B600D13             ICU4J-localespi-4.0
+xmlsec-1.4.1.jar        00668A1DAF5D4EAFFE593077EE497ED3             XMLSEC@@@NEED_INFO_FROM_JOSH
+
+
+# Jay, 6/19/09, ACF 2.2.0-8 from Annette
+acf.jar           4A65E7BB2BEABA0040103F686B3D6969     ACF_2.2.0-8
+html-parser.jar   A608761A8E19AFA19B3367C28C006E71     ACF_2.2.0-8
+
+# Jay, 7/24 - - CHECK WITH ANNETTE ON VERISON
+acf.jar           E5FD844252A27FED905C303AACCAB11E     ACF_2.2.0-x
+html-parser.jar   D1537AF56DEBBF415635BEB11853FC6D     ACF_2.2.0-x
+
+
+# added to 2.5.0.1
+acf.jar           CD74CE4829E93BC2A458CA33B0F27056     ACF_2.3.0
+html-parser.jar   0863A7A22391983A753E0F85C746D18C     ACF_2.3.0
+
+# added for 3.0, March 13, 2010 Jay
+abdera-client-0.4.0-incubating.jar                   108BEDABD07F9DE18447EBE92C76A94A   Abdera_0.4.0_with_fix_from_mike
+abdera-core-0.4.0-incubating.jar             6A472D8048B87FDA4637480872682F34   Abdera_0.4.0_with_fix_from_mike
+abdera-extensions-main-0.4.0-incubating.jar      1043DC2FDFD4D9DB918B66A5E755F220   Abdera_0.4.0_with_fix_from_mike
+abdera-extensions-opensearch-0.4.0-incubating.jar    CBEB626EDF914D9B71AF3D0515B2E8D9   Abdera_0.4.0_with_fix_from_mike
+abdera-i18n-0.4.0-incubating.jar             D1CEB93789DCAA697AC1CEA153810F83   Abdera_0.4.0_with_fix_from_mike
+abdera-parser-0.4.0-incubating.jar           65CD9A5A8813D69D2DC43D6CDE22847B   Abdera_0.4.0_with_fix_from_mike
+abdera-server-0.4.0-incubating.jar           E9BC4EC7FA744361923EA3EB1C66B811   Abdera_0.4.0_with_fix_from_mike
+commons-io-1.4.jar                   B6A50C8A15ECE8753E37CBE5700BF84F   common-io-1.4
+spring.jar:                                          1F0BB28A7A5E32493A747467F9C426D9   Spring-2.5.6
+dlt.jar:                                             BC3E62E49A56608C6BC4F375FC6B72BC   LanguageWare71
+
+# Vincent checked in on 12/16/2009 after approval from Jeanne
+ognl-2.6.11.jar                                      1173EC5F8B1F6FB1473F4546D4B83BBA   OGNL-2.6.11
+struts2-core-2.0.14-noStaticNoFreemarker.jar         7D07AD136966D962DFEEACD761E527FD   Struts2-Core-Only-No-Dojo-Freemarker-or-NiftyCorner
+struts2-spring-plugin-2.0.14.jar             5CE7BA03E8ED20CEE4ED20C0F1E76D7B   Struts-Spring-plugin-2.0.14
+struts2-tiles-plugin-2.0.14.jar                      3A56B8EBB7F3DCB85955284A36CDE316   Struts-Tiles-plugin-2.0.14
+xwork-2.0.7.jar                                      D0677B5D3F0CB5558B70B7EBC5A95216   XWork-2.0.7
+
+
+
+
+
+
+# Mike Ahern checked in on 12/15/2009  after approved by Jeanne
+freemarker-ibmcs.jar                                 95EB30B4588093BDBD2BAB1C63CFCD9F   Freemarker-IBM-mods-2.3.15
+
+# Tony Estrada, approved by Jeanne on 4/12/2010
+stripes.jar                                          F7307212EDB389D69B23EEF36BED0A47   Stipes-1.5.3
+
+
+# Paul Berens, 7/2010
+CITProvider.jar                   E13AF1AE12E7436B44EA950DAF736DDC            ISALite-1.3.1
+commonutils.jar            8345B57D41E55AC864C02D0794BFA976               ISALite-1.3.1
+depcheck.jar               1CDCEB19F2646A8CD4648475C3C1BEAE               ISALite-1.3.1
+invtool.jar            1616699B38C0651052F5B358C43867B2               ISALite-1.3.1
+ResourceCaching.jar        AD28F3623B668BDC7440C29A6E41EAB2               ISALite-1.3.1
+ResourceCollection.jar         86BF396B45D0E9F16FAABA805D4D8276               ISALite-1.3.1
+ResourceCollectionClient.jar      3BD66046C6BBC690FBEF06B823F7D8FD            ISALite-1.3.1
+ResourceCollectionService.jar     FC08F8E29DC44F641B2AA946ADE0C53F            ISALite-1.3.1
+scheduler.jar              75106EFADEC68671D668A241F03282BE               ISALite-1.3.1
+SysMgmtCore.jar            62CB2F832844F4971C81834354D357C8               ISALite-1.3.1
+SystemContext.jar              8504FF966C342A4D49B1BF08A01E0C12       ISALite-1.3.1
+uim.jar                2A34A2240667008467FF812C47B07680               ISALite-1.3.1
+uimengine.jar              76A5963F16C05E19BEBB09A057C3EC30               ISALite-1.3.1
+uimfilerepository.jar          95688B6A1EF74BA1EC62A851309B5C9F               ISALite-1.3.1
+UIMPLRTProvider.jar        BD6DDEB695910A5E2A0C19D7D91B019E               ISALite-1.3.1
+UIMProviderCore.jar        BB660811C60EC563164839553F2C85B2               ISALite-1.3.1
+uimutil.jar            5370314A6C1CA55538EA5E880CA3C404               ISALite-1.3.1
+xmlstream.jar              156236DAD965AAA1912EF4913E4518CA               ISALite-1.3.1
+ant-launcher.jar               2FAE8D3E81DCC51B8874A9916EB64CB2       ISALite-1.3.1
+ant.jar                    C5C499F1EEF9367C657E89BB881C69AA       ISALite-1.3.1
+autopd.jar                 2840E9BA02677151F42F886AC139DF73       ISALite-1.3.1
+autopdswing.jar                C6FCF526763A517354646D57614F7661       ISALite-1.3.1
+collector.jar                  2277AF19E5CDAA376C4ED8B7CC588D4D       ISALite-1.3.1
+commons-net-1.4.1.jar              365C9A26E81B212DE0553FBED10452CC       ISALite-1.3.1
+esa.jar                    68549DD70D43C6E581CC70B2B50BAD77       ISALite-1.3.1
+jakarta-oro-2.0.7.jar              B22A7C4CB68EE639220DB6468E5F623D       ISALite-1.3.1
+RASUtils.jar               9FE26E5012EF26ADD1FE6570664BD8FC               ISALite-1.3.1
+xercesImpl.jar                 7B2C3EDCCFC00F802911A8E8DC8711D3       ISALite-1.3.1
+xmlParserAPIs.jar              A3012F30EFD54E187DC1C398CAD8F71A       ISALite-1.3.1
+390collector.jar           7417D974CF7982922410FAC4FFF23DD6               ISALite-1.3.1
+wasexporter.jar            B1BD8A82E4BA55135B8BDE822704BFF0               ISALite-1.3.1
+
+# Hao, 7/30.  jre_5.0.3.sr8a_20080811b
+dtfj-interface.jar  D05D5984E8E9BC54063E5D08AD7769E3    Installer-bundled-jre_5.0.3.sr8a_20080811b
+dtfj.jar    BE84EDE006AAFD847FC478A02AF26130    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmcmsprovider.jar  961069DDE3D409B25A400BE60BB0A02D    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjcefips.jar  F84C58594EA07033FC7B9F8830319848    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjceprovider.jar  293E1DCA7DCE21F9795B6CA6228F5EDD    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmkeycert.jar  4C9AE18469C06D9E76BF1D4B061FC79F    Installer-bundled-jre_5.0.3.sr8a_20080811b
+IBMKeyManagementServer.jar  A9DB634F165462CE7FA3289B798D43D5    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmpkcs11.jar   69BEA0F7BB5F058436192F7E1AF818A5    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmpkcs11impl.jar   C5806A79300FD08ACC1D33197AB57634    Installer-bundled-jre_5.0.3.sr8a_20080811b
+indicim.jar     AB45351C0E21EE6A5463F33C6AB2FC08    Installer-bundled-jre_5.0.3.sr8a_20080811b
+JawBridge.jar   9C8738EEA1C64AE20EA700F07E2D5BCF    Installer-bundled-jre_5.0.3.sr8a_20080811b
+jdmpview.jar    2DEDF520614D7E6CD2D7569D19591683    Installer-bundled-jre_5.0.3.sr8a_20080811b
+BD.jar  73C53B5A140196E365F5E82762FB6107    Installer-bundled-jre_5.0.3.sr8a_20080811b
+charsets.jar    06B6DA425342A81BC4274860B8B0544C    Installer-bundled-jre_5.0.3.sr8a_20080811b
+core.jar    EE79987B9221D923670718787194BDC3    Installer-bundled-jre_5.0.3.sr8a_20080811b
+deploy.jar  12B478D619B9BB153704D2D3E93A79B4    Installer-bundled-jre_5.0.3.sr8a_20080811b
+graphics.jar    FF4AFCB993BD7B64B5A8C8D2F901C4AD    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmcertpathprovider.jar     D481455702B24D8E846AAEB6EF82869C    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmcfw.jar  1ED3EB90C1C7B1E3F371E26897E30326    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjaasactivelm.jar     6B0F8F9933D099CA7F0295363EF38379    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjaaslm.jar   0CA8438B85AF3A84431E647E6B6FA429    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjcefw.jar    15BC5543E13D56358190EDBE06331120    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjgssprovider.jar     65AB61979B83EC4EE57705620ECFDEC3    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmjsseprovider2.jar    34ADDD26C66B2CA46E55D88A84EAD04E    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmorb.jar  87837FA47267A7A5D29AF48D962D1292    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmorbapi.jar   30E678A0BF5183CF476220A199B3BA34    Installer-bundled-jre_5.0.3.sr8a_20080811b
+ibmpkcs.jar     5E8BF1183DACB7EAE91535C3E3866595    Installer-bundled-jre_5.0.3.sr8a_20080811b
+javaws.jar  AAF08AA8906D7771007C297FE7F88B93    Installer-bundled-jre_5.0.3.sr8a_20080811b
+plugin.jar  B281B38B1909C8699B94978ACF66CE5C    Installer-bundled-jre_5.0.3.sr8a_20080811b
+security.jar    FB567FAF6E6E3DCADA3131C837D33A39    Installer-bundled-jre_5.0.3.sr8a_20080811b
+server.jar  011EFDEE2059B538A7CB80653F5F4CC1    Installer-bundled-jre_5.0.3.sr8a_20080811b
+vm.jar  01433CE8338E33436847BB6590BD1D63    Installer-bundled-jre_5.0.3.sr8a_20080811b
+xml.jar     E3B9AE7E077FD827BA1501880F349C93    Installer-bundled-jre_5.0.3.sr8a_20080811b
+
+
+# Hao, 7/30.  Rational Install Manager 1.3.3
+gdiplusinvoke.jar   A285589DB72E2B9B649BC9F1CBA6D5BC    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.gdiplus.jar   F1A182E8087C8076B3C3D0596D7BB636    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.launcher.rename.jar   855346A63AD127602678B08B5A8881DA    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.linux.registeragent.jar   98099CB8147CB1B28956E12523375FAA    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeadapterdata.win32_1.0.0.v20060808.jar  A55124D66F129D5DEA6AD88301C41E07    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.missingpluginsfixup.jar   6511B6E1DEC81347132D14FA95E901FA    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeadapterdata.linux_1.0.0.v20061110.jar  D74EDE42EB24DDA8EB85EF534AC45775    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.nativeadminfixup.jar  B17945B31F38FFFA09A0428EFDFB9483    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.nativefixup.jar   81CAFC21AE3B8651950A6D3B50F52CA4    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.nativeplatformfixup.jar   15095FD8923281FC474A444A2C5C5AAE    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.win32.registeragent.jar   AE54D99B40EF09C80BA7242DABFFBED1    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.win32.registeruninstall.jar   799C33C8E0A28A33906857C89D9CA6F0    RIM_1.3.3000.20091106_2129
+nativeInstallAdapterWin32.jar   507A9396F43CE7F8CAAD035BA71352B2    RIM_1.3.3000.20091106_2129
+EccpressoAll.jar    CE9560D704DA8E55588A3E2167A8C768    RIM_1.3.3000.20091106_2129
+flexlm.jar  8E276137B47D6A400E1E3983702CBE6A    RIM_1.3.3000.20091106_2129
+flexlicensing.jar   FE7FFBB091B56E7492D0BDE36A42EC9C    RIM_1.3.3000.20091106_2129
+LUMClient.jar   76D1DD30CA36B40AD31526F983F9CC90    RIM_1.3.3000.20091106_2129
+lumlicensing.jar    8B431A502732F201171B241B0C7298B3    RIM_1.3.3000.20091106_2129
+com.ibm.ws.prereq.nativefile.jar    F0E4691C65D32B282F69D9EDCC746E92    RIM_1.3.3000.20091106_2129
+nativefile.jar  0DB106130BC1DB8D181DCB3CDFD54FFF    RIM_1.3.3000.20091106_2129
+wasproduct.jar  423A3547D8F27720E6B064E0CD812D9E    RIM_1.3.3000.20091106_2129
+com.ibm.ws.pak.internal.jar F7F784330937BED26EEB4CF871618743    RIM_1.3.3000.20091106_2129
+ant-antlr.jar   BE92356D8E73621197683A77D2A8260F    RIM_1.3.3000.20091106_2129
+ant-apache-bcel.jar B38A3237171EAA09C9963A73AE399A23    RIM_1.3.3000.20091106_2129
+ant-apache-bsf.jar  4BF51787F03F251E1F7166C1C6AD4BD3    RIM_1.3.3000.20091106_2129
+ant-apache-log4j.jar    FE409294937FCB8390CDB079B7A0CF36    RIM_1.3.3000.20091106_2129
+ant-apache-oro.jar  2614C86877D7D08CCB48708E00C9B9A5    RIM_1.3.3000.20091106_2129
+ant-apache-regexp.jar   7FC1201AAA0637F5B7D10550B258A353    RIM_1.3.3000.20091106_2129
+ant-apache-resolver.jar 1D953833944D9248B5E777F68590124B    RIM_1.3.3000.20091106_2129
+ant-commons-logging.jar FDDEB4D2A98B9CA16C41A128D3822122    RIM_1.3.3000.20091106_2129
+ant-commons-net.jar 1903B4DF5F34E1FD1D04F1F7E2FBE940    RIM_1.3.3000.20091106_2129
+ant-jai.jar EA20C4B66FB56775941669D34598ECE1    RIM_1.3.3000.20091106_2129
+ant-javamail.jar    FD9D0A4258AAA3AA935F395A38B4624E    RIM_1.3.3000.20091106_2129
+ant-jdepend.jar C0C0742016A80818C7F057CBDAE35EC8    RIM_1.3.3000.20091106_2129
+ant-jmf.jar F14FA67096D67D73BE534DDBFBA45090    RIM_1.3.3000.20091106_2129
+ant-jsch.jar    89E3E1E8DB3ADB5CB4667ED4B0A8F8BD    RIM_1.3.3000.20091106_2129
+ant-junit.jar   DC0E6AAC86EF256A716891ADF002E7AD    RIM_1.3.3000.20091106_2129
+ant-launcher.jar    DAE3F152F70500FBB7B17A992D92880F    RIM_1.3.3000.20091106_2129
+ant-netrexx.jar 451D615CA60E186D745149DC0F8B4916    RIM_1.3.3000.20091106_2129
+ant-nodeps.jar  DC3902A9EB66F1310D89E9F6EAC0FDCA    RIM_1.3.3000.20091106_2129
+ant-starteam.jar    72FAE4A8B53EE76AC34CE8A3A1E8866E    RIM_1.3.3000.20091106_2129
+ant-stylebook.jar   E821DE711EF7A0F8C3D342EF3AF1467B    RIM_1.3.3000.20091106_2129
+ant-swing.jar   7A7D2489F9469D81ACFAB59064AC065C    RIM_1.3.3000.20091106_2129
+ant-trax.jar    E2D83F9D4C962C0C38B427FA15CFCF2F    RIM_1.3.3000.20091106_2129
+ant-weblogic.jar    8F0D615CF4D721A002C11E1B961C6CB4    RIM_1.3.3000.20091106_2129
+ant.jar 78C015B29F06B25EACFDC9DECDB2C052    RIM_1.3.3000.20091106_2129
+runtime_registry_compatibility.jar  995A9B5DE765B5FE1EFE8904539CE473    RIM_1.3.3000.20091106_2129
+com.ibm.ccl.org.apache.commons.httpclient_3.1.0.v20090722_0421.jar  A7682B1DBC413BAB6D82C0963F5F21B8    RIM_1.3.3000.20091106_2129
+com.ibm.ccl.org.apache.commons.logging_1.0.4.v20090722_0421.jar 1EDAD39573695F02C34EC2EFB82DD592    RIM_1.3.3000.20091106_2129
+com.ibm.ccl.org.apache.commons.net_1.4.1.v20090722_0421.jar EDAFB2FA1E1EA9DBC116B950496B4EFC    RIM_1.3.3000.20091106_2129
+com.ibm.ccl.org.apache.oro_2.0.8.v20090722_0421.jar 9D78DB5D5979F8B0C970EBF2E58E2E5E    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.antInstallAdapter_1.2.8.v20091007_2303.jar   E31F2BA5C130FCB6178A9A84A938BD27    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.commonNativeInstallAdapter_1.2.1.v20091016_1504.jar  04828656AD06B36DF0CFBF35AA9A204D    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.eclipseInstallAdaptor_1.1.10.v20091029_1459.jar  C287CA88534AA31D73989EEED381226C    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.executeInstallAdapter_1.2.4.v20091007_2303.jar   3510CD230BF13504A6D095A9C262C28E    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.nativeInstallAdapter_1.2.6.v20091007_2303.jar    B6E037F3BAB24BABCECA1A8827B84ED7    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.p2_1.0.1.v20091007_2303.jar  3201F43198E8451CD3776E13F9E787FC    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core.pakInstallAdapter_1.0.2.v20091007_2303.jar   01CF400D619A3F22E0C1827579B914E6    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.core_1.4.2.v20091031_0059.jar F8F45E6EEBE959807C3ABD8B0F57DF7C    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.credential.client_1.0.3.v20090722_0421.jar    698C330AEC14AA15A05CB16326FBEB34    RIM_1.3.3000.20091106_2129
+com.ibm.cic.agent.ui_1.3.3.v20091103_2039.jar   D421562A05928932AC06559F8E5F8941    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.antAdapterData_1.0.5.v20091007_2303.jar  2EE8740ED26DEAED3A6914FD49CDE6BF    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.commonNativeAdapterData_1.4.1.v20091007_2303.jar 312FDC6BC004A98EBC8A4D54A5565F8D    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.core.ecf.provider_1.0.0.v20090722_0421.jar   908B21E1F7866DFC6BAD28919EFC4ADA    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.core.iwm_1.2.1.v20090818_1502.jar    CAA1196E747A64EEBE690D5E42E7E006    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.core.pa_1.0.5.v20091007_2303.jar B7FA25CB3634230AFC99AC7005BB97FB    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.eclipseAdapterData_1.1.8.v20091007_2303.jar  6F2A09E8619715AA64FA1ADC7C59EBD5    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.executeAdapterData_1.0.4.v20091007_2303.jar  62B2B0C8EAC4E3E5B5767E7A9C4DE391    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.model.p2_1.0.0.v20091007_2303.jar    B188B518BF7EEA2AEDADE46F1797614D    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.model.validation.fast_1.0.3.v20090722_0421.jar   DEB4C7BD33209E9A862EBEFA0677C6BF    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.aix_1.0.4.v20091007_2303.jar   0E3DBC87BE42044A8D0C79ACFEBEF1A6    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.hpux_1.0.4.v20091007_2303.jar  82CEAD2E03312BA0E5B77421916B240C    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.linux_1.0.4.v20091007_2303.jar CB7D4BF680F40B28903DD7A02808CF42    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.macosx_1.0.4.v20091007_2303.jar    0F75AFABD7864DE6599D7132B2D37CE2    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.solaris_1.0.4.v20091007_2303.jar   107E87D25674C8FAA267E1A1EE9F152D    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData.win32_1.0.4.v20091007_2303.jar DA25F511E66D24017B35E2F954AA8BDF    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.nativeAdapterData_1.0.6.v20091007_2303.jar   1C928D3AB0EABB994BBA09B77E1240E3    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.p2.artifacts_1.0.0.v20091007_2303.jar    C88F973468E20CF53948AEEFCF45214D    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.p2EclipseAdapterData_1.0.1.v20091007_2303.jar    203A9C825125381ABAAA8F1C5BC61D40    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.pakAdapterData_1.0.1.v20091007_2303.jar  C810348580D695787C779F6FEFDF0AA1    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.transports.commons.net_1.2.0.v20090722_0421.jar  164A1C28A12BFD14EF5C0A4980056887    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.transports.httpclient_1.4.0.v20090722_0421.jar   8893552F163B3754680181A679E6492C    RIM_1.3.3000.20091106_2129
+com.ibm.cic.common.ui_1.1.10.v20091014_0157.jar 41AC5901A478F6BA46CE040C1674DB57    RIM_1.3.3000.20091106_2129
+com.ibm.cic.dev.xml.core_1.4.2.v20091007_2303.jar   DDB73160A42A015D4A09C20AEDE9C13F    RIM_1.3.3000.20091106_2129
+com.ibm.cic.eclipse.internals_1.0.3.v20091007_2303.jar  0510ADAA93C19CDE3C74EF1E8169A9FB    RIM_1.3.3000.20091106_2129
+com.ibm.cic.eclipse.ui.internals_1.0.0.v20090722_0421.jar   1908CFF1EEAF732A7C9DF488C0167476    RIM_1.3.3000.20091106_2129
+com.ibm.cic.install.launcher_1.0.400.v20091031_0059.jar DD94F11FDA30DF7AF6A94835157A4200    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.common.core_7.0.111.v20091031_0059.jar    33FF263D25BAB76DDF4827254939B979    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.common.ui_7.1.200.v20091031_0059.jar  7C33D2E5AEF8ED6D385ECC85816E65A6    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.common.util_7.0.200.v20091031_0059.jar    7943961871F3B70D424A5BA59C0CE791    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.common_7.0.13.v20091031_0059.jar  EA9863827A048CD68F71BD258964B153    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.policy.ui.preferences_7.0.101.v20091031_0059.jar  2A7C5A1F6C8D3CF599DF344E8A9F276E    RIM_1.3.3000.20091106_2129
+com.ibm.cic.licensing.policy.ui_7.1.101.v20091031_0059.jar  D83874C5C596DA150C7E613CF0A4B95A    RIM_1.3.3000.20091106_2129
+com.ibm.icu_4.0.1.v20090415.jar 14DCD4791C0992EA93F1C7BA1CAEDB5A    RIM_1.3.3000.20091106_2129
+com.ibm.ws.pak.core_1.1.0.v20090722_0421.jar    72AD3B9CE093E577D59B2B46F0CAAED4    RIM_1.3.3000.20091106_2129
+com.ibm.ws.sync.core_1.1.1.v20091007_2303.jar   96A4CB8E7D02880A6E05245F326695C8    RIM_1.3.3000.20091106_2129
+com.ibm.ws.sync.ui_1.1.1.v20091007_2303.jar 0B15E6BD3B3B3DD1FDF77105921A45F3    RIM_1.3.3000.20091106_2129
+javax.servlet.jsp_2.0.0.v200806031607.jar   8AC9887B4B44C8CB92BDE63B007C98FD    RIM_1.3.3000.20091106_2129
+javax.servlet_2.5.0.v200806031605.jar   D7B7443F5699D4F9F643EFCED0010766    RIM_1.3.3000.20091106_2129
+org.apache.commons.codec_1.3.0.v20080530-1600.jar   463EAEE3A15B2AA436A71A01295AC64D    RIM_1.3.3000.20091106_2129
+org.apache.commons.el_1.0.0.v200806031608.jar   0831D15134E49316DF99D6AF3A3B7E12    RIM_1.3.3000.20091106_2129
+org.apache.jasper_5.5.17.v200903231320.jar  C8C372E1A1FE390A59B5866BE930E4EA    RIM_1.3.3000.20091106_2129
+org.apache.lucene.analysis_1.9.1.v20080530-1600.jar 0D04C85D6E77F83B125AA8E0E6EC6D4D    RIM_1.3.3000.20091106_2129
+org.apache.lucene_1.9.1.v20080530-1600.jar  518BB840C546022849DAE05ED1ABECE3    RIM_1.3.3000.20091106_2129
+lib/antsupportlib.jar   37AA1B9C552A2F0D7052A4AF549658EA    RIM_1.3.3000.20091106_2129
+org.eclipse.core.commands_3.5.0.I20090525-2000.jar  C8A1A8D216008D8136C7071CDC5274F0    RIM_1.3.3000.20091106_2129
+org.eclipse.core.contenttype_3.4.0.v20090429-1800.jar   17F9391BC5FB652A82C4619A56C7E670    RIM_1.3.3000.20091106_2129
+org.eclipse.core.databinding.beans_1.2.0.I20090525-2000.jar 3445EF3E12B146175273AAE324A78A1B    RIM_1.3.3000.20091106_2129
+org.eclipse.core.databinding.observable_1.2.0.I20090604-2000.jar    EB1BE701C0C0F73A76C8FD736CEB86EE    RIM_1.3.3000.20091106_2129
+org.eclipse.core.databinding.property_1.2.0.I20090526-2000.jar  36E56C9B13E6A768187FC1A9EE68ECFF    RIM_1.3.3000.20091106_2129
+org.eclipse.core.databinding_1.2.0.I20090604-2000.jar   0FF923B9946F02547B127152D8CD7211    RIM_1.3.3000.20091106_2129
+org.eclipse.core.expressions_3.4.100.v20090429-1800.jar DF920254B826F354593F74D69C22EC92    RIM_1.3.3000.20091106_2129
+org.eclipse.core.jobs_3.4.100.v20090429-1800.jar    904D9269F0BE3F9A90BB139769C99DFE    RIM_1.3.3000.20091106_2129
+org.eclipse.core.net_1.2.0.I20090522-1010.jar   376A1D7E5993913DE4E502AC43DE7779    RIM_1.3.3000.20091106_2129
+org.eclipse.core.runtime.compatibility.auth_3.2.100.v20090413.jar   4758981CC62729C088D9ECF8A69B2C85    RIM_1.3.3000.20091106_2129
+org.eclipse.core.runtime_3.5.0.v20090525.jar    47CBFF38FF963557BF9A749352F69DDB    RIM_1.3.3000.20091106_2129
+org.eclipse.core.variables_3.2.200.v20090521.jar    5F2435C9C01B7317CC4BD296486276CB    RIM_1.3.3000.20091106_2129
+org.eclipse.ecf.filetransfer_3.0.0.v20090604-1131.jar   86CEC5B5744C26ABBA1DB2527F72E30F    RIM_1.3.3000.20091106_2129
+org.eclipse.ecf.identity_3.0.0.v20090604-1131.jar   8CF1253CC6DA1B58399DF5220E76AF4F    RIM_1.3.3000.20091106_2129
+org.eclipse.ecf.provider.filetransfer_3.0.0.v20090604-1131.jar  EB96EBAC802940B6EAD8A4E3EA60C5FA    RIM_1.3.3000.20091106_2129
+org.eclipse.ecf.ssl_1.0.0.v20090604-1131.jar    722E18BEEB3D41B0261698CD7F747CD3    RIM_1.3.3000.20091106_2129
+org.eclipse.ecf_3.0.0.v20090604-1131.jar    8FFD819D1A35BD48B6D0032EC6A904BB    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.app_1.2.0.v20090520-1800.jar    08188BA74E1D93B6F507CBC9042CF3DB    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.common_3.5.0.v20090520-1800.jar 2382BFA4BC9166A253357E690B8AB2DB    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.ds_1.1.0.v20090601.jar  B6ED4CF271FAC882EB2CC7A2B0854184    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.frameworkadmin.equinox_1.0.100.v20090520-1905.jar   769A11DB20932D9AD4DE5EC677947024    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.frameworkadmin_1.0.100.v20090520-1905.jar   C63201EAD01DBD98E820D94C1D6EE996    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.http.jetty_2.0.0.v20090520-1800.jar 66B4F0AFD8211F207607A3E7F82A219B    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.http.registry_1.0.200.v20090520-1800.jar    C126E85F2536EB6DF67959403B711A7D    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.http.servlet_1.0.200.v20090520-1800.jar 5B5DFEB9B5FD11F4DC1957009519857D    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.jsp.jasper.registry_1.0.100.v20090520-1800.jar  A07971853F4BE9082E670A586DE2B6D5    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.jsp.jasper_1.0.200.v20090520-1800.jar   65ED2A42C92FC0EB3F0C9D2858C5D466    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.launcher_1.0.200.v20090520.jar  5A9C386A755D7414143F5C029F46E714    RIM_1.3.3000.20091106_2129
+ant_tasks/artifactrepository-ant.jar    5B039670481D191E685F2A0D30FB74E3    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.core_1.0.100.v20090520-1905.jar  062C7F1AA1C78396984299D801389662    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.director_1.0.100.v20090520-1905.jar  714B7031B028A31AF7A285A298FD13D6    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.engine_1.0.100.v20090525.jar 65126473E26535CBB54C6E6E0A8D9B18    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.exemplarysetup_1.0.100.v20090520-1905.jar    6F2E4AE56C287436C3370386BD3D6512    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.garbagecollector_1.0.100.v20090520-1905.jar  A1C6EC5C867A4BBFB3A49F57AB664C28    RIM_1.3.3000.20091106_2129
+lib/jarprocessor-ant.jar    CD497F50221572CC9A0C6F63C550CD9C    RIM_1.3.3000.20091106_2129
+ant_tasks/metadatarepository-ant.jar    7025C2FFF24D356D92C51D4D51BE282B    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.metadata_1.0.100.v20090525.jar   C4FE67D52252275F5948398E2902AC3B    RIM_1.3.3000.20091106_2129
+ant_tasks/publisher-ant.jar F15EB3AF19751A49F5B319A98F27B9BF    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.repository_1.0.0.v20090601-1921.jar  B9F2C4BE286399B58244F73780B00D85    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.touchpoint.eclipse_1.0.100.v20090611-1224.jar    C4241B8537E97C0FDD8AD3BA93D225EE    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.p2.touchpoint.natives_1.0.100.v20090520-1905.jar    CCE2FEB941E9BBEF16E9C77878BC0F56    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.preferences_3.2.300.v20090520-1800.jar  103ACDA79FAAD72F1BC932E18BEBE03D    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.registry_3.4.100.v20090520-1800.jar FDE90200C69C13BAE6BC7190CCE59126    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.security_1.0.100.v20090520-1800.jar BAB064806319370F0A2F8DA22227725B    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.simpleconfigurator.manipulator_1.0.100.v20090520-1905.jar   2BE06048816A6510E09DE43D34438A5A    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.simpleconfigurator_1.0.100.v20090520-1905.jar   4CD78A74DAFFEDBE4DA8E1F454F46E65    RIM_1.3.3000.20091106_2129
+org.eclipse.equinox.util_1.0.100.v20090520-1800.jar A5C57198BA6E18A6C6F5B9EEE5971F9D    RIM_1.3.3000.20091106_2129
+org.eclipse.help.appserver_3.1.400.v20090429_1800.jar   AF547D4C44277D3DAABAF40B91C7BD3A    RIM_1.3.3000.20091106_2129
+ant_tasks/helpbase-ant.jar  66C8C2F9F4F7E79EE54E4B607C3BDF0D    RIM_1.3.3000.20091106_2129
+org.eclipse.help.ui_3.4.0.v20090528.jar 8B466DC715D0FE86E5E3CED158F1B2C2    RIM_1.3.3000.20091106_2129
+org.eclipse.help.webapp_3.4.0.v20090429_1800.jar    21D2B2BFB2D0490FFEBB8FF5DF7D0A2F    RIM_1.3.3000.20091106_2129
+org.eclipse.help_3.4.0.v20090526.jar    4931ED87D6A58A7761299655781FF95F    RIM_1.3.3000.20091106_2129
+org.eclipse.jface.databinding_1.3.0.I20090525-2000.jar  C8B2DBB2CED354D3E7832D5896ECDC12    RIM_1.3.3000.20091106_2129
+org.eclipse.jface_3.5.0.I20090525-2000.jar  76A903C2538EADED77650967D556FB0B    RIM_1.3.3000.20091106_2129
+org.eclipse.osgi.services_3.2.0.v20090520-1800.jar  36098D63C45A865AA35843D507E77A2C    RIM_1.3.3000.20091106_2129
+org.eclipse.osgi_3.5.0.v20090520.jar    120BD9C4478AB3B5FE3D1CED480B1153    RIM_1.3.3000.20091106_2129
+org.eclipse.swt.win32.win32.x86_3.5.0.v3550b.jar    87E75F6594655FBEC289CA2AB7CDBBF7    RIM_1.3.3000.20091106_2129
+org.eclipse.ui.forms_3.4.0.v20090526.jar    7C2A408E88D3D5C42D3E8D6B77E41563    RIM_1.3.3000.20091106_2129
+org.eclipse.ui.intro_3.3.0.v20090526.jar    1DAA7E9461CF65788AAF7281FC2B429D    RIM_1.3.3000.20091106_2129
+org.eclipse.ui.workbench_3.5.0.I20090603-2000.jar   05C10D515999AB58E893DE137F014EFE    RIM_1.3.3000.20091106_2129
+org.eclipse.ui_3.5.0.I20090604-2000.jar A350B48DE4758D6A8746B9BC2C20E848    RIM_1.3.3000.20091106_2129
+org.eclipse.update.configurator_3.3.0.v20090312.jar 461914C6C4728190DDFB0E011026B22C    RIM_1.3.3000.20091106_2129
+org.eclipse.update.core_3.2.300.v20090525.jar   8BAE1E7358229259F346C21FAC51FF76    RIM_1.3.3000.20091106_2129
+org.mortbay.jetty.server_6.1.15.v200905151201.jar   52A75EC8A6F4C9E141CF23030A76BD8A    RIM_1.3.3000.20091106_2129
+org.mortbay.jetty.util_6.1.15.v200905182336.jar 499B073781F5A046C3557CB6A78F76C8    RIM_1.3.3000.20091106_2129
+org.sat4j.core_2.1.0.v20090520.jar  EBEE12D09CF410B0CBB4F7A789F5CAD1    RIM_1.3.3000.20091106_2129
+org.sat4j.pb_2.1.0.v20090520.jar    C033CDE9DD5D16BDEF7A94DCC21571B4    RIM_1.3.3000.20091106_2129
+
+
+# Hao, 7/30.  Workplace/Portal config engine
+jt400.jar   BE68238F0CB6EB42A29319EB09021B42    ConfigEngine_July-2010
+jt400native.jar E5EF9EA5380C1AF40184FB06877B7449    ConfigEngine_July-2010
+wkplc.comp.registry.jar class17388DFFA4C84F312EF2D40BB834360D   ConfigEngine_July-2010
+wkplc.misc.jar  87CF3C0AF0793E6C1EF085CBF10ED646    ConfigEngine_July-2010
+
+# Hao, 8/2.   swt - org.eclipse.swt.gtk.linux.s390_3.5.0.v3550b.jar
+org.eclipse.swt.gtk.linux.s390_3.5.0.v3550b.jar  90B51EE5B5561189EC3836E643659E0A    SWT-for-linux-s350-3.5.0
+
+
+
+
+wkplc.comp.registry.jar 17388DFFA4C84F312EF2D40BB834360D   ConfigEngine-LC3.0
+wkplc.misc.jar          6F94BC6A6F075C8CB11AB2C1D4449ABD   ConfigEngine-LC3.0
+
+qkr.common.resources.jar  81EAF24DD3B17CC93C1545F4D9FF4B24 Quickr-Doc-Picker-LC3.0-Aug-13-2010
+
+com.ibm.icu_3.8.1.v20080530.jar   96E995EE27F56FA81169AB537CB20E56   IEHS-3.4.3
+scriptfilter.jar   EEF3E71BAFF06761B1B1C2D75D7BD436   IEHS-3.4.3
+waston.jar   07F8E982B70360C5AE99ECF1917EF51C   IEHS-3.4.3
+com.jcraft.jsch_0.1.37.v200803061811.jar   25F39EC72360FEE1641ABD75E8E4AF58   IEHS-3.4.3
+javax.servlet.jsp_2.0.0.v200806031607.jar   F2F728B6EFFA0E93E892AB5BD81B2358   IEHS-3.4.3
+javax.servlet_2.4.0.v200806031604.jar   59CAF11D4228C62506128CBB49A0A862   IEHS-3.4.3
+org.apache.commons.el_1.0.0.v200806031608.jar   15711E7A2409C322FCB38723A7582690   IEHS-3.4.3
+org.apache.commons.logging_1.0.4.v20080605-1930.jar   735738CC709600567370CC2DE42E9D45   IEHS-3.4.3
+org.apache.jasper_5.5.17.v200806031609.jar   C9DC20F1A14B0BFC724206D6EF3DF077   IEHS-3.4.3
+org.apache.lucene.analysis_1.9.1.v20080530-1600.jar   01FB575F26754059B95C1C965CCDA155   IEHS-3.4.3
+org.apache.lucene_1.9.1.v20080530-1600.jar   699106801FD848B4D8159F68FC13FD00   IEHS-3.4.3
+org.eclipse.ant.core_3.1.200.v20070522.jar   413071713EB4541B4DE046B3A3506936   IEHS-3.4.3
+org.eclipse.core.contenttype_3.3.0.v20080604-1400.jar   A17F6326F58DE6564C0D06C30A56A058   IEHS-3.4.3
+org.eclipse.core.expressions_3.4.0.v20080603-2000.jar   4091778D4CFDB55AAFB6B55710E30DE3   IEHS-3.4.3
+org.eclipse.core.jobs_3.4.0.v20080512.jar   B17D69B72C59C8F8B985BE2F244640ED   IEHS-3.4.3
+org.eclipse.core.net_1.0.1.r33x_20070709.jar   726097014804027182A58F36E51DF3F0   IEHS-3.4.3
+org.eclipse.core.runtime_3.4.0.v20080512.jar   B7DF5580A9965DFBDD823E9171734024   IEHS-3.4.3
+org.eclipse.equinox.app_1.1.0.v20080421-2006.jar   B40D970250F29E9CD2C949721D3B2257   IEHS-3.4.3
+org.eclipse.equinox.common_3.4.0.v20080421-2006.jar   38942EFB5F8630BB61BECB33574C4557   IEHS-3.4.3
+org.eclipse.equinox.http.jetty_1.1.0.v20080425.jar   293BEE4876A116BE548EBF28B41E2E8C   IEHS-3.4.3
+org.eclipse.equinox.http.registry_1.0.100.v20080427-0830.jar   2C34B15453C4A68EBEB39E6C766B4ABC   IEHS-3.4.3
+org.eclipse.equinox.http.servlet_1.0.100.v20080427-0830.jar   1DA22BCAF0D6B6D3DBA38066E9E49986   IEHS-3.4.3
+org.eclipse.equinox.http.servletbridge_1.0.0.v20080427-0830.jar   0497F78B50557A3BA8FAAA6F28584CDD   IEHS-3.4.3
+org.eclipse.equinox.jsp.jasper.registry_1.0.0.v20080427-0830.jar   F4FAC2E7A577C697851CB86105015D23   IEHS-3.4.3
+org.eclipse.equinox.jsp.jasper_1.0.100.v20080427-0830.jar   F557D9A7A1882848CD14EE313B3DF4B6   IEHS-3.4.3
+org.eclipse.equinox.preferences_3.2.200.v20080421-2006.jar   26DC6CB6A9798869640CB80219F5FDE4   IEHS-3.4.3
+org.eclipse.equinox.registry_3.4.0.v20080516-0950.jar   D9706015242356BCA3C11C0E78835371   IEHS-3.4.3
+helpbase-ant.jar   B52F6FFF8FB9BA47829BCCBCA03CFBA7   IEHS-3.4.3
+helpbase.jar   206EF05CC87BBAF224F1BDE503322EE0   IEHS-3.4.3
+debug.jar   FD74101328F3F5C07D3A7EC5258C692B   IEHS-3.4.3
+waston.jar   3F986CC215CC2B57714CE70511755133   IEHS-3.4.3
+webapp.jar   36F2F212E04BEC0CDD312A97DDEDB989   IEHS-3.4.3
+help.jar   350C22FE3D3106F2B87A903C1692F4B0   IEHS-3.4.3
+org.eclipse.osgi.services_3.1.200.v20071203.jar   60E140755B50F865B5F332B35B563943   IEHS-3.4.3
+org.eclipse.osgi_3.4.0.v20080605-1900.jar   2BE65B28C4FE3F92BCDB67C9579A4A99   IEHS-3.4.3
+updateconf.jar   7FDFFEE5DD8FDBA14C2087845B0CA01D   IEHS-3.4.3
+updatecore.jar   009081DA7D2FDCEC892524BE9AE5D3B5   IEHS-3.4.3
+servletbridge.jar   B8BFD36B63D2C6E7B5F699B58580974E   IEHS-3.4.3
+j2ee.jar          DE3B3C004B43B8BB5A62624918F73234    IEHS-3.4.3
+
+exporttest.jar  BA977B41EDFFFD049A0D6528B169212B Stellant
+
+# Jay, Sept 13,2010, these from Install, Hao reports they came from http://ies.ottawa.ibm.com/iss/ies/index.php 
+org.eclipse.swt.gtk.linux.s390x_3.5.0.v3550b.jar    B142640C4F9043F6A8AF2ED8A1D2302A   IBM-Eclipse-SDK-(IES)
+org.eclipse.swt.gtk.linux.x86_64_3.5.jar    6EDED06BF3B4095BA0B230D011E61E59   IBM-Eclipse-SDK-(IES)
+org.eclipse.swt.win32.win32.x86_64.jar  D0FBF9F4E1863A3F8382EB6EA4899E5A   IBM-Eclipse-SDK-(IES)
+org.eclipse.ui.forms_3.3.102.v20081015_341patch.jar 2BBF65BA21617A6D506364FB6208CDA0   IBM-Eclipse-SDK-(IES)
+
+
+
+tagsoup-1.2.jar B11B44149277505C8EEA5FC60E9C81D5  ProfilesTagSoup-1.2
+
+integration-1.5.6.jar            48923418C5DBDBC149BB226EAF9DB493 SimpleLoggingForJava-1.5.6-with-mods
+jcl-over-slf4j-1.5.6.jar       10A7A0826E9AC47249192CA8A4BF2622 SimpleLoggingForJava-1.5.6-with-mods
+jul-to-slf4j-1.5.6.jar     860D5D26D7A24F2CA4C6192022235040 SimpleLoggingForJava-1.5.6-with-mods
+log4j-over-slf4j-1.5.6.jar     133449BA7DC23F0A1659BC998FA03992 SimpleLoggingForJava-1.5.6-with-mods
+slf4j-api-1.5.6.jar        DB31C0A73B79D185CB6442F0DEFD56FB SimpleLoggingForJava-1.5.6-with-mods
+slf4j-ext-1.5.6.jar        389FD840B74868709B54BD8B89F7E53F SimpleLoggingForJava-1.5.6-with-mods
+slf4j-jcl-1.5.6.jar        00F6F3D24252D4915D86010B5B47FF31 SimpleLoggingForJava-1.5.6-with-mods
+slf4j-jdk14-1.5.6.jar          C29818653E9AB65A25D82CB84F482D5D SimpleLoggingForJava-1.5.6-with-mods
+slf4j-log4j12-1.5.6.jar    82A0E34558B9A71A711A4CD9DE1C289F SimpleLoggingForJava-1.5.6-with-mods
+slf4j-migrator-1.5.6.jar       1B196E7B6D22DE1A06EDCE8C2E3C4B60 SimpleLoggingForJava-1.5.6-with-mods
+slf4j-nop-1.5.6.jar        DD629A3BAD96D6F348E3F9625A7B09C2 SimpleLoggingForJava-1.5.6-with-mods
+slf4j-simple-1.5.6.jar     2530A6A8084F5D1067215D8BC64C1582 SimpleLoggingForJava-1.5.6-with-mods
+
+lcui.jar F7F0EECC19927566FC5F1B862FD3BC3A   WPS-Upgrade-Framework
+nativefile.jar 9559F04B09F821F6FFC9B8853AD47851   WPS-Upgrade-Framework
+
+
+# Jay, March 10, 2011
+acf.jar 8539465A932BD0A97D783BF58303B3BA  ACF-2.2.0.5
+html-parser.jar  455cea822766ea42ada1e26c94ee1a82  ACF-2.2.0.5
+
+# Jay, Oct 17, 2011 (Train 5 hardening)
+mybatis-2.3.5.jar              ABDCD98ADD155B438C3F78F9B7267874    MyBatis-2.3.5
+jackson-core-asl-1.8.1.jar     B52E64F1181D242D64A5934144DB14C7    Jackson-1.8.1 
+jackson-mapper-asl-1.8.1.jar   C87FAF090D835F7B9A23742785166366    Jackson-1.8.1
+jackson-mrbean-1.8.1.jar       493D7621F4B4D91B5180F502464A26F7    Jackson-1.8.1
+xmlrpc-1.2-b1.jar              D0BEFD60B6B52A9846587CED1EEC490B    XMLRPC-1.2-b1
+icu4j-charset-4_8_1.jar        5C0FC7F343674CCDAF63C095501BC241    ICU4J-4.8.1
+icu4j-localespi-4_8_1.jar      0B9E85B5A6E27E54BEDF297C4F532D1C    ICU4J-4.8.1
+icu4j-4_8_1.jar                6AC1CF5B94E2BDA8ABA7F7C0BF54F96C    ICU4J-4.8.1
+
+
+# Jay, Dec 12, 2011 (4.0 Beta)
+aopalliance.jar                04177054E180D09E3998808EFA0401C7    AOPAlliance-1.0
+dlt.jar                        7EEF7F5AB9104DCE979D0D9116F34A3F    LanguageWare-V7.2
+com.ibm.icu_4.0.1.v20090822.jar  BC045BBC8FA8E6503D22FF5BD3334311                 Equinox-3.5.2
+com.ibm.sistdase.json_1.0.0.v20091001_2300.jar  D8C26579D30165E41A36690F22C33E20                 Equinox-3.5.2
+com.ibm.team.json_1.0.0.v20100713_1053.jar  51FEDE0C6AFD5C649851E46574355B05                 Equinox-3.5.2
+com.ibm.team.repository.jndi_1.0.100.v20100923_0118.jar  2400D698BD53E2B82EA0F3FE759C17B2                 Equinox-3.5.2
+com.ibm.team.server.embedded.jetty.source_v20101012_1938.jar  CFC8094F913B6706F110C24DF5C5F0FE                 Equinox-3.5.2
+com.ibm.team.server.embedded.jetty_1.0.1.v20101012_1938.jar  A2F5EFC5358B1F2C8B9BED5B79C3503D                 Equinox-3.5.2
+javax.servlet.source_2.5.0.v200806031605.jar  887E02E2CF1E635D66FC80D2B8A0FAC1                 Equinox-3.5.2
+javax.servlet_2.5.0.v200806031605.jar  4BB17E5E6C03F435D3AC9172CC032AF1                 Equinox-3.5.2
+org.apache.commons.beanutils_1.7.0.v200902170505.jar  E86A21E5200B590DE7FDFCBB4AE21AC8                 Equinox-3.5.2
+org.apache.commons.codec.source_1.3.0.v20080530-1600.jar  3B7D03532B81C6FAD4437651B802AECA                 Equinox-3.5.2
+#org.apache.commons.codec_1.3.0.v20080530-1600.jar  463EAEE3A15B2AA436A71A01295AC64D                 Equinox-3.5.2
+org.apache.commons.collections_3.2.0.v201005080500.jar  AA5282AB2D88CAE32062F77364A39895                 Equinox-3.5.2
+org.apache.commons.configuration_1.5.0.v20071114-2200-patch.jar  606306D025D2B4E2E7D0D28408782F7D                 Equinox-3.5.2
+org.apache.commons.digester_1.7.0.v20050612-1242.jar  E83C38C19B57E5D10AA0DDC0D4D39A60                 Equinox-3.5.2
+#org.apache.commons.fileupload_1.2.1.jar  5AD1AB0C8A813B45FE9014F54A341A2A                 Equinox-3.5.2
+org.apache.commons.httpclient.source_3.0.1.v201005080501.jar  5FF4840C88FB891153AE0FFC7B85A03B                 Equinox-3.5.2
+org.apache.commons.httpclient_3.0.1.v201005080501.jar  630E96F630623B64397BF1F49B787DF5                 Equinox-3.5.2
+commons-io-1.2.jar  B0BF5F906AF5A936992514ED087F1FA2                 Equinox-3.5.2
+org.apache.commons.lang_2.4.0.v201005080502.jar  A08056D14D0848A3FD670A2C82FC779E                 Equinox-3.5.2
+org.apache.commons.logging.log4j_1.0.4.v20100607_1653.jar  D0685ED11AA4E8069C108B26F7108FB7                 Equinox-3.5.2
+org.apache.commons.logging.source_1.0.4.v200904062259.jar  C364DB141DA62016E86F1B6AF7102442                 Equinox-3.5.2
+org.apache.commons.logging_1.0.4.v200904062259.jar  29E1A648A3424F3DBDEEC7CF7CE4B0BC                 Equinox-3.5.2
+httpclient-4.0.1.jar  97068F662D79635C378EC36C7DBF7319                 Equinox-3.5.2
+#httpmime-4.0.1.jar  29E1A648A3424F3DBDEEC7CF7CE4B0BC                 Equinox-3.5.2
+httpcore-4.0.1.jar  396396F220E41997E95BBCD594B2484A                 Equinox-3.5.2
+httpcore-nio-4.0.1.jar  62108C8E5DBCEDBA117041E0BD210942                 Equinox-3.5.2
+apache-mime4j-0.6.jar  AFC5FD899633DED3ECFEFAF433E42102                 Equinox-3.5.2
+org.apache.log4j_1.2.13.v200903072027.jar  40605F829F6D1B7A43AA55AF8C4126D6                 Equinox-3.5.2
+naming.jar  B8B4731B895ADCBA11A5B017FF5FDBA1                 Equinox-3.5.2
+org.dojotoolkit.dijit_1.4.3.v20100713_1053.jar  15B128AD675AAE5E01443A21CEFA2FCD                 Equinox-3.5.2
+org.dojotoolkit.doh_1.4.3.v20100728_2328.jar  F1AB776C85849CDB5B49D91D6D0E338E                 Equinox-3.5.2
+org.dojotoolkit.dojox_1.4.3.v20100607_1653.jar  E2C9E27A45D912BFB1A5F314457CC365                 Equinox-3.5.2
+org.dojotoolkit.dojo_1.4.3.v20100824_0153-patch.jar  A65705DCD29C54481360D2A930829B30                 Equinox-3.5.2
+org.dojotoolkit.shrinksafe_1.0.1.v20100824_0153.jar  55185D8BF2A3C43A7BA68CDCFF402810                 Equinox-3.5.2
+org.eclipse.core.contenttype.source_3.4.1.R35x_v20090826-0451.jar  6D62766565A21406E3AD5459F91F0F0D                 Equinox-3.5.2
+org.eclipse.core.contenttype_3.4.1.R35x_v20090826-0451.jar  17F1FEA7F170719F610569629EAE198F                 Equinox-3.5.2
+org.eclipse.core.jobs.source_3.4.100.v20090429-1800.jar  EAA34982F0D244B54A72E293BAC203FF                 Equinox-3.5.2
+org.eclipse.core.jobs_3.4.100.v20090429-1800.jar  9812CC7C2B7C440A076C88B61784FA95                 Equinox-3.5.2
+org.eclipse.core.runtime.source_3.5.0.v20090525.jar  1D3D7B710D56BAAE1A721EEC28BB694E                 Equinox-3.5.2
+org.eclipse.core.runtime_3.5.0.v20090525.jar  2673ADB610309EECC69930AD115FACDB                 Equinox-3.5.2
+org.eclipse.equinox.app.source_1.2.1.R35x_v20091203.jar  9773C7F5C455E8BDFC89CAA974737AFA                 Equinox-3.5.2
+org.eclipse.equinox.app_1.2.1.R35x_v20091203.jar  8486CF580315BBFF8FD2D3D66D148DFD                 Equinox-3.5.2
+org.eclipse.equinox.common.source_3.5.1.R35x_v20090807-1100.jar  379D3870DB1B5D3EB4365AF5270A644A                 Equinox-3.5.2
+org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar  05221FB9ACC9D170281FCC09120C29E9                 Equinox-3.5.2
+org.eclipse.equinox.http.registry.source_1.0.200.v20090520-1800.jar  E0F6270C4738CBA567C6E519B839A299                 Equinox-3.5.2
+org.eclipse.equinox.http.registry_1.0.200.v20090520-1800.jar  DC0857A999FC7B3189DCFFAF9B2ECF86                 Equinox-3.5.2
+org.eclipse.equinox.http.servlet.source_1.0.200.v20090520-1800.jar  6F9F65F3C3A6E357D7E1BC9421033ABB                 Equinox-3.5.2
+org.eclipse.equinox.http.servletbridge.source_1.0.100.v20090520-1800.jar  99927099D3FFFF0D1FD2C4E8F3B80683                 Equinox-3.5.2
+org.eclipse.equinox.http.servletbridge_1.0.100.v20090520-1800.jar  33C57A7F9024AECAEF7697EE0209FE5C                 Equinox-3.5.2
+org.eclipse.equinox.http.servlet_1.0.200.v20090520-1800.jar  D5720EAB61DC7976658A1812A596C452                 Equinox-3.5.2
+org.eclipse.equinox.preferences.source_3.2.301.R35x_v20091117.jar  78D791F42F98AA4F132A1F5C9C7517EB                 Equinox-3.5.2
+org.eclipse.equinox.preferences_3.2.301.R35x_v20091117.jar  A4E72ECAB953DB3202FF4EE27E797A01                 Equinox-3.5.2
+org.eclipse.equinox.registry.source_3.4.100.v20090520-1800-patch.jar  A6FC8B410A15750BEFA3E17E3829EA85                 Equinox-3.5.2
+org.eclipse.equinox.registry.source_3.4.100.v20090520-1800.original                  Equinox-3.5.2
+fc91addc30f8757e5c82400344d75c64 o93D4AB81B89435D2CC3FF2CDE9E761AE rg.eclipse.equinox.registry_3.4.100.v20090520-1800-patch.jar                  Equinox-3.5.2
+#org.eclipse.equinox.registry_3.4.100.v20090520-1800.original                  Equinox-3.5.2
+7f44926f956c9218d2e8a2ee0a13a187 oE7498E27D5FC9857AD967CA9DC81FB68 rg.eclipse.equinox.servletbridge.source_1.1.0.v20090520-1800.jar                  Equinox-3.5.2
+org.eclipse.equinox.servletbridge_1.1.0.v20090520-1800.jar  CAE996925079FC7CCE37BE946F74FD48                 Equinox-3.5.2
+org.eclipse.equinox.simpleconfigurator.source_1.0.101.R35x_v20090807-1100.jar  EA5CF04191FF1C9422ED2449F6F6DDC7                 Equinox-3.5.2
+org.eclipse.equinox.simpleconfigurator_1.0.101.R35x_v20090807-1100.jar  4DAE408DF1C95E43A608FDED8C8FA62F                 Equinox-3.5.2
+org.eclipse.osgi.services.source_3.2.0.v20090520-1800.jar  AC9F2244288BC15A40ACBF324F3FD548                 Equinox-3.5.2
+org.eclipse.osgi.services_3.2.0.v20090520-1800.jar  817A1ECD326A20B1A016AD3601CD9EC4                 Equinox-3.5.2
+org.eclipse.osgi.source_3.5.2.R35x_v20100126.jar  8F491DF41170972B743F500C1BEF69FC                 Equinox-3.5.2
+org.eclipse.osgi.util.source_3.2.0.v20090520-1800.jar  B66448351A1D1666622E0968CC15687B                 Equinox-3.5.2
+org.eclipse.osgi.util_3.2.0.v20090520-1800.jar  5F0670D2C9A59686F74DF7D607041FAC                 Equinox-3.5.2
+org.eclipse.osgi_3.5.2.R35x_v20100126.jar  EF4C41135FB5A73BDBA4B73C60EADD34                 Equinox-3.5.2
+junit.jar  5A456A402F1C5E2A7617A947CD6B6DEB                 Equinox-3.5.2
+org.mortbay.jetty.server.source_6.1.23.v201004211559.jar  1AAE18498D80C9AFE3817412A8DCA451                 Equinox-3.5.2
+org.mortbay.jetty.server_6.1.23.v201004211559.jar  FA57DB636A3FE0A76EB69F798B4F18A6                 Equinox-3.5.2
+org.mortbay.jetty.util.source_6.1.23.v201004211559.jar  BE2B9584F316E07273E8D33E370E7ACC                 Equinox-3.5.2
+org.mortbay.jetty.util_6.1.23.v201004211559.jar  8310EF022BE444E17C9F6EF270E1D4C3                 Equinox-3.5.2
+js.jar  A1B20BDF9FB2C6BCE69AC96D18BC8BBE                 Equinox-3.5.2
+jtidy-r938.jar  0270AA6F887C1E3EF48F102439708DFC  JTidy-r938
+
+ical4j-1.0-rc2.jar  983FAE22266AF84EFD98A8E4ED1230FE  Cal4j-v1.0-rc2
+httpclient-4.0.jar  AA172F462E2E65F63020F877D364CD07  HTTPClient-4.0
+httpmime-4.0.jar    AF3867652D97DDD614C7731DC30DAB8E  HTTPClient-4.0
+
+lucene-core-3.0.3                AFBAF78CD5AE20F700A3A54D55145BA2  Lucene-3.0.3
+lucene-highlighter-3.0.3.jar     B99C810FBEF0E49D9D080752E237F846  Lucene-3.0.3
+lucene-memory-3.0.3      6FE580AD559BDF191727D3072DCD7F23  Lucene-3.0.3
+
+commons-compress-1.2.jar         4C1E62C9CE0D2F9BD5770CA3C1D83339  Apache_Commons_Compress-1.2
+
+org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar  94F79B265F02D019C9E83BA746E9C7AE    Shindig
+org.eclipse.core.jobs_3.5.100.v20110404.jar  AF5A02B49E12DE84739774D6EE3A99BD    Shindig
+org.eclipse.core.runtime_3.7.0.v20110110.jar  C2C766E16DBB760BF8BB3D239F7D0111    Shindig
+org.eclipse.equinox.app_1.3.100.v20110321.jar  E65217D7A1922E35835C2BDC4ABA9381    Shindig
+org.eclipse.equinox.common_3.6.0.v20110523.jar  A27C25EF3A012911607EFD449183199F    Shindig
+org.eclipse.equinox.http.registry_1.1.100.v20110502.jar  D46ACFE18868E4928E0C09A2C2F4EEDC    Shindig
+org.eclipse.equinox.http.servlet_1.1.200.v20110502.jar  00436EA04C810AF8D514EDD6855DC82D    Shindig
+org.eclipse.equinox.http.servletbridge_1.0.200.v20100503.jar  DA7DEA7D7556DDD0CBDBC118AD7209F4    Shindig
+org.eclipse.equinox.preferences_3.4.0.v20110502.jar  6DF989489605803459E47403A222805C    Shindig
+org.eclipse.equinox.registry_3.5.100.v20110502.jar  47C236E9B7F7B3D99789903F4F8FBC2F    Shindig
+org.eclipse.osgi.services_3.3.0.v20110513.jar  25913358490A10A801308036455A0732    Shindig
+org.eclipse.osgi_3.7.0.v20110613.jar  48AF3A67643EE897A070D85931B3823E    Shindig
+caja-r4527.jar  736EA18D588A55DC34896AF0245C9630    Shindig
+commons-beanutils-1.8.3.jar  B45BE74134796C89DB7126083129532F    Shindig
+commons-codec-1.4.jar  82B899580DA472BE37055DA949B731FA    Shindig
+commons-fileupload-1.2.2.jar  A0AD9550A7062DDB6528D8725C8230DD    Shindig
+commons-io-2.0.1.jar  EDB9481C6EEE07F4FEAA61502AF855DA    Shindig
+commons-lang-2.6.jar  4D5C1693079575B362EDF41500630BBD    Shindig
+ehcache-core-2.3.2.jar  EA0B2DF6DAE8670BBE3E248FF3F7A55A    Shindig
+geronimo-stax-api_1.0_spec-1.0.1.jar  B7C2A715CD3D1C43DC4CCFAE426E8E2E    Shindig
+guava-10.0.1.jar  EA0B2DF6DAE8670BBE3E248FF3F7A55A    Shindig
+guice-3.0.jar  CA1C7BA366884CFCD2CFB48D2395C400    Shindig
+guice-multibindings-3.0.jar  4BE1E91408E173EB10ED53A1A565A793    Shindig
+htmlparser-r4209.jar  31C18BC52991E53ED4EAA28347C44189    Shindig
+httpclient-4.1.1.jar  59D8F96D9396310F538A665F24D3E6D9    Shindig
+httpcore-4.1.jar  DB31AA554DA6B48E36351001FC6C6D14    Shindig
+icu4j-4.8.jar  E2842B82338BC414B8007FDB99C6F3EF    Shindig
+jasper-el-6.0.32.jar  17E10AA616D53D3925FF46259EFEBFD0    Shindig
+javax.inject-1.jar  289075E48B909E9E74E6C915B3631D2E    Shindig
+joda-time-1.6.2.jar  6442E992DEDADDADD8B9E3C87A38BFB8    Shindig
+json-simple-1.1.jar  EB342044FC56BE9BA49FBFC9789F1BB5    Shindig
+jstl-1.2.jar  51E15F798E69358CB893E38C50596B9B    Shindig
+juel-impl-2.2.3.jar  B871AA46CC609EE8CC1754CD1047080C    Shindig
+lc.shindig.serverapi.extension.jar  B674DF658A1B360DAE1A225C2422D4F1    Shindig
+lc.shindig.serverapi.remote.jar  1FD2A3A067269BD3E2A0D18715613CDE    Shindig
+modules-0.3.2.jar  0BFE56EFB3460CC74D4053EF61635131    Shindig
+nekohtml-1.9.15.jar  7E4445BE1DA5A905B29CE1ECA7FBF131    Shindig
+oauth-20100527.jar  91C7C70579F95B7DDEE95B2143A49B41    Shindig
+oauth-consumer-20090617.jar  F0E2849D152F4D8BF725AA4E11B8F969    Shindig
+oauth-httpclient4-20090913.jar  577E1F28C28BC5006B8ADCF838FFD46D    Shindig
+oauth-provider-20100527.jar  AFDC85D3F14481E4842C317C4F414F7E    Shindig
+org.eclipse.equinox.servletbridge_1.2.100.v20110502.jar  76D1B85841D0343281EF10554DED9FF3    Shindig
+rome-1.0.jar  53D38C030287B939F4E6D745BA1269A7    Shindig
+sanselan-0.97-incubator.jar  84F823E61D93FCEDCB3C10A827C45989    Shindig
+shiro-core-1.1.0.jar  F839F8FD54EEDE29B0703DCD882BE641    Shindig
+shiro-web-1.1.0.jar  E7E8674D984603D2AC8AA8FFF3B90D6E    Shindig
+slf4j-api-1.5.11.jar  30CB7BEE9B52FCB5F5B03D2A006E26E8    Shindig
+slf4j-jdk14-1.5.11.jar  AC9FAB39031C2F16C051373453B974FE    Shindig
+xpp3_min-1.1.4c.jar  DCD95BCB84B09897B2B66D4684C040DA    Shindig
+xstream-1.3.1.jar  4DFEBEC402E7606B2C1F66DEC1773E8F    Shindig
+
+#Jay, added March 3, 2012.  Obtained by Leonid Bolshinsky/Haifa/IBM
+commons-codec-1.4.jar   82B899580DA472BE37055DA949B731FA    commons-codec-1.4
+ilel-collector-1.5.0.jar  EA4CDBD9D77A9D57DC7CE2076B486220         ilel-1.5.0
+ilel-core-1.5.0.jar FBD2AC745BCEF3EF4A54DFE559E09392         ilel-1.5.0
+ilel-facet-1.5.0.jar    D7F7ADFF9EB8BC7CDE4943F1126223FC         ilel-1.5.0
+ilel-htmlparser.jar 83781CC701CF85D42DABC4BC2E1E6E95         ilel-1.5.0
+ilel-markup-1.5.0.jar   5E58188A91E04D425D3D9B9F3F6DA3D0         ilel-1.5.0
+ilel-newton-1.5.0.jar   9BEA8F51C374B52463D3993EDA27827E         ilel-1.5.0
+ilel-numeric-1.5.0.jar  FFA8B42F0FC34127D1697788F25ACC6C         ilel-1.5.0
+ilel-security-1.5.0.jar C8D94F40F19120319CEA039FDCBCFBA8         ilel-1.5.0
+ilel-snowball-1.2.jar   0FCBA4D0CB475C871DB3E236C679547D         ilel-1.5.0
+ilel-sqp-1.5.0.jar  8784D3C095E1ECAABD2C6FB102DA95D3         ilel-1.5.0
+ilel-workmanager.jar    99D436C5E13380F09E30789AC62105A2         ilel-1.5.0
+apache-mime4j-0.6.jar   AFC5FD899633DED3ECFEFAF433E42102         mime4j-0.6
+
+httpclient-4.1.2.jar    420528E49123719022AF6C637E1C88D1                 httpclient-4.1.2
+httpclient-cache-4.1.2.jar    18D91D960A07DED5C5AB3031D8370A27           httpclient-4.1.2
+httpcore-4.1.2.jar    B7A220EC1B18C89D71C8E610936B73A7                   httpclient-4.1.2
+httpmime-4.1.2.jar    0CDE626A5141BEA74CD2C7B563912539                   httpclient-4.1.2
+
+lucene-core-3.1.0.jar     84F0AB76AB7915B7EAE98671E43A1E3F               lucene-3.1.0
+lucene-highlighter-3.1.0.jar  9B008521BFFF4E6A301BB8326BB68765           lucene-3.1.0
+lucene-memory-3.1.0.jar  727FA0098F264B4A1A7CD6959CDFFE6B                lucene-3.1.0
+
+cglib-nodep-2.2.jar     753F4E9036E1FC6C3E07D3AB97EE6722                 cglib-2-2-with-modifications-to-include-asm
+
+
+# Added with 4.0 verification, April 9, 2012
+apache-mime4j-0.6.jar E90FB1AB3F8145AD00DEF6359DA22FAF   Apache-mime4j_0.6
+httpcore-4.0.1.jar  6C1963FD8AC0C40C004C9E892E0D7703     Httpcore-4.0.1
+
+guava-11.0.2.jar  BED5977336EA1279D2BAD3BB258DC8C3  CRE1.1-guava-11.0.2
+com.ibm.sistdase.json_1.1.0.v20110526_0436.jar  6E4D3663D96555F0A570A9A6528629F4  CRE1.1
+com.ibm.team.json_1.1.1.v20110524_1821.jar  EB94CC6A5444DFA33174D2190D474119  CRE1.1
+com.ibm.team.repository.jndi_1.1.2.v20111122_1800.jar  962D3D5267513BE109CF0B2E5FB199AC  CRE1.1
+org.apache.commons.httpclient_3.1.0.v20080605-1935.jar  439026EAB0A6D709E24799E277BFDD12  CRE1.1-httpclient-3.1.0
+org.apache.http.client_4.0.1.final/lib/httpmime-4.0.1.jar  C576E05E62DAF18769182AAB8328FD52  CRE1.1-httpmime-4.0.1
+org.dojotoolkit.shrinksafe_1.1.0.v20110426_0016.jar  71619DF3EA3997441C977DC78F6C5F01  CRE1.1-dojo-shrinksafe-1.1
+org.eclipse.equinox.servletbridge_1.1.0.v20090520-1800.jar  CAE996925079FC7CCE37BE946F74FD48  CRE1.1
+
+org.eclipse.equinox.registry_3.4.100.v20090520-1800-patch.jar  FC91ADDC30F8757E5C82400344D75C64  CRE1.1-equinox-registry-3.4.100-modified
+JSON-Apache-20110914-1647.jar  A22C034457D7BD65729EE61BD1EE0238  CRE1.1-Shindig-JSON-Apache
+args4j-2.0.12.jar  593DD2882B310418145B9BA61631EB94  CRE1.1-Shindig-args4j-2.0
+commons-codec-1.6.jar  5970F54883B4831B24B97F1125BA27E6  CRE1.1-Shindig-commons-codec-1.6
+commons-lang3-3.1.jar  71B48E6B3E1B1DC73FE705604B9C7584  CRE1.1-Shindig-commons-lang3-3.1
+ehcache-core-2.5.0.jar  45F82D156311754FF579AE8505ABA196  CRE1.1-Shindig-ehcache-2.5.0
+sizeof-agent.jar  AACE4C7B520B2C67F0E49B36AB2E5D25   CRE1.1-Shindig-ehcache-2.5.0
+httpclient-4.1.2.jar  12CE3F1CB6BB5FA6B104672731FA3D13  CRE1.1-Shindig-httpclient-4.1.2
+icu4j-4.8.1.1.jar  3EE283FE53886456AF4FF27A421250CE  CRE1.1-Shindig-icu4j-4.8.1.1
+jarjar-1.1.jar  2E5839784166B25D88540CC156F3340B  CRE1.1-Shindig-jarjar-1.1
+jasper-el-6.0.33.jar  C9BF42DD387E8D28B32CAB680BD73F89  CRE1.1-Shindig-jasper-el-6.0.33
+joda-time-2.0.jar  8B6290A9834BE663FEF9C21ADEB8CF5E  CRE1.1-Shindig-joda-time-2.0
+protobuf-java-2.4.1.jar  1253F05305EED82F6AAE1D8C8AAD43DA  CRE1.1-Shindig-protobuf-2.4.1
+xmlpull-1.1.3.1.jar  CC57DACC720ECA721A50E78934B822D2  CRE1.1-Shindig-xmlpull-1.1.3.1
+xstream-1.4.2.jar  23947B036DD0D9CD23CB2F388C373181  CRE1.1-Shindig-xstream-1.4.2
+
+# ISA Lite
+wasexporter.jar  3E6F104BF970EBBF59EB1358645A09FC  ISA-Lite-1.3.4
+ant-launcher.jar  625025DD44332C859390FAD91CEF06A3  ISA-Lite-1.3.4
+autopdswing.jar  6FAA042BCE1B3CDF8570A5628DEF6D08  ISA-Lite-1.3.4
+jsch-0.1.40.jar  76AC57EC8FCF613F7E028D1F34C7A48D  ISA-Lite-1.3.4
+commons-net-1.4.1.jar  365C9A26E81B212DE0553FBED10452CC  ISA-Lite-1.3.4
+jakarta-oro-2.0.7.jar  B22A7C4CB68EE639220DB6468E5F623D  ISA-Lite-1.3.4
+collector.jar  2277AF19E5CDAA376C4ED8B7CC588D4D  ISA-Lite-1.3.4
+ant.jar  E46A018F08DA06E099FBC041C78BF040  ISA-Lite-1.3.4
+xmlParserAPIs.jar  A3012F30EFD54E187DC1C398CAD8F71A  ISA-Lite-1.3.4
+rasutils/RASUtils.jar  9FE26E5012EF26ADD1FE6570664BD8FC  ISA-Lite-1.3.4
+ant-jsch.jar  35447BD48B42B376A36AFFF93A54D4C7  ISA-Lite-1.3.4
+autopd.jar  64D294477BB11B2F665496D972EF1FFC  ISA-Lite-1.3.4
+esa.jar  68549DD70D43C6E581CC70B2B50BAD77  ISA-Lite-1.3.4
+xercesImpl.jar  7B2C3EDCCFC00F802911A8E8DC8711D3  ISA-Lite-1.3.4
+SystemContext.jar  5BE487D47857AA8481B520952CC67776  ISA-Lite-1.3.4
+ResourceCollectionClient.jar  4C5A91F1B0D329FEE785CE60895FC28B  ISA-Lite-1.3.4
+depcheck.jar  1CDCEB19F2646A8CD4648475C3C1BEAE  ISA-Lite-1.3.4
+scheduler.jar  75106EFADEC68671D668A241F03282BE  ISA-Lite-1.3.4
+commonutils.jar  8345B57D41E55AC864C02D0794BFA976  ISA-Lite-1.3.4
+ResourceCollection.jar  D2C6D80A7DFA2198ACB011DA348F7E2E  ISA-Lite-1.3.4
+xmlstream.jar  156236DAD965AAA1912EF4913E4518CA  ISA-Lite-1.3.4
+uimengine.jar  76A5963F16C05E19BEBB09A057C3EC30  ISA-Lite-1.3.4
+UIMPLRTProvider.jar  00453A0B5B2DABB04875250C9F3A3176  ISA-Lite-1.3.4
+uim.jar  2A34A2240667008467FF812C47B07680  ISA-Lite-1.3.4
+ResourceCaching.jar  934B9C9D5E6E90D4AACCCB5288BDC8B7  ISA-Lite-1.3.4
+invtool.jar  49FCDCD8900B5112E31408C28B2068CB  ISA-Lite-1.3.4
+ResourceCollectionService.jar  8801AC655E9A48B01A7C87D2D62B0557  ISA-Lite-1.3.4
+UIMProviderCore.jar  941D13BD2171ADD1D5DAE53CD8BCD6A2  ISA-Lite-1.3.4
+uimfilerepository.jar  95688B6A1EF74BA1EC62A851309B5C9F  ISA-Lite-1.3.4
+uimutil.jar  5370314A6C1CA55538EA5E880CA3C404  ISA-Lite-1.3.4
+CITProvider.jar  EE09FA8B1E3F2D0088143228430BA9D2  ISA-Lite-1.3.4
+SysMgmtCore.jar  31BFA868A35EF2431E65E65FC92592F5  ISA-Lite-1.3.4
+LAPApp.jar  2CC532CA0D6DBDFCBA81D558D6A1DA86  ISA-Lite-1.3.4
+
+core.jar    776E646E73A0F2F0C80D7AC517E5A9A2 ZXING-1.7
+jsoup-1.6.1.jar    E26EFC650436495132FA2CD7A3896DDD   JSoup-1.6.1
+net.jazz.ajax_2.1.2.20120408-2020.jar  24B5708CC67122952585D7B881563339   RTC-3.0.1.2
+DOHRobot.jar  46752B76DA25FE574EE7E11EBE853376    RTC-3.0.1.2
+servletbridge.jar  D9BBBAAB8FB0794747DEDF38A6AA7CEB   RTC-3.0.1.2
+
+guava-11.0.1.jar  69A3D06554EBC3027C9432509A67EDE2  Guava-11.0.1
+
+Export.jar  7571827C3ADEE397CF270186E1400461  Stellant-version-XXX
+
+
+com.ibm.sistdase.json_1.1.0.v20110526_0436.jar  6E4D3663D96555F0A570A9A6528629F4  RTC-3.0.1.2
+com.ibm.team.json_1.1.1.v20110524_1821.jar  EB94CC6A5444DFA33174D2190D474119  RTC-3.0.1.2
+com.ibm.team.repository.jndi_1.1.2.v20111122_1800.jar  962D3D5267513BE109CF0B2E5FB199AC  RTC-3.0.1.2
+org.apache.commons.httpclient_3.1.0.v20080605-1935.jar  439026EAB0A6D709E24799E277BFDD12  RTC-3.0.1.2
+httpmime-4.0.1.jar  C576E05E62DAF18769182AAB8328FD52  RTC-3.0.1.2
+org.dojotoolkit.shrinksafe_1.1.0.v20110426_0016.jar  71619DF3EA3997441C977DC78F6C5F01  RTC-3.0.1.2
+org.eclipse.equinox.servletbridge_1.1.0.v20090520-1800.jar  CAE996925079FC7CCE37BE946F74FD48  RTC-3.0.1.2
+net.jazz.ajax_2.1.2.20120409-1705.jar  58E601501B16F4CA48C9CAAFC9F6189C  RTC-3.0.1.2
+
+com.ibm.cic.agent.linux.registerAgent.jar  72FF3C56108A4BC51778165C79D5A3E8  RIM-1.4.4
+com.ibm.cic.agent.zos.utils.jar  14E10DE9264958584582A652E5A1D1F2  RIM-1.4.4
+com.ibm.cic.agent.nativeAdminFixup.jar  B154D7E6A3DDB6FD7C818F387135B684  RIM-1.4.4
+flexlicensing.jar  14B53E8B338EAE07A397AF70AEB41BCE  RIM-1.4.4
+LUMClient.jar  5BA1C2AE9FED1B7082758CF18298B2C4  RIM-1.4.4
+lumlicensing.jar  546427A3FC0B505EEB8E030B6E2A5268  RIM-1.4.4
+runtime_registry_compatibility.jar  CFB14B13BD6312AA6688350101F45938  RIM-1.4.4
+nativeInstallAdapterLinux.jar  AC64D00F0497480EDC9D1186FF67819C  RIM-1.4.4
+ant-launcher.jar  10B3B0DE7A6CC3B873332903140FCE42  RIM-1.4.4
+ant-jmf.jar  DBF8A7FB1ADA6D6BCD968B9ABD269816  RIM-1.4.4
+ant-junit.jar  F817588763CEC4FC43C5E0A65860AB0F  RIM-1.4.4
+ant-apache-bcel.jar  4837CE6E61309A5D0387FC46FD5D880A  RIM-1.4.4
+ant-antlr.jar  A13541308214E83B44642BC9772F5C6F  RIM-1.4.4
+ant-apache-bsf.jar  7DE8A31BAF839E2A1FB6081F6DF0EFFA  RIM-1.4.4
+ant-jai.jar  A5695BE6F4A1FA25F5E685675161E820  RIM-1.4.4
+ant-starteam.jar  6D43A7C9F383AA3EBE014F39311B4AFF  RIM-1.4.4
+ant-stylebook.jar  23A5AA2F82AE8924B04CB9A495340BA4  RIM-1.4.4
+ant-trax.jar  34970A49001010D136CCB288B91F0DEA  RIM-1.4.4
+ant-swing.jar  825F4F01623849507CDD76CB9DC01C93  RIM-1.4.4
+ant-netrexx.jar  2DF26F07C0C169C2639A38F05E6BB006  RIM-1.4.4
+ant-weblogic.jar  880C04E9DB3980F1EE45020EFB7EC0BD  RIM-1.4.4
+ant.jar  2510F07FEF2492F7C4F0A3BE192F46BF  RIM-1.4.4
+ant-apache-resolver.jar  54D45B76065B478C38FB9DDBBD9AD94E  RIM-1.4.4
+ant-jdepend.jar  37FA4103079FFFC20F6067E189C03318  RIM-1.4.4
+ant-commons-net.jar  59FE568731A738F0E225037F91705E7C  RIM-1.4.4
+ant-jsch.jar  EEA68BA374F58B46D863290FE3293C84  RIM-1.4.4
+ant-commons-logging.jar  8312F6444DC73E0BDC0DA24117E5AAE3  RIM-1.4.4
+ant-apache-regexp.jar  2ECF5BC2F367298EC45514BB726E64EE  RIM-1.4.4
+ant-apache-oro.jar  2F9C05AE442CEC22C3C346078D1A6409  RIM-1.4.4
+ant-javamail.jar  F60FF39B43805403AD1EE5E1ECD46D7C  RIM-1.4.4
+ant-apache-log4j.jar  5597C7546A3C498E5A2C3AD470EC5F73  RIM-1.4.4
+ant-nodeps.jar  CA80F91B62385B8622B57F0E236F9410  RIM-1.4.4
+com.ibm.ws.pak.internal.jar  BF741D4CF1403456DBCA66148D5C5CD5  RIM-1.4.4
+org.eclipse.core.expressions_3.4.200.v20100505.jar  F585598A1455F2A73A29FB60E7BF9F5A  RIM-1.4.4
+org.eclipse.core.contenttype_3.4.100.v20100505-1235.jar  59828D927CE5A34EF02C3C2EE9D81DC1  RIM-1.4.4
+org.eclipse.core.runtime_3.6.0.v20100505.jar  B416F8566373865FD1A0C2A706C2861D  RIM-1.4.4
+com.ibm.cic.licensing.common.util_7.0.302.v20101007_1238.jar  73D903B5F0F3B1FF73688003C31843A0  RIM-1.4.4
+com.ibm.cic.agent.core_1.4.9.v20110524_1525.jar  6487CD056613C183FD1C14AE62B6CBFA  RIM-1.4.4
+org.eclipse.equinox.ds_1.2.1.R36x_v20100803.jar  3147B65D34F09E768F0EFED8BC2D2306  RIM-1.4.4
+org.sat4j.pb_2.2.0.v20100429.jar  3DED0A927F1736BA146A4B289C8EB3B9  RIM-1.4.4
+org.eclipse.equinox.p2.metadata_2.0.1.R36x_v20101202.jar  A69AE4C94D14E57CC74DC0EC61F776FC  RIM-1.4.4
+com.ibm.cic.licensing.policy.ui_7.1.141.v20110516_2129.jar  8E292C64E38E04D96F015690693FD922  RIM-1.4.4
+com.ibm.cic.eclipse.ui.internals_1.0.2.v20110516_2129.jar  F155B7B9650BD6DE8A83A1041537C8A5  RIM-1.4.4
+org.eclipse.equinox.p2.core_2.0.3.R36x_v20110111.jar  34F84A51FE312EBAE8C37AC00E3468D9  RIM-1.4.4
+com.ibm.cic.agent.core.executeInstallAdapter_1.2.6.v20101105_2254.jar  5046AD408E62F73AD23DB4923AE209AC  RIM-1.4.4
+com.ibm.cic.common.antAdapterData_1.0.7.v20101105_2254.jar  62AE632E986E877B88ED4282EBD8CC27  RIM-1.4.4
+org.eclipse.equinox.common_3.6.0.v20100503.jar  4BA4C6BC7F0F1FA90B13E726300C65A6  RIM-1.4.4
+org.eclipse.help.ui_3.5.3.r36_20101116.jar  9011FF717FD8827AB8A2CAA39EC9D12B  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.httpclient_3.1.0.v20090722_0421.jar  709CD1F0B22589417063EC5DEF7F40EC  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.linux_1.0.6.v20101105_2254.jar  611CF7E4A324D57BC808292A42B803F2  RIM-1.4.4
+com.ibm.cic.common.commonNativeAdapterData_1.4.4.v20110211_2205.jar  B467C43599848F0283040F205ACCC599  RIM-1.4.4
+javax.servlet_2.5.0.v200910301333.jar  E46E37400D01A527FAB7A22EDC74BD2D  RIM-1.4.4
+org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503.jar  46F65764D80FC04E9E65B12A777EA3EA  RIM-1.4.4
+com.ibm.cic.common.p2EclipseAdapterData_1.0.3.v20110516_2129.jar  FFD2B2DBDAB826E9C1D810D4ED26B45F  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.os400_1.0.1.v20101105_2254.jar  1F7350EAD73A6C41EB09D215D09CA732  RIM-1.4.4
+org.eclipse.ui.intro_3.4.0.v20100427.jar  4D198A8347DC2FB1881AE475415121C1  RIM-1.4.4
+com.ibm.cic.dev.xml.core_1.4.5.v20110516_2129.jar  42DFBDA22ABCBC0A656EB826345CB25B  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.solaris_1.0.6.v20101105_2254.jar  A6B10083B4FB66B7DFB0B45AD696BF5F  RIM-1.4.4
+org.eclipse.equinox.p2.garbagecollector_1.0.100.v20100503.jar  7F77C60EADAE5042984F9F0AD35B0D7E  RIM-1.4.4
+org.eclipse.core.variables_3.2.400.v20100505.jar  48DC7F0FA6371C070B9EFF8223E4041F  RIM-1.4.4
+org.eclipse.core.databinding.property_1.3.0.I20100601-0800.jar  0F6778C6B9156567175245A1CBFA8067  RIM-1.4.4
+org.eclipse.equinox.http.jetty_2.0.0.v20100503.jar  5E8516CBCEE39756A16FE4890AF76138  RIM-1.4.4
+org.eclipse.equinox.registry_3.5.0.v20100503.jar  69B1EFC9BB04D6CEF4A3AA8EDEEE206C  RIM-1.4.4
+org.eclipse.equinox.util_1.0.200.v20100503.jar  6B4DC6E647D6AB554F863F0BFA05BB5C  RIM-1.4.4
+com.ibm.cic.licensing.policy.ui.preferences_7.1.141.v20110516_2129.jar  E8CF9B4CBDDC0945B72DC15165118039  RIM-1.4.4
+org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20100503.jar  19CD7C42BC1FC3FE7A59529F648D1042  RIM-1.4.4
+org.eclipse.equinox.p2.repository_2.0.2.R36x_v20110111-1500.jar  5F60E46B4AD9EBD35CDFE0EF6224A82E  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.hpux_1.0.6.v20101105_2254.jar  103F9531F901779E82D62277964CB7EB  RIM-1.4.4
+org.eclipse.equinox.p2.touchpoint.natives_1.0.201.R36x_v20110111.jar  2A1A1CEDB9DD2A5D877BAB5F20E514CC  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.logging_1.0.4.v20090722_0421.jar  B8A2E4F95D993F4885E62FF2C9914A84  RIM-1.4.4
+org.apache.lucene.analysis_1.9.1.v20100518-1140.jar  514505C60DD7D072A190B6DAADE42EB8  RIM-1.4.4
+org.eclipse.ui_3.6.2.M20110203-1100.jar  249848B1B2F87FED5908CBE8ADB57ABC  RIM-1.4.4
+com.ibm.cic.agent.core.commonNativeInstallAdapter_1.2.7.v20110516_2129.jar  6862438FA08DDAB739FE81A6D9762C89  RIM-1.4.4
+com.ibm.cic.common.transports.commons.net_1.2.1.v20101105_2254.jar  3925DBB8EAC4EB8D1BE8665396B3E154  RIM-1.4.4
+org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar  AEB835106BD5649D1DA4F2C7D3EF3324  RIM-1.4.4
+com.ibm.cic.common.core.iwm_1.2.2.v20101105_2254.jar  4FCC3DAB91919C8A4F567F7AE3DAF5D9  RIM-1.4.4
+org.eclipse.equinox.http.registry_1.1.1.R36x_v20101103.jar  D004F27C46D49754DC2F58742E403809  RIM-1.4.4
+org.eclipse.core.runtime.compatibility.auth_3.2.200.v20100517.jar  7D77538D6A2223DA8E2CD3772978033E  RIM-1.4.4
+org.eclipse.equinox.p2.artifact.repository_1.1.1.R36x_v20100901.jar  9CEB2D872CE46F2AADE2F1F14C98AD1A  RIM-1.4.4
+lib/jarprocessor-ant.jar  C985184430C195CC730A621C5AC8ECE9  RIM-1.4.4
+org.eclipse.equinox.p2.touchpoint.eclipse_2.0.3.R36x_v20101202.jar  1F235424F364D7866B0A56FEDA8D9AF8  RIM-1.4.4
+org.eclipse.equinox.http.servlet_1.1.0.v20100503.jar  D2038DE5C756BE1E550953452A1A9277  RIM-1.4.4
+com.ibm.cic.agent.credential.client_1.0.4.v20101105_2254.jar  28F37B077CCBFB5F2B25401C81E18BCE  RIM-1.4.4
+com.ibm.cic.install.launcher_1.0.400.v20100222_2233.jar  593F0E4F89E4C665A4DAC1030A277947  RIM-1.4.4
+com.ibm.ws.pak.core_1.3.2.v20110516_2129.jar  1FF0E501829EAF9A653BE3D7F76C6C3F  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.net_1.4.1.v20090722_0421.jar  7868CE0B967E37298A53A7E6A2367316  RIM-1.4.4
+org.eclipse.swt.gtk.linux.x86_3.6.2.v3659b.jar  D642A4C135F9C700089463E61FAFC4B4  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.macosx_1.0.6.v20101105_2254.jar  FA3F3C79888CBB23BAC6FD23A927CBCE  RIM-1.4.4
+ant_tasks/helpbase-ant.jar  333EE344DE491AC0F50AC969D22213BC  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData_1.0.8.v20101105_2254.jar  816D660094958CCB991822B817122955  RIM-1.4.4
+javax.servlet.jsp_2.0.0.v200806031607.jar  E7310CFC61079F5FA561120049DB3777  RIM-1.4.4
+com.ibm.cic.agent.core.nativeInstallAdapter_1.2.10.v20110516_2129.jar  143C619BF8A6D52ED5BC39959BE81CC6  RIM-1.4.4
+com.ibm.cic.agent.core.p2_1.0.7.v20110516_2129.jar  6ED160603A9B09AF5998587678CD88C8  RIM-1.4.4
+com.ibm.ccl.feedreader_1.0.5.v20101007_2150.jar  06F45B77F2AAAE55AC3E62D8172ADF35  RIM-1.4.4
+org.eclipse.core.databinding.beans_1.2.100.I20100601-0800.jar  8E23E87EA251059115A6B0C287E8D9BB  RIM-1.4.4
+org.eclipse.ecf.identity_3.1.0.v20100906-1425.jar  88950B035F93B2F671EDD7D264DA578D  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.aix_1.0.6.v20101105_2254.jar  6BC58F0851907FFD60705145E807613E  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.win32_1.0.6.v20101105_2254.jar  794B291D187E56389D1DD763DE7CBA78  RIM-1.4.4
+com.ibm.cic.eclipse.internals_1.0.6.v20110516_2129.jar  746E4B2B162BB6D5A3D8DA3145103CB7  RIM-1.4.4
+org.mortbay.jetty.server_6.1.23.v201004211559.jar  E800BDB1E4D56A9FE8A87766FE40738C  RIM-1.4.4
+org.eclipse.equinox.app_1.3.1.R36x_v20100803.jar  4356F794478B530D664795E7AF4E5ABF  RIM-1.4.4
+org.eclipse.equinox.security_1.0.200.v20100503.jar  9DA5BC63A5C68C04B71C600987D09106  RIM-1.4.4
+org.eclipse.jface.databinding_1.4.0.I20100601-0800.jar  8FF4105D44DC9619E61D4333A0963A4F  RIM-1.4.4
+org.eclipse.jface_3.6.2.M20110210-1200.jar  C8895EF2CEE729F50C825A8604019B08  RIM-1.4.4
+lib/antsupportlib.jar  A7DC9C66B553D46C9DAB6F9174ACEE15  RIM-1.4.4
+org.eclipse.core.databinding.observable_1.3.0.I20100601-0800.jar  B8493085C3273070272BD53D0006ABA4  RIM-1.4.4
+org.apache.jasper_5.5.17.v201004212143.jar  406D05A4E9809C0E4D1062A76EB74629  RIM-1.4.4
+org.eclipse.update.core_3.2.402.R36x_v20100629.jar  24B1DCAE4E1750A936DEF93B0C9A05C6  RIM-1.4.4
+org.eclipse.help.appserver_3.1.400.v20100427.jar  53DE9602B77EBFAA7BDD4E85831A51F8  RIM-1.4.4
+org.eclipse.core.databinding_1.3.100.I20100601-0800.jar  DA5FA567F755A017EB4024D93A486374  RIM-1.4.4
+org.eclipse.equinox.simpleconfigurator_1.0.200.v20100503.jar  7E352B88BF9674630AE996DF197166D3  RIM-1.4.4
+org.eclipse.equinox.frameworkadmin.equinox_1.0.200.v20100505.jar  2868DD2C719213DEA194A5BFA67219BA  RIM-1.4.4
+org.eclipse.ecf_3.1.0.v20100906-1425.jar  3B5F06F4B3BDF0656E70EF17F43B9C23  RIM-1.4.4
+org.eclipse.osgi.services_3.2.100.v20100503.jar  0CDC1F898C08B907E004739538927DCD  RIM-1.4.4
+org.eclipse.update.configurator_3.3.100.v20100512.jar  FAF46A08CCF61B7F2EFDFC182B8BCDF7  RIM-1.4.4
+com.ibm.cic.agent.core.pakInstallAdapter_1.0.4.v20101105_2254.jar  F3EF675F9491118FEF9D01360C5C62D6  RIM-1.4.4
+org.eclipse.ecf.ssl_1.0.100.v20100906-1425.jar  DB20453B9C2C951FA6EAA7938676EBBF  RIM-1.4.4
+com.ibm.cic.common.transports.httpclient_1.4.5.v20110525_1811.jar  C0E628CC82C2D56E449E10355E5E960E  RIM-1.4.4
+com.ibm.cic.licensing.common_7.0.14.v20110513_1648.jar  ED3052575DD95846D87027D9928E5E7C  RIM-1.4.4
+com.ibm.ccl.org.apache.oro_2.0.8.v20090722_0421.jar  312106C03477C001C4E78428C09B419A  RIM-1.4.4
+com.ibm.cic.common.model.p2_1.0.5.v20110516_2129.jar  6C5ABCFF48077506DC9EC484C1B7094D  RIM-1.4.4
+org.eclipse.ui.workbench_3.6.2.M20110210-1200.jar  72950C00EA714A3B525F0C8C0153C62D  RIM-1.4.4
+org.eclipse.core.net_1.2.100.I20100511-0800.jar  5A5489137621C8B7E949191363331AEE  RIM-1.4.4
+org.eclipse.help.webapp_3.5.3.r36_20101130.jar  63331B649EF7B00B382B52857A53BA16  RIM-1.4.4
+org.sat4j.core_2.2.0.v20100429.jar  02E0E62E6C55DBBA2AFB65FB649EDA32  RIM-1.4.4
+com.ibm.cic.common.eclipseAdapterData_1.1.9.v20101105_2254.jar  D9845C628162033C7E604546A39D2984  RIM-1.4.4
+org.mortbay.jetty.util_6.1.23.v201004211559.jar  54E05281D44CCC038B09B16BD23368E3  RIM-1.4.4
+org.eclipse.ui.forms_3.5.2.r36_v20100702.jar  58350712BABA299B4642192169753B48  RIM-1.4.4
+ant_tasks/metadataRepository-ant.jar  0AA4C70058A4137FD04BBBE8EBF4840A  RIM-1.4.4
+org.eclipse.osgi_3.6.2.R36x_v20110210.jar  C01DFAF5D01BED94C008AF79723D3D0F  RIM-1.4.4
+org.eclipse.equinox.frameworkadmin_2.0.0.v20100503.jar  587F527FAB200B2BD1ECE2D49A51B203  RIM-1.4.4
+com.ibm.cic.agent.ui_1.4.3.v20110516_2129.jar  B17D24CDFFD9CC4CFAF21CACA7B847BE  RIM-1.4.4
+com.ibm.cic.licensing.common.core_7.0.202.v20110429_1203.jar  65C3BE76AC7C0BDD6374F567902EDC84  RIM-1.4.4
+com.ibm.cic.common.ui_1.1.15.v20110516_2129.jar  9986371D7C78F42A7BD9D6780ED9B58B  RIM-1.4.4
+org.eclipse.equinox.p2.ql_2.0.0.v20100503a.jar  094C1DE5B1EDF38B1E83644A179D95EA  RIM-1.4.4
+org.eclipse.ecf.provider.filetransfer_3.1.0.v20100906-1425.jar  988398FB8E2F6A42934E6AC82FC1684C  RIM-1.4.4
+org.eclipse.swt.gtk.linux.x86_64_3.6.0.v3650b.jar  AB1CC568701DAC7F8286AE26E584EF45  RIM-1.4.4
+org.eclipse.equinox.p2.director_2.0.3.R36x_v20101117-1018.jar  59E83232D4546D16FD3A54CEBB33B0E2  RIM-1.4.4
+com.ibm.cic.common.executeAdapterData_1.0.6.v20101105_2254.jar  7FD145764EF3240B4F6B2047A9D3AEF4  RIM-1.4.4
+org.eclipse.help_3.5.0.v20100524.jar  51C0B871B7A936822A9FA370946177FA  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.zos_1.0.6.v20101105_2254.jar  CA682C38AB304D2F5A84DF4540D331E2  RIM-1.4.4
+org.eclipse.equinox.preferences_3.3.0.v20100503.jar  A5F040CA344E8EE36F3D21FCBDFAC5C6  RIM-1.4.4
+com.ibm.cic.agent.core.antInstallAdapter_1.2.11.v20101105_2254.jar  ABE74460E5AA5DCE7D708D7B69E39A6B  RIM-1.4.4
+org.eclipse.core.jobs_3.5.1.R36x_v20100824.jar  AE097B7D2D7317144BD38DDAE680C102  RIM-1.4.4
+ant_tasks/publisher-ant.jar  72A5A0717B61DC026B00A681BF895550  RIM-1.4.4
+com.ibm.cic.agent.core.eclipseInstallAdaptor_1.1.15.v20110516_2129.jar  D4F0D504D5A57C69058ED1F93DE1B2A3  RIM-1.4.4
+org.apache.commons.el_1.0.0.v201004212143.jar  7377F308B9EF62AEFE4C1EEEBF117D0F  RIM-1.4.4
+org.apache.lucene_1.9.1.v20100518-1140.jar  80107B569A61AED776E342626DA0B51F  RIM-1.4.4
+com.ibm.cic.common.core.pa_2.0.1.v20110516_2129.jar  45D7977F601AC1FEDDEC1F246A40B0A6  RIM-1.4.4
+org.apache.commons.codec_1.3.0.v20100518-1140.jar  6D0B90743CB0C8217AC9CF2751DDCEFB  RIM-1.4.4
+com.ibm.cic.common.model.validation.fast_1.0.4.v20101105_2254.jar  1D5510D1DC3E6DD78C5E10EA56E806DD  RIM-1.4.4
+org.eclipse.equinox.p2.engine_2.0.1.R36x_v20110201.jar  30E34F864D9DD3592EF413D5356B9247  RIM-1.4.4
+org.eclipse.equinox.jsp.jasper_1.0.201.R36x_v20101103.jar  C0A577F179F4765174916602F155E92D  RIM-1.4.4
+com.ibm.cic.common.pakAdapterData_1.0.3.v20101105_2254.jar  BC9ECECC395C352F5E70D734CA955A34  RIM-1.4.4
+com.ibm.icu_4.2.1.v20100412.jar  3E6690E17B268A280532C2AFF54C0CC6  RIM-1.4.4
+com.ibm.ws.sync.core_1.3.3.v20110516_2129.jar  8DC688D07BF89A717D871EF8EFD73195  RIM-1.4.4
+org.eclipse.ecf.filetransfer_4.0.0.v20100906-1425.jar  143A2C205935CC1CE09120046FE9420E  RIM-1.4.4
+com.ibm.ws.sync.ui_1.2.5.v20110516_2129.jar  74E55CCA6D3AC008107D4484889AA222  RIM-1.4.4
+org.eclipse.core.commands_3.6.0.I20100512-1500.jar  3F8370C831C528AF794C812B751F5AAD  RIM-1.4.4
+indicim.jar  3D653845011CB4AFB7EE4D991CC98B60  RIM-1.4.4
+thaiim.jar  CA8854D66E88FE7A19414E33ABB365AC  RIM-1.4.4
+dtfjview.jar  FDC7BB39788CF753CBCDF641CDD54BB2  RIM-1.4.4
+xmlencfw.jar  CBF4885523F3107766906E5103C0AFF3  RIM-1.4.4
+IBMSecureRandom.jar  C3E72294431B47EB3B3EF91C57D101F1  RIM-1.4.4
+dnsns.jar  3A684897DEF123CB010226BD36B0CD44  RIM-1.4.4
+gskikm.jar  D34BC34AC532D5D2D9EE22B939A92B78  RIM-1.4.4
+JavaDiagnosticsCollector.jar  F6B5D1173CD3A7F74ADB0404D7C129E0  RIM-1.4.4
+ibmxmlencprovider.jar  3D050446B4082AFCBBE109B78EBBE9E1  RIM-1.4.4
+dtfj-interface.jar  F6043C19942C24B8BA30A2255335D1E7  RIM-1.4.4
+ibmpkcs11impl.jar  79582E907795140748C2853780560F5B  RIM-1.4.4
+ibmjcefips.jar  0E43354E70BB281F5B7A9F74A3223669  RIM-1.4.4
+ibmjceprovider.jar  6277207779AD8684206170D8F7E2F553  RIM-1.4.4
+IBMKeyManagementServer.jar  36B21D6E5DE306AABE57B1250792BCD5  RIM-1.4.4
+localedata.jar  13B69768A7BDDF05A157B75C782FC270  RIM-1.4.4
+ibmsaslprovider.jar  F16791D61299C00D753D4C91B32F4579  RIM-1.4.4
+healthcenter.jar  1BA5568F6B091BA188624D607221CC9A  RIM-1.4.4
+jdmpview.jar  7600282CC682E55BF50C31ACF3943734  RIM-1.4.4
+dtfj.jar  51EBD7FB3A18AB07793EFE628AE682B1  RIM-1.4.4
+ibmkeycert.jar  A7CC26D7B97935D319B71B27B469B7F5  RIM-1.4.4
+jlm.jar  B321A1868D4F3E8155F3D8644E04EBDA  RIM-1.4.4
+ibmcfw.jar  5205E144691ECDEF9E82AA5151B058CF  RIM-1.4.4
+vm.jar  FAEF09D9F5D4A18CF6496E041C692F7F  RIM-1.4.4
+ibmorb.jar  CEC515CA268DE61E57859185AF1E4843  RIM-1.4.4
+javaws.jar  ADD5CBEAE1AFC977B3397F85387BC971  RIM-1.4.4
+sql.jar  14CEDD91280C6FAD731217E67C1DF1C6  RIM-1.4.4
+ibmjsseprovider2.jar  36B2C94FE48784848189E1A6CBB03B20  RIM-1.4.4
+ibmorbapi.jar  B164B0B847D8A873272F05841BAB7271  RIM-1.4.4
+charsets.jar  77B9B2029BFDD6BFC50312A7E78C8745  RIM-1.4.4
+xmldsigfw.jar  DB6B1904DB0B0064BC955FE93EF6C0B1  RIM-1.4.4
+beans.jar  EB4E883FF8E6FE902F65813C8E8A43F1  RIM-1.4.4
+ibmjgssfw.jar  49F1CCA3F486CB7A8851CB68B27393A3  RIM-1.4.4
+ibmxmlcrypto.jar  99697EEC1F7E1CDEE1BA555BB836AF2B  RIM-1.4.4
+deploy.jar  6FB0F42CB4E9D1EA10BEBDD8787AFAF2  RIM-1.4.4
+plugin.jar  16A9F04C536C2DD0CD1ADA99E19AE9D9  RIM-1.4.4
+logging.jar  ECEB3A3E1CF7F35A7C3FFFD863A8356C  RIM-1.4.4
+j9zip.jar  0F93A5F7952414D30C8DABC5AD2026C2  RIM-1.4.4
+xml.jar  FF104E71F26E7A0880F8B86F2817498C  RIM-1.4.4
+security.jar  65D7E4EABA9037F7321D8EC2B59FE835  RIM-1.4.4
+ibmsaslfw.jar  0CB5D186A378D18D3A2E12737401E5D2  RIM-1.4.4
+ibmjssefw.jar  1EB947ADE2702967B98DA66EFC495CFE  RIM-1.4.4
+rt.jar  D2883B926CCDE6BDDA081E725A41DBDC  RIM-1.4.4
+javascript.jar  4DCBA49C699F843E3B1E95D5630E7E4C  RIM-1.4.4
+jndi.jar  820EAC6AE25621C094132638E17D457C  RIM-1.4.4
+annotation.jar  D63E619D45CF55A7559476996C8A0A7F  RIM-1.4.4
+ibmpkcs.jar  D02258903C44AA1AA672555ACDE229B5  RIM-1.4.4
+ibmjgssprovider.jar  5D77C567438CC9EBCCD27559AA721557  RIM-1.4.4
+ibmjcefw.jar  60E41ED8558F1EDF3BD4DFEE0BC34569  RIM-1.4.4
+java.util.jar  1CECAFBB9E4AF7939D00E5318BF57B43  RIM-1.4.4
+ibmcertpathprovider.jar  A2575B9246DCFFAB55E84608C634F656  RIM-1.4.4
+ibmcertpathfw.jar  9E38EE7317D64FF8894EF162C19803B4  RIM-1.4.4
+com.ibm.cic.agent.linux.registerAgent.jar  72FF3C56108A4BC51778165C79D5A3E8  RIM-1.4.4
+com.ibm.cic.agent.zos.utils.jar  14E10DE9264958584582A652E5A1D1F2  RIM-1.4.4
+com.ibm.cic.agent.nativeAdminFixup.jar  B154D7E6A3DDB6FD7C818F387135B684  RIM-1.4.4
+flexlicensing.jar  14B53E8B338EAE07A397AF70AEB41BCE  RIM-1.4.4
+nativeInstallAdapterAix.jar  6421CF7C6A7DCA863334A65606452567  RIM-1.4.4
+LUMClient.jar  5BA1C2AE9FED1B7082758CF18298B2C4  RIM-1.4.4
+lumlicensing.jar  546427A3FC0B505EEB8E030B6E2A5268  RIM-1.4.4
+runtime_registry_compatibility.jar  CFB14B13BD6312AA6688350101F45938  RIM-1.4.4
+ant-launcher.jar  10B3B0DE7A6CC3B873332903140FCE42  RIM-1.4.4
+ant-jmf.jar  DBF8A7FB1ADA6D6BCD968B9ABD269816  RIM-1.4.4
+ant-junit.jar  F817588763CEC4FC43C5E0A65860AB0F  RIM-1.4.4
+ant-apache-bcel.jar  4837CE6E61309A5D0387FC46FD5D880A  RIM-1.4.4
+ant-antlr.jar  A13541308214E83B44642BC9772F5C6F  RIM-1.4.4
+ant-apache-bsf.jar  7DE8A31BAF839E2A1FB6081F6DF0EFFA  RIM-1.4.4
+ant-jai.jar  A5695BE6F4A1FA25F5E685675161E820  RIM-1.4.4
+ant-starteam.jar  6D43A7C9F383AA3EBE014F39311B4AFF  RIM-1.4.4
+ant-stylebook.jar  23A5AA2F82AE8924B04CB9A495340BA4  RIM-1.4.4
+ant-trax.jar  34970A49001010D136CCB288B91F0DEA  RIM-1.4.4
+ant-swing.jar  825F4F01623849507CDD76CB9DC01C93  RIM-1.4.4
+ant-netrexx.jar  2DF26F07C0C169C2639A38F05E6BB006  RIM-1.4.4
+ant-weblogic.jar  880C04E9DB3980F1EE45020EFB7EC0BD  RIM-1.4.4
+ant.jar  2510F07FEF2492F7C4F0A3BE192F46BF  RIM-1.4.4
+ant-apache-resolver.jar  54D45B76065B478C38FB9DDBBD9AD94E  RIM-1.4.4
+ant-jdepend.jar  37FA4103079FFFC20F6067E189C03318  RIM-1.4.4
+ant-commons-net.jar  59FE568731A738F0E225037F91705E7C  RIM-1.4.4
+ant-jsch.jar  EEA68BA374F58B46D863290FE3293C84  RIM-1.4.4
+ant-commons-logging.jar  8312F6444DC73E0BDC0DA24117E5AAE3  RIM-1.4.4
+ant-apache-regexp.jar  2ECF5BC2F367298EC45514BB726E64EE  RIM-1.4.4
+ant-apache-oro.jar  2F9C05AE442CEC22C3C346078D1A6409  RIM-1.4.4
+ant-javamail.jar  F60FF39B43805403AD1EE5E1ECD46D7C  RIM-1.4.4
+ant-apache-log4j.jar  5597C7546A3C498E5A2C3AD470EC5F73  RIM-1.4.4
+ant-nodeps.jar  CA80F91B62385B8622B57F0E236F9410  RIM-1.4.4
+com.ibm.ws.pak.internal.jar  BF741D4CF1403456DBCA66148D5C5CD5  RIM-1.4.4
+org.eclipse.core.expressions_3.4.200.v20100505.jar  F585598A1455F2A73A29FB60E7BF9F5A  RIM-1.4.4
+org.eclipse.core.contenttype_3.4.100.v20100505-1235.jar  59828D927CE5A34EF02C3C2EE9D81DC1  RIM-1.4.4
+org.eclipse.core.runtime_3.6.0.v20100505.jar  B416F8566373865FD1A0C2A706C2861D  RIM-1.4.4
+com.ibm.cic.licensing.common.util_7.0.302.v20101007_1238.jar  73D903B5F0F3B1FF73688003C31843A0  RIM-1.4.4
+com.ibm.cic.agent.core_1.4.9.v20110524_1525.jar  6487CD056613C183FD1C14AE62B6CBFA  RIM-1.4.4
+org.eclipse.equinox.ds_1.2.1.R36x_v20100803.jar  3147B65D34F09E768F0EFED8BC2D2306  RIM-1.4.4
+org.sat4j.pb_2.2.0.v20100429.jar  3DED0A927F1736BA146A4B289C8EB3B9  RIM-1.4.4
+org.eclipse.equinox.p2.metadata_2.0.1.R36x_v20101202.jar  A69AE4C94D14E57CC74DC0EC61F776FC  RIM-1.4.4
+com.ibm.cic.licensing.policy.ui_7.1.141.v20110516_2129.jar  8E292C64E38E04D96F015690693FD922  RIM-1.4.4
+com.ibm.cic.eclipse.ui.internals_1.0.2.v20110516_2129.jar  F155B7B9650BD6DE8A83A1041537C8A5  RIM-1.4.4
+org.eclipse.equinox.p2.core_2.0.3.R36x_v20110111.jar  34F84A51FE312EBAE8C37AC00E3468D9  RIM-1.4.4
+com.ibm.cic.agent.core.executeInstallAdapter_1.2.6.v20101105_2254.jar  5046AD408E62F73AD23DB4923AE209AC  RIM-1.4.4
+com.ibm.cic.common.antAdapterData_1.0.7.v20101105_2254.jar  62AE632E986E877B88ED4282EBD8CC27  RIM-1.4.4
+org.eclipse.equinox.common_3.6.0.v20100503.jar  4BA4C6BC7F0F1FA90B13E726300C65A6  RIM-1.4.4
+org.eclipse.help.ui_3.5.3.r36_20101116.jar  9011FF717FD8827AB8A2CAA39EC9D12B  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.httpclient_3.1.0.v20090722_0421.jar  709CD1F0B22589417063EC5DEF7F40EC  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.linux_1.0.6.v20101105_2254.jar  611CF7E4A324D57BC808292A42B803F2  RIM-1.4.4
+com.ibm.cic.common.commonNativeAdapterData_1.4.4.v20110211_2205.jar  B467C43599848F0283040F205ACCC599  RIM-1.4.4
+javax.servlet_2.5.0.v200910301333.jar  E46E37400D01A527FAB7A22EDC74BD2D  RIM-1.4.4
+org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503.jar  46F65764D80FC04E9E65B12A777EA3EA  RIM-1.4.4
+com.ibm.cic.common.p2EclipseAdapterData_1.0.3.v20110516_2129.jar  FFD2B2DBDAB826E9C1D810D4ED26B45F  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.os400_1.0.1.v20101105_2254.jar  1F7350EAD73A6C41EB09D215D09CA732  RIM-1.4.4
+org.eclipse.ui.intro_3.4.0.v20100427.jar  4D198A8347DC2FB1881AE475415121C1  RIM-1.4.4
+com.ibm.cic.dev.xml.core_1.4.5.v20110516_2129.jar  42DFBDA22ABCBC0A656EB826345CB25B  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.solaris_1.0.6.v20101105_2254.jar  A6B10083B4FB66B7DFB0B45AD696BF5F  RIM-1.4.4
+org.eclipse.equinox.p2.garbagecollector_1.0.100.v20100503.jar  7F77C60EADAE5042984F9F0AD35B0D7E  RIM-1.4.4
+org.eclipse.core.variables_3.2.400.v20100505.jar  48DC7F0FA6371C070B9EFF8223E4041F  RIM-1.4.4
+org.eclipse.core.databinding.property_1.3.0.I20100601-0800.jar  0F6778C6B9156567175245A1CBFA8067  RIM-1.4.4
+org.eclipse.equinox.http.jetty_2.0.0.v20100503.jar  5E8516CBCEE39756A16FE4890AF76138  RIM-1.4.4
+org.eclipse.equinox.registry_3.5.0.v20100503.jar  69B1EFC9BB04D6CEF4A3AA8EDEEE206C  RIM-1.4.4
+org.eclipse.equinox.util_1.0.200.v20100503.jar  6B4DC6E647D6AB554F863F0BFA05BB5C  RIM-1.4.4
+com.ibm.cic.licensing.policy.ui.preferences_7.1.141.v20110516_2129.jar  E8CF9B4CBDDC0945B72DC15165118039  RIM-1.4.4
+org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20100503.jar  19CD7C42BC1FC3FE7A59529F648D1042  RIM-1.4.4
+org.eclipse.equinox.p2.repository_2.0.2.R36x_v20110111-1500.jar  5F60E46B4AD9EBD35CDFE0EF6224A82E  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.hpux_1.0.6.v20101105_2254.jar  103F9531F901779E82D62277964CB7EB  RIM-1.4.4
+org.eclipse.equinox.p2.touchpoint.natives_1.0.201.R36x_v20110111.jar  2A1A1CEDB9DD2A5D877BAB5F20E514CC  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.logging_1.0.4.v20090722_0421.jar  B8A2E4F95D993F4885E62FF2C9914A84  RIM-1.4.4
+org.apache.lucene.analysis_1.9.1.v20100518-1140.jar  514505C60DD7D072A190B6DAADE42EB8  RIM-1.4.4
+org.eclipse.ui_3.6.2.M20110203-1100.jar  249848B1B2F87FED5908CBE8ADB57ABC  RIM-1.4.4
+com.ibm.cic.agent.core.commonNativeInstallAdapter_1.2.7.v20110516_2129.jar  6862438FA08DDAB739FE81A6D9762C89  RIM-1.4.4
+com.ibm.cic.common.transports.commons.net_1.2.1.v20101105_2254.jar  3925DBB8EAC4EB8D1BE8665396B3E154  RIM-1.4.4
+org.eclipse.equinox.launcher_1.1.1.R36x_v20101122_1400.jar  AEB835106BD5649D1DA4F2C7D3EF3324  RIM-1.4.4
+com.ibm.cic.common.core.iwm_1.2.2.v20101105_2254.jar  4FCC3DAB91919C8A4F567F7AE3DAF5D9  RIM-1.4.4
+org.eclipse.equinox.http.registry_1.1.1.R36x_v20101103.jar  D004F27C46D49754DC2F58742E403809  RIM-1.4.4
+org.eclipse.core.runtime.compatibility.auth_3.2.200.v20100517.jar  7D77538D6A2223DA8E2CD3772978033E  RIM-1.4.4
+org.eclipse.equinox.p2.artifact.repository_1.1.1.R36x_v20100901.jar  9CEB2D872CE46F2AADE2F1F14C98AD1A  RIM-1.4.4
+lib/jarprocessor-ant.jar  C985184430C195CC730A621C5AC8ECE9  RIM-1.4.4
+org.eclipse.equinox.p2.touchpoint.eclipse_2.0.3.R36x_v20101202.jar  1F235424F364D7866B0A56FEDA8D9AF8  RIM-1.4.4
+org.eclipse.equinox.http.servlet_1.1.0.v20100503.jar  D2038DE5C756BE1E550953452A1A9277  RIM-1.4.4
+com.ibm.cic.agent.credential.client_1.0.4.v20101105_2254.jar  28F37B077CCBFB5F2B25401C81E18BCE  RIM-1.4.4
+com.ibm.cic.install.launcher_1.0.400.v20100222_2233.jar  593F0E4F89E4C665A4DAC1030A277947  RIM-1.4.4
+com.ibm.ws.pak.core_1.3.2.v20110516_2129.jar  1FF0E501829EAF9A653BE3D7F76C6C3F  RIM-1.4.4
+com.ibm.ccl.org.apache.commons.net_1.4.1.v20090722_0421.jar  7868CE0B967E37298A53A7E6A2367316  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.macosx_1.0.6.v20101105_2254.jar  FA3F3C79888CBB23BAC6FD23A927CBCE  RIM-1.4.4
+ant_tasks/helpbase-ant.jar  333EE344DE491AC0F50AC969D22213BC  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData_1.0.8.v20101105_2254.jar  816D660094958CCB991822B817122955  RIM-1.4.4
+javax.servlet.jsp_2.0.0.v200806031607.jar  E7310CFC61079F5FA561120049DB3777  RIM-1.4.4
+com.ibm.cic.agent.core.nativeInstallAdapter_1.2.10.v20110516_2129.jar  143C619BF8A6D52ED5BC39959BE81CC6  RIM-1.4.4
+com.ibm.cic.agent.core.p2_1.0.7.v20110516_2129.jar  6ED160603A9B09AF5998587678CD88C8  RIM-1.4.4
+com.ibm.ccl.feedreader_1.0.5.v20101007_2150.jar  06F45B77F2AAAE55AC3E62D8172ADF35  RIM-1.4.4
+org.eclipse.core.databinding.beans_1.2.100.I20100601-0800.jar  8E23E87EA251059115A6B0C287E8D9BB  RIM-1.4.4
+org.eclipse.ecf.identity_3.1.0.v20100906-1425.jar  88950B035F93B2F671EDD7D264DA578D  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.aix_1.0.6.v20101105_2254.jar  6BC58F0851907FFD60705145E807613E  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.win32_1.0.6.v20101105_2254.jar  794B291D187E56389D1DD763DE7CBA78  RIM-1.4.4
+com.ibm.cic.eclipse.internals_1.0.6.v20110516_2129.jar  746E4B2B162BB6D5A3D8DA3145103CB7  RIM-1.4.4
+org.mortbay.jetty.server_6.1.23.v201004211559.jar  E800BDB1E4D56A9FE8A87766FE40738C  RIM-1.4.4
+org.eclipse.equinox.app_1.3.1.R36x_v20100803.jar  4356F794478B530D664795E7AF4E5ABF  RIM-1.4.4
+org.eclipse.equinox.security_1.0.200.v20100503.jar  9DA5BC63A5C68C04B71C600987D09106  RIM-1.4.4
+org.eclipse.jface.databinding_1.4.0.I20100601-0800.jar  8FF4105D44DC9619E61D4333A0963A4F  RIM-1.4.4
+org.eclipse.jface_3.6.2.M20110210-1200.jar  C8895EF2CEE729F50C825A8604019B08  RIM-1.4.4
+lib/antsupportlib.jar  A7DC9C66B553D46C9DAB6F9174ACEE15  RIM-1.4.4
+org.eclipse.core.databinding.observable_1.3.0.I20100601-0800.jar  B8493085C3273070272BD53D0006ABA4  RIM-1.4.4
+org.apache.jasper_5.5.17.v201004212143.jar  406D05A4E9809C0E4D1062A76EB74629  RIM-1.4.4
+org.eclipse.update.core_3.2.402.R36x_v20100629.jar  24B1DCAE4E1750A936DEF93B0C9A05C6  RIM-1.4.4
+org.eclipse.help.appserver_3.1.400.v20100427.jar  53DE9602B77EBFAA7BDD4E85831A51F8  RIM-1.4.4
+org.eclipse.core.databinding_1.3.100.I20100601-0800.jar  DA5FA567F755A017EB4024D93A486374  RIM-1.4.4
+org.eclipse.equinox.simpleconfigurator_1.0.200.v20100503.jar  7E352B88BF9674630AE996DF197166D3  RIM-1.4.4
+org.eclipse.equinox.frameworkadmin.equinox_1.0.200.v20100505.jar  2868DD2C719213DEA194A5BFA67219BA  RIM-1.4.4
+org.eclipse.ecf_3.1.0.v20100906-1425.jar  3B5F06F4B3BDF0656E70EF17F43B9C23  RIM-1.4.4
+org.eclipse.osgi.services_3.2.100.v20100503.jar  0CDC1F898C08B907E004739538927DCD  RIM-1.4.4
+org.eclipse.update.configurator_3.3.100.v20100512.jar  FAF46A08CCF61B7F2EFDFC182B8BCDF7  RIM-1.4.4
+com.ibm.cic.agent.core.pakInstallAdapter_1.0.4.v20101105_2254.jar  F3EF675F9491118FEF9D01360C5C62D6  RIM-1.4.4
+org.eclipse.swt.motif.aix.ppc_3.6.2.v3659b.jar  A30DCAE0CB2B0BB6679EFE10CC202B50  RIM-1.4.4
+org.eclipse.ecf.ssl_1.0.100.v20100906-1425.jar  DB20453B9C2C951FA6EAA7938676EBBF  RIM-1.4.4
+com.ibm.cic.common.transports.httpclient_1.4.5.v20110525_1811.jar  C0E628CC82C2D56E449E10355E5E960E  RIM-1.4.4
+com.ibm.cic.licensing.common_7.0.14.v20110513_1648.jar  ED3052575DD95846D87027D9928E5E7C  RIM-1.4.4
+com.ibm.ccl.org.apache.oro_2.0.8.v20090722_0421.jar  312106C03477C001C4E78428C09B419A  RIM-1.4.4
+com.ibm.cic.common.model.p2_1.0.5.v20110516_2129.jar  6C5ABCFF48077506DC9EC484C1B7094D  RIM-1.4.4
+org.eclipse.ui.workbench_3.6.2.M20110210-1200.jar  72950C00EA714A3B525F0C8C0153C62D  RIM-1.4.4
+org.eclipse.core.net_1.2.100.I20100511-0800.jar  5A5489137621C8B7E949191363331AEE  RIM-1.4.4
+org.eclipse.help.webapp_3.5.3.r36_20101130.jar  63331B649EF7B00B382B52857A53BA16  RIM-1.4.4
+org.sat4j.core_2.2.0.v20100429.jar  02E0E62E6C55DBBA2AFB65FB649EDA32  RIM-1.4.4
+com.ibm.cic.common.eclipseAdapterData_1.1.9.v20101105_2254.jar  D9845C628162033C7E604546A39D2984  RIM-1.4.4
+org.mortbay.jetty.util_6.1.23.v201004211559.jar  54E05281D44CCC038B09B16BD23368E3  RIM-1.4.4
+org.eclipse.ui.forms_3.5.2.r36_v20100702.jar  58350712BABA299B4642192169753B48  RIM-1.4.4
+ant_tasks/metadataRepository-ant.jar  0AA4C70058A4137FD04BBBE8EBF4840A  RIM-1.4.4
+org.eclipse.osgi_3.6.2.R36x_v20110210.jar  C01DFAF5D01BED94C008AF79723D3D0F  RIM-1.4.4
+org.eclipse.equinox.frameworkadmin_2.0.0.v20100503.jar  587F527FAB200B2BD1ECE2D49A51B203  RIM-1.4.4
+com.ibm.cic.agent.ui_1.4.3.v20110516_2129.jar  B17D24CDFFD9CC4CFAF21CACA7B847BE  RIM-1.4.4
+com.ibm.cic.licensing.common.core_7.0.202.v20110429_1203.jar  65C3BE76AC7C0BDD6374F567902EDC84  RIM-1.4.4
+com.ibm.cic.common.ui_1.1.15.v20110516_2129.jar  9986371D7C78F42A7BD9D6780ED9B58B  RIM-1.4.4
+org.eclipse.equinox.p2.ql_2.0.0.v20100503a.jar  094C1DE5B1EDF38B1E83644A179D95EA  RIM-1.4.4
+org.eclipse.ecf.provider.filetransfer_3.1.0.v20100906-1425.jar  988398FB8E2F6A42934E6AC82FC1684C  RIM-1.4.4
+org.eclipse.equinox.p2.director_2.0.3.R36x_v20101117-1018.jar  59E83232D4546D16FD3A54CEBB33B0E2  RIM-1.4.4
+com.ibm.cic.common.executeAdapterData_1.0.6.v20101105_2254.jar  7FD145764EF3240B4F6B2047A9D3AEF4  RIM-1.4.4
+org.eclipse.help_3.5.0.v20100524.jar  51C0B871B7A936822A9FA370946177FA  RIM-1.4.4
+com.ibm.cic.common.nativeAdapterData.zos_1.0.6.v20101105_2254.jar  CA682C38AB304D2F5A84DF4540D331E2  RIM-1.4.4
+org.eclipse.equinox.preferences_3.3.0.v20100503.jar  A5F040CA344E8EE36F3D21FCBDFAC5C6  RIM-1.4.4
+com.ibm.cic.agent.core.antInstallAdapter_1.2.11.v20101105_2254.jar  ABE74460E5AA5DCE7D708D7B69E39A6B  RIM-1.4.4
+org.eclipse.core.jobs_3.5.1.R36x_v20100824.jar  AE097B7D2D7317144BD38DDAE680C102  RIM-1.4.4
+ant_tasks/publisher-ant.jar  72A5A0717B61DC026B00A681BF895550  RIM-1.4.4
+com.ibm.cic.agent.core.eclipseInstallAdaptor_1.1.15.v20110516_2129.jar  D4F0D504D5A57C69058ED1F93DE1B2A3  RIM-1.4.4
+org.apache.commons.el_1.0.0.v201004212143.jar  7377F308B9EF62AEFE4C1EEEBF117D0F  RIM-1.4.4
+org.apache.lucene_1.9.1.v20100518-1140.jar  80107B569A61AED776E342626DA0B51F  RIM-1.4.4
+com.ibm.cic.common.core.pa_2.0.1.v20110516_2129.jar  45D7977F601AC1FEDDEC1F246A40B0A6  RIM-1.4.4
+org.apache.commons.codec_1.3.0.v20100518-1140.jar  6D0B90743CB0C8217AC9CF2751DDCEFB  RIM-1.4.4
+com.ibm.cic.common.model.validation.fast_1.0.4.v20101105_2254.jar  1D5510D1DC3E6DD78C5E10EA56E806DD  RIM-1.4.4
+org.eclipse.equinox.p2.engine_2.0.1.R36x_v20110201.jar  30E34F864D9DD3592EF413D5356B9247  RIM-1.4.4
+org.eclipse.equinox.jsp.jasper_1.0.201.R36x_v20101103.jar  C0A577F179F4765174916602F155E92D  RIM-1.4.4
+com.ibm.cic.common.pakAdapterData_1.0.3.v20101105_2254.jar  BC9ECECC395C352F5E70D734CA955A34  RIM-1.4.4
+com.ibm.icu_4.2.1.v20100412.jar  3E6690E17B268A280532C2AFF54C0CC6  RIM-1.4.4
+com.ibm.ws.sync.core_1.3.3.v20110516_2129.jar  8DC688D07BF89A717D871EF8EFD73195  RIM-1.4.4
+org.eclipse.ecf.filetransfer_4.0.0.v20100906-1425.jar  143A2C205935CC1CE09120046FE9420E  RIM-1.4.4
+com.ibm.ws.sync.ui_1.2.5.v20110516_2129.jar  74E55CCA6D3AC008107D4484889AA222  RIM-1.4.4
+org.eclipse.core.commands_3.6.0.I20100512-1500.jar  3F8370C831C528AF794C812B751F5AAD  RIM-1.4.4
+indicim.jar  2384754F67F31C7376BE9567103F358E  RIM-1.4.4
+thaiim.jar  54D46FC9CF2C715A810C4BE8DD7E6985  RIM-1.4.4
+dtfjview.jar  BEB55667161302DAFF2F6F87370277C1  RIM-1.4.4
+xmlencfw.jar  CBF4885523F3107766906E5103C0AFF3  RIM-1.4.4
+IBMSecureRandom.jar  C3E72294431B47EB3B3EF91C57D101F1  RIM-1.4.4
+dnsns.jar  C152DE3E202DCE78BC898832C0112BA5  RIM-1.4.4
+gskikm.jar  D34BC34AC532D5D2D9EE22B939A92B78  RIM-1.4.4
+JavaDiagnosticsCollector.jar  0F98EA64A6B803AF9131105FB7FD9573  RIM-1.4.4
+ibmxmlencprovider.jar  3D050446B4082AFCBBE109B78EBBE9E1  RIM-1.4.4
+dtfj-interface.jar  F328A548121E93662A1BD6FB389640B2  RIM-1.4.4
+ibmpkcs11impl.jar  79582E907795140748C2853780560F5B  RIM-1.4.4
+ibmjcefips.jar  0E43354E70BB281F5B7A9F74A3223669  RIM-1.4.4
+ibmjceprovider.jar  6277207779AD8684206170D8F7E2F553  RIM-1.4.4
+IBMKeyManagementServer.jar  36B21D6E5DE306AABE57B1250792BCD5  RIM-1.4.4
+localedata.jar  9B2A4627E40D6E5B1FFAA2A82B0AF676  RIM-1.4.4
+ibmsaslprovider.jar  F16791D61299C00D753D4C91B32F4579  RIM-1.4.4
+healthcenter.jar  444213CF1D54C91C6B50232C027D1D07  RIM-1.4.4
+jdmpview.jar  7BB339561256CB74C0FA63122AF51427  RIM-1.4.4
+dtfj.jar  959D7746D166A231BB369720C1EAEDBE  RIM-1.4.4
+ibmkeycert.jar  A7CC26D7B97935D319B71B27B469B7F5  RIM-1.4.4
+jlm.jar  B321A1868D4F3E8155F3D8644E04EBDA  RIM-1.4.4
+ibmcfw.jar  5205E144691ECDEF9E82AA5151B058CF  RIM-1.4.4
+vm.jar  0CFE53F6A5B483A7AEC5A6B8539C1688  RIM-1.4.4
+ibmorb.jar  CEC515CA268DE61E57859185AF1E4843  RIM-1.4.4
+javaws.jar  A35699A5A432988641CBA06DF6E3BC40  RIM-1.4.4
+sql.jar  960EBEB8699830240D5D3CF502D50982  RIM-1.4.4
+ibmjsseprovider2.jar  36B2C94FE48784848189E1A6CBB03B20  RIM-1.4.4
+ibmorbapi.jar  B164B0B847D8A873272F05841BAB7271  RIM-1.4.4
+charsets.jar  2268EB008EDB6A9FC6D74058596000C2  RIM-1.4.4
+xmldsigfw.jar  DB6B1904DB0B0064BC955FE93EF6C0B1  RIM-1.4.4
+beans.jar  CDE3D29751D10C02D955632AE0EC2BFC  RIM-1.4.4
+ibmjgssfw.jar  49F1CCA3F486CB7A8851CB68B27393A3  RIM-1.4.4
+ibmxmlcrypto.jar  99697EEC1F7E1CDEE1BA555BB836AF2B  RIM-1.4.4
+deploy.jar  C0A8D7344C1068F42A440A8F97A843B5  RIM-1.4.4
+plugin.jar  0C917A4AB96F76C5B7784EBEE72F444A  RIM-1.4.4
+logging.jar  B6A4CA4531F17EC017AE53B640D2936F  RIM-1.4.4
+j9zip.jar  9864D71848A67F3E9F46F2184284498C  RIM-1.4.4
+xml.jar  FF104E71F26E7A0880F8B86F2817498C  RIM-1.4.4
+security.jar  3070148F04E351D0657982DA7B5F459F  RIM-1.4.4
+ibmsaslfw.jar  0CB5D186A378D18D3A2E12737401E5D2  RIM-1.4.4
+ibmjssefw.jar  1EB947ADE2702967B98DA66EFC495CFE  RIM-1.4.4
+rt.jar  B8113DFE1350A50BDBA9DD5AA4AB504B  RIM-1.4.4
+javascript.jar  4DCBA49C699F843E3B1E95D5630E7E4C  RIM-1.4.4
+jndi.jar  F78F0636EB73691861A1A2825B349168  RIM-1.4.4
+annotation.jar  42B3E3EE14504BC6A8B6E29EBE73EF47  RIM-1.4.4
+ibmpkcs.jar  D02258903C44AA1AA672555ACDE229B5  RIM-1.4.4
+ibmjgssprovider.jar  5D77C567438CC9EBCCD27559AA721557  RIM-1.4.4
+ibmjcefw.jar  60E41ED8558F1EDF3BD4DFEE0BC34569  RIM-1.4.4
+java.util.jar  271BF9E73A61A5308E5A64516C992317  RIM-1.4.4
+ibmcertpathprovider.jar  A2575B9246DCFFAB55E84608C634F656  RIM-1.4.4
+ibmcertpathfw.jar  9E38EE7317D64FF8894EF162C19803B4  RIM-1.4.4
+
+
+annotation.jar  84F936E3D9CB72964D16E7479A71479B  IBM-JRE-1.6-SR9-fp2
+beans.jar   586630F0A6B2EE5998AB3BCE11DB9472  IBM-JRE-1.6-SR9-fp2
+charsets.jar   2D7DFD3116C4036F46206E805A20A2EF  IBM-JRE-1.6-SR9-fp2
+deploy.jar   6DAE73A7CDD57AA5D1C0DE023FF8C944  IBM-JRE-1.6-SR9-fp2
+IBMKeyManagementServer.jar   36B21D6E5DE306AABE57B1250792BCD5  IBM-JRE-1.6-SR9-fp2
+IBMSecureRandom.jar   C3E72294431B47EB3B3EF91C57D101F1  IBM-JRE-1.6-SR9-fp2
+JavaDiagnosticsCollector.jar   1F2E0339CFED83246A3C8DEE4112B524  IBM-JRE-1.6-SR9-fp2
+dnsns.jar   A56D2EE9D1ECA075EF8F9B9674E78C00  IBM-JRE-1.6-SR9-fp2
+dtfj-interface.jar   BDAE92A4FBBA4F692FDBB9F26E554AA9  IBM-JRE-1.6-SR9-fp2
+dtfj.jar   62EE637EF46A70C5C28C65E9529115B4  IBM-JRE-1.6-SR9-fp2
+dtfjview.jar   4987BF6F13BC76CB9175D33119D5E9C0  IBM-JRE-1.6-SR9-fp2
+gskikm.jar   D34BC34AC532D5D2D9EE22B939A92B78  IBM-JRE-1.6-SR9-fp2
+healthcenter.jar   658E67EA7C01C77AB356AF0FD6297D29  IBM-JRE-1.6-SR9-fp2
+ibmjcefips.jar   0E43354E70BB281F5B7A9F74A3223669  IBM-JRE-1.6-SR9-fp2
+ibmjceprovider.jar   6277207779AD8684206170D8F7E2F553  IBM-JRE-1.6-SR9-fp2
+ibmkeycert.jar   A7CC26D7B97935D319B71B27B469B7F5  IBM-JRE-1.6-SR9-fp2
+ibmpkcs11impl.jar   B012F7FCAC43BAADB0C1471425AB1AFA  IBM-JRE-1.6-SR9-fp2
+ibmsaslprovider.jar   F16791D61299C00D753D4C91B32F4579  IBM-JRE-1.6-SR9-fp2
+ibmxmlencprovider.jar   3D050446B4082AFCBBE109B78EBBE9E1  IBM-JRE-1.6-SR9-fp2
+jdmpview.jar   5315B0A213D62302865FE6DAF0806EF1  IBM-JRE-1.6-SR9-fp2
+localedata.jar   4AF5A53FC8D23F00B8005F952901BEE5  IBM-JRE-1.6-SR9-fp2
+xmlencfw.jar   CBF4885523F3107766906E5103C0AFF3  IBM-JRE-1.6-SR9-fp2
+ibmcertpathfw.jar   9E38EE7317D64FF8894EF162C19803B4  IBM-JRE-1.6-SR9-fp2
+ibmcertpathprovider.jar   A2575B9246DCFFAB55E84608C634F656  IBM-JRE-1.6-SR9-fp2
+ibmcfw.jar   5205E144691ECDEF9E82AA5151B058CF  IBM-JRE-1.6-SR9-fp2
+ibmjcefw.jar   60E41ED8558F1EDF3BD4DFEE0BC34569  IBM-JRE-1.6-SR9-fp2
+ibmjgssfw.jar   49F1CCA3F486CB7A8851CB68B27393A3  IBM-JRE-1.6-SR9-fp2
+ibmjgssprovider.jar   5D77C567438CC9EBCCD27559AA721557  IBM-JRE-1.6-SR9-fp2
+ibmjssefw.jar   1EB947ADE2702967B98DA66EFC495CFE  IBM-JRE-1.6-SR9-fp2
+ibmjsseprovider2.jar   61E64489E199D21DC946E43C69B8AB4A  IBM-JRE-1.6-SR9-fp2
+ibmorb.jar   CEC515CA268DE61E57859185AF1E4843  IBM-JRE-1.6-SR9-fp2
+ibmorbapi.jar   B164B0B847D8A873272F05841BAB7271  IBM-JRE-1.6-SR9-fp2
+ibmpkcs.jar   D02258903C44AA1AA672555ACDE229B5  IBM-JRE-1.6-SR9-fp2
+ibmsaslfw.jar   0CB5D186A378D18D3A2E12737401E5D2  IBM-JRE-1.6-SR9-fp2
+ibmxmlcrypto.jar   99697EEC1F7E1CDEE1BA555BB836AF2B  IBM-JRE-1.6-SR9-fp2
+indicim.jar   0CDFEB571C4392ABADCD7A75EE33DDBF  IBM-JRE-1.6-SR9-fp2
+thaiim.jar   917CB9480EE89B648EBF9025F5A28243  IBM-JRE-1.6-SR9-fp2
+j9zip.jar   160C7035D832F0E01AB255829D769207  IBM-JRE-1.6-SR9-fp2
+java.util.jar   4D334066DE407D0441AD494FD9E7211B  IBM-JRE-1.6-SR9-fp2
+javascript.jar   4DCBA49C699F843E3B1E95D5630E7E4C  IBM-JRE-1.6-SR9-fp2
+javaws.jar   821DA5805B650612D37CE836F5D12F8B  IBM-JRE-1.6-SR9-fp2
+jlm.jar   B321A1868D4F3E8155F3D8644E04EBDA  IBM-JRE-1.6-SR9-fp2
+jndi.jar   BF122FA641915771FC470FBE9E3DCC42  IBM-JRE-1.6-SR9-fp2
+logging.jar   8F3FBF3A6FE08B89022FDBDC81E3E029  IBM-JRE-1.6-SR9-fp2
+plugin.jar   E9F1AFB6B2EC5A32C52BCA0234E5F002  IBM-JRE-1.6-SR9-fp2
+vm.jar   7AB4BCAB97F98382A006654DFAE794C2  IBM-JRE-1.6-SR9-fp2
+vm.jar   BDE9A68EDFB175715A9529AEC95EA56B  IBM-JRE-1.6-SR9-fp2
+rt.jar   17B765AD9C4CDDB7E59FC14030CD5425  IBM-JRE-1.6-SR9-fp2
+security.jar   EB701E8497F961EF5FBE7EF3C6533637  IBM-JRE-1.6-SR9-fp2
+sql.jar   43A9AE1ADAD8D5B2A4E111C78C7272E5  IBM-JRE-1.6-SR9-fp2
+xml.jar   BFCCD59EE35A4A04E1D31B83FEF28A84  IBM-JRE-1.6-SR9-fp2
+xmldsigfw.jar   DB6B1904DB0B0064BC955FE93EF6C0B1  IBM-JRE-1.6-SR9-fp2
+org.eclipse.core.commands.jar   EC1431AB6F4354576E8906E726BDA6F9  IBM-JRE-1.6-SR9-fp2
+org.eclipse.jface.jar   C72A636FE009A6A47BEE6C0939D209F2  IBM-JRE-1.6-SR9-fp2
+org.eclipse.swt.gtk.aix.ppc64.jar   C384B5180778FACF6BE2C1FEA746E70D  IBM-JRE-1.6-SR9-fp2
+org.eclipse.swt.gtk.linux.s390x_3.7.0.v3735b.jar   2BFD4E14EB8E8F3E75F9406E488EC5C0  IBM-JRE-1.6-SR9-fp2
+org.eclipse.swt.gtk.linux.x86_64.jar   642CC669BDA0D6B18E26C3A189AD948E  IBM-JRE-1.6-SR9-fp2
+org.eclipse.swt.win32.win32.x86_64.jar   A670F7EA6EA5AB4A155844F4781645EE  IBM-JRE-1.6-SR9-fp2
+org.eclipse.ui.forms_3.5.100.v20110425.jar   6F4D262313EC1044DFAF1C5B10F06878  IBM-JRE-1.6-SR9-fp2
+
+
+org.eclipse.jface.jar  29AACD52AB6EEB25F176D0EF68B37941 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.gtk.linux.s390_3.5.0.v3550b.jar  810F75A815A31D3885FBC005928A11F3 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.gtk.linux.s390x_3.5.0.v3550b.jar  F178C3DEEBC15B69F7A5FAF326693098 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.gtk.linux.x86.jar  12306068DBC3477F883BD7835A687CB5 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.gtk.linux.x86_64.jar  1EB148AEDD135754ED179782CFEFD700 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.motif.aix.ppc.jar  643DAE5A26E922DF911A55D764373FEF Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.win32.win32.x86.jar  0A38B18FF43CD7EABD28CA58372D9111 Eclipse-3.5.0_(update_installer)
+org.eclipse.swt.win32.win32.x86_64.jar  17BB62DFF558D55A6A012EB81931BD64 Eclipse-3.5.0_(update_installer)
+org.eclipse.ui.forms_3.4.1.v20090714_35x.jar  EE85503BEDACDF927CFA4525D3897CB1 Eclipse-3.5.0_(update_installer)
+
+
+#IEHS 07 21 2012  3.6.2
+scriptfilter.jar    B217FBC1D0EECC815BA722F7C532C4E9  IEHS-3.6.2
+com.jcraft.jsch_0.1.41.v200903070017.jar   DAD1906C055F9A4156CABE14A1A8BF5C  IEHS-3.6.2
+javax.servlet_2.5.0.v200910301333.jar   E2F7D17CFD48D8095A5247FB9872A931  IEHS-3.6.2
+org.apache.commons.el_1.0.0.v201004212143.jar   F4036741713CECB47633F8CE43A70D10  IEHS-3.6.2
+org.apache.commons.logging_1.0.4.v201005080501.jar   266B63F8CBC8FD78AFE486884637D290  IEHS-3.6.2
+org.apache.jasper_5.5.17.v201004212143.jar   2B7748C6A7CF87C39907DCA523BDA9D3  IEHS-3.6.2
+org.eclipse.core.contenttype_3.4.100.v20100505-1235.jar   C14FF0D3BFFABF3631E18BD22400D620  IEHS-3.6.2
+org.eclipse.core.expressions_3.4.200.v20100505.jar   9222EC4287131CABB209DD2FE660009D  IEHS-3.6.2
+org.eclipse.core.jobs_3.5.0.v20100515.jar   9341DB1D390273877E8A6508AC9A0D04  IEHS-3.6.2
+org.eclipse.core.net_1.2.100.I20100511-0800.jar   2E304014FB65399607737E614EB3B44C  IEHS-3.6.2
+org.eclipse.core.runtime.compatibility_3.2.100.v20100505.jar   C23745C374512CD0A6DF22AB58C65C72  IEHS-3.6.2
+org.eclipse.core.runtime_3.6.0.v20100505.jar   4CC72059CD3407D6DF554DDA6A7ADB4F  IEHS-3.6.2
+org.eclipse.equinox.app_1.3.0.v20100512.jar   E1B849F9EC02C52FD831C4C6306FA937  IEHS-3.6.2
+org.eclipse.equinox.common_3.6.0.v20100503.jar   D46C63645CC4DEE8E872A5B9F171478F  IEHS-3.6.2
+org.eclipse.equinox.http.jetty_2.0.100.v20110502.jar   B84D0563ECB37053ECD2F6E4C2CC1078  IEHS-3.6.2
+org.eclipse.equinox.http.registry_1.1.0.v20100503.jar   1989625942FFCE4480CBA5BA7C13438D  IEHS-3.6.2
+org.eclipse.equinox.http.servlet_1.1.0.v20100503.jar   7AA5F4E5FEFE40602821BF7823220207  IEHS-3.6.2
+org.eclipse.equinox.http.servletbridge_1.0.200.v20100503.jar   94710DFBB25D67B1877E11338FF0C20F  IEHS-3.6.2
+org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503.jar   DA22A1D47FF728D7FD87D4938C7516FE  IEHS-3.6.2
+org.eclipse.equinox.jsp.jasper_1.0.200.v20100421.jar   5BCEA47742D31FA6FC8A163C0DDFED57  IEHS-3.6.2
+org.eclipse.equinox.preferences_3.3.0.v20100503.jar   50287BC99948447615CBD5651E3A137E  IEHS-3.6.2
+org.eclipse.equinox.registry_3.5.0.v20100503.jar   0B6D76EA40A654203F51000EA93F3322  IEHS-3.6.2
+helpbase-ant.jar   70595D4EB886C5767F211AA90BF95E65  IEHS-3.6.2
+helpbase.jar   F3F517326C5847CF9943087809570656  IEHS-3.6.2
+debug.jar   CB454727FEA3247CDD5EA7D2528880C2  IEHS-3.6.2
+jericho-html-2.6.jar   8B6DE3B819505AEE144A4EA59D750184  IEHS-3.6.2
+webapp.jar   5455079C5B2ABFE2399B0E6B6AB040BC  IEHS-3.6.2
+help.jar   3C9E147F214A3311AB1F80A16E4C06C1  IEHS-3.6.2
+org.eclipse.osgi.services_3.2.100.v20100503.jar   B2896C4564BA4A2F7A3317B51768D838  IEHS-3.6.2
+org.eclipse.osgi_3.6.0.v20100517.jar   9D09E0CF98A74C86BF4526465ADAF1F9  IEHS-3.6.2
+updateconf.jar   F1B8D46248DB612D5987E850E859B7C5  IEHS-3.6.2
+updatecore.jar   F588DA9ADC678A91AB4A7033B9462678  IEHS-3.6.2
+
+jsoup-1.6.1.jar  EA9499EC835E62AFF66AE5BCEC6A326A  JSOUP-1.6.1
+jaxen-1.1.1.jar  713063BAA9C86B87F30968D61F8A4BA0  JAXEN-1.1.1
+commons-digester-1.8.1.jar  5002ECF033F5A79E398155823BADB36A  Commons-Digester-1.8.1
+
+
+sizeof-agent.jar   5AD919B3AC0516897BDCA079C9A222A8  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+com.ibm.socmail.proxy.extension_1.0.0.20120709-2200.jar   F27B5B4DA30F4CB8D044F4FD9B6D3BDA  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+org.eclipse.equinox.http.helper_1.0.0.201203231600.jar   83F1EB6E0C6579B7137D6A66DD89B7A2  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+commons-digester-1.8.1.jar   5002ECF033F5A79E398155823BADB36A  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+slf4j-api-1.6.1.jar   BFF6016DA57E19FB736D0F5742CE60AC  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+slf4j-jdk14-1.6.1.jar   03670F0EF6519A687A790DEF531EECD9  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+html-parser-2.4.0.jar   13C0DD24EA69A45ABCDF1CE3AA9A9F79  ****NEEDS-CLOSURE-WE-BELIEVE-SHINDIG
+
+com.ibm.icu_4.2.1.v20100412.jar   3E7C06F121D0B691B755BD243CA26856   ****NEEDS-CLOSURE-WE-BELIEVE-ICU-4.2.1
+
+
+
+acf.jar    4ED49712DE411BCAF1C0A590ED8A5771  ACF-2.3-with-4.0GA-fixes
+
+
+lucene-core-3.1.0.jar     ED3D66E2A50BCC1F9EB4ACF0F632773D               lucene-3.1.0-with-fixes
+lucene-core-3.1.0.jar     A50B33F354F06FD94304217739A92A69               lucene-3.1.0-with-fixes-feb-2014
+
+#from social mail
+acf-2.5.2.jar F39D40C8C49E5460E707482808C41342  ACF-2.5.2
+html-parser-2.5.2.jar 00804B2C30910AAE1C78A329D439F3F9  ACF-2.5.2
+html-parser-2.5.0.10.jar  568D135F13711E7DF07894054645EE20  ACF-2.5.2
+
+# RANGY from Piyush
+rangy-core.js                   89C77E82AA1137A65CB8942DC5C13FB1  Rangy-1.2.3
+rangy-cssclassapplier.js    A401558FDA8633EE24D4517F3D3C0B61  Rangy-1.2.3
+rangy-selectionsaverestore.js   281B127658DAC36DD35D9708BDB93F58  Rangy-1.2.3
+rangy-serializer.js     75E9042A6FF3A76ABB222D7FC94E7845  Rangy-1.2.3
+
+# Jay, don't know why these are diff, Claudio says they are still 1.2.3
+rangy-core.js   0297169295318AC2ECCF268657B23D4D  Rangy-1.2.3
+rangy-cssclassapplier.js    55E700CB19BEB17E449599891A6624E8  Rangy-1.2.3
+rangy-selectionsaverestore.js   B7BECD457C1EBE2709A253817CBEB9C5  Rangy-1.2.3
+rangy-serializer.js 4D4073617CC0B7C17C27160B2071714C  Rangy-1.2.3
+
+
+acf.jar  5317167902F184A7EF01EA2D1896F251  ACF-2.3.0-with-fixes-jan-2013
+
+javassist-3.11.0.GA.jar  CB8F91E65864B85C8C6F87164E3252A5  Javassist-3.11.0
+
+ognl-3.0.5.jar    3A2A1357277814FA148477B6BCBBC328 Struts-2.3.4
+struts2-core-2.3.4.jar    45D36813CD3252E32550A69254BA1318 Struts-2.3.4
+struts2-spring-plugin-2.3.4.jar    52E5A9D3201AC0D5B82F6757106DACAA Struts-2.3.4
+xwork-core-2.3.4.jar    7B4602FC9B208EE879868CECFF4B3E59 Struts-2.3.4
+struts2-tiles-plugin-2.3.4.jar    A7A3D7632255C8F929DD370B69525ADF Struts-2.3.4
+
+
+prototype.js  F57AAA32617E68BC8328178FD26C1F52  Scriptaculous-1.5.0(blogs)
+controls.js   886B90E6D686D549738C62F63B6C8CEF  Scriptaculous-1.5.0(blogs)
+
+
+com.ibm.cic.agent.win32.registerAgent.jar       1C51A4EB071958AD9EA251ADBF2B13F2    IM-1.5.3
+com.ibm.cic.agent.linux.registerAgent.jar       E44F103DA68F2C90EC9E5EE2C1CF0AF6    IM-1.5.3
+flexlicensing.jar       69B0F704DE95BDEFE9DFB27707CC1586    IM-1.5.3
+com.ibm.ws.pak.internal.jar     7CF4413CFA585A510EFAF2D28C4EACF0    IM-1.5.3
+nativeInstallAdapterLinux.jar       F1AB1A799181E7FC9DA3950DB0F038D4    IM-1.5.3
+com.ibm.cic.common.transports.httpclient_1.4.7.v20120213_2122.jar       45E52DCE245AB7AA519FEE0C78934909    IM-1.5.3
+com.ibm.cic.common.core.iwm_1.2.3.v20110815_1426.jar        0E56A6141E069D47FEEBF78A0A3C79D6    IM-1.5.3
+com.ibm.cic.agent.core.eclipseInstallAdaptor_1.1.18.v20120213_2122.jar      CF0835A6226BCD23C23FACCCE5C6C9F4    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.solaris_1.0.7.v20110815_1426.jar       1E85050FCA27304F52A88D0FB90B77AD    IM-1.5.3
+com.ibm.cic.common.executeAdapterData_1.0.7.v20110815_1426.jar      81E93E0370BC7FEE3E9E88846A4F2A16    IM-1.5.3
+com.ibm.cic.common.model.validation.fast_1.0.5.v20110815_1426.jar       1AC84E5AEDA806B408D575E2E8F30BEA    IM-1.5.3
+com.ibm.cic.eclipse.internals_1.0.8.v20120213_2122.jar      8FFF8AA07F8C830A14375891274585FA    IM-1.5.3
+com.ibm.cic.common.antAdapterData_1.0.8.v20110815_1426.jar      D667035D2D5BBDFE128D0A838125F6F8    IM-1.5.3
+com.ibm.cic.agent.core_1.5.3.v20120509_2343.jar     879B4E0892BEAC7B5C3568A64211EECD    IM-1.5.3
+com.ibm.cic.common.commonNativeAdapterData_1.4.6.v20120213_2122.jar     751E240291138AA29D5620100B097241    IM-1.5.3
+com.ibm.cic.agent.core.pakInstallAdapter_1.0.5.v20110824_1848.jar       B40DE67626B97370131BB612FA7B35D9    IM-1.5.3
+com.ibm.cic.agent.credential.client_1.0.5.v20110815_1426.jar        FB9572A26D93964224A8263C7652AF92    IM-1.5.3
+com.ibm.cic.common.ui_1.1.17.v20120222_1935.jar     3A921161ECC30F82C47EA8263F442B65    IM-1.5.3
+com.ibm.cic.licensing.policy.ui_7.1.142.v20110815_1426.jar      C27931B20CA7E68D098A081552E91815    IM-1.5.3
+com.ibm.ccl.org.apache.commons.logging_1.0.4.v20090722_0421.jar     15E544306E396200BBBA90E9A7EBAA7B    IM-1.5.3
+com.ibm.ccl.org.apache.commons.net_1.4.1.v20090722_0421.jar     02C639B084A2DAB9FA44772F39BB388C    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.macosx_1.0.7.v20110815_1426.jar        25794D019D761D3BD40FB2B3AECEE3D2    IM-1.5.3
+com.ibm.cic.licensing.policy.ui.preferences_7.1.142.v20110815_1426.jar      C62E3702F3B5B7D54A79D024E2ED87CC    IM-1.5.3
+com.ibm.cic.common.eclipseAdapterData_1.1.10.v20110815_1426.jar     35D174055A150EB61042CD03957FCD43    IM-1.5.3
+com.ibm.cic.common.p2EclipseAdapterData_1.0.4.v20110815_1426.jar        3A213EA3F6803E09FC1055F7F03FE4EF    IM-1.5.3
+com.ibm.cic.agent.core.p2_1.0.9.v20120213_2122.jar      3E669D9DFD683A8D71419186B1E6F7BE    IM-1.5.3
+com.ibm.cic.common.xml.core_1.4.7.v20120213_2122.jar        B6CE5B3FE89F2EDB785DC41EA7202CA4    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.linux_1.0.7.v20110815_1426.jar     4995A0912356EE441E5F8E92C2B3CA15    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.os400_1.0.2.v20110815_1426.jar     ABCFCAAD0DEB9944400898DCE7D6A6C8    IM-1.5.3
+com.ibm.ws.sync.ui_1.2.8.v20120213_2122.jar     77AA403740F253D78A24036EB4C4FBEA    IM-1.5.3
+com.ibm.cic.common.model.p2_1.0.6.v20110815_1426.jar        A306410717970BA357E455683D562FAD    IM-1.5.3
+com.ibm.cic.agent.core.antInstallAdapter_1.3.0.v20120213_2122.jar       E806F2D31674364261B7F32D542B289C    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.aix_1.0.7.v20110815_1426.jar       3542538E744CA833538D5C54B3572301    IM-1.5.3
+com.ibm.cic.agent.core.nativeInstallAdapter_1.2.12.v20120213_2122.jar       A5209033AD6F53364D2CEAF38C848F34    IM-1.5.3
+com.ibm.cic.agent.ui_1.4.5.v20120222_1935.jar       2AB07197E92CAC50F237564FE966537A    IM-1.5.3
+com.ibm.cic.common.transports.commons.net_1.2.2.v20110815_1426.jar      9AE6E0FEBF7E162D9F28A710B978873B    IM-1.5.3
+com.ibm.ws.sync.core_1.3.5.v20120213_2122.jar       82751A7C2F66352B0859C1CBD7886BEC    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.zos_1.0.7.v20110815_1426.jar       63FDA4F20ACB1D524CA933D77551C723    IM-1.5.3
+com.ibm.ws.pak.core_1.3.3.v20110815_1426.jar        BC5A3A563A4FE4AAC7FAF090DD2C1E94    IM-1.5.3
+com.ibm.ccl.org.apache.oro_2.0.8.v20090722_0421.jar     810A085FF5DCF67B089D1D04494F55A9    IM-1.5.3
+com.ibm.cic.common.pakAdapterData_1.0.4.v20110815_1426.jar      C3B4CFB996078F4BDE66F5F7DC7DD826    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData_1.0.9.v20110815_1426.jar       12C0094D85A5F5FB8EC0EF5C3A89568C    IM-1.5.3
+com.ibm.ccl.org.apache.commons.httpclient_3.1.0.v20090722_0421.jar      1EC52E284AA33498E704E2F341634259    IM-1.5.3
+com.ibm.cic.eclipse.ui.internals_1.0.4.v20120213_2122.jar       567DEF06EA3021350467AFC0046369CC    IM-1.5.3
+com.ibm.cic.agent.core.executeInstallAdapter_1.2.7.v20110815_1426.jar       4D7A028E615D5B1963C6CEB06EED292B    IM-1.5.3
+com.ibm.cic.agent.core.commonNativeInstallAdapter_1.2.10.v20120419_1753.jar     A8E4BA8974B07BBE53F69D9AD66B54A2    IM-1.5.3
+com.ibm.cic.common.core.pa_2.0.2.v20110815_1426.jar     F92C6EB9F0DE0526A702260CD64C7E52    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.win32_1.0.7.v20110815_1426.jar     F8C6B0403889D452AF23F1B6DA6C0D3B    IM-1.5.3
+com.ibm.cic.common.nativeAdapterData.hpux_1.0.7.v20110815_1426.jar      368F47E440E6D5B2901020086F6B2C4B    IM-1.5.3
+
+org.eclipse.equinox.http.registry_1.1.0.v20100503.jar 9CB6D940B947221389ED699E2E139BD6  IBM-Help_withNL_3.6.2.v20121019-1440
+org.eclipse.equinox.jsp.jasper_1.0.200.v20100421.jar 053C26F4730EBE2CC092B12686DE66B3  IBM-Help_withNL_3.6.2.v20121019-1440
+org.eclipse.help.base_3.5.0.v201006080911/helpbase.jar D0ED4F6494F3FF739833AE611C33690E  IBM-Help_withNL_3.6.2.v20121019-1440
+org.eclipse.help.webapp_3.5.0.v20100507/webapp.jar 8BD00E799C671341B8AF64573900A901  IBM-Help_withNL_3.6.2.v20121019-1440
+org.eclipse.help_3.5.0.v20100524/help.jar 536516F86D11213F99E3C30DAE6478F3  IBM-Help_withNL_3.6.2.v20121019-1440
+org.eclipse.update.configurator_3.3.100.v20100512/updateconf.jar 3D79F15C4CF52483AAC2FDD7BB636E5E  IBM-Help_withNL_3.6.2.v20121019-1440
+
+
+
+
+
+org.apache.felix.gogo.command_0.8.0.v201108120515.jar   5683B3D4655FE69A91D92EC7D7DA0F0D  CRE-1.2
+org.apache.felix.gogo.runtime_0.8.0.v201108120515.jar  2E37FB079CAAD9AD8A6512831F95F4AF  CRE-1.2
+org.apache.felix.gogo.shell_0.8.0.v201110170705.jar  B852CD5C878C9F9B963892E5D13F032C  CRE-1.2
+org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar  9536FF186ACE5FB031198C2AD24219C4  CRE-1.2
+org.eclipse.core.jobs_3.5.300.v20120622-204750.jar  FB6334E63DF002D6D5E9ABC303AD94AD  CRE-1.2
+org.eclipse.core.runtime_3.8.0.v20120521-2346.jar  B174F56CE7606FFC1EEA492D7A78B503  CRE-1.2
+org.eclipse.equinox.app_1.3.100.v20120522-1841.jar  19FB7656635E0177FB8EE1752E59B434  CRE-1.2
+org.eclipse.equinox.common_3.6.100.v20120522-1841.jar  69DA96D4618D94FC2427EE765B6CABD9  CRE-1.2
+org.eclipse.equinox.console_1.0.0.v20120522-1841.jar  CA2AF277D9245744E60E1382B242F4E1  CRE-1.2
+
+org.eclipse.equinox.http.helper_1.0.0.R3_8_maintenance.jar  CF71478F1A0736361464E122460EC84F  CRE-1.2
+
+org.eclipse.equinox.http.registry_1.1.200.v20120522-2049.jar  0F8AF82F092B196C5457EF8239B59719  CRE-1.2
+org.eclipse.equinox.http.servlet_1.1.300.v20120522-1841.jar  CAD1357AB25A9E5150D3AA8056C9137C  CRE-1.2
+org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar  C8C9D43F23D5882763D32C9779777561  CRE-1.2
+org.eclipse.equinox.registry_3.5.200.v20120522-1841.jar  E181EB666DEE9208C68BB736F1A03651  CRE-1.2
+org.eclipse.osgi.services_3.3.100.v20120522-1822.jar  9A5A09FD0EB4B75A34F6BE9D1DAF2AAB  CRE-1.2
+org.eclipse.osgi_3.8.1.v20120830-144521.jar  0C13C5A93EF25B462716EF98F370CE94  CRE-1.2
+org.eclipse.update.configurator_3.3.200.v20120523-1752.jar  FB723F16BA03DA7E30BF18DACA004C4D  CRE-1.2
+caja-r5054.jar  6FCA5370784C585982704C881CCE3AB6  CRE-1.2
+json-mapping-1.0.0.jar  DDF1ECE560B3ABF66490500CAB0FA17E  CRE-1.2
+jsr305.jar  3EC0206F5AF0C4582382AC02191C41AE  CRE-1.2
+
+
+jt400Native.jar 8BB90BFA6A43E2617667F79E9F3A3669 Connections-4.5-Install
+
+
+ant-antlr.jar  51EC8CB279F4FB29572F19DD556DD277  Ant-1.8.2-Packaged-by-Install
+ant-apache-bcel.jar  B82011E7BE9A609D9983975704B76817  Ant-1.8.2-Packaged-by-Install
+ant-apache-bsf.jar  21F431EBE30E65FA8DE6E0D890070280  Ant-1.8.2-Packaged-by-Install
+ant-apache-log4j.jar  A5CC4F72F72B2084E1E290AA117A1036  Ant-1.8.2-Packaged-by-Install
+ant-apache-oro.jar  FA02EB9211F355AD495D8DB47E543A35  Ant-1.8.2-Packaged-by-Install
+ant-apache-regexp.jar  5CFAC00E58C991BE2B4BE436B50E06DA  Ant-1.8.2-Packaged-by-Install
+ant-apache-resolver.jar  BFD350D08CDA66BB23005791C28D7457  Ant-1.8.2-Packaged-by-Install
+ant-apache-xalan2.jar  38C667068C23AD1259DA25A291213A03  Ant-1.8.2-Packaged-by-Install
+ant-bootstrap.jar  A942ED267494EFC9FAD63056794FEBFE  Ant-1.8.2-Packaged-by-Install
+ant-commons-logging.jar  EE440D0EBF4A61DC516B66743B3BF681  Ant-1.8.2-Packaged-by-Install
+ant-commons-net.jar  A15B81EB3A6EAFDE833C47C863F96ED3  Ant-1.8.2-Packaged-by-Install
+ant-jai.jar  65E9E282D89763A6DE336A66AE79377E  Ant-1.8.2-Packaged-by-Install
+ant-javamail.jar  63FCD364D941A96902D6B6CA135AACCE  Ant-1.8.2-Packaged-by-Install
+ant-jdepend.jar  7D463E140089C69B2E14E89E019671C6  Ant-1.8.2-Packaged-by-Install
+ant-jmf.jar  FDD385654EBF0A7D1C2A19428624CA46  Ant-1.8.2-Packaged-by-Install
+ant-jsch.jar  7C2B6C7A45B570331249B51B747A86A0  Ant-1.8.2-Packaged-by-Install
+ant-junit.jar  4CE4F902DE54F860190D03E9FDE80FCF  Ant-1.8.2-Packaged-by-Install
+ant-junit4.jar  1F61C7040B7AB96F5B436EC37A343DF0  Ant-1.8.2-Packaged-by-Install
+ant-launcher.jar  D03E9439B5A3E6DA027AA5940D12D854  Ant-1.8.2-Packaged-by-Install
+ant-netrexx.jar  7A5B3D40A6CA7E9710C32CA6C447EF89  Ant-1.8.2-Packaged-by-Install
+ant-swing.jar  1A3804CB8AC417C423935362DD8BDEFB  Ant-1.8.2-Packaged-by-Install
+ant-testutil.jar  436E4A7F9FC095FA16551E75F1FA88C0  Ant-1.8.2-Packaged-by-Install
+
+
+gcm-server.jar  13AFA74F6E78E2795C0B420F350BCA42  Google-Cloud-Messaging-rev_3
+mobile.apns.jar 586BE3A1F241C691E15F9FB0CC9B85BB  Apple-Push-Notification-1.4.3
+caja-r5054.jar  F1A386461E1E060A3CD403E260A25D77  CRE-1.2-withmod
+
+
+#Jay 5/2/2013
+# Brian O'Gorman
+#Dojo-Timeago - version: 0.9.3 (2011-01-21)
+Timeago.js 7776A9FD173AB5A722DAB8DB28858BA8  Dojo-Timeago_version_0.9.3_2011-01-21
+Timeago.js 4AEAF51D47568BA1202025E500DA94B4  Dojo-Timeago_nls_version_0.9.3_2011-01-21
+
+acf-2.5.0.10.jar A153FDD3034B78EA547B0CEFBF90BABE ACF-2.5.0.10
+
+scriptfilter.jar    CA219095011EC0F0F3311EE001C7A47F  IEHS-3.6.2-patch
+helpbase.jar    8E38C9242337CE35616766004E91D1A9  IEHS-3.6.2-patch
+debug.jar   6193C8A22C0191DAB80164E494601B07  IEHS-3.6.2-patch
+webapp.jar  4BDB677A32B3745C63258FBC0AD41686  IEHS-3.6.2-patch
+help.jar    F39FD6B5B794BC0763A3C34803D9C23D  IEHS-3.6.2-patch
+updateconf.jar  238E122479E152858550A3060AE26306  IEHS-3.6.2-patch
+updatecore.jar  C7515E90995A7340E0BD4FF04D47209F  IEHS-3.6.2-patch
+
+jackson-annotations-2.1.4.jar   5996593D0367D2CF8B401DB5BA9018D3    Jackson-2.1.4
+jackson-core-2.1.4.jar  E65B3121520B3CA31CC9BAE073A29BAE    Jackson-2.1.4
+jackson-databind-2.1.4.jar  315D2FAFA9CE1EB4F9A3BCD610C0DE85    Jackson-2.1.4
+
+icu4j-51_1.jar   A5DE861D9B7977BE8F0A4C404CC203AF   ICU4J-5.1_1
+icu4j-charset-51_1.jar   D84E95BA3FE8E256167A2349F78EEAE5   ICU4J-5.1_1
+icu4j-localespi-51_1.jar   CD2C63BFE7C8878C650CCCC019226752     ICU4J-5.1_1
+
+daisydiff.jar   0E38CF94E10D9F698318E6653A9570B6    DaisyDiff-1.2
+
+
+#Jay 1/5/2014
+# Stephen Crawford
+ognl-3.0.6.jar         2A8FB06B52574E498ED256B8FC64055E    Struts-2.3.15.3
+struts2-core-2.3.15.3.jar         385FD8AF2FDCF382AB75530B876D3A56    Struts-2.3.15.3
+struts2-spring-plugin-2.3.15.3.jar         1A83F251C0F93C68EE1DCA53676254DB    Struts-2.3.15.3
+struts2-tiles-plugin-2.3.15.3.jar         1DBEEDC10906C2F7556BE94C20DEA92B    Struts-2.3.15.3
+xwork-core-2.3.15.3.jar         76EA94E28BC4AB838D14E890639BD56B    Struts-2.3.15.3
+
+
+#mobile.apns.jar  88A9BDBB310ABEAD1A8C4145FD00B424
+#mobile.gcm.jar  1E8B3E35791AD76CC6085341356F8766
+
+archaius-core-0.5.13-SNAPSHOT.jar  91836B7F3B95EEF7971764225E4DC6AC  Archaius-0.5.13
+hystrix-core-1.3.8-SNAPSHOT.jar  82573B3EBC1C3D368DCFDA40F00577F1  Hystrix-1.3.8
+hystrix-metrics-event-stream-1.3.8-SNAPSHOT.jar  2CCB2BE458639F2BB98B618664669830  Hystrix-1.3.8
+rxjava-core-0.15.2-SNAPSHOT.jar  E712FEF5684824E7938245B8D1047BAE  RxJava-0.15.2
+slf4j-api-1.7.5.jar  371B383198FD395D23F67DCE374B52FC   SLF4J-1.7.5
+
+archaius-core-0.6.0.jar                       91836B7F3B95EEF7971764225E4DC6AC   Archaius-0.6.0
+hystrix-core-1.3.13.jar               FE69CF3B2CF30841D17CB2497BB22236   Hystrix-1.3.13
+hystrix-metrics-event-stream-1.3.13.jar       92860317CD3A07A0D4AD88B6FFF0BE58   Hystrix-1.3.13
+hystrix-network-auditor-agent-1.3.13.jar      C32629C323AFA0F7D9ED842A8EABD0E4   Hystrix-1.3.13
+rxjava-core-0.16.1.jar                F8BDFDF604626C0BFB2ED78506DF1395   RxJava-0.16.1
+slf4j-api-1.7.5.jar               371B383198FD395D23F67DCE374B52FC   SLF4J-1.7.5
+slf4j-jdk14-1.7.5.jar                 7743E10BF2DD6DC7013BA74A0F8D4E95   SLF4J-1.7.5
+
+
+# May 1, 2014
+#5.0
+args4j-2.0.16.jar  6571D69D142DD2A003C4FFAE6138F0EE  CRE-1.0.4
+caja-r5054.jar  66244FED16B98503267C2BAB1C6A3A1A  CRE-1.0.4
+jasper-el-6.0.36.jar  47B3E4CDD8FB4F579F86B9CB3F576BBF  CRE-1.0.4
+joda-time-2.1.jar  3DA033B9318E910A4E3D718A6B1F5B58  CRE-1.0.4
+nekohtml-1.9.17.jar  5D2D195847C819CC5D48325E63C5BF7B  CRE-1.0.4
+xstream-1.4.3.jar  8E3190161235797B8C57EDA899111981  CRE-1.0.4
+
+com.ibm.team.jfs.app.config_1.0.200.v20130320_1901.jar  FA4474BEA22F5CE34FF9C6F89FAC5CFC  Jazz-Foundation-v4.0.4-COO#-CA720130295
+com.ibm.team.jfs.app.distributed_2.2.1000.v20130606_1735.jar  C44A3B78ADB1B4904A0B5EDAA444C35A  Jazz-Foundation-v4.0.4-COO#-CA720130295
+com.ibm.team.jfs.app.http_1.3.2000.v20130626_0447.jar  D659ACD902F92205AE6FB4BC1EADF266  Jazz-Foundation-v4.0.4-COO#-CA720130295
+com.ibm.team.repository.provision_1.2.1000.v20130627_2341.jar  A502A2C2043434A028EEEF0F946D767F  Jazz-Foundation-v4.0.4-COO#-CA720130295
+net.jazz.ajax_2.2.1000.20140211-0301.jar  0E13594C339A520707A6505AC2668899  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.apache.http_4.1.100.v20120901_0511/lib/httpcore-4.1.3.jar  2294448759BECA66F19CB6BB328CEFA6  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.apache.http_4.1.100.v20120901_0511/lib/httpcore-nio-4.1.3.jar  B1793F474BED96B88674A0AC63B4C96E  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.apache.log4j_1.2.15.v201005080500.jar  9A2C3BEA91DF927A77C61E393CB0F078  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.dojotoolkit.shrinksafe_1.1.1100.v20120901_0511.jar  B58FCA3BFEE9CE72F87B6351C4B59447  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.eclipse.core.jobs_3.5.2.R36x_v20110419.jar  E819ACC25A4B13E7A9F82980BF6EF751  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.eclipse.equinox.http.servletbridge_1.0.200.v20100503.jar  C751561E72C3421579E4D0D7220A1ABC  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.eclipse.equinox.preferences_3.3.1.R36x_v20110302.jar  7770DB8BD3BE154179E7641BCA602C53  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.eclipse.osgi_3.6.50.R36x_v20120315-1500.jar  4B42D1050E4ECE92840B0711B0D0D894  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar  E600D0B3B22118B136F3BCAB3103B7C9  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.junit_4.8.1.v4_8_1_v20100427-1100/junit.jar  F5AEE480C575E9ADAA13A6D491F66BB9  Jazz-Foundation-v4.0.4-COO#-CA720130295
+org.mozilla.javascript_1.7.2.v201005080400.jar  5B75AEAA795772B4DB72BA4E20B4A287  Jazz-Foundation-v4.0.4-COO#-CA720130295
+
+DOHRobot.jar   60B77C3B8F5F3FC5783EA9B42A1C9C78  Dojo-Toolkit-1.9.x
+
+dlt.jar   ED5CE36EF45644D7E04A17C4A9F884E8  Languageware-Content-analytics-languageware-runtime-3.0
+
+com.ibm.cic.agent.win32.registerAgent_1.0.3.20130131.zip:com.ibm.cic.agent.win32.registerAgent.jar  E6AD7730FE9E05E110570A669AE4ED4B  RIM-manager-v1.7.1
+com.ibm.cic.agent.win32.registerUninstall_1.0.1.20120928.zip:com.ibm.cic.agent.win32.registerUninstall.jar  9E002A3218F58CCBE74F9F755C680ACE  RIM-manager-v1.7.1
+com.ibm.cic.agent.macosx.utils_1.0.20121231.zip:com.ibm.cic.agent.macosx.utils.jar  C6EB597AA95E4DD62EB56B6AB5EB2756  RIM-manager-v1.7.1
+com.ibm.cic.agent.nativeFixup_1.0.1.20121107.zip:com.ibm.cic.agent.nativeFixup.jar  0EC73BF3EC2B5835882C7852E7F0AAA6  RIM-manager-v1.7.1
+im:indicim.jar  65B3E5FC60F85CDF34D6DB399104C447  RIM-manager-v1.7.1
+im:thaiim.jar  257F6A148C97CA54BC9BFE912CE9C712  RIM-manager-v1.7.1
+vm.jar  F35D7F097B730755A6846663F7D18647  RIM-manager-v1.7.1
+vm.jar  8197599D39A29DDFCF1FB57AD261FCFF  RIM-manager-v1.7.1
+JavaDiagnosticsCollector.jar  998C71472EF6A1672DB02D158C7E0EFC  RIM-manager-v1.7.1
+dtfj-interface.jar  5CDBD16B568BCB020CDAC2CFB67F2DE0  RIM-manager-v1.7.1
+healthcenter.jar  E74E5CDFB91D7F7963E2E3F1A0970DE3  RIM-manager-v1.7.1
+localedata.jar  D9AEBCDA9AE14DA308D56E7271276A2B  RIM-manager-v1.7.1
+jdmpview.jar  2A011B25995F72DCC23F79A438F47B1B  RIM-manager-v1.7.1
+dtfjview.jar  761D1E2A847407E3AA7C94ECA8B1ADDF  RIM-manager-v1.7.1
+dnsns.jar  2C214DF2B383AE368D2DEC520C071B1B  RIM-manager-v1.7.1
+dtfj.jar  235E01CE16C5FB2D339E30B7A91AA884  RIM-manager-v1.7.1
+beans.jar  08533BACCA4A0F07B434B7CE5A0A1EC8  RIM-manager-v1.7.1
+annotation.jar  A4D202D023B359F92D3E7354BF0B1019  RIM-manager-v1.7.1
+security.jar  8F98B1D4F154DD70B5D8BC0120094794  RIM-manager-v1.7.1
+logging.jar  9FE14093CBF039CD649BB64E32073DB7  RIM-manager-v1.7.1
+charsets.jar  3261AA54C6824F65477C4C7417ADB152  RIM-manager-v1.7.1
+deploy.jar  192FF54304F286AA836ADE2D04945524  RIM-manager-v1.7.1
+java.util.jar  323BE71D3184A161DCEDAF2FD2E4558F  RIM-manager-v1.7.1
+jndi.jar  C8E454E839E4444F1B0E406D8D8CFC02  RIM-manager-v1.7.1
+sql.jar  730507007E7616513AA3C9A9B3404F88  RIM-manager-v1.7.1
+nativeInstallAdapterLinux.jar  23700821F500B7E0155EE44C25B95C7B  RIM-manager-v1.7.1
+ant-apache-bsf.jar  0469B0BEE76D70A6D14F02DE56B7823B  RIM-manager-v1.7.1
+ant-antlr.jar  AD44DC541C3E4B158218C8A8D168A854  RIM-manager-v1.7.1
+ant-jmf.jar  7D636FA6BC7B34CA0217ED69825F6044  RIM-manager-v1.7.1
+ant-junit.jar  ADB763927BA5B84B2EC2F3245581E69A  RIM-manager-v1.7.1
+ant-swing.jar  816D892BC2EBEFD87F9631DD414C53BD  RIM-manager-v1.7.1
+ant-jdepend.jar  524104231CC3A677DD9AF052F056B12F  RIM-manager-v1.7.1
+ant-junit4.jar  69F142137E4E0DEC85174BE37A9932A2  RIM-manager-v1.7.1
+ant-apache-regexp.jar  306A7189D772881BA319B5080782FB95  RIM-manager-v1.7.1
+ant-apache-bcel.jar  980009DA4080975DEDED628488AD715F  RIM-manager-v1.7.1
+ant-jai.jar  D907D7FDEB512CEF55079B6231C16231  RIM-manager-v1.7.1
+ant-testutil.jar  0DFE8658C136870CC8E8B3F33CB1555A  RIM-manager-v1.7.1
+ant-jsch.jar  9B0D45DD967A4BAFF6E2CF2F7CB99B2A  RIM-manager-v1.7.1
+ant-apache-log4j.jar  D124AA0F85388979AFFAA2781932EC75  RIM-manager-v1.7.1
+ant-netrexx.jar  05D65D4F27EB5204CE0E0F8F721C050D  RIM-manager-v1.7.1
+ant-javamail.jar  E35FB51E5DBF4436FAC5AC3E3004D191  RIM-manager-v1.7.1
+ant-commons-net.jar  2FD824B1CA07906F4CF00CDD90C75BCA  RIM-manager-v1.7.1
+ant-apache-oro.jar  0AF155112C5063213E0BD55846306917  RIM-manager-v1.7.1
+ant-apache-xalan2.jar  CFC6F09FB90CE14F7B3224F0D3BFF4AA  RIM-manager-v1.7.1
+ant-apache-resolver.jar  64FCF13CBC05E6F2D4FF7C7CA2407328  RIM-manager-v1.7.1
+ant-launcher.jar  5DD6EDFBEEA068737F55F0C2C7C0BD4F  RIM-manager-v1.7.1
+ant-bootstrap.jar  9153EEBD2C4B74699044159F58CD024A  RIM-manager-v1.7.1
+com.ibm.ws.pak.internal.jar  3F6FF725F66008D7BC5250313815DCA9  RIM-manager-v1.7.1
+runtime_registry_compatibility.jar  DF3B72A3541483F795D3790DDB56AECB  RIM-manager-v1.7.1
+flexlicensing.jar  E6D1D03699BB94214601EE744BF2866A  RIM-manager-v1.7.1
+LUMClient.jar  CB67D2785DE628188A7658044FFAA479  RIM-manager-v1.7.1
+lumlicensing.jar  04392AD7181F1824B114091796E2C4D6  RIM-manager-v1.7.1
+org.eclipse.help.webapp_3.6.101.v20120717-130216.jar  8B077F690380376B5E9B15F41324FF4F  RIM-manager-v1.7.1
+org.eclipse.core.databinding.property_1.4.100.v20120523-1955.jar  5A7B0639E66F5296D7CC1AB9201E8DC4  RIM-manager-v1.7.1
+org.eclipse.ui.intro_3.4.200.v20120521-2344.jar  7D7C8A8D59370CE8A99256CF49737BBE  RIM-manager-v1.7.1
+org.apache.batik.css_1.6.0.v201011041432.jar  A6B1201C835CB3E98733BD3214CB460E  RIM-manager-v1.7.1
+com.ibm.cic.agent.core_1.7.2.v20131022_0430.jar  6A7021A01ADB4F3A8E61575C3CB107A0  RIM-manager-v1.7.1
+org.apache.jasper.glassfish_2.2.2.v201205150955.jar  4ACF0E6FA89396EAA5BF05A7BC42E0DD  RIM-manager-v1.7.1
+org.apache.lucene.core_2.9.1.v201101211721.jar  E9261F1D37045A96E2EDE8565E08DC09  RIM-manager-v1.7.1
+com.ibm.cic.common.model.p2_1.0.10.v20130730_1754.jar  EB631043EF2355ED92F95D3539CDDB25  RIM-manager-v1.7.1
+javax.el_2.2.0.v201108011116.jar  FF8240A6D97EB014D9440D1DD3AC0312  RIM-manager-v1.7.1
+org.eclipse.ecf_3.1.300.v20120610-1946.jar  609CCF02B53CED13B8682BFFB8D7BC61  RIM-manager-v1.7.1
+org.eclipse.e4.ui.bindings_0.10.1.v20120716-173435.jar  A634A960398DADC1E0DB3438F72A137A  RIM-manager-v1.7.1
+javax.xml_1.3.4.v201005080400.jar  40DD2289E78D27E5BB3DA65D3E2195C6  RIM-manager-v1.7.1
+org.eclipse.equinox.frameworkadmin.equinox_1.0.400.v20120428-0117.jar  DF5962535A0CB777CCCC71E3F9AF47F3  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.ql_2.0.100.v20110808-1657.jar  94EC0DE4CDDFFB9B321136E5BF8423E9  RIM-manager-v1.7.1
+org.eclipse.equinox.event_1.2.200.v20120522-2049.jar  C54C7C41DF432E0CB11F9C49131A6F58  RIM-manager-v1.7.1
+org.eclipse.core.databinding.beans_1.2.200.v20120523-1955.jar  3E8492F274F03E18B35D62B1C7832B2D  RIM-manager-v1.7.1
+org.eclipse.help_3.6.0.v20120521-2344.jar  61087037E93EE83FB03E101774BFBF70  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.metadata_2.1.0.v20120430-2001.jar  C8827E9DCA2984E39A5916C1D829D0E9  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.transport.ecf_1.0.100.v20120305-0333.jar  4D4924BBD88D6C0977D17B9D746BE46F  RIM-manager-v1.7.1
+org.w3c.dom.svg_1.1.0.v201011041433.jar  DCF64EB5F94CF993600F30AAC878D329  RIM-manager-v1.7.1
+org.eclipse.ecf.filetransfer_5.0.0.v20120610-1946.jar  37D1B7CA055316BE603F3E782A6A8DE1  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.publisher_1.2.0.v20120428-0117.jar  56C1514EEF86F733F76839B5612215C0  RIM-manager-v1.7.1
+org.eclipse.equinox.jsp.jasper.registry_1.0.300.v20120522-2049.jar  2F8A4E21911AAB702B2751F3EB6ED605  RIM-manager-v1.7.1
+org.apache.batik.util.gui_1.6.0.v201011041432.jar  37CC80A8417E17B2F43B85F871B67714  RIM-manager-v1.7.1
+com.ibm.ws.sync.core_1.4.2.v20130730_1754.jar  F29658595C5C0E9A10D65B52A7680880  RIM-manager-v1.7.1
+org.eclipse.e4.core.services_1.0.0.v20120521-2346.jar  4CA780255EE3DFA2A390B7DECB7D24E0  RIM-manager-v1.7.1
+org.eclipse.jface.databinding_1.6.0.v20120521-2329.jar  2A996773EC331B80D0B9057E0148B309  RIM-manager-v1.7.1
+com.ibm.cic.eclipse.internals_1.2.0.v20130819_2159.jar  08544E42A1CA991231B1F379C2EBE9F4  RIM-manager-v1.7.1
+org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20110808-1657.jar  A2419CD092A5485477AEAD0082A8263E  RIM-manager-v1.7.1
+com.ibm.ccl.org.apache.oro_2.0.10.v20130730_1754.jar  152E25854448D3FD08CC88C4DFDAF4B8  RIM-manager-v1.7.1
+com.ibm.cic.security.storage_1.0.0.v20130813_2149.jar  93607FE7027874D038D11B87F06AF841  RIM-manager-v1.7.1
+org.eclipse.e4.ui.services_0.10.2.v20120726-172631.jar  22E0498B7F4108A8E2014743088FB573  RIM-manager-v1.7.1
+org.eclipse.jetty.servlet_8.1.3.v20120522.jar  4B26B3A55A89B65E07827E16819D97A6  RIM-manager-v1.7.1
+com.ibm.cic.agent.oac_1.0.0.v20130730_1754.jar  27585455CEBA7E04AC18B31CC03513BC  RIM-manager-v1.7.1
+org.eclipse.ui_3.103.0.v20120705-114351.jar  057C46DAE6CD97FC01C45607E8A8E31C  RIM-manager-v1.7.1
+org.eclipse.equinox.simpleconfigurator_1.0.301.v20120828-033635.jar  81096359ECD05496A64489E2CD916B58  RIM-manager-v1.7.1
+org.eclipse.equinox.bidi_0.9.0.v20120522-1841.jar  49B3B8782BE5EBF79EA798A735EC2F72  RIM-manager-v1.7.1
+javax.servlet.jsp_2.2.0.v201112011158.jar  1B87012BFA0CDD1A29F6CED8325FB94C  RIM-manager-v1.7.1
+org.eclipse.jetty.util_8.1.3.v20120522.jar  C6F5D51F24541BEB306DE269170859AD  RIM-manager-v1.7.1
+org.eclipse.e4.core.di.extensions_0.11.0.v20120523-2004.jar  3F9B326E8E01AC9BAA0C8BD4E082926D  RIM-manager-v1.7.1
+org.eclipse.core.expressions_3.4.401.v20120627-124442.jar  EC9C0C0CC7646268A78D33E32CBC1E00  RIM-manager-v1.7.1
+org.sat4j.pb_2.3.0.v20110329.jar  7FE58BF4F4B724FD1E6A0221C36594C1  RIM-manager-v1.7.1
+org.eclipse.jetty.io_8.1.3.v20120522.jar  4872B3A2807C3B90DFE600B74519ADF4  RIM-manager-v1.7.1
+com.ibm.cic.install.launcher_1.0.400.v20121102_1818.jar  6CC6C29D58D136812F945EC4589FF522  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.eclipseInstallAdaptor_1.1.25.v20130730_1754.jar  0AD7CC85F6BAF5091F6168C5C03D8AB0  RIM-manager-v1.7.1
+org.eclipse.equinox.security_1.1.100.v20120522-1841.jar  1BCD1FABDC3984788D102CA5B9095243  RIM-manager-v1.7.1
+org.eclipse.ui.forms_3.5.200.v20120705-114351.jar  F93836BCEDF279CE97B374DFB09DDBEF  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.jarprocessor_1.0.200.v20110808-1657.jar  EEB5385E0C4F96832188099EE6915F65  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.repository_2.2.0.v20120524-1945.jar  426E76B03AEE5E9BB263C02B9FA64EF5  RIM-manager-v1.7.1
+org.w3c.dom.smil_1.0.0.v200806040011.jar  C2494764F38DA65D09CE0A0444D00DCD  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench.addons.swt_0.10.1.v20120827-151636.jar  F0E09754E48D7C698978804CE40A4720  RIM-manager-v1.7.1
+com.ibm.cic.eclipse.ui.internals_1.0.6.v20130730_1754.jar  CEA82A16F7E6D1D6A0BB9FDFDEB62845  RIM-manager-v1.7.1
+com.ibm.ws.pak.core_1.3.6.v20130730_1754.jar  DB29111F7E8A6B763CB22DC567A2C497  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.engine_2.2.0.v20120501-1502.jar  93A9BE0DCC0F5CB46B02783B887C5980  RIM-manager-v1.7.1
+org.eclipse.core.runtime.compatibility.auth_3.2.200.v20100517.jar  56176D5772A097EA1753F8D1238F0B6C  RIM-manager-v1.7.1
+com.ibm.ws.sync.ui_1.2.13.v20130730_1754.jar  568A8D81367D31BF8D5924619AC1601D  RIM-manager-v1.7.1
+org.eclipse.help.ui_3.5.200.v20120521-2344.jar  AE1216BA04C48D7074560CA554D3BBF4  RIM-manager-v1.7.1
+com.ibm.cic.licensing.policy.ui_7.1.146.v20130730_1754.jar  6E259A67D7B1C74F62ACA00FD52A9250  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.garbagecollector_1.0.200.v20110808-1657.jar  37D25158764F4823904C00AFCF00FD8E  RIM-manager-v1.7.1
+org.eclipse.jetty.http_8.1.3.v20120522.jar  11F4315E13559222B8458E770752B5D6  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.executeInstallAdapter_1.2.11.v20130730_1754.jar  E3BFFA966D22319FACAEBD3FFEAE0297  RIM-manager-v1.7.1
+javax.annotation_1.0.0.v20101115-0725.jar  F18D11938E87011F824E9BE06F9BF8C1  RIM-manager-v1.7.1
+org.eclipse.jface_3.8.101.v20120817-083647.jar  8FEF7C724090609509314919D08EAABE  RIM-manager-v1.7.1
+org.eclipse.e4.core.contexts_1.1.0.v20120828-170404.jar  5C9855EC25100AD22815F19FBF154A0C  RIM-manager-v1.7.1
+com.sun.el_2.2.0.v201108011116.jar  26AE690E40E51C508B4531CEB016A4E4  RIM-manager-v1.7.1
+org.eclipse.equinox.util_1.0.400.v20120522-2049.jar  311A1F171B9BB532B675B2150387A669  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.touchpoint.natives_1.1.0.v20120524-0542.jar  02218856447B6B3FB420375F7F03D50D  RIM-manager-v1.7.1
+com.ibm.icu_4.4.2.v20110823.jar  B0D01F0723B407B4018ABEAE78DCB068  RIM-manager-v1.7.1
+org.apache.batik.util_1.6.0.v201011041432.jar  3DB4EC82C64EF8C985A818DC0FCDE67E  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.artifact.repository_1.1.200.v20120430-1959.jar  BFBC5490EA27207594211B1A23D83501  RIM-manager-v1.7.1
+org.eclipse.core.databinding.observable_1.4.1.v20120521-2329.jar  E9A9F2CB807A498B29ECE93982876228  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.core_2.2.0.v20120430-0525.jar  E66FB33144BA1DA466711E47440D1344  RIM-manager-v1.7.1
+org.eclipse.e4.core.di_1.1.0.v20120627-124443.jar  29ED5A31656659BB12B8FA3C7FF352E2  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.p2_1.0.15.v20130730_1754.jar  01FE59DC1E29662969ADE131E7F96E6D  RIM-manager-v1.7.1
+org.eclipse.equinox.jsp.jasper_1.0.400.v20120522-2049.jar  13812198E24976B06CA0960286E4AAA8  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench.swt_0.10.2.v20120802-184737.jar  70D5F7830EAD9B8147B73B5D04A138E1  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.application_1.6.3.v20130801_0207.jar  179A1914557480FCCCA431FD43F8F0D0  RIM-manager-v1.7.1
+javax.servlet_3.0.0.v201112011016.jar  54CA9D204AB946D8E44D24AB2C66F2EF  RIM-manager-v1.7.1
+org.eclipse.ant.core_3.2.400.v20120523-1752.jar  EA38AD409D0EAAF3ABF4EECEE8B41D4E  RIM-manager-v1.7.1
+org.eclipse.e4.ui.model.workbench_0.10.1.v20120523-1955.jar  99C6DF09C7985AEF0629FFCF699CFD4A  RIM-manager-v1.7.1
+org.eclipse.emf.ecore.change_2.8.0.v20120911-0500.jar  7823CBFFAEE56CBF084BC9F902297CF0  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.pakInstallAdapter_1.0.7.v20130730_1754.jar  F554128CE62F4F0F118680F7C3840422  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.antInstallAdapter_1.3.4.v20130730_1754.jar  1B39AF5D85050323D254925E32525542  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.nativeInstallAdapter_1.2.17.v20130730_1754.jar  EBA832E1576C8483BF9A9FE04E474876  RIM-manager-v1.7.1
+org.eclipse.core.variables_3.2.600.v20120521-2012.jar  FBADDBD81E17937F307F8753FC2A712C  RIM-manager-v1.7.1
+javax.inject_1.0.0.v20091030.jar  7361A9DAFBD454EA41E40539AEF40E2A  RIM-manager-v1.7.1
+org.eclipse.equinox.frameworkadmin_2.0.100.v20120606-175127.jar  732E3F4F980380484CE33DA45E996050  RIM-manager-v1.7.1
+org.eclipse.core.net_1.2.200.v20120522-1148.jar  834B4B45CACBE4554ED94C8C727F4011  RIM-manager-v1.7.1
+org.eclipse.emf.ecore_2.8.1.v20120911-0500.jar  D47AB69B3E7EEC26660630B8A1A17C43  RIM-manager-v1.7.1
+org.eclipse.e4.ui.widgets_0.12.0.v20120905-175524.jar  456071B6E807A9BBF7F0DDDF3939B4EE  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench3_0.12.0.v20120521-2329.jar  854D0AEEE4A660589C750CD9183E78D7  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.director_2.2.0.v20120524-0542.jar  CD2EB2A6D041265AB2ECAA8BFE3DCC4F  RIM-manager-v1.7.1
+org.eclipse.help.base_3.6.100.v201209141800.jar  48CE097B201EC74D012CCA75DA9189D3  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench_0.10.3.v20120822-140642.jar  B358DC7682FB7D2F10AF45102653D8E6  RIM-manager-v1.7.1
+org.eclipse.swt.gtk.linux.x86_64_3.100.1.v4234e.jar  804F8131B52A8A435E28C4CA9FA36FE9  RIM-manager-v1.7.1
+org.eclipse.jetty.security_8.1.3.v20120522.jar  FF68ED7A0717E71C46CEEDD03166A2D1  RIM-manager-v1.7.1
+org.eclipse.equinox.ds_1.4.0.v20120522-1841.jar  3AE7B28413CD732EC295202F153489C8  RIM-manager-v1.7.1
+com.ibm.cic.agent.core.console_1.7.0.v20130730_1754.jar  904B35E9ADCE186E6DBE0EAEB519A5F0  RIM-manager-v1.7.1
+org.eclipse.e4.ui.css.swt_0.10.2.v20120821-165957.jar  ED850A3CD4BA0EF0367BF48614A0F3FB  RIM-manager-v1.7.1
+org.eclipse.ui.workbench_3.103.2.v20130214-1345.jar  B36457D91FC8A863B24F24A786529620  RIM-manager-v1.7.1
+org.eclipse.core.databinding_1.4.1.v20120521-2329.jar  E001BF04805F9E9C202BAED9CF457FEB  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.touchpoint.eclipse_2.1.100.v20120428-0117.jar  472CEC2718169D5EC0A870A39CBDBCCB  RIM-manager-v1.7.1
+org.sat4j.core_2.3.0.v20110329.jar  7A7945597D6ED4A30ADED618722BA1F4  RIM-manager-v1.7.1
+org.eclipse.equinox.http.jetty_3.0.0.v20120522-1841.jar  816AF68AA394136E92C0F625EB5EB7A4  RIM-manager-v1.7.1
+org.eclipse.e4.ui.di_0.10.1.v20120523-1955.jar  45B85ADB69B9A4407ED76775B8BE8D63  RIM-manager-v1.7.1
+org.eclipse.ecf.provider.filetransfer_3.2.0.v20120610-1946.jar  5B7502D0A94A840E0B781A642952AFEE  RIM-manager-v1.7.1
+com.ibm.cic.agent.ui_1.4.16.v20131028_1825.jar  70D9101FB12933F5635CA4AF1F86D16C  RIM-manager-v1.7.1
+org.eclipse.equinox.p2.metadata.repository_1.2.100.v20120524-1717.jar  B079EB8CCC585D09C6A1FDF7778AA56D  RIM-manager-v1.7.1
+org.w3c.css.sac_1.3.1.v200903091627.jar  B907460BCD838B83035BC90C69D4A535  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench.renderers.swt_0.10.2.v20120814-175454.jar  46B2956CBCBC8C4636B11393AA53D38F  RIM-manager-v1.7.1
+org.eclipse.emf.ecore.xmi_2.8.0.v20120911-0500.jar  7AF3054D6D15358D29A48B4588E013DA  RIM-manager-v1.7.1
+org.eclipse.e4.ui.css.swt.theme_0.9.3.v20120806-170624.jar  75F2DC9B6904E469BF1158BFFDEC11F8  RIM-manager-v1.7.1
+org.apache.lucene.analysis_2.9.1.v201101211721.jar  E2878A16D87126F4074780F27A29ACEB  RIM-manager-v1.7.1
+com.ibm.cic.licensing.policy.ui.preferences_7.1.144.v20130730_1754.jar  3179D8AADAD33A89B9EF309FDFECEF38  RIM-manager-v1.7.1
+org.eclipse.e4.ui.css.core_0.10.2.v20120806-171245.jar  D73C5B92324A3F680008AF53CA4297C2  RIM-manager-v1.7.1
+org.eclipse.jetty.continuation_8.1.3.v20120522.jar  B5BC37636B44FD1A69759B25BF60C2CE  RIM-manager-v1.7.1
+org.eclipse.jetty.server_8.1.3.v20120522.jar  7884288EEF91B5BA4761895FDB299C6A  RIM-manager-v1.7.1
+org.eclipse.ecf.identity_3.1.200.v20120610-1946.jar  D9C3D5358E6FAD8207D6990FCCC9E817  RIM-manager-v1.7.1
+org.eclipse.e4.ui.workbench.renderers.swt.cocoa_0.11.0.v20120716-173435.jar  841BAE19BEDB64B110FC66226F0C822C  RIM-manager-v1.7.1
+org.eclipse.equinox.launcher_1.3.0.v20120522-1813.jar  3A2ED1425961DA0A702F3AD3A58EE4BE  RIM-manager-v1.7.1
+org.eclipse.ecf.ssl_1.0.100.v20120610-1946.jar  B052FF6A8A4DB2DB915F9EAC690E034E  RIM-manager-v1.7.1
+
+com.ibm.sistdase.json_1.1.1100.v20120901_0511.jar   7E4E28BCEDC0D3CF4E44DAABD5E3C8D7  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+com.ibm.team.jfs.app.config_1.0.200.v20130320_1901.jar  FA4474BEA22F5CE34FF9C6F89FAC5CFC   JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+com.ibm.team.jfs.app.distributed_2.2.1000.v20130606_1735.jar C44A3B78ADB1B4904A0B5EDAA444C35A  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+com.ibm.team.jfs.app.http_1.3.2000.v20130626_0447.jar  D659ACD902F92205AE6FB4BC1EADF266  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+com.ibm.team.json_1.1.1100.v20120901_0511.jar  62A945802569C4A9FBC72786E9928B2A  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+com.ibm.team.repository.provision_1.2.1000.v20130627_2341.jar  A502A2C2043434A028EEEF0F946D767F  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+org.mozilla.javascript_1.7.2.v201005080400.jar  5B75AEAA795772B4DB72BA4E20B4A287  JAZZ-com.ibm.team.foundation.feature.sdk-4.0.4
+
+
+
+guava-14.0.1.jar    58553F87D83B9F8EC74BD3529083EE2F   Guava-14.0.1
+
+jsoup-1.6.1.jar         0AE7E1B2252BF4D5771464E859A0C2EE   Jsoup-1.6.1-with-OOM-patch
+
+
+scriptfilter.jar   6D7AB14E9B350EA1C13BCA7F6F681922    IEHS-3.6.2.1
+org.eclipse.equinox.jsp.jasper_1.0.200.v20100421.jar   4350F12ED950F49E723F45F1BD2C9719    IEHS-3.6.2.1
+helpbase.jar   1324414647A2FF3D9A6F77DD0C903E60    IEHS-3.6.2.1
+debug.jar   02A0107252B86CD814E1D28C09AF009F    IEHS-3.6.2.1
+webapp.jar   1A1C9CFDD233DA0963ADCA8B235CE111    IEHS-3.6.2.1
+help.jar   4D32E3AD2FDEB5C07743503D9688488B    IEHS-3.6.2.1
+updatecore.jar   5BD305E5BAD9C80F63368C90D20F6DEC    IEHS-3.6.2.1
+updatecore.jar  1889397F6D695429A51356BFC745B3D8  IEHS-3.6.2.1a
+
+
+bayeux-api-2.7.0.jar        18984F974EA563DC5A6312875D90A6A1   Cometd-2.7.0
+cometd-java-annotations-2.7.0.jar       8A6E3FF9B18425E67A99E881CA668B41   Cometd-2.7.0
+cometd-java-oort-2.7.0.jar      04F611D367E4EFCCAFEFC42F1F32CDB8   Cometd-2.7.0
+cometd-java-server-2.7.0.jar        31E5552FC367C1AF20D13617F027B17E   Cometd-2.7.0
+cometd-java-common-2.7.0.jar       152B54BAD412FB1AE3C3D55426F1FE6A   Cometd-2.7.0
+
+jetty-client-7.6.13.v20130916.jar   BB1DDDE14086D5770C13B2AE4D33A295    Jetty-7.6.13
+jetty-continuation-7.6.13.v20130916.jar EC90F6C3916595D808BA643131CFDFA0    Jetty-7.6.13
+jetty-http-7.6.13.v20130916.jar 79B33607FD85C47426727477303C06E2    Jetty-7.6.13
+jetty-io-7.6.13.v20130916.jar   9FCDBB4A94DAB57F7AF1D6EC2C8B73D4    Jetty-7.6.13
+jetty-util-7.6.13.v20130916.jar 97BA0530E41E51049C482A1C99A5D43B    Jetty-7.6.13
+jetty-websocket-7.6.13.v20130916.jar    D6AF16A9C9AA9EC6BFAE3FB8C9CEEA68    Jetty-7.6.13
+
+lconn.pushnotification.ear:slf4j-log4j12-1.7.5.jar  371E35747D6BD35E3800034BDAC4150E  SLF4J-1.7.5
+slf4j-api-1.7.5.jar     3B1ECECAD9EBC3FBAD2953CCF4A070CA SLF4J-1.7.5
+
+acf.jar  3251249A401A8EFA5C284A9320BA2EC1  ACF-2.2.0.5
+html-parser.jar   69686D35E35394F4F7522CD112AE52A6  ACF-2.2.0.5
+
+icu4j-53_1.jar  4D481CE010C1A786AF2B79552778A3FC  ICU4J-53.1
+icu4j-charset-53_1.jar  00D47513129425040DCFBFCF40DA5FEA  ICU4J-53.1
+icu4j-localespi-53_1.jar  E14A6C3B352FE09E2526A24A477A3EB7  ICU4J-53.1
+
+daisydiff.jar   86C939D8E47027136DD1AE75BBF5158B DaisyDiff-1.2-with-xerces-removed
+
+struts2-core-2.3.16.3.jar  0AB2427E34113E7569424C52BE321C18  Struts-2.3.16.3
+struts2-spring-plugin-2.3.16.3.jar  3E01254668EB8B90A6F049E7F217E1BA  Struts-2.3.16.3
+struts2-tiles-plugin-2.3.16.3.jar  2CD0A4B61C1B36040511F5656E1DBEB2  Struts-2.3.16.3
+xwork-core-2.3.16.3.jar  F218646E00791323A7394B6DD1472E5E  Struts-2.3.16.3
+
+
+acf.jar 8F854D0592AFA25EABD4D7D65100CD64  ACF.2.5.0.21
+html-parser.jar 4C3474910A4199A04D705A09012482B8  ACF.2.5.0.21
+
+parser-2.5.0.20.jar 4C3474910A4199A04D705A09012482B8  ACF-2.5.0.20
+acf-2.5.0.20.jar  8F854D0592AFA25EABD4D7D65100CD64    ACF-2.5.0.20
+
+httpclient-4.3.1.jar    36F69D49A209A0C69DF42B80D6159566  HTTPClient-4.3.1-bundled-with-Solr-4.7.2
+httpcore-4.3.jar    4E4D81A276DEC1ECDBFE0E5C98E4ECFF  HTTPClient-4.3.1-bundled-with-Solr-4.7.2
+httpmime-4.3.1.jar  A594B6AC72EE4F3E3E7B83065F0C06A0  HTTPClient-4.3.1-bundled-with-Solr-4.7.2
+solr-solrj-4.7.2.jar    ED0F59E5FFEBBF73BFBF6C11468CF2AF  SOLR-4.7.2-bundled-with-Solr-4.7.2
+zookeeper-3.4.5.jar 00B9DB19AD7F18681761EDC6DB524CEB  ZooKeeper-3.4.5-bundled-with-Solr-4.7.2
+
+
+protostuff-api-1.0.7.jar    EB8072CE51E1B3BDE9526A5655753FBA  Protostuff-1.0.8
+protostuff-collectionschema.jar    AD0401A392DE74496D9D564C151816E8  Protostuff-1.0.8
+protostuff-core.jar    1724A90A690E701C8ED7E9FD3274CC74  Protostuff-1.0.8
+protostuff-json.jar    E2FBDE36C77A8707089070E9CDFCFB2D  Protostuff-1.0.8
+protostuff-runtime.jar    8DEF03607BAA596968F45A44695DF019  Protostuff-1.0.8
+protostuff-xml.jar    A3B3AA6FC032FA3ABBD4EE9E4549BBEA  Protostuff-1.0.8
+
+
+lucene-core-3.6.0.jar  84969436AF6FB0903ABCE22438BFE258  Lucene-v3.6.0
+lucene-highlighter-3.6.0.jar  E78A89DB56641E9A1AA09ED220D23C33 Lucene-V3.6.0
+lucene-memory-3.6.0.jar  417107F2C45BDE8414050246B33EA07A Lucene-V3.6.0
+
+
+castor-1.3.3-core.jar  AA03DDCAACBFA105F5347355597B83AF Castor-v1.3.3
+castor-1.3.3-xml.jar  AB2D0315492D3CBF89E6F630ADE57AB3 Castor-v1.3.3
+
+mobile.apns.jar  8A57A6C9859B7D3B7672545DD3CF680E Apple_Push_Notification_Service-v0.1.6
+mobile.gcm.jar  0883231F3DAF74C8133DD595E3A8AC91 Google_Cloud_Messaging-rev3
+
+caja-r5054.jar  3D13079C83ECE1A9295136042304CBB6 CRE-caja-r5054
+
+antlr-runtime-3.5.jar   AA6D7C8B425DF59F5F5BC98C58CFD9FC  SOLR-4.7.2-antlr-runtime-3.5
+asm-4.1.jar FD87B0FA932A63EDCC1EF652A9A33258  SOLR-4.7.2-asm-4.1
+concurrentlinkedhashmap-lru-1.2.jar 8CC08A8837AFD8E78B444A99C53CE09B  SOLR-4.7.2-concurrentlinkedhashmap-lru-1.2
+dom4j-1.6.1.jar 4D8F51D3FE3900EFC6E395BE48030D6D  SOLR-4.7.2-dom4j-1.6.1
+hadoop-annotations-2.2.0.jar    F4153A652CE29816F39E8DFB72CD4841  SOLR-4.7.2-hadoop-annotations-2.2.0
+hadoop-auth-2.2.0.jar   8BB0F03BEA387738B61642A2502B3289  SOLR-4.7.2-hadoop-auth-2.2.0
+hadoop-common-2.2.0.jar F43BB28332A67508D0B7ADDA59A49B82  SOLR-4.7.2-hadoop-common-2.2.0
+hadoop-hdfs-2.2.0.jar   44587D0F480ACE3C9A1725ED838E9CD7  SOLR-4.7.2-hadoop-hdfs-2.2.0
+hppc-0.5.2.jar  835DA0007C0756055B5934D09A0D9CB0  SOLR-4.7.2-hppc-0.5.2
+joda-time-2.2.jar   226F5207543C490F10F234E82108B998  SOLR-4.7.2-joda-time-2.2
+lucene-analyzers-common-4.7.2.jar   CBC49DFC4ED6EE29DB3A1ED5A84C5A9E Lucene-4.7.2
+lucene-analyzers-kuromoji-4.7.2.jar B9EC69D8CFEA196CD5D5D65E1498ACCF Lucene-4.7.2
+lucene-analyzers-phonetic-4.7.2.jar 1C7D1F83C11E3E8114C38324E50FD665 Lucene-4.7.2
+lucene-codecs-4.7.2.jar C442EC2C5E403D9C6F8BA8AD8762CD81 Lucene-4.7.2
+lucene-core-4.7.2.jar   6ED7375BFE046610363A10915CE2DD8B Lucene-4.7.2
+lucene-expressions-4.7.2.jar    D09175720080B00E8AE8D4A8C3E5915B Lucene-4.7.2
+lucene-grouping-4.7.2.jar   D2546182CA8F2E375252558A33FD9A52 Lucene-4.7.2
+lucene-highlighter-4.7.2.jar    EF0593381176EC5F5A95E43270C9354E Lucene-4.7.2
+lucene-join-4.7.2.jar   B49FAFEB5707866703B3905BE91D9A79 Lucene-4.7.2
+lucene-memory-4.7.2.jar 5345B32D63CF190DDB417D9A82900864 Lucene-4.7.2
+lucene-misc-4.7.2.jar   B00E5C10E68EEBDF928634D97731A7B4 Lucene-4.7.2
+lucene-queries-4.7.2.jar    FE815419A0AFF3F76452AC516FFFB680 Lucene-4.7.2
+lucene-queryparser-4.7.2.jar    E7C72FCE30AAE45D9E3AD43B24B2A58F Lucene-4.7.2
+lucene-spatial-4.7.2.jar    BF6FA8C5BF035C65B07BF0A433E3D687 Lucene-4.7.2
+lucene-suggest-4.7.2.jar    966CFF909A464DD4718542ABAFEB99E1 Lucene-4.7.2
+org.restlet-2.1.1.jar   9BDF03F129C6EC8D0DA680A979013E55  SOLR-4.7.2-org.restlet-2.1.1
+org.restlet.ext.servlet-2.1.1.jar   F72AF462F38F94416FC26E24FD3606D2  SOLR-4.7.2-org.restlet.ext.servlet-2.1.1
+protobuf-java-2.5.0.jar A44473B98947E2A54C54E0DB1387D137  SOLR-4.7.2-protobuf-java-2.5.0
+solr-core-4.7.2.jar 12EBC0BD9CCE46BB8F6DD7CA2C0B6ED4  SOLR-4.7.2-solr-core-4.7.2
+spatial4j-0.4.1.jar 7EAFC2E18E82D7A38CB800BE2DC9D678  SOLR-4.7.2-spatial4j-0.4.1
+
+
+acf-2.5.0.20.jar   2D8788D0C2D2E456075F9D53DD0E6117  ACF-2.5.0.23
+acf.jar   2D8788D0C2D2E456075F9D53DD0E6117  ACF-2.5.0.23
+html-parser-2.5.0.20.jar   2281A44B5B04AA4FE651C4767E7331C2  ACF-2.5.0.23
+html-parser.jar   2281A44B5B04AA4FE651C4767E7331C2  ACF-2.5.0.23
+
+
+
+axiom-api-1.2.5.jar               6753e0dbccd6b7becb8d90c67eab17d8 Axiom-1.2.5
+axiom-impl-1.2.5.jar                  87f327c9e5feada7c79ee5812c3a6c7f Axiom-1.2.5
+hamcrest-core-1.3.jar                 6393363b47ddcbba82321110c3e07519 Hamcrest-1.3
+hamcrest-library-1.3.jar              110ad2ea84f7031a1798648b6b318e79 Hamcrest-1.3
+rome-1.5.0.jar                    af379d7511170e95becdf4364bfc3214 Rome-1.5.0
+rome-utils-1.5.0.jar                  a2f7af9df4f750c08432a14100f60188 Rome-1.5.0
+spring-aop-4.1.6.RELEASE.jar              456e3d919a0a3ad28a1f75170b2dc1fd Spring-4.1.6
+spring-beans-4.1.6.RELEASE.jar            36b5c255cf87425f1e528d6a3d0eb5f1 Spring-4.1.6
+spring-context-4.1.6.RELEASE.jar          63168ed33eabfddc144e5acf32d76e5e Spring-4.1.6
+spring-core-4.1.6.RELEASE.jar             f9f20b46de6a0555ca748ad3a436c08c Spring-4.1.6
+spring-expression-4.1.6.RELEASE.jar       c134bcc59701dba1534250a7b20767f3 Spring-4.1.6
+spring-web-4.1.6.RELEASE.jar              8e206c4534d22617092126b455de9be4 Spring-4.1.6
+spring-webmvc-4.1.6.RELEASE.jar               5a4ef7a62f6f26168e20727238071267 Spring-4.1.6
+spring-security-config-4.0.1.RELEASE.jar      120295585274714702586663cf86b761 SpringSecurity-4.0.1
+spring-security-core-4.0.1.RELEASE.jar        f95f990983c8938787aada3b8a3d4a7f SpringSecurity-4.0.1
+spring-security-web-3.2.7.RELEASE.jar         64c5f3c938f4e0440c82bf422a964fea SpringSecurity-3.2.7
+spring-social-config-1.1.2.RELEASE.jar        f4318634680fb1b3e0e07620261662ee SpringSocial-1.1.2
+spring-social-core-1.1.2.RELEASE.jar          a86f3d6893a9328783a01ce2b71fa4b8 SpringSocial-1.1.2
+spring-social-security-1.1.2.RELEASE.jar      d5b08f6a34620d446a397cf47e3a2d47 SpringSocial-1.1.2
+spring-social-web-1.1.2.RELEASE.jar           e448c37da9b0ab102972e98378c362ca SpringSocial-1.1.2
+
+mybatis-3.0.5.jar            575c760bfd9667e5320ac25e317dbe6a Mybatis-3.0.5
+mybatis-spring-1.0.1.jar     9253b97954e460594496a66b60ea27ec Mybatis-Spring-1.0.1
+
+
+# Febuary 14,2017 Jay added prior to 6.0 GA
+abdera-parser-0.4.0-incubating.jar  E1E544E20555A2A4E37F9D39C8C8E86B    Abdera_0.4.0-with-patch
+
+httpclient-4.3.1.jar    12E02E15FF93655B4AFA04B929FBB9BB    HttpClient-4.3.1    ANA225420170111
+lucene-core-3.6.2.jar   86A58095EE5261F7771962C58E95CFB9    Lucene-core-3.6.2   ANA225420170111
+ognl-3.0.13.jar ED487CAB160B8EC1D6EABB35DBACEEFA    OGNL-3.0.13 ANA225420170111
+
+rome-1.5.0.jar  AF379D7511170E95BECDF4364BFC3214    Rome-1.5.0  ANA225420170111
+rome-utils-1.5.0.jar    A2F7AF9DF4F750C08432A14100F60188    Rome-1.5.0  ANA225420170111
+
+spring-webmvc-2.5.6.jar 46D40EFEEA9BD390A09E2B51D2A1049A    Spring-webmvc-2.5.6 ANA135720160622
+
+tiles-api-2.2.2.jar C17A57E8F31177F85087BD519034C0A4    Tiles-2.2.2 ANA134120160620
+tiles-core-2.2.2.jar    BDBD270083ADC95C505CC2AF5ECBD1C8    Tiles-2.2.2 ANA134120160620
+tiles-el-2.2.2.jar  291B5A87951D0E7B86279BF681B1AD62    Tiles-2.2.2 ANA134120160620
+tiles-freemarker-2.2.2.jar  EBDF5E68DCE5FF7A44D740995BB0BB73    Tiles-2.2.2 ANA134120160620
+tiles-jsp-2.2.2.jar 72FFB3BE330A2957EC0E0071DAB74524    Tiles-2.2.2 ANA134120160620
+tiles-ognl-2.2.2.jar    90461DE3EC05BC13B457E8728FA7CC6C    Tiles-2.2.2 ANA134120160620
+tiles-servlet-2.2.2.jar 835409E77AABB7D1C32478636B4262C1    Tiles-2.2.2 ANA134120160620
+tiles-template-2.2.2.jar    AC708A40148185959097874AF455E251    Tiles-2.2.2 ANA134120160620
+
+spymemcached-2.10.3.jar     E83A1E466AA0F7B5F41D57B6BC4714F9    Spymemcached-2.10.3 ANA048420151111
+
+spring-aop-4.2.3.RELEASE.jar                  8F481086BC75E9E91A7B894DCC742F19           Spring-4.2.3   ANA057420151208
+spring-beans-4.2.3.RELEASE.jar      42D2FBEA849A63CE8D424D67A3AD7A79           Spring-4.2.3 ANA057420151208
+spring-context-4.2.3.RELEASE.jar        58271FABDEA43893E51AF2740037E42E           Spring-4.2.3 ANA057420151208
+spring-core-4.2.3.RELEASE.jar           D32FDDA47AC7D787D10D19C0F1129D6F           Spring-4.2.3 ANA057420151208
+spring-expression-4.2.3.RELEASE.jar     28CB643D35788645F6CF50EBC6AA8DCF           Spring-4.2.3 ANA057420151208
+spring-security-config-4.0.1.RELEASE.jar    120295585274714702586663CF86B761           Spring-4.2.3 ANA057420151208
+spring-security-core-4.0.1.RELEASE.jar  F95F990983C8938787AADA3B8A3D4A7F           Spring-4.2.3 ANA057420151208
+spring-security-web-3.2.7.RELEASE.jar       64C5F3C938F4E0440C82BF422A964FEA           Spring-4.2.3 ANA057420151208
+spring-web-4.2.3.RELEASE.jar            50F56E40C8A3EBFE2CE106C46FD02E1B           Spring-4.2.3 ANA057420151208
+spring-webmvc-4.2.3.RELEASE.jar     B1F92929B345565653C42F1932686A86           Spring-4.2.3 ANA057420151208
+
+struts2-tiles-plugin-2.3.28.jar  75AEF62F7E99A4C82F9E3BA07697B6BC   xwork-core-2.3.28.jar   ANA068520160122
+struts2-core-2.3.28.jar 224F18F5FD316612C1649FB851C9D070        xwork-core-2.3.28.jar   ANA068520160122
+struts2-spring-plugin-2.3.28.jar    7FDF21855FD77B404C554B4914A636A2    xwork-core-2.3.28.jar   ANA068520160122
+xwork-core-2.3.28.jar   CB1132A23EB048DBB383E1B07BB53A7E            xwork-core-2.3.28.jar   ANA068520160122
+
+jsoup-1.8.3.jar D85F10A83EE509CB74D357F95FA3C332 JSoup-1.8.3 ANA075620160210
+
+owasp-java-html-sanitizer-20160203.1.jar 2747BC3AF4673C0A7756A85421C9E50B   OWASP-Sanitizer-20160203.1  ANA075920160211
+htmlparser-1.4.jar 08AA055BE9B263C49CE040B1973960FA Htmlparser-1.4  ANA076120160211
+
+joda-time-2.8.1.jar C23002A0FAC3455E92551E7F24500FA4        Joda-Time-2.8.1 ANA224920170111
+
+spring.jar  ADFF047BC8F39354D72CC1997994B275        Spring-2.5.6-with-Java1.8-patch
+
+jedis-2.8.1.jar 9E168A10432FDB2F7658F121F7E7409B        Jedis-2.8.1 ANA211920161201
+
+#AWS-SDK-1.11.69 (Amazon Web Services) checked in by Sheng Hu
+aws-java-sdk-core-1.11.69.jar   CC346B363A0C14EBFC59D98FC539D23C    AWS-1.11.69 ANA228220170117
+aws-java-sdk-kms-1.11.69.jar    C46E541BAA52A2C777D32A696F45DBB2    AWS-1.11.69 ANA228220170117
+aws-java-sdk-s3-1.11.69.jar 236C43D0A64CD6E4B679DA520EE67AAF    AWS-1.11.69 ANA228220170117
+
+gson-2.2.4.jar  232EA9AB7EC43B8B2EF36181EE7D693B    KCHelp  ANA224920170111
+idwb_dditazipconverter_4.5.2.jar    591675C3B08E93851256C5A44B2EC6CB    KCHelp  ANA224920170111
+javax.servlet.jsp.jstl-api-1.2.1.jar    E81F03BAD3A397E1A07561E4B00BE00B    KCHelp  ANA224920170111
+jericho-html-2.6.1.jar  97AF79E2F8221CB33E1DA981FF7826EE    KCHelp  ANA224920170111
+slf4j-api-1.7.7.jar CAE6026E39E9052B7833F9CAFDC02A87    KCHelp  ANA224920170111
+uadetector-core-0.8.0.jar   248545116BB894CA81B05CF50ABE6054    KCHelp  ANA224920170111
+uadetector-resources-2013.09.jar    6D20DA2CE0F9205CFC8A58292E9ABC2F    KCHelp  ANA224920170111
+
+freemarker2.3.22.jar    51CCA65040C41326E9B6B2806ABA23FF    Freemarker-2.3.22   ANA003820150529
+gson-2.5.jar    929D94512E63F6EE2EFD8CB57048F310    GSON-2.5    ANA200320161107
+guava-16.0.1.jar    A68693DF58191585D9AF914CFBE6067A    Guava-16.0.1    ANA138620160626
+guice-assistedinject-3.0.jar    64341453AD4102F01761C62A22AF0977    Guice-3.0   ANA197420161028
+httpclient-4.5.2.jar    E0A45DF625CB96B69505E59BB25A0189    HttpClient-4.5.2    ANA194220161025
+
+junit-4.8.2.jar 8A498C3D820DB50CC7255D8C46C1EBD1    Junit-4.8.2 ANA128120160609
+hamcrest-library-1.1.jar    FEB55B0CD77937A86270E2C4DC622EB4    Junit-4.8.2 ANA128120160609
+
+lucene-highlighter-3.6.2.jar    BD65C08026E6885BE9CD8277829A653F    Lucene-3.6.2    AUA
+lucene-memory-3.6.2.jar 205219B69F5DE4A23308137D5EC7065E    Lucene-3.6.2    AUA
+
+org.springframework.aop-3.0.5.RELEASE.jar  75503E47C416F8C82B9C7A289CCB9B70 Spring-3.0.5     ANA036020151006
+org.springframework.asm-3.0.5.RELEASE.jar    956EA9F1937E4CB9247AE381B5D40B4E   Spring-3.0.5     SWG435020140421
+org.springframework.aspects-3.0.5.RELEASE.jar  707EC11FA6274F46F5632034670D2397 Spring-3.0.5     ANA036020151006
+org.springframework.beans-3.0.5.RELEASE.jar  660F5655A2DF8AF34520E22C989DA762   Spring-3.0.5     ANA036020151006
+org.springframework.core-3.0.5.RELEASE.jar   D05FF86057E3E4EC2040C9DCCF732628   Spring-3.0.5     SWG435020140421
+org.springframework.context-3.0.5.RELEASE.jar  32765C98EABD1F85A54328E3C4D1A999 Spring-3.0.5     ANA03ANA036020151006
+org.springframework.context.support-3.0.5.RELEASE.jar  D040BCA1093310D50B8AE59DF21E7BF6 Spring-3.0.5     ANA03ANA036020151006
+org.springframework.expression-3.0.5.RELEASE.jar  0A572187D1B6DD916508D834A880497B  Spring-3.0.5     SWG435020140421
+org.springframework.jdbc-3.0.5.RELEASE.jar   0EDA90118A76F38678936538D2191BAD   Spring-3.0.5     ANA03ANA036020151006
+org.springframework.test-3.0.5.RELEASE.jar   A3D4DE5F666DE142AA63E07866D0B979   Spring-3.0.5     ANA03ANA036020151006
+org.springframework.transaction-3.0.5.RELEASE.jar  A392C9CA6AC71C9D91F9B03BE401E68F Spring-3.0.5     ANA036020151006
+org.springframework.web.servlet-3.0.5.RELEASE.jar  BEABFE1AA9A3167568BEEA9B92A2F0FC Spring-3.0.5     ANA03ANA036020151006
+
+fluent-hc-4.3.6.jar             A1D52C8041CAB76C1EBF16C3D2CB657 HttpClient-4.3.6    ANA027520150904
+httpclient-4.3.6.jar    98AC3EAA1D681C3ADC962D756EBED5A0    HttpClient-4.3.6    ANA027520150904
+httpclient-cache-4.3.6.jar  0A5D46DBB58D24EDE3C7AECFBA270349    HttpClient-4.3.6    ANA027520150904
+httpmime-4.3.6.jar  EC661AD97A37CCA0A91186625CF1FCBA    HttpClient-4.3.6    ANA027520150904
+
+spring-social-config-1.1.2.RELEASE.jar  F4318634680FB1B3E0E07620261662EE    Spring-Social-1.1.2 ANA012220150715
+spring-social-core-1.1.2.RELEASE.jar    A86F3D6893A9328783A01CE2B71FA4B8    Spring-Social-1.1.2 ANA012220150715
+spring-social-security-1.1.2.RELEASE.jar    D5B08F6A34620D446A397CF47E3A2D47    Spring-Social-1.1.2 ANA012220150715
+spring-social-web-1.1.2.RELEASE.jar E448C37DA9B0AB102972E98378C362CA    Spring-Social-1.1.2 ANA012220150715
+
+jclouds-blobstore-2.0.0-SNAPSHOT.jar    3886ACCFD89EC9B96CB9CCA6CD7CAD5B    Apache-JClouds-2.0  ANA201020161108
+jclouds-core-2.0.0-SNAPSHOT.jar A2FA4B355969821B643155433EC4F835    Apache-JClouds-2.0  ANA201020161108
+s3-2.0.0-SNAPSHOT.jar   50503B1554C1D6E2A2171CA3392445B2    Apache-JClouds-2.0  ANA201020161108
+sts-2.0.0-SNAPSHOT.jar  AADF2FB2AA0830D93BEFA81DAFA0198B    Apache-JClouds-2.0  ANA201020161108
+openstack-keystone-2.0.0-SNAPSHOT.jar   A7326877BF7DEFA8D8F3D54399FC6BEA    Apache-JClouds-2.0  ANA201020161108
+
+
+# 6.0 drop 2 - Jay, Feb 15,2017
+httpcore-4.4.4.jar  E7776F2B03A4C62D691A90D3C68C93C0    HTTPClient-4.5.2
+org.springframework.web-3.0.5.RELEASE.jar   C49FBF1401117F2A7DE32A0E29309600    SpringFramework-3.0.5
+fluent-hc-4.3.6.jar 4A1D52C8041CAB76C1EBF16C3D2CB657    HTTPClient-4.3.6
+httpcore-4.3.3.jar  C26171852F9810CD3D2416604A387E71    HTTPClient-4.3.6
+
+commons-io-2.1.jar           4854C2344AA182AD4F37976E83348AA0 Solr-4.7.2
+jcl-over-slf4j-1.6.6.jar     FAD4E4DA2493BD7971DC2356285B1F67 Solr-4.7.2
+jul-to-slf4j-1.6.6.jar       8C086F7494B96D9633ED858FB1738C36 Solr-4.7.2
+log4j-1.2.16.jar         363678F015902BCC040308136F845A3F Solr-4.7.2
+noggit-0.5.jar           C999A28FD0788CCA79FB64460A36B0AF Solr-4.7.2
+slf4j-api-1.6.6.jar      17BA6715F5DEFD50B2E781201F57B408 Solr-4.7.2
+slf4j-log4j12-1.6.6.jar      00E5EFBC17122D31A1C02C179E6D6E0B Solr-4.7.2
+solr-solrj-4.7.2.jar         E3E23D48E6C5D7B6F35ED0C65CAD1CAC Solr-4.7.2
+wstx-asl-3.2.7.jar       5CA667E626A1B2F3E5522CB431370CC6 Solr-4.7.2
+zookeeper-3.5.0-alpha.jar    E3127A78996BA47F564BA38468CA1A4E Solr-4.7.2
+
+
+kc.content.jar  4A078A3D31AD1436E9C199F99CB8B12A    IBM-KCHelp-1.5.1
+log4j-1.2-api-2.3.jar   97F562C4F299DC5F5F72E66DED465416    IBM-KCHelp-1.5.1
+log4j-api-2.3.jar   94241AB3197B95A813D896820B3F6A87    IBM-KCHelp-1.5.1
+log4j-core-2.3.jar  110AB3E3E4F3780921E8EE5DDE3373AD    IBM-KCHelp-1.5.1
+log4j-slf4j-impl-2.3.jar    C5507F66DB2C18B090B4AE2E8338244B    IBM-KCHelp-1.5.1
+lucene-analyzers-3.5.0.jar  D2A08933737A3CC60087E018680162F0    IBM-KCHelp-1.5.1
+lucene-core-3.5.0.jar   857FB1944B96D8B51306783238EBA446    IBM-KCHelp-1.5.1
+lucene-queries-3.5.0.jar    3F443C25A6813812E4E65C46CDB8A80F    IBM-KCHelp-1.5.1
+taglibs-standard-impl-1.2.1.jar B268AE1E23396AAA1D4B319124745CA5    IBM-KCHelp-1.5.1
+taglibs-standard-jstlel-1.2.1.jar   FED036E3C8D9EC7A5675B6CFCCBE2F08    IBM-KCHelp-1.5.1
+commons-codec-1.8.jar   B87AA66FE75685C82D082E750AB51B2E    IBM-KCHelp-1.5.1
+commons-collections-3.2.2.jar   F54A8510F834A1A57166970BFC982E94    IBM-KCHelp-1.5.1
+commons-io-2.4.jar  7F97854DC04C119D461FED14F5D8BB96    IBM-KCHelp-1.5.1
+commons-logging-1.1.3.jar   92EB5AABC1B47287DE53D45C086A435C    IBM-KCHelp-1.5.1
+commons-validator-1.4.0.jar 8F381C168688704A85C550CF343A5CA2    IBM-KCHelp-1.5.1
+
+commons-fileupload-1.3.1.jar  ED8EEC445E21EC7E49B86BF3CBCFFCBC Commons-Fileupload-1.3.1
+commons-transaction-1.2.jar   80BAF0441B943DF357676AC9D5C0DFED Commons-Transaction-1.2

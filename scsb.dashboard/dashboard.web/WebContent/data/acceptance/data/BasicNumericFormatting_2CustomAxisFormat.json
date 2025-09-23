@@ -1,0 +1,293 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "fields": [
+            {
+               "format": {
+                  "zeroFormat":{
+                     "numericPattern": "0.0"
+                  },
+                  "numericPattern": "#.00",
+                  "prefix": "+",
+                  "suffix": "$"
+               },
+               "id": "fX",
+               "label": "Price"
+            },
+            {
+               "format": {
+                  "zeroFormat":{
+                     "numericPattern": "0.0"
+                  },
+                  "numericPattern": "#.0",
+                  "prefix": "(",
+                  "suffix": ")"
+               },
+               "id": "fY",
+               "label": "Quantity"
+            },
+            {
+               "categories": [
+                  "category A",
+                  "category B",
+                  "category C",
+                  "category D",
+                  "category E",
+                  "category F"
+               ],
+               "id": "categories",
+               "label": "Categories"
+            }
+         ],
+         "id": "dDelimitedFileSource",
+         "rows": [
+            [
+               22,
+               339,
+               0
+            ],
+            [
+               1999,
+               290,
+               1
+            ],
+            [
+               1980,
+               95,
+               2
+            ],
+            [
+               985,
+               159,
+               3
+            ],
+            [
+               2000,
+               223,
+               4
+            ],
+            [
+               200,
+               299,
+               5
+            ],
+            [
+               500,
+               254,
+               5
+            ],
+            [
+               299,
+               277,
+               4
+            ],
+            [
+               2000,
+               412,
+               1
+            ],
+            [
+               39,
+               268,
+               2
+            ],
+            [
+               399,
+               297,
+               3
+            ],
+            [
+               799,
+               386,
+               2
+            ],
+            [
+               1599,
+               297,
+               1
+            ],
+            [
+               1997,
+               188,
+               5
+            ],
+            [
+               209,
+               269,
+               3
+            ],
+            [
+               149,
+               265,
+               1
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "b": 128,
+                           "g": 128,
+                           "r": 128
+                        },
+                        "stroke": {
+                           "style": "Dot",
+                           "width": 0.5
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "b": 0,
+                           "g": 0,
+                           "r": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "fill": {
+                           "b": 0,
+                           "g": 0,
+                           "r": 0
+                        },
+                        "font": {
+                           "family": "Verdana,SanSerif",
+                           "size": 8.9
+                        }
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "b": 128,
+                           "g": 128,
+                           "r": 128
+                        },
+                        "stroke": {
+                           "style": "Dot",
+                           "width": 0.5
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "b": 0,
+                           "g": 0,
+                           "r": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "fill": {
+                           "b": 0,
+                           "g": 0,
+                           "r": 0
+                        },
+                        "font": {
+                           "family": "Verdana,SanSerif",
+                           "size": 8.9
+                        }
+                     }
+                  }
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "categories"
+                     },
+                     "mapping": [
+                        {
+                           "at": 0,
+                           "color": "red"
+                        },
+                        {
+                           "at": 1,
+                           "color": "yellow"
+                        },
+                        {
+                           "at": 2,
+                           "color": "blue"
+                        },
+                        {
+                           "at": 3,
+                           "color": "pink"
+                        },
+                        {
+                           "at": 4,
+                           "color": "green"
+                        },
+                        {
+                           "at": 5,
+                           "color": "lime"
+                        }
+                     ]
+                  }
+               ],
+               "data": {
+                  "$ref": "dDelimitedFileSource"
+               },
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "fY"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "fX"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "a": 0.5,
+                     "b": 128,
+                     "g": 0,
+                     "r": 0
+                  },
+                  "outline": {
+                     "a": 1.0,
+                     "b": 0,
+                     "g": 0,
+                     "r": 255
+                  },
+                  "size": 20.0,
+                  "stroke": {
+                     "width": 1.0
+                  }
+               },
+               "type": "point"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": {
+               "b": 255,
+               "g": 255,
+               "r": 255
+            },
+            "outline": {
+               "a": 0.0,
+               "b": 0,
+               "g": 0,
+               "r": 0
+            },
+            "padding": 28.800001
+         }
+      }
+   ],
+   "size": {
+      "height": 400.0,
+      "width": 400.0
+   },
+   "version": "4.2"
+}

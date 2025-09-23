@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY", "unit": "date"}
+      ],
+      "rows": [ [ 0, 0 ], [ 7, 7 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {"gridStyle": {"fill": "#ccc"}}
+          },
+          {"axis": {"gridStyle": {"fill": "#ccc"}}}
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": 40
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

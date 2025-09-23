@@ -1,0 +1,126 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "US",
+                  "Canada"
+               ],
+               "id": "Country"
+            },
+            {
+               "categories": [
+                  "A",
+                  "Null Y",
+                  "C",
+                  "D"
+               ],
+               "id": "Division"
+            },
+            {
+               "id": "Quantity",
+               "label": "Quantity"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               0,
+               0,
+               73
+            ],
+            [
+               0,
+               1,
+               null
+            ],
+            [
+               1,
+               3,
+               100
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "bounds": {
+            "height": "100%",
+            "top": "0%"
+         },
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                  }
+               },
+               {
+                  "axis": {
+                     "boxStyle": {
+                        "fill": "transparent",
+                        "outline": "black"
+                     }
+                  },
+                  "scale": {
+                     "local": false
+                  }
+               },
+               {
+                  "axis": {
+                     "boxStyle": {
+                        "fill": "transparent",
+                        "outline": "black"
+                     }
+                  },
+                  "scale": {
+                     "categoryStructure": {
+                        "nest": true
+                     },
+                     "local": true
+                  }
+               }
+            ],
+            "transforms": [
+               {
+                  "type": "cluster"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "Quantity"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "Country"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "Division"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": "yellow",
+                  "outline": "black",
+                  "size": "100%"
+               },
+               "type": "point"
+            }
+         ],
+         "style": {
+            "fill": "#eee"
+         }
+      }
+   ],
+   "style": {
+      "fill": "white"
+   },
+   "version": "1.3"
+}

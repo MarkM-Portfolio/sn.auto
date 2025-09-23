@@ -1,0 +1,97 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories",
+            "Camping Equipment2",
+            "Golf Equipment2"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 73 ],
+        [ 0, 2, 43 ],
+        [ 1, 0, 14 ],
+        [ 1, 1, 12 ],
+        [ 1, 2, 24 ],
+        [ 2, 0, 31 ],
+        [ 2, 1, 5 ],
+        [ 2, 2, 10 ],
+        [ 3, 0, 14 ],
+        [ 3, 1, 11 ],
+        [ 3, 2, 14 ],
+        [ 4, 0, 10 ],
+        [ 4, 1, 33 ],
+        [ 4, 2, 20 ],
+        [ 5, 0, 73 ],
+        [ 5, 1, 23 ],
+        [ 5, 2, 93 ],
+        [ 6, 0, 14 ],
+        [ 6, 1, 41 ],
+        [ 6, 2, 34 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"categoryStructure": {"nest": true}},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {"categoryStructure": {"nest": true}},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3"
+}

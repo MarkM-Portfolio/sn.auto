@@ -1,0 +1,19 @@
+# for combining bvt and ci EMMA code coverage results on this machine
+REMOTE_WAS_HOME="/opt/IBM/WebSphere/AppServer"
+REMOTE_WAS_PROFILE_HOME=${REMOTE_WAS_HOME}/profiles/AppSrv01
+REMOTE_SCRIPT_HOME=/local/home/lcuser/lc-update
+DIR_EMMA_HOME=/local/home/git/emma
+EMMA_SCRIPT_DIR=${DIR_EMMA_HOME}/scripts
+
+FILEPATHS_FILE=${DIR_EMMA_HOME}/filepaths.txt
+
+REMOTE_BVT_USER=lcuser
+REMOTE_BVT_HOST=lc45linux1.swg.usma.ibm.com
+REMOTE_BVT_EMMA_HOME=/home/lcuser/emma
+
+REMOTE_CI_USER=icci
+REMOTE_CI_HOST=connectionsci1.cnx.cwp.pnp-hcl.com
+REMOTE_CI_EMMA_HOME=/local/home/icci/emma
+
+LOCAL_BVT_DIR=${DIR_EMMA_HOME}/combined_bvt_and_ci_staging/bvt
+LOCAL_CI_DIR=${DIR_EMMA_HOME}/combined_bvt_and_ci_staging/ci

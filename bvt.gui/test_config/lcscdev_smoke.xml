@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="10" name="Complete BVT Run" parallel="tests" >
+
+<!-- GROUPS --> 
+<!-- Will need to add some groups for the different products that can be test
+- for connections maybe something like - connlevel2
+- for smart cloud maybe something like - sclevel2
+-->
+<groups>
+<run> 
+<include name="smokecloud" />
+</run>
+</groups>
+
+<!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+
+<parameter name="server_is_grid_hub" value="true" />
+<parameter name="server_host" value="dubxpcvm776.mul.ie.ibm.com" />
+<parameter name="server_port" value="5555" />
+<!--
+  <parameter name="server_is_grid_hub" value="true"/>
+  <parameter name="server_host" value="lcrft04.cnx.cwp.pnp-hcl.com" />
+  <parameter name="server_port" value="5555"/>
+-->
+
+<!-- PRODUCT TO TEST -->
+<parameter name="product_name" value="cloud" />
+
+<!--RECORD_PERFORMANCE just enables a little extra logging-->
+<parameter name="record_performance" value="true" />
+
+<!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+<parameter name="login_type" value="cloud" />
+
+<!-- Connection Server has Sametime enabled -->
+<parameter name="sametime_enabled" value="false" /> 
+
+<!-- Servers we can use for testing -->
+<!-- Uses this format: -->
+
+<parameter name="browser_url" value= "https://apps.lcscdev.swg.usma.ibm.com"/> 
+
+<!-- BROWSER START COMMAND -->
+<parameter name="browser_start_command" value="ff_32_Windows" />
+
+
+<!-- Smart Cloud properties for apps.collabservdaily-->
+
+<parameter name="default_app_properties" value="test_config/app/appCloud.properties" />
+<parameter name="default_users_properties" value="test_config/extensions/user/lcscdev_users.properties" />
+<!-- WAFFLE CONFIGURATION PARAMETERS -->
+<parameter name="timeout_implicit_wait" value="30000" />
+<parameter name="timeout_async_script" value="30000" />
+<parameter name="timeout_page_navigate_timeout" value="60000" />
+<parameter name="pch_enable_dojo_pageload" value="false" />
+<parameter name="pch_enable_standard_pageload" value="false" />
+<parameter name="pch_post_event_pause" value="700" />
+<parameter name="location_force_script" value="false" /><!-- Was false -->
+<parameter name="location_use_fallback_strategy" value="false" />
+
+<!-- CUSTOM PARAMETERS -->
+<parameter name="bvt_option" value="BVT" /> 
+<parameter name="users_login_preference" value="email" />
+<parameter name="users_typeahead_preference" value="Display name" />
+<parameter name="root_folder_name" value="SeleniumServer" />
+<parameter name="upload_files_folder_name" value="TestFiles" />
+<parameter name="special_characters" value="false" />
+<parameter name="max_retries" value="0" />
+
+<!-- LISTENERS -->
+<listeners>
+<listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+<listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+<listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener" />
+<listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+<listener class-name="org.uncommons.reportng.HTMLReporter" />
+</listeners>
+
+<!-- TESTS -->
+<!-- 
+TESTS
+Specify test structure below. A test is a collection of test classes. 
+Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+<Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+-->
+
+<test name="Activities" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.activities.BVT_Level_2_Activities" />
+</classes>
+</test> 
+
+
+
+<test name="Communities" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+</classes>
+</test>
+
+
+<test name="Files" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.files.BVT_Level_2_Files" />
+</classes>
+</test>
+
+  <test name="Forums" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.forums.BVT_Level_2_Forums" />
+    </classes>
+  </test>
+  
+<test name="Homepage" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+</classes>
+</test>
+
+<test name="Profiles" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.profiles.BVT_Level_2_Profiles" />
+</classes>
+</test>
+
+<test name="Search" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.globalsearch.BVT_Level_2_Global_Search" />
+</classes>
+
+</test> <test name="Wikis" parallel="methods" preserve-order="true" enabled="true">
+<classes>
+<class name="com.ibm.conn.auto.tests.wikis.BVT_Level_2_Wikis" />
+</classes>
+</test>
+
+
+  <test name="Search New Data" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+       <class name="com.ibm.conn.auto.tests.globalsearch.BVT_Level_2_Global_Search" >
+    	<methods>
+    		<include name ="searchNewActivity" />
+		<include name ="searchNewFile" />
+		<include name ="searchNewCommunity" />
+    		
+      </methods> 
+      </class> 
+    </classes>
+  </test>
+  
+<test name="Widgets" parallel="methods" preserve-order="false" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Widgets" />
+    </classes>
+  </test>
+  
+ 
+   <test name="BSS Provisioning" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.bss.BVT_Level_2_BSS">
+        <methods>
+        	<include name ="testLoginCommunities" />
+        	<include name ="testLoginFiles" />
+        	<include name ="testLoginActivities" />
+        	<include name ="testLoginHomepage" />
+	</methods>      
+      </class>
+    </classes>
+  </test>
+  
+	<test name="Blogs" parallel="methods" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.blogs.BVT_Level_2_Blogs" />
+		</classes>
+	</test>
+
+</suite>

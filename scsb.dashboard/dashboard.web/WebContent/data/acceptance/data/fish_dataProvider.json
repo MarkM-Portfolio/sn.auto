@@ -1,0 +1,185 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "provider": {
+            "args": [
+               {"type": "FISH"},
+	        		 {"random": "false"}
+            ],
+            "providerId": "com.ibm.SampleDataProvider"
+         }
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+               },
+               {
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "color"
+                     },
+                     "modifies": {
+                        "part": "head"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "color"
+                     },
+                     "modifies": {
+                        "part": "tail"
+                     }
+                  }
+               ],
+               "label": [
+                  {
+                     "content": [
+                        {
+                           "$ref": "name"
+                        }
+                     ],
+                     "style": {
+                        "fill": "#000a",
+                        "font": {
+                           "size": 20
+                        },
+                        "location": "fit",
+                        "padding": 30
+                     }
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "y"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "x"
+                     }
+                  }
+               ],
+               "size": [
+                  {
+                     "field": {
+                        "$ref": "size"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "headsize"
+                     },
+                     "modifies": {
+                        "part": "head",
+                        "type": "height"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "tailsize"
+                     },
+                     "modifies": {
+                        "part": "tail",
+                        "type": "height"
+                     }
+                  }
+               ],
+               "style": {
+                  "size": "100%",
+                  "symbol": {
+                     "scaleDimensions": "none",
+                     "shape": [
+                        {
+                           "part": "head",
+                           "path": "M0.8,0.55Q0.8,0.8,0.4,0.8Q0.1,0.8,0,0.5Q0.1,0.2,0.4,0.2Q0.8,0.2,0.8,0.45Z",
+                           "scaleDimensions": "both",
+                           "style": {
+                              "fill": {
+                                 "colors": [
+                                    {
+                                       "color": {
+                                          "dLightness": 0.15,
+                                          "dValue": 0.1
+                                       },
+                                       "offset": 0
+                                    },
+                                    {
+                                       "color": {
+                                          "dValue": -0.35
+                                       },
+                                       "offset": 1
+                                    }
+                                 ],
+                                 "type": "linear"
+                              }
+                           },
+                           "type": "path"
+                        },
+                        {
+                           "part": "tail",
+                           "path": "M0.79,0.4Q0.8,0,1,0Q0.9,0.5,1,1Q0.8,1,0.79,0.6Z",
+                           "scaleDimensions": "both",
+                           "style": {
+                              "fill": {
+                                 "dValue": -0.35
+                              }
+                           },
+                           "type": "path"
+                        },
+                        {
+                           "bounds": {
+                              "height": "8.0%",
+                              "left": "16.0%",
+                              "top": "36.0%",
+                              "width": "8.0%"
+                           },
+                           "part": "eye",
+                           "scaleDimensions": "none",
+                           "style": {
+                              "fill": "white",
+                              "outline": "black",
+                              "stroke": {
+                                 "width": 0.5
+                              }
+                           },
+                           "type": "circle"
+                        },
+                        {
+                           "bounds": {
+                              "height": "3.0%",
+                              "left": "17.5%",
+                              "top": "38.5%",
+                              "width": "3.0%"
+                           },
+                           "scaleDimensions": "none",
+                           "style": {
+                              "fill": "black"
+                           },
+                           "type": "circle"
+                        }
+                     ]
+                  }
+               },
+               "type": "point"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": "white",
+            "padding": 5
+         }
+      }
+   ],
+   "version": "4.0"
+}

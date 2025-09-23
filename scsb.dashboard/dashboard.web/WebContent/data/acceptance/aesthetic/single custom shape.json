@@ -1,0 +1,181 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "fields": [
+            {
+               "id": "fX",
+               "label": "Price"
+            },
+            {
+               "id": "fY",
+               "label": "Quantity"
+            },
+            {
+               "categories": [
+                  "a",
+                  "b",
+                  "c"
+               ],
+               "id": "facet1",
+               "label": "Three Colors"
+            },
+            {
+               "categories": [
+                  "category A",
+                  "category B"
+               ],
+               "id": "facet2",
+               "key": true,
+               "label": "Two Sizes"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               22,
+               339,
+               0,
+               0
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "b": 128,
+                           "g": 128,
+                           "r": 128
+                        },
+                        "stroke": {
+                           "style": "Dot",
+                           "width": 0.5
+                        }
+                     },
+                     "tickStyle": {
+                        "font": {
+                           "family": "Verdana,SanSerif",
+                           "size": 9
+                        }
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "b": 128,
+                           "g": 128,
+                           "r": 128
+                        },
+                        "stroke": {
+                           "style": "Dot",
+                           "width": 0.5
+                        }
+                     },
+                     "tickStyle": {
+                        "font": {
+                           "family": "Verdana,SanSerif",
+                           "size": 9
+                        }
+                     }
+                  }
+               }
+            ],
+            "style": {
+               "fill": "white",
+               "outline": {
+                  "a": 1.0,
+                  "b": 0,
+                  "g": 0,
+                  "r": 0
+               }
+            }
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "facet1"
+                     },
+                     "id": "colorId"
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "fY"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "fX"
+                     }
+                  }
+               ],
+               "size": [
+                  {
+                     "field": {
+                        "$ref": "facet2"
+                     },
+                     "id": "sizeId",
+                     "mapping": [
+                        {
+                           "at": 0,
+                           "size": 75
+                        },
+                        {
+                           "at": 1,
+                           "size": 120
+                        }
+                     ]
+                  }
+               ],
+               "style": {
+                  "height": 30,
+                  "outline": "black",
+                  "symbol": {
+                     "scaleDimensions": "both",
+                     "shape": [
+                        {
+                           "r": "15%",
+                           "scaleDimensions": "none",
+                           "x": "30%",
+                           "y": "20%"
+                        },
+                        {
+                           "r": "15%",
+                           "scaleDimensions": "none",
+                           "x": "70%",
+                           "y": "20%"
+                        },
+                        {
+                           "path": "M0.5,0.4L0.4,0.6L0.6,0.6"
+                        },
+                        {
+                           "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                        }
+                     ]
+                  },
+                  "width": 30
+               },
+               "type": "point"
+            }
+         ],
+         "style": {
+            "fill": {
+               "a": 0
+            },
+            "padding": 10
+         }
+      }
+   ],
+   "version": "1.3"
+}

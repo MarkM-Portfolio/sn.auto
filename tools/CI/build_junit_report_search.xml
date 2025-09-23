@@ -1,0 +1,13 @@
+<project name="${env.APPLICATION} CI" default="development" basedir="."> 
+    <target name="ci.build.report">
+      <echo>Building junit XML report now...</echo>
+
+      <junitreport todir="${env.CI_HOME}/${env.SRC}/${env.APPDIR}/build/search.tests/reports/jreport">
+        <fileset dir="${env.CI_HOME}/${env.SRC}/${env.APPDIR}/build/search.tests/reports/jreport">
+            <include name="TEST-*.xml"/>
+        </fileset>
+
+        <report format="noframes" todir="${env.CI_HOME}/${env.SRC}/${env.APPDIR}/build/search.tests/reports/jreport" />
+      </junitreport>
+    </target>
+</project>

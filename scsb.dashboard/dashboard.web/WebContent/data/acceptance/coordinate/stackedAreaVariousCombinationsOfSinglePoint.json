@@ -1,0 +1,706 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "stack1",
+      "fields": [
+        {"id": "group", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x"},
+        {"id": "y"}
+      ],
+      "rows": [
+        [ 0, 1, 10 ],
+        [ 1, 1, 10 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack2",
+      "fields": [
+        {"id": "group2", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x2"},
+        {"id": "y2"}
+      ],
+      "rows": [
+        [ 0, 1, 20 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack3",
+      "fields": [
+        {"id": "group3", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x3"},
+        {"id": "y3"}
+      ],
+      "rows": [ [ 0, 1, 10 ], [ 1, 1, 10 ], [ 2, 1, 10 ] ]
+    },
+    {
+      "id": "stack4",
+      "fields": [
+        {"id": "group4", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x4", "categories": [ "A", "B", "C" ]},
+        {"id": "y4"}
+      ],
+      "rows": [
+        [ 0, 1, 10 ],
+        [ 1, 1, 10 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack5",
+      "fields": [
+        {"id": "group5", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x5", "categories": [ "A", "B", "C" ]},
+        {"id": "y5"}
+      ],
+      "rows": [
+        [ 0, 1, 20 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack6",
+      "fields": [
+        {"id": "group6", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x6", "categories": [ "A", "B", "C" ]},
+        {"id": "y6"}
+      ],
+      "rows": [ [ 0, 1, 10 ], [ 1, 1, 10 ], [ 2, 1, 10 ] ]
+    },
+    {
+      "id": "stack7",
+      "fields": [
+        {"id": "group7", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x7"},
+        {"id": "y7"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 0 ],
+        [ 1, 0, 0 ],
+        [ 1, 1, 10 ],
+        [ 1, 2, 0 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack8",
+      "fields": [
+        {"id": "group8", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x8", "categories": [ "A", "B", "C" ]},
+        {"id": "y8"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 0 ],
+        [ 1, 0, 0 ],
+        [ 1, 1, 10 ],
+        [ 1, 2, 0 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack9",
+      "fields": [
+        {"id": "group9", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x9"},
+        {"id": "y9"}
+      ],
+      "rows": [
+        [ 0, 0, 10 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 10 ],
+        [ 1, 1, 20 ]
+      ]
+    },
+    {
+      "id": "stack10",
+      "fields": [
+        {"id": "group10", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x10", "categories": [ "A", "B", "C" ]},
+        {"id": "y10"}
+      ],
+      "rows": [
+        [ 0, 0, 10 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 10 ],
+        [ 1, 1, 20 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": 0,
+        "top": "80%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Two singles on bottom" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack1"},
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": 0,
+        "top": "60%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Single on bottom" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack2"},
+          "position": [
+            {"field": {"$ref": "y2"}},
+            {"field": {"$ref": "x2"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group2"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": 0,
+        "top": "20%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Three singles" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack3"},
+          "position": [
+            {"field": {"$ref": "y3"}},
+            {"field": {"$ref": "x3"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group3"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "0%",
+        "top": "40%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Single on top" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack9"},
+          "position": [
+            {"field": {"$ref": "y9"}},
+            {"field": {"$ref": "x9"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group9"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Explicit zeros" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack7"},
+          "position": [
+            {"field": {"$ref": "y7"}},
+            {"field": {"$ref": "x7"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group7"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "33%",
+        "top": "80%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title":["Category: two singles"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack4"},
+          "position": [
+            {"field": {"$ref": "y4"}},
+            {"field": {"$ref": "x4"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group4"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "33%",
+        "top": "60%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Category: Single on bottom" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack5"},
+          "position": [
+            {"field": {"$ref": "y5"}},
+            {"field": {"$ref": "x5"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group5"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "33%",
+        "top": "20%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Category: Three Singles" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack6"},
+          "position": [
+            {"field": {"$ref": "y6"}},
+            {"field": {"$ref": "x6"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group6"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "33%",
+        "top": "40%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Category: Single on top" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack10"},
+          "position": [
+            {"field": {"$ref": "y10"}},
+            {"field": {"$ref": "x10"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group8"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "33%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category: Explicit Zeros"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack8"},
+          "position": [
+            {"field": {"$ref": "y8"}},
+            {"field": {"$ref": "x8"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group8"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "66%",
+        "top": "80%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category - locale:false"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack4"},
+          "position": [
+            {"field": {"$ref": "y4"}},
+            {"field": {"$ref": "x4"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group4"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "66%",
+        "top": "60%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category - locale:false"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack5"},
+          "position": [
+            {"field": {"$ref": "y5"}},
+            {"field": {"$ref": "x5"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group5"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "66%",
+        "top": "20%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category - locale:false"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack6"},
+          "position": [
+            {"field": {"$ref": "y6"}},
+            {"field": {"$ref": "x6"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group6"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "66%",
+        "top": "40%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category - locale:false"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack10"},
+          "position": [
+            {"field": {"$ref": "y10"}},
+            {"field": {"$ref": "x10"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group8"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "33%",
+        "height": "20%",
+        "left": "66%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"scale":{"local":false}, "axis": {"title":["Category - locale:false"]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "stack8"},
+          "position": [
+            {"field": {"$ref": "y8"}},
+            {"field": {"$ref": "x8"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group8"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    }
+  ],
+  "size": {"width": 600.0, "height": 800.0},
+  "style": {"fill": "lightgray"}
+}

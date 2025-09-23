@@ -1,0 +1,83 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Category",
+          "categories": [ "A", "B", "C", "D" ]
+        },
+        {
+          "id": "fValues",
+          "label": "N",
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "id": "fMin",
+          "label": "N",
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "id": "fMax",
+          "label": "N",
+          "min": 0,
+          "max": 100000
+        }
+      ],
+      "rows": [
+        [ 3, 1000, 500, 1500 ],
+        [ 2, 50000, 49000, 60000 ],
+        [ 1, 75000, 60000, 80000 ],
+        [ 0, 30000, 25000, 32000 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "style": {"width": "80%"}
+        },
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fMin"}},
+            {"field": {"$ref": "fMax"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "style": {
+            "fill": "blue",
+            "stroke": {"width": 3.0},
+            "width": "20%",
+            "symbol": {
+              "shape": [
+                {"x": "30%", "y": "20%", "r": "30%"},
+                {"x": "70%", "y": "20%", "r": "30%"},
+                {"path": "M0.5,0.4L0.4,0.6L0.6,0.6"},
+                {
+                  "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "version": "1.3"
+}

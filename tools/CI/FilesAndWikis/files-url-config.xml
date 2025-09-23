@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S68                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2009, 2011  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<config id="files-url-config" xmlns="http://www.ibm.com/connections/files/url-config/1.0"
+		xmlns:tns="http://www.ibm.com/connections/files/url-config/1.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.ibm.com/connections/files/url-config/1.0 files-url-config.xsd">
+    <objectType name="customtype1" urlCustomizer="com.ibm.lconn.share.platform.test.config.TestURLCustomizer1"></objectType>
+    <objectType name="customtype2" urlCustomizer="com.ibm.lconn.share.platform.test.config.TestURLCustomizer2"></objectType>
+    <objectType name="customtype3" urlCustomizer="com.ibm.lconn.share.platform.test.config.TestURLCustomizer3"></objectType>
+    <objectType name="customtype4" urlCustomizer="com.ibm.lconn.share.platform.url.DefaultURLCustomizer">
+    	<property name="server.host" value="docs.example.com" />
+    	<property name="server.port.http" value="80"/>
+    	<property name="server.port.https" value="443"/>
+    	<property name="link.alternate" value="/docs/{fileId}"/>
+    	<property name="link.custom" value="/docs/{fileId}"/>
+    </objectType>
+</config>

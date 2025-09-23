@@ -1,0 +1,154 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Population",
+          "format": {"numericPattern": "0,000,000"}
+        },
+        {
+          "id": "y",
+          "label": "Cities",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        }
+      ],
+      "rows": [
+        [ 78000000, 0 ],
+        [ 55000000, 1 ],
+        [ 28000000, 2 ],
+        [ 48000000, 3 ],
+        [ 32000000, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90,"CCW":true}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "x"} ],
+              "style": {
+                "fill": {"h": 0, "l": 1, "s": 0},
+                "align": "middle",
+                "effect": {"shadow": {"dy": 1, "stdDev": 1}},
+                "font": {
+                  "family": "Arial",
+                  "size": 15.0,
+                  "weight": "bold"
+                },
+                "padding": 20,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "x"}} ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "y"},
+              "palette": [
+                {"fill": {"h": 0.5805, "l": 0.65, "s": 0.6}},
+                {"fill": {"h": 0.683, "l": 0.77, "s": 0.35}},
+                {"fill": {"h": 0.225, "l": 0.66, "s": 0.39}},
+                {
+                  "fill": {
+                    "h": 0.1639,
+                    "l": 0.69,
+                    "s": 0.74
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.1056,
+                    "l": 0.67,
+                    "s": 0.79
+                  }
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "y"},
+                " :\n",
+                {"$ref": "x"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "colors": [
+                {
+                  "color": {
+                    "dLightness": 0.15,
+                    "dSaturation": 0.2
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dLightness": -0.25,
+                    "dSaturation": 0.3
+                  },
+                  "offset": 1
+                }
+              ],
+              "global": true
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": "4.5%"
+      }
+    }
+  ],
+  "size": {"width": 600.0, "height": 500.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

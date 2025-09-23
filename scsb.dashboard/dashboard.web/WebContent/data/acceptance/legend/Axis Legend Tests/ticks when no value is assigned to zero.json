@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California, here I come.",
+            "Illinois",
+            "Washington",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [ [ 185, 2010, 3 ], [ 136, 2005, 4 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fY"} ],
+              "style": {"align": "end", "valign": "start"}
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {"spans": [ {"fit": "exact"} ]},
+              "mapping": [
+                {"at": 2005, "size": 10},
+                {"at": "100%", "size": 100}
+              ]
+            }
+          ],
+          "style": {"fill": "yellow", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [ {"method": "axis"} ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

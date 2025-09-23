@@ -1,0 +1,275 @@
+{
+  "data": [
+    {
+      "id": "stack1",
+      "fields": [
+        {"id": "group1", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x2"},
+        {"id": "y2"}
+      ],
+      "rows": [
+        [ 0, 0, 10 ],
+        [ 0, 1, 20 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "stack2",
+      "fields": [
+        {"id": "group2", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x9"},
+        {"id": "y9"}
+      ],
+      "rows": [
+        [ 0, 0, 10 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 10 ],
+        [ 1, 0, 20 ],
+        [ 1, 1, 20 ]
+      ]
+    },
+    {
+      "id": "stack3",
+      "fields": [
+        {"id": "group3", "categories": [ "X", "Y", "Z" ]},
+        {"id": "x7"},
+        {"id": "y7"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 10 ],
+        [ 0, 2, 0 ],
+        [ 1, 0, 0 ],
+        [ 1, 1, 10 ],
+        [ 1, 2, 0 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 10 ],
+        [ 2, 2, 10 ]
+      ]
+    },
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from", "min": 0, "max": 2},
+        {"id": "to"},
+        {"id": "size"}
+      ],
+      "rows": [ [ 1, 0, 3 ], [ 0, 2, 5 ] ]
+    },
+    {
+      "id": "nodes",
+      "fields": [ {"id": "id", "min": 0, "max": 2} ],
+      "rows": [ [ 0 ], [ 1 ], [ 2 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "45%",
+        "height": "30%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {
+            "axis": {
+              "title": [ "Stroke width over Style size" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "stack1"},
+          "position": [
+            {"field": {"$ref": "y2"}},
+            {"field": {"$ref": "x2"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group1"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 20},
+            "outline": "black",
+            "size": 5
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "45%",
+        "height": "30%",
+        "left": "45%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {
+            "axis": {
+              "title": [ "Stroke width over style size" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "stack2"},
+          "position": [
+            {"field": {"$ref": "y9"}},
+            {"field": {"$ref": "x9"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group2"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {
+            "stroke": {"style": "DashDot"},
+            "outline": "black",
+            "size": "5"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "45%",
+        "height": "30%",
+        "left": "0%",
+        "top": "30%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {"axis": {"title": [ "Only Style size" ]}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "path",
+          "data": {"$ref": "stack3"},
+          "position": [
+            {"field": {"$ref": "y7"}},
+            {"field": {"$ref": "x7"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "group3"},
+              "palette": [ "red", "blue", "green" ]
+            }
+          ],
+          "style": {"outline": "black", "size": 5}
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    },
+    {
+      "bounds": {
+        "width": "45%",
+        "height": "30%",
+        "left": "45%",
+        "top": "30%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "lightgray"}}},
+          {
+            "axis": {
+              "title": [ "Aesthetic size over style size" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "id"} ],
+              "style": {
+                "fill": "blue",
+                "font": {"weight": "bold"}
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [
+            {
+              "field": {"$ref": "id"},
+              "scale": {"local": false}
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "grid"
+          },
+          "style": {
+            "fill": "lightgray",
+            "outline": "transparent",
+            "size": 30,
+            "symbol": "circle"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "color": [
+            {
+              "field": {"$ref": "id"},
+              "scale": {"local": false}
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "size": [
+            {
+              "field": {"$ref": "size"},
+              "mapping": [
+                {"at": "0%", "size": "20%"},
+                {"at": "100%", "size": "40%"}
+              ]
+            }
+          ],
+          "style": {
+            "endArrow": "arrow",
+            "size": "12%%",
+            "symbol": "elbow"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 18.0}
+    }
+  ],
+  "size": {"width": 600.0, "height": 800.0},
+  "version": "2.0",
+  "style": {"fill": "lightgray"}
+}

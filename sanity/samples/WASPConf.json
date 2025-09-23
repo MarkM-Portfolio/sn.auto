@@ -1,0 +1,19 @@
+{
+	"tests":[
+		{
+			"name":"WASPost",
+			"location":"Tests/WASPTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"websphere.pathWAS":"/opt/IBM/WebSphere",
+		"websphere.server":"ictools4.swg.usma.ibm.com",
+		"websphere.srvName":"GroupHttpServer",
+		"websphere.pathLotus":"/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/config/cells/ictools4Cell01/LotusConnections-config/LotusConnections-config.xml",
+		"wsadmin.path":"/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/wsadmin.sh",
+		"wsadmin.user":"wasadmin",
+		"wsadmin.pass":"gwxubtdp"
+	}
+}

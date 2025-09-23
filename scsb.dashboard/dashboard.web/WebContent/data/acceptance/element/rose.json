@@ -1,0 +1,99 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Category",
+          "categories": [
+            "Adventure",
+            "Biography",
+            "Classics",
+            "General fiction",
+            "Literature",
+            "Mystery",
+            "Reference",
+            "Romance",
+            "Scifi/Fantasy",
+            "Spirituality"
+          ]
+        },
+        {"id": "fSourcefield", "label": "Price"}
+      ],
+      "rows": [
+        [ 7, 16.49 ],
+        [ 8, 6.99 ],
+        [ 9, 29.95 ],
+        [ 3, 12.95 ],
+        [ 6, 12.95 ],
+        [ 1, 24.99 ],
+        [ 2, 7.99 ],
+        [ 0, 8.49 ],
+        [ 5, 19.99 ],
+        [ 4, 11.95 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {},
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"style": "Dot"}
+              },
+              "lineStyle": {
+                "fill": {"b": 255, "g": 255, "r": 255}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"b": 255, "g": 255, "r": 255},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "8.0pt"
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "polar"} ],
+        "style": {
+          "fill": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+          "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fSourcefield"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fCategories"},
+              "modifies": "both"
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.5, "b": 150, "g": 57, "r": 1},
+            "stroke": {"width": 10},
+            "width": "100%",
+            "outline": {"dValue": -0.25},
+            "outlineMethod": "inside"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 0, "g": 0, "r": 0},
+        "padding": 16
+      }
+    }
+  ],  "size" : {"width":500, "height":400}
+}

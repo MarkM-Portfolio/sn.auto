@@ -1,0 +1,108 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"},
+        {
+          "id": "Company",
+          "label": "Company",
+          "categories": [
+            "Company 1"
+          ]
+        },
+        {
+          "id": "Country",
+          "label": "Country",
+          "categories": [ "Country A"]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 113, 0, 0 ],
+        [ 0, 1, 13, 0, 0 ],
+        [ 0, 2, 63, 0, 0 ]
+      
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"categoryStructure": {"gap": 20}},
+            "axis": {
+             
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {
+                "gap": 12,
+                "nest": false
+              },
+              "spans": [ ]
+            },
+            "axis": {
+             
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {"nest": false},
+              "reverse": false
+            },
+            "axis": {
+            
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {"nest": false},
+              "reverse": true
+            },
+            "axis": {
+             
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Company"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 900, "height": 500},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

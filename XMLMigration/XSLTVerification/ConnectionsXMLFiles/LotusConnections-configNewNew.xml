@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+			*****************************************************************
+
+			Licensed Materials - Property of IBM
+			5724_S68
+
+			Copyright IBM Corp. 2001, 2011 All Rights Reserved.
+
+			US Government Users Restricted Rights - Use, duplication or
+			disclosure restricted by GSA ADP Schedule Contract with
+			IBM Corp.
+
+			*****************************************************************
+--><config xmlns="http://www.ibm.com/LotusConnections-config" xmlns:tns="http://www.ibm.com/LotusConnections-config" xmlns:sloc="http://www.ibm.com/service-location" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="LotusConnections" buildlevel="LC3.0.1_20120304_0448" xsi:schemaLocation="http://www.ibm.com/LotusConnections-config LotusConnections-config.xsd">
+<deployment deployment_id="admin_replace"/>
+<sloc:serviceReference serviceName="activities" acf_config_file="acf-config.xml" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/service/html/mainpage#dashboard%2Cmyactivities%2Cuserid%3D{userid}%2Cname%3D{displayName}" person_card_service_name_js_eval="generalrs.label_personcard_activitieslink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/activities</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="bookmarklet" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/bookmarklet</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="bookmarklet" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/bookmarklet</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="bookmarklet" enabled="false" ssl_enabled="false">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/connections/bookmarklet</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="blogs" acf_config_file="acf-config-flash.xml" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/roller-ui/blog/{userid}" person_card_service_name_js_eval="generalrs.label_personcard_blogslink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/blogs</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="communities" acf_config_file="acf-config-nf.xml" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/service/html/allcommunities?userid={userid}" person_card_service_name_js_eval="generalrs.label_personcard_communitieslink">
+<sloc:href>
+            <sloc:hrefPathPrefix>/communities</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="directory" profiles_directory_service_extension_enabled="false"/>
+<sloc:serviceReference serviceName="dogear" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/html?userid={userid}" person_card_service_name_js_eval="generalrs.label_personcard_dogearlink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/dogear</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="personTag" enabled="false" ssl_enabled="false">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/profiles/ibm_semanticTagServlet</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="profiles" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/html/simpleSearch.do?searchFor={userid}&amp;searchBy=userid" person_card_service_name_js_eval="generalrs.label_personcard_profilelink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/profiles</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="quickr" enabled="false" ssl_enabled="false" person_card_service_url_pattern="/allfiles/people/{email}" person_card_service_name_js_eval="generalrs.label_personcard_quickrlink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/quickr</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="homepage" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/homepage</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="search" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/search</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="wikis" acf_config_file="acf-config-flash.xml" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/home/search?uid={userid}&amp;name={displayName}" person_card_service_name_js_eval="generalrs.label.personcard.wikislink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/wikis</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="files" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/app/person/{userid}" person_card_service_name_js_eval="generalrs.label_personcard_fileslink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/files</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="news" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/news</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="opensocial" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="cre" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/cre</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="socialmail" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/socmail-client/gadgets</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="opensocial" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="cre" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/cre</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="socialmail" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/socmail-client/gadgets</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="opensocial" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/connections/opensocial</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="cre" enabled="false" ssl_enabled="false">
+			<sloc:href>
+				<sloc:hrefPathPrefix>/connections/cre</sloc:hrefPathPrefix>
+				<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+				<sloc:interService href="admin_replace"/>
+			</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="socialmail" enabled="false" ssl_enabled="false">
+			<sloc:href>
+				<sloc:hrefPathPrefix>/socmail-client/gadgets</sloc:hrefPathPrefix>
+				<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+				<sloc:interService href="admin_replace"/>
+			</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="sametimeProxy" enabled="false" ssl_enabled="false">
+            <sloc:href>
+                <sloc:hrefPathPrefix/>
+                <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+                <sloc:interService href="admin_replace"/>
+            </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="mobile" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/mobile</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="forums" acf_config_file="acf-config.xml" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="" person_card_service_url_pattern="/html/search?userid={userid}&amp;name={displayName}" person_card_service_name_js_eval="generalrs.label_personcard_forumlink">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/forums</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="moderation" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName=""> 
+		<sloc:href>
+			<sloc:hrefPathPrefix>/moderation</sloc:hrefPathPrefix>
+			<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+			<sloc:interService href="admin_replace"/>
+		</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="metrics" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/metrics</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="cognos" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/cognos</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="metrics" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/metrics</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="cognos" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/cognos</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="metrics" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName=""> 
+		<sloc:href>
+			<sloc:hrefPathPrefix>/metrics</sloc:hrefPathPrefix>
+			<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+			<sloc:interService href="admin_replace"/>
+		</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="cognos" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName=""> 
+		<sloc:href>
+			<sloc:hrefPathPrefix>/cognos</sloc:hrefPathPrefix>
+			<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+			<sloc:interService href="admin_replace"/>
+		</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="sand" enabled="false" ssl_enabled="false"/>
+<sloc:serviceReference serviceName="webresources" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/resources</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="oauth" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/oauth</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="webresources" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/resources</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="oauth" enabled="false" ssl_enabled="false">
+<sloc:href>
+<sloc:hrefPathPrefix>/connections/oauth</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="webresources" enabled="false" ssl_enabled="false" clusterName="">
+        <sloc:href>
+            <sloc:hrefPathPrefix>/connections/resources</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="oauth" enabled="false" ssl_enabled="false">
+            <sloc:href>
+                <sloc:hrefPathPrefix>/connections/oauth</sloc:hrefPathPrefix>
+                <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+                <sloc:interService href="admin_replace"/>
+            </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="help" enabled="false" ssl_enabled="false">
+        <sloc:href>           
+            <sloc:hrefPathPrefix>/help</sloc:hrefPathPrefix>
+            <sloc:static href="admin_replace" ssl_href="admin_replace"/>
+            <sloc:interService href="admin_replace"/>
+        </sloc:href>
+    </sloc:serviceReference>
+<sloc:serviceReference serviceName="mediaGallery" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName=""> 
+		<sloc:href>
+			<sloc:hrefPathPrefix>/news/widgets/lw</sloc:hrefPathPrefix>
+			<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+			<sloc:interService href="admin_replace"/>
+		</sloc:href>
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="bss" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/manage</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="microblogging" enabled="true" ssl_enabled="true"/>
+<sloc:serviceReference serviceName="bss" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+<sloc:href>
+<sloc:hrefPathPrefix>/manage</sloc:hrefPathPrefix>
+<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+<sloc:interService href="admin_replace"/>
+</sloc:href>
+</sloc:serviceReference>
+<sloc:serviceReference serviceName="microblogging" enabled="true" ssl_enabled="true"/>
+<sloc:serviceReference serviceName="bss" enabled="false" ssl_enabled="false" bootstrapHost="admin_replace" bootstrapPort="admin_replace" clusterName="">
+		<sloc:href>
+			<sloc:hrefPathPrefix>/manage</sloc:hrefPathPrefix>
+			<sloc:static href="admin_replace" ssl_href="admin_replace"/>
+			<sloc:interService href="admin_replace"/>
+		</sloc:href>		
+	</sloc:serviceReference>
+<sloc:serviceReference serviceName="microblogging" enabled="true" ssl_enabled="true">
+    </sloc:serviceReference>
+<customAuthenticator name="DefaultAuthenticator"/>
+<allowedContent>
+      <contentType name="FLASH" enabled="true"/>
+    </allowedContent>
+<!--
+     To enable virus scanning, first delete the empty avFilter element below.
+     Then, uncomment the avFilter in the comment and replace hostname as appropriate
+     Replace myScannerService with the appropriate name for your scanner (eg
+     AVSCAN for Symantec, RESPMOD for McAfee)
+-->
+<avFilter>
+    </avFilter>
+<!--
+    <avFilter class="AVScannerICAP">
+    <property>av.scanner.servers=myscanner.host.com</property>
+    <property>exception.on.virus=yes</property>
+    <property>av.scanner.service=myScannerService</property>
+    </avFilter>
+-->
+<forceConfidentialCommunications enabled="false"/>
+<exposeEmail enabled="true"/>
+<!--
+    When enabling the language selector by setting enabled to true, there are
+    options to consider:
+
+    You can use the defaultLanguage attribute to define a fallback language in which to 
+    display the user interface if the language specified by the browser is not included 
+    in the language elements list. It there are no language elements specified, 
+    the language specified in this attribute is the only language in which Lotus 
+    Connections is displayed.
+
+	Set the cookieName attribute if you want to use a specific, defined name for
+	the cookie used to track the selected language. Default is lcLang.
+
+	Set the cookieDomain if you use multiple host names for Connections features
+	and want to ensure this setting works across all features. For example if your
+	servers are profiles.acme.com and dogear.acme.com set the cookie domain to ".acme.com"
+	(Note the leading period!)
+
+	Set usePermanentCookie to true if you wish to have the user language choice persist
+	across multiple web sessions.
+
+	If you wish to enforce a single language for all users then set the 
+	defaultLanguage attribute and do not specify any child language elements, or
+	just the defaultLanguage.
+
+	Specify a language element for each language you want in the selector dropdown. 
+	Chose the lang= value from the list below - do not use any other values. 
+	As you can see, there is a value for each language supported by Connections. 
+	The element value is the name of the language. The name of the language will be displayed 
+	in the UI and non-latin characters must be specified in javascript escaped unicode format
+	(as shown below).  At the end of each language element either delete the English name of the 
+	language and the surrounding characters, or replace a single dash with a double dash in all instances.
+
+		<language lang="en">English</language>                                           lt;!-English-gt;
+		<language lang="zh">\u4e2d\u6587 (\u200f\u7b80\u4f53)</language>                 lt;!-Chinese, Simplified-gt;
+		<language lang="zh_tw">\u4e2d\u6587 (\u200f\u7e41\u9ad4)</language>              lt;!-Chinese, Traditional-gt;
+		<language lang="ja">\u65e5\u672c\u8a9e</language>                                lt;!-Japanese-gt;
+		<language lang="ko">\ud55c\uad6d\uc5b4</language>                                lt;!-Korean-gt;
+		<language lang="fr">Fran\u00e7ais</language>                                     lt;!-French-gt;
+		<language lang="de">Deutsch</language>                                           lt;!-German-gt;
+		<language lang="it">Italiano</language>                                          lt;!-Italian-gt;
+		<language lang="es">Espa\u00f1ol</language>                                      lt;!-Spanish-gt;
+		<language lang="pt_br">Portugu\u00eas (\u200fBrasil)</language>                  lt;!-Portuguese, Brazilian-gt;
+		<language lang="cs">\u010ce\u0161tina</language>                                 lt;!-Czech-gt;
+		<language lang="da">Dansk</language>                                             lt;!-Danish-gt;
+		<language lang="nl">Nederlands</language>                                        lt;!-Dutch-gt;
+		<language lang="fi">suomi</language>                                             lt;!-Finnish-gt;
+		<language lang="el">\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac</language>  lt;!-Greek-gt;
+		<language lang="hu">Magyar</language>                                            lt;!-Hungarian-gt;
+		<language lang="no">Norsk (\u200fBokm\u00e5l)</language>                         lt;!-Norewgian-gt;
+		<language lang="pl">polski</language>                                            lt;!-Polish-gt;
+		<language lang="pt">Portugu\u00eas (Portugal)</language>                         lt;!-Portuguese-gt;
+		<language lang="ru">\u0420\u0443\u0441\u0441\u043a\u0438\u0439</language>        lt;!-Russian-gt;
+		<language lang="sv">Svenska</language>                                           lt;!-Swedish-gt;
+		<language lang="sl">sloven\u0161\u010dina</language>                             lt;!-Slovenian-gt;
+		<language lang="tr">T\u00fcrk\u00e7e</language>                                  lt;!-Turkish-gt;
+		<language lang="iw">\u05e2\u05d1\u05e8\u05d9\u05ea</language>                    lt;!-Hebrew-gt;
+		<language lang="ar">\u200f\u0627\u0644\u0639\u0631\u0628\u064a\u0629\u200f</language>  lt;!-Arabic-gt;
+		<language lang="ca">Catal\u00e0</language>                                       lt;!-Catalan-gt;
+		<language lang="kk">\u049a\u0430\u0437\u0430\u049b\u0448\u0430</language>        lt;!-Kazakh-gt;
+		<language lang="th">\u0e44\u0e17\u0e22</language>                                lt;!-Thai-gt;
+    -->
+<languageSelector enabled="false" defaultLanguage="" cookieName="" cookieDomain="" usePermanentCookie="false">
+		<language lang="en">English</language>                                           <!--English-->
+		<language lang="zh">\u4e2d\u6587 (\u200f\u7b80\u4f53)</language>                 <!--Chinese, Simplified-->
+		<language lang="fr">Fran\u00e7ais</language>                                     <!--French-->
+		<language lang="ar">\u200f\u0627\u0644\u0639\u0631\u0628\u064a\u0629\u200f</language>  <!--Arabic-->
+    </languageSelector>
+<languageSensitive enabled="false"/>
+<ignorePunctuation enabled="false"/>
+<transactionSetting>
+		<attribute key="Transaction_Max" value="20"/>
+		<attribute key="Queue_Max" value="10"/>
+	</transactionSetting>
+<seedlistSettings allowUnsecuredTransfer="false">
+<attribute key="maximumPageSize" value="1000"/>
+<attribute key="maximumIncrementalQuerySpanInDays" value="30"/>
+</seedlistSettings>
+<useRichTextEditorInBookmarklet enabled="false"/>
+<!--
+    Support for 1 to 2 mapping. This is a search config setting that controls composition of unicode characters
+    from decomposed forms like the base character and its accents or other modifiers.
+-->
+<oneToTwoMapping enabled="false"/>
+<dynamicHosts enabled="false">
+        <host href="admin_replace" ssl_href="admin_replace"/>
+    </dynamicHosts>
+<resources>
+    </resources>
+<versionStamp value="20120409.005159"/>
+</config>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright IBM Corp. 2010, 2013  All Rights Reserved.              --><config buildlevel="${releaseNumber}_${BUILD_LEVEL}" enabled="true" id="events-config" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="events-config.xsd">
+
+	<!-- Global properties that affect the way that event handlers are managed
+	by the runtime -->
+	<properties/>
+	
+	<dataStore enabled="true" rootDir="${EVENT_ROOT_DIR}" timeToKeep="600"> 
+		<store contentDir="${FILES_EVENT_CONTENT_DIR}" source="files"/> 
+	</dataStore>
+	
+	<!-- "Pre" handlers are invoked at a stage where they can modify
+	event data. This is before data is written to the Lotus Connections databases
+	Handlers at this stage may be things like content filters. It is not mandatory
+	that you have to change content by registering a handler at this point. However
+	if handlers registered here must implement the com.ibm.connections.spi.events.PreEventHandler SPI -->
+	<preHandlers>
+		<!-- Example pre handler that subscribes to all events and intends to access event content data -->
+		<!-- <preHandler enabled="true" name="MutableHandler" class="sample.MutableEventHandler">
+			<subscriptions>
+				<subscription source="*" type="*" eventName="*"/>
+			</subscriptions>
+			<requestedDataSets>
+				<dataSet name="CONTENT"/>
+			</requestedDataSets>
+			<properties>
+				<property name="foo">bar</property>
+			</properties>
+		</preHandler>
+		-->
+		<preHandler enabled="true" name="TestSyncHandler" class="com.ibm.lconn.share.platform.test.TestSyncHandler">
+			<subscriptions>
+				<subscription source="FILES" type="CREATE" eventName="*"/>
+				<subscription source="FILES" type="UPDATE" eventName="*"/>
+			</subscriptions>
+		</preHandler>
+	</preHandlers>
+	
+	<!-- Post handlers can be invoked synchronously or asynchronously at the point 
+	     where the runtime has committed any transactions. Post handlers cannot 
+	     modify any data, but simply consume it. The key difference between synchronous
+	     and asynchronous is that synchronous post handlers will be invoked immediately 
+	     and directly in the thread of execution in the scope of the Connections feature. 
+	     However asynchronous handlers will be invoked outside of that scope. Synchronous
+	     handlers will directly affect end user response times if performing expensive 
+	     operations or utilizing slow-responding external resources. In these caes 
+	     asynchronous handlers should be used as a preference. Handlers registered here
+	     must implement the com.ibm.connections.spi.events.EventHandler SPI
+	 -->
+	<postHandlers>
+		<!-- Example post handler that asynchronously subscribes to all CREATE events -->
+		<!-- <postHandler enabled="true" invoke="ASYNC" name="ImmutableHandler" class="sample.ImmutableEventHandler">
+			<subscriptions>
+				<subscription source="*" type="CREATE" eventName="*"/>
+			</subscriptions>
+			<properties>
+				<property name="foo">bar</property>
+			</properties>
+		</postHandler>
+		-->	
+		
+		<!-- Pre Moderation Handlers -->
+		<postHandler class="com.ibm.lconn.moderation.events.pre_moderation.PendingForReviewNotificationHandler" enabled="true" invoke="ASYNC" name="PendingForReviewNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="PEND"/>
+			</subscriptions>
+		</postHandler>
+		<postHandler class="com.ibm.lconn.moderation.events.pre_moderation.StatusChangeNotificationHandler" enabled="true" invoke="ASYNC" name="PreModerationStatusChangeNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="APPROVE"/>
+				<subscription eventName="*" source="BLOGS" type="REJECT"/>
+			</subscriptions>
+		</postHandler>
+		
+		<!-- Post Moderation Handlers -->
+		<postHandler class="com.ibm.lconn.moderation.events.post_moderation.FlaggedForReviewNotificationHandler" enabled="true" invoke="ASYNC" name="FlaggedForReviewNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="FLAG"/>
+			</subscriptions>
+		</postHandler>
+		<postHandler class="com.ibm.lconn.moderation.events.post_moderation.FlaggedConfirmationNotificationHandler" enabled="true" invoke="ASYNC" name="FlaggedConfirmationNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="FLAG"/>
+			</subscriptions>
+		</postHandler>
+		<postHandler class="com.ibm.lconn.moderation.events.post_moderation.StatusChangeNotificationHandler" enabled="true" invoke="ASYNC" name="PostModerationStatusChangeNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="QUARANTINE"/>
+				<subscription eventName="*" source="BLOGS" type="RETURN"/>
+				<subscription eventName="*" source="BLOGS" type="RESTORE"/>
+			</subscriptions>
+		</postHandler>
+		
+		<postHandler class="com.ibm.lconn.moderation.events.RepostedForReviewNotificationHandler" enabled="true" invoke="ASYNC" name="RepostedForReviewNotificationHandler">
+			<subscriptions>
+				<subscription eventName="*" source="BLOGS" type="INACTIVE_UPDATE"/>
+			</subscriptions>
+		</postHandler>
+
+		<postHandler class="com.ibm.lconn.moderation.notifications.ModerationNotificationEventHandler" enabled="true" invoke="ASYNC" name="ModerationNotificationEventHandler">
+			<subscriptions>
+				<subscription eventName="*" source="*" type="PEND"/>
+				<subscription eventName="*" source="*" type="APPROVE"/>
+				<subscription eventName="*" source="*" type="REJECT"/>
+				<subscription eventName="*" source="*" type="QUARANTINE"/>
+				<subscription eventName="*" source="*" type="RESTORE"/>
+				<subscription eventName="*" source="*" type="FLAG"/>
+				<subscription eventName="*" source="*" type="DELETE"/>
+			</subscriptions>
+		</postHandler>
+	</postHandlers>	
+</config>

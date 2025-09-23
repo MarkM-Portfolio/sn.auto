@@ -1,0 +1,190 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "_VOIDS_FIELD_",
+					"label" : "_VOIDS_FIELD_"
+				}, {
+					"id" : "_CATEGORY_FIELD_",
+					"label" : "Product\nline",
+					"categories" : ["Camping\nEquipment should be two lines", "Golf Equipment", "Mountaineering Equipment", "Outdoor Protection", "Personal Accessories"]
+				}, {
+					"id" : "_SERIES_FIELD_",
+					"label" : "Order method\ntype Should be on two lines",
+					"categories" : ["Fax"]
+				}, {
+					"id" : "_VALUES_FIELD_",
+					"label" : "Quantity"
+				}, {
+					"id" : "legend",
+					"categories" : ["Legend\nLabel 1", "Legend\nLabel 2", "Legend Label\n3", "Legend\nLabel 4\nshould be 3 lines", "Legend\nLabel 5", "Legend 6", "Legend 7"]
+				} ],
+			"rows" : [[null, 0, 0, 82275, 1], [null, 1, 0, 18819, 2], [null, 2, 0, 92344, 3], [null, 3, 0, 20372, 4], [null, 4, 0, 35424, 5]]
+		}
+	],
+	"grammar" : [{
+			"bounds" : {
+				"width" : "70%",
+				"height" : "100%",
+				"left" : 0,
+				"top" : 0
+			},
+			"coordinates" : {
+				"dimensions" : [{
+						"scale" : {
+							
+							"spans" : [{"fit" : "nice"}
+								
+							]
+						},
+						"axis" : {
+							"title" : ["this should\nbe on two lines"]
+
+						}
+					}, {
+						"axis" : {
+							"lineStyle" : {
+								"fill" : "black",
+								"stroke" : {
+									"width" : 1
+								}
+							},
+							"markStyle" : {
+								"fill" : "black",
+								"stroke" : {
+									"width" : 1
+								}
+							},
+							"tickStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 8,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							},
+							"title" : ["this should\nalso be on two lines"],
+							"titleStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 8,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							}
+						}
+					}
+				],
+				"transforms" : [{
+						"type" : "stack"
+					}
+				]
+			},
+			"elements" : [{
+					"type" : "line",
+					"label" : [{
+							"content" : [{
+									"$ref" : "_SERIES_FIELD_"
+								}, "\n", {
+									"$ref" : "_VALUES_FIELD_"
+								}
+							],
+							"modifies" : {
+								"part" : "symbol"
+							},
+							"style" : {
+								"fill" : "black",
+								"align" : "middle",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 16,
+									"weight" : "normal",
+									"style" : "normal"
+								},
+								"valign" : "start"
+							}
+						}
+					],
+					"position" : [{
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							}
+						}, {
+							"field" : {
+								"$ref" : "_CATEGORY_FIELD_"
+							}
+						}
+					],
+					"styleBy" : [{
+							"id" : "_PALETTE_",
+							"field" : {
+								"$ref" : "_SERIES_FIELD_"
+							},
+							"palette" : [{
+									"fill" : "#426AFE"
+								}, {
+									"fill" : "#539315"
+								}, {
+									"fill" : "#FFEE2F"
+								}, {
+									"fill" : "#E77903"
+								}, {
+									"fill" : "#AF1527"
+								}, {
+									"fill" : "#871F77"
+								}, {
+									"fill" : "#252525"
+								}
+							]
+						}
+					],
+					"symbolStyle" : {},
+					"style" : {
+						"stroke" : {
+							"width" : 3
+						}
+					}
+				}
+			]
+		}
+	],
+	"legends" : [{
+			"bounds" : {
+				"width" : "30%"
+			},
+			"content" : [{
+					"text" : ["Should be on\nTwo lines"]
+				}, {
+					"swatchStyle" : {
+						"padding" : 5
+					}
+				}
+			],
+			"style" : {
+				"fill" : {
+					"a" : 1,
+					"b" : 0,
+					"g" : 0,
+					"r" : 255
+				},
+				"stroke" : {
+					"width" : 4
+				},
+				"outline" : {
+					"a" : 0.5,
+					"b" : 0,
+					"g" : 0,
+					"r" : 255
+				},
+				"padding" : 5
+			}
+		}
+	],
+	"size" : {
+		"width" : 700,
+		"height" : 450
+	}
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2011, 2012                                    -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<component name="scsb.dashboard/dashboard.web" type="war"
+    description="SmartCloud For Social Business Metrics Dashboard"
+    spec-version="1.0" disabled="false">
+
+    <output-group name="to_ear">
+        <output type="war" visibility="public" platform="all"
+                location="${env.LWP_COMP_BUILD}/lib/dashboard.war" />
+    </output-group>
+
+    <output-group name="to_war">
+        <output type="jar" visibility="public" platform="all"
+                location="${env.LWP_COMP_BUILD}/lib/dashboard.web.jar"
+                preferredInstallLocation="WEB-INF/lib" />
+    </output-group>
+
+	<dependency name="scsb.dashboard/dashboard.prereqs" type="jar" version="1.0"/>
+    
+    <dependency name="scsb.dashboard/dashboard.core" version="1.0" />
+	<dependency name="prereqs.sn/was7.0" type="jar" version="7.0" />
+</component>

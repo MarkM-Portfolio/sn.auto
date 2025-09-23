@@ -1,0 +1,216 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "Regions",
+          "label": "Regions",
+          "categories": [
+            "Americas",
+            "Europe",
+            "Asia_AsiaPacific",
+            "Africa"
+          ]
+        },
+        {
+          "id": "Countries",
+          "label": "Conuntries",
+          "categories": [
+            "Nigeria",
+            "Ethiopia",
+            "Egypt",
+            "Democratic Republic of Congo",
+            "South Africa",
+            "China",
+            "India",
+            "Indonesia",
+            "Pakistan",
+            "Bangladesh",
+            "Russia",
+            "Germany",
+            "France",
+            "United Kingdom",
+            "Italy",
+            "United States",
+            "Brazil",
+            "Mexico",
+            "Colombia",
+            "Argentina"
+          ]
+        },
+        {"id": "Population", "label": "Population"},
+        {
+          "id": "Variance",
+          "label": "Variance of Infant Mortality from World Average",
+          "min": -50,
+          "max": 75
+        }
+      ],
+      "rows": [
+        [ 0, 15, 315, -42.33 ],
+        [ 0, 16, 198, -21.12 ],
+        [ 0, 17, 116, -27.78 ],
+        [ 0, 18, 47, -28.23 ],
+        [ 0, 19, 41, -32.63 ],
+        [ 1, 10, 142, -32.87 ],
+        [ 1, 11, 81, -45.19 ],
+        [ 1, 12, 63, -45.3 ],
+        [ 1, 13, 62, -44.02 ],
+        [ 1, 14, 60, -44.94 ],
+        [ 2, 5, 1353, -24.77 ],
+        [ 2, 6, 1258, 11.42 ],
+        [ 2, 7, 244, -14.59 ],
+        [ 2, 8, 179, 27.57 ],
+        [ 2, 9, 152, 11.29 ],
+        [ 3, 0, 166, 59.12 ],
+        [ 3, 1, 86, 37.47 ],
+        [ 3, 2, 83, -14.07 ],
+        [ 3, 3, 69, 71.99 ],
+        [ 3, 4, 50, 7.22 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"left": "0%", "top": "0%"},
+      "coordinates": {
+        "style": {
+          "fill": {"b": 211, "g": 211, "r": 211},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "Countries"} ],
+              "style": {
+                "align": "start",
+                "font": {"family": "Arial", "size": "7pt"},
+                "padding": 2,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "dData"},
+          "color": [
+            {
+              "field": {"$ref": "Variance"},
+              "mapping": [
+                {"at": "symmetricLower", "color": "green"},
+                {"at": 0, "color": "white"},
+                {"at": "symmetricUpper", "color": "red"}
+              ]
+            }
+          ],
+          "positioning": {
+            "layout": "squarify",
+            "leafOnly": false,
+            "levelLabelStyles": {
+              "internal": [
+                {
+                  "content": [ {"$ref": "Regions"} ],
+                  "style": {
+                    "fill": "black",
+                    "align": "start",
+                    "font": {
+                      "family": "Arial",
+                      "size": "10pt",
+                      "weight": "bold",
+                      "style": "italic"
+                    },
+                    "padding": 6,
+                    "valign": "start"
+                  }
+                },
+                {
+                  "content": [ {"$ref": "Population"} ],
+                  "style": {
+                    "fill": "black",
+                    "align": "end",
+                    "font": {
+                      "family": "Times New Roman",
+                      "size": "8pt",
+                      "weight": "normal"
+                    },
+                    "padding": 4,
+                    "valign": "end"
+                  }
+                }
+              ],
+              "leaf": {
+                "content": [ {"$ref": "Countries"} ],
+                "style": {
+                  "fill": "black",
+                  "align": "middle",
+                  "font": {
+                    "family": "Arial",
+                    "size": "10pt"
+                  },
+                  "padding": 2,
+                  "valign": "middle"
+                }
+              }
+            },
+            "levelStyles": {
+              "internal": [
+                {
+                  "stroke": {"width": 1.5},
+                  "outline": "black"
+                },
+                {
+                  "stroke": {"width": 1.1},
+                  "outline": "black"
+                }
+              ],
+              "leaf": {
+                "stroke": {"width": 0.4},
+                "outline": "white"
+              }
+            },
+            "levels": [
+              {"$ref": "Regions"},
+              {"$ref": "Countries"}
+            ],
+            "method": "treemap",
+            "padding": {
+              "bottom": 15,
+              "left": 15,
+              "right": 90,
+              "top": 15
+            },
+            "size": {"$ref": "Population"}
+          },
+          "tooltip": [
+            {
+              "content": [
+                "Region Of the World: ",
+                {"$ref": "Regions"},
+                "\nCountry: ",
+                {"$ref": "Countries"},
+                "\nPopulation: ",
+                {"$ref": "Population"},
+                "",
+                "\nMortality Rate Variance: ",
+                {"$ref": "Variance"},
+                ""
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 0, "g": 0, "r": 0},
+            "stroke": {"width": 0.5},
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "padding": "2%"
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 1000.0, "height": 700.0},
+  "version": "1.3"
+}

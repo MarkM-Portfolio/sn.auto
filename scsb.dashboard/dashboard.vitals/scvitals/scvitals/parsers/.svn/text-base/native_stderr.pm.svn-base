@@ -1,0 +1,282 @@
+#################################################
+#  Licensed Materials -- Property of IBM
+#
+#  (c) Copyright IBM Corporation, 2010, 2014.
+#      ALL RIGHTS RESERVED.
+#
+#  US Government Users Restricted Rights -
+#  Use, duplication or disclosure restricted by
+#  GSA ADP Schedule Contract with IBM Corp.
+#################################################
+
+sub performInsert{
+  #Calculate Used Heaps
+  $GCInsert{'UsedHeapAfter'} = $GCInsert{UsedNurseryAfter} + $GCInsert{UsedTenuredAfter};
+  $GCInsert{'UsedHeapBefore'} = $GCInsert{UsedNurseryBefore} + $GCInsert{UsedTenuredBefore};
+  $dbh->do("INSERT DELAYED INTO `".$result->{'name'}.$mmdd."` VALUES (".$dbh->quote($timestampGCLog).",".$ARGV[0].","
+    . $dbh->quote($result->{'application'}).",".$dbh->quote($hostname).",".$GCInsert{UsedTenuredAfter}.",".$GCInsert{UsedTenuredBefore}.","
+    . $GCInsert{FreeTenuredAfter}.",".$GCInsert{FreeTenuredBefore}.",".$GCInsert{TotalTenuredAfter}.",".$GCInsert{TotalTenuredBefore}.","
+    . $GCInsert{FreeNurseryAfter}.",".$GCInsert{FreeNurseryBefore}.",".$GCInsert{UsedNurseryAfter}.",".$GCInsert{UsedNurseryBefore}.","
+    . $GCInsert{UsedHeapAfter}.",".$GCInsert{UsedHeapBefore}.",".$GCInsert{TotalNurseryAfter}.",".$GCInsert{TotalNurseryBefore}.","
+    . $GCInsert{Requested}.",".$GCInsert{FreeSOAAfter}.",".$GCInsert{FreeSOABefore}.",".$GCInsert{FreeLOAAfter}.",".$GCInsert{FreeLOABefore}.","
+    . $GCInsert{TotalSOAAfter}.",".$GCInsert{TotalSOABefore}.",".$GCInsert{TotalLOAAfter}.",".$GCInsert{TotalLOABefore}.",".$GCInsert{AFCompleted}.","
+    . $GCInsert{Since}.",".$GCInsert{Mark}.",".$GCInsert{Sweep}.",".$GCInsert{Compact}.",".$GCInsert{GCCompleted}.","
+    . $GCInsert{Overhead}.",".$GCInsert{Dump}.",".$GCInsert{OOME}.",".$GCInsert{AF}.",".$GCInsert{GC}.", ".$GCInsert{Restarted}.")");
+}
+
+sub processLog {
+  $ConcurrentKickFound = 0;
+  $RecordStarted = $RecordEnded = 0;
+  $BeforeGC = $tenured = 1;
+  $InGC = 2;
+  $AfterGC = 3;
+  $GCPositon = $BeforeGC;
+  $AFRecordFound = 0;
+  $lastAFId = 0;
+  # Receive each line to be parsed from the *stderr.log file
+  # and it will return a complete record once it has fill all the fields that are needed
+  # or once a new record starts.
+  # Const declaration  to access the split string
+  @SplitArray1;
+  @SplitArray2;
+  # This hash is used to perform the inserts, defaults to 0
+  %GCInsertTemplate = (
+    UsedTenuredAfter => 0,
+    UsedTenuredBefore => 0,
+    FreeTenuredAfter => 0,
+    FreeTenuredBefore => 0,
+    TotalTenuredAfter => 0,
+    TotalTenuredBefore => 0,
+    FreeNurseryAfter => 0,
+    FreeNurseryBefore => 0,
+    UsedNurseryAfter => 0,
+    UsedNurseryBefore => 0,
+    UsedHeapAfter => 0,
+    UsedHeapBefore => 0,
+    TotalNurseryAfter => 0,
+    TotalNurseryBefore => 0,
+    Requested => 0,
+    FreeSOAAfter => 0,
+    FreeSOABefore => 0,
+    FreeLOAAfter => 0,
+    FreeLOABefore => 0,
+    TotalSOAAfter => 0,
+    TotalSOABefore => 0,
+    TotalLOAAfter => 0,
+    TotalLOABefore => 0,
+    AFCompleted => 0,
+    Since => 0,
+    Mark => 0,
+    Sweep => 0,
+    Compact => 0,
+    GCCompleted => 0,
+    Overhead => 0,
+    Dump => 0,
+    OOME => 0,
+    AF => 0,
+    GC => 0,
+    Restarted => 0
+  );
+  # Copy the hash to start fetching the values
+  %GCInsert = %GCInsertTemplate;
+
+  while (<LOGFILE>) {
+    chomp;
+    next if /^(\s)*$/;    #skip blank lines
+    next if /(^\s+;|^;)/; #skip comment lines
+    $lineContent=$_;
+    $lineContent =~ s/^\s+//;
+
+    # <concurrent-kickoff skip this
+    if (($lineContent =~ /^<concurrent-kickoff/)) {
+      $ConcurrentKickFound = 1;
+    }
+
+    # <exclusive-start
+    if (($lineContent =~ /^<exclusive-start/)) {
+      if ($RecordEnded==1){
+        #This is saved in the db once another record has started since there may be some lines not considered
+        #to be included in the process of the log file, this line is related with Exhauted value equal to Yes that is
+        #out of the xml record.
+        performInsert();
+      }
+
+      $RecordEnded=0;
+      # Reset variables to its default value
+      %GCInsert = %GCInsertTemplate;
+      $RecordStarted = 1;
+      $AFRecordFound = 0;
+      @SplitArray1 = split(/"/, $lineContent);
+
+      #Timestamp
+      $timestampGCLog = $SplitArray1[3];
+      $timestampGCLog =~ s/^(\d{4})\-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/$1-$2-$3 $4:$5:$6/;
+      $timestampGCLog = $4.":".$5.":".$6;
+      $mmdd = $2.$3;
+
+      next;
+    }
+
+    # If we are inside a record
+    if ($RecordStarted==1 && $ConcurrentKickFound == 0) {
+      # AF#
+      if (($lineContent=~/^<sys-start/) || ($lineContent=~/^<af-start/) || ($lineContent=~/^<concurrent-collection-start/)) {
+        @SplitArray1 = split(/"/,$lineContent);
+        $AFId = int($SplitArray1[1]);
+        if ($AFId < $lastAFId) {
+          $GCInsert{'Restarted'} = 1;
+        }
+        $GCInsert{'AF'} = $AFId;
+        $lastAFId = $AFId;
+
+        if ($lineContent=~/^<af-start/) {
+          $AFRecordFound = 1;
+          $GCInsert{'Requested'} = int($SplitArray1[3]);
+        }
+      }
+
+      # Since
+      if (($lineContent=~/^<cycle-start/)) {
+        @SplitArray1 = split(/"/,$lineContent);
+        $GCInsert{'Since'} = $SplitArray1[9];
+      }
+
+      # GC Start Record, vars found
+      # GC#
+      if (($lineContent=~/^<gc-start/)) {
+        $GCPositon = $BeforeGC;
+        @SplitArray1 = split(/"/,$lineContent);
+        $GCInsert{'GC'} = $SplitArray1[1];
+      }
+      if (($lineContent=~/^<\/gc-start/)) {
+        $GCPositon = $AfterGC;
+      }
+
+      # Mem Record
+      if (($lineContent=~/^<mem type/)) {
+        @SplitArray1 = split(/"/,$lineContent);
+        $type = $SplitArray1[1];
+        if ($type =~/nursery/) {
+          if ($GCPositon == $BeforeGC) {
+            $GCInsert{'FreeNurseryBefore'} = $SplitArray1[3];
+            $GCInsert{'TotalNurseryBefore'} = $SplitArray1[5];
+            $GCInsert{'UsedNurseryBefore'} = $GCInsert{TotalNurseryBefore} - $GCInsert{FreeNurseryBefore};
+          }
+          if ($GCPositon == $AfterGC) {
+            $GCInsert{'FreeNurseryAfter'} = $SplitArray1[3];
+            $GCInsert{'TotalNurseryAfter'} = $SplitArray1[5];
+            $GCInsert{'UsedNurseryAfter'} = $GCInsert{TotalNurseryAfter} - $GCInsert{FreeNurseryAfter};
+          }
+        }
+        if ($type =~/tenure/) {
+          if ($GCPositon == $BeforeGC) {
+            $GCInsert{'FreeTenuredBefore'} = $SplitArray1[3];
+            $GCInsert{'TotalTenuredBefore'} = $SplitArray1[5];
+            $GCInsert{'UsedTenuredBefore'} = $GCInsert{TotalTenuredBefore} - $GCInsert{FreeTenuredBefore};
+          }
+          if ($GCPositon == $AfterGC) {
+            $GCInsert{'FreeTenuredAfter'} = $SplitArray1[3];
+            $GCInsert{'TotalTenuredAfter'} = $SplitArray1[5];
+            $GCInsert{'UsedTenuredAfter'} = $GCInsert{TotalTenuredAfter} - $GCInsert{FreeTenuredAfter};
+          }
+        }
+        if ($type =~/soa/) {
+          if ($GCPositon == $BeforeGC) {
+            $GCInsert{'FreeSOABefore'} = $SplitArray1[3];
+            $GCInsert{'TotalSOABefore'} = $SplitArray1[5];
+          }
+          if ($GCPositon == $AfterGC) {
+            $GCInsert{'FreeSOAAfter'} = $SplitArray1[3];
+            $GCInsert{'TotalSOAAfter'} = $SplitArray1[5];
+          }
+        }
+        if ($type =~/loa/) {
+          if ($GCPositon == $BeforeGC) {
+            $GCInsert{'FreeLOABefore'} = $SplitArray1[3];
+            $GCInsert{'TotalLOABefore'} = $SplitArray1[5];
+          }
+          if ($GCPositon == $AfterGC) {
+            $GCInsert{'FreeLOAAfter'} = $SplitArray1[3];
+            $GCInsert{'TotalLOAAfter'} = $SplitArray1[5];
+          }
+        }
+      }
+
+      # OP Record
+      if (($lineContent=~/^<gc-op/)) {
+        @SplitArray1 = split(/"/,$lineContent);
+        $type = $SplitArray1[3];
+        $time = $SplitArray1[5];
+        if ($type =~ /mark/) {
+          $GCInsert{'Mark'} = int($time);
+        }
+        if ($type =~ /sweep/) {
+          $GCInsert{'Sweep'} = int($time);
+        }
+        if ($type =~ /compact/) {
+          $GCInsert{'Compact'} = int($time);
+        }
+      }
+
+      # GC End Section
+      if (($lineContent=~/^<gc-end/)) {
+        @SplitArray1 = split(/"/,$lineContent);
+        $time = $SplitArray1[7];
+        $GCInsert{'GCCompleted'} = int($time);
+        if ($GCInsert{Since} != 0) {
+          $GCInsert{'Overhead'}=int((100 *$time)/($time+$GCInsert{Since}));
+        }
+        if ($AFRecordFound) {
+          $GCInsert{'AFCompleted'} = int($time);
+        }
+      }
+
+      # End Section
+      if (($lineContent=~/^<exclusive-end/)) {
+        #Reset cycle values.
+        $GCPositon = $BeforeGC;
+        $RecordEnded = 1;
+        $lasteof = tell(LOGFILE);
+        $RecordStarted = 0;
+        $AFRecordFound = 0;
+        $ConcurrentKickFound = 0;
+      }
+    }
+    if ($ConcurrentKickFound == 1) {
+      # End Section
+      if (($lineContent=~/^<exclusive-end/)) {
+        #Reset cycle values.
+        $GCPositon = $BeforeGC;
+        $RecordEnded = 0;
+        $lasteof = tell(LOGFILE);
+        $RecordStarted = 0;
+        $AFRecordFound = 0;
+        $ConcurrentKickFound = 0; # Flag the concurrent info is done
+      }
+    }
+    if (($lineContent=~ /^JVMDUMP039I/)) { # Detect JVM Dump
+      if ($RecordEnded==1) { # Insert the last record if it ended
+        performInsert();
+      }
+      %GCInsert = %GCInsertTemplate; # Reset vars
+      $lineContent =~ m/at\s+(.+)\s+-/;
+      $timestamp = $1;
+      $timestamp =~ s/^(\d{4})\/(\d{2})\/(\d{2})\s(\d{2}):(\d{2}):(\d{2})/$1-$2-$3 $4:$5:$6/;
+      $timestampGCLog = $4.":".$5.":".$6;
+      $mmdd = $2.$3;
+
+      $GCInsert{'Dump'} = 1;
+      performInsert();
+      $RecordEnded = 0;
+      $lasteof=tell(LOGFILE);
+    }
+    if (($lineContent=~ /OutOfMemoryError/)) { #this is out of the record
+      $GCInsert{'OOME'} = 1;
+      $lasteof=tell(LOGFILE);
+    }
+  }
+  if ($RecordEnded==1) {
+    #The last record is saved once the file ended this to avoid missing lines in case of out of memory errors
+    performInsert();
+  }
+}

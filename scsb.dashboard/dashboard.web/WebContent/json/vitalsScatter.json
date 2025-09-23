@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "users", "label": "Number of Users"},
+        {"id": "respTime", "label": "responseTime"},
+        {"id": "time", "unit": "timestamp"}
+      ],
+      "rows": [  ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "respTime"}},
+            {"field": {"$ref": "users"}}
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "respTime"},
+                " kb/sec<br>",
+                {"$ref": "users"},
+                " users<br>",
+                {"$ref": "time"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.5},
+            "width": "80%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ]
+    }
+  ],
+  "version": "6.0"
+}

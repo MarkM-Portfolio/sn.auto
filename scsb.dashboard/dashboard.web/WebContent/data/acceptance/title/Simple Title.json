@@ -1,0 +1,142 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "Illinois",
+                  "New York",
+                  "California"
+               ],
+               "id": "outer"
+            },
+            {
+               "categories": [
+                  "Male",
+                  "Female"
+               ],
+               "id": "x"
+            },
+            {
+               "id": "y"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               0,
+               0,
+               25000
+            ],
+            [
+               0,
+               1,
+               38000
+            ],
+            [
+               1,
+               1,
+               27000
+            ],
+            [
+               2,
+               0,
+               19000
+            ],
+            [
+               2,
+               1,
+               25000
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "#ddd"
+                     }
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "min": 0
+                        }
+                     ]
+                  }
+               },
+               {
+                  "axis": {
+                     "markStyle": {
+                     },
+                     "title": [
+                        "Outer"
+                     ]
+                  }
+               },
+               {
+                  "axis": {
+                     "markStyle": {
+                     },
+                     "title": [
+                        "Inner"
+                     ]
+                  }
+               }
+            ],
+            "style": {
+               "fill": "transparent"
+            },
+            "transforms": [
+               {
+                  "type": "cluster"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "y"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "outer"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "x"
+                     }
+                  }
+               ],
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none"
+      }
+   ],
+   "size": {
+      "height": 500,
+      "width": 600
+   },
+   "style": {
+      "fill": "white",
+      "padding": 10
+   },
+   "titles": [
+      {
+		 "type": "title",
+         "content": [
+            "Revenue and stuff"
+         ]
+      }
+   ],
+   "version": "3.0"
+}

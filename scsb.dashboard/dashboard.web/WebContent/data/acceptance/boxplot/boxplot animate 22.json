@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "x", "unit": "categorical"},
+        {"id": "y"},
+        {"id": "a"},
+        {"id": "b"},
+        {"id": "c"},
+        {"id": "d"}
+      ],
+      "rows": [ [ 4, 0.5, 2, 3, 5, 8 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle":{}, "markStyle":{}}},
+          {"axis": {"tickStyle":{}, "markStyle":{}}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "schema:boxplot",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [ {"field": {"$ref": "x"}} ],
+          "components": [
+            {"field": {"$ref": "a"}},
+            {"field": {"$ref": "b"}},
+            {"field": {"$ref": "c"}},
+            {"field": {"$ref": "d"}}
+          ],
+          "style": {"stroke": {"width": 2}, "width": "50%"}
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "version": "3.0"
+}

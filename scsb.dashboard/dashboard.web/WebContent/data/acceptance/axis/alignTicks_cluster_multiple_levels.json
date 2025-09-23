@@ -1,0 +1,145 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"},
+        {
+          "id": "Company",
+          "label": "Company",
+          "categories": [
+            "Company 1",
+            "Company 2",
+            "Company 3"
+          ]
+        },
+        {
+          "id": "Country",
+          "label": "Country",
+          "categories": [ "Country A", "Country B" ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 73, 0, 0 ],
+        [ 0, 1, 63, 0, 0 ],
+        [ 0, 2, 43, 0, 0 ],
+        [ 1, 0, 14, 0, 0 ],
+        [ 1, 1, 12, 0, 0 ],
+        [ 1, 2, 24, 0, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"categoryStructure": {"gap": 20}},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              },
+              "title": [ "outer" ]
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {
+                "gap": 12,
+                "nest": false
+              },
+              "spans": [ {"categories": [ 0, 2 ]} ]
+            },
+            "axis": [
+              {
+                "alignWithOtherAxis": true,
+                "boxStyle": {
+                  "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0},
+                  "outline": "black"
+                },
+                "gridStyle": {
+                  "fill": "#eee",
+                  "stroke": {"width": 9}
+                },
+                "title": [ "inner 1" ]
+              },
+              {}
+            ]
+          },
+          {
+            "scale": {
+              "categoryStructure": {"gap": 7, "nest": false},
+              "reverse": true
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              },
+              "gridStyle": {"fill": "pink"},
+              "title": [ "inner 2" ]
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {"nest": false},
+              "reverse": true
+            },
+            "axis": [
+              {
+                "gridStyle": {
+                  "fill": "#ddd",
+                  "stroke": {"style": "dot"}
+                },
+                "tickStyle": {"font": {"size": "7.0pt"}},
+                "title": [ "inner 3" ]
+              },
+              {"alignWithOtherAxis": true}
+            ]
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Company"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 900, "height": 500},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

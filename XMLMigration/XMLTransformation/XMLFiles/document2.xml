@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products validation="strict">
+  <product id="p1" name="Delta" price="800" stock="4" country="Denmark"/>
+  <product id="p6" name="Romeo" price="2250" stock="5" country="South Africa"/>
+</products> 

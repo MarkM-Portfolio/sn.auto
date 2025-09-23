@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Washington",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 10, 10, 1 ],
+        [ 20, 20, 2 ],
+        [ 30, 30, 3 ],
+        [ 40, 40, 4 ],
+        [ 50, 50, 0 ],
+        [ 60, 60, 0 ],
+        [ 70, 70, 0 ],
+        [ 80, 80, 0 ],
+        [ 90, 90, 0 ],
+        [ 100, 100, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "fY"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {"spans": [ {"fit": "exact"} ]},
+              "mapping": [
+                {"at": "0%", "size": "10%"},
+                {"at": "50%", "size": 50},
+                {"at": "100%", "size": "100%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": 20,
+            "symbol": "circle"
+          }
+        }
+      ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

@@ -1,0 +1,278 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "m1", "unit": "categorical"},
+        {"id": "m2", "unit": "categorical"},
+        {"id": "cat", "unit": "categorical"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 1 ],
+        [ 0, 2, 2 ],
+        [ 1, 0, 3 ],
+        [ 1, 1, 4 ],
+        [ 1, 2, 5 ],
+        [ 2, 0, 6 ],
+        [ 2, 1, 7 ],
+        [ 2, 2, 8 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "style": {
+            "fill": "#ccc",
+            "stroke": {"width": 0.5},
+
+            "size": "95%",
+            "symbol": "square"
+          }
+        },
+{
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "style": {
+            "fill": "#eee",
+
+
+            "size": "60%",
+            "symbol": "square"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ "TLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "TCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "TRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "CLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "CCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "CRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "BLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ "BCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ "BRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ "TLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "TCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "TRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ "CLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "CCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "CRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ "BLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ "BCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ "BRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "symbol": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "cat"},
+              "modifies": "both",
+              "palette": [
+                "poly-4",
+                "circle",
+                "triangle",
+                "poly-5",
+                "star-5",
+                "i-beam",
+                "poly-11",
+                "cross",
+                "plus"
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.15, "b": 150},
+            "stroke": {"width": 0.5},
+            "outline": {"a": 0.2},
+            "size": "60%"
+          }
+        }
+      ],
+      "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+    }
+  ],
+  "size": {"width": 600.0, "height": 600.0},
+  "version": "1.2",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

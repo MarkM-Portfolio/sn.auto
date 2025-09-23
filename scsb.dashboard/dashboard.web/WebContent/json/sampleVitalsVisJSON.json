@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "app",
+          "label": "Applications",
+          "categories": [  ]
+        },
+        {
+          "id": "time",
+          "label": "time",
+          "timeZone": "UTC",
+          "unit": "timestamp"
+        },
+        {
+          "id": "uhits",
+          "label": "Unique Hits",
+          "format": {"scientific": "never"}
+        },
+        {
+          "id": "hits",
+          "label": "Total Hits",
+          "format": {"scientific": "never"}
+        }
+      ],
+      "rows": [  ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {"tickStyle": {"angle": 30}}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "hits"}},
+            {"field": {"$ref": "time"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "app"},
+              "scale": {"local": false},
+              "palette": [  ]
+            }
+          ],
+          "meta": [
+            {"field": {"$ref": "app"}, "key": "appId"}
+          ],
+          "split": [ {"field": {"$ref": "app"}} ],
+          "tooltip": [ {"content": [ {"$ref": "app"} ]} ]
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

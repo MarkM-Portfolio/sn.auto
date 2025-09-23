@@ -1,0 +1,1 @@
+This folder contains the GUI and API test templates used for the Blue pipelines Jenkins jobs in https://devjenkins.cnx.cwp.pnp-hcl.com/job/JenkinsBlue/.  Note that these are just static copies extracted from the jobs so changing this will be change the job assignments.

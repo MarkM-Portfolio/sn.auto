@@ -1,0 +1,164 @@
+<config>
+<outputType length="short" target="file"/>
+<file target="C:\Users\IBM_ADMIN\xmlmigration\BatchOutput\AllConfigTest.log"/>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesConfig\communities-config4.xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesConfig\communities-config3.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesConfig\communities-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesConfig\communities-config-update-301-40.xsl"/>
+<multiple attr="TEXTTEXT" element="comm:displayNameKey"/>
+<multiple attr="name" element="comm:property"/>
+<multiple attr="TEXTTEXT" element="comm:description"/>
+<multiple attr="TEXTTEXT" element="comm:thumbnailUrl"/>
+<multiple attr="description" element="comm:task"/>
+<multiple attr="" element="comm:communityType"/>
+<multiple attr="TEXTTEXT" element="comm:themeUuid"/>
+<multiple attr="TEXTTEXT" element="comm:name"/>
+<multiple attr="TEXTTEXT" element="comm:cssUrl"/>
+<multiple attr="TEXTTEXT" element="comm:cssRtlUrl"/>
+<multiple attr="" element="comm:theme"/>
+<multiple attr="TEXTTEXT" element="comm:isScriptKey"/>
+<multiple attr="name" element="comm:pageSize"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesPolicy\communities-policy4.xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesPolicy\communities-policy3.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesPolicy\communities-policy.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\CommunitiesPolicy\communities-policy-update-301-40.xsl"/>
+<multiple attr="name" element="comm:principal"/>
+<multiple attr="" element="comm:permission"/>
+<multiple attr="" element="comm:grant"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\ContentReviewConfig\contentreview-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\ContentReviewConfig\contentreview-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\ContentReviewConfig\contentreview-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\ContentReviewConfig\contentreview-config-update-301-40.xsl"/>
+<multiple attr="" element="contentFlagging"/>
+<multiple attr="" element="issueCategorization"/>
+<multiple attr="" element="forceForAllCommunities"/>
+<multiple attr="id" element="service"/>
+<multiple attr="email" element="moderator"/>
+<multiple attr="" element="reviewer"/>
+<multiple attr="" element="ownerModerate"/>
+<multiple attr="" element="enabledByCreation"/>
+<multiple attr="" element="flagCategory"/>
+<multiple attr="TEXTTEXT" element="id"/>
+<multiple attr="" element="contentApproval"/>
+<multiple attr="TEXTTEXT" element="description"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\DogearConfig\dogear-config-cell (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\DogearConfig\dogear-config-cell.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\DogearConfig\dogear-config-cell.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\DogearConfig\dogear-config-cell-update-301-40.xsl"/>
+<multiple attr="name" element="integerProperty"/>
+<multiple attr="name" element="stringProperty"/>
+<multiple attr="name" element="booleanProperty"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\FilesConfig\files-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\FilesConfig\files-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\FilesConfig\files-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\FilesConfig\files-config-update-301-40.xsl"/>
+<multiple attr="name" element="property"/>
+<multiple attr="name" element="task"/>
+<multiple attr="" element="membershipCache"/>
+<multiple attr="" element="args"/>
+<multiple attr="TEXTTEXT" element="mimeType"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\ForumConfig\forum-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\ForumConfig\forum-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\ForumConfig\forum-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\ForumConfig\forum-config-update-301-40.xsl"/>
+<multiple attr="name" element="property"/>
+<multiple attr="mimeFilenameRegex" element="limit"/>
+<multiple attr="TEXTTEXT" element="mimeType"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\NewsConfig\news-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\NewsConfig\news-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\NewsConfig\news-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\NewsConfig\news-config-update-301-40.xsl"/>
+<multiple attr="description" element="task"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\NotificationConfig\notification-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\NotificationConfig\notification-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\NotificationConfig\notification-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\NotificationConfig\notification-config-update-301-40.xsl"/>
+<multiple attr="" element="channel"/>
+<multiple attr="TEXTTEXT" element="property"/>
+<multiple attr="" element="type"/>
+<multiple attr="class" element="handler"/>
+<multiple attr="name" element="source"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\OaConfig\oa-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\OaConfig\oa-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\OaConfig\oa-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\OaConfig\oa-config-update-301-40.xsl"/>
+<multiple attr="TEXTTEXT" element="server"/>
+<multiple attr="description" element="task"/>
+<multiple attr="class" element="subscriber"/>
+<multiple attr="TEXTTEXT" element="samples"/>
+<multiple attr="TEXTTEXT" element="mimeType"/>
+<multiple attr="" element="stat"/>
+<multiple attr="name" element="property"/>
+<multiple attr="" element="events"/>
+<multiple attr="" element="fields"/>
+<multiple attr="TEXTTEXT" element="event"/>
+<multiple attr="TEXTTEXT" element="field"/>
+<multiple attr="mimeFilenameRegex" element="limit"/>
+<multiple attr="TEXTTEXT" element="file"/>
+<multiple attr="" element="args"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\ProfilesConfig\profiles-config4.xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\ProfilesConfig\profiles-config3.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\ProfilesConfig\profiles-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\ProfilesConfig\profiles-config-update-301-40.xsl"/>
+<multiple attr="TEXTTEXT" element="refreshInterval"/>
+<multiple attr="" element="startDelay"/>
+<multiple attr="TEXTTEXT" element="templateData"/>
+<multiple attr="name" element="task"/>
+<multiple attr="" element="templateDataModel"/>
+<multiple attr="TEXTTEXT" element="resolvedCode"/>
+<multiple attr="TEXTTEXT" element="refreshTime"/>
+<multiple attr="name" element="charset"/>
+<multiple attr="TEXTTEXT" element="loginAttribute"/>
+<multiple attr="labelKey" element="label"/>
+<multiple attr="" element="property"/>
+<multiple attr="urlPattern" element="action"/>
+<multiple attr="name" element="template"/>
+<multiple attr="TEXTTEXT" element="attribute"/>
+<multiple attr="" element="args"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\SearchConfig\search-config (2).xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\SearchConfig\search-config.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\SearchConfig\search-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\SearchConfig\search-config-update-301-40.xsl"/>
+<multiple attr="contentSource" element="connService"/>
+<multiple attr="name" element="mimeType"/>
+<multiple attr="name" element="seedlist"/>
+</reference>
+
+<reference file="C:\Users\IBM_ADMIN\xmlmigration\Config\WidgetsConfig\widgets-config4.xml">
+<checkFile file="C:\Users\IBM_ADMIN\xmlmigration\Config\WidgetsConfig\widgets-config3.xml"/>
+<xsd file="C:\Users\IBM_ADMIN\xmlmigration\Config\WidgetsConfig\widgets-config.xsd"/>
+<xsl file="C:\Users\IBM_ADMIN\xmlmigration\Config\WidgetsConfig\widgets-config-update-301-40.xsl"/>
+<multiple attr="" element="definitions"/>
+<multiple attr="defId" element="widgetDef"/>
+<multiple attr="" element="item"/>
+<multiple attr="" element="widgetInstance"/>
+<multiple attr="" element="layout"/>
+<multiple attr="" element="lifecycle"/>
+<multiple attr="TEXTTEXT" element="event"/>
+<multiple attr="aclServiceImpl" element="resource"/>
+<multiple attr="" element="widgets"/>
+<multiple attr="pageId" element="page"/>
+<multiple attr="" element="itemSet"/>
+</reference>
+</config>

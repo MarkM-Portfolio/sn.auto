@@ -1,0 +1,186 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "_VOIDS_FIELD_",
+          "categories": [ "x", "y" ],
+          "unit": "categorical"
+        },
+        {
+          "id": "_SERIES_FIELD_",
+          "categories": [
+            "2000/Jan",
+            "2000/Feb",
+            "2000/Mar",
+            "2000/Apr",
+            "2000/May",
+            "2000/Jun",
+            "2000/Jul",
+            "2000/Aug",
+            "2000/Sep",
+            "2000/Oct",
+            "2000/Nov",
+            "2000/Dec",
+            "2001/Jan",
+            "2001/Feb",
+            "2001/Mar",
+            "2001/Apr",
+            "2001/May",
+            "2001/Jun",
+            "2001/Jul",
+            "2001/Aug",
+            "2001/Sep",
+            "2001/Oct",
+            "2001/Nov",
+            "2001/Dec",
+            "2002/Jan",
+            "2002/Feb",
+            "2002/Mar",
+            "2002/Apr",
+            "2002/May",
+            "2002/Jun",
+            "2002/Jul",
+            "2002/Aug",
+            "2002/Sep",
+            "2002/Oct",
+            "2002/Nov",
+            "2002/Dec"
+          ]
+        },
+        {"id": "_VALUES_FIELD_"}
+      ],
+      "rows": [
+        [ 0, 0, 6.0107440638E7 ],
+        [ 1, 0, 6.0107440638E7 ],
+        [ 0, 1, 6.388355328E7 ],
+        [ 1, 1, 6.388355328E7 ],
+        [ 0, 2, 5.4079047846E7 ],
+        [ 1, 2, 5.4079047846E7 ],
+        [ 0, 3, 5.1078142291E7 ],
+        [ 1, 3, 5.1078142291E7 ],
+        [ 1, 4, 6.426664704E7 ],
+        [ 1, 5, 7.1916795258E7 ],
+        [ 1, 6, 7.8887065049E7 ],
+        [ 1, 7, 7.7562807144E7 ],
+        [ 1, 8, 7.9743444387E7 ],
+        [ 1, 9, 7.47561968E7 ],
+        [ 1, 10, 9.4955309233E7 ],
+        [ 1, 11, 9.729973672E7 ],
+        [ 1, 12, 8.6606103089E7 ],
+        [ 1, 13, 8.0379940228E7 ],
+        [ 1, 14, 6.6005255069E7 ],
+        [ 1, 15, 6.8635651674E7 ],
+        [ 1, 16, 7.8819097719E7 ],
+        [ 1, 17, 6.9408667968E7 ],
+        [ 1, 18, 8.9949526105E7 ],
+        [ 1, 19, 1.01221866102E8 ],
+        [ 1, 20, 8.3166566634E7 ],
+        [ 1, 21, 9.0379418102E7 ],
+        [ 1, 22, 1.0272765583E8 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": 450,
+        "height": "30%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {}},
+          {"axis": {}}
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {"nest": [ false ]}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "_VALUES_FIELD_"}},
+            {"field": {"$ref": "_SERIES_FIELD_"}},
+            {"field": {"$ref": "_VOIDS_FIELD_"}}
+          ],
+          "color": [ {"field": {"$ref": "_SERIES_FIELD_"}} ]
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": 400,
+        "height": "30%",
+        "left": 0,
+        "top": "30%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {}},
+          {"axis": {}}
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {"nest": [ false ]}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "_VALUES_FIELD_"}},
+            {"field": {"$ref": "_SERIES_FIELD_"}},
+            {"field": {"$ref": "_VOIDS_FIELD_"}}
+          ],
+          "color": [ {"field": {"$ref": "_SERIES_FIELD_"}} ]
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": 380,
+        "height": "30%",
+        "left": 0,
+        "top": "60%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {}},
+          {"axis": {}}
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {"nest": [ false ]}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "_VALUES_FIELD_"}},
+            {"field": {"$ref": "_SERIES_FIELD_"}},
+            {"field": {"$ref": "_VOIDS_FIELD_"}}
+          ],
+          "color": [ {"field": {"$ref": "_SERIES_FIELD_"}} ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 600, "height": 800},
+  "style": {"fill": "white"}
+}

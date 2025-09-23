@@ -1,0 +1,178 @@
+{
+    "version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"fields": [{
+			"categories": ["California",
+			"Illinois",
+			"New York",
+			"Texas"],
+			"id": "fCategories",
+			"label": "Store"
+		},
+		{
+			"id": "fValues",
+			"label": "Price",
+			"max": 397276,
+			"min": 342765.5,
+			"unit": "price"
+		}],
+		"id": "dDelimitedFileSource",
+		"rows": [[3,
+		367223.5],
+		[2,
+		397223.5],
+		[1,
+		342765.5],
+		[0,
+		378587.5]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					}
+			},
+			{
+				"axis": {
+					"title": ["Categories of \"",
+					{
+						"$ref": "fCategories"
+					},
+					"\""],
+					"titleStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"font": {
+							"family": "Technical, Times New Roman",
+							"size": "18",
+							"style": "italic"
+						}
+					}
+				}
+			}]
+		},
+		"elements": [{
+			"color": [{
+				"mapping": [{
+					"color": {
+						"b": 255,
+						"g": 0,
+						"r": 0
+					},
+					"offset": 0.0
+				},
+				{
+					"color": {
+						"b": 0,
+						"g": 255,
+						"r": 255
+					},
+					"offset": 1.0
+				}],
+				"field": {
+					"$ref": "fValues"
+				}
+			}],
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"label": [{
+				"content": [{
+					"$ref": "fValues"
+				}]
+			}],
+			"meta": [{
+				"key": "category",
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"position": [{
+				"field": {
+					"$ref": "fValues"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"style": {
+				"fill": {
+					"angle": 180.0,
+					"colors": [{
+						"color": {
+							"b": 150,
+							"g": 57,
+							"r": 1
+						},
+						"offset": 0.0
+					},
+					{
+						"color": {
+							"a": 0.2,
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"offset": 1.0
+					}],
+					"type": "linear"
+				},
+				"outline": {
+					"a": 0.0,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				},
+				"width": "80%"
+			},
+			"tooltip": [{
+				"content": [{
+					"$ref": "fValues"
+				}]
+			}],
+			"type": "interval"
+		}],
+		"style": {
+			"fill": {
+				"angle": 135.0,
+				"colors": [{
+					"color": {
+						"b": 255,
+						"g": 221,
+						"r": 221
+					},
+					"offset": 0.0
+				},
+				{
+					"color": {
+						"b": 255,
+						"g": 255,
+						"r": 255
+					},
+					"offset": 1.0
+				}],
+				"type": "linear"
+			},
+			"outline": {
+				"b": 0,
+				"g": 0,
+				"r": 0
+			},
+			"stroke": {
+				"width": 0.5
+			}
+		}
+	}],
+	"legends": [{
+		}],
+	"size": {
+		"height": 300.0,
+		"width": 400.0
+	}
+}

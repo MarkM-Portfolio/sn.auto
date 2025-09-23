@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2006, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" >
+	
+	<xs:annotation>
+		<xs:documentation>
+            IBM Connections Communities Licensed
+            Materials - Property of IBM. (C) Copyright IBM Corp. 2008
+            All Rights Reserved. US Government Users Restricted Rights -
+            Use, duplication or disclosure restricted by GSA ADP
+            Schedule Contract with IBM Corp.
+        </xs:documentation>
+	</xs:annotation>
+	
+	<xs:element name="config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="scheduledTasks" type="scheduledTasks" minOccurs="1" maxOccurs="1" />
+				<xs:element name="databaseCleanup" type="databaseCleanup" minOccurs="1" maxOccurs="1" />
+				<xs:element name="dataSynchronization" type="dataSynchronization" minOccurs="1" maxOccurs="1" />
+				<xs:element name="mailin" type="mailin" minOccurs="0" maxOccurs="1" />
+				<xs:element name="vulcan" type="vulcan" minOccurs="0" maxOccurs="1" />
+				<xs:element name="dynacache" type="dynacache" minOccurs="0" maxOccurs="1" />
+				<xs:element name="microblogging-settings" type="microblogging-settings" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" />
+            <xs:attribute name='version' use='required' type='xs:NMTOKEN' />
+		</xs:complexType>
+	</xs:element>
+	
+    <xs:complexType name="scheduledTasks">
+        <xs:sequence>
+            <xs:element name="task" type="task" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name='task'>
+        <xs:sequence>
+        <xs:element name="args" type='args'  minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="interval" type="xs:string" use="required" />
+        <xs:attribute name="startby" type="xs:string" use="required" />
+
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:attribute name="enabled" type="xs:boolean" use="required" />
+        <xs:attribute name="targetName" type="xs:string" use="required" />
+        <xs:attribute name="mbeanMethodName" type="xs:string" use="required" />
+        <xs:attribute name="scope" type="xs:string" use="required" />
+        <xs:attribute name="serverName" type="xs:string" use="required" />
+        <xs:attribute name="description" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name='args'>
+       <xs:sequence>
+          <xs:element name="property" type='property' minOccurs='0'  maxOccurs='unbounded'/>
+       </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name='property' mixed='true'>
+       <xs:attribute name='name' type='xs:NMTOKEN'/>
+    </xs:complexType>
+	
+	<xs:complexType name="databaseCleanup">
+		<xs:sequence>
+			<xs:element name="storyLifetimeInDays" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="replyToIdLifetimeInDays" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="replyToAttachmentLifetimeInDays" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="dataSynchronization">
+		<xs:sequence>
+			<xs:element name="frequencyInHours" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="mailin">
+		<xs:sequence>
+			<xs:element name="replyto" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="replytoAddressFormat" minOccurs='1' maxOccurs="1">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="domain" minOccurs="1" maxOccurs="1">
+										<xs:simpleType>											
+											<xs:restriction base="xs:string"/>
+										</xs:simpleType>											
+									</xs:element>
+									<xs:element name="affix" type="mailin-affix" minOccurs="0" maxOccurs="1">
+									</xs:element>										
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="enabled" type="xs:boolean" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="enabled" type="xs:boolean" />	
+	</xs:complexType>
+	
+	<xs:complexType name="mailin-affix">
+		<xs:simpleContent>
+			<xs:extension base="mailin-affix-val">
+				<xs:attribute name="type">
+					<xs:simpleType>
+		                   <xs:restriction base="xs:string">
+		                       <xs:enumeration value="suffix"/>
+		                       <xs:enumeration value="prefix"/>
+		                   </xs:restriction>
+		               </xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="mailin-affix-val">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="28" />												
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="vulcan">
+		<xs:attribute name="enabled" type="xs:boolean" />	
+	</xs:complexType>
+	
+	<xs:complexType name="dynacache">
+		<xs:attribute name="enabled" type="xs:boolean" />	
+	</xs:complexType>
+
+	<xs:complexType name="microblogging-settings">
+		<xs:sequence>
+			<xs:element name="microblogEntryMaxChars" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="microblogCommentMaxChars" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>	

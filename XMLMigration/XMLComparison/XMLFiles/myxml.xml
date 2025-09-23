@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<test>
+	<element1> text </element1>
+	<element1 attr="6", attr2="7">
+		<suba>
+			<dubsub/>
+			<dubsub/>
+			<dubsub/>
+		</suba>
+		<subb>
+			<suba>
+				<element1/>
+			</suba>
+		<subb/>
+	</element1>
+	<element2/>
+	<element3/>
+</test>

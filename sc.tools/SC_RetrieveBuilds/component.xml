@@ -1,0 +1,11 @@
+<component name="sc.tools/SC_RetrieveBuilds" description="SmartCloud Tools to list build labels"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+                preferredInstallLocation="bin"
+                location="${env.LWP_COMP_BUILD}/lib/SC_RetrieveBuilds.jar" />
+    </output-group>
+
+    <dependency name="libs.auto/apache-abdera-1.1.2" type="jar" version="1.1.2" />
+</component>

@@ -1,0 +1,28 @@
+#################################################
+#  Licensed Materials -- Property of IBM
+#
+#  (c) Copyright IBM Corporation, 2010, 2014.
+#      ALL RIGHTS RESERVED.
+#
+#  US Government Users Restricted Rights -
+#  Use, duplication or disclosure restricted by
+#  GSA ADP Schedule Contract with IBM Corp.
+#################################################
+
+%month = (Jan=>"01",Feb=>"02",Mar=>"03",Apr=>"04",May=>"05",Jun=>"06",Jul=>"07",Aug=>"08",Sep=>"09",Oct=>"10",Nov=>"11",Dec=>"12");
+
+sub processLog {
+  while (<LOGFILE>) {
+    chomp;
+    $line = $_;
+    if($line =~ /^\[.+\] \[notice\] mpmstats: rdy /) {
+      @arr = split(/\] \[notice\] mpmstats: /, $line);
+      @ts = split(/ /, $arr[0]);
+      $moy = $month{$ts[1]};
+      $timestamp = $ts[4]."-".$moy."-".$ts[2]." ".$ts[3];
+      @stats = split(/ /, $arr[1]);
+      $dbh->do("INSERT DELAYED INTO `".$result->{'name'}.$moy."` VALUES (".$dbh->quote($timestamp).",".$ARGV[0].",".$dbh->quote($result->{'application'}).",".$dbh->quote($hostname).",".$stats[1].",".$stats[3].",".$stats[5].",".$stats[7].",".$stats[9].",".$stats[11].",".$stats[13].",".$stats[15].")");
+    }
+  }
+  $lasteof = tell(LOGFILE);
+}

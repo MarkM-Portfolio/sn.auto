@@ -1,0 +1,352 @@
+{
+  "version": "1.2",
+	"data" : [{
+			"id" : "dData",
+			"fields" : [{
+					"id" : "fProductLine",
+					"label" : "Product line",
+					"categories" : [
+						"Camping Equipment",
+						"Golf Equipment",
+						"Personal Accessories",
+						"Mountaineering Equipment",
+						"Outdoor Protection"
+					]
+				}, {
+					"id" : "fRegion",
+					"label" : "Region",
+					"categories" : ["North", "South", "East", "West"]
+				}, {
+					"id" : "fOrderMethod",
+					"label" : "Order method",
+					"categories" : ["Web", "Phone", "Store", "Event"]
+				}, {
+					"id" : "fSales",
+					"label" : "Sales",
+					"format" : {
+						"suffix" : "k"
+					},
+					"unit" : "dollar"
+				}, {
+					"id" : "fReturns",
+					"label" : "Returns"
+				}
+			],
+			"rows" : [
+				[0, 0, 0, 950, 57],
+				[0, 0, 1, 810, 25],
+				[0, 0, 2, 945, 14],
+				[0, 0, 3, 702, 3],
+				[0, 1, 0, 977, 32],
+				[0, 1, 1, 604, 45],
+				[0, 1, 2, 361, 42],
+				[0, 1, 3, 227, 40],
+				[0, 2, 0, 888, 53],
+				[0, 2, 1, 628, 39],
+				[0, 2, 2, 811, 2],
+				[0, 2, 3, 232, 59],
+				[0, 3, 0, 406, 16],
+				[0, 3, 1, 200, 15],
+				[0, 3, 2, 602, 18],
+				[0, 3, 3, 569, 7],
+				[1, 0, 0, 389, 56],
+				[1, 0, 1, 736, 38],
+				[1, 0, 2, 861, 8],
+				[1, 0, 3, 366, 40],
+				[1, 1, 0, 954, 60],
+				[1, 1, 1, 514, 36],
+				[1, 1, 2, 931, 3],
+				[1, 1, 3, 800, 44],
+				[1, 2, 0, 197, 51],
+				[1, 2, 1, 672, 30],
+				[1, 2, 2, 343, 39],
+				[1, 2, 3, 486, 7],
+				[1, 3, 0, 746, 48],
+				[1, 3, 1, 142, 27],
+				[1, 3, 2, 450, 53],
+				[1, 3, 3, 900, 9],
+				[2, 0, 0, 872, 30],
+				[2, 0, 1, 891, 22],
+				[2, 0, 2, 863, 12],
+				[2, 0, 3, 281, 25],
+				[2, 1, 0, 768, 60],
+				[2, 1, 1, 828, 6],
+				[2, 1, 2, 915, 32],
+				[2, 1, 3, 850, 40],
+				[2, 2, 0, 438, 52],
+				[2, 2, 1, 332, 59],
+				[2, 2, 2, 567, 46],
+				[2, 2, 3, 798, 50],
+				[2, 3, 0, 135, 54],
+				[2, 3, 1, 513, 8],
+				[2, 3, 2, 990, 17],
+				[2, 3, 3, 263, 6],
+				[3, 0, 0, 571, 55],
+				[3, 0, 1, 595, 21],
+				[3, 0, 2, 928, 51],
+				[3, 0, 3, 865, 39],
+				[3, 1, 0, 713, 34],
+				[3, 1, 1, 123, 24],
+				[3, 1, 2, 604, 28],
+				[3, 1, 3, 694, 17],
+				[3, 2, 0, 327, 45],
+				[3, 2, 1, 170, 2],
+				[3, 2, 2, 991, 28],
+				[3, 2, 3, 661, 8],
+				[3, 3, 0, 223, 34],
+				[3, 3, 1, 875, 41],
+				[3, 3, 2, 598, 16],
+				[3, 3, 3, 185, 46],
+				[4, 0, 0, 371, 17],
+				[4, 0, 1, 695, 9],
+				[4, 0, 2, 528, 25],
+				[4, 0, 3, 965, 43],
+				[4, 1, 0, 713, 13],
+				[4, 1, 1, 323, 21],
+				[4, 1, 2, 104, 47],
+				[4, 1, 3, 594, 15],
+				[4, 2, 0, 227, 40],
+				[4, 2, 1, 470, 51],
+				[4, 2, 2, 991, 28],
+				[4, 2, 3, 461, 6],
+				[4, 3, 0, 223, 17],
+				[4, 3, 1, 475, 13],
+				[4, 3, 2, 598, 20],
+				[4, 3, 3, 385, 18]
+			]
+		}
+	],
+	"copyright" : "(C) Copyright IBM Corp. 2011",
+	"grammar" : [{
+			"bounds" : {
+				"left" : "0%",
+				"top" : "0%"
+			},
+			"coordinates" : {},
+			"elements" : [{
+					"type" : "interval",
+					"label" : [{
+							"content" : [{
+									"$ref" : "fSales"
+								}
+							],
+							"style" : {
+								"align" : "start",
+								"font" : {
+									"family" : "Arial",
+									"size" : "7pt"
+								},
+								"padding" : 2,
+								"valign" : "start"
+							}
+						}
+					],
+					"data" : {
+						"$ref" : "dData"
+					},
+					"color" : [{
+							"id" : "colorId",
+							"field" : {
+								"$ref" : "fReturns"
+							},
+							"mapping" : [{
+									"color" : {
+										"h" : 0.083,
+										"l" : 0.95,
+										"s" : 0.9
+									},
+									"offset" : 0
+								}, {
+									"color" : {
+										"h" : 0.083,
+										"l" : 0.8,
+										"s" : 0.9
+									},
+									"offset" : 0.5
+								}, {
+									"color" : {
+										"h" : 0.083,
+										"l" : 0.65,
+										"s" : 0.9
+									},
+									"offset" : 1
+								}
+							]
+						}
+					],
+					"positioning" : {
+						"layout" : "squarify",
+						"leafOnly" : false,
+						"levelLabelStyles" : {
+							"internal" : [{
+									"content" : [{
+											"$ref" : "fProductLine"
+										}
+									],
+									"style" : {
+										"fill" : "#ffffff",
+										"align" : "end",
+										"effect" : {
+											"shadow" : {
+												"dy" : 1,
+												"stdDev" : 1
+											}
+										},
+										"font" : {
+											"family" : "Arial",
+											"size" : "18pt",
+											"weight" : "normal"
+										},
+										"padding" : 6,
+										"valign" : "start"
+									}
+								}, {
+									"content" : [{
+											"$ref" : "fRegion"
+										}
+									],
+									"style" : {
+										"fill" : "#222222",
+										"align" : "start",
+										"font" : {
+											"family" : "Arial",
+											"size" : "13pt",
+											"weight" : "bold"
+										},
+										"padding" : 4,
+										"valign" : "end"
+									}
+								}
+							],
+							"leaf" : {
+								"content" : [{
+										"$ref" : "fOrderMethod"
+									}
+								],
+								"style" : {
+									"fill" : "#444444",
+									"align" : "middle",
+									"font" : {
+										"family" : "Arial",
+										"size" : "0pt",
+										"weight" : "normal"
+									},
+									"padding" : 4,
+									"valign" : "middle"
+								}
+							}
+						},
+						"levelStyles" : {
+							"internal" : [{
+									"stroke" : {
+										"width" : 2
+									},
+									"outline" : "#636363"
+								}, {
+									"stroke" : {
+										"width" : 1.5
+									},
+									"outline" : "#8a8a8a"
+								}
+							],
+							"leaf" : {
+								"stroke" : {
+									"width" : 0.5
+								},
+								"outline" : "white"
+							}
+						},
+						"levels" : [{
+								"$ref" : "fProductLine"
+							}, {
+								"$ref" : "fRegion"
+							}, {
+								"$ref" : "fOrderMethod"
+							}
+						],
+						"method" : "treemap",
+						"padding" : 0,
+						"size" : {
+							"$ref" : "fSales"
+						}
+					},
+					"tooltip" : [{
+							"content" : [
+								"Product Line: ", {
+									"$ref" : "fProductLine"
+								},
+								"\nRegion: ", {
+									"$ref" : "fRegion"
+								},
+								"\nOrder Method: ", {
+									"$ref" : "fOrderMethod"
+								},
+								"\nRevenue: ", {
+									"$ref" : "fSales"
+								},
+								"\nReturns: ", {
+									"$ref" : "fReturns"
+								}
+							]
+						}
+					],
+					"style" : {
+						"stroke" : {
+							"width" : 0
+						}
+					}
+				}
+			]
+		}
+	],
+	"legends" : [{
+			"bounds" : {
+				"width" : "10%"
+			},
+			"content" : [{
+					"text" : [{
+							"$ref" : "fReturns"
+						}
+					]
+				}, {
+					"aesthetics" : [{
+							"aesthetic" : {
+								"$ref" : "colorId"
+							}
+						}
+					],
+					"textStyle" : {
+						"fill" : {
+							"a" : 0.6,
+							"h" : 0,
+							"l" : 0,
+							"s" : 0
+						},
+						"font" : {
+							"family" : "Arial",
+							"size" : "10.5pt",
+							"weight" : "bold"
+						}
+					}
+				}
+			],
+			"style" : {
+				"fill" : {
+					"h" : 0,
+					"l" : 1,
+					"s" : 0
+				},
+				"padding" : {
+					"left" : 10
+				}
+			}
+		}
+	],
+	"size" : {
+		"width" : 900.0,
+		"height" : 600.0
+	},
+	"style" : {
+		"fill" : "#636363"
+	}
+}

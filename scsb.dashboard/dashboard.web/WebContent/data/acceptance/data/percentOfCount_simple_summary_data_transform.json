@@ -1,0 +1,140 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {
+          "id": "base_cat",
+          "label": "Category",
+          "categories": [
+            "Biography",
+            "Classics",
+            "General fiction",
+            "History",
+            "Mystery/Fantasy",
+            "Reference"
+          ]
+        },
+        {
+          "id": "base_type",
+          "label": "Hardback",
+          "categories": [ "no", "yes" ]
+        }
+      ],
+      "rows": [
+        [ 1, 0 ],
+        [ 2, 1 ],
+        [ 3, 0 ],
+        [ 4, 1 ],
+        [ 5, 0 ],
+        [ 1, 1 ],
+        [ 2, 0 ],
+        [ 1, 0 ],
+        [ 2, 1 ],
+        [ 2, 0 ]
+      ]
+    },
+    {
+      "id": "data",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "base_cat"},
+          "output": {"id": "cat"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "count"},
+          "parameters": {"summaryFunction": "count"}
+        },
+        {
+          "field": {
+            "id": "percent_count",
+            "format": {"suffix": "%"}
+          },
+          "parameters": {
+            "summaryFunction": "percentOfCount"
+          }
+        }
+      ],
+      "source": {"$ref": "base"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              },
+              "method": "between"
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {
+          "fill": {"b": 235, "g": 235, "r": 235},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "count"}},
+            {"field": {"$ref": "cat"}}
+          ],
+          "color": [ {"field": {"$ref": "cat"}} ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "cat"},
+                " : ",
+                {"$ref": "percent_count"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 150, "g": 57, "r": 1},
+            "width": "80%",
+            "outline": {"b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 28.8
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1"
+}

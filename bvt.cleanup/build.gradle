@@ -1,0 +1,7 @@
+
+description = 'bvt.cleanup'
+dependencies {
+	compile project(':lc.data.pop')
+}
+
+project.ext.main = 'com.ibm.conn.auto.cleanup.Main'

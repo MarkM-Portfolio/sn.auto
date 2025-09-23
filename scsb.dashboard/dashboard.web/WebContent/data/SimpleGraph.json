@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "name",
+          "label": "name",
+          "categories": [
+            "ALABAMA",
+            "ARIZONA",
+            "ARKANSAS",
+            "CALIFORNIA"
+          ]
+        },
+        {
+          "id": "pop1980",
+          "label": "Population End",
+          "format": {"numericPattern": "#,000"}
+        }
+      ],
+      "rows": [
+        [ 0, 4838708 ],
+        [ 1, 6885778 ],
+        [ 2, 3079450 ],
+        [ 3, 9006166 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "pop1980"}},
+            {"field": {"$ref": "name"}}
+          ],
+          "style": {
+            "fill": "green",
+            "stroke": {"width": 0.25},
+            "width": "60%",
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 400, "height": 400},
+  "version": "3.0",
+  "style": {"fill": "transparent"}
+}

@@ -1,0 +1,133 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "value"},
+        {"id": "maxVal"},
+        {
+          "id": "Color",
+          "categories": [
+            "Cat A",
+            "Cat B",
+            "Cat C",
+            "Cat D",
+            "Cat E",
+            "Cat F",
+            "Cat G"
+          ]
+        }
+      ],
+      "rows": [
+        [ 35, 100, 0 ],
+        [ 30, 100, 1 ],
+        [ 25, 100, 2 ],
+        [ 20, 100, 3 ],
+        [ 15, 100, 4 ],
+        [ 10, 100, 5 ],
+        [ null, null, 6 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 0, "fit": "exact"} ]
+            }
+          },
+          {
+            "scale": {
+              "padding": {"left": 52, "right": 20},
+              "spans": [ {"fit": "exact"} ]
+            }
+          }
+        ],
+        "transforms": [
+          {"type": "transpose"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": -45}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "maxVal"}},
+            {"field": {"$ref": "Color"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Color"},
+              "nullValue": {"b": 255, "g": 255, "r": 255},
+              "palette": [ "#E6E6E6" ]
+            }
+          ],
+          "style": {"width": "80%"}
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "value"}},
+            {"field": {"$ref": "Color"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Color"},
+              "palette": [
+                "#E3343E",
+                "#F77123",
+                "#5FAB4B",
+                "#42B0A1",
+                "#0F8CD4",
+                "#A23EA8",
+                "#F74C7D",
+                "#AD6034"
+              ]
+            }
+          ],
+          "style": {"width": "80%"}
+        }
+      ]
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 0}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"value": "0%"}, {"value": "100%"} ],
+          "style": {
+            "image": {
+              "method": "icon",
+              "source": {"$ref": "logo"}
+            },
+            "size": 59
+          }
+        }
+      ]
+    }
+  ],
+  "resource": [
+    {
+      "id": "logo",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/sprite_original.png" ]
+    }
+  ],
+  "size": {"height": 200},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

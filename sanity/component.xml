@@ -1,0 +1,21 @@
+<component name="sanity"
+    description="Connections Install Validation Tool"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+		<output type="jar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/lib/ldapTest.jar"
+            preferredInstallLocation="/" />
+    	<output type="dir" visibility="public" platform="all"
+                preferredInstallLocation="resources"
+                location="${env.LWP_COMP_BUILD}/sanity" />
+        <output type="jar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/sanity/lib/ldapTest.jar"
+            preferredInstallLocation="/" />  
+    </output-group>
+
+	<dependency name="libs.auto/junit" type="jar" version="4.5" />
+	
+	<dependency name="libs.auto/json4j" type="jar" version="1.0" />
+	
+</component>

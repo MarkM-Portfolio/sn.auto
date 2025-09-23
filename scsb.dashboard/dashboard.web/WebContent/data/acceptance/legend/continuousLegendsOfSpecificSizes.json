@@ -1,0 +1,114 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "f1", "min": 0, "max": 7, "unit": "meter"}
+      ],
+      "rows": [ [ 1 ], [ 2 ], [ 4 ], [ 6 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": 90,
+        "height": "100%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle": {"font": {"size": 10}}}},
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "25%"}
+          ],
+          "color": [
+            {
+              "id": "c",
+              "field": {"$ref": "f1"},
+              "scale": {"local": true},
+              "mapping": [
+                {"at": "0%", "color": "lime"},
+                {"at": "50%", "color": "black"},
+                {"at": 6, "color": "blue"}
+              ]
+            }
+          ],
+          "style": {"size": 20}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "10%",
+        "left": 100,
+        "top": 0
+      },
+      "title": [ "10%" ],
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "20%",
+        "left": 200,
+        "top": 0
+      },
+      "title": [ "20%" ],
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "30%",
+        "left": 300,
+        "top": 0
+      },
+      "title": [ "30%" ],
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "50%",
+        "left": 400,
+        "top": 0
+      },
+      "title": [ "50%" ],
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "100%",
+        "left": 500,
+        "top": 0
+      },
+      "title": [ "100%" ],
+      "method": "swatch"
+    }
+  ],
+  "size": {"width": 610, "height": 300},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 5}
+}

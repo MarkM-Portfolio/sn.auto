@@ -1,0 +1,82 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "date",
+          "min": 10000,
+          "max": 10030,
+          "unit": "date"
+        },
+        {"id": "values", "min": 0, "max": 3300}
+      ],
+      "rows": [
+        [ 10030, 3300 ],
+        [ 10020, 2200 ],
+        [ 10010, 1100 ],
+        [ 10000, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {"minorStyle": {"fill": "navy"}}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "style": {
+            "fill": "navy",
+            "stroke": {"width": 2},
+            "outline": {
+              "a": 0.5,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            }
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "values"}}
+          ],
+          "style": {"outline": "navy", "size": 20}
+        }
+      ]
+    }
+  ],
+  "legendPosition": "bottom",
+  "legends": [
+    {
+      "content": [
+
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "layout": {
+            "flow": "horizontal",
+            "method": "stagger",
+            "reverse": false
+          }
+        }
+      ],
+      "style": {"align": "middle"}
+    }
+  ]
+}

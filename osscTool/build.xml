@@ -1,0 +1,66 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2002, 2012                                    -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<project name="osscTool" default="development" basedir="."> 
+
+  <import file="${env.WPLC_IMPORT}/std_targets.xml"/>
+  <import file="${env.WPLC_IMPORT}/std_props.xml"/>
+  <import file="${env.WPLC_IMPORT}/std_dirs.xml"/>
+
+  <property name="output.jar" value="${dir.lib}/ossc.jar"/>
+  <property name="ossc.dir" value="${dir.build}/ossc" />
+	
+  <property name="skip.messages" value="true" />
+  <property name="skip.globalize" value="true" />
+  <property name="skip.javadoc" value="true"/>
+  <property name="skip.javadoc.public" value="true"/>
+  <property name="postsimplepackage.override" value="zip_ossc" />
+  
+  <import file="${env.WPLC_IMPORT}/check.xml"/>
+  <import file="${env.WPLC_IMPORT}/compile.xml"/>
+  <import file="${env.WPLC_IMPORT}/package.xml"/>
+  <import file="${env.WPLC_IMPORT}/globalize.xml"/>
+  <import file="${env.WPLC_IMPORT}/rmic.xml"/>
+  <import file="${env.WPLC_IMPORT}/javadoc.xml"/>
+  <import file="${env.WPLC_IMPORT}/clean.xml"/>
+  <import file="${env.WPLC_IMPORT}/comp_zip.xml"/>
+
+  <target name="zip_ossc">
+
+    <copy todir="${ossc.dir}">
+      <fileset dir=".">
+        <include name="runTool.sh" />
+        <include name="approved-modules" />
+        <include name="ignore-modules.list" />
+      </fileset>
+    </copy>
+    
+    <collector componentName="osscTool" groupList="default" includeDependencies="true" todir="${ossc.dir}" />
+
+    <move todir="${ossc.dir}">
+      <fileset dir="${ossc.dir}/lib">
+        <include name="**/*.jar" />
+      </fileset>
+    </move>
+
+    <chmod dir="${ossc.dir}" perm="755" includes="**/*" />   
+ 
+    <delete dir="${ossc.dir}/lib" />
+ 
+    <tar destfile="${ossc.dir}.tar" basedir="${dir.build}" includes="ossc/**" />
+ 
+    <delete dir="${ossc.dir}" /> 
+ 
+  </target>
+</project>

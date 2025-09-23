@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Communities" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="true"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto109.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Communities" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.communities.test"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunitiesPopulate"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunityBlogsFilesTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunitiesCalendarOrgAdminAPITest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunityBlogsOrgAdminAPITests"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunityWikisTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunitiesOrgAdminAPITest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunitiesUnpopulate"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunityBlogsCrossOrgDataAPITests"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.test.CommunitiesForumOrgAdminAPITest"/>
+    </classes>
+  </test> <!-- Communities -->
+  <test thread-count="1" name="Communities IMPERSONATEDTEST" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.communities.impersonated"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.communities.impersonated.CommunitiesImpersonatedTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.impersonated.GDPRImpersonationTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.impersonated.CommunityWikisImpersonateTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.communities.impersonated.CommunityBlogsFilesImpersonateTest"/>
+    </classes>
+  </test> <!-- Communities IMPERSONATEDTEST -->
+</suite> <!-- Communities -->

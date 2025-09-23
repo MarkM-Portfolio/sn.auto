@@ -1,0 +1,118 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "x",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ]
+        },
+        {"id": "dy"}
+      ],
+      "rows": [ [ 2, 5 ], [ 4, -4 ], [ 6, 3 ] ]
+    },
+    {
+      "id": "wf",
+      "source": {"$ref": "data"},
+      "type": "integrate",
+      "input": [
+        {"field": {"$ref": "x"}, "role": "x"},
+        {"field": {"$ref": "dy"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"addTotalCategory": ""},
+          "role": "x"
+        },
+        {
+          "field": {
+            "id": "type",
+            "categories": [
+              "steady",
+              "up",
+              "down",
+              "total-zero",
+              "total-positive",
+              "total-negative"
+            ]
+          },
+          "role": "type"
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "gray",
+                "stroke": {"width": 0.5, "style": "Dot"}
+              }
+            }
+          },
+          {"scale": {"local": true}, "axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "type"} ],
+              "style": {
+                "align": "middle",
+                "location": "outside",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "wf"},
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "scale": {"local": false},
+              "palette": [
+                "yellow",
+                "lightgreen",
+                "pink",
+                "white",
+                "white",
+                "white"
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 10},
+            "width": "75%",
+            "outline": "black",
+            "symbol": "t-beam"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 600, "height": 400},
+  "version": "3.0"
+}

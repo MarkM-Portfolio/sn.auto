@@ -1,0 +1,215 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "IBM"
+               ],
+               "id": "name"
+            },
+            {
+               "id": "date",
+               "max": 3866,
+               "min": 3860,
+               "unit": "date"
+            },
+            {
+               "id": "open",
+               "unit": "dollar"
+            },
+            {
+               "id": "high",
+               "unit": "dollar"
+            },
+            {
+               "id": "low",
+               "unit": "dollar"
+            },
+            {
+               "id": "close",
+               "unit": "dollar"
+            },
+            {
+               "id": "volume"
+            },
+            {
+               "categories": [
+                  "down",
+                  "up"
+               ],
+               "id": "closedUp"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               0,
+               3861,
+               64.13,
+               66.25,
+               64.0,
+               65.0,
+               270800,
+               1
+            ],
+            [
+               0,
+               3862,
+               65.13,
+               66.5,
+               64.38,
+               65.13,
+               410600,
+               1
+            ],
+            [
+               0,
+               3863,
+               65.25,
+               66.0,
+               65.13,
+               65.5,
+               555700,
+               1
+            ],
+            [
+               0,
+               3864,
+               65.0,
+               65.38,
+               64.38,
+               65.25,
+               644100,
+               0
+            ],
+            [
+               0,
+               3865,
+               64.75,
+               65.38,
+               64.38,
+               65.13,
+               450700,
+               0
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "lightgray",
+                        "snap": true,
+                        "stroke": {
+                           "style": "Dot"
+                        }
+                     },
+                     "preferredSize": {
+                        "preferred": 60
+                     },
+                     "title": [
+                        "Stock price"
+                     ]
+                  }
+               },
+               {
+               }
+            ]
+         },
+         "elements": [
+            {
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "low"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "high"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "date"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "b": 188,
+                     "g": 135,
+                     "r": 0
+                  },
+                  "outline": {
+                     "b": 188,
+                     "g": 135,
+                     "r": 0
+                  },
+                  "size": 0.2,
+                  "snap": true
+               },
+               "type": "interval"
+            },
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "closedUp"
+                     },
+                     "mapping": [
+                        {
+                           "color": {
+                              "b": 228,
+                              "g": 207,
+                              "r": 153
+                           },
+                           "offset": 0
+                        },
+                        {
+                           "color": "white",
+                           "offset": 1
+                        }
+                     ]
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "open"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "close"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "date"
+                     }
+                  }
+               ],
+               "style": {
+                  "outline": {
+                     "b": 188,
+                     "g": 135,
+                     "r": 0
+                  }
+               },
+               "type": "interval"
+            }
+         ],
+         "style": {
+            "fill": "white"
+         }
+      }
+   ],
+   "version": "1.2"
+}

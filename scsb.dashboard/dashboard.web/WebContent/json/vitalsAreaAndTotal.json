@@ -1,0 +1,143 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "time",
+          "label": "time",
+          "format": {"datePattern": "HH:mm z"},
+          "timeZone": "GMT",
+          "unit": "timestamp"
+        },
+        {
+          "id": "app",
+          "label": "Applications",
+          "categories": [  ]
+        },
+        {
+          "id": "hits",
+          "label": "Total Hits",
+          "format": {"scientific": "never"}
+        },
+        {
+          "id": "uhits",
+          "label": "Unique Hits",
+          "format": {"scientific": "never"}
+        }
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "totals",
+      "fields": [
+        {
+          "id": "ttime",
+          "label": "time",
+          "format": {"datePattern": "HH:mm zz"},
+          "timeZone": "UTC",
+          "unit": "timestamp"
+        },
+        {"id": "thits", "format": {"scientific": "never"}},
+        {"id": "tuhits", "format": {"scientific": "never"}}
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.2, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {"font": {"size": "12pt"}},
+              "title": [ "Unique Users" ],
+              "titleStyle": {"font": {"size": "18pt"}}
+            }
+          },
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.2, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "angle": 60,
+                "font": {"size": "12pt"}
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "uhits"}},
+            {"field": {"$ref": "time"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "app"},
+              "scale": {"local": false},
+              "palette": [  ]
+            }
+          ],
+          "interpolation": "smooth",
+          "meta": [
+            {"field": {"$ref": "app"}, "key": "cat"}
+          ],
+          "split": [ {"field": {"$ref": "app"}} ],
+          "tooltip": [ {"content": [ {"$ref": "app"} ]} ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": -90,
+              "colors": [
+                {
+                  "color": {
+                    "a": 0.75,
+                    "dSaturation": 0,
+                    "dValue": 0
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.75,
+                    "dSaturation": 0,
+                    "dValue": -0.1
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "stroke": {"width": 1.5},
+            "outline": {
+              "a": 0.7,
+              "dSaturation": 0.1,
+              "dValue": -0.25
+            }
+          }
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "totals"},
+          "position": [
+            {"field": {"$ref": "tuhits"}},
+            {"field": {"$ref": "ttime"}}
+          ],
+          "interpolation": "smooth",
+          "style": {"fill": "black", "size": 4}
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

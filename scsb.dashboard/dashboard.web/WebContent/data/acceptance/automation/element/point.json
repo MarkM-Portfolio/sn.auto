@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY", "label": "Price"}
+      ],
+      "rows": [
+        [ 185, 6.49 ],
+        [ 136, 6.99 ],
+        [ 495, 29.95 ],
+        [ 446, 12.95 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ]
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,118 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "date",
+          "min": 10000,
+          "max": 10030,
+          "unit": "date"
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 10030, 1 ],
+        [ 10020, 2 ],
+        [ 10020, 0 ],
+        [ 10010, 3 ],
+        [ 10000, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {"minorStyle": {"fill": "navy"}}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "style": {
+            "fill": "navy",
+            "stroke": {"width": 2},
+            "outline": {
+              "a": 0.5,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            }
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "values"}}
+          ],
+          "style": {"outline": "navy", "size": 10}
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "legendPosition": "top",
+  "legends": [
+    {
+      "scale": {"reverse": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {"align": "middle"},
+      "itemStyle": {"size": "26px", "symbol": "square"},
+      "labelStyle": {
+        "font": {"size": "10px"},
+        "valign": "start"
+      },
+      "title": [ "start" ],
+      "method": "stagger"
+    },
+    {
+      "scale": {"reverse": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {"align": "middle"},
+      "itemStyle": {"size": "26px", "symbol": "square"},
+      "labelStyle": {
+        "font": {"size": "10px"},
+        "valign": "end"
+      },
+      "title": [ "end" ],
+      "method": "stagger"
+    },
+    {
+      "scale": {"reverse": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {"align": "middle"},
+      "itemStyle": {"size": "26px", "symbol": "square"},
+      "labelStyle": {
+        "font": {"size": "10px"},
+        "valign": "middle"
+      },
+      "title": [ "middle" ],
+      "method": "stagger"
+    },
+    {
+      "scale": {"reverse": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {"align": "middle"},
+      "itemStyle": {"size": "26px", "symbol": "square"},
+      "labelStyle": {
+        "font": {"size": "10px"},
+        "valign": "middleOfFirstLine"
+      },
+      "title": [ "middleOfFirstLine" ],
+      "method": "stagger"
+    }
+  ],
+  "size": {"width": 780, "height": 440},
+  "version": "4.1"
+}

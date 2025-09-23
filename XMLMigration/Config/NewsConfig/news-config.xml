@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright IBM Corp. 2006, 2011  All Rights Reserved.              -->
+<config id="news"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="news-config.xsd">
+
+	<scheduledTasks>
+		<!--
+		 There can be any number of tasks >= 1, and each must have a complete list of attributes - 
+		 name=, interval=, startby= , enabled=, scope=, type=, targetName=, mbeanMethodName=, and 
+		 serverName=. It is expected that the user admin would change only interval= and enabled= 
+		 (and possibly startby=), but the others are described below for completeness.
+
+		 name= is the name of the task.  This name is used to report task events in
+		 SystemOut.log.  Do not change the name for type=internal tasks.
+		 
+		 interval= specifies the task schedule. interval= (and startby=) are "cron" schedules. 
+		 "cron" schedules are discussed in more detail below under CRON SCHEDULE STRING. 
+		 An interval="" is the same as removing the task from the config (see TASK REGISTRATION 
+		 below). It is recommended that you use enabled= instead of an empty interval.
+
+		 startby= is explained below in detail, but it is recommended that you not use it.
+
+		 enabled= [true | false] determines whether the task is run or not.  If the value is 
+		 false the task is still registered, but it is not run.
+
+		 scope= [cluster | local].  local means that the task is run on all nodes in a cluster
+		 at the same time.  For example, this could be used to collect node statistics.
+		 cluster instructs the scheduler to run the task on one node in cluster.  Most
+		 tasks are cluster tasks.
+
+		 type= [internal | class | mbean].  'internal' means the class that implements the
+		 task is determined by Connections.  'class' means the class is determined by the 
+		 targetName= attribute.  'mbean' is used to run an mbean task, e.g., schedule
+		 a directory synch.  In this case targetName= is the mbean name and mbeanMethodName=
+		 is the method name.  (See Infocenter for more details)
+
+		 serverName= is not supported at present.
+
+
+		 TASK REGISTRATION
+
+		 Tasks are registered at application startup, and thus they are run under
+		 the credentials of the server.  In an ND environment this means all nodes
+		 may try to register the tasks at roughly the same time, but this is expected.
+
+		 In an ND environment, all servers trust each other by default so that a task that
+		 runs on a node other than the one that registered it is not an issue.  If something
+		 goes awry, e.g., certificates expire, the scheduler will experience difficulties.
+		 It will be fairly obvious what is wrong since tasks will fail due to credential
+		 issues.
+
+		 At application startup, the tasks and task attributes in the config are synchronized 
+		 with the tasks and task attributes registered with the scheduler.  The scheduler only 
+		 knows about name=, interval=, startby=, and enabled=. If a task is removed from the 
+		 config, it is deleted from the scheduler tables.
+
+		 CRON SCHEDULE STRING
+
+		 The meaning of interval="0 1 0-23/3 ? * *" is to run the task all day (0-23) every 
+		 3 hours at 1 minute past midnite, 3:01am, 6:01am, 9:01am, and so on.  Change the 3
+		 after the '/' to a 1 and the task would run hourly at 1 minute past the hour.  
+		 As a final example, interval="0 10/30 * ? * *" would run the task every half hour
+		 at ten and forty mnutes past the hour.
+
+		 The meaning of interval="0 0 2 ? * SUN" is that the task is run every Sunday
+		 morning at 2:00am, that is, weekly.
+
+		 startby=
+
+		 It is not recommended that you use startby=.  Say one of the tasks
+		 scheduled for every 3 hours runs for 4 hours (keep in mind this is an
+		 example).  What happens?  The task that would fire after 3 hours is put
+		 on a queue and fired right after the four hour task finishes.  If you
+		 don't want the task placed in the queue, you can specify the startby=
+		 schedule.  For example, startby="0 11 0-23/3 ? * *" (assuming the 
+		 default schedule given above) means that if the first task runs over
+		 by 10 minutes (11-1), the task is not placed on the queue.
+
+		 All startby= strings are set to the empty string by default.  This means
+		 there is no startby interval.
+		-->
+		 
+		<!-- This task run periodically once each night to remove old news stories -->
+		<task 	serverName="unsupported"
+				startby=""
+				mbeanMethodName=""
+				targetName="ScheduledTaskService"
+				type="internal"
+				scope="cluster"
+				enabled="true"
+				interval="0 0 23 ? * *"
+				description="Job to cleanup the news"
+				name="NewsDataCleanup" >
+		</task>
+		
+		<!--  This task will run each two min. DEBUG purpose -->
+		<!-- 
+		<task name="NewsDataCleanup" description="Test job defined by class"
+		      interval="0 0/2 * ? * *" startby="" 
+		      enabled="true" scope="cluster" type="internal"
+		      targetName="ScheduledTaskService" 
+		      mbeanMethodName="" serverName="unsupported" >
+		</task>       		      
+		 -->
+
+		<!-- Periodically we need to verify is a person has changed is status. 
+			 In this way we know is somebody has been added to the system, or if we deactivate
+			 an user. The task run each hour at the 50th min. forever:
+			 It runs at hh:50 of each hour. 
+			-->
+		<task 	serverName="unsupported"
+				startby=""
+				mbeanMethodName=""
+				targetName="ScheduledTaskService"
+				type="internal"
+				scope="cluster"
+				enabled="true"
+				interval="0 50 * * * ?"
+				description="Job to check for updated persons"
+				name="NewsCheckUpdatedPersons" >
+		</task>
+
+		<!-- Email Digest are periodically posted to the users. The following setting define how
+			 often the system is going to process email digest. With this setting the system
+			 will process email digest foreve each hour -->
+		<task 	serverName="unsupported"
+				startby="" 
+				mbeanMethodName=""
+				targetName="ScheduledTaskService"
+				type="internal"
+				scope="local"
+				enabled="true"
+				interval="0 0 * ? * *"
+				description="Job to send email digest"
+				name="EmailDigestDelivery"  >
+		</task>
+		
+		<!-- This task run periodically once each night at 2am to collect the statistic data about News and Homepage. 
+		These data are the metrics and they are displayed under the Server Metrics page  -->
+		<task 	serverName="unsupported"
+				startby=""
+				mbeanMethodName=""
+				targetName="ScheduledTaskService"
+				type="internal"
+				scope="cluster"
+				enabled="true"
+				interval="0 0 2 ? * *"
+				description="Job to collect system metrics for News and Homepage"
+				name="MetricsCollector" >
+		</task>
+
+		 <!-- Each month a scheduled task runs to load balance the users in the existing tranches that are used from the Email Digest.
+			In this way, the users will be spread in a uniform way according to their mail domain. -->
+		<task 	serverName="unsupported"
+				startby="" 
+				mbeanMethodName=""
+				targetName="ScheduledTaskService"
+				type="internal"
+				scope="cluster"
+				enabled="true"
+				interval="0 0 22 1 * ?"
+				description="Job to spread users in tranche"
+				name="PersonSpreadTranche"  >
+		</task>		
+	</scheduledTasks>
+	
+	<!-- News stories are periodically removed from the database. The following
+	     setting defines the number of days from the date a story is created
+	     before it is removed from the database. -->
+	<databaseCleanup>
+		<storyLifetimeInDays>700</storyLifetimeInDays>
+	</databaseCleanup>
+	
+	<!-- To correctly analyze the information received by the News repository, it is 
+	     necessary to synchronize data from other Connections applications (e.g. network
+	     for a person in Profiles, dogear watchlist information.)
+	     The following setting specifies how often that information is synchronized
+	     for each particular container. -->
+	<dataSynchronization>
+		<frequencyInHours>24</frequencyInHours>
+	</dataSynchronization>
+
+</config>

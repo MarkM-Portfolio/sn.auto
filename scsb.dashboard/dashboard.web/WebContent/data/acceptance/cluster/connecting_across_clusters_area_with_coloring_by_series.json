@@ -1,0 +1,87 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "series",
+          "label": "Item Name",
+          "categories": [
+            "1993, Dishwashers",
+            "1993, Stoves",
+            "1993, Microwaves"
+          ]
+        },
+        {
+          "id": "market",
+          "label": "Market",
+          "categories": [
+            "Builders",
+            "Furniture",
+            "Department"
+          ]
+        },
+        {
+          "id": "measures",
+          "label": "Measures",
+          "categories": [ "Revenue", "Cost" ]
+        },
+        {
+          "id": "value",
+          "label": "value",
+          "format": {
+            "numericPattern": "###,###.###",
+            "prefix": "",
+            "suffix": ""
+          }
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0, 56710 ],
+        [ 0, 0, 1, 42950 ],
+        [ 1, 0, 0, 63478 ],
+        [ 1, 0, 1, 47680 ],
+        [ 2, 0, 0, 71635 ],
+        [ 2, 0, 1, 57255 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {}
+        ],
+        "transforms": [ {"type": "cluster"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "value"}},
+            {"field": {"$ref": "measures"}},
+            {"field": {"$ref": "series"}}
+          ],
+          "color": [ {"field": {"$ref": "series"}} ]
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "3.1",
+  "style": {"fill": "white"}
+}

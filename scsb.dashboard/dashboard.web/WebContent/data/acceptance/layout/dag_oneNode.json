@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {
+          "id": "direction",
+          "categories": [ "oneway", "twoway", "backwards" ]
+        }
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "name", "categories": [ "0" ]},
+        {"id": "layer", "categories": [ "1" ]}
+      ],
+      "rows": [ [ 0, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "name"} ]} ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "name"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "method": "dag",
+            "to": {"$ref": "to"}
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,135 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {
+          "id": "base_num",
+          "label": "Number",
+          "min": -10,
+          "max": 1
+        },
+        {
+          "id": "base_type",
+          "label": "Hardback",
+          "categories": [ "no", "yes" ]
+        },
+        {
+          "id": "base_count",
+          "label": "Number",
+          "min": 0,
+          "max": 10
+        }
+      ],
+      "rows": [
+        [ 28, 0, 8 ],
+        [ 32, 0, 6 ],
+        [ 40, 0, 8 ],
+        [ 47, 0, 10 ],
+        [ 60, 0, 7 ],
+        [ 65, 0, 10 ],
+        [ 75, 0, 10 ],
+        [ 80, 0, 6 ],
+        [ 96, 0, 8 ],
+        [ 5, 1, 4 ],
+        [ 22, 1, 2 ],
+        [ 25, 1, 4 ],
+        [ 36, 1, 6 ],
+        [ 43, 1, 6 ],
+        [ 52, 1, 8 ],
+        [ 66, 1, 5 ],
+        [ 82, 1, 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "#aaa",
+                "stroke": {"style": "solid"}
+              },
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 255},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 10
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+"method":"vertical",
+              "gridStyle": {
+                "fill": "#aaa",
+                "stroke": {"style": "dash"}
+              },
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 10
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ],
+        "style": {
+          "fill": {"b": 235, "g": 235, "r": 235},
+          "outline": "#aaa"
+        }
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "data": {"$ref": "base"},
+          "position": [
+            {"field": {"$ref": "base_count"}},
+            {"field": {"$ref": "base_num"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "base_type"},
+              "modifies": "both"
+            }
+          ],
+          "style": {"fill": {"a": 0}}
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "base"},
+          "position": [
+            {"field": {"$ref": "base_count"}},
+            {"field": {"$ref": "base_num"}}
+          ],
+          "color": [ {"field": {"$ref": "base_type"}} ],
+          "style": {
+            "fill": "blue",
+            "outline": {"b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 20
+      }
+    }
+  ],
+  "version": "1.2"
+}

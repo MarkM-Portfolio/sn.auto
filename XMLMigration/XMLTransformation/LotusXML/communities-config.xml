@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright IBM Corp. 2001, 2011  All Rights Reserved.              -->
+
+<comm:config id="communities"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.ibm.com/connections/communities/communities-config/1.0 communities-config.xsd"
+		xmlns:comm="http://www.ibm.com/connections/communities/communities-config/1.0">
+		
+	<!-- START COMMUNITY SECURITY CONFIG -->
+	<comm:security>
+		<comm:requirePlainJson>false</comm:requirePlainJson>
+		<comm:loginConfigs>
+			<comm:loginConfig name="default">
+				<comm:property name="login.config.name">WSLogin</comm:property>
+				<comm:property name="login.create.cookie.disabled">false</comm:property>
+			</comm:loginConfig>
+		</comm:loginConfigs>
+	</comm:security>
+	<!-- END COMMUNITY SECURITY CONFIG -->
+	
+	<!-- START COMMUNITY PAGING CONFIG -->
+	<comm:pagingSupport>
+		<!-- Default value for all page sizes -->
+		<comm:defaultPageSize>10</comm:defaultPageSize>		
+		<!-- Max number of names to display in members type-ahead -->
+		<comm:pageSize name="memberNameTypeAhead">15</comm:pageSize>
+		<!-- Max number of DB records to return from type-ahead query -->
+		<comm:pageSize name="tagNameTypeAhead">10</comm:pageSize>
+		<!-- Max number of ldap records returned for name search -->
+		<comm:pageSize name="ldapNameSearch">50</comm:pageSize> 
+		<!-- Max number of names to return from name type-ahead query -->
+		<comm:pageSize name="dbNameTypeAhead">50</comm:pageSize>
+		<!-- Max number of tags in all/my community views -->
+		<comm:pageSize name="communityListTags">75</comm:pageSize>
+	</comm:pagingSupport>
+	<!-- END COMMUNITY PAGING CONFIG -->
+	
+	<comm:activeContentFilter enabled="true"/>
+	<comm:descriptionSummary size="300"/>									<!-- characters -->
+	<comm:showStartCommunityToUnauthenticated>true</comm:showStartCommunityToUnauthenticated>
+
+	<!--  START COMMUNITY TYPE CONFIG  -->
+	<comm:communityTypes>
+		<comm:communityType>
+			<comm:name>public</comm:name>
+			<comm:description>PUBLIC community type.</comm:description>
+		</comm:communityType>
+		<comm:communityType>
+			<comm:name>private</comm:name>
+			<comm:description>PRIVATE community type.</comm:description>
+		</comm:communityType>
+		<comm:communityType>
+			<comm:name>publicInviteOnly</comm:name>
+			<comm:description>PUBLIC INVITE ONLY community type.</comm:description>
+		</comm:communityType>
+	</comm:communityTypes>
+	<!--  END COMMUNITY TYPE CONFIG  -->
+
+    <!--  START THEMES CONFIG -->
+    <comm:themes>
+        <!-- Note: To turn off Themes, comment out all the comm:theme elements (but leave comm:themes) -->
+        <comm:theme>
+            <comm:themeUuid>default</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.default</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>            
+            <comm:cssUrl>/nav/common/styles/defaultTheme/defaultTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/defaultTheme/defaultThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/default.png</comm:thumbnailUrl>                               
+        </comm:theme> 
+        <comm:theme>
+            <comm:themeUuid>red</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.red</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>            
+            <comm:cssUrl>/nav/common/styles/redTheme/redTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/redTheme/redThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/red.png</comm:thumbnailUrl>                               
+        </comm:theme>                 
+        <comm:theme>
+            <comm:themeUuid>green</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.green</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/greenTheme/greenTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/greenTheme/greenThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/green.png</comm:thumbnailUrl>                               
+        </comm:theme>    
+        <comm:theme>
+            <comm:themeUuid>gold</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.coffee</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/goldTheme/goldTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/goldTheme/goldThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/gold.png</comm:thumbnailUrl>                               
+        </comm:theme>
+        <comm:theme>
+            <comm:themeUuid>silver</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.silver</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/silverTheme/silverTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/silverTheme/silverThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/silver.png</comm:thumbnailUrl>                               
+        </comm:theme>        
+        <comm:theme>
+            <comm:themeUuid>blue</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.blue</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/blueTheme/blueTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/blueTheme/blueThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/blue.png</comm:thumbnailUrl>                               
+        </comm:theme>
+        <comm:theme>
+            <comm:themeUuid>pink</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.pink</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/pinkTheme/pinkTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/pinkTheme/pinkThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/pink.png</comm:thumbnailUrl>                               
+        </comm:theme>        
+        <comm:theme>
+            <comm:themeUuid>onyx</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.onyx</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/onyxTheme/onyxTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/onyxTheme/onyxThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/onyx.png</comm:thumbnailUrl>                               
+        </comm:theme>              
+        <comm:theme>
+            <comm:themeUuid>purple</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.purple</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/purpleTheme/purpleTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/purpleTheme/purpleThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/purple.png</comm:thumbnailUrl>                               
+        </comm:theme>        
+        <comm:theme>
+            <comm:themeUuid>orange</comm:themeUuid>
+            <comm:displayNameKey>label.theme.name.orange</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>                       
+            <comm:cssUrl>/nav/common/styles/orangeTheme/orangeTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/orangeTheme/orangeThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/orange.png</comm:thumbnailUrl>                               
+        </comm:theme> 
+
+	<!-- Custom theme added by denise -->
+	  <comm:theme>
+            <comm:themeUuid>corporateTheme</comm:themeUuid>
+            <comm:displayNameKey>corporateTheme</comm:displayNameKey>
+            <comm:isScriptKey>false</comm:isScriptKey>            
+            <comm:cssUrl>/nav/common/styles/corporateTheme/corporateTheme.css</comm:cssUrl>
+            <comm:cssRtlUrl>/nav/common/styles/corporateTheme/corporateThemeRTL.css</comm:cssRtlUrl>
+            <comm:thumbnailUrl>/images/corporateTheme.jpg</comm:thumbnailUrl>                               
+        </comm:theme>                 
+       
+        <!-- Comment out down to here to turn off Themes -->
+    </comm:themes>       
+
+	<comm:scheduledTasks>
+
+	<!--
+	There can be any number of tasks >= 1, and each must have a complete list of attributes - 
+	name=, interval=, startby= , enabled=, scope=, type=, targetName=, mbeanMethodName=, and 
+	serverName=. It is expected that the user admin would change only interval= and enabled= 
+	(and possibly startby=), but the others are described below for completeness.
+
+	name= is the name of the task.  This name is used to report task events in
+	SystemOut.log.  Do not change the name for type=internal tasks.
+	
+	interval= specifies the task schedule. interval= (and startby=) are "cron" schedules. 
+	"cron" schedules are discussed in more detail below under CRON SCHEDULE STRING. 
+	An interval="" is the same as removing the task from the config (see TASK REGISTRATION 
+	below). It is recommended that you use enabled= instead of an empty interval.
+
+	startby= is explained below in detail, but it is recommended that you not use it.
+
+	enabled= [true | false] determines whether the task is run or not.  If the value is 
+	false the task is still registered, but it is not run.
+
+	scope= [cluster | local].  local means that the task is run on all nodes in a cluster
+	at the same time.  For example, this could be used to collect node statistics.
+	cluster instructs the scheduler to run the task on one node in cluster.  Most
+	tasks are cluster tasks.
+
+	type= [internal | class | mbean].  'internal' means the class that implements the
+	task is determined by Connections.  'class' means the class is determined by the 
+	targetName= attribute.  'mbean' is used to run an mbean task, e.g., schedule
+	a directory synch.  In this case targetName= is the mbean name and mbeanMethodName=
+	is the method name.  (See Infocenter for more details)
+
+	serverName= is not supported at present.
+
+
+	TASK REGISTRATION
+
+	Tasks are registered at application startup, and thus they are run under
+	the credentials of the server.  In an ND environment this means all nodes
+	may try to register the tasks at roughly the same time, but this is expected.
+
+	In an ND environment, all servers trust each other by default so that a task that
+	runs on a node other than the one that registered it is not an issue.  If something
+	goes awry, e.g., certificates expire, the scheduler will experience difficulties.
+	It will be fairly obvious what is wrong since tasks will fail due to credential
+	issues.
+
+	At application startup, the tasks and task attributes in the config are synchronized 
+	with the tasks and task attributes registered with the scheduler.  The scheduler only 
+	knows about name=, interval=, startby=, and enabled=. If a task is removed from the 
+	config, it is deleted from the scheduler tables.
+
+	CRON SCHEDULE STRING
+
+	The meaning of interval="0 1 0-23/3 ? * *" is to run the task all day (0-23) every 
+	3 hours at 1 minute past midnite, 3:01am, 6:01am, 9:01am, and so on.  Change the 3
+	after the '/' to a 1 and the task would run hourly at 1 minute past the hour.  
+	As a final example, interval="0 10/30 * ? * *" would run the task every half hour
+	at ten and forty mnutes past the hour.
+
+	The meaning of interval="0 0 2 ? * SUN" is that the task is run every Sunday
+	morning at 2:00am, that is, weekly.
+
+	startby=
+
+	It is not recommended that you use startby=.  Say one of the tasks
+	scheduled for every 3 hours runs for 4 hours (keep in mind this is an
+	example).  What happens?  The task that would fire after 3 hours is put
+	on a queue and fired right after the four hour task finishes.  If you
+	don't want the task placed in the queue, you can specify the startby=
+	schedule.  For example, startby="0 11 0-23/3 ? * *" (assuming the 
+	default schedule given above) means that if the first task runs over
+	by 10 minutes (11-1), the task is not placed on the queue.
+
+	All startby= strings are set to the empty string by default.  This means
+	there is no startby interval.
+	-->
+
+		<comm:task name="LifecycleRetryQueuedEvents" description="Retry queued events"
+		      interval="0 1 0-23/3 ? * *" startby=""
+		      enabled="true" scope="cluster" type="internal"
+		      targetName="" mbeanMethodName="" serverName="unsupported" />
+
+		<comm:task name="EventLogCleanup" description="Event log clean up"
+			  interval="0 30 0-23/3 ? * *" startby=""
+		      enabled="true" scope="cluster" type="internal"
+		      targetName="" mbeanMethodName="" serverName="unsupported" />
+	</comm:scheduledTasks>
+
+	<comm:eventLogCleanupTask eventLogEntryAgeInDays="31" />
+	
+	<comm:tagCloud>
+		<comm:refreshIntervalInMinutes>10</comm:refreshIntervalInMinutes>
+		<comm:LRUcacheSizeInNumber>150</comm:LRUcacheSizeInNumber>
+	</comm:tagCloud>
+
+	<comm:communityHandle enabled="true" />
+
+</comm:config>

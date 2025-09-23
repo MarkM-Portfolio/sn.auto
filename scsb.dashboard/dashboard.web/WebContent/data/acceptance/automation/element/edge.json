@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "ID", "categories": [ "A", "B" ]},
+        {"id": "X1"},
+        {"id": "Y1"},
+        {"id": "X2"},
+        {"id": "Y2"}
+      ],
+      "rows": [
+        [ 0, 0, 100, 2, 120 ],
+        [ 1, 2, 18, 2, 120 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "edge",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "Y2"}},
+            {"field": {"$ref": "Y1"}},
+            {"field": {"$ref": "X2"}},
+            {"field": {"$ref": "X1"}}
+          ]
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "version": "1.2"
+}

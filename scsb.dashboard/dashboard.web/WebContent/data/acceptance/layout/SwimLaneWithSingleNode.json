@@ -1,0 +1,182 @@
+{
+  "data": [
+    {
+      "id": "swimlanes",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [
+            "Learning and Innovation",
+            "Internal",
+            "Customer",
+            "Financial"
+          ]
+        },
+        {"id": "layerHeight"},
+        {"id": "maxRowValue"},
+        {"id": "idealNodeCountValue"}
+      ],
+      "rows": [
+        [ 3, 1, 1, null ],
+        [ 2, 1, 2, null ],
+        [ 1, 1, 1, null ],
+        [ 0, 1, 1, null ]
+      ]
+    },
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "size"},
+        {
+          "id": "direction",
+          "categories": [ "oneway", "twoway" ]
+        }
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {
+          "id": "name",
+          "categories": [
+            "0 ABC",
+            "1 DEF",
+            "2 GEH",
+            "3 IJK",
+            "4 LMN",
+            "5 OPQ",
+            "6 RST",
+            "7 UVW"
+          ]
+        },
+        {
+          "id": "layer",
+          "categories": [
+            "Learning and Innovation",
+            "Internal",
+            "Customer",
+            "Financial"
+          ]
+        }
+      ],
+      "rows": [ [0,0,2] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "modifies": {"part": "label"},
+              "style": {
+                "fill": "#222222",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 12.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": 4, "top": 4},
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "layerPlacement": "adaptive",
+            "nodePlacement": "maxOverlap",
+            "to": {"$ref": "to"},
+            "method": "dag"
+          },
+          "tooltip": [ {"content": [ {"$ref": "layer"} ]} ],
+          "style": {
+            "width": 170,
+            "height": 60,
+            "symbol": {
+              "shape": [
+                {
+                  "type": "rect",
+                  "bounds": {
+                    "width": "100%",
+                    "height": "100%",
+                    "left": "0%",
+                    "top": "0%"
+                  },
+                  "part": "main",
+                  "style": {
+                    "fill": {"a": 0.1, "b": 255},
+                    "stroke": {"width": 1}
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "category"} ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "location": "inside",
+                "padding": {"left": 4, "top": 4},
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "swimlanes"},
+          "positioning": {
+            "layer": {"$ref": "category"},
+            "size": {"$ref": "layerHeight"},
+            "method": "swimlane"
+          },
+          "tooltip": [
+            {"content": [ "id =", {"$ref": "category"} ]}
+          ],
+          "style": {
+            "symbol": {
+              "shape": [
+                {
+                  "type": "rect",
+                  "bounds": {
+                    "width": "100%",
+                    "height": "100%",
+                    "left": "0%",
+                    "top": "0%"
+                  },
+                  "part": "main",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "yellow"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "outline": {"a": 1}}
+    }
+  ],
+  "size": {"width": 600, "height": 600},
+  "version": "4.2",
+  "style": {"fill": "#DEDEDE", "padding": 5}
+}

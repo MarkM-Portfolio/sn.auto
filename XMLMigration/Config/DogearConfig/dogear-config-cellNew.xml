@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+      *****************************************************************
+
+      Licensed Materials - Property of IBM
+
+      5724-S68
+
+      Copyright IBM Corp. 2001, 2010  All Rights Reserved.
+
+      US Government Users Restricted Rights - Use, duplication or
+      disclosure restricted by GSA ADP Schedule Contract with
+      IBM Corp.
+
+      *****************************************************************
+    --><config xmlns="http://www.ibm.com/dogear-config-cell" xmlns:tns="http://www.ibm.com/dogear-config-cell" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dogearcell" buildlevel="@BUILD_LEVEL@" xsi:schemaLocation="http://www.ibm.com/dogear-config-cell dogear-config-cell.xsd">
+<contextParameters>
+ 		<stringProperty name="platform">WAS</stringProperty>
+    </contextParameters>
+<!--Fav Icon Service-->
+<favIconService>
+		<stringProperty name="favicon.directory">${DOGEAR_FAVICON_DIR}</stringProperty>
+		<!-- in days -->
+		<integerProperty name="favicon.maxAge">90</integerProperty> 
+		<!-- in KB -->
+		<integerProperty name="favicon.maxSize">6</integerProperty> 
+		<!-- in minutes -->
+		<integerProperty name="favicon.start">5</integerProperty> 
+		<integerProperty name="favicon.queuesize">100</integerProperty>
+	    <booleanProperty name="favicon.ajaxproxy.intranet.enabled">true</booleanProperty>
+	</favIconService>
+<!--Broken URL Service-->
+<brokenURLService>
+		<booleanProperty name="brokenURL.notifyAllOwners">true</booleanProperty>
+		<booleanProperty name="brokenURL.notifyAdmin">true</booleanProperty>
+	</brokenURLService>
+<!--
+        Intranet IP Range (inclusive)
+      -->
+<privateIntranetAllocationTable>
+	 	
+	 </privateIntranetAllocationTable>
+<!--
+        Dogear Link Thresholds
+      -->
+<linkThresholds>
+	  	<integerProperty name="sinceWhen.popularLinks">30</integerProperty> <!-- in  days -->
+	  	<integerProperty name="maxInclude.popularLinks">2000</integerProperty> <!-- number of links -->
+	  	<integerProperty name="sinceWhen.inboxLinks">20</integerProperty> <!-- in  days -->
+		<integerProperty name="sinceWhen.mostVisitedLinks">30</integerProperty> <!-- in  days -->
+		<integerProperty name="minLinkCount.useCountCache">100000</integerProperty> <!-- number of links -->
+		<integerProperty name="minURLCount.useCountCache">10000</integerProperty> <!-- number of URLs -->
+		<integerProperty name="countInterval.useCountCache">10</integerProperty> <!-- number of count interval -->
+	  </linkThresholds>
+<!--
+        Dogear Tag Thresholds
+      -->
+<tagThresholds>
+	  	<integerProperty name="sinceWhen.activeTags">30</integerProperty>  <!-- in  days -->
+		<integerProperty name="minCount.activeTags">1</integerProperty>  <!--  min frequency -->
+	  	<integerProperty name="maxInclude.activeTags">4000</integerProperty> <!-- number of tags -->
+	  </tagThresholds>
+<!--
+        Dogear Person Thresholds
+      -->
+<personThresholds>
+	  	<integerProperty name="sinceWhen.activePerson">30</integerProperty>  <!-- in  days -->
+		<integerProperty name="minCount.activePerson">5</integerProperty>  <!--  min frequency -->
+	  	<integerProperty name="maxInclude.activePerson">1500</integerProperty> <!-- number of links -->
+	  </personThresholds>
+<!--
+        Content Type Definitions
+      -->
+<contentTypes enabled="false">
+	  	<!-- 
+			Type Definition
+		-->
+		<!--
+	  	<type name="blogs">
+			<urlPattern>http://blogs/*</urlPattern>
+		</type>
+		-->
+	  </contentTypes>
+<activeContentFilter enabled="true" enhanced="true">
+		<tags>
+			<!-- tags only used with basic ACF, not with enhanced ACF.
+			<tag>iframe</tag>
+			<tag>applet</tag>
+			<tag>script</tag>
+			<tag>object</tag>
+			<tag>embed</tag>
+			<tag>a</tag>
+			-->
+		</tags>
+	  </activeContentFilter>
+<redirectDogearThis destination="/bookmarklet/post" enabled="true"/>
+<cachePublicData enabled="true" max-age="120"/>
+<!--
+        Dogear Cache Factory
+        Note: Some config params may be ignored by certain cache implementations. The class
+        attribute is always required.  The LruCacheFactory is not clusterable.
+      -->
+<cacheFactory class="com.ibm.cue.cache.dynacache.DynaCacheFactory">
+		<cache>
+			<name>dogear.freshness</name>
+			<jndi>services/cache/dogear.freshness</jndi>
+		</cache>
+	  </cacheFactory>
+<!--
+        The background link purging task
+      -->
+<linkPurgingTask>
+	 	<!-- in minutes -->
+	 	<integerProperty name="lpTask.start">15</integerProperty>  
+		<!-- in minutes -->
+		<integerProperty name="lpTask.interval">60</integerProperty>  
+		<!-- in days -->
+		<integerProperty name="lpTask.purgeDeleted">30</integerProperty> 
+	 </linkPurgingTask>
+<!--
+        The configurable behaviors in Bookmarks (aka Dogear)
+      -->
+<serviceBehavior>
+	    <booleanProperty name="bookmark.openInNewWindow">false</booleanProperty>
+	 </serviceBehavior>
+<!--
+        The embed snippet CSS white list
+      -->
+<embedStyle enabled="false">
+<!-- font family white list-->
+<stringProperty name="font.familyList">Times,Arial,Times New Roman,Verdana,Helvetica,Geneva</stringProperty>
+<!-- font color white list-->
+<stringProperty name="font.colorList">red,blue,green,yellow,orange,black,white,gold,snow</stringProperty>
+</embedStyle>
+</config>

@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        },
+        {"id": "values"},
+        {
+          "id": "g",
+          "categories": [ "FacetA", "FacetB", "FacetC" ]
+        }
+      ],
+      "rows": [
+        [ 1, 2200, 0 ],
+        [ 4, 1100, 0 ],
+        [ 2, 450, 0 ],
+        [ 1, 600, 1 ],
+        [ 2, 1200, 1 ],
+        [ 2, 1450, 2 ],
+        [ 1, 3200, 2 ],
+        [ 4, 2100, 2 ]
+      ]
+    },
+    {
+      "id": "data2",
+      "fields": [
+        {
+          "id": "categories2",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        },
+        {"id": "values2"}
+      ],
+      "rows": [ [ 0, 1200 ], [ 2, 1050 ], [ 4, 1520 ] ]
+    },
+    {
+      "id": "derivedData",
+      "source": {"$ref": "data"},
+      "type": "summary",
+      "group": [
+        {"input": {"$ref": "g"}, "output": {"id": "facet"}}
+      ],
+      "input": [
+        {"field": {"$ref": "categories"}, "role": "cats"},
+        {"field": {"$ref": "values"}, "role": "y"}
+      ],
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "categories"}
+        },
+        {
+          "field": {"id": "values_final"},
+          "input": {"$ref": "values"}
+        },
+        {
+          "field": {"id": "sumY"},
+          "input": {"$ref": "values"},
+          "parameters": {
+            "replicate": true,
+            "summaryFunction": "sum"
+          }
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "local": true,
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "derivedData"},
+          "position": [
+            {"field": {"$ref": "values_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {"field": {"$ref": "categories_final"}}
+          ]
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values2"}},
+            {"field": {"$ref": "categories2"}}
+          ],
+          "style": {"fill": "black", "width": "20%"}
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "facet"}} ],
+        "method": "panel"
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1"
+}

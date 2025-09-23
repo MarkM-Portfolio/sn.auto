@@ -1,0 +1,236 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Countries",
+          "categories": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 13, 2200 ],
+        [ 12, 1100 ],
+        [ 11, 450 ],
+        [ 10, 1400 ],
+        [ 9, 1400 ],
+        [ 8, 2450 ],
+        [ 7, 2200 ],
+        [ 6, 1100 ],
+        [ 5, 450 ],
+        [ 4, 1400 ],
+        [ 3, 2650 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "90%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                },
+                "padding": 5
+              },
+              "title": [ "Population(In Million)" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "Countries" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "modifies": "both",
+              "palette": [
+                {"h": 0.6056, "s": 0.519, "v": 0.816},
+                {"h": 0.5167, "s": 0.284, "v": 0.827},
+                {"h": 0.0833, "s": 0.744, "v": 0.859},
+                {"h": 0.125, "s": 0.721, "v": 0.886},
+                {"h": 0.3278, "s": 0.572, "v": 0.541},
+                {"h": 0.2417, "s": 0.738, "v": 0.733},
+                {"h": 0.7639, "s": 0.429, "v": 0.631},
+                {"h": 0.7389, "s": 0.313, "v": 0.878},
+                {"h": 0.0917, "s": 0.797, "v": 0.682},
+                {"h": 0.1028, "s": 0.667, "v": 0.906},
+                {"h": 0.0333, "s": 0.708, "v": 0.659},
+                {"h": 0.0306, "s": 0.624, "v": 0.867},
+                {"h": 0.5167, "s": 0.119, "v": 0.624},
+                {"h": 0.5333, "s": 0.172, "v": 0.8}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                "\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 270,
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.45
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.15,
+                    "dValue": 0.6
+                  },
+                  "offset": 0.35
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.1
+                  },
+                  "offset": 0.65
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.3,
+                    "dValue": -0.05
+                  },
+                  "offset": 0.9
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.1,
+                    "dValue": -0.25
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "stroke": {"width": 1},
+            "width": "80%",
+            "outline": {"dValue": -0.4}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": "10%", "right": "100%", "top": 0},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 600.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

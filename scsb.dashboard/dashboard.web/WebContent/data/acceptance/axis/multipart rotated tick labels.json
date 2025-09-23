@@ -1,0 +1,464 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ],
+          "key": true
+        },
+        {
+          "id": "fValues",
+          "label": "Price",
+          "min": 3427,
+          "max": 3972,
+          "unit": "date"
+        }
+      ],
+      "rows": [
+        [ 3, 3672 ],
+        [ 2, 3972 ],
+        [ 1, 3727 ],
+        [ 0, 3785 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": 0,
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": -45,
+                "valign": "start"
+              },
+              "title": [
+                "valign:start",
+                "\n",
+                "negative rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": 0,
+        "top": "32%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": -45,
+                "valign": "middle"
+              },
+              "title": [
+                "valign:middle",
+                "\n",
+                "negative rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": 0,
+        "top": "64%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": -45,
+                "valign": "end"
+              },
+              "title": [
+                "valign:end",
+                "\n",
+                "negative rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": "51%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": 45,
+                "valign": "start"
+              },
+              "title": [
+                "valign:start",
+                "\n",
+                "posotive rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": "51%",
+        "top": "32%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": 45,
+                "valign": "middle"
+              },
+              "title": [
+                "valign:middle",
+                "\n",
+                "posotive rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "width": "49%",
+        "height": "30%",
+        "left": "51%",
+        "top": "64%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "tickLabel": [
+                    {
+                      "value": "US",
+                      "style": {
+                        "fill": "Purple",
+                        "font": {
+                          "size": 24,
+                          "weight": "bold",
+                          "style": "italic"
+                        }
+                      }
+                    },
+                    "\n",
+                    {
+                      "$ref": "fCategories",
+                      "style": {
+                        "fill": "orange",
+                        "font": {"size": 20}
+                      }
+                    },
+                    ": ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "tickStyle": {
+                "angle": 45,
+                "valign": "end"
+              },
+              "title": [
+                "valign:end",
+                "\n",
+                "positive rotation"
+              ],
+              "titleStyle": {"align": "middle"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [ {"field": {"$ref": "fValues"}} ],
+          "style": {"size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    }
+  ],
+  "size": {"width": 1000.0, "height": 1400.0},
+  "version": "4.1"
+}

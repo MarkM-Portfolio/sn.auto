@@ -1,0 +1,68 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Washington",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [
+        [ 495, 70, 1 ],
+        [ 446, 5, 0 ],
+        [ 476, 12, 3 ],
+        [ 476, 40, 2 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "fY"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {
+                "reverse": true,
+                "spans": [ {"fit": "exact"} ]
+              },
+              "mapping": [
+                {"at": "0%", "size": 0},
+                {"at": "100%", "size": 40}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "symbol": "circle"
+          }
+        }
+      ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "legends": [ {"itemStyle": {"padding": 12}} ],
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

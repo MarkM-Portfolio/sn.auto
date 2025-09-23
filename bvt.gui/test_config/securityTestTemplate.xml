@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="12" name="Complete BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+  <groups>
+    <run>
+      <include name="level2" />
+    </run>
+  </groups>
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!-- <parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm2536.mul.ie.ibm.com" />
+  <parameter name="server_port" value="5555" /> -->
+  <!-- To run tests locally -->
+
+   
+   <parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm3498.mul.ie.ibm.com" />
+  <parameter name="server_port" value="5555" /> 
+  
+<!--
+    <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />  -->
+
+      <!--  
+    <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" /> -->
+  
+  
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="onprem" />
+  
+  <!-- LOGIN TYPE <onprem | cloud | icsaml | onprem_ivt> -->
+  <parameter name="login_type" value="onprem_ivt" /> 
+  
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+   <parameter name="browser_url" value="https://dubxpcvm3651.mul.ie.ibm.com/" /> 
+   <!--   <parameter name="browser_url" value="https://dubxpcvm3112.mul.ie.ibm.com/" /> -->
+   <!-- <parameter name="browser_url" value="https://iti-ws7-spn1.socialmail.swg.usma.ibm.com/" /> -->
+
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="FF_24_Windows" />
+
+  <!-- PROXY TYPE COMMAND -->
+         <!-- <parameter name="security_type" value="SPNEGO" /> -->
+      <!-- <parameter name="security_type" value="TAM" /> -->
+      <!-- <parameter name="proxy_type" value="SITEMINDER_SPNEGO" /> -->
+
+   
+  <!-- Connections properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties" />
+  <!-- Smart Cloud properties-->
+  <!--parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/sc_users.properties" /-->
+  
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="fluent_wait_timeout" value="45" />
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  <parameter name="max_retries" value="0" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="uid" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+  
+ <test name="Cal" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.calendar" />
+    </packages>
+  </test> 
+ 
+
+
+  <test name="Calendar" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.calendar" />
+    </packages>
+  </test>
+  
+  <test name="Activity Stream" preserve-order="true" enabled="false">
+  	<classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_AS" />
+    </classes>
+  </test>  
+  
+  <test name="Blogs" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.blogs" />
+    </packages>
+  </test>
+  
+  
+    <test name="EmbeddedExp_" preserve-order="true" enabled="false">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE">   
+      <methods>
+      	<include name="Blogs_EE_Comments"/>
+      </methods>
+      </class>
+  
+    </classes>
+</test> 
+  
+  
+   <test name="EE_" preserve-order="true" enabled="false">
+      <classes>
+      	<class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE" />
+      </classes>
+  </test>
+  
+    <test name="CRE" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.testcases.cre" />
+    </packages>
+  </test>
+  
+   <test name="Dogear" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.dogear" />
+    </packages>
+  </test>
+  
+  <test name="Embedded Experience" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE" />
+    </classes>
+  </test>
+  
+   <test name="Dogear_" preserve-order="true" enabled="false">
+   <!--  <parameter name="report" value="false"/> -->
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery">   
+      <methods>
+      		<include name="configureWithEmptyFolders"/>
+      </methods>
+      </class>
+  
+    </classes>
+</test> 
+  
+  <test name="Files" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.files" />
+    </packages>
+  </test>
+  
+  <test name="Forums" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.forums" />
+    </packages>
+  </test>
+  
+  <test name="Globalsearch" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.globalsearch" />
+    </packages>
+  </test>
+  
+   <test name="Homepage" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+    </classes>
+  </test>
+  
+  <test name="Activities" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.activities" />
+    </packages>
+  </test>
+  
+  
+
+  <test name="Gallery" preserve-order="true" enabled="false">
+    <classes>
+        <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery" />
+   </classes>
+  </test>
+    
+  <test name="Metrics" preserve-order="true" enabled="false">
+  <parameter name="report" value="false"/>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.metrics" />
+    </packages>
+  </test>
+  
+  <test name="Mobile" preserve-order="true" enabled="false">
+    <parameter name="browser_start_command" value="ff_20_Windows" />
+    <packages>
+      <package name="com.ibm.conn.auto.testcases.mobile" />
+    </packages>
+  </test>
+  
+  <test name="Moderation" preserve-order="true" enabled="false">
+    <parameter name="browser_url" value="http://icbvtaix1.swg.usma.ibm.com/" />
+    <packages>
+      <package name="com.ibm.conn.auto.testcases.moderation" />
+    </packages>
+  </test>
+  
+  <test name="Library" preserve-order="true" enabled="false">
+      <classes>
+      	<class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Library" />
+      </classes>
+  </test>
+  
+  <test name="Profiles" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.profiles" />
+    </packages>
+  </test>
+  
+  
+  <test name="Metrics" preserve-order="true" enabled="false">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.metrics.BVT_Level_2_Metrics">   
+      <methods>
+      	<include name="testParticipationView"/>
+      </methods>
+      </class>
+  
+    </classes>
+</test> 
+  
+  <test name="Widgets" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.widgets" />
+    </packages>
+  </test>
+  
+  <test name="ShareBox" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.sharebox" />
+    </packages>
+  </test>
+  
+  <test name="Wikis" preserve-order="true" enabled="false">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.wikis" />
+    </packages>
+  </test>
+  
+</suite>

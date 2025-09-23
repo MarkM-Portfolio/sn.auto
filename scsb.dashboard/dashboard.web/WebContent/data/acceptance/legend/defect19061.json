@@ -1,0 +1,117 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"fields": [{
+			"categories": ["California",
+			"Illinois",
+			"New York",
+			"Texas"],
+			"id": "fCategories",
+			"label": "Store"
+		},
+		{
+			"id": "fValues",
+			"label": "Price",
+			"max": 3972,
+			"min": 3427,
+			"unit": "date"
+		}],
+		"id": "dDelimitedFileSource",
+		"rows": [[3,
+		3672],
+		[2,
+		3972],
+		[1,
+		3427],
+		[0,
+		3785]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"scale": {
+						"spans": [{ "fit":"exact" } ] 
+					},
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"title": ["Categories of \"",
+					{
+						"$ref": "fCategories"
+					},
+					"\""]
+				}
+			}]
+		},
+		"elements": [{
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"meta": [{
+				"key": "category",
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"position": [{
+				"field": {
+					"$ref": "fValues"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"style": {
+				"fill": {
+					"angle": 270.0,
+					"colors": [{
+						"color": {
+							"b": 240,
+							"g": 240,
+							"r": 240
+						},
+						"offset": 0.0
+					},
+					{
+						"color": {
+							"b": 200,
+							"g": 200,
+							"r": 200
+						},
+						"offset": 0.05
+					},
+					{
+						"color": {
+							"b": 100,
+							"g": 100,
+							"r": 100
+						},
+						"offset": 1.0
+					}],
+					"type": "linear"
+				},
+				"outline": {
+					"a": 0.1,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				},
+				"width": "80%"
+			},
+			"type": "interval"
+		}]
+	}],
+	"size": {
+		"height": 300.0,
+		"width": 400.0
+	},
+	"legends": [{
+		
+	}]
+}

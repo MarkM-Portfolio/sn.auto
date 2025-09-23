@@ -1,0 +1,17 @@
+<component name="bvt.adm2"
+    description="Admin BVT suite v2"
+    project-type="binary" spec-version="7.0">
+
+    <output-group name="default">
+        <output type="directory" visibility="public" platform="all"
+                preferredInstallLocation="bvt.adm2/test"
+                location="test" />
+        <output type="file" visibility="public" platform="all"
+                preferredInstallLocation="bvt.adm2"
+                location="runtest.sh" />
+        <output type="file" visibility="public" platform="all"
+                preferredInstallLocation="bvt.adm2"
+                location="README.txt" />
+    </output-group>
+</component>
+

@@ -1,0 +1,90 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "categories": [ "A", "B", "C", "D", "E", "F" ]
+        },
+        {"id": "median"},
+        {"id": "lowerFence"},
+        {"id": "lowerHinge"},
+        {"id": "upperHinge"},
+        {"id": "upperFence"}
+      ],
+      "rows": [ [ 1, 1, -0.5, 0, 2, 3 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {}
+          },
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "schema:boxplot",
+          "label": [
+            {
+              "content": [ {"$ref": "median"} ],
+              "modifies": {"part": "median"},
+              "style": {
+                "align": "end",
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [ {"$ref": "upperFence"} ],
+              "modifies": {"part": "whiskers"},
+              "style": {
+                "align": "middle",
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "lowerFence"} ],
+              "modifies": {"part": "box"},
+              "style": {
+                "align": "middle",
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "content": [ {"$ref": "x"} ],
+              "style": {
+                "align": "middle",
+                "font": {"weight": "bold"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "median"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [ {"field": {"$ref": "x"}} ],
+          "components": [
+            {"field": {"$ref": "lowerFence"}},
+            {"field": {"$ref": "lowerHinge"}},
+            {"field": {"$ref": "upperHinge"}},
+            {"field": {"$ref": "upperFence"}}
+          ],
+          "tooltip": [ {"content": [ "这是一个方块" ]} ],
+          "style": {"stroke": {"width": 1}, "size": "30%"}
+        }
+      ]
+    }
+  ],
+  "version": "3.0"
+}

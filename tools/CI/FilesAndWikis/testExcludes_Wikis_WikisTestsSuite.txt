@@ -1,0 +1,3 @@
+classname="com.ibm.lconn.share.services.test.WikisSearchOperationsTest" name="testGetMyTagsFeed"
+classname="com.ibm.lconn.share.services.test.WikisDraftOperationsTest" name="testGetAllDraftAttachments"
+classname="com.ibm.lconn.share.services.test.common.RecommendationsOperationsTest" name="testRecommendMediaInBulk"

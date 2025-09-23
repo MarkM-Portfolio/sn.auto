@@ -1,0 +1,154 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {
+          "id": "base_cat",
+          "label": "Category",
+          "categories": [ "Q1", "Q2", "Q3", "Q4" ]
+        },
+        {
+          "id": "base_type",
+          "label": "Book type",
+          "categories": [
+            "Hardback",
+            "Paperback",
+            "Trade paperback"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 0 ],
+        [ 3, 0 ],
+        [ 1, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 3, 0 ],
+        [ 0, 1 ],
+        [ 0, 1 ],
+        [ 1, 1 ],
+        [ 1, 1 ],
+        [ 1, 1 ],
+        [ 2, 1 ],
+        [ 2, 1 ],
+        [ 2, 1 ],
+        [ 3, 1 ],
+        [ 0, 2 ],
+        [ 1, 2 ],
+        [ 2, 2 ],
+        [ 2, 2 ],
+        [ 3, 2 ]
+      ]
+    },
+    {
+      "id": "data",
+      "source": {"$ref": "base"},
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "base_cat"},
+          "output": {"id": "cat"}
+        },
+        {
+          "input": {"$ref": "base_type"},
+          "output": {"id": "type"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "count"},
+          "parameters": {"summaryFunction": "count"}
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 1.995, "max": 10} ]
+            },
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 50, "g": 50, "r": 50},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 50, "g": 50, "r": 50},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "label": [
+            {
+              "content": [ {"$ref": "count"} ],
+              "lineMinSize": 5,
+              "modifies": {"part": "symbol"},
+              "style": {
+                "align": "middle",
+                "location": "outside",
+                "padding": 20,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "count"}},
+            {"field": {"$ref": "cat"}}
+          ],
+          "clip": "overlap",
+          "color": [ {"field": {"$ref": "base_type"}} ],
+          "symbol": [ {"field": {"$ref": "base_type"}} ],
+          "symbolStyle": {},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "base_type"} ],
+              "modifies": {"part": "line"}
+            }
+          ],
+          "style": {"stroke": {"width": 2}}
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+    "version":"3.0"
+}

@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "xYear",
+          "label": "Year",
+          "categories": [
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014"
+          ]
+        },
+        {"id": "ySales", "label": "Sales"},
+        {"id": "wWorkforce", "label": "Total workforce"}
+      ],
+      "rows": [
+        [ 0, 75, 150 ],
+        [ 1, 70, 120 ],
+        [ 2, 70, 95 ],
+        [ 3, 58, 85 ],
+        [ 4, 65, 90 ],
+        [ 5, 60, 70 ],
+        [ 6, 55, 65 ],
+        [ 7, 50, 55 ],
+        [ 8, 50, 60 ],
+        [ 9, 40, 50 ],
+        [ 10, 45, 45 ],
+        [ 11, 35, 40 ],
+        [ 12, 30, 35 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+          },
+          {
+            "scale": {
+              "spans": [
+                {
+                  "categoryWeights": {
+                    "categories": {"$ref": "xYear"},
+                    "weights": {"$ref": "wWorkforce"}
+                  },
+                  "method": "orderByWeight"
+                }
+              ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "polar", "polarParameters": {"startAngle": 270}} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "ySales"}},
+            {"field": {"$ref": "xYear"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "xYear"},
+              "modifies": "both"
+            }
+          ],
+          "style": {"outline": {"a": 0}}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": "white",
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 600, "height": 600},
+  "version": "4.2",
+  "style": {"fill": "white"}
+}

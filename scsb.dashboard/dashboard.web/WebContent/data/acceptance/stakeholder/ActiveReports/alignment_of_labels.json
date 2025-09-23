@@ -1,0 +1,347 @@
+{
+	"data": [
+		{
+			"id": "data",
+			"fields": [
+				{
+					"id": "_VOIDS_FIELD_",
+					"label": "_VOIDS_FIELD_"
+				},
+				{
+					"id": "_CATEGORY_FIELD_",
+					"label": "Product line",
+					"categories": [
+						"Personal Accessories",
+						"Outdoor Protection",
+						"Mountaineering Equipment",
+						"Camping Equipment",
+						"Golf Equipment"
+					]
+				},
+				{
+					"id": "_SERIES_FIELD_",
+					"label": "Year",
+					"categories": [
+						"2010"
+					]
+				},
+				{
+					"id": "_VALUES_FIELD_",
+					"label": "Quantity"
+				}
+			],
+			"rows": [
+				[
+					123,
+					0,
+					0,
+					7572339
+				],
+				[
+					134,
+					1,
+					0,
+					5614356
+				],
+				[
+					145,
+					2,
+					0,
+					null
+				],
+				[
+					156,
+					3,
+					0,
+					5895053
+				],
+				[
+					167,
+					4,
+					0,
+					1092982
+				]
+			]
+		}
+	],
+	"size": {
+		"height": 350,
+		"width": 500
+	},
+	"grammar": [
+		{
+			"coordinates": {
+				"transforms": [
+					{
+						"type": "cluster",
+						"clusterParameters": {
+							"nest": [
+								true
+							],
+							"gaps": [
+								"5%"
+							]
+						}
+					},
+					{
+						"type": "transpose"
+					}
+				],
+				"dimensions": [
+					{
+						"scale": {
+							"spans": [
+								{
+									"fit": "nice",
+									"min": 0,
+									"max": 10706015
+								}
+							]
+						},
+						"axis": {
+							"lineStyle": {
+								"fill": "transparent"
+							},
+							"tickStyle": {
+								"fill": "rgba(97,97,97,1.0)",
+								"font": {
+									"family": "Verdana,SanSerif",
+									"size": "8pt",
+									"weight": "normal",
+									"style": "normal"
+								}
+							},
+							"markStyle": {
+								"fill": "transparent"
+							},
+							"titleStyle": {
+								"fill": "rgba(97,97,97,1.0)",
+								"font": {
+									"family": "Verdana,SanSerif",
+									"size": "8pt",
+									"weight": "normal",
+									"style": "normal"
+								}
+							},
+							"title": [
+								{
+									"$ref": "_VALUES_FIELD_"
+								}
+							],
+							"gridStyle": {
+								"fill": "rgba(128,128,128,0.40)",
+								"stroke": {
+									"width": "1px"
+								}
+							}
+						}
+					},
+					{
+						"axis": {
+							"lineStyle": {
+								"fill": "rgba(97,97,97,1.0)",
+								"stroke": {
+									"width": "1px",
+									"cap": "square"
+								}
+							},
+							"tickStyle": {
+								"fill": "rgba(97,97,97,1.0)",
+								"font": {
+									"family": "Verdana,SanSerif",
+									"size": "8pt",
+									"weight": "normal",
+									"style": "normal"
+								}
+							},
+							"markStyle": {
+								"fill": "transparent",
+								"stroke": {
+									"width": "1px",
+									"cap": "square"
+								}
+							},
+							"titleStyle": {
+								"fill": "rgba(97,97,97,1.0)",
+								"font": {
+									"family": "Verdana,SanSerif",
+									"size": "8pt",
+									"weight": "normal",
+									"style": "normal"
+								}
+							}
+						}
+					},
+					{
+						"scale": {
+							"local": true
+						}
+					}
+				]
+			},
+			"elements": [
+				{
+					"type": "interval",
+					"position": [
+						{
+							"field": {
+								"$ref": "_VALUES_FIELD_"
+							}
+						},
+						{
+							"field": {
+								"$ref": "_CATEGORY_FIELD_"
+							}
+						},
+						{
+							"field": {
+								"$ref": "_SERIES_FIELD_"
+							}
+						}
+					],
+					"style": {
+						"outlineMethod": "inside",
+						"outline": {
+							"dValue": -0.25
+						},
+						"fill": {
+							"type": "linear",
+							"global": false,
+							"angle": 270,
+							"colors": [
+								{
+									"offset": 0.04,
+									"color": {
+										"dAlpha": 0,
+										"dValue": 0.1,
+										"dSaturation": 0
+									}
+								},
+								{
+									"offset": 1,
+									"color": {
+										"dAlpha": 0,
+										"dValue": -0.1,
+										"dSaturation": 0
+									}
+								}
+							]
+						},
+						"stroke": {
+							"width": "1px",
+							"style": "solid"
+						}
+					},
+					"label": [
+						{
+							"content": [
+								{
+									"$ref": "_VALUES_FIELD_"
+								}
+							],
+							"style": {
+								"fill": "rgba(0,0,0,1.0)",
+								"font": {
+									"family": "Verdana,SanSerif",
+									"size": "8pt",
+									"weight": "normal",
+									"style": "normal"
+								},
+								"valign": "middle",
+								"align": "start",
+								"location": "inside"
+							},
+							"backgroundStyle": {
+								"stroke": {
+									"width": "1px",
+									"style": "solid"
+								},
+								"outline": "rgba(97,97,97,1.0)",
+								"fill": "rgba(255,255,255,1.0)"
+							}
+						}
+					],
+					"color": [
+						{
+							"id": "_PALETTE_",
+							"field": {
+								"$ref": "_SERIES_FIELD_"
+							},
+							"modifies": "both",
+							"palette": [
+								"rgba(162,44,15,1.0)",
+								"rgba(58,112,207,1.0)",
+								"rgba(110,201,212,1.0)",
+								"rgba(35,138,32,1.0)",
+								"rgba(118,59,161,1.0)",
+								"rgba(219,116,13,1.0)",
+								"rgba(222,171,18,1.0)",
+								"rgba(113,196,12,1.0)",
+								"rgba(150,129,230,1.0)",
+								"rgba(145,102,26,1.0)",
+								"rgba(214,214,34,1.0)",
+								"rgba(229,95,64,1.0)",
+								"rgba(112,152,181,1.0)",
+								"rgba(197,209,212,1.0)"
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"version": "1.2",
+	"legends": [
+		{
+			"content": [
+				{
+					"local": false,
+					"aesthetics": [
+						{
+							"aesthetic": {
+								"$ref": "_PALETTE_"
+							}
+						}
+					],
+					"swatchStyle": {
+						"padding": {
+							"right": 4,
+							"bottom": 2
+						},
+						"size": "16px",
+						"stroke": {
+							"width": "1px",
+							"style": "solid"
+						},
+						"outlineMethod": "inside"
+					},
+					"textStyle": {
+						"fill": "rgba(97,97,97,1.0)",
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": "8pt",
+							"weight": "normal",
+							"style": "normal"
+						},
+						"valign": "middleOfFirstLine"
+					},
+					"layout": {
+						"reverse": false
+					}
+				}
+			],
+			"style": {
+				"fill": "transparent",
+				"padding": {
+					"left": 4
+				},
+				"align": "middle",
+				"valign": "start"
+			},
+			"bounds": {
+				"width": "25%"
+			}
+		}
+	],
+	"legendPosition": "right"
+}

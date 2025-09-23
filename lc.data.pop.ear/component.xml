@@ -1,0 +1,32 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2011                                          -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<component name="lc.data.pop.ear" project-type="ear"
+    description="lc.data pop web app"
+    spec-version="1.0" disabled="false">
+
+    <output-group name="default">
+        <output type="ear" visibility="public" platform="all"
+                location="${env.LWP_COMP_BUILD}/lib/lc.data.pop.ear"
+                preferredInstallLocation="ears" />
+    </output-group>
+
+    <output-group name="distribution">
+    </output-group>
+
+    <dependency name="lc.data.pop.war" type="war" version="1.0" />
+    <dependency name="lc.data.pop.adapter" type="jar" version="1.0" />
+    <dependency name="lc.data.pop" type="jar" version="1.0" />
+    <dependency name="libs.auto/apache-abdera-1.1.2" type="jar" version="1.1.2" />
+</component>

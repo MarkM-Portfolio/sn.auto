@@ -1,0 +1,141 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year Published",
+          "min": 1980.0,
+          "max": 2008.0
+        },
+        {
+          "id": "fY",
+          "label": "Length",
+          "min": 95.0,
+          "max": 350.0
+        },
+        {
+          "id": "fSourceVariable",
+          "label": "Price",
+          "categories": [
+            "抎駡U郂",
+            "通€㐀㊣",
+            "€酮㐁㘚",
+            "€㐂通"
+          ]
+        }
+      ],
+      "rows": [
+        [ 1999, 339, 0 ],
+        [ 1980, 290, 1 ],
+        [ 1980, 95, 2 ],
+        [ 1985, 159, 3 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fSourceVariable"} ],
+              "style": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "align": "middle",
+                "angle": 45,
+                "font": {"family": "SimSun"},
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorAesthetic",
+              "field": {"$ref": "fY"},
+              "mapping": [
+                {"at": "0.0%", "color": "red"},
+                {"at": "100.0%", "color": "yellow"}
+              ]
+            }
+          ],
+          "size": [
+            {
+              "id": "sizeAesthetic",
+              "field": {"$ref": "fY"},
+              "scale": {
+                "spans": [
+                  {"fit": "exact", "method": "log"}
+                ]
+              },
+              "mapping": [
+                {"at": "0.0%", "size": "10%"},
+                {"at": "100.0%", "size": "300%"}
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 0.0},
+            "outline": {"a": 1, "b": 0, "g": 0, "r": 0},
+            "size": 50.0
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 6
+      }
+    }
+  ],
+  "version": "4.1"
+}

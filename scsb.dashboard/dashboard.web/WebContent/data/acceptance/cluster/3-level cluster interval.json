@@ -1,0 +1,158 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "gender", "categories": [ "Male", "Female" ]},
+        {"id": "existing", "categories": [ "Yes", "No" ]},
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone" ]
+        },
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment"
+          ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 0, 100 ],
+        [ 0, 0, 0, 1, 100 ],
+        [ 0, 0, 1, 0, 300 ],
+        [ 0, 0, 1, 1, 100 ],
+        [ 0, 1, 0, 0, 100 ],
+        [ 0, 1, 0, 1, 100 ],
+        [ 0, 1, 1, 0, 100 ],
+        [ 0, 1, 1, 1, 500 ],
+        [ 1, 0, 0, 0, 100 ],
+        [ 1, 0, 0, 1, 100 ],
+        [ 1, 0, 1, 0, 200 ],
+        [ 1, 0, 1, 1, 100 ],
+        [ 1, 1, 0, 0, 100 ],
+        [ 1, 1, 0, 1, 100 ],
+        [ 1, 1, 1, 0, 100 ],
+        [ 1, 1, 1, 1, 100 ]
+      ]
+    },
+    {
+      "id": "quota",
+      "fields": [
+        {
+          "id": "qgender",
+          "categories": [ "Male", "Female" ]
+        },
+        {"id": "qexisting", "categories": [ "Yes", "No" ]},
+        {
+          "id": "qOrder method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone" ]
+        },
+        {"id": "qQuantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 200 ],
+        [ 0, 0, 1, 400 ],
+        [ 0, 1, 0, 200 ],
+        [ 0, 1, 1, 600 ],
+        [ 1, 0, 0, 200 ],
+        [ 1, 0, 1, 300 ],
+        [ 1, 1, 0, 200 ],
+        [ 1, 1, 1, 200 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 1000, "fit": "exact"}
+              ]
+            },
+            "axis": {"title": [ "This is Y" ]}
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "qQuantity"}},
+            {"field": {"$ref": "qgender"}},
+            {"field": {"$ref": "qexisting"}},
+            {"field": {"$ref": "qOrder method"}},
+            {"value": "50%"}
+          ],
+          "style": {
+            "fill": "black",
+            "outline": "#4448",
+            "size": 12
+          }
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "gender"}},
+            {"field": {"$ref": "existing"}},
+            {"field": {"$ref": "Order method"}},
+            {"field": {"$ref": "Product line"}}
+          ],
+          "color": [ {"field": {"$ref": "Product line"}} ],
+          "styleBy": [
+            {
+              "field": {"$ref": "Order method"},
+              "palette": [
+                {"fill": {"dLightness": -0.2}},
+                {"fill": {"dLightness": 0.2}}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 600, "height": 600},
+  "version": "3.1",
+  "style": {"fill": "white"}
+}

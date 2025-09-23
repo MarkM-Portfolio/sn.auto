@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<organization>
+	
+	<org grpID="" name ="default" uri = "" orgID="" subID=""/>
+	<org grpID="acdev" name ="ACDev" uri = "https://apps.acdev.swg.usma.ibm.com/" orgID="20002544" subID="10922"/>
+	<org grpID="daily" name ="Daily" uri = "https://apps.collabservdaily.swg.usma.ibm.com/" orgID="20273597" subID="82928"/>
+	<org grpID="acdev1" name ="ACDev1" uri = "https://apps.acdev1.swg.usma.ibm.com/" orgID="20001904" subID="10382"/>
+	<org grpID="bht5" name ="BHT5" uri = "https://apps.collabservsvt3.swg.usma.ibm.com/" orgID="40656644" subID="317255"/>
+	<org grpID="bht6" name ="BHT6" uri = "https://apps.collabservsvt2.swg.usma.ibm.com" orgID="20681620" subID="20438439"/>
+	<org grpID="llc1" name ="LLC1" uri = "https://apps.collabservsvt1.swg.usma.ibm.com" orgID="41502806" subID="933053"/>
+	<org grpID="lcscdev" name ="LCSCDev" uri = "https://apps.lcscdev.swg.usma.ibm.com/" orgID="20030969" subID="32621"/>
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</organization>

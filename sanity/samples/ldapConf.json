@@ -1,0 +1,19 @@
+{
+	"tests":[
+		{
+			"name":"ldap",
+			"location":"tests/ldapTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"ldap.server":"ilyavm.swg.usma.ibm.com",
+		"ldap.port":"389",
+		"ldap.user":"cn=root",
+		"ldap.password":"lcsecret",
+		"ldap.base":"o=renovations",
+		"ldap.filter":"(&(objectClass=inetOrgPerson))",
+		"ldap.java":"/usr/bin/java"	
+	}
+}

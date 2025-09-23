@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX", "label": "Length"} ],
+      "rows": [
+        [ -5 ],
+        [ -4 ],
+        [ -3 ],
+        [ -2 ],
+        [ -1 ],
+        [ 0 ],
+        [ 1 ],
+        [ 2 ],
+        [ 3 ],
+        [ 4 ],
+        [ 5 ],
+        [ 6 ],
+        [ 7 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": "100%",
+        "height": "100%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#aaa"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "clip": "atBounds",
+          "color": [
+            {
+              "id": "cid",
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"tickDelta": 1} ]},
+              "mapping": [
+                {"color": "#84F", "at": "0%"},
+                {"color": "#A48", "at": "80%"},
+                {"color": "#f40", "at": "100%"}
+              ]
+            }
+          ],
+          "style": {
+            "outline": "white",
+            "size": 30,
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "cid"}} ],
+      "boundsStyle": {"fill": "white", "outline": "black"},
+      "itemStyle": {
+        "fill": {"dValue": 1},
+        "outline": "black"
+      },
+      "method": "continuous",
+      "title": [  ]
+    }
+  ],
+  "size": {"width": 700, "height": 300},
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

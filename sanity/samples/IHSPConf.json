@@ -1,0 +1,19 @@
+{
+	"tests":[
+		{
+			"name":"IHSPost",
+			"location":"Tests/IHSPTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"connections.pathCon":"/opt/IBM/Connections",
+		"IHS.pathIHS":"/opt/IBM/HTTPServer",
+		"IHS.pathKey":"/opt/IBM/HTTPServer/Keys/testserver-key.kdb",
+		"IHS.pathStash":"/opt/IBM/HTTPServer/Keys/testserver-key.sth",
+		"websphere.pathWAS":"/opt/IBM/WebSphere",
+		"websphere.server":"ictools4.swg.usma.ibm.com",
+		"websphere.srvName":"GroupHttpServer"
+	}
+}

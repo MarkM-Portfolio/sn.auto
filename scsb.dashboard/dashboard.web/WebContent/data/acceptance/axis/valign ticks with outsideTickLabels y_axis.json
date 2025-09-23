@@ -1,0 +1,155 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [ "A", "B", "C", "D", "E" ]
+        }
+      ],
+      "rows": [
+        [ 185, 80, 3 ],
+        [ 136, 10, 4 ],
+        [ 295, 30, 1 ],
+        [ 246, 20, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": 300,
+        "height": 200,
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "tickStyle": {"align": "end"},
+              "title": [
+                "valign:start",
+                "\n",
+                "transpose axis with outsideTickLabels"
+              ]
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "outsideTickLabels": true,
+              "tickStyle": {"valign": "start"}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "store"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ]
+        }
+      ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {
+        "width": 300,
+        "height": 200,
+        "left": 0,
+        "top": 200
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "tickStyle": {"align": "middle"},
+              "title": [
+                "valign:middle",
+                "\n",
+                "transpose axis with outsideTickLabels"
+              ]
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "outsideTickLabels": true,
+              "tickStyle": {"valign": "middle"}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "store"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ]
+        }
+      ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {
+        "width": 300,
+        "height": 200,
+        "left": 0,
+        "top": 400
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "title": [
+                "valign:end",
+                "\n",
+                "transpose axis with outsideTickLabels"
+              ]
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {"align": "end", "size": "300%"},
+              "outsideTickLabels": true,
+              "tickStyle": {"valign": "end"}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "store"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ]
+        }
+      ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "size": {"width": 300, "height": 650},
+  "version": "4.2",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "fields": [ {"id": "a", "unit": "day"} ],
+      "rows": [ [ 100.0 ], [ 35.0 ], [ 0.0 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "a"} ],
+              "style": {"location": "inside"}
+            }
+          ],
+          "position": [ {"field": {"$ref": "a"}} ],
+          "style": {
+            "width": 100,
+            "height": 40,
+            "symbol": "rect"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "4.1"
+}

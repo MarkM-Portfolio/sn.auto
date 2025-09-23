@@ -1,0 +1,303 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "Bangladesh",
+                  "Bhutan",
+                  "India",
+                  "Maldives",
+                  "Nepal",
+                  "Pakistan",
+                  "Sri Lanka"
+               ],
+               "id": "Country",
+               "label": "Country"
+            },
+            {
+               "categories": [
+                  "Bangladesh-Flag",
+                  "Bhutan-Flag",
+                  "India-Flag",
+                  "Maldives-Flag",
+                  "Nepal-Flag",
+                  "Pakistan-Flag",
+                  "Sri-Lanka-Flag"
+               ],
+               "id": "Country-Flag",
+               "label": "Country Flag"
+            },
+            {
+               "id": "Population",
+               "label": "Population"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               0,
+               0,
+               152518015
+            ],
+            [
+               1,
+               1,
+               697000
+            ],
+            [
+               2,
+               2,
+               1210193422
+            ],
+            [
+               3,
+               3,
+               396334
+            ],
+            [
+               4,
+               4,
+               26620080
+            ],
+            [
+               5,
+               5,
+               180440000
+            ],
+            [
+               6,
+               6,
+               20277597
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "bounds": {
+            "left": 0,
+            "width": "80%"
+         },
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "a": 0.1,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "lineStyle": {
+                        "fill": {
+                           "a": 0.0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "14.5pt"
+                        },
+                        "padding": 3
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "lineStyle": {
+                        "fill": {
+                           "a": 0.25,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "align": "start",
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "12.5pt",
+                           "weight": "bold"
+                        },
+                        "padding": 5,
+                        "valign": "start"
+                     },
+                     "title": [
+                        "Country"
+                     ],
+                     "titleStyle": {
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "10.5pt"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "tickLabel": [
+                              {
+                                 "$ref": "Country-Flag",
+                                 "method": "image"
+                              },
+                              " ",
+                              {
+                                 "args": "tick"
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "Population"
+                     },
+                     "id": "colorId"
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "Population"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "Country"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "a": 0.9
+                  },
+                  "outline": {
+                     "dValue": -0.25
+                  },
+                  "stroke": {
+                     "width": 0.3
+                  },
+                  "width": "90%"
+               },
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": {
+               "h": 0,
+               "l": 1,
+               "s": 0
+            },
+            "padding": {
+               "bottom": "2%",
+               "left": "2%",
+               "right": "2%",
+               "top": "5%"
+            }
+         }
+      }
+   ],
+   "resource": [
+      {
+         "URIs": [
+            "\/Images\/Bangladesh-Flag.png"
+         ],
+         "id": "Bangladesh-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/Bhutan-Flag.png"
+         ],
+         "id": "Bhutan-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/India-Flag.png"
+         ],
+         "id": "India-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/Maldives-Flag.png"
+         ],
+         "id": "Maldives-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/Nepal-Flag.png"
+         ],
+         "id": "Nepal-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/Pakistan-Flag.png"
+         ],
+         "id": "Pakistan-Flag",
+         "type": "image\/jpg\/binary"
+      },
+      {
+         "URIs": [
+            "\/Images\/Sri-Lanka-Flag.png"
+         ],
+         "id": "Sri-Lanka-Flag",
+         "type": "image\/jpg\/binary"
+      }
+   ],
+   "size": {
+      "height": 400,
+      "width": 900
+   },
+   "version": "4.1"
+}

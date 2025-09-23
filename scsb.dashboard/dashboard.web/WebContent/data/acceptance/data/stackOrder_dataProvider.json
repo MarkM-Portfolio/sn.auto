@@ -1,0 +1,58 @@
+{
+   "data": [
+	  {
+			"provider":
+			{
+				"providerId": "com.ibm.SampleDataProvider",
+				"args":
+				[
+					{"type": "ORDER"},
+	        {"random": "false"}
+				]
+			}
+		}
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ "My Revenue" ]}},
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              },
+              "title": [ "Quarter" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "revenue"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "provinces"}} ],
+          "style": {
+            "stroke": {"width": 3},
+            "width": "80%",
+            "outline": {"a": 0.0}
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.0"
+}

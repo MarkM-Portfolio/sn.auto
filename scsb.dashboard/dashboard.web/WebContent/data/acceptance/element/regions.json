@@ -1,0 +1,157 @@
+{
+  "version": "1.2",
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "data": [{
+    "id": "dDelimitedFileSource",
+    "fields": [
+      {
+        "id": "fX",
+        "label": "Year Published"
+      },
+      {
+        "id": "fY",
+        "label": "Life Expectancy"
+      },
+      {
+        "id": "fSourcefield",
+        "label": "Price"
+      },
+      {
+        "id": "categories",
+        "label": "Categories",
+        "categories": [
+          "category A",
+          "category B",
+          "category C",
+          "category D",
+          "category E",
+          "category F"
+        ]
+      }
+    ],
+    "rows": [
+      [ 1999, 60, 12.99, 1 ],
+      [ 2003, 65, 6.99, 2 ],
+      [ 2008, 58, 9.99, 4 ],
+      [ 2007, 87, 9.49, 2 ],
+      [ 2003, 90, 8.49, 5 ],
+      [ 2007, 50, 8.99, 3 ],
+      [ 2003, 78, 13.99, 0 ],
+      [ 1996, 88, 6.99, 3 ],
+      [ 1990, 76, 7.99, 5 ],
+      [ 2001, 56, 9.95, 3 ],
+      [ 2005, 79, 34.95, 1 ],
+      [ 1997, 89, 8.99, 2 ],
+      [ 2007, 59, 12.99, 2 ],
+      [ 2006, 77, 8.49, 0 ],
+      [ 1998, 79, 19.95, 4 ],
+      [ 2001, 81, 54.95, 2 ],
+      [ 2005, 83, 9.99, 5 ],
+      [ 2000, 85, 39.95, 2 ],
+      [ 2007, 87, 27.49, 3 ],
+      [ 1995, 59, 3.49, 4 ],
+      [ 1992, 61, 44.95, 5 ],
+      [ 1996, 63, 12.99, 0 ],
+      [ 2007, 65, 37.45, 4 ]
+    ]
+  }],
+  "grammar": [{
+    "coordinates": {
+      "dimensions": [
+        {
+          "axis": {
+            "gridStyle": {
+              "fill": {"b": 255, "g": 255, "r": 255},
+              "stroke": {"width": 0.5, "style": "Dot"}
+            },
+            "markStyle": {"fill": {"b": 255, "g": 255, "r": 255}},
+            "tickStyle": {
+              "fill": {"b": 160, "g": 160, "r": 160},
+              "font": {
+                "family": "Verdana,SanSerif",
+                "size": 8.9
+              }
+            }
+          }
+        },
+        {
+          "axis": {
+            "gridStyle": {
+              "fill": {"b": 255, "g": 255, "r": 255},
+              "stroke": {"width": 0.5, "style": "Dot"}
+            },
+            "markStyle": {"fill": {"b": 255, "g": 255, "r": 255}},
+            "tickStyle": {
+              "fill": {"b": 160, "g": 160, "r": 160},
+              "font": {
+                "family": "Verdana,SanSerif",
+                "size": 8.9
+              }
+            }
+          }
+        }
+      ]
+    },
+    "elements": [
+    {
+    	"type": "interval",
+        "position": [{"value": 70}, {"value": "100%"}, {"value": 1998}, {"value": "100%"}],
+   		"style": { "fill": {"a": 0.2, "b": 80, "g": 80, "r": 80}}
+   	},
+    {
+    	"type": "interval",
+        "position": [{"value": "0%"}, {"value": 70}, {"value": "0%"}, {"value": 1998}],
+   		"style": { "fill": {"a": 0.2, "b": 80, "g": 80, "r": 80}}
+   	},
+      {
+        "type": "point",
+        "position": [
+          {"field": {"$ref": "fY"}},
+          {"field": {"$ref": "fX"}}
+        ],
+        "color": [{
+          "field": {"$ref": "categories"},
+          "mapping": [
+            {"color": {"a": 0.5, "r": 30, "g": 60, "b": 250}, "offset": 0},
+            {"color": {"a": 0.5, "r": 250, "g": 50, "b": 40}, "offset": 1},
+            {"color": {"a": 0.5, "r": 200, "g": 200, "b": 80}, "offset": 2},
+            {"color": {"a": 0.5, "r": 180, "g": 140, "b": 100}, "offset": 3},
+            {"color": {"a": 0.5, "r": 80, "g": 140, "b": 40}, "offset": 4},
+            {"color": {"a": 0.5, "r": 130, "g": 130, "b": 130}, "offset": 5}
+          ]
+        }],
+        "size": [{
+          "field": {"$ref": "fSourcefield"},
+          "mapping": [
+            {"offset": 0.0, "size": 25.0},
+            {"offset": 1.0, "size": 150.0}
+          ]
+        }],
+        "style": {
+          "fill": {
+            "type": "radial",
+            "focus": {"x": "30%", "y": "30%"},
+            "colors": [
+              {
+                "color": {"dAlpha":0.5, "l":1},
+                "offset": 0.0
+              },
+              {
+                "offset": 1.0
+              }
+            ]
+          },
+          "stroke": {"width": 0.0},
+          "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+          "size": 45.0
+        }
+      }
+    ],
+    "style": {
+      "fill": {"b": 20, "g": 20, "r": 20},
+      "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+      "padding": 28.800001
+    }
+  }],
+      "size": {"width": 400.0, "height": 400.0}
+}

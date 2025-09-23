@@ -1,0 +1,83 @@
+==Gradle Setup and Configuration==
+
+I. Clone the sn.auto git repo:
+	1. Setup GitHub with SSH - https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+	
+	2. Clone sn.auto repo - git@git.cwp.pnp-hcl.com:connections/sn.auto.git 
+	   (Note: if you need to submit code change, fork the repo instead then clone from the fork).
+	
+	
+II. Install Gradle to build from command line:
+	1. Download Gradle 2.14.1 (version currently used in Jenkins) - https://gradle.org/next-steps/?version=2.14.1&format=bin 
+           (Reference: full versions list at https://gradle.org/releases/)
+
+	2. Extract the tool on disk (eg. c:\gradle-2.14.1 or /home/YOUR_USERNAME/gradle-2.14.1)
+	
+	3. Set gradle on your path
+		Linux/Mac
+		a. export GRADLE_HOME=/home/YOUR_USERNAME/gradle-2.14.1
+		b. export PATH=$PATH:$GRADLE_HOME/bin
+
+		Windows
+		a. Control Panel\System, Advanced system settings, Environment Variables.  Create system variable GRADLE_HOME and set it to the folder extracted above.
+		b. Edit PATH variable, add %GRADLE_HOME%\bin
+
+	4. Set JAVA_HOME to Java 8
+	   (Note: do NOT download from Oracle due to license, use OpenJDK.  If you can't find it try Artifactory https://artifactory.cwp.pnp-hcl.com/artifactory/openlyAvailable-utils/Java/)
+	   (If you don't know where java home is on Mac, try to run "/usr/libexec/java_home -v 1.8")
+	    Linux/Mac
+		export JAVA_HOME=<Path_to_Java_On_Your_System>
+		     
+		Windows
+		Control Panel\System, Advanced system settings, Environment Variables.  Create JAVA_HOME and set it to <Path_to_Java_On_Your_System>.
+    	
+    	
+III. Setup Artifactory to allow Gradle to download dependencies:
+    1. Browse to (Win) c:\Users\YOUR_USERNAME\.gradle or (Linux) \home\YOUR_USERNAME\.gradle.  Create the folder if necessary.
+
+    2. Goto http://artifactory.cwp.pnp-hcl.com/
+
+    3. At the top right of the page, click your username
+
+    4. Type your current password and click unlock
+
+    5. Click Generate (Wheel Icon) to generate an API key
+    
+    6. Click show API Key (Eye Icon)
+
+    7. Copy the API Key
+    
+    8. Create a file called gradle.properties in .gradle and add the following:
+        REPO_USERNAME=YOUR_ARTIFACTORY_USERNAME
+        REPO_PASSWORD=YOUR_API_KEY
+        
+        	
+IV. Build the project from command line:  	
+	1. Open a terminal/command prompt and cd to your git clone directory (eg. c:\git\sn.auto)
+
+	2. Type 'gradle build' for your first build.  Please see gradle docs for Java tasks if you are interested in other tasks that can be ran (clean, compileJava, etc)
+	See Common Problems in README.md if there are errors.
+
+
+V. If you would like to use Eclipse as your IDE, import sn.auto as Gradle project:
+    1. Download and install Eclipse for Java Developers at https://www.eclipse.org/downloads/.  This process is tested on Eclipse IDE 2021‑03.
+       (Note: if eclipse is already installed, check the version and make sure you start with a clean workspace. If error is returned in the next step while importing
+       gradle project, it's recommended to try again with a newer version of eclipse.) 
+    
+    2. Go to File -> Import -> Gradle -> Existing Gradle Project.   
+       For Project root directory, Browse to the local Git repository.  Click Next.
+       Select the local sn.auto clone as the Project root directory.  Click Next.
+       In Import Options, select "Override workspace settings", select "Local installation directory" and set it to the same as the GRADLE_HOME system variable.
+       Set "Gradle user home" to the same location where your .gradle/gradle.properties mentioned above resides.
+       Set "Java home" to the Java 8 program folder.  Click Next.
+       Confirm "Gradle project structure" shows "automation".  When expanded it shows bss_populate, bvt.api, etc.  Click Finish.
+          
+    At this point the project should be imported to Eclipse and ready to setup TestNG.  Go back to README.md to continue the setup.
+    
+ 
+
+
+
+
+
+

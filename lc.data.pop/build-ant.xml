@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2010                                          -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<project name="conn.data.population" default="dist" basedir=".">
+  <description>Connections GUI BVT Suite</description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="build" location="build"/>
+  <property name="lib" location="lib"/>
+  <property name="reports.dir" location="logs"/>
+  <property name="test.class.name" value="com.ibm.lconn.automation.test.bvt.selenium.suite.BVTSuite"/>
+  <property name="output.jar" value="${bin}/lc.data.pop.jar"/>
+
+  <path id="test.classpath">
+    <pathelement location="${output.jar}"/>
+    <fileset dir="${lib}">
+        <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <path id="project.class.path">
+    <pathelement location="${lib}/junit-4.5.jar" />
+    <pathelement location="${lib}/apache-abdera-1.1.2/abdera-1.1.2.jar" />
+    <fileset dir="${lib}/apache-abdera-1.1.2/lib">
+        <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile the source ">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" debug="on" 
+           includeantruntime="false" includes="**/*">
+       <classpath refid="project.class.path" />
+    </javac>
+    <copy todir="${build}">
+        <fileset dir="${src}">
+            <include name="**/*.properties"/>
+        </fileset>
+    </copy>
+  </target>
+
+  <target name="dist" depends="compile">
+    <mkdir dir="${bin}" />
+    <jar jarfile="${output.jar}" manifest="${src}/Manifest.txt" basedir="${build}" />
+  </target>
+
+  <target name="clean">
+    <delete file="${output.jar}" />
+    <delete dir="${build}" />
+  </target>
+
+  <target name="run" depends="dist">
+    <junit printsummary="yes" haltonfailure="no" showoutput="true">
+      <test name="${test.class.name}" todir="${reports.dir}"/>
+      <classpath refid="test.classpath" />
+      <formatter type="xml"/>
+    </junit>
+  </target>
+
+  <target name="report" depends="run">
+    <mkdir dir="${reports.dir}"/>
+    <junitreport todir="${reports.dir}/">
+      <fileset dir="${reports.dir}">
+        <include name="TEST*.xml"/>
+      </fileset>
+      <report format="frames" todir="${reports.dir}/html"/>
+    </junitreport>
+  </target>
+</project>

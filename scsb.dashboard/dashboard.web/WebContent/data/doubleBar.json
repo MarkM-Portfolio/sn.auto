@@ -1,0 +1,77 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "name",
+          "label": "name",
+          "categories": [
+            "ALABAMA",
+            "ARIZONA",
+            "ARKANSAS",
+            "CALIFORNIA"
+          ]
+        },
+        {
+          "id": "pop1960",
+          "label": "Poupulation Start",
+          "format": {"numericPattern": "#,000"}
+        },
+        {
+          "id": "pop1980",
+          "label": "Population End",
+          "max":14000000, 
+          "format": {"numericPattern": "#,000"}
+        }
+      ],
+      "rows": [
+        [ 0, 3708708, 4838708 ],
+        [ 1, 4595778, 6885778 ],
+        [ 2, 1889450, 3079450 ],
+        [ 3, 6696166, 9006166 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "pop1960"}},
+            {"field": {"$ref": "pop1980"}},
+            {"field": {"$ref": "name"}}
+          ],
+          "style": {
+            "fill": "green",
+            "stroke": {"width": .25},
+            "width": "60%",
+            "outline": "black"
+          }
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "pop1960"}},
+            {"field": {"$ref": "name"}}
+          ],
+          "style": {
+            "fill": "red",
+            "stroke": {"width": .25},
+            "width": "60%",
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 300, "height": 300},
+  "version": "3.0",
+  "style": {"fill": "transparent"}
+}

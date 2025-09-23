@@ -1,0 +1,323 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX"}, {"id": "fY"} ],
+      "rows": [
+        [ 9000, 4 ],
+        [ 9750, 7 ],
+        [ 10050, 1 ],
+        [ 10200, 21 ],
+        [ 10500, 4 ],
+        [ 10650, 1 ],
+        [ 10950, 15 ],
+        [ 11100, 3 ],
+        [ 11225, 1 ],
+        [ 11250, 25 ],
+        [ 11400, 2 ],
+        [ 11550, 9 ],
+        [ 12000, 19 ],
+        [ 12150, 1 ],
+        [ 12300, 1 ],
+        [ 12450, 5 ],
+        [ 12600, 1 ],
+        [ 12750, 15 ],
+        [ 12900, 1 ],
+        [ 13050, 4 ],
+        [ 13200, 3 ],
+        [ 13350, 1 ],
+        [ 13500, 31 ],
+        [ 13800, 2 ],
+        [ 13950, 5 ],
+        [ 14100, 4 ],
+        [ 14250, 21 ],
+        [ 14400, 2 ],
+        [ 14550, 2 ],
+        [ 14700, 1 ],
+        [ 15000, 52 ],
+        [ 15300, 2 ],
+        [ 15600, 1 ],
+        [ 15750, 49 ],
+        [ 16050, 2 ],
+        [ 16500, 26 ],
+        [ 16800, 1 ],
+        [ 17100, 1 ],
+        [ 17250, 8 ],
+        [ 17490, 2 ],
+        [ 18000, 14 ],
+        [ 18750, 6 ],
+        [ 19500, 12 ],
+        [ 19980, 2 ],
+        [ 20250, 2 ],
+        [ 20400, 1 ],
+        [ 20550, 1 ],
+        [ 21000, 4 ],
+        [ 21240, 3 ],
+        [ 21480, 1 ],
+        [ 21750, 4 ],
+        [ 21990, 1 ],
+        [ 22500, 1 ],
+        [ 23250, 2 ],
+        [ 23730, 2 ],
+        [ 24990, 1 ],
+        [ 25000, 1 ],
+        [ 25500, 2 ],
+        [ 26250, 3 ],
+        [ 27000, 1 ],
+        [ 27480, 6 ],
+        [ 27510, 2 ],
+        [ 27750, 1 ],
+        [ 28740, 3 ],
+        [ 29490, 1 ],
+        [ 30000, 4 ],
+        [ 30750, 1 ],
+        [ 31250, 1 ],
+        [ 31500, 1 ],
+        [ 31980, 2 ],
+        [ 32010, 1 ],
+        [ 32490, 5 ],
+        [ 33000, 3 ],
+        [ 33750, 2 ],
+        [ 34980, 5 ],
+        [ 35010, 1 ],
+        [ 35040, 1 ],
+        [ 36240, 1 ],
+        [ 36750, 1 ],
+        [ 37500, 1 ],
+        [ 39990, 1 ],
+        [ 42480, 1 ],
+        [ 42510, 1 ],
+        [ 43500, 1 ],
+        [ 44100, 1 ],
+        [ 45000, 2 ],
+        [ 47490, 1 ],
+        [ 52500, 1 ],
+        [ 60000, 1 ],
+        [ 79980, 1 ],
+        [ 79980, 1 ],
+        [ 60000, 1 ],
+        [ 52500, 1 ],
+        [ 47490, 1 ],
+        [ 45000, 1 ],
+        [ 45000, 1 ],
+        [ 44100, 1 ],
+        [ 43500, 1 ],
+        [ 42510, 1 ],
+        [ 42480, 1 ]
+      ]
+    },
+    {
+      "id": "binnedHistogram",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "fX"},
+          "output": {
+            "id": "binX",
+            "format": {"numericPattern": "#,###"}
+          }
+        }
+      ],
+      "input": [
+        {"field": {"$ref": "fY"}, "role": "weight"}
+      ],
+      "output": [
+        {
+          "field": {
+            "id": "binnedCount",
+            "format": {
+              "numericPattern": "##,###",
+              "prefix": "",
+              "suffix": ""
+            }
+          },
+          "parameters": {"summaryFunction": "count"}
+        },
+        {
+          "field": {
+            "id": "percentBinnedCount",
+            "format": {"suffix": "%"}
+          },
+          "parameters": {
+            "summaryFunction": "percentOfCount"
+          }
+        },
+        {
+          "field": {
+            "id": "binnedLower",
+            "format": {"numericPattern": "#,###"}
+          },
+          "input": {"$ref": "fX"},
+          "parameters": {"summaryFunction": "min"}
+        },
+        {
+          "field": {
+            "id": "binnedUpper",
+            "format": {"numericPattern": "#,###"}
+          },
+          "input": {"$ref": "fX"},
+          "parameters": {"summaryFunction": "max"}
+        }
+      ],
+      "source": {"$ref": "source"}
+    },
+    {
+      "id": "kernel",
+      "type": "distribution.normal",
+      "input": [
+        {"field": {"$ref": "fX"}, "role": "x"},
+        {"field": {"$ref": "fY"}, "role": "weight"}
+      ],
+      "output": [
+        {"field": {"id": "kX"}, "role": "x"},
+        {"field": {"id": "kY"}, "role": "y"}
+      ],
+      "source": {"$ref": "source"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9pt"},
+                "padding": 5
+              },
+              "title": [ "Number of Records" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9pt"}
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "9pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "salbegin" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9pt"}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "binnedHistogram"},
+          "position": [
+            {"field": {"$ref": "binnedCount"}},
+            {"field": {"$ref": "binX"}}
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "salbegin",
+                " = ",
+                {"$ref": "binnedLower"},
+                " to ",
+                {"$ref": "binnedUpper"},
+                "\n",
+                "Number of Records",
+                " = ",
+                {"$ref": "binnedCount"},
+                "\n",
+                "Percent of Records",
+                " = ",
+                {"$ref": "percentBinnedCount"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 180,
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.45,
+                    "h": 0.68,
+                    "s": 0.407,
+                    "v": 0.588
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.15,
+                    "dValue": 0.6,
+                    "h": 0.68,
+                    "s": 0.407,
+                    "v": 0.588
+                  },
+                  "offset": 0.35
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.1,
+                    "h": 0.68,
+                    "s": 0.407,
+                    "v": 0.588
+                  },
+                  "offset": 0.65
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.3,
+                    "dValue": -0.05,
+                    "h": 0.68,
+                    "s": 0.407,
+                    "v": 0.588
+                  },
+                  "offset": 0.9
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.1,
+                    "dValue": -0.25,
+                    "h": 0.68,
+                    "s": 0.407,
+                    "v": 0.588
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "width": "100%"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 0
+      }
+    }
+  ],
+  "size": {"width": 724, "height": 395},
+  "version": "1.3"
+}

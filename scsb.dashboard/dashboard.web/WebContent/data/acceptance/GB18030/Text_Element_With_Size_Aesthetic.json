@@ -1,0 +1,107 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [ {"id": "from"}, {"id": "to"} ],
+      "rows": [
+        [ 0, 1 ],
+        [ 0, 2 ],
+        [ 0, 3 ],
+        [ 0, 4 ],
+        [ 0, 5 ],
+        [ 0, 6 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {
+          "id": "name",
+          "categories": [
+            "€铜c㐊秊",
+            "€铜c㐊秊",
+            "€铜c㐊秊",
+            "€铜c㐊秊",
+            "€铜c㐊秊",
+            "€铜c㐊秊",
+            "€铜c㐊秊"
+          ]
+        },
+        {"id": "occurance"}
+      ],
+      "rows": [
+        [ 0, 0, 13 ],
+        [ 1, 1, 1 ],
+        [ 2, 2, 5 ],
+        [ 3, 3, 2 ],
+        [ 4, 4, 1 ],
+        [ 5, 5, 2 ],
+        [ 6, 6, 3 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "text",
+          "data": {"$ref": "nodes"},
+          "content": [ {"$ref": "name"} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "orientation": "left-to-right",
+            "to": {"$ref": "to"},
+            "method": "dag"
+          },
+          "size": [
+            {
+              "field": {"$ref": "occurance"},
+              "mapping": [
+                {"at": "0%", "size": "50%"},
+                {"at": "100%", "size": "90%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "white",
+            "width": "450",
+            "font": {
+              "family": "SimSun",
+              "size": 30,
+              "weight": "bold"
+            },
+            "location": "fit",
+            "symbol": "rectangle"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "style": {
+            "fill": {"a": 0.6},
+            "stroke": {"width": 3.0, "cap": "butt"},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"padding": 50}
+    }
+  ],
+  "size": {"width": 600, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "#aaa"}
+}

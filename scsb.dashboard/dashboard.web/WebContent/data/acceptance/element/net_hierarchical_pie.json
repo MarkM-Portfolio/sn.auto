@@ -1,0 +1,179 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "fName",
+          "label": "Country",
+          "categories": [
+            "Internet Users",
+            "Americas",
+            "Asia",
+            "Europe",
+            "US",
+            "Canada",
+            "Brazil",
+            "India",
+            "China",
+            "Japan",
+            "Pakistan",
+            "Srilanka",
+            "UK",
+            "Germany",
+            "France",
+            "Scotland"
+          ]
+        },
+        {
+          "id": "fParent",
+          "label": "Parent",
+          "categories": [
+            "WW",
+            "Internet Users",
+            "Americas",
+            "Asia",
+            "Europe"
+          ]
+        },
+        {"id": "fRevenue", "label": "Revenue"},
+        {
+          "id": "fPopulation",
+          "label": "Population(millions)",
+          "format": {"numericPattern": "##,###,###"}
+        }
+      ],
+      "rows": [
+        [ 0, null, 0, 0 ],
+        [ 1, 1, 3000000, 9 ],
+        [ 2, 1, 1000000, 14 ],
+        [ 3, 1, 2000000, 6 ],
+        [ 4, 2, 15000000, 4 ],
+        [ 5, 2, 5000000, 2 ],
+        [ 6, 2, 3000000, 1 ],
+        [ 7, 3, 5000000, 5 ],
+        [ 8, 3, 8000000, 6 ],
+        [ 9, 3, 3000000, 3 ],
+        [ 10, 3, 4000000, 1.5 ],
+        [ 11, 3, 4000000, 5 ],
+        [ 12, 4, 12000000, 2 ],
+        [ 13, 4, 10000000, 1 ],
+        [ 14, 4, 3500000, 2 ],
+        [ 15, 4, 4000000, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "100%", "left": 0, "top": "0%"},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [ {"type": "polar"} ],
+        "style": {
+          "fill": "transparent",
+          "outline": {"a": 0, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fName"} ],
+              "style": {
+                "align": "middle",
+                "font": {
+                  "family": "Arial",
+                  "size": "10pt",
+                  "weight": "bold"
+                },
+                "padding": 1,
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "dData"},
+          "color": [
+            {
+              "field": {"$ref": "fPopulation"},
+              "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"h": 0.09, "l": 0.9, "s": 0.8}
+                },
+                {
+                  "at": "20%",
+                  "color": {"h": 0.09, "l": 0.8, "s": 0.8}
+                },
+                {
+                  "at": "40%",
+                  "color": {"h": 0.09, "l": 0.7, "s": 0.8}
+                },
+                {
+                  "at": "60%",
+                  "color": {"h": 0.09, "l": 0.6, "s": 0.8}
+                },
+                {
+                  "at": "80%",
+                  "color": {"h": 0.09, "l": 0.5, "s": 0.8}
+                },
+                {
+                  "at": "100%",
+                  "color": {"h": 0.09, "l": 0.45, "s": 0.8}
+                }
+              ]
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "fName"},
+            "layout": "stack",
+            "levelStyles": {
+              "internal": [
+                {
+                  "fill": "transparent",
+                  "stroke": {"width": 1},
+                  "height": 170,
+                  "outline": "white"
+                },
+                {
+                  "stroke": {"width": 1},
+                  "height": 200,
+                  "outline": "white"
+                },
+                {
+                  "stroke": {"width": 1},
+                  "height": 145,
+                  "outline": "white"
+                }
+              ]
+            },
+            "orientation": "left-to-right",
+            "parent": {"$ref": "fParent"},
+            "recursive": {
+              "child": {"$ref": "fName"},
+              "parent": {"$ref": "fParent"}
+            },
+            "size": {"$ref": "fRevenue"},
+            "method": "treemap"
+          },
+          "style": {
+            "stroke": {"width": 1},
+            "outline": {"h": 0, "l": 0, "s": 0}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {"height": "60%%"},
+      "location": "bottom",
+      "orientation": "horizontal",
+      "method": "continuous"
+    }
+  ],
+  "size": {"width": 600.0, "height": 600.0},
+  "version": "4.1"
+}

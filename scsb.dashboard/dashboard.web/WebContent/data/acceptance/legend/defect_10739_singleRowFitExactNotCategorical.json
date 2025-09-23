@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX", "label": "Length"} ],
+      "rows": [ [ 0 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "#ddd"}}}
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "color": [
+            {
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"fit": "exact"} ]}
+            }
+          ],
+          "style": {"outline": "black", "size": 20}
+        }
+      ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"height": 300},
+  "style": {"fill": "white"},
+  "version": "1.3"
+}

@@ -1,0 +1,264 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "time 1",
+                  "time 2",
+                  "time 3",
+                  "time 4",
+                  "time 5"
+               ],
+               "id": "time"
+            },
+            {
+               "categories": [
+                  "Legend 1",
+                  "Legend 2"
+               ],
+               "id": "legend"
+            },
+            {
+               "id": "value"
+            }
+         ],
+         "id": "source",
+         "rows": [
+            [
+               0,
+               0,
+               25
+            ],
+            [
+               0,
+               1,
+               45
+            ],
+            [
+               0,
+               null,
+               25
+            ],
+            [
+               1,
+               0,
+               25
+            ],
+            [
+               1,
+               1,
+               40
+            ],
+            [
+               1,
+               null,
+               35
+            ],
+            [
+               2,
+               0,
+               10
+            ],
+            [
+               2,
+               1,
+               15
+            ],
+            [
+               2,
+               null,
+               40
+            ],
+            [
+               3,
+               0,
+               10
+            ],
+            [
+               3,
+               1,
+               20
+            ],
+            [
+               3,
+               null,
+               35
+            ],
+            [
+               4,
+               0,
+               0
+            ],
+            [
+               4,
+               1,
+               15
+            ],
+            [
+               4,
+               null,
+               30
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "gray"
+                     },
+                     "lineStyle": {
+                        "fill": "gray"
+                     },
+                     "markStyle": {
+                        "fill": "gray"
+                     },
+                     "tickStyle": {
+                        "fill": "gray"
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "lineStyle": {
+                        "fill": "gray"
+                     },
+                     "markStyle": {
+                        "fill": "gray"
+                     },
+                     "tickStyle": {
+                        "fill": "gray"
+                     }
+                  }
+               }
+            ],
+            "style": {
+               "fill": "transparent"
+            },
+            "transforms": [
+               {
+                  "type": "stack"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "legend"
+                     },
+                     "id": "barColor",
+                     "palette": [
+                        "#4488CC",
+                        "#AAAAFF",
+                        "#88AA88",
+                        "#CCCC88",
+                        "#FFAA66",
+                        "#FF8888",
+                        "#CC88AA"
+                     ]
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "value"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "time"
+                     }
+                  }
+               ],
+               "style": {
+                  "outline": "white",
+                  "width": "70%"
+               },
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": "yellow",
+            "outline": {
+               "a": 0.5,
+               "b": 255,
+               "g": 0,
+               "r": 0
+            },
+            "padding": 15,
+            "stroke": {
+               "width": 20
+            }
+         }
+      }
+   ],
+   "legendPosition": "top",
+   "legends": [
+      {
+         "aesthetics": [
+            {
+               "aesthetic": {
+                  "$ref": "barColor"
+               }
+            }
+         ],
+         "boundsStyle": {
+            "align": "middle",
+            "fill": "yellow",
+            "outline": {
+               "a": 0.5,
+               "b": 0,
+               "g": 0,
+               "r": 255
+            },
+            "padding": 5,
+            "stroke": {
+               "width": 4
+            }
+         },
+         "itemStyle": {
+            "padding": 5
+         },
+         "title": [
+            "Clusters"
+         ]
+      }
+   ],
+   "size": {
+      "height": 300,
+      "width": 500
+   },
+   "style": {
+      "fill": "white",
+      "outline": {
+         "a": 0.5,
+         "b": 0,
+         "g": 255,
+         "r": 0
+      },
+      "padding": 30,
+      "stroke": {
+         "width": 10
+      }
+   },
+   "titles": [
+      {
+         "content": [
+            "This is a test chart"
+         ],
+         "style": {
+            "padding": 10
+         },
+         "type": "title"
+      }
+   ],
+   "version": "3.0"
+}

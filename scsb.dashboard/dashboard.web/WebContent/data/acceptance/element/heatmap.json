@@ -1,0 +1,93 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "fX", "label": "Price"},
+        {"id": "c1", "categories": [ "a", "b", "c" ]},
+        {"id": "c2", "categories": [ "mice", "cats" ]}
+      ],
+      "rows": [
+        [ 22, 0, 0 ],
+        [ 585, 0, 1 ],
+        [ 799, 1, 0 ],
+        [ 200, 1, 1 ],
+        [ 299, 2, 0 ],
+        [ 997, 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"markStyle": {}}},
+          {"axis": {"markStyle": {}}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "c2"}},
+            {"field": {"$ref": "c1"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "fX"},
+              "mapping": [
+                {
+                  "color": {"b": 141, "g": 90, "r": 4},
+                  "offset": 0
+                },
+                {
+                  "color": {"b": 190, "g": 140, "r": 43},
+                  "offset": 0.25
+                },
+                {
+                  "color": {"b": 207, "g": 169, "r": 116},
+                  "offset": 0.5
+                },
+                {
+                  "color": {"b": 225, "g": 201, "r": 189},
+                  "offset": 0.75
+                },
+                {
+                  "color": {"b": 246, "g": 238, "r": 241},
+                  "offset": 1
+                }
+              ]
+            }
+          ],
+          "style": {
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "size": "100%",
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 10
+      }
+    }
+  ],
+  "legends": [
+    {
+      "content": [
+        {"text": [ "Price" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "layout": {"method": "stagger", "reverse": false},
+          "local": false
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "version": "1.2"
+}

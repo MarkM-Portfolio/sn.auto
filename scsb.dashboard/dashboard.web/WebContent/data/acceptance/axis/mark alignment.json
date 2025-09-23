@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "North Carolina",
+            "Illinois",
+            "Washington",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [
+        [ 185, 60, 3 ],
+        [ 136, 10, 4 ],
+        [ 495, 0, 1 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "color": [ {"field": {"$ref": "fY"}} ],
+          "style": {"fill": "#0ff8", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legendPosition": "right",
+  "legends": [
+    {
+      "markStyle": {"align": "start", "size": "100%"},
+      "method": "continuous", "mirroredLabels":false,
+      "title": [ "start" ]
+    },
+    {
+      "markStyle": {"align": "middle", "size": "100%"},
+      "method": "continuous", "mirroredLabels":false,
+      "title": [ "middle" ]
+    },
+    {
+      "markStyle": {"align": "end", "size": "100%"},
+      "method": "continuous", "mirroredLabels":false,
+      "title": [ "end" ]
+    },
+    {
+      "markStyle": {"align": "start", "size": "100%"},
+      "method": "continuous", "mirroredLabels":true,
+      "title": [ "start" ]
+    },
+    {
+      "markStyle": {"align": "middle", "size": "100%"},
+      "method": "continuous", "mirroredLabels":true,
+      "title": [ "middle" ]
+    },
+    {
+      "markStyle": {"align": "end", "size": "100%"},
+      "method": "continuous", "mirroredLabels":true,
+      "title": [ "end" ]
+    }
+  ],
+  "style": {"fill": "white"}, "size":{"height":900},
+  "version": "2.0"
+}

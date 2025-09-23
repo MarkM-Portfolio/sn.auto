@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<lotus>
+	<sloc:serviceReference>
+		<sloc:href>
+			<refa>
+				<sloc:serviceReference/>
+			</refa>
+			<refb/>
+		</sloc:href>
+		<sloc:href/>
+		<sloc:href/>
+	</sloc:serviceReference>
+	<sloc:serviceReference>
+		<sloc:href>
+			<refa/>
+			<refb/>
+			<refc/>
+		</sloc:href>
+	</sloc:serviceReference>
+	<sloc:serviceReference>
+		<sloc:href>
+			<refa/>
+			<refb/>
+			<refc/>
+		</sloc:href>
+	</sloc:serviceReference>
+</lotus>

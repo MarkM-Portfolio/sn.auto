@@ -1,0 +1,590 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to", "min": 0, "max": 11},
+        {"id": "lag"},
+        {"id": "size"},
+        {"id": "stroke-style", "categories": [ "a", "b" ]}
+      ],
+      "rows": [
+        [ 1, 0, 2, 0.124, 0 ],
+        [ 2, 0, 2, 0.156, 0 ],
+        [ 3, 0, 2, 0.127, 0 ],
+        [ 4, 0, 1, 0.142, 0 ],
+        [ 5, 0, 2, 0.114, 0 ],
+        [ 6, 0, 2, 0.063, 0 ],
+        [ 7, 0, 1, 0.168, 0 ],
+        [ 6, 1, 1, 0.036, 0 ],
+        [ 7, 1, 1, 0.09, 0 ],
+        [ 8, 4, 1, 0.15, 0 ],
+        [ 8, 3, 2, 0.341, 0 ],
+        [ 6, 7, 3, 0.33, 0 ],
+        [ 9, 7, 2, 0.75, 0 ],
+        [ 10, 7, 1, 0.6, 0 ],
+        [ 1, 5, 2, 0.066, 0 ],
+        [ 2, 5, 1, 0.105, 0 ],
+        [ 2, 10, 2, 0.65, 1 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id", "min": 0, "max": 11},
+        {
+          "id": "name",
+          "categories": [
+            "Operating Profit%",
+            "DSO",
+            "Days in Inventory",
+            "SG&A%",
+            "Net Income",
+            "Headcount",
+            "Order Backlog",
+            "Customer Turnover",
+            "Warranty Expense",
+            "Trouble Tickets",
+            "Price Realization"
+          ]
+        },
+        {"id": "level"},
+        {
+          "id": "dimension",
+          "categories": [
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]",
+            "BusinessUnit[Total Business Unit].Organization[All Geographies]"
+          ]
+        },
+        {"id": "main", "categories": [ "no", "yes" ]},
+        {
+          "id": "status",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {
+          "id": "trending",
+          "categories": [
+            "better",
+            "noChange",
+            "worse",
+            "invalid"
+          ]
+        },
+        {
+          "id": "expOrColParent",
+          "categories": [
+            "none",
+            "expandParent",
+            "collapseParent"
+          ]
+        },
+        {
+          "id": "expOrColChild",
+          "categories": [
+            "none",
+            "expandChild",
+            "collapseChild"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
+        [ 1, 1, -1, 1, 0, 0, 2, 2, 1 ],
+        [ 2, 2, -1, 2, 0, 0, 0, 1, 2 ],
+        [ 3, 3, -1, 3, 0, 3, 0, 2, 0 ],
+        [ 4, 4, -1, 4, 0, 0, 3, 2, 0 ],
+        [ 5, 5, -1, 5, 0, 2, 0, 2, 0 ],
+        [ 6, 6, -1, 6, 0, 1, 1, 0, 0 ],
+        [ 7, 7, -1, 7, 0, 1, 1, 2, 0 ],
+        [ 8, 8, -2, 8, 0, 1, 1, 0, 0 ],
+        [ 9, 9, -2, 9, 0, 1, 1, 0, 0 ],
+        [ 10, 10, -2, 10, 0, 0, 0, 2, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [  ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "field": {"$ref": "status"},
+                "mapping": [
+                  {"at": 0, "color": "white"},
+                  {"at": 1, "color": "#808080"},
+                  {"at": 2, "color": "white"},
+                  {"at": 3, "color": "white"}
+                ]
+              },
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "white",
+                "align": "end",
+                "font": {
+                  "family": "Calibri, Arial, Tahoma",
+                  "size": 11,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": 53, "right": 8},
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [
+            {
+              "field": {"$ref": "status"},
+              "modifies": {
+                "type": "outline",
+                "part": "trendingSymbol"
+              },
+              "palette": [
+                "white",
+                "#666666",
+                "white",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {"type": "fill", "part": "stripe"},
+              "palette": [
+                "white",
+                "#666666",
+                "white",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "trending"},
+              "modifies": {
+                "type": "fill",
+                "part": "trendingSymbol"
+              },
+              "palette": [
+                "#54CAC0",
+                "#000000",
+                "#E83038",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {
+                "type": "outline",
+                "part": "statusSymbol"
+              },
+              "palette": [
+                "white",
+                "#666666",
+                "white",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {
+                "type": "fill",
+                "part": "statusSymbol"
+              },
+              "palette": [
+                "#54CAC0",
+                "#FFFD4C",
+                "#E83038",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {
+                    "a": 0.8,
+                    "b": 153,
+                    "g": 153,
+                    "r": 0
+                  }
+                },
+                {
+                  "at": 1,
+                  "color": {
+                    "a": 0.7,
+                    "b": 0,
+                    "g": 204,
+                    "r": 255
+                  }
+                },
+                {
+                  "at": 2,
+                  "color": {
+                    "a": 0.8,
+                    "b": 33,
+                    "g": 0,
+                    "r": 165
+                  }
+                },
+                {
+                  "at": 3,
+                  "color": {
+                    "a": 0.8,
+                    "b": 128,
+                    "g": 128,
+                    "r": 128
+                  }
+                }
+              ],
+              "modifies": {"type": "fill", "part": "main"}
+            },
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {
+                    "a": 0.3,
+                    "b": 153,
+                    "g": 153,
+                    "r": 0
+                  }
+                },
+                {
+                  "at": 1,
+                  "color": {
+                    "a": 0.3,
+                    "b": 0,
+                    "g": 204,
+                    "r": 255
+                  }
+                },
+                {
+                  "at": 2,
+                  "color": {
+                    "a": 0.3,
+                    "b": 33,
+                    "g": 0,
+                    "r": 165
+                  }
+                },
+                {
+                  "at": 3,
+                  "color": {
+                    "a": 0.3,
+                    "b": 128,
+                    "g": 128,
+                    "r": 128
+                  }
+                }
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "main"
+              }
+            },
+            {
+              "field": {"$ref": "main"},
+              "mapping": [
+                {"at": 0, "color": {"a": 0}},
+                {"at": 1, "color": {}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "main"
+              }
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {
+                "type": "fill",
+                "part": "triangleChild"
+              },
+              "palette": [
+                "white",
+                "#666666",
+                "white",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {
+                "type": "fill",
+                "part": "triangleParent"
+              },
+              "palette": [
+                "white",
+                "#666666",
+                "white",
+                "white"
+              ]
+            },
+            {
+              "field": {"$ref": "expOrColChild"},
+              "mapping": [
+                {"at": 0, "color": {"a": 0}},
+                {"at": 1, "color": {}},
+                {"at": 2, "color": {}}
+              ],
+              "modifies": {
+                "type": "both",
+                "part": "triangleChild"
+              }
+            },
+            {
+              "field": {"$ref": "expOrColParent"},
+              "mapping": [
+                {"at": 0, "color": {"a": 0}},
+                {"at": 1, "color": {}},
+                {"at": 2, "color": {}}
+              ],
+              "modifies": {
+                "type": "both",
+                "part": "triangleParent"
+              }
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "dag",
+            "to": {"$ref": "to"}
+          },
+          "symbol": [
+            {
+              "field": {"$ref": "trending"},
+              "modifies": {"part": "trendingSymbol"},
+              "palette": [
+                {"shape": [ {"path": "M0.5,0L1,1L0,1Z"} ]},
+                {"shape": [ {"path": "M0,0.5L1,0.5"} ]},
+                {"shape": [ {"path": "M0,0L1,0L0.5,1Z"} ]},
+                {"shape": [ {"path": "M0,0L1,1M0,1L1,0"} ]}
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "modifies": {"part": "statusSymbol"},
+              "palette": [
+                "circle",
+                {
+                  "shape": [
+                    {
+                      "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                    }
+                  ]
+                },
+                "square",
+                {"shape": [ {"path": "M0,0L1,1M0,1L1,0"} ]}
+              ]
+            },
+            {
+              "field": {"$ref": "expOrColChild"},
+              "mapping": [
+                {"at": 0, "symbol": {}},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0,0L1,0L1,1L0,1L0,0M0,0.5L1,0.5M0.5,1L0.5,0"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 2,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0,0L1,0L1,1L0,1L0,0M0,0.5L1,0.5"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "triangleChild"}
+            },
+            {
+              "field": {"$ref": "expOrColParent"},
+              "mapping": [
+                {"at": 0, "symbol": {}},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0,0L1,0L1,1L0,1L0,0M0,0.5L1,0.5M0.5,1L0.5,0"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 2,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0,0L1,0L1,1L0,1L0,0M0,0.5L1,0.5"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "triangleParent"}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [ "trend1:", {"$ref": "name"} ],
+              "modifies": {"part": "main"}
+            },
+            {
+              "content": [
+                "icon:status:",
+                {"$ref": "status"}
+              ],
+              "modifies": {"part": "statusSymbol"}
+            },
+            {
+              "content": [ "trend1:", {"$ref": "name"} ],
+              "modifies": {"part": "stripe"}
+            },
+            {
+              "content": [
+                "icon:status:",
+                {"$ref": "status"}
+              ],
+              "modifies": {"part": "statusSymbol"}
+            },
+            {
+              "content": [
+                "icon:trending:",
+                {"$ref": "trending"}
+              ],
+              "modifies": {"part": "trendingSymbol"}
+            },
+            {
+              "content": [ "triangle:", {"$ref": "name"} ],
+              "modifies": {"part": "triangleParent"}
+            },
+            {
+              "content": [ "triangle:", {"$ref": "name"} ],
+              "modifies": {"part": "triangleChild"}
+            }
+          ],
+          "style": {
+            "width": 145,
+            "height": 40,
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0.0%",
+                  "y": "0.0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "main",
+                  "style": {"stroke": {"width": 8}}
+                },
+                {
+                  "x": "10%",
+                  "y": "50%",
+                  "part": "statusSymbol",
+                  "r": "15%"
+                },
+                {
+                  "x": "20%",
+                  "y": "50%",
+                  "part": "trendingSymbol",
+                  "r": "15%"
+                },
+                {
+                  "x": "50%",
+                  "y": "10%",
+                  "part": "triangleParent",
+                  "r": "10%",
+                  "style": {"fill": "black"}
+                },
+                {
+                  "x": "50%",
+                  "y": "88%",
+                  "part": "triangleChild",
+                  "r": "10%",
+                  "style": {"fill": "black"}
+                },
+                {
+                  "part": "stripe",
+                  "path": "M0.28,0.1L0.28,0.9",
+                  "style": {"fill": "white"}
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "edge",
+          "label": [ {"content": [ {"$ref": "lag"} ]} ],
+          "data": {"$ref": "links"},
+          "dashing": [
+            {
+              "field": {"$ref": "stroke-style"},
+              "palette": [ "Solid", "ShortDash" ]
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "link",
+            "to": {"$ref": "to"}
+          },
+          "size": [
+            {
+              "field": {"$ref": "size"},
+              "mapping": [
+                {"at": "0.0%", "size": 30},
+                {"at": "100.0%", "size": 90}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "edge:",
+                {"$ref": "from"},
+                ":",
+                {"$ref": "to"},
+                ":",
+                {"$ref": "size"},
+                ":",
+                {"$ref": "lag"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#B2B2B2",
+            "stroke": {"width": 3.5, "cap": "butt"},
+            "endArrow": "arrow",
+           "symbol": "curved"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 8}
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "1.3"
+}

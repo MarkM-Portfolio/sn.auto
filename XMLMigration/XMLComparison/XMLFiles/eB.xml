@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<elementTest>
+	<elementTest>
+		<element1> text </element1>
+		<element1 attr="6" attr2="7"/>
+		<element2/>
+		<element1>
+			<element1/>
+		</element1>
+	</elementTest>
+</elementTest>

@@ -1,0 +1,14 @@
+uid,password,display name,email,first name,last name,members
+wasadmin,password,was admin,wasadmin,,,admin
+buser1,password,Bill User1,buser1@janet.iris.com,,,buser1
+buser2,password,Bill User2,buser2@janet.iris.com,,,buser2
+buser3,password,Bill User3,buser3@janet.iris.com,,,buser3
+buser4,password,Bill User4,buser4@janet.iris.com,,,buser4
+buser5,password,Bill User5,buser5@janet.iris.com,,,buser5
+buser6,password,Bill User6,buser6@janet.iris.com,,,buser6
+buser7,password,Bill User7,buser7@janet.iris.com,,,buser7
+buser8,password,Bill User8,buser8@janet.iris.com,,,buser8
+buser9,password,Bill User9,buser9@janet.iris.com,,,buser9
+buser10,password,Bill User10,buser10@janet.iris.com,,,buser10
+bexternal1,password,Bill External1,bexternal1@janet.iris.com,,,external_orgd
+bexternal2,password,Bill External2,bexternal2@janet.iris.com,,,external_orgd

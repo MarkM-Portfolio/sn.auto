@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "X", "categories": [ "A", "B" ]},
+        {"id": "Y"},
+        {
+          "id": "color",
+          "categories": [
+            "Poor",
+            "Fair",
+            "Good",
+            "Better",
+            "Best"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 2, 2 ],
+        [ 0, 1, 0 ],
+        [ 0, 4, 4 ],
+        [ 1, 5, 1 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"right": -80},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "#ccc"}}},
+          {"axis": {}}
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "color"},
+              "scale": {"local": false}
+            }
+          ],
+          "style": {"outline": "black", "size": "80%"}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": 80, "right": "-0"},
+      "content": [ {"local": false} ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10}
+      }
+    }
+  ],
+  "size": {"width": 300},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

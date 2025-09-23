@@ -1,0 +1,196 @@
+package com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.utils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+
+import com.ibm.lconn.automation.framework.services.common.StringConstants;
+import com.ibm.lconn.automation.framework.services.common.URLConstants;
+
+/*
+ * 16.04.2012 - Yakov Vilenchik
+ * Add possibility to add SUFFIX as parameter from command line, if such parameter is not provoded the default parameter
+ * (SUFFIX)will be used, if parameter is passed as random then random number (0-100000) will be choosed
+ * if parameter is passed as number then this number is added as SUFFIX to every string
+ */
+
+
+public class PopStringConstantsAS {
+	
+	public static String SERVER_URL = URLConstants.SERVER_URL;
+	public final static String SUFFIX = "";
+	public static String TITLE_SUFFIX = ""; 
+	public static String SUB_COMMUNITY_SUFFIX = "subway";
+	public final static String ASSEARCH_SUFFIX = "assearch"; 
+	public static int RECEIVED_PAGE_SIZE = 50;
+	public static String TEST_EVENTS_IDENTIFIER = "";
+	public static String[] unsearchableIndexEvents = {};//List of events that exists in index but not in db.
+//	public final static String TITLE_SUFFIX = " suffix"+random.nextInt(99999); // suffix for keeping titles unique
+	
+    // in case when executing population and testing from one 
+	// lc.data.pop/src/com/ibm/lconn/automation/framework/activitiesStreamSearch/fvtPopulation/Main.class
+	@SuppressWarnings("unused")
+	private final static Random random = new Random();
+	
+	//Creation of event Identifier to allow multiple creations of event
+	static DateFormat formatter = new SimpleDateFormat("yyyyMMdd'T'hhmmss'Z'");
+	public static String eventIdent = formatter.format(new Date());
+	
+	// Helper Enum Types
+	public enum CommunityBlogPermissions {
+		PUBLIC, PRIVATE, MODERATED
+	}
+
+	public enum Role {
+		ALL, AUTHOR, OWNER, MEMBER, READER
+	}
+
+	// public static String SERVER_URL = "https://lc4yakov1.haifa.ibm.com";
+
+	/*public static void setServerURL(String url) {
+		SERVER_URL = url;
+	}*/
+
+	// Server Credentials
+	public static String USER_NAME; // user for population
+	public static String USER_PASSWORD;
+	public static String USER_NAME_TEST = PopStringConstantsAS.USER_NAME; // user for test
+	public static String USER_PASSWORD_TEST = PopStringConstantsAS.USER_PASSWORD;
+	public static String USER_EMAIL;
+	public static String USER_DISPLAY_NAME = StringConstants.USER_REALNAME;
+	public static String WAS_ADMIN_USER_NAME = "wasadmin"; // was admin user - to check china server set from wasadmin to lcuser
+	public static String WAS_ADMIN_USER_PASSWORD = "lcsecret"; //for test changed from lcsecret to wasadmin, on cina server passw0rd
+	public static final String TARGET_USER_EMAIL = "fbrion@renovations.com";
+	public static final String SECOND_TARGET_USER_EMAIL = "aalain@renovations.com";
+	public static final String DB_SEARCH_PARAMETER = "?rollup=false";
+	public static final String INDEX_SEARCH_PARAMETER = "?preferSearchIndex=true";
+
+	public static void setLoginUserName(String user) {
+		USER_NAME = user;
+	}
+	
+	public static void setLoginUserPwd(String password) {
+		USER_PASSWORD = password;
+	}
+	
+	public static void setLoginUserEmail(String email) {
+		USER_EMAIL = email;
+	}
+	
+	public static void setLoginUserRealName(String realName) {
+		USER_DISPLAY_NAME = realName;
+	}
+	
+	public static void setTestUserName(String user) {
+		USER_NAME_TEST = user;
+	}
+	
+	public static void setTestUserPwd(String password) {
+		USER_PASSWORD_TEST = password;
+	}
+	
+	
+	// Activities Constant Strings
+	public static final String MODERATED_COMMUNITY_ACTIVITY_TITLE = "First Manager Auction tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_TITLE = "My First Auction tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_TITLE = "First everybody Auction tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_CONTENT = "Thirteen" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_CONTENT = "Fourteen" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_CONTENT = "Fifteen" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_TITLE = "First everybody standalone Auction tiger"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_TITLE = "My First Standalone Auction tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_CONTENT = "Sixteen" + SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_CONTENT = "Seventeen" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_ENTRY_TITLE = "First Manager Start tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_ENTRY_TITLE = "My First Start tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_TITLE = "Everybody First Start tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_ENTRY_CONTENT = "Eighteen" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_ENTRY_CONTENT = "Nineteen" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_CONTENT = "Twenty" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_PRIVATE_ENTRY_TITLE = "Everybody Second Start Hide tiger"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_PRIVATE_ENTRY_CONTENT = "Twenty one" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_TITLE = "Everybody First Start Standalone tiger"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_ENTRY_TITLE = "My First Start standalone tiger"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_CONTENT = "Twenty three" + SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_ENTRY_CONTENT = "Twenty two" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_ENTRY_TITLE = "Everybody Second Start Standalone Hide tiger"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_ENTRY_CONTENT = "Twenty four" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_ENTRY_COMMENT_TITLE = "First Manager Start tiger remark"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_ENTRY_COMMENT_Content = "Twenty five" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_ENTRY_COMMENT_TITLE = "My First Start tiger remark"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_ENTRY_COMMENT_Content = "Twenty six" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_COMMENT_TITLE = "Everybody First Start tiger remark"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_COMMENT_Content = "Twenty seven" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_PRIVATE_COMMENT_TITLE = "Everybody First Start tiger HideRemark Two"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_ENTRY_PRIVATE_COMMENT_CONTENT = "Twenty eight" + SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_ENTRY_COMMENT_TITLE = "My First Start standalone tiger Remark"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_ENTRY_COMMENT_CONTENT = "Twenty nine" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_COMMENT_TITLE = "Everybody First Start standalone tiger Remark"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_COMMENT_CONTENT = "Thirty" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_PRIVATE_COMMENT_TITLE = "Everybody First Start standalone tiget Remark Hide two"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_PRIVATE_COMMENT_CONTENT = "Thirty one" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_AVTIVITY_TODO_TITLE = "First Manager Duty tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_AVTIVITY_TODO_CONTENT = "Thirty two" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_AVTIVITY_TODO_TITLE = "My First Duty tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_AVTIVITY_TODO_CONTENT = "Thirty three" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACVTIVITY_TODO_TITLE = "Everybody First Duty tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACVTIVITY_TODO_CONTENT = "Thirty four" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACVTIVITY_PRIVATE_TODO_TITLE = "Everybody Second Duty tiger Hide"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_ACVTIVITY_PRIVATE_TODO_CONTENT = "Thirty five" + SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_TODO_TITLE = "My First Duty tiger Standalone" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PRIVATE_ACTIVITY_TODO_CONTENT = "Thirty six" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_TODO_TITLE = "Everybody First Duty tiger Standalone"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_TODO_CONTENT = "Thirty seven" + SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_TODO_TITLE = "Everybody Second Duty tiger Standalone Hide"
+		+ " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_TODO_CONTENT = "Thirty eight" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_ACTIVITY_TAG = "tag8";
+	public static final String PRIVATE_COMMUNITY_ACTIVITY_TAG = "tag9";
+	public static final String PUBLIC_COMMUNITY_ACTIVITY_TAG = "tag10";
+	public static final String STANDALONE_PUBLIC_ACTIVITY_TAG = "tag11";
+	public static final String STANDALONE_PRIVATE_ACTIVITY_TAG = "tag12";
+	public static final String STANDALONE_PUBLIC_ACTIVITY_ENTRY_TAG = "tag13";
+	public static final String STANDALONE_PRIVATE_ACTIVITY_ENTRY_TAG = "tag14";
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_ENTRY_TAG = "tag15";
+	public static final String STANDALONE_PRIVATE_ACTIVITY_TODO_TAG = "tag16";
+	public static final String STANDALONE_PUBLIC_ACTIVITY_TODO_TAG = "tag17";
+	public static final String STANDALONE_PUBLIC_ACTIVITY_PRIVATE_TODO_TAG = "tag18";
+
+	// Communities Constant Strings
+	public static final String MODERATED_COMMUNITY_TITLE = "First Manager team tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_TITLE = "My first team tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_TITLE = "Everybody first team tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_BOOKMARK_TITLE = "First Manager Page tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_BOOKMARK_TITLE = "First My Page tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_BOOKMARK_TITLE = "First everybody Page tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_TOPIC_TITLE = "First Manager item tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PRIVATE_COMMUNITY_TOPIC_TITLE = "First My Item tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String PUBLIC_COMMUNITY_TOPIC_TITLE = "First Everybody Item tiger" + " " + ASSEARCH_SUFFIX + TITLE_SUFFIX;
+	public static final String MODERATED_COMMUNITY_CONTENT = "One" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_CONTENT = "Two" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_CONTENT = "Three" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_BOOKMARK_CONTENT = "Four" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_BOOKMARK_CONTENT = "Five" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_BOOKMARK_CONTENT = "Six" + SUFFIX;
+	public static final String MODERATED_COMMUNITY_TOPIC_CONTENT = "Seven" + SUFFIX;
+	public static final String PRIVATE_COMMUNITY_TOPIC_CONTENT = "Eight" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_TOPIC_CONTENT = "Nine" + SUFFIX;
+	public static final String PUBLIC_COMMUNITY_1_TITLE = "Mon fran

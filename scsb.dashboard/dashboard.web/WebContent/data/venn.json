@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX", "min": -300, "max": 300},
+        {"id": "fY", "min": -300, "max": 300},
+        {"id": "index"}
+      ],
+      "rows": [
+        [ 95, -77, 0 ],
+        [ -95, -77, 1 ],
+        [ 0, 102, 2 ]
+      ]
+    },
+    {
+      "id": "data2",
+      "fields": [
+        {"id": "fX2", "min": -300, "max": 300},
+        {"id": "fY2", "min": -300, "max": 300},
+        {
+          "id": "text",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "AB",
+            "BC",
+            "AC",
+            "ABC"
+          ]
+        }
+      ],
+      "rows": [
+        [ 95, -77, 0 ],
+        [ -95, -77, 1 ],
+        [ 0, 102, 2 ],
+        [ 0, -100, 3 ],
+        [ -70, 15, 4 ],
+        [ 70, 15, 5 ],
+        [ 0, -20, 6 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "description": "Venn Diagram",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"scale" : {"spans" : [{"fit" : "exact"}]}}, {"scale" : {"spans" : [{"fit" : "exact"}]}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "index"},
+              "mapping": [
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 255,
+                    "g": 0,
+                    "r": 255
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 0,
+                    "g": 255,
+                    "r": 255
+                  },
+                  "offset": 0.5
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 255,
+                    "g": 255,
+                    "r": 0
+                  },
+                  "offset": 1
+                }
+              ]
+            }
+          ],
+          "style": {"size": "1800%"}
+        },
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "text"} ]} ],
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "fY2"}},
+            {"field": {"$ref": "fX2"}}
+          ],
+          "style": {
+            "fill": "transparent",
+            "outline": "transparent"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": "0%"}
+    }
+  ],
+  "version": "1.2"
+}

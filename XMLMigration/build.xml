@@ -1,0 +1,5 @@
+<project name="XMLMigration" default="development" basedir=".">
+  <import file="${env.WPLC_IMPORT}/std_props.xml"/>
+  <import file="${env.WPLC_IMPORT}/root_build.xml"/>
+</project>
+

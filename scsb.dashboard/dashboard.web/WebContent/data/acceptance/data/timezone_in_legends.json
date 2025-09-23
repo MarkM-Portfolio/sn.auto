@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "id": "source1",
+      "fields": [
+        {"id": "x"},
+        {
+          "id": "timestamp",
+          "timeZone": "CST",
+          "unit": "timestamp"
+        },
+        {"id": "second", "unit": "second"},
+        {"id": "minute", "unit": "minute"},
+        {"id": "day", "unit": "day"},
+        {"id": "year", "unit": "year"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 0, 0, 0 ],
+        [ 1000, 1000, 1000, 1000, 100, 100 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": [ {} ]} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [
+            {
+              "field": {"$ref": "timestamp"},
+              "scale": {"spans": [ {"fit": "exact"} ]}
+            }
+          ]
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"bottom": 8, "top": 8}
+      }
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {"fill": "#ffd"},
+      "location": "left",
+      "method": "swatch"
+    }
+  ],
+  "size": {"width": 500, "height": 500},
+  "version": "4.2",
+  "style": {"fill": "white"}
+}

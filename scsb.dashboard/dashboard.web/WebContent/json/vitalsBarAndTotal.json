@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "month",
+          "label": "month",
+          "categories": [  ]
+        },
+        {
+          "id": "numVisits",
+          "label": "# of Visits per Month",
+          "categories": [  ]
+        },
+        {"id": "numUsers", "label": "# of Users"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "totals",
+      "fields": [
+        {"id": "totalMonth", "categories": [  ]},
+        {"id": "totalUsers"}
+      ],
+      "rows": [  ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {}
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "numUsers"}},
+            {"field": {"$ref": "month"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "numVisits"},
+              "scale": {"local": false}
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "numVisits"} ]}
+          ],
+          "style": {"width": "80%", "outline": "black"}
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "totals"},
+          "position": [
+            {"field": {"$ref": "totalUsers"}},
+            {"field": {"$ref": "totalMonth"}}
+          ],
+          "style": {"size": 3}
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

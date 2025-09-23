@@ -1,0 +1,145 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Price",
+          "min": 20.0,
+          "max": 2050.0
+        },
+        {"id": "fY", "label": "Quantity"},
+        {
+          "id": "categories",
+          "label": "Categories",
+          "categories": [
+            "category A",
+            "category B",
+            "category C",
+            "category D",
+            "category E",
+            "category F"
+          ]
+        }
+      ],
+      "rows": [
+        [ 22, 339, 0 ],
+        [ 1999, 290, 1 ],
+        [ 1980, 95, 2 ],
+        [ 985, 159, 3 ],
+        [ 2000, 223, 4 ],
+        [ 200, 299, 5 ],
+        [ 500, 254, 5 ],
+        [ 299, 277, 4 ],
+        [ 2000, 412, 1 ],
+        [ 39, 268, 2 ],
+        [ 399, 297, 3 ],
+        [ 799, 386, 2 ],
+        [ 1599, 297, 1 ],
+        [ 1997, 188, 5 ],
+        [ 209, 269, 3 ],
+        [ 149, 265, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "fY"},
+              "scale": {"reverse": true}
+            }
+          ],
+          "size": [
+            {"id": "sizeId", "field": {"$ref": "fY"}}
+          ],
+          "symbol": [
+            {"id": "symbolId", "field": {"$ref": "fY"}}
+          ],
+          "style": {
+            "fill": {"a": 0.75, "b": 128, "g": 0, "r": 0},
+            "stroke": {"width": 1.0},
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 255},
+            "size": 50.0
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": "beige",
+        "outline": "black",
+        "padding": 20
+      }
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "lightblue",
+        "stroke": {"style": "dash"},
+        "effect": {"glow": {}, "shadow": {}},
+        "outline": "black",
+        "padding": 5
+      },
+      "itemStyle": {"size": 25},
+      "labelStyle": {
+        "fill": "green",
+        "font": {"family": "times new roman"}
+      },
+      "title": [ "Category" ]
+    }
+  ],
+  "size": {"width": 600.0, "height": 400.0},
+  "version": "4.2"
+}

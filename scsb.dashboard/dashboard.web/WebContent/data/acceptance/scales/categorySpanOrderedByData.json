@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "fields": [
+        {
+          "id": "categories",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [ [ 1, 2200 ], [ 4, 1100 ], [ 2, 450 ] ]
+    },
+    {
+      "fields": [
+        {
+          "id": "categories2",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        },
+        {"id": "values2"}
+      ],
+      "rows": [ [ 2, 1050 ], [ 0, 1200 ], [ 4, 1520 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"spans": [ {"method": "data"} ]},
+            "axis": {}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "categories"}} ]
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values2"}},
+            {"field": {"$ref": "categories2"}}
+          ],
+          "style": {"fill": "black", "width": "20%"}
+        }
+      ]
+    }
+  ],
+  "version": "4.1"
+}

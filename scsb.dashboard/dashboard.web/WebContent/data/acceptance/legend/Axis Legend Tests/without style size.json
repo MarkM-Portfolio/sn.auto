@@ -1,0 +1,65 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California, here I come.",
+            "Illinois",
+            "Washington",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [
+        [ 185, 60, 3 ],
+        [ 136, 10, 4 ],
+        [ 495, 30, 1 ],
+        [ 446, 20, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "fY"} ]} ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [ {"field": {"$ref": "fY"}} ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black"
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [
+    {"boundsStyle": {"outline": "red"}, "method": "axis"}
+  ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

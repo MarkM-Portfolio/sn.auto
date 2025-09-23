@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<products>
+  <product id="p1" name="Delta" price="3250" stock="4"/>
+  <product id="p2" name="Golf" price="1000" stock="5"/>
+  <product id="p3" name="Alpha" price="1200" stock="19"/>
+  <product id="p4" name="Foxtrot" price="1500" stock="5"/>
+  <product id="p5" name="Tango" price="1225" stock="3"/>
+</products> 

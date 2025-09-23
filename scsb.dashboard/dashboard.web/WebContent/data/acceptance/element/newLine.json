@@ -1,0 +1,358 @@
+{
+	"version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "data",
+			
+			"fields" : [
+				{
+					"id" : "_VOIDS_FIELD_",
+					"label" : "_VOIDS_FIELD_"
+				},
+				{
+					
+					"id" : "_CATEGORY_FIELD_",
+					
+					"label" : "Product line",
+					
+					"categories" : [
+						
+						"Camping Equipment",
+						
+						"Golf Equipment",
+						
+						"Mountaineering Equipment",
+						
+						"Outdoor Protection",
+						
+						"Personal Accessories"
+						
+					]
+					
+				},
+				{
+					
+					"id" : "_SERIES_FIELD_",
+					
+					"label" : "Order method type",
+					
+					"categories" : ["Fax"]
+					
+				},
+				{
+					"id" : "_VALUES_FIELD_",
+					"label" : "Quantity"
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[901, 0, 0, 82275],
+				
+				[952, 1, 0, 18819],
+				
+				[1003, 2, 0, 92344],
+				
+				[1054, 3, 0, 20372],
+				
+				[1105, 4, 0, 35424]
+				
+			]
+			
+		}
+		
+	],
+	
+	"grammar" : [
+		{
+			
+			"bounds" : {
+				
+				"width" : "70%",
+				
+				"height" : "100%",
+				
+				"left" : 0,
+				
+				"top" : 0
+				
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [
+					{
+						
+						"scale" : {
+							
+							"spans" : [{"fit" : "nice"}
+								
+							]
+						},
+						
+						"axis" : {
+							
+							"lineStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"stroke" : {
+									"width" : 1
+								}
+								
+							},
+							
+							"markStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"stroke" : {
+									"width" : 1
+								}
+								
+							},
+							
+							"tickStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"font" : {
+									
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									
+									"size" : 21,
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							},
+							
+							"titleStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"font" : {
+									
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									
+									"size" : 21,
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							}
+							
+						}
+						
+					},
+					{
+						
+						"axis" : {
+							
+							"lineStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"stroke" : {
+									"width" : 1
+								}
+								
+							},
+							
+							"markStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"stroke" : {
+									"width" : 1
+								}
+								
+							},
+							
+							"tickStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"font" : {
+									
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									
+									"size" : 21,
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							},
+							
+							"titleStyle" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"font" : {
+									
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									
+									"size" : 21,
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				],
+				
+				"transforms" : [{
+						"type" : "stack"
+					}
+				]
+				
+			},
+			
+			"elements" : [
+				{
+					
+					"type" : "line",
+					
+					"label" : [
+						{
+							
+							"content" : [
+								{
+									"$ref" : "_SERIES_FIELD_"
+								},
+								
+								"\n",
+								{
+									"$ref" : "_VALUES_FIELD_"
+								}
+								
+							],
+							
+							"modifies" : {
+								"part" : "symbol"
+							},
+							
+							"style" : {
+								
+								"fill" : "#FCFCFC",
+								
+								"align" : "middle",
+								
+								"font" : {
+									
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									
+									"size" : 16,
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								},
+								
+								"valign" : "start"
+								
+							}
+							
+						}
+						
+					],
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "_CATEGORY_FIELD_"
+							}
+						}
+						
+					],
+					
+					"styleBy" : [
+						{
+							
+							"id" : "_PALETTE_",
+							
+							"field" : {
+								"$ref" : "_SERIES_FIELD_"
+							},
+							
+							"palette" : [
+								{
+									"fill" : "#426AFE"
+								},
+								{
+									"fill" : "#539315"
+								},
+								{
+									"fill" : "#FFEE2F"
+								},
+								{
+									"fill" : "#E77903"
+								},
+								{
+									"fill" : "#AF1527"
+								},
+								{
+									"fill" : "#871F77"
+								},
+								{
+									"fill" : "#252525"
+								}
+								
+							]
+							
+						}
+						
+					],
+					
+					"symbolStyle" : {},
+					
+					"style" : {
+						"stroke" : {
+							"width" : 3
+						}
+					}
+					
+				}
+				
+			]
+			
+		}
+		
+	],
+	
+	"size" : {
+		"width" : 700,
+		"height" : 450
+	},
+	
+	"style" : {
+		"fill" : "black",
+		"padding" : 30
+	}
+	
+}

@@ -1,0 +1,161 @@
+{
+  "data": [
+    {
+      "id": "dataA",
+      "fields": [
+        {
+          "id": "ax",
+          "categories": [ "A1", "A2", "A3" ],
+          "key": true
+        },
+        {"id": "ay"},
+        {"id": "az"}
+      ],
+      "rows": [
+        [ 2, 3972, 4333 ],
+        [ 1, 3427, 4700 ],
+        [ 0, 3785, 4300 ]
+      ]
+    },
+    {
+      "id": "dataB",
+      "fields": [
+        {
+          "id": "bID",
+          "categories": [ "B1", "B2", "AB3" ],
+          "key": true
+        },
+        {
+          "id": "bparent",
+          "categories": [ "A1", "A2", "A3" ]
+        },
+        {"id": "bx", "categories": [ "B1", "B2" ]},
+        {"id": "by"}
+      ],
+      "rows": [
+        [ 0, 2, 0, 4633 ],
+        [ 1, 1, 1, 4700 ],
+        [ 2, 1, 0, 4500 ]
+      ]
+    },
+    {
+      "id": "dataC",
+      "fields": [
+        {
+          "id": "cparent",
+          "categories": [ "B1", "B2", "B3" ]
+        },
+        {"id": "cx", "categories": [ "C1", "C2", "C3" ]}
+      ],
+      "rows": [ [ 0, 2 ], [ 1, 1 ], [ 1, 2 ], [ 1, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "id": "elementA",
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "ay"}},
+            {"field": {"$ref": "az"}},
+            {"field": {"$ref": "ax"}}
+          ],
+          "color": [ {"field": {"$ref": "ax"}} ],
+          "style": {"width": "95%"}
+        }
+      ]
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "id": "elementB",
+          "type": "point",
+          "label": [
+            {
+              "content": [
+                {"$ref": "bparent"},
+                ":",
+                {"$ref": "bx"}
+              ],
+              "style": {
+                "fill": "#0004",
+                "font": {"size": 13},
+                "location": "inside",
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "by"}},
+            {"field": {"$ref": "bx"}}
+          ],
+          "style": {
+            "fill": "#fffa",
+            "width": "100%",
+            "height": 80,
+            "cornerRadius": 10,
+            "symbol": "rect"
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "bparent"}} ],
+        "targetElement": {"$ref": "elementA"},
+        "method": "chartInChart"
+      },
+      "style": {"fill": "transparent", "padding": 3}
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [
+                {"$ref": "cparent"},
+                ":",
+                {"$ref": "cx"}
+              ],
+              "style": {
+                "align": "end",
+                "font": {"size": 9},
+                "padding": 2
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "cx"}},
+            {"value": "20%"}
+          ],
+          "style": {
+            "fill": "red",
+            "size": "10px",
+            "symbol": "circle"
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "cparent"}} ],
+        "targetElement": {"$ref": "elementB"},
+        "method": "chartInChart"
+      },
+      "style": {
+        "fill": "transparent",
+        "padding": {"top": 15}
+      }
+    }
+  ],
+  "size": {"width": 600, "height": 500},
+  "version": "3.1"
+}

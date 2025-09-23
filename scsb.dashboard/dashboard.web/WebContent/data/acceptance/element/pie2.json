@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "fX", "label": "X", "min": 1.0, "max": 4.0},
+        {"id": "fY", "label": "Y", "min": 1.0, "max": 13.0},
+        {
+          "id": "fA",
+          "label": "A",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J"
+          ]
+        }
+      ],
+      "rows": [
+        [ 2, 6, 0 ],
+        [ 1, 1, 1 ],
+        [ 1, 2, 2 ],
+        [ 1, 3, 3 ],
+        [ 1, 4, 4 ],
+        [ 2, 5, 5 ],
+        [ 2, 7, 6 ],
+        [ 2, null, 7 ],
+        [ 3, 9, 8 ],
+        [ null, 10, 9 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ],
+        "style": {
+          "fill": {"b": 220, "g": 245, "r": 245},
+          "outline": {"b": 128, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fA"} ],
+              "style": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "6.999999523162842pt"
+                }
+              }
+            }
+          ],
+          "data": {"$ref": "dData"},
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "color": [ {"field": {"$ref": "fA"}} ],
+          "style": {
+            "fill": {"a": 0.5, "b": 211, "g": 211, "r": 211},
+            "stroke": {"width": 2.0},
+            "width": "80%"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 400.0, "height": 400.0},
+  "version": "1.2"
+}

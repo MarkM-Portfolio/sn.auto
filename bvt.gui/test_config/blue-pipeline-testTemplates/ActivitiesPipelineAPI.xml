@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Activities" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="true"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto114.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Activities" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.activities.test"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesUnpopulate"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesOrgAdminApiTests"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesApiTests"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivityCSRFTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesApiTestsVM"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesAPIValidationTests"/>
+      <class name="com.ibm.lconn.automation.framework.services.activities.test.ActivitiesPopulate"/>
+    </classes>
+  </test> <!-- Activities -->
+  <test thread-count="1" name="Activities IMPERSONATEDTEST" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.activities.impersonated"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.activities.impersonated.ActivitiesImpersonatedTest"/>
+    </classes>
+  </test> <!-- Activities IMPERSONATEDTEST -->
+</suite> <!-- Activities -->

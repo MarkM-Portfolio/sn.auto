@@ -1,0 +1,83 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories",
+            "Camping Equipment2",
+            "Golf Equipment2"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 73 ],
+        [ 0, 2, 43 ],
+        [ 1, 0, 14 ],
+        [ 1, 1, 12 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local" : false,
+              "categoryStructure": {"gap": 20, "nest": true}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {"categoryStructure": {"nest": true}},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3"
+}

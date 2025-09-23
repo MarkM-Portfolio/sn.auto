@@ -1,0 +1,294 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dDelimitedFileSource",
+		"fields": [{
+			"id": "fX",
+			"label": "Year Published"
+		},
+		{
+			"id": "fY",
+			"label": "Length"
+		},
+		{
+			"id": "fSourcefield",
+			"label": "Price"
+		},
+		{
+			"id": "categories",
+			"label": "Categories",
+			"categories": ["category A",
+			"category B",
+			"category C",
+			"category D",
+			"category E",
+			"category F"]
+		}],
+		"rows": [[1999,
+		339,
+		12.99,
+		1],
+		[2003,
+		290,
+		6.99,
+		2],
+		[2008,
+		223,
+		9.99,
+		4],
+		[2007,
+		299,
+		9.49,
+		2],
+		[2003,
+		254,
+		8.49,
+		5],
+		[2007,
+		277,
+		8.99,
+		3],
+		[2003,
+		412,
+		13.99,
+		0],
+		[1996,
+		268,
+		6.99,
+		3],
+		[1990,
+		297,
+		7.99,
+		5],
+		[2001,
+		386,
+		9.95,
+		3],
+		[2005,
+		297,
+		34.95,
+		1],
+		[1997,
+		188,
+		8.99,
+		2],
+		[2007,
+		190,
+		12.99,
+		2],
+		[2006,
+		265,
+		8.49,
+		0],
+		[1998,
+		501,
+		19.95,
+		4],
+		[2001,
+		501,
+		54.95,
+		2],
+		[2005,
+		228,
+		9.99,
+		5],
+		[2000,
+		351,
+		39.95,
+		2],
+		[2007,
+		484,
+		27.49,
+		3],
+		[1995,
+		233,
+		3.49,
+		4],
+		[1992,
+		473,
+		44.95,
+		5],
+		[1996,
+		383,
+		12.99,
+		0],
+		[2007,
+		586,
+		37.45,
+		4]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"gridStyle": {
+"snap" :true ,
+						"fill": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						},
+						"stroke": {
+							"width": 1,
+							"style": "solid"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 160,
+							"g": 160,
+							"r": 160
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"gridStyle": {
+						"fill": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						},
+						"stroke": {
+							"width": 0.5,
+							"style": "Dot"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 160,
+							"g": 160,
+							"r": 160
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			}]
+		},
+		"elements": [{
+			"type": "point",
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fY"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fX"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "categories"
+				},
+				"mapping": [{
+					"color": "#0089CE",
+					"offset": 0
+				},
+				{
+					"color": "#7CBC4A",
+					"offset": 1
+				},
+				{
+					"color": "#D8C625",
+					"offset": 2
+				},
+				{
+					"color": "#F79428",
+					"offset": 3
+				},
+				{
+					"color": "#D6332F",
+					"offset": 4
+				},
+				{
+					"color": "#A83293",
+					"offset": 5
+				}]
+			}],
+			"size": [{
+				"field": {
+					"$ref": "fSourcefield"
+				},
+				"mapping": [{
+					"offset": 0.0,
+					"size": 25.0
+				},
+				{
+					"offset": 1.0,
+					"size": 150.0
+				}]
+			}],
+			"style": {
+				"fill": {
+					"type": "radial",
+					"focus": {
+						"x": "30%",
+						"y": "30%"
+					},
+					"colors": [{
+						"color": {"l":1},
+						"offset": 0.0
+					},
+					{
+						"offset": 1.0
+					}]
+				},
+				"stroke": {
+					"width": 0.0
+				},
+				"outline": {
+					"a": 0.0,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				},
+				"size": 45.0
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 20,
+				"g": 20,
+				"r": 20
+			},
+			"outline": {
+				"a": 0.0,
+				"b": 0,
+				"g": 0,
+				"r": 0
+			},
+			"padding": 28.800001
+		}
+	}],
+	"size": {
+		"width": 400.0,
+		"height": 400.0
+	}
+	}

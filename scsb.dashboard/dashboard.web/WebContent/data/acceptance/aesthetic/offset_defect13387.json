@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "fX", "label": "X"},
+        {
+          "id": "fA",
+          "label": "A",
+          "categories": [
+            "Fun",
+            "Cool",
+            "Important",
+            "Exciting",
+            "Interesting"
+          ]
+        }
+      ],
+      "rows": [
+        [ 2, 0 ],
+        [ 3, 1 ],
+        [ 3, 2 ],
+        [ 2, 3 ],
+        [ 5, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "fA"},
+                "\n(n=",
+                {"$ref": "fX"},
+                ")"
+              ]
+            }
+          ],
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "clip": "none",
+          "color": [ {"field": {"$ref": "fA"}} ],
+          "offset": [
+            {
+              "field": {"$ref": "fA"},
+              "mapping": [ {"at": 2, "size": 20} ]
+            }
+          ]
+        }
+      ],
+      "style": {"padding": 90}
+    }
+  ],
+  "size": {"width": 400, "height": 400},
+  "version": "1.3"
+}

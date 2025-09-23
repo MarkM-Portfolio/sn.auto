@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "level 3", "categories": [ "3-0", "3-1" ]},
+       
+        {
+          "id": "level 1",
+          "categories": [ "1-0", "1-2" ]
+        },
+        {"id": "Y"}
+      ],
+      "rows": [
+        [ 0,  0, 15 ],
+        [ 0,  1, 20 ]
+
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "level 3"}},
+
+            {"field": {"$ref": "level 1"}}
+          ],
+          "color": [ {"field": {"$ref": "level 3"}} ],
+          "symbolStyle": {},
+          "style": {"stroke": {"width": 3}}
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white", "padding": 5}
+}

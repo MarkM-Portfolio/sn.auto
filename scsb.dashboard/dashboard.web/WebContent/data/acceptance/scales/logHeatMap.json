@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "fX", "label": "Price"},
+        {"id": "c1", "categories": [ "a", "b", "c" ]},
+        {"id": "c2", "categories": [ "mice", "cats" ]}
+      ],
+      "rows": [
+        [ 1, 0, 0 ],
+        [ 10, 0, 1 ],
+        [ 100, 1, 0 ],
+        [ 1000, 1, 1 ],
+        [ 10000, 2, 0 ],
+        [ 100000, 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"markStyle": {}}},
+          {"axis": {"markStyle": {}}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "fX"} ]} ],
+          "position": [
+            {"field": {"$ref": "c2"}},
+            {"field": {"$ref": "c1"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"method": "log"} ]},
+              "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"b": 246, "g": 238, "r": 241}
+                },
+                {
+                  "at": "25%",
+                  "color": {"b": 225, "g": 201, "r": 189}
+                },
+                {
+                  "at": "50%",
+                  "color": {"b": 207, "g": 169, "r": 116}
+                },
+                {
+                  "at": "75%",
+                  "color": {"b": 190, "g": 140, "r": 43}
+                },
+                {
+                  "at": "100%",
+                  "color": {"b": 141, "g": 90, "r": 4}
+                }
+              ]
+            }
+          ],
+          "style": {
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "size": "100%",
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 10
+      }
+    }
+  ],
+  "version": "2.0"
+}

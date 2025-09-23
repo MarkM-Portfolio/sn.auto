@@ -1,0 +1,77 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        }
+      ],
+      "rows": [
+        [ 200, 60, 3 ],
+        [ 500, 30, 1 ],
+        [ 30, 40, 0 ],
+        [ 300, 25, 4 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"fit": "exact"} ]},
+              "mapping": [
+                {"at": 30, "size": "1in"},
+                {"at": 31, "size": "0%"},
+                {"at": 250, "size": "2cm"},
+                {"at": "100%", "size": "50%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": 100
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [
+    
+  ],
+  "size": {"width": 500, "height": 300},
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

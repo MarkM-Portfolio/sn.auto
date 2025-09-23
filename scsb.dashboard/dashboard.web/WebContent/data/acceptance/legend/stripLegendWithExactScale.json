@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY", "label": "Price"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "Washington",
+            "New York",
+            "Texas",
+            "New Mexico",
+            "Utah",
+            "Colorado",
+            "Virginia",
+            "North Carolina",
+            "Pennsylvania",
+            "South Carolina",
+            "West Virginia",
+            "Kentucky",
+            "Louisiana"
+          ]
+        }
+      ],
+      "rows": [
+        [ 10, 12.95, 0 ],
+        [ 340, 20.95, 1 ],
+        [ 440, 20.95, 2 ],
+        [ 460, 20.95, 3 ],
+        [ 551, 20.95, 4 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"fit": "exact"} ]},
+              "mapping": [
+                {"at": 0, "color": "red"},
+                {"at": 349, "color": "red"},
+                {"at": 350, "color": "yellow"},
+                {"at": 369, "color": "yellow"},
+                {"at": 370, "color": "green"},
+                {"at": 450, "color": "green"},
+                {"at": 451, "color": "magenta"}
+              ]
+            }
+          ],
+          "style": {"outline": "black", "size": 20}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "transparent",
+        "outline": "red"
+      },
+      "method": "continuous"
+    }
+  ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

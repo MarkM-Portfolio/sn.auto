@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "x",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ]
+        },
+        {"id": "dy"},
+        {
+          "id": "g",
+          "categories": [ "FacetA", "FacetB", "FacetC" ]
+        }
+      ],
+      "rows": [
+        [ 6, 3, 0 ],
+        [ 2, 5, 0 ],
+        [ 4, -4, 0 ],
+        [ 3, -4, 0 ],
+        [ 1, 3, 0 ],
+        [ 0, -4, 1 ],
+        [ 6, 3, 1 ],
+        [ 2, 6, 1 ],
+        [ 4, -4, 1 ],
+        [ 3, -4, 1 ],
+        [ 1, 3, 2 ],
+        [ 0, -7, 2 ]
+      ]
+    },
+    {
+      "id": "wf",
+      "source": {"$ref": "data"},
+      "type": "integrate",
+      "group": [
+        {"input": {"$ref": "g"}, "output": {"id": "facet"}}
+      ],
+      "input": [
+        {"field": {"$ref": "x"}, "role": "x"},
+        {"field": {"$ref": "dy"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"addTotalCategory": "Total"},
+          "role": "x"
+        },
+        {
+          "field": {
+            "id": "type",
+            "categories": [
+              "zero",
+              "add",
+              "sub",
+              "netv_zero",
+              "netv_add",
+              "netv_sub"
+            ]
+          },
+          "role": "type"
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"min": -9, "max": 9} ]},
+            "axis": {
+              "gridStyle": {
+                "fill": "gray",
+                "stroke": {"width": 0.5, "style": "Dot"}
+              }
+            }
+          },
+          {"scale": {"local": true}, "axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [ {"content": [ {"$ref": "yc"} ]} ],
+          "data": {"$ref": "wf"},
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "scale": {"local": false},
+              "palette": [
+                "gray",
+                "lightgreen",
+                "pink",
+                "white",
+                "white",
+                "white"
+              ]
+            }
+          ],
+          "style": {"width": "75%", "outline": "black"}
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "facet"}} ],
+        "method": "panel"
+      }, 
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "size": {"width": 300, "height": 410},
+  "style": {"fill":"white"},
+  "version": "3.0"
+}

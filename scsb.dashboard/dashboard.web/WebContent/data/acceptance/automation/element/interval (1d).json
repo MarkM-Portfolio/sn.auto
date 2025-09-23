@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "store", "categories": [ "A", "B", "C" ]},
+        {"id": "low"},
+        {"id": "high"}
+      ],
+      "rows": [ [ 0, 2, 5 ], [ 1, 4, 12 ], [ 2, 15, 22 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "#bbb"},
+              "markStyle": {}
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "low"}},
+            {"field": {"$ref": "high"}}
+          ],
+          "color": [ {"field": {"$ref": "store"}} ],
+          "style": {
+            "fill": {"a": 0.6},
+            "outline": "black",
+            "size": 30
+          }
+        }
+      ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 300},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

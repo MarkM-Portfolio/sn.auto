@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chart Practice</title>
+	<link rel="stylesheet" href="css/dashboard.css" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+	
+	<link href="datepicker/css/datepicker3.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/templateControls.css"/>
+	<script src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<script src="jquery-1.11.1.js"></script>
+	<script src="js/app.js"></script>
+	
+	<script src="datepicker/js/bootstrap-datepicker.js"></script>
+	
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			<a class="navbar-brand" href="#">Placeholder</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="indexDraft.html">View General App Charts</a></li>
+					<li><a href="PerAppCharts.html">View App Specific Charts</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="form-inline">
+					<div class="form-group">
+						<button class="btn btn-primary" id="tooltipbutton" type="button" onclick="toggleTooltips()">Hide Tooltips</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="form-inline">
+					<div class="form-group">
+						<select class="form-control" style="width:100px;" id="timeUnit" onChange="changeUnit()">
+							<option>hour</option>
+							<option>day</option>
+							<option>week</option>
+							<option>month</option>
+							<option>year</option>
+						</select>
+					</div>
+					<div id="datepicker" class="form-group">
+					</div>
+					<div id="button-holder" class="form-group">
+					</div>
+					<div class="btn-group" data-toggle="buttons" id="graphType" onChange="switchGraph()">
+						<label class="btn btn-primary active">
+							<input type="radio" name="graphOption" id="graphOption1" value="area">
+							Area
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="graphOption" id="graphOption2" value="line">
+							Line
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="graphOption" id="graphOption3" value="pie">
+							Pie
+						</label>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-10">
+				<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControl" style="width: 100%; height: 600px;"></div>
+				</div>
+			<div class="col-lg-2">
+				<form>
+					<div class="form-group">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="uniqueHits" onclick="toggleUnique()">View Unique Hits
+							</label>
+						</div>
+					</div>
+					<label>Choose Apps:</label>
+					<div class="form-group">
+						<button class="btn btn-success" id="selectAllApps" type="button" onclick="selectAll()">Select All Apps</button>
+						<button class="btn btn-danger" id="deselectApps" type="button"  onclick="deselectAll()">Deselect All Apps</button>
+					</div>
+					<div id="appBoxes" class="form-group">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

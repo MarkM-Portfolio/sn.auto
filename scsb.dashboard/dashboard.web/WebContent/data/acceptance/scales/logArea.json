@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [ {"id": "X"}, {"id": "Y"} ],
+      "rows": [
+        [ 0, 450 ],
+        [ 3, 3300 ],
+        [ 4, 3000 ],
+        [ 5, 800 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "min": 100,
+                  "fit": "exact",
+                  "method": "log"
+                }
+              ]
+            },
+            "axis": {}
+          },
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "style": {
+            "fill": "skyblue",
+            "stroke": {"width": 2}
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "version": "2.0"
+}

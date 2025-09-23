@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "numVisits", "label": "# of Visits"},
+        {"id": "numUsers", "label": "# of Users"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [  ],
+      "output": [
+        {
+          "field": {"id": "fVisits"},
+          "input": {"$ref": "numVisits"}
+        },
+        {
+          "field": {
+            "id": "fUsers",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "numUsers"},
+          "parameters": {"summaryFunction": "percent"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"center": true},
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": true, "spans": [  ]}}
+        ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+              "diameter": {"max": "98%"},
+              "startAngle": 90
+            }
+          }
+        ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fVisits"} ],
+              "lineStyle": {},
+              "style": {
+                "align": "middle",
+                "font": {"size": "12pt", "weight": "bold"},
+                "location": "inside",
+                "padding": 3,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fUsers"}} ],
+          "color": [
+            {
+              "field": {"$ref": "fVisits"},
+              "scale": {"local": false}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "fUsers"},
+                "% of users visited ",
+                {"$ref": "fVisits"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

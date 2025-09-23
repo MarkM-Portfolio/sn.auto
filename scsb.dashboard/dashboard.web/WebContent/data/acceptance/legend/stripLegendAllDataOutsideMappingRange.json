@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX"}, {"id": "fY"} ],
+      "rows": [ [ 320, 40 ], [ 320, 50 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fY"},
+              "mapping": [
+                {"at": 20, "color": "magenta"},
+                {"at": 30, "color": "cyan"}
+              ]
+            }
+          ]
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [ {"method": "continuous"} ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

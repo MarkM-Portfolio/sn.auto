@@ -1,0 +1,215 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY", "label": "Length"},
+        {"id": "fW", "label": "Price"}
+      ],
+      "rows": [
+        [ 1999, 339, 22.99 ],
+        [ 2003, 290, 1 ],
+        [ 1987, 395, 76.49 ],
+        [ 1978, 395, 2.49 ],
+        [ 1978, 56, 43.49 ],
+        [ 1979, 46, 2.49 ],
+        [ 1976, 46, 1.49 ],
+        [ 1985, 259, 36.95 ],
+        [ 2008, 223, 9.99 ],
+        [ 2007, 190, 2 ],
+        [ 2006, 265, 8.49 ],
+        [ 1998, 501, 19.95 ],
+        [ 2001, 501, 54.95 ],
+        [ 2005, 228, 9.99 ],
+        [ 2000, 351, 39.95 ],
+        [ 2007, 484, 27.49 ],
+        [ 1995, 233, 3.49 ],
+        [ 2000, 361, 36.95 ],
+        [ 2007, 386, 37.45 ]
+      ]
+    },
+    {
+      "id": "regression",
+      "type": "smooth.regression",
+      "input": [
+        {"field": {"$ref": "fX"}, "role": "x"},
+        {"field": {"$ref": "fY"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "rX"}, "role": "x"},
+        {"field": {"id": "rY"}, "role": "y"},
+        {"field": {"id": "rLabel"}, "role": "accuracy"}
+      ],
+      "source": {"$ref": "dDelimitedFileSource"}
+    },
+    {
+      "id": "regression1",
+      "type": "smooth.regression",
+      "input": [
+        {"field": {"$ref": "fX"}, "role": "x"},
+        {"field": {"$ref": "fY"}, "role": "y"},
+        {"field": {"$ref": "fW"}, "role": "weight"}
+      ],
+      "output": [
+        {"field": {"id": "rX1"}, "role": "x"},
+        {"field": {"id": "rY1"}, "role": "y"},
+        {"field": {"id": "fLabel"}, "role": "accuracy"}
+      ],
+      "source": {"$ref": "dDelimitedFileSource"}
+    },
+    {
+      "id": "kernel",
+      "type": "smooth.kernel",
+      "input": [
+        {"field": {"$ref": "fX"}, "role": "x"},
+        {"field": {"$ref": "fY"}, "role": "y"},
+        {"field": {"$ref": "fW"}, "role": "weight"}
+      ],
+      "output": [
+        {"field": {"id": "kX"}, "role": "x"},
+        {"field": {"id": "kY"}, "role": "y"},
+        {"field": {"id": "kLabel"}, "role": "accuracy"}
+      ],
+      "source": {"$ref": "dDelimitedFileSource"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "stroke": {"width": 0.25, "style": "Dot"}
+              },
+              "tickStyle": {
+                "effect": {"glow": {}},
+                "font": {"size": 11.1}
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "stroke": {"width": 0.25, "style": "Dot"}
+              },
+              "tickStyle": {
+                "effect": {"shadow": {"dx": 4, "dy": 4}},
+                "font": {"size": 11.1}
+              }
+            }
+          }
+        ],
+        "style": {
+          "fill": {"b": 255, "g": 255, "r": 255},
+          "width": 45.0,
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "fW"}}
+          ],
+          "style": {
+            "fill": {"b": 128, "g": 0, "r": 0},
+            "stroke": {"width": 0.0},
+            "effect": {"shadow": {"dx": 4, "dy": 4}},
+            "outline": {"a": 0.0},
+            "size": 25.0
+          }
+        },
+        {
+          "type": "line",
+          "label": [
+            {
+              "content": [
+                "Weighted Kernel (r2=",
+                {"$ref": "kLabel"},
+                ")"
+              ],
+              "style": {
+                "fill": {
+                  "a": 0.75,
+                  "b": 0,
+                  "g": 100,
+                  "r": 0
+                },
+                "angle": "fit",
+                "padding": 2,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "kernel"},
+          "position": [
+            {"field": {"$ref": "kY"}},
+            {"field": {"$ref": "kX"}}
+          ],
+          "style": {
+            "fill": {"a": 0.25, "b": 0, "g": 100, "r": 0},
+            "stroke": {"width": 10},
+            "effect": {"shadow": {"dx": 4, "dy": 4}}
+          }
+        },
+        {
+          "type": "line",
+          "label": [
+            {
+              "content": [
+                "Unweighted (r2=",
+                {"$ref": "rLabel"},
+                ")"
+              ],
+              "style": {
+                "fill": {"b": 250, "g": 50, "r": 50},
+                "angle": "fit",
+                "padding": 2,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "regression"},
+          "position": [
+            {"field": {"$ref": "rY"}},
+            {"field": {"$ref": "rX"}}
+          ],
+          "style": {
+            "fill": {"b": 250, "g": 50, "r": 50},
+            "stroke": {"width": 3},
+            "effect": {"shadow": {"dx": 4, "dy": 4}}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 200, "g": 200, "r": 200},
+        "padding": 18
+      }
+    }
+  ],
+  "legendPosition": "bottom",
+  "legends": [
+    {
+      "scale": {"local": false, "reverse": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {
+        "fill": {"b": 200, "g": 200, "r": 200}
+     
+      },
+
+      "title": [ "Profit" ],
+      "method": "stagger"
+    }
+  ],
+  "size": {"width": 500.0},
+  "version": "4.2"
+}

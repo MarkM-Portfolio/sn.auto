@@ -1,0 +1,6 @@
+<app-component name="XMLMigration" spec-version="4.0">
+  <level>0</level>
+  <description>Connections XML Migration Verification Tool</description>
+  <owner>Yu Guo</owner>
+</app-component>
+

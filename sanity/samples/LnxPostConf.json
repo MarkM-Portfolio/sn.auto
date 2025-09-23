@@ -1,0 +1,34 @@
+{
+	"tests":[
+		{
+			"name":"IHSPost",
+			"location":"Tests/IHSPTest.py",
+			"children":[],
+			"dependencies":[]
+		},
+		{
+			"name":"WASPost",
+			"location":"Tests/WASPTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"IHSPost.pathCon":"/opt/IBM/Connections",
+		"IHSPost.pathIHS":"/opt/IBM/HTTPServer",
+		"IHSPost.pathWAS":"/opt/IBM/WebSphere",
+		"IHSPost.server":"ictools4.swg.usma.ibm.com",
+		"IHSPost.srvName":"GroupHttpServer",
+		"IHSPost.pathKey":"/opt/IBM/HTTPServer/Keys/testserver-key.kdb",
+		"IHSPost.pathStash":"/opt/IBM/HTTPServer/Keys/testserver-key.sth",
+		"WASPost.pathCon":"/opt/IBM/Connections",
+		"WASPost.pathWAS":"/opt/IBM/WebSphere",
+		"WASPost.username":"wasadmin",
+		"WASPost.password":"jzngoyrh",
+		"WASPost.cell":"ictools4Cell01",
+		"WASPost.server":"ictools4.swg.usma.ibm.com",
+		"WASPost.srvName":"GroupHttpServer",
+		"WASPost.appSrvName":"AppSrv01",
+		"WASPost.pathProf":"/opt/IBM/WebSphere/AppServer/profiles"
+	}
+}

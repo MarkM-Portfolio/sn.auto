@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="1" name="Complete BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+  <groups>
+    <run>
+      <include name="regression" />
+    </run>
+  </groups>
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!--parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm023.mul.ie.ibm.com" />
+  <parameter name="server_port" value="5555" /-->
+  <!-- To run tests locally -->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+  
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="onprem" />
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="https://lc45linux.swg.usma.ibm.com/" />
+  <!--parameter name="browser_url" value="https://apps.collabservdaily.swg.usma.ibm.com/" /-->
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_21_Windows" />
+  
+  <!-- Connections properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties" />
+  <!-- Smart Cloud properties-->
+  <!--parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/sc_users.properties" /-->
+  
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+  	
+  <test name="Adding Pages" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.addingpages" />
+   	</packages>
+  </test>
+  <test name="Comments" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.comments" />
+   	</packages>
+  </test>
+  <test name="Editing Wiki" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.editwiki" />
+  	</packages>
+  </test>
+  <test name="Following" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.following" />
+  	</packages>
+  </test>
+  <test name="like" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.like" />
+  	</packages>
+  </test>
+  <test name="Members" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.members" />
+  	</packages>
+  </test>
+  <test name="Page Level Tags" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.pageleveltags" />
+  	</packages>
+  </test>
+  <test name="Trash" preserve-order="true" enabled="true">
+  	<packages>
+   		<package name="com.ibm.conn.auto.tests.wikis.regression.tests.trash" />
+  	</packages>
+  </test>
+  
+</suite>

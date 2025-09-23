@@ -1,0 +1,131 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {"id": "id", "unit": "categorical"},
+        {"id": "fEvent_Frequency"},
+        {"id": "fDate"}
+      ],
+      "rows": [
+        [ 1, 10, 10 ],
+        [ 2, 10, 10 ],
+        [ 3, 10, 10 ]
+      ]
+    },
+    {
+      "id": "dataForDodging",
+      "fields": [
+        {"id": "id2", "unit": "categorical"},
+        {"id": "x"},
+        {"id": "y"}
+      ],
+      "rows": [ [ 4, 9, 14 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 20, "fit": "exact"}
+              ]
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 20, "fit": "exact"}
+              ]
+            }
+          }
+        ],
+        "style": {
+          "fill": {"h": 0, "l": 1, "s": 0},
+          "outline": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "beige",
+                "outline": "navy",
+                "padding": 4
+              },
+              "color": {"field": {"$ref": "id"}},
+              "content": [ "測試標籤" ],
+              "lineMinSize": 0,
+              "lineStyle": {"fill": "black"},
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {
+                  "family": "SimSun,Arial",
+                  "weight": "bold"
+                },                "location": "outside",
+                "padding": 30,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fEvent_Frequency"}},
+            {"field": {"$ref": "fDate"}}
+          ],
+          "color": [ {"field": {"$ref": "id"}} ],
+          "style": {
+            "outline": "black",
+            "size": 20,
+            "symbol": "circle"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "beige",
+                "outline": "navy",
+                "padding": 4
+              },
+              "content": [ "測試標籤" ],
+              "lineMinSize": 0,
+              "lineStyle": {"fill": "black"},
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {
+                  "family": "SimSun,Arial",
+                  "weight": "bold"
+                },
+                "location": "outside",
+                "padding": 10,
+                "valign": "end"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "style": {
+            "fill": "red",
+            "outline": "black",
+            "size": 20,
+            "symbol": "circle"
+          }
+        }
+      ],
+      "labelCollisionMethod": "lots"
+    }
+  ],
+  "size": {"width": 600.0, "height": 400.0},
+  "version": "3.0",
+  "style": {"fill": "white", "padding": 10}
+}

@@ -1,0 +1,108 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "month",
+          "label": "month",
+          "categories": [  ]
+        },
+        {
+          "id": "numVisits",
+          "label": "# of Visits per Month"
+        },
+        {"id": "numUsers", "label": "# of Users"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [
+        {
+          "input": {"$ref": "month"},
+          "output": {"id": "fMonth"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "fVisits"},
+          "input": {"$ref": "numVisits"}
+        },
+        {
+          "field": {
+            "id": "percentUsers",
+            "format": {"suffix": "%"}
+          },
+          "input": {"$ref": "numUsers"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {"id": "fUsers"},
+          "input": {"$ref": "numUsers"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.2, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {"font": {"size": "12pt"}}
+            }
+          },
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {
+              "tickStyle": {"font": {"size": "16pt"}}
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "percentified"},
+          "position": [
+            {"field": {"$ref": "percentUsers"}},
+            {"field": {"$ref": "fMonth"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fVisits"},
+              "scale": {"local": false},
+              "mapping": [
+                {"at": 1, "color": "red"},
+                {"at": 20, "color": "blue"}
+              ]
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "fVisits"} ]}
+          ],
+          "style": {
+            "stroke": {"width": 1.5},
+            "width": "80%",
+            "outline": {
+              "a": 1,
+              "dSaturation": 0.1,
+              "dValue": -0.25
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

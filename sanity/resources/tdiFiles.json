@@ -1,0 +1,5 @@
+{
+	"SERVER":"xsl;jars/3rdparty;jars/3rdparty/IBM;jars/3rdparty/others;jars/connectors;jars/parsers;ibmdisrv;serverapi/cryptoutils.sh;serverapi/registry.enc;serverapi/registry.txt;idisrv.sth;IDILoader.jar;testserver.jks;testserver.der;etc/global.properties;etc/log4j.properties;bin/tdisrvctl;bin/tdimiggbl;jars/common/diserverapi.jar;jars/common/miserver.jar;jars/common/mmconfig.jar;jars/common/miconfig.jar;jars/common/diserverapirmi.jar;jars/common/tdiresource.jar;jars/common/miggbl.jar;tools/CSMigration/migratetoderby.jar;jars/plugins/mqeconfig.jar;maintenance/UpdateInstaller.jar",
+	"CE":"ibmditk;ce/eclipsece/miadmin;ce/eclipsece/miadmin.ini",
+	"AMC":"bin/amc/startNetworkServer.sh;bin/amc/startAM.sh;bin/amc/install.sh;amc/tdiamc.war;bin/amc/ActionManager/jars/action_manager.jar;bin/amc/ActionManager/jars/tdiresource.jar;bin/amc/ActionManager/jars/db2jcc.jar;bin/amc/ActionManager/jars/derby.jar;bin/amc/ActionManager/jars/derbyclient.jar;bin/amc/ActionManager/jars/derbynet.jar;bin/amc/ActionManager/am_config.properties"
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright IBM Corp. 2008, 2012  All Rights Reserved.              -->
+<!-- 5724-E76                                                          -->
+<config id="searchConfig" version="14" buildlevel="${config.BuildLevelStr}"
+	xmlns="http://www.ibm.com/LotusConnectionsSearch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/LotusConnectionsSearch search-config.xsd ">
+
+	<indexingSchedule/>	
+
+ 	<indexSettings location="${SEARCH_INDEX_DIR}" maxIndexerThreads="1"/>
+
+	<crawlerSettings persistenceLocation="${CRAWLER_PAGE_PERSISTENCE_DIR}" pageSize="500" maxCrawlerThreads="3"/>
+
+	<languageSupport defaultLocale="en">
+		<dictionary locale="en" path="${SEARCH_DICTIONARY_DIR}" />
+	</languageSupport>
+
+	<services>
+		<connService name="activities" contentSource="activitiesContentSource" />		
+		<connService name="calendar" contentSource="calendarContentSource" />
+	</services>
+	
+	<contentSources>
+		<seedlist name="activitiesContentSource" pageSize="100"/>
+		<seedlist name="calendarContentSource" seedlistLocation="calendar/seedlist/myserver"/>
+	</contentSources>
+	
+	<attachmentHandling enabled="true" maxAttachmentSize="52428800" downloadFromSharedFS="true">
+		<mimeSupport>
+			<mimeType name="application/msword" processor="" />
+			<mimeType name="application/vnd.ms-excel" processor="" />
+			<mimeType name="application/vnd.ms-powerpoint" processor="" />
+			<mimeType name="application/vnd.visio" processor="" />
+			<mimeType name="application/vnd.ms-project" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.presentationml.presentation" processor="" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document" processor=""/> 
+			<mimeType name="application/pdf" processor="" />
+			<mimeType name="application/postscript" processor="" />
+			<mimeType name="application/xhtml+xml" processor="" />
+			<mimeType name="application/xml" processor="" />
+			<mimeType name="text/html" processor="" />
+			<mimeType name="text/htm" processor="" />
+			<mimeType name="text/plain" processor="" />
+			<mimeType name="text/richtext" processor="" />
+			<mimeType name="text/xml" processor="" />
+			<mimeType name="application/rtf" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.text" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.spreadsheet" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.presentation" processor="" />
+			<mimeType name="application/vnd.oasis.opendocument.text-master" processor="" />
+			<mimeType name="application/vnd.lotus-1-2-3" processor="" />
+			<mimeType name="application/vnd.lotus-wordpro" processor="" />
+			<mimeType name="application/vnd.lotus-freelance" processor="" />
+		</mimeSupport>
+		<attachmentCache cacheExpiryTime="30"	cacheFileSize="200000" maxCacheEntries="100000"/>
+		<attachmentConversion maxConcurrentDownloads="3" maxTempDirSize="104857600" downloadThrottle="0"/>
+	</attachmentHandling>
+	
+	<backupSettings type="overwrite" location="${SEARCH_INDEX_BACKUP_DIR}" />
+
+	<verboseLogging enabled="true">
+		<seedlistRequests interval="1"/>
+		<initial interval="250"/>
+		<incrementalCrawling interval="100"/>
+		<incrementalBuilding interval="100"/>
+	</verboseLogging> 
+
+</config>

@@ -1,0 +1,68 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY", "unit": "date"},
+        {"id": "fZ", "unit": "dollar"}
+      ],
+      "rows": [ [ 0, 0, 10 ], [ 7, 7, 60 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"outRange": {"min": 0, "max": 1}},
+                {"outRange": {"min": 0, "max": 1}}
+              ]
+            },
+            "axis": [
+              {
+                "gridStyle": {"fill": "blue"},
+                "minorStyle": {"size": 6}
+              },
+              {"alignWithOtherAxis": true}
+            ]
+          },
+          {"axis": {"gridStyle": {"fill": "#ccc"}}}
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}, "span": 0},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": 40
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fZ"}, "span": 1},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": "blue",
+            "outline": "green",
+            "size": 20
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,43 @@
+{
+  "data": [ {"id": "a"}],
+  "augment": [
+    {
+      "source": "/GeoJSON/simple.json",
+      "target": {"$ref": "a"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": -3.2, "max": 1.2} ]
+            },
+            "axis": {}
+          },
+          {
+            "scale": {"spans": [ {"min": 98, "max": 106} ]},
+            "axis": {}
+          }
+        ],
+        "style": {
+          "fill": "white",
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "schema",
+          "data": {"$ref": "a"},
+          "style": {
+            "fill": {"a": 0.5, "b": 255},
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.2"
+}

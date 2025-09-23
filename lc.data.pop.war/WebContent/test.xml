@@ -1,0 +1,64 @@
+<root>
+		<action url="https://lcdatapop.swg.usma.ibm.com" uname="fadams" password="passw0rd">
+			<activity title="bbq" content="lets have a bbq" tagsString="bbq" isComplete="false" dueDate="07/10/96 4:5 PM, PDT" isCommunityActivity="false" hasMembers="true">
+				<member id="lsuarez@renovations.com" type="member"/>
+				<member id="tamado@renovations.com" type="member"/>
+				<section title="food" position="1">
+					<activityEntry title="what should we bring" content="I'm thinking about bringing potato salad." tagsString="food" position="1" isTemplate="false" isPrivate="false">
+						<action url="https://lcdatapop.swg.usma.ibm.com" uname="lsuarez" password="passw0rd">
+							<reply title="bringing" content="I can bring chips!" isPrivate="false" position="1">
+							</reply>
+						</action>
+						<todo title="Bringing food" content="bring potato salad" tagsString="food" isComplete="false" isPrivate="false" position="1">
+						</todo>
+						<todo title="Bringing food" content="bring hotdogs" tagsString="food" isComplete="false" isPrivate="false" position="1">
+						</todo>
+						<todo title="Bringing food" content="bring hamburgers" tagsString="food" isComplete="false" isPrivate="false" position="1">
+							<action url="https://lcdatapop.swg.usma.ibm.com" uname="tamado" password="passw0rd">
+								<reply title="bringing" content="Should I also get veggie burgers?" isPrivate="false" position="1">
+									<action url="https://lcdatapop.swg.usma.ibm.com" uname="fadams" password="passw0rd">
+										<reply title="bringing" content="yeah, that would be great!" isPrivate="false" position="1">
+										</reply>
+									</action>
+								</reply>
+							</action>
+						</todo>
+					</activityEntry>
+				</section>
+				<section title="Games" position="2">
+					<activityEntry title="What should we do?" content="I am going to bring a frisbee" tagsString="games" position="1" isTemplate="false" isPrivate="false">
+					</activityEntry>
+				</section>
+			</activity>
+
+			<blog title="franky bloggy" handle="fablog" tagsString="blogging frank" summary="It's a blog about nothing!" numDaysCommentsAllowed="5" allowedComments="true" commentModerated="false">
+				<blogentry title="second entry" content="nothing" tagsString="blog" allowedComments="true" numDaysCommentsAllowed="5">
+					<action url="https://lcdatapop.swg.usma.ibm.com" uname="tamado" password="passw0rd">
+						<blogcomment content="I don't get it"/>
+					</action>
+					<action url="https://lcdatapop.swg.usma.ibm.com" uname="fadams" password="passw0rd">
+						<blogcomment content="it's a  blog!  About nothing!"/>
+					</action>
+				</blogentry>
+			</blog>
+			
+			<forum title="Cake forum" content="For people who like cake">
+				<forumtopic title="Which is better, chocolate or vanilla?" content="Trying to solve the age old debate" isPinned="true" isLocked="false" isQuestion="true" isAnswer="false">
+					<forumreply title="I think chocolate is better" content="I think chocolate is better because it has more nutrients" isAnswer="false"/>
+					<action url="https://lcdatapop.swg.usma.ibm.com" uname="tamado" password="passw0rd">
+						<forumreply title="I think vanilla is better" content="I think vanilla is better because it has more class" isAnswer="false"/>
+					</action>
+				</forumtopic>
+			</forum>
+			
+			<bookmark title="Google" content="a link to google's homepage" tagsString="link" linkHref="http://www.google.com"/>
+
+			<wiki title="wiki test 8" summary="test" tagsString="test" hasMembers="true" isPublic="true">
+				<member id="lsuarez@renovations.com" type="editor"/>
+				<member id="tamado@renovations.com" type="editor"/>
+
+				<wikipage title="test page 8" content="page 1" tagsString="test"/>
+
+			</wiki>
+		</action>
+</root>

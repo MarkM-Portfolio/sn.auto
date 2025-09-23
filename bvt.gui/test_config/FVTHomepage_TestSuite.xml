@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="2" name="Complete BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+  
+  <!--
+  <groups>
+    <run>
+      <include name="fvtonprem" />
+      <include name="fvtcloud" />
+      <include name="localhost" />
+    </run>
+  </groups>
+  -->
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+  <!-- To run tests locally -->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+  
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="onprem" />
+  
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="onprem" />
+  
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <!--<parameter name="browser_url" value="https://lc45linux1.swg.usma.ibm.com/" />
+  <parameter name="browser_url" value="https://dubxpcvm075.mul.ie.ibm.com:9444/" />
+  <parameter name="browser_url" value="https://lcauto18.swg.usma.ibm.com/" />
+  <parameter name="browser_url" value="https://apps.collabservdaily.swg.usma.ibm.com/" />
+  <parameter name="browser_url" value="https://apps.acdev1.swg.usma.ibm.com/" />
+  <parameter name="browser_url" value="https://apps.acdev.swg.usma.ibm.com/" />
+  <parameter name="browser_url" value="https://apps.collabservsvt1.swg.usma.ibm.com/" /> -->
+  
+  <parameter name="browser_url" value="https://lc45linux1.swg.usma.ibm.com/" />
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_31_Windows" />
+  
+   <!-- Connections properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties" />
+  <!-- Smart Cloud properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/amy_jones_users.properties" />
+  
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+  
+ <test name="I'm Following" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.activities.FVT_ImFollowing_PublicCommunity_Activities" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.activities.FVT_ImFollowing_ModeratedCommunity_Activities" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.activities.FVT_ImFollowing_PrivateCommunity_Activities" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.activities.FVT_ImFollowing_Standalone_Activities" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_ModeratedCommunity_Blogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_PublicCommunity_Blogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_PrivateCommunity_Blogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.forums.FVT_ImFollowing_PublicCommunity_Forums" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.forums.FVT_ImFollowing_ModeratedCommunity_Forums" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.forums.FVT_ImFollowing_PrivateCommunity_Forums" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_PublicCommunity_IdeationBlogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_ModeratedCommunity_IdeationBlogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.blogs.FVT_ImFollowing_PrivateCommunity_IdeationBlogs"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.communities.FVT_ImFollowing_PublicCommunities"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.communities.FVT_ImFollowing_ModCommunities"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.im_Following.communities.FVT_ImFollowing_PrivateCommunities"/>
+  	</classes>
+  </test>
+  
+  <test name="Discover" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+		  <class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.activities.FVT_Discover_Standalone_Activities" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.activities.FVT_Discover_PublicCommunity_Activities" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.activities.FVT_Discover_ModeratedCommunity_Activities" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.activities.FVT_Discover_PrivateCommunity_Activities" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_PublicCommunityBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_ModerateCommunityBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_PrivateCommunityBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.forums.FVT_Discover_PublicCommunity_Forums" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.forums.FVT_Discover_ModeratedCommunity_Forums" /> 
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.forums.FVT_Discover_PrivateCommunity_Forums" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_ModerateComIdeaBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_PrivateComIdeaBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.blogs.FVT_Discover_PublicComIdeaBlog" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.communities.FVT_Discovery_PrivateCommunity" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.communities.FVT_Discovery_ModCommunity" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.communities.FVT_Discovery_PublicCommunity" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.wikis.FVT_Discover_Wikis_PublicCommunity" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.wikis.FVT_Discover_Wikis_ModeratedCommunity" />
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.discover.wikis.FVT_Discover_Wikis_PrivateCommunity" />
+ 	</classes>
+  </test>
+  
+  <test name="Homepage" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+    	<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.homepage.urlpreview.FVT_Discover_URL_Preview"/>
+    	<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.homepage.urlpreview.FVT_Discover_URLPreview_Communities"/>
+    </classes>
+  </test>
+  
+  <test name="mentions" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_PublicActivity"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_Activity_PrivateCommunity_NonMember"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_Activity_ModCommunity"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_Activity_PublicCommunity"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_PublicActivity"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_PrivateActivity_Member"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.mentions.activities.FVT_Mentions_PrivateActivity_NonMember"/>
+    </classes>
+  </test>
+  
+  <test name="UI" parallel="methods" preserve-order="true" enabled="true">
+    <classes>	
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.ui.assearch.FVT_AS_Search_Actions"/>
+		<class name="com.ibm.conn.auto.tests.homepage.fvt.testcases.ui.assearch.FVT_AS_Search_onCurrentView"/>
+	 </classes>
+  </test>
+  	
+  <test name="Status Updates" parallel="methods" preserve-order="true" enabled="false">
+    <classes>	
+	 </classes>
+  </test>
+  				
+</suite>

@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="12" name="Complete BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+ <!--  <groups>
+    <run>
+      <include name="level2" />
+      <include name="PdfExport" />
+    </run>
+  </groups> -->
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!--parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm02.mul.ie.ibm.com" />
+  <parameter name="server_port" value="5555" /-->
+  <!-- To run tests locally -->
+
+  <parameter name="auth_type" value="form" />
+  <parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_is_legacy_grid" value="false" />
+  <parameter name="server_host" value="testautolb.cnx.cwp.pnp-hcl.com" />
+  <parameter name="server_port" value="4444" />
+
+<!--
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="lcrft04.cnx.cwp.pnp-hcl.com" />
+  <parameter name="server_port" value="5555" />
+-->  
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="onprem" />
+
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="onprem" />
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="https://bvtdb2.cnx.cwp.pnp-hcl.com" />
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_0_Linux" />
+  
+   <!-- Connections properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties" />
+  
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="timeout_implicit_wait" value="60000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  <parameter name="max_retries" value="1" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+  <parameter name="record_performance" value="true" />
+  <parameter name="filenet_enabled" value="false" />
+  <parameter name="push_videos" value="true" />
+  <parameter name="file_server" value="testautolb.cnx.cwp.pnp-hcl.com" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners> 
+  
+  <!-- TESTS -->
+  
+  <test name="Activities" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.activities" />
+    </packages>
+  </test>
+  
+  
+	<test name="Cnx8UI Activities" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+				<include name="PdfExport" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.activities" />
+		</packages>
+	</test>
+	
+  
+  <test name="Blogs" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.blogs" />
+    </packages>
+  </test>
+  
+  <test name="CNX8UI Blogs" preserve-order="true" enabled="true">
+  <parameter name="use_new_ui" value="true" />
+	<groups>
+		<run>
+			<include name="cnx8ui-level2" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.blogs" />
+    </packages>
+  </test>
+
+  <test name="Calendar" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.calendar" />
+    </packages>
+  </test>
+  
+  <test name="CCH" preserve-order="true" enabled="false">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_CCH" />
+    </classes>
+  </test>
+
+  <test name="Communities" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+    </classes>
+  </test>
+  
+  <test name="CNX8ui Communities" parallel="tests" thread-count="2" preserve-order="true" enabled="true">
+  			<parameter name="use_new_ui" value="true" />
+
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+		</classes>
+	</test>
+	
+   <test name="Dogear" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.dogear" />
+    </packages>
+  </test>
+  
+  <test name="CNX8ui Dogear" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<packages>
+      <package name="com.ibm.conn.auto.tests.dogear" />
+		</packages>
+	</test>
+	
+  <test name="Embedded Experience" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE" />
+    </classes>
+  </test>
+  
+  <test name="Files" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.files" />
+    </packages>
+  </test>
+
+	<test name="CNX8ui Files" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.files" />
+		</packages>
+	</test>
+  
+  <test name="Forums" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.forums" />
+    </packages>
+  </test>
+  
+  <test name="Gallery" parallel="methods" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery" />
+    </classes>   
+  </test>
+
+   <test name="Homepage" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+    </classes>
+  </test>
+
+  <test name="Highlights" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.icec.highlights" />
+    </packages>
+  </test>
+
+  <test name="iWidget Container" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.cre" />
+    </packages>
+  </test>
+
+  <test name="Library" preserve-order="true" enabled="false">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Library" />
+    </classes>
+  </test>
+
+  <test name="Mentions" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.mentions" />
+    </packages>
+  </test>  
+
+  <test name="Metrics" preserve-order="true" enabled="false">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.metrics" />
+    </packages>
+  </test>
+  
+  <test name="Moderation" preserve-order="true" enabled="false">
+	<parameter name="browser_url" value="http://linux276.rtp.raleigh.ibm.com/" />
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Moderation" />
+    </classes>
+  </test>
+
+  <test name="News" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_AS" />
+    </classes>
+  </test>
+
+	<test name="Profiles" preserve-order="true" enabled="true">
+		<groups>
+			<run>
+				<include name="level2" />
+				<include name="PdfExport" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.profiles" />
+		</packages>
+	</test>
+
+	<test name="CNX8ui Profiles" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.profiles" />
+		</packages>
+	</test>
+	
+  <test name="Search" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.globalsearch" />
+    </packages>
+  </test>
+  
+  <test name="Sharebox" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.sharebox" />
+    </packages>
+  </test>
+
+  <test name="Touchpoint" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.touchpoint" />
+    </packages>
+  </test>
+  
+  <test name="Widgets" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Widgets" />
+    </classes>
+  </test>
+  
+  <test name="Wikis" preserve-order="true" enabled="true">
+	<groups>
+		<run>
+			<include name="level2" />
+			<include name="PdfExport" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.wikis" />
+    </packages>
+  </test>
+  
+  <test name="CNX8UI Wikis" thread-count="3" parallel="methods" preserve-order="true" enabled="true">
+  <parameter name="use_new_ui" value="true" />
+	<groups>
+		<run>
+			<include name="cnx8ui-level2" />
+		</run>
+	</groups>
+    <packages>
+      <package name="com.ibm.conn.auto.tests.wikis" />
+    </packages>
+  </test>
+  
+  <test name="CNX8UI Homepage" thread-count="1" parallel="methods"
+	preserve-order="true" enabled="true">
+	<parameter name="use_new_ui" value="true" />
+	<parameter name="is_kudosboard_enabled" value="false" />
+	<groups>
+		<run>
+			<include name="cnx8ui-level2" />
+		</run>
+	</groups>
+	<classes>
+		<class
+			name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage" />
+		<class
+			name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_Discover" />
+		<class
+			name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_LatestUpdate" />
+		<class
+			name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+	</classes>
+</test>
+
+	<test name="CNX8UI AppReg" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_AdminBanner" />
+		</classes>
+	</test>
+
+	<test name="CNX8UI Forums" thread-count="1" parallel="methods"
+		preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.forums.BVT_Level_2_Forums" />
+			<class
+				name="com.ibm.conn.auto.tests.share.BVT_Cnx8_UI_ShareInConnections" />
+			<class
+				name="com.ibm.conn.auto.tests.share.BVT_Cnx8_UI_ShareInConnections_MemberPicker" />
+		</classes>
+	</test>
+
+	<test name="CNX8UI GlobalSearch" thread-count="1" parallel="methods" preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.communities.BVT_Cnx8UI_Communities_Search" />
+			<class name="com.ibm.conn.auto.tests.profiles.BVT_Cnx8UI_Profiles_Search" />
+			<class name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_Search" />
+		</classes>
+	</test>
+	
+	<test name="CNX8UI Communities" thread-count="3" parallel="methods" preserve-order="true" enabled="true">
+  	  <parameter name="use_new_ui" value="true" />
+		<parameter name="is_kudosboard_enabled" value="false" />
+		<groups>
+			<run>
+				<include name="cnx8ui-level2" />
+			</run>
+		</groups>
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.BVT_Cnx8UI_Communities" />
+      </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [ {"id": "fX"} ],
+      "rows": [ [ 2000 ], [ 2010 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": 200, "height": 100.0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 2000.0, "max": 2010.0} ]
+            },
+            "axis": [ {"preferredSize": {"max": 45}} ]
+          },
+          {
+            "scale": {
+              "spans": [ {"min": 2000.0, "max": 2010.0} ]
+            },
+            "axis": [ {"method": "horizontal"} ]
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [ {"field": {"$ref": "fX"}} ],
+          "style": {"size": 25}
+        }
+      ]
+    }
+  ],
+  "legends": [ {"location": {"width": 68, "height": 130}} ],
+  "version": "4.2",
+  "style": {"fill": "white", "padding": 5}
+}

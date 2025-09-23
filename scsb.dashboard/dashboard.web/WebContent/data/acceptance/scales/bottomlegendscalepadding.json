@@ -1,0 +1,128 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "time",
+          "categories": [
+            "time 1",
+            "time 2",
+            "time 3",
+            "time 4",
+            "time 5"
+          ]
+        },
+        {
+          "id": "legend",
+          "categories": [ "Legend 1", "Legend 2" ]
+        },
+        {"id": "value"}
+      ],
+      "rows": [
+        [ 0, 0, 25 ],
+        [ 0, 1, 45 ],
+        [ 0, null, 25 ],
+        [ 1, 0, 25 ],
+        [ 1, 1, 40 ],
+        [ 1, null, 35 ],
+        [ 2, 0, 10 ],
+        [ 2, 1, 15 ],
+        [ 2, null, 40 ],
+        [ 3, 0, 10 ],
+        [ 3, 1, 20 ],
+        [ 3, null, 35 ],
+        [ 4, 0, 0 ],
+        [ 4, 1, 15 ],
+        [ 4, null, 30 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "lineStyle": {"fill": "gray"},
+              "markStyle": {"fill": "gray"},
+              "tickStyle": {"fill": "gray"}
+            }
+          },
+          {
+	  "scale" : { "padding": "10%" },
+            "axis": {
+              "lineStyle": {"fill": "gray"},
+              "markStyle": {"fill": "gray"},
+              "tickStyle": {"fill": "gray"}
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "value"}},
+            {"field": {"$ref": "time"}}
+          ],
+          "color": [
+            {
+              "id": "barColor",
+              "field": {"$ref": "legend"},
+              "palette": [
+                "#4488CC",
+                "#AAAAFF",
+                "#88AA88",
+                "#CCCC88",
+                "#FFAA66",
+                "#FF8888",
+                "#CC88AA"
+              ]
+            }
+          ],
+          "style": {"width": "70%", "outline": "white"}
+        }
+      ],
+      "style": {
+        "fill": "yellow",
+        "stroke": {"width": 20},
+        "outline": {"a": 0.5, "b": 255, "g": 0, "r": 0},
+        "padding": 15
+      }
+    }
+  ],
+  "legendPosition": "bottom",
+  "legends": [
+    {
+      "content": [
+        {"text": [ "Clusters" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "barColor"}}
+          ],
+          "swatchStyle": {"padding": 5}
+        }
+      ],
+      "style": {
+        "fill": {"a": 0.5, "b": 0, "g": 0, "r": 122},
+        "stroke": {"width": 4},
+        "align": "end",
+        "outline": {"a": 0.5, "b": 0, "g": 0, "r": 255},
+        "padding": 5,
+        "valign": "end"
+      }
+    }
+  ],
+  "size": {"width": 500, "height": 300},
+  "version": "1.2",
+  "style": {
+    "fill": "white",
+    "stroke": {"width": 10},
+    "outline": {"a": 0.5, "b": 0, "g": 255, "r": 0},
+    "padding": 30
+  }
+}

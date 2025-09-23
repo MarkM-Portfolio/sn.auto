@@ -1,0 +1,53 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "x"}, {"id": "y"}, {"id": "id"} ],
+      "rows": [
+        [ 10, 10, 0 ],
+        [ 10, 40, 0 ],
+        [ 20, 60, 0 ],
+        [ 40, 60, 0 ],
+        [ 40, 10, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "#eee"}}},
+          {"axis": {"gridStyle": {"fill": "#eee"}}}
+        ],
+        "style": {
+          "image": {
+            "method": "icon",
+            "source": {"$ref": "img"}
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [ {"field": {"$ref": "id"}} ]
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "legends": [ {} ],
+  "resource": [
+    {
+      "id": "img",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/SteveG.jpg" ]
+    }
+  ],
+  "size": {"width": 750},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

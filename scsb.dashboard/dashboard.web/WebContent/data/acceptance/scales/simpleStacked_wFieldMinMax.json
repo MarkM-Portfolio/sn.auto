@@ -1,0 +1,78 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "years",
+          "label": "years",
+          "categories": [
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005"
+          ]
+        },
+        {
+          "id": "Qtrs",
+          "categories": [ "Q1", "Q2", "Q3", "Q4" ]
+        },
+        {
+          "id": "values",
+          "min": -20,
+          "max": 20
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 1, 0, -1 ],
+        [ 2, 0, 1 ],
+        [ 3, 0, 2 ],
+        [ 0, 1, 0 ],
+        [ 1, 1, -3 ],
+        [ 2, 1, 1 ],
+        [ 3, 1, 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "local": false,
+              "spans": [ {"fit": "exact"} ]
+            },
+            "axis": {
+              "gridStyle": {},
+              "title": [ {"$ref": "values"} ]
+            }
+          },
+          {
+            "scale": {"local": false},
+            "axis": {"title": [ "Stacked, \"local\":false" ]}
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "transparent", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "years"}}
+          ],
+          "color": [ {"field": {"$ref": "Qtrs"}} ],
+          "style": {"fill": "blue", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white", "padding": 10}
+    }
+  ],
+  "legends": [ {} ],
+  "style": {"fill": "white", "padding": 10}
+}

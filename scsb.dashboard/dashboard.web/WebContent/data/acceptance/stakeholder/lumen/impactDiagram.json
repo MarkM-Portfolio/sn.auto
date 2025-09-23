@@ -1,0 +1,749 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "lag"},
+        {"id": "size"},
+        {"id": "type", "categories": [ "M", "C", "TCM" ]},
+        {
+          "id": "stroke-style",
+          "categories": [
+            "Negative Impact",
+            "Positive Impact"
+          ]
+        }
+      ],
+      "rows": [
+        [ 1, 0, 0, 1, 0, 1 ],
+        [ 2, 0, 0, 1, 0, 0 ],
+        [ 0, 3, 0, 1, 1, 0 ],
+        [ 0, 4, 0, 1, 0, 0 ],
+        [ 0, 5, 0, 1, 1, 1 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {
+          "id": "name",
+          "categories": [
+            "Profit",
+            "Revenue",
+            "Expenses",
+            "Hiring Cycle",
+            "Research Funding",
+            "Bonuses"
+          ]
+        },
+        {
+          "id": "dimension",
+          "categories": [
+            "N/A",
+            "N/A",
+            "N/A",
+            "N/A",
+            "N/A",
+            "N/A"
+          ]
+        },
+        {
+          "id": "status",
+          "categories": [ "excellent", "average", "poor" ]
+        },
+        {
+          "id": "trending",
+          "categories": [ "better", "nochange", "worse" ]
+        },
+        {
+          "id": "expOrColParent",
+          "categories": [
+            "none",
+            "expandParent",
+            "collapseParent"
+          ]
+        },
+        {
+          "id": "expOrColChild",
+          "categories": [
+            "none",
+            "expandChild",
+            "collapseChild"
+          ]
+        },
+        {"id": "inFocus", "categories": [ "No", "Yes" ]}
+      ],
+      "rows": [
+        [ 0, 0, 0, 0, 0, 0, 0, 1 ],
+        [ 1, 1, 1, 1, 2, 0, 0, 0 ],
+        [ 2, 2, 2, 2, 2, 0, 0, 0 ],
+        [ 3, 3, 3, 0, 2, 0, 0, 0 ],
+        [ 4, 4, 4, 0, 0, 0, 0, 0 ],
+        [ 5, 5, 5, 0, 2, 0, 0, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": "100%",
+        "height": "95%",
+        "left": "0%",
+        "top": "5%"
+      },
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "black",
+                "align": "middle",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "outside",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "orientation": "left-to-right",
+            "to": {"$ref": "to"},
+            "method": "dag"
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "status"},
+              "scale": {"local": false},
+              "modifies": {"part": "statusSymbol"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "trending"},
+              "scale": {"local": false},
+              "modifies": {"part": "trendingSymbol"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {"b": 90, "g": 90, "r": 90},
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 175,
+                          "g": 175,
+                          "r": 175
+                        },
+                        "offset": 0.65
+                      },
+                      {
+                        "color": {
+                          "b": 195,
+                          "g": 195,
+                          "r": 195
+                        },
+                        "offset": 0.75
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "inFocus"},
+              "scale": {"local": false},
+              "modifies": {"part": "main"},
+              "palette": [
+                {
+                  "fill": "transparent",
+                  "outline": "transparent"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 248,
+                          "g": 248,
+                          "r": 248
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 248,
+                          "g": 248,
+                          "r": 248
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 230,
+                          "g": 230,
+                          "r": 230
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 230,
+                          "g": 230,
+                          "r": 230
+                        },
+                        "offset": 0.9
+                      },
+                      {
+                        "color": {
+                          "b": 190,
+                          "g": 190,
+                          "r": 190
+                        },
+                        "offset": 1.0
+                      }
+                    ]
+                  },
+                  "stroke": {"width": 0.5},
+                  "outline": {"b": 176, "g": 176, "r": 176}
+                }
+              ]
+            }
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"offset": 0, "symbol": "circle"},
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"offset": 2, "symbol": "square"}
+              ],
+              "modifies": {"part": "statusSymbol"}
+            },
+            {
+              "field": {"$ref": "expOrColParent"},
+              "mapping": [
+                {
+                  "offset": 0,
+                  "symbol": {
+                    "shape": [ {"x": 0, "y": 0, "r": 0} ]
+                  }
+                },
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {"x": 0.5, "y": 0.5, "r": 0.4}
+                    ]
+                  }
+                },
+                {
+                  "offset": 2,
+                  "symbol": {
+                    "shape": [
+                      {"x": 0.5, "y": 0.5, "r": 0.4}
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "expOrColParentCircle"}
+            },
+            {
+              "field": {"$ref": "expOrColChild"},
+              "mapping": [
+                {
+                  "offset": 0,
+                  "symbol": {
+                    "shape": [ {"x": 0, "y": 0, "r": 0} ]
+                  }
+                },
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {"x": 0.5, "y": 0.5, "r": 0.4}
+                    ]
+                  }
+                },
+                {
+                  "offset": 2,
+                  "symbol": {
+                    "shape": [
+                      {"x": 0.5, "y": 0.5, "r": 0.4}
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "expOrColChildCircle"}
+            },
+            {
+              "field": {"$ref": "expOrColParent"},
+              "mapping": [
+                {
+                  "offset": 0,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.15, .5 L.85, .5M0.5,0.15L0.5,.85"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 2,
+                  "symbol": {
+                    "shape": [
+                      {"path": "M0.15, .5 L.85, .5"}
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "expParentSymbol"}
+            },
+            {
+              "field": {"$ref": "expOrColChild"},
+              "mapping": [
+                {
+                  "offset": 0,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "x": 0,
+                        "y": 0,
+                        "width": 0,
+                        "height": 0
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.15, .5 L.8, .5M0.5,0.15L0.5,.85"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 2,
+                  "symbol": {
+                    "shape": [
+                      {"path": "M0.15, .5 L.85, .5"}
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "expChildSymbol"}
+            },
+            {
+              "field": {"$ref": "trending"},
+              "mapping": [
+                {
+                  "offset": 0,
+                  "symbol": {
+                    "shape": [
+                      {"path": "M0.5, 0 L1, 1 L0, 1 Z"}
+                    ]
+                  }
+                },
+                {
+                  "offset": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "x": 0.1,
+                        "y": 0.35,
+                        "width": 1,
+                        "height": 0.3
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 2,
+                  "symbol": {
+                    "shape": [
+                      {"path": "M0, 0 L1, 0 L0.5, 1 Z"}
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "trendingSymbol"}
+            }
+          ],
+          "tooltip": [ {"content": [ {"$ref": "name"} ]} ],
+          "style": {
+            "width": 58,
+            "height": 30,
+            "symbol": {
+              "shape": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1,
+                  "height": 1,
+                  "part": "main",
+                  "style": {"stroke": {"width": 1}}
+                },
+                {
+                  "x": 0.37,
+                  "y": 0.5,
+                  "part": "statusSymbol",
+                  "r": 0.21
+                },
+                {
+                  "x": 0.61,
+                  "y": 0.505,
+                  "part": "trendingSymbol",
+                  "r": 0.18
+                },
+                {
+                  "x": 0.85,
+                  "y": 0.5,
+                  "part": "expOrColChildCircle",
+                  "r": 0.2,
+                  "style": {
+                    "fill": "white",
+                    "outline": "black"
+                  }
+                },
+                {
+                  "x": 0.12,
+                  "y": 0.5,
+                  "part": "expOrColParentCircle",
+                  "r": 0.2,
+                  "style": {
+                    "fill": "white",
+                    "outline": "black"
+                  }
+                },
+                {
+                  "x": 0.87,
+                  "y": 0.49,
+                  "part": "expChildSymbol",
+                  "r": 0.1,
+                  "style": {
+                    "fill": "transparent",
+                    "stroke": {"width": 1.2},
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 0.12,
+                  "y": 0.5,
+                  "part": "expParentSymbol",
+                  "r": 0.1,
+                  "style": {
+                    "fill": "transparent",
+                    "stroke": {"width": 1.2},
+                    "outline": "transparent"
+                  }
+                }
+              ]
+            }
+          },
+          "clip": "overlap"
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "mapping": [
+                {
+                  "color": {
+                    "a": 0.6,
+                    "b": 130,
+                    "g": 130,
+                    "r": 130
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.6,
+                    "b": 130,
+                    "g": 130,
+                    "r": 130
+                  },
+                  "offset": 1
+                },
+                {
+                  "color": {
+                    "a": 0.6,
+                    "b": 130,
+                    "g": 130,
+                    "r": 130
+                  },
+                  "offset": 2
+                }
+              ]
+            }
+          ],
+          "dashing": [
+            {
+              "id": "dashing",
+              "field": {"$ref": "stroke-style"},
+              "mapping": [
+                {"offset": 0, "pattern": "ShortDash"},
+                {"offset": 1, "pattern": "Solid"}
+              ]
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "size": [ {"field": {"$ref": "size"}} ],
+          "style": {
+            "stroke": {"width": 3.5, "cap": "butt"},
+            "arrow": "end",
+            "symbol": "curved"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 35}
+    }
+  ],
+  "legendPosition": "top",
+  "legends": [
+    {
+      "bounds": {
+        "width": "100%",
+        "height": "10%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "dashing"}}
+          ],
+          "swatchStyle": {"stroke": {"width": 2}},
+          "textStyle": {
+            "fill": "#000000",
+            "font": {
+              "family": "Arial",
+              "size": 10.0,
+              "weight": "bold",
+              "style": "italic"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": "white",
+        "stroke": {"width": 0.5},
+        "outline": "transparent"
+      }
+    }
+  ],
+  "size": {"width": 450, "height": 300},
+  "version": "1.2"
+}

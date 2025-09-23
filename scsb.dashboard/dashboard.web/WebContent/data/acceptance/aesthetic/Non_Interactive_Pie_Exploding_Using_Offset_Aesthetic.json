@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "fX", "label": "X"},
+        {
+          "id": "fA",
+          "label": "A",
+          "categories": [
+            "Fun",
+            "Cool",
+            "Important",
+            "Exciting",
+            "Interesting"
+          ]
+        },
+        {
+          "id": "pop",
+          "categories": [
+            "Not Exploded",
+            "Explode Level 1"
+          ]
+        }
+      ],
+      "rows": [
+        [ 2, 0, 1 ],
+        [ 3, 1, 0 ],
+        [ 3, 2, 0 ],
+        [ 2, 3, 0 ],
+        [ 5, 4, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "fA"},
+                "\n(n=",
+                {"$ref": "fX"},
+                ")"
+              ],
+              "style": {
+                "fill": "white",
+                "angle": "tangent",
+                "font": {
+                  "family": "Arial",
+                  "size": 14.0,
+                  "weight": "bold"
+                },
+                "location": "outside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "color": [ {"field": {"$ref": "fA"}} ],
+          "offset": [
+            {
+              "field": {"$ref": "pop"},
+              "mapping": [
+                {"at": 0, "size": 0},
+                {"at": 1, "size": 20}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3"
+}

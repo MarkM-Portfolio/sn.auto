@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2010                                          -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<project name="WD_EXAMPLE" default="package" basedir=".">
+	<description>WD EXAMPLE</description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="bin" location="bin" />
+	<property name="lib" location="../bvt.libs" />
+	<property name="apache_lib" location="${lib}/apache-abdera-1.1.2" />
+	<property name="reports.dir" location="test-outout" />
+	<property name="output.jar" value="${bin}/api.bss.jar" />	
+	<property name="abdera.jar" value="${lib}/apache-abdera-1.1.2/abdera-1.1.2.jar" />
+	<property name="abdera_commons.jar" value="${lib}/apache-abdera-1.1.2/lib/commons-httpclient-3.1.jar" />
+	<property name="abdera_logging.jar" value="${lib}/apache-abdera-1.1.2/lib/commons-logging-1.0.4.jar" />
+	<property name="abdera_codec.jar" value="${lib}/apache-abdera-1.1.2/lib/commons-codec-1.4.jar" />
+	<property name="commons.jar" value="lib/commons-io/commons-io-1.4.jar" />
+	<property name="httpclient.jar" value="../httpclient/httpclient-4.0.jar" />
+	<property name="httpcore.jar" value="../httpcore/httpcore-4.0.1.jar" />
+	<property name="org.json.jar" value="lib/org.json.jar" />
+	<property name="resources" location="resources" />
+	<property name="main.class" value="com.ibm.conn.auto.bss.Main" />
+
+	<path id="test.classpath">
+		<pathelement location="${output.jar}" />
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${bin}" includes="**/*.*" />
+		</delete>
+		<delete dir="${build}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<tstamp />
+		<mkdir dir="${build}" />
+		<mkdir dir="${build}/classes" />
+		<mkdir dir="${bin}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}/classes" 
+			classpathref="test.classpath" debug="on" includeantruntime="false" includes="**/*" />
+		<copy todir="${build}/classes">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.csv" />
+				<include name="**/*.json" />
+				<include name="**/*.yaml" />
+				<include name="**/*.js" />
+			</fileset>
+		</copy>
+		<copy todir="${bin}" flatten="false">
+			<fileset dir="${resources}">
+				<include name="**/*.json" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="package" depends="compile">
+		<jar jarfile="${output.jar}" basedir="${build}/classes" excludes="">
+			<zipfileset src="${httpclient.jar}" excludes="META-INF/*" />
+			<zipfileset src="${httpcore.jar}" excludes="META-INF/*" />
+			<zipfileset src="${abdera.jar}" excludes="META-INF/*" />
+			<zipfileset src="${abdera_commons.jar}" excludes="META-INF/*" />
+			<zipfileset src="${abdera_logging.jar}" excludes="META-INF/*" />
+			<zipfileset src="${abdera_codec.jar}" excludes="META-INF/*" />
+			<zipfileset src="${commons.jar}" excludes="META-INF/*" />
+			<zipfileset src="${org.json.jar}" excludes="META-INF/*" />
+			<manifest>
+				<attribute name="Main-Class" value="${main.class}" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+		</jar>		
+	</target>
+
+	<path id="cp">
+		<pathelement location="${abdera.jar}" />
+		<pathelement location="${abdera_commons.jar}" />
+		<pathelement location="${abdera_logging.jar}" />
+		<pathelement location="${abdera_codec.jar}" />
+		<pathelement location="${abdera_logging.jar}" />
+		<pathelement location="${commons.jar}" />					
+		<pathelement location="${httpclient.jar}" />
+		<pathelement location="${httpcore.jar}" />
+		<pathelement location="${build}/classes/" />
+	</path>
+
+
+</project>

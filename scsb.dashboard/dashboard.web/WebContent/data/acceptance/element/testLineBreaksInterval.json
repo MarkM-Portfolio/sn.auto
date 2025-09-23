@@ -1,0 +1,196 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "_VOIDS_FIELD_",
+					"label" : "_VOIDS_FIELD_"
+				}, {
+					"id" : "_CATEGORY_FIELD_",
+					"label" : "Product line",
+					"categories" : ["Camping Equipment", "Golf Equipment", "Mountaineering Equipment", "Outdoor Protection", "Personal Accessories"]
+				}, {
+					"id" : "_SERIES_FIELD_",
+					"label" : "Order method type",
+					"categories" : ["Fax"]
+				}, {
+					"id" : "_VALUES_FIELD_",
+					"label" : "Quantity"
+				}, {
+					"id" : "legend",
+					"categories" : ["Legend\nLabel 1", "Legend\nLabel 2", "Legend Label\n3", "Legend\nLabel 4\nshould be 3 lines", "Legend\nLabel 5", "Legend 6", "Legend 7"]
+				}
+			],
+			"rows" : [[901, 0, 0, 82275, 0], [952, 1, 0, 18819, 1], [1003, 2, 0, 92344, 2], [1054, 3, 0, 20372, 3], [1105, 4, 0, 35424, 4]]
+		}
+	],
+	"grammar" : [{
+			"bounds" : {
+				"width" : "70%",
+				"height" : "100%",
+				"left" : 0,
+				"top" : 0
+			},
+			"coordinates" : {
+				"dimensions" : [{
+						"scale" : {
+							
+							"spans" : [{"fit" : "nice"}
+								
+							]
+						},
+						"axis" : {
+							
+							"tickStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 10,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							},
+							"titleStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 10,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							}
+						}
+					}, {
+						"axis" : {
+							
+							"tickStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 10,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							},
+							"titleStyle" : {
+								"fill" : "black",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 10,
+									"weight" : "normal",
+									"style" : "normal"
+								}
+							}
+						}
+					}
+				]
+
+			},
+			"elements" : [{
+			"tooltip" : [{
+							"content" : [{
+									"$ref" : "_CATEGORY_FIELD_"
+								}, "\n", {
+									"$ref" : "_VALUES_FIELD_"
+								}
+							]
+						}
+					],
+					"type" : "interval",
+					"label" : [{
+							"content" : [{
+									"$ref" : "_SERIES_FIELD_"
+								}, "\n", {
+									"$ref" : "_VALUES_FIELD_"
+								}
+							],
+							"modifies" : {
+								"part" : "symbol"
+							},
+							"style" : {
+								"fill" : "black",
+								"align" : "middle",
+								"font" : {
+									"family" : "'Arial','Tahoma','Arial Unicode MS','Andale WT','MS UI Gothic','Gulim','SimSun','PMingLiU','Raghu8',sans-serif",
+									"size" : 10,
+									"weight" : "normal",
+									"style" : "normal"
+								},
+								"valign" : "start"
+							}
+						}
+					],
+					"position" : [{
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							}
+						}, {
+							"field" : {
+								"$ref" : "_CATEGORY_FIELD_"
+							}
+						}
+					],
+					
+					"symbolStyle" : {},
+					
+					"style" : {
+						"stroke" : {
+							"width" : 3
+						}
+					},
+					"color" : [{
+							"id" : "barColor",
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							},
+							"palette" : ["#4488CC", "#AAAAFF", "#88AA88", "#CCCC88", "#FFAA66", "#FF8888", "#CC88AA"]
+						},
+{
+							"id" : "barColor2",
+							"field" : {
+								"$ref" : "legend"
+							},
+							"palette" : ["#4488CC", "#AAAAFF", "#88AA88", "#CCCC88", "#FFAA66", "#FF8888", "#CC88AA"]
+						}						
+					]
+				}
+			]
+		}
+	],
+	"legends" : [{
+			"bounds" : {
+				"width" : "30%"
+			},
+			"content" : [{
+					"text" : ["Should be on\nTwo lines"]
+				}, {
+					"swatchStyle" : {
+						"padding" : 5
+					}
+				}
+			],
+			"style" : {
+				"fill" : {
+					"a" : 1,
+					"b" : 0,
+					"g" : 0,
+					"r" : 255
+				},
+				"stroke" : {
+					"width" : 4
+				},
+				"outline" : {
+					"a" : 0.5,
+					"b" : 0,
+					"g" : 0,
+					"r" : 255
+				},
+				"padding" : 5
+			}
+		}
+	],	
+	"size" : {
+		"width" : 700,
+		"height" : 450
+	}
+}

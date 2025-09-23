@@ -1,0 +1,75 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY"},
+        {"id": "store", "label": "Store"}
+      ],
+      "rows": [
+        [ 185, 200, 7 ],
+        [ 495, 150, 6 ],
+        [ 495, 100, 5 ],
+        [ 495, 75, 4 ],
+        [ 495, 50, 3 ],
+        [ 495, 25, 2 ],
+        [ 495, 0, 1 ],
+        [ 495, -50, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {"axis": {"markStyle": {}}} ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fY"} ],
+              "style": {
+                "align": "start",
+                "location": "inside"
+              }
+            }
+          ],
+          "position": [
+            {"includeInRange": true, "value": 100},
+            {"field": {"$ref": "store"}}
+          ],
+          "clip": "overlap",
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {
+                "spans": [
+                  {"fit": "exact", "tickDelta": 50}
+                ]
+              },
+              "mapping": [
+                {"at": 0, "size": 40},
+                {"at": 100, "size": 80}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "symbol": "square"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": {"left": 20}}
+    }
+  ],
+  "legends": [
+    {"boundsStyle": {"outline": "red"}, "method": "axis"}
+  ],
+  "size": {"width": 600, "height": 200},
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "outer",
+          "categories": [
+            "Illinois"
+          ]
+        },
+        {"id": "x", "categories": [ "Male", "Female" ]},
+        {"id": "y"}
+      ],
+      "rows": [
+        [ 0, 0, 25000 ],
+        [ 0, 1, 38000 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"min": 0} ]},
+            "axis": {"gridStyle": {"fill": "#ddd"}}
+          },
+          {"axis": {"markStyle": {}}},
+          {"axis": {"markStyle": {}, "title":["Not shown"]}}
+        ],
+        "transforms": [ {"type": "cluster"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "outer"}},
+            {"field": {"$ref": "x"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 600, "height": 150},
+  "style": {"fill": "white", "padding": 10},
+  "version": "2.0"
+}

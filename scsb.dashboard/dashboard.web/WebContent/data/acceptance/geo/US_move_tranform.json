@@ -1,0 +1,68 @@
+{
+  "data": [ {} ],
+  "augment": [
+    {"source": "/GeoJSON/US States detailed.json"}
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "48%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"fit": "nice"} ]}},
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {"name": "mercator",
+		"move" : [{
+                  "from": [ 170, -120.0, 50.4, 73.5 ],
+                  "to": [ 170, -120, 24.0, 44.0 ]
+		}]
+          }
+        }],
+        "style": {"fill": "#afa"}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "style": {
+            "fill": "#99f",
+            "stroke": {"width": 0.25},
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"value": 34.1},
+            {"value": 41.78},
+            {"value": -118.7},
+            {"value": -87.75}
+          ],
+          "style": {
+            "fill": "#c00",
+            "stroke": {"width": 4},
+            "endArrow": "arrow",
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "4.2"
+}

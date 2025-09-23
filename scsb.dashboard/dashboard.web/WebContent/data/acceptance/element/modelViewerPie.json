@@ -1,0 +1,94 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dData",
+		"fields": [{
+			"id": "fA",
+			"label": "Cluster",
+			"categories": ["1",
+			"2",
+			"3"]
+		},
+		{
+			"id": "weight",
+			"unit": "percent"
+		}],
+		"rows": [[0,
+		33.55],
+		[1,
+		25.66],
+		[2,
+		40.79]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				}],
+			"transforms": [{
+				"type": "stack"
+			},
+			{
+				"type": "polar"
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"label": [{
+				"content": [{
+					"$ref": "weight"
+				},
+				"%"],
+				"style": {
+					"fill": "black",
+					"effect": {
+						"glow": {
+							"color": "white"
+							}
+					}
+				}
+			}],
+			"position": [{
+				"field": {
+					"$ref": "weight"
+				}
+			}],
+			"color": [{
+				"id": "colorID",
+				"field": {
+					"$ref": "fA"
+				},
+				"palette": [{
+					"b": 190,
+					"g": 225,
+					"r": 241
+				},
+				{
+					"b": 195,
+					"g": 210,
+					"r": 253
+				},
+				{
+					"b": 205,
+					"g": 233,
+					"r": 200
+				}]
+			}]
+		}]
+	}],
+	"legends": [{
+		"content": [{
+			"text": ["Cluster"]
+		},
+		{
+			"aesthetics": [{
+				"aesthetic": {
+					"$ref": "colorID"
+				}
+			}],
+			"swatchStyle": {
+				"size": 11
+			}
+		}]
+	}]
+}

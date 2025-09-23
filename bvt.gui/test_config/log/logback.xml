@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+	<appender name="tracelog" class="ch.qos.logback.core.FileAppender">
+		<File>test-output/logs/trace.log</File>
+		<Append>false</Append>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+	<appender name="debuglog" class="ch.qos.logback.core.FileAppender">
+		<File>test-output/logs/debug.log</File>
+		<Append>false</Append>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+	<appender name="infolog" class="ch.qos.logback.core.FileAppender">
+		<File>test-output/logs/info.log</File>
+		<Append>false</Append>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+	<appender name="warnlog" class="ch.qos.logback.core.FileAppender">
+		<File>test-output/logs/warn.log</File>
+		<Append>false</Append>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+	</appender>
+	<appender name="errorlog" class="ch.qos.logback.core.FileAppender">
+		<File>test-output/logs/error.log</File>
+		<Append>false</Append>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+	<appender name="rollinginfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+		<File>test-output/logs/rolling-info.log</File>
+		<encoder>
+			<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>3</maxIndex>
+			<FileNamePattern>rolling-warn.%i.log</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>5MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	<appender name="RootSiftAppender" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+			<Key>testname</Key>
+			<DefaultValue>outside-test-sifting</DefaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${testname}" class="ch.qos.logback.core.FileAppender">
+				<File>test-output/logs/${testname}.log</File>
+				<Append>false</Append>
+				<encoder>
+					<pattern>%d{ISO8601} %-5level %C{1} [%M:%L] [%thread] - %msg%n</pattern>
+				</encoder>
+				<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+					<level>DEBUG</level>
+				</filter>
+			</appender>
+		</sift>
+	</appender>
+	<appender name="HTMLAppender" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+			<Key>testname</Key>
+			<DefaultValue>outside-test-sifting</DefaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-HTML-${testname}" class="ch.qos.logback.core.FileAppender">
+				<file>test-output/logs/testcases/${testname}.html</file>
+				<Append>false</Append>
+    			<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      				<layout class="ch.qos.logback.classic.html.HTMLLayout">
+        				<pattern>%d{ISO8601}%-5level%C{1}%M%L%thread%msg%ex{short}</pattern>
+      				</layout>
+    			</encoder>  
+    			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+					<level>INFO</level>
+				</filter>    					
+  			</appender>
+		</sift>
+	</appender>
+	<root level="TRACE">
+		<appender-ref ref="stdout"/>
+		<appender-ref ref="tracelog"/>
+		<appender-ref ref="debuglog"/>
+		<appender-ref ref="infolog"/>
+		<appender-ref ref="warnlog"/>
+		<appender-ref ref="errorlog"/>
+		<appender-ref ref="rollinginfo"/>
+		<appender-ref ref="RootSiftAppender"/>
+		<appender-ref ref="HTMLAppender"/>
+	</root>
+</configuration>

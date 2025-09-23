@@ -1,0 +1,195 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "size"}
+      ],
+      "rows": [
+        [ 4, 0, 1 ],
+        [ 4, 6, 1 ],
+        [ 0, 1, 1 ],
+        [ 0, 2, 1 ],
+        [ 0, 3, 1 ],
+        [ 0, 5, 1 ],
+        [ 0, 7, 1 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [ {"id": "id", "unit": "categorical"} ],
+      "rows": [
+        [ 0 ],
+        [ 1 ],
+        [ 2 ],
+        [ 3 ],
+        [ 4 ],
+        [ 5 ],
+        [ 6 ],
+        [ 7 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "dag"
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "id"},
+              "palette": [
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon1Id"}
+                  },
+                  "symbol": "star-5"
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon2Id"}
+                  },
+                  "symbol": "circle"
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon3Id"}
+                  },
+                  "symbol": "poly-5"
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon4Id"}
+                  }
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon5Id"}
+                  }
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon6Id"}
+                  }
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon7Id"}
+                  }
+                },
+                {
+                  "image": {
+                    "align": "end",
+                    "valign": "end",
+                    "source": {"$ref": "icon8Id"}
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": "blue",
+            "stroke": {"width": "2.0"},
+            "width": 110,
+            "height": 100,
+            "symbol": "rect"
+          },
+          "clip": "overlap"
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "color": [ {"field": {"$ref": "from"}} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "size": [
+            {
+              "field": {"$ref": "size"},
+              "mapping": [ {"size": 25}, {"size": 30} ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.6},
+            "stroke": {"width": 5.0, "cap": "butt"}
+          }
+        }
+      ],
+      "style": {"padding": 10}
+    }
+  ],
+  "resource": [
+    {
+      "id": "icon1Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/SteveG.jpg" ]
+    },
+    {
+      "id": "icon2Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/MightyMo.jpg" ]
+    },
+    {
+      "id": "icon3Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Christian.png" ]
+    },
+    {
+      "id": "icon4Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Mark_F.jpg" ]
+    },
+    {
+      "id": "icon5Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Greg.bmp" ]
+    },
+    {
+      "id": "icon6Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Ian.gif" ]
+    },
+    {
+      "id": "icon7Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/SteveM.jpg" ]
+    },
+    {
+      "id": "icon8Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/KenS.jpg" ]
+    }
+  ],
+  "size": {"width": 700, "height": 500},
+  "version": "4.1"
+}

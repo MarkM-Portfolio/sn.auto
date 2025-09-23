@@ -1,0 +1,16 @@
+{
+	"tests":[
+		{
+			"name":"websphere",
+			"location":"Tests/WASTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"websphere.pathWAS":"/opt/IBM/WebSphere",
+		"wsadmin.path":"/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/wsadmin.sh",
+		"wsadmin.user":"wasadmin",
+		"wsadmin.pass":"gwxubtdp"
+	}
+}

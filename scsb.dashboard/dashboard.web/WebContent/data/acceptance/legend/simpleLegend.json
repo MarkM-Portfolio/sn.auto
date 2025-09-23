@@ -1,0 +1,59 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "source",
+			"fields" : [{
+					"id" : "time",
+					"categories" : ["time 1", "time 2", "time 3", "time 4"]
+				}, {
+					"id" : "legend",
+					"categories" : ["Legend 1", "Legend 2", "Legend 3", "Legend 4"]
+				}, {
+					"id" : "value"
+				}
+			],
+			"rows" : [[0, 0, 5], [1, 1, 15], [2, 2, 30], [3, 3, 80]]
+		}
+	],
+	"grammar" : [{
+			"coordinates" : {
+				"dimensions" : [{
+						"axis" : {}
+						
+					}, {
+						"axis" : {}
+						
+					}
+				]
+			},
+			"elements" : [{
+					"type" : "interval",
+					"position" : [{
+							"field" : {
+								"$ref" : "value"
+							}
+						}, {
+							"field" : {
+								"$ref" : "time"
+							}
+						}
+					],
+					"color" : [{
+							"id" : "barColor",
+							"field" : {
+								"$ref" : "legend"
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"legends" : [{}
+		
+	],
+	"size" : {
+		"width" : 500,
+		"height" : 300
+	}
+}

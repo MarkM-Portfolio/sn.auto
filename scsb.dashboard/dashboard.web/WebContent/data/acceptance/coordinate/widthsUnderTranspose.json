@@ -1,0 +1,135 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "categories", "unit": "categorical"},
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 5, 5500 ],
+        [ 4, 4400 ],
+        [ 3, 3300 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": 250,
+        "height": 100,
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "style": {
+            "width": 10,
+            "height": 30,
+            "outline": {"a": 0.0}
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    },
+    {
+      "bounds": {
+        "width": 250,
+        "height": 100,
+        "left": 250,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "style": {
+            "width": 10,
+            "height": 30,
+            "outline": {"a": 0.0}
+          }
+        }
+      ],
+      "style": {"fill": "gray", "padding": 5}
+    },
+    {
+      "bounds": {
+        "width": 250,
+        "height": 100,
+        "left": 0,
+        "top": 100
+      },
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "style": {
+            "width": 10,
+            "height": 30,
+            "outline": {"a": 0.0},
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {"fill": "lightGray", "padding": 5}
+    },
+    {
+      "bounds": {
+        "width": 250,
+        "height": 100,
+        "left": 250,
+        "top": 100
+      },
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "style": {
+            "width": 10,
+            "height": 30,
+            "outline": {"a": 0.0},
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "size": {"width": 500, "height": 200}
+}

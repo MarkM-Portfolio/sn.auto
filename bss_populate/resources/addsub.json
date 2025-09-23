@@ -1,0 +1,11 @@
+{
+	"Order": {
+		"OrderItemSet": [{
+			"DurationUnits": "YEARS",
+			"DurationLength": 2,
+			"PartNumber": "partplaceholder",
+			"PartQuantity": quantity
+		}],
+		"CustomerId": customeridholder
+	}
+}

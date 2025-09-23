@@ -1,0 +1,142 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "fOCCUR"},
+        {
+          "id": "fEVENTFREQUENCY",
+          "label": "EVENTFREQUENCY",
+          "format": {"numericPattern": "#,###"}
+        },
+        {
+          "id": "fCUSTOMER",
+          "categories": [
+            "FUDDRUCKERS",
+            "BURGER KING",
+            "SANTIKOS THE PALLADIUM",
+            "FIVE GUYS BURGERS AND FRIES",
+            "HOUSTON SILVERADO",
+            "WENDY'S",
+            "MOE'S SOUTHWEST GRILL"
+          ]
+        }
+      ],
+      "rows": [
+        [ 3, 6561947, 0 ],
+        [ 2, 1716394, 1 ],
+        [ 2, 1423842, 2 ],
+        [ 1, 1370254, 3 ],
+        [ 1, 1362402, 4 ],
+        [ 1, 1256965, 5 ],
+        [ 1, 1240836, 6 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 0, "fit": "exact"} ]
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {"categories": [ 1, 3, 0, 4, 6, 2, 5 ]}
+              ]
+            },
+            "axis": {
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.5, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "12"},
+                "padding": {"right": 20}
+              },
+              "method": "vertical"
+            }
+          }
+        ]
+      },
+      "labelCollisionMethod": "none",
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fOCCUR"} ],
+              "style": {
+                "fill": "black",
+                "font": {"size": 40, "weight": "bold"},
+                "padding": 2,
+                "valign": "end", 
+                "location" : "inside"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fOCCUR"}},
+            {"field": {"$ref": "fCUSTOMER"}}
+          ],
+          "color": [ {"field": {"$ref": "fOCCUR"}} ],
+          "style": {"fill": {"a": 0.5}, "width": "80%"}
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"value": "-6%"},
+            {"value": "-2%"},
+            {"field": {"$ref": "fCUSTOMER"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fCUSTOMER"},
+              "scale": {
+                "spans": [
+                  {"categories": [ 1, 3, 0, 4, 6, 2, 5 ]}
+                ]
+              }
+            }
+          ],
+          "style": {
+            "fill": {"s": 0.5},
+            "width": "80%",
+            "cornerRadius": 10,
+            "outline": "transparent"
+          },
+          "clip": "none"
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 500},
+  "titles": [
+    {
+      "type": "title",
+      "backgroundStyle": {
+        "fill": "#EAEAEA",
+        "padding": {
+          "bottom": 5,
+          "left": "2%",
+          "right": "100%",
+          "top": 5
+        }
+      },
+      "content": [ " CUSTOMER INCIDENTS" ],
+      "style": {
+        "fill": "black",
+        "align": "start",
+        "font": {"size": 20},
+        "padding": 5
+      }
+    }
+  ],
+  "version": "3.0",
+  "style": {
+    "fill": "white",
+    "padding": {"left": 20, "right": 20}
+  }
+}

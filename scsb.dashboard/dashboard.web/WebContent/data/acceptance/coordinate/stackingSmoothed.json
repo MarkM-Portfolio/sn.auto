@@ -1,0 +1,77 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Time",
+          "categories": [
+            "2009 Q1",
+            "2009 Q2",
+            "2009 Q3",
+            "2009 Q4",
+            "2010 Q1"
+          ]
+        },
+        {
+          "id": "provinces",
+          "label": "Provinces",
+          "categories": [ "Ontario", "Quebec", "Alberta" ]
+        },
+        {"id": "revenue"}
+      ],
+      "rows": [
+        [ 0, 0, 4000 ],
+        [ 1, 0, 5000 ],
+        [ 2, 0, 10000 ],
+        [ 3, 0, 8000 ],
+        [ 4, 0, 4000 ],
+        [ 0, 1, 2500 ],
+        [ 1, 1, 2500 ],
+        [ 2, 1, 2500 ],
+        [ 3, 1, 2500 ],
+        [ 4, 1, 2500 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"min": 0, "max": 15000} ]},
+            "axis": {"gridStyle": {"fill": "lightgray"}}
+          },
+          {"axis": {"gridStyle": {"fill": "lightgray"}}}
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "revenue"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "provinces"}} ],
+          "interpolation": "smooth",
+          "style": {"fill": {"a": 0.5}}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "revenue"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "provinces"}} ],
+          "style": {"outline": "black", "size": 8}
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 5}
+    }
+  ],
+  "style": {"fill": "white"},
+  "version": "1.3"
+}

@@ -1,0 +1,850 @@
+#!/bin/sh
+
+###set -x
+
+# This script validates the username / uid and groupname / gid mapping between
+# a NFS client and the NFS servers, per ITCS 204 requirements.
+#
+# This script must be run at least monthly on all NFS clients.
+#
+# AUTHORS (in order of when they touched it)
+#   Based on get_anon_ftp_files created for the SWG UNIX environment in RTP
+#   pfiore: Paul Fiore <pfiore@us.ibm.com>
+#   mmagri: Matt Magri <mmagri@anarcho.com>
+#
+# CHANGES
+# version    date     do-bee      details
+#   1.0   2003-10-02> mmagri: first numbered version (aft!)
+#			      Changed program so that a local copy could be
+#			      used to avoid security concern of having root
+#			      run an NFS-mounted script.
+#			      Made a number of zSeries-compatibility changes
+#			      based on input from Troy Klomp
+#	  2003-10-03> mmagri: Added support for mailx (z/OS) vs. mail
+#   2.0   2003-12-09> mmagri: Got rid of the script's NFS-dependency. Now all
+#			      interaction with $CHECKHOST is via FTP.
+#   2.1   2003-12-17> mmagri: RedHat 6 with its 2.2 kernel didn't handle chown
+#			      of files to uids greater than 65535 very
+#			      gracefully (instead of failing explicitly, it just
+#			      converted the uid to a smaller number, creating an
+#			      imaginary conflict), so we have to skip those.
+#   2.2   2004-01-07> mmagri: Moved results file to /irischeckuid.log so that
+#			      there would be a local record of results (and, by
+#			      its very existence, proof that it had been run).
+#			      Tidied up by deleting the test file in /tmp.
+#   2.3   2004-01-08> mmagri: Tweaked for Poughkeepsie (POK) environment
+#   2.4   2004-02-02> mmagri: Force OS/390 FTP transfers to ASCII, work around
+#                             bug in POK ftp that sets newline incorrectly
+#                             (solved thanks to input from Troy Klomp).
+#   2.5   2004-02-05> mmagri: Fixed bug that caused second ftp attempt to be
+#                             skipped. Shortened the FTP passwd because of
+#                             problems with POK machine (diagnosed by Troy
+#                             Klomp). I also noticed that the timestamp on the
+#                             results file didn't include minutes, so I added
+#                             that, FWIW
+#   2.6   2004-05-21> mmagri: Added check for /etc/security/config on AIX
+#   2.7   2006-11-20> mmagri: Added a quick workaround for AIX /core files
+#   2.8   2006-12-14> mmagri: Explicitly force passive mode on for MacOS X
+#   2.9   2006-12-15> mmagri: More MacOS X tweaking
+#   2.10  2006-12-15> mmagri: Use pftp by default, if it exists, to force
+#   2.11  2007-01-15> mmagri: /bin/sh for the current Ubuntu hsa a built-in
+#                             echo that doesn't support -e
+#   2.12  2010-06-28> mmagri: Switched nfscheck fqdn to swg.usma.ibm.com domain
+#
+#
+VERSION="2.12"
+
+################################################################################
+## Constants
+################################################################################
+
+DEBUG="0"
+
+# Make sure the path variable has /usr/bin and /usr/sbin on the beginning
+PATH=/usr/bin:/usr/sbin:/bin:$PATH:/usr/ucb
+unset noclobber
+
+# This section will adapt commands to run on specific OSs
+AWK="awk"
+CAT="cat"
+CHGRP="chgrp"
+CHMOD="chmod"
+CHOWN="chown"
+CP="cp"
+CUT="cut"
+DATE="date"
+ECHO="echo"
+EXPR="expr"
+FTP="ftp"
+GREP="grep"
+HOSTNAME="hostname"
+ID="id"
+LS="ls"
+MAIL="mailx"
+MKDIR="mkdir"
+MV="mv"
+RM="rm"
+RMDIR="rmdir"
+TOUCH="touch"
+TR="tr"
+WC="wc"
+
+CHECKHOST="nfscheck.swg.usma.ibm.com"
+CHECKRELDIR="upload"
+CHILDTMPDIR="/tmp/checkuidgid.$$"
+
+NOTIFYMAILADDY="jxie@us.ibm.com"
+###NOTIFYMAILADDY="nfscheck@notesdev.ibm.com"
+###NOTIFYMAILADDY="mmagri@notesdev.ibm.com"
+
+type $MAIL >/dev/null 2>&1
+if test $? -ne 0
+then 
+	MAIL="mail" 
+fi
+
+PNAME=$0
+DEFAULTPNAME="/irischeckuidgid"
+
+#PARENTRESULTS="${PNAME}.log"
+PARENTRESULTS="${DEFAULTPNAME}.log"
+
+# Site-specifier (optional)
+###IBMSITE="POK"
+
+OSNAME=`uname`
+
+if test "${OSNAME}" = "Linux"
+then
+	if [ -x "/bin/echo" ]; then
+		ECHO="/bin/echo -e"
+	fi
+
+	ARCH=`uname -m`
+	if test "${ARCH}" = "s390"
+	then
+		OSNAME="zLinux"
+	fi
+fi
+
+# This is a workaround so we can have a chance at knowing
+# what the default setting of passive mode is for ftp
+type pftp >/dev/null 2>&1
+if test $? -eq 0
+then 
+	FTPRAW=$FTP 
+	FTP="pftp" 
+fi
+
+################################################################################
+## Define functions
+################################################################################
+
+#-------------------------------------------------------------------------------
+# error()
+# Print message that there is a problem and exit
+#-------------------------------------------------------------------------------
+error()
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	THISERROR=$1
+
+	$ECHO "${THISERROR}" >&2
+	$ECHO "This error is being sent to ${NOTIFYMAILADDY}"
+
+	FULLUNAMEINFO=`uname -a`
+
+	####$ECHO "${THISERROR}" >> ${PARENTRESULTS}
+	$CAT >> ${PARENTRESULTS} <<END || THISERROR="${THISERROR}\n*** Cannot append to ${PARENTRESULTS} file. Check if / is full"
+=================================================================
+ERRORS
+------
+${THISERROR}
+=================================================================
+[${FULLUNAMEINFO}]
+
+(attempting to send the error to ${NOTIFYMAILADDY} using $MAIL)
+END
+
+	THISERROR="${THISERROR}\n\n[${FULLUNAMEINFO}]"
+
+
+	HOST=`$HOSTNAME`
+	$ECHO "${THISERROR}" | $MAIL -s "checkuidgid: $HOST" ${NOTIFYMAILADDY} >> ${PARENTRESULTS} 2>&1
+	
+	exit 1
+}
+
+#-------------------------------------------------------------------------------
+# check_commands()
+# Make sure all commands run ok on this plataform
+#-------------------------------------------------------------------------------
+check_commands()
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	$AWK '{}' </dev/null || error "The command $AWK isn't working: error $?"
+
+	for i in $CAT $CHGRP $CHMOD $CHOWN $CP $CUT $DATE $EXPR $FTP $GREP $HOSTNAME $LS $MAIL $MKDIR $MV $RM $RMDIR $TOUCH $TR $WC
+	do
+		type $i >/dev/null 2>&1
+		if test $? -ne 0
+		then 
+			error "The command $i doesn't exist in this machine" 
+		fi
+	done
+
+	# Only root can run this script
+	if test `id | $GREP -c "uid=0"` -eq 0 
+	then
+		$ECHO "You need to run this script as root" >&2
+		exit 1
+	fi
+
+	# Need to be able to write to $HOME
+	$TOUCH $HOME/.123456789.45 2>/dev/null
+	if test $? -ne 0 
+	then
+		echo "Can't write to $HOME. \nMake sure you \"su -\" instead of \"su\" before running this script" >&2
+		$RM $HOME/.123456789.45
+		exit 1
+	fi
+
+	$RM $HOME/.123456789.45
+}
+
+#-------------------------------------------------------------------------------
+# SetFTPPassword()
+# Adds the script version to the end of the password (which is provided as an
+# argument), making sure that the end result is 32 characters or less. It was
+# added because we ran into a platform that had a bug which caused the FTP conx
+# to just hang until timeout if the password was longer than 32 characters.
+#-------------------------------------------------------------------------------
+SetFTPPassword()
+{
+	FTPPASSWD=$1
+
+	VERSIONLEN=`$ECHO ${VERSION} | $WC -c`
+	# We subtract from 33 instead of 32 because wc
+	# will count the echo's newline, as well
+	MAXRESTLEN=`$EXPR 33 - ${VERSIONLEN}`
+
+	# wc's counting the newline is okay here, since
+	# it will cover the separation character (+)
+	PASSLEN=`$ECHO ${FTPPASSWD} | $WC -c`
+	# PASSLEN must <= 33 - ${VERSIONLEN}
+	if test ${PASSLEN} -gt ${MAXRESTLEN}
+	then
+		# When we truncate, we will take one more
+		# character than we need to, and put a "-"
+		# there instead, to show that we truncated.
+		MAXRESTLEN=`$EXPR ${MAXRESTLEN} - 2`
+		FTPPASSWD=`$ECHO ${FTPPASSWD} | $CUT -c1-${MAXRESTLEN}`
+		FTPPASSWD="${FTPPASSWD}-"
+	fi
+
+	FTPPASSWD="${FTPPASSWD}+${VERSION}"
+}
+
+#-------------------------------------------------------------------------------
+# get_uidgid()
+# Get the uid and gid files
+#-------------------------------------------------------------------------------
+get_uidgid() 
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	# Create .netrc file
+
+	# First backup any existing .netrc
+	if test -f $HOME/.netrc
+	then
+		$RM -f /tmp/.netrc.$$
+		$CP $HOME/.netrc  /tmp/.netrc.$$ || error "Cannot backup $HOME/.netrc"
+	fi
+
+	HOST=`$HOSTNAME | $CUT -f1 -d\.`
+
+	if test "${IBMSITE}" != ""
+	then
+		FTPPASSWD="${HOST}+${IBMSITE}"
+	else
+		FTPPASSWD="${HOST}"
+	fi
+
+	if test "${PNAME}" != "${DEFAULTPNAME}"
+	then
+		FTPPASSWD="${FTPPASSWD}:${PNAME}"
+	fi
+
+	SetFTPPassword ${FTPPASSWD}
+
+	$CAT > $HOME/.netrc <<END || error "Cannot create $HOME/.netrc file. Check if $HOME is full"
+machine ${CHECKHOST} login anonymous password ${FTPPASSWD}
+
+END
+	$CHMOD 600 $HOME/.netrc
+
+	FTPCMDFILE="ftpcmds1"
+
+	USEDPASSIVE=0
+	if test "$OSNAME" = "OS/390"
+	then
+		$ECHO "ascii" > $FTPCMDFILE
+	else
+		USEDPASSIVE=1
+		if test "$FTP" != "pftp"
+		then
+			if test "$OSNAME" = "Darwin"
+			then
+				$ECHO "passive on" > $FTPCMDFILE
+			else
+				$ECHO "passive" > $FTPCMDFILE
+			fi
+		fi
+	fi
+
+	$CAT >> $FTPCMDFILE <<END || error "Cannot create $FTPCMDFILE file. Check if /tmp is full"
+get $UIDFILE
+get $GIDFILE
+quit
+END
+	$CHMOD 600 $FTPCMDFILE
+
+	if [ "${OSNAME}" = "AIX" ]; then
+		if [ -f /etc/security/config ]; then
+			mv /etc/security/config /etc/security/config.$$
+		fi
+	fi
+	if [ $DEBUG -gt 2 ]; then
+		$FTP ${CHECKHOST} < $FTPCMDFILE
+		RESULT=$?
+		if [ ${RESULT} -ne 0 ]; then
+			RESULT="1"
+		fi
+	else
+		RESULT=`$FTP ${CHECKHOST} < $FTPCMDFILE 2>&1 >/dev/null`
+	fi
+
+	if test $USEDPASSIVE -eq 1
+	then
+		# Try again, but without passive, if there is an error
+		if test -n "$RESULT"
+		then
+			$CAT >> $FTPCMDFILE <<END || error "Cannot create $FTPCMDFILE file. Check if /tmp is full"
+get $UIDFILE
+get $GIDFILE
+quit
+END
+
+			if [ "${FTPRAW}" != "" ]; then
+				TMPFTPCMD=${FTPRAW}
+			else
+				TMPFTPCMD=${FTP}
+			fi
+			if [ $DEBUG -gt 2 ]; then
+				$TMPFTPCMD ${CHECKHOST} < $FTPCMDFILE
+				RESULT2=$?
+				if [ ${RESULT2} -ne 0 ]; then
+					RESULT2="1"
+				fi
+			else
+				RESULT2=`$TMPFTPCMD ${CHECKHOST} < $FTPCMDFILE 2>&1 >/dev/null`
+			fi
+		fi
+	fi
+
+	if [ "${OSNAME}" = "AIX" ]; then
+		if [ -f /etc/security/config.$$ ]; then
+			mv /etc/security/config.$$ /etc/security/config
+		fi
+	fi
+
+	$RM -f $FTPCMDFILE
+
+	# Restore backup copy
+	if test -f /tmp/.netrc.$$
+	then
+		$CP  /tmp/.netrc.$$ $HOME/.netrc || error "Cannot restore $HOME/.netrc from /tmp/.netrc.$$"
+		$RM /tmp/.netrc.$$
+	else
+		$RM $HOME/.netrc
+	fi
+
+	if test -n "$RESULT2"
+	then	
+		error "FTP failed with error: $RESULT $RESULT2"
+	fi
+
+	# This is a weird one... the ASCII file transfer replaces the
+	# ASCII \n with EBCIDIC \045, when it should be \025
+	if test "$OSNAME" = "OS/390"
+	then
+		for EACHFILE in ${UIDFILE} ${GIDFILE}
+		do
+			$CAT $EACHFILE | $TR '\045' '\025' > ${EACHFILE}-TMP
+			$MV ${EACHFILE}-TMP ${EACHFILE}
+		done
+	fi
+
+}
+
+#-------------------------------------------------------------------------------
+# send_results()
+# Send the results of the validation
+#-------------------------------------------------------------------------------
+send_results() 
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	# Filename on server
+	FILENAME=`$HOSTNAME`.`$DATE +%Y%m%d%H%M%S`
+
+	SetFTPPassword ${FILENAME}
+
+	# Create .netrc file
+
+	# First backup any existing .netrc
+	if test -f $HOME/.netrc
+	then
+		$RM -f /tmp/.netrc.$$
+		$CP $HOME/.netrc  /tmp/.netrc.$$ || error "Cannot backup $HOME/.netrc"
+	fi
+
+	$CAT > $HOME/.netrc <<END || error "Cannot create $HOME/.netrc file. Check if $HOME is full"
+machine ${CHECKHOST} login anonymous password ${FTPPASSWD}
+
+END
+	$CHMOD 700 $HOME/.netrc
+
+	FTPCMDFILE="/tmp/.ftpcmds.$$"
+
+	USEDPASSIVE=0
+	if test "$OSNAME" = "OS/390"
+	then
+		###$RM -f $FTPCMDFILE
+		$ECHO "ascii" > $FTPCMDFILE
+	else
+		if test "$FTP" != "pftp"
+		then
+			if test "$OSNAME" = "Darwin"
+			then
+				$ECHO "passive on" > $FTPCMDFILE
+				USEDPASSIVE=1
+			else
+				$ECHO "passive" > $FTPCMDFILE
+				USEDPASSIVE=1
+			fi
+		fi
+	fi
+
+	$CAT >> $FTPCMDFILE <<END || error "Cannot create $FTPCMDFILE file. Check if /tmp is full"
+put ${PARENTRESULTS} ${CHECKRELDIR}/$FILENAME
+quit
+END
+
+	$CHMOD 600 $FTPCMDFILE
+
+	if [ "${OSNAME}" = "AIX" ]; then
+		if [ -f /etc/security/config ]; then
+			mv /etc/security/config /etc/security/config.$$
+		fi
+	fi
+
+	if [ $DEBUG -gt 2 ]; then
+		$FTP ${CHECKHOST} < $FTPCMDFILE
+		RESULT=$?
+		if [ ${RESULT} -ne 0 ]; then
+			RESULT="1"
+		fi
+	else
+		RESULT=`$FTP ${CHECKHOST} < $FTPCMDFILE 2>&1 >/dev/null`
+	fi
+
+	if test $USEDPASSIVE -eq 1
+	then
+		# Try again, but without passive, if there is an error
+		if test -n "$RESULT"
+		then
+			$CAT > $FTPCMDFILE <<END || error "Cannot create $FTPCMDFILE file. Check if /tmp is full"
+put ${PARENTRESULTS} ${CHECKRELDIR}/$FILENAME
+quit
+END
+
+			if [ "${FTPRAW}" != "" ]; then
+				TMPFTPCMD=${FTPRAW}
+			else
+				TMPFTPCMD=${FTP}
+			fi
+			if [ $DEBUG -gt 2 ]; then
+				$FTPRAW ${CHECKHOST} < $FTPCMDFILE
+				RESULT2=$?
+				if [ ${RESULT} -ne 0 ]; then
+					RESULT2="1"
+				fi
+			else
+				RESULT2=`$FTP ${CHECKHOST} < $FTPCMDFILE 2>&1 >/dev/null`
+			fi
+		fi
+	fi
+
+	if [ "${OSNAME}" = "AIX" ]; then
+		if [ -f /etc/security/config.$$ ]; then
+			mv /etc/security/config.$$ /etc/security/config
+		fi
+	fi
+
+	$RM -f $FTPCMDFILE
+
+	# Restore backup copy
+	if test -f /tmp/.netrc.$$
+	then
+		$CP  /tmp/.netrc.$$ $HOME/.netrc || error "Cannot restore $HOME/.netrc from /tmp/.netrc.$$"
+		$RM /tmp/.netrc.$$
+	else
+		$RM $HOME/.netrc
+	fi
+
+	if test -n "$RESULT2"
+	then	
+		error "FTP failed with error: $RESULT $RESULT2"
+	fi
+}
+
+#-------------------------------------------------------------------------------
+# fork()
+# This function will rerun the script, to trap stderr errors. This will help
+# make sure the script is running OK on all platforms
+#-------------------------------------------------------------------------------
+fork()
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	# I'm supposed the get $1 and other arguments
+	if test "$2" != "-step2"	# If no argument I need to call myself
+	then
+		# If I'm debugging, then don't trap
+		if test $DEBUG -gt 0
+		then
+			$1 -step2 $2 2>&1 >${PARENTRESULTS}
+		else
+			ERRORSTRING=`$1 -step2 $2 2>&1 >${PARENTRESULTS}`
+			if test $? -ne 0 
+			then
+				ERRORSTRING="$ERRORSTRING\n$1 exited with error code $?"
+			fi
+		fi
+	
+		return 0
+	else
+		# Return 1 to signal that I've run the script already
+		return 1
+	fi
+}		
+
+#-------------------------------------------------------------------------------
+# check_uid()
+# Check the uids against the uid file
+#-------------------------------------------------------------------------------
+check_uid()
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	for i in `$AWK '{print $1":"$2}' $UIDFILE`
+	do
+		# Get username
+		USER=`$ECHO $i | $AWK -F: '{print $1}'`
+		if test "$OSNAME" = "OS/390"
+		then
+			USER=`$ECHO $USER | $TR '[:lower:]' '[:upper:]'`
+		fi
+
+		# Get uid
+		TUID=`$ECHO $i | $AWK -F: '{print $2}'`
+
+		INVALIDUID=""
+
+		if test ${TUID} -gt 65535
+		then
+			if test "$OSNAME" = "Linux"
+			then
+				KERNELTYPE=`uname -r | cut -f1-2 -d.`
+				if test "$KERNELTYPE" = "2.2"
+				then
+					INVALIDUID="The 2.2 Linux kernel family doesn't use UIDs greater than 65535"
+				fi
+			fi
+		fi
+
+		if test "${INVALIDUID}" = ""
+		then
+			# Create temp file
+			$ECHO > /tmp/.$$ || error "Can't create /tmp/.$$. Make sure /tmp isn't full."
+		
+			# First step is checking username --> uid mapping
+			# chown file to see if user exists
+			$CHOWN $USER /tmp/.$$ >/dev/null 2>&1
+			if test $? -eq 0 								# Exists
+			then
+				LUID=`$LS -ln /tmp/.$$ | $AWK '{print $3}'`	# Get uid from ls
+				if test $LUID -ne $TUID 
+				then	
+					if test -z "$RESULTUID"					# First userid
+					then
+						RESULTUID="$USER uid is $LUID instead of $TUID"
+					else
+						RESULTUID="$RESULTUID\n$USER uid is $LUID instead of $TUID"
+					fi
+				fi
+			fi
+		
+			# Second step is checking uid --> username mapping
+			# This is done by chmod a file using the uid and checking the owner name
+			$CHOWN $TUID /tmp/.$$ >/dev/null 2>&1
+			# Get username from ls
+			LUSER=`$LS -l /tmp/.$$ | $AWK '{print $3}'`
+			$RM -f /tmp/.$$
+
+			if test "$LUSER" != "$USER" 
+			then
+			# Try agin comparing only the 8 first chars of username
+				USERSHORT=`$ECHO $USER | $AWK '{print substr($1,1,8)}'`
+				LUSERSHORT=`$ECHO $LUSER | $AWK '{print substr($1,1,8)}'`
+				if test "$LUSERSHORT" != "$USERSHORT" 
+				then	# Now check if we got a number back
+					if test `$ECHO $LUSER |$GREP -c "[a-zA-Z]"` -gt 0
+					then
+						if test -z "$RESULTUID"				# First userid
+						then
+							RESULTUID="Uid $TUID username is $LUSER instead of $USER"
+						else
+							RESULTUID="$RESULTUID\nUid $TUID username is $LUSER instead of $USER"
+						fi
+					fi
+				fi
+			fi
+		else
+			if test $DEBUG -ge 1
+			then
+				echo "*** Skipping $USER ($TUID)... $INVALIDUID" >&2
+			fi
+		fi
+	done	
+
+	$RM -f /tmp/.$$
+
+	if test -n "$RESULTUID" 
+	then
+		$ECHO "Username/uid mapping errors:\n$RESULTUID";
+	else 
+		$ECHO "	"
+	fi
+}
+
+#-------------------------------------------------------------------------------
+# check_gid()
+# Check the gids against the gid file
+#-------------------------------------------------------------------------------
+check_gid()
+{
+	if test $DEBUG -ge 2
+	then
+		set -x
+	fi
+
+	for i in `$AWK '{print $1":"$2}' $GIDFILE`
+	do
+		# Get groupname
+		GROUP=`$ECHO $i | $AWK -F: '{print $1}'`
+		if test "$OSNAME" = "OS/390"
+		then
+			GROUP=`$ECHO $GROUP | $TR '[:lower:]' '[:upper:]'`
+		fi
+
+		# Get gid
+		USERGID=`$ECHO $i | $AWK -F: '{print $2}'`
+
+		INVALIDGID=""
+
+		if test ${USERGID} -gt 65535
+		then
+			if test "$OSNAME" = "Linux"
+			then
+				KERNELTYPE=`uname -r | cut -f1-2 -d.`
+				if test "$KERNELTYPE" = "2.2"
+				then
+					INVALIDGID="The 2.2 Linux kernel family doesn't use GIDs greater than 65535"
+				fi
+			fi
+		else
+			if test "${IBMSITE}" = "POK"
+			then
+				if test ${USERGID} -eq 6010
+				then
+					INVALIDGID="Poughkeepsie environment exempted"
+				fi
+			fi
+		fi
+
+		if test "${INVALIDGID}" = ""
+		then
+			# Create temp file
+			$ECHO > /tmp/.$$ || error "Can't create /tmp/.$$. Make sure / isn't full."
+		
+			# First step is checking groupname --> gid mapping
+			# chgrp file to see if group exists
+			$CHGRP $GROUP /tmp/.$$ >/dev/null 2>&1	
+			if test $? -eq 0 								# Exists
+			then
+				LGID=`$LS -ln /tmp/.$$ | $AWK '{print $4}'`	# Get gid from ls
+				if test "$LGID" -ne "$USERGID" 
+				then
+					if test -z "$RESULTGID"					# First group
+					then
+					RESULTGID="$GROUP gid is $LGID instead of $USERGID"
+					else
+						RESULTGID="$RESULTGID\n$GROUP gid is $LGID instead of $USERGID"
+					fi
+				fi
+			fi
+
+			# Second step is checking gid --> groupname mapping
+			# This is done be chmod a file using the gid and checking the owner name
+			$CHGRP $USERGID /tmp/.$$ >/dev/null 2>&1
+			LGROUP=`$LS -l /tmp/.$$ | $AWK '{print $4}'`	# Get groupname from ls
+			if test "$LGROUP" != "$GROUP" 
+			then
+				# Try again comparing only the 8 first chars of groupname
+				# as some OS will only display 8 characters on the group field
+				GROUPSHORT=`$ECHO $GROUP | $AWK '{print substr($1,1,8)}'`
+				LGROUPSHORT=`$ECHO $LGROUP | $AWK '{print substr($1,1,8)}'`
+				if test "$LGROUPSHORT" != "$GROUPSHORT" 
+				then
+					# Old Solaris have a problem when groups are broken in several
+					# groups due to /etc/group line size limits, so we try again
+					# comparing only the size of $GROUP 
+					SLGROUP=`$ECHO $LGROUP | $AWK '{print substr($1,1,length(GROUP))}' GROUP=$GROUP`
+					if test "$SLGROUP" != "$GROUP" 
+					then
+						# Only report as an error if it actually resolved the USERGID to a name
+						if test `$ECHO $LGROUP |$GREP -c "[a-zA-Z]"` -gt 0
+						then
+							if test -z "$RESULTGID"			# First group
+							then
+								RESULTGID="Gid $USERGID groupname is $LGROUP instead of $GROUP"
+							else 
+							RESULTGID="$RESULTGID\nGid $USERGID groupname is $LGROUP instead of $GROUP"
+							fi
+						fi
+					fi
+				fi
+			fi
+		else
+			if test $DEBUG -ge 1
+			then
+				echo "*** Skipping $GROUP ($USERGID)... $INVALIDGID"
+			fi
+		fi
+	done
+
+	$RM -f /tmp/.$$
+
+	if test  -n "$RESULTGID" 
+	then
+		$ECHO "Groupname/gid mapping errors:\n$RESULTGID";
+	else
+		$ECHO "	"
+	fi
+}
+
+################################################################################
+## Main program
+################################################################################
+
+if test $DEBUG -ge 1
+then
+	set -x
+fi
+
+if [ "$1" = "-step2" ]; then
+	DATADIR=$2
+else
+	DATADIR=$1
+fi
+
+UIDFILE="uid"
+GIDFILE="gid"
+
+if [ "${OSNAME}" = "AIX" ]; then
+	if [ -f /core ]; then
+		echo "Deleting \c"
+		file /core
+		rm -f /core
+	fi
+fi
+
+# Run again, this time saving output to a file
+fork $0 $@
+
+if test "$?" = 0
+then
+	# Parent process: send results, if necessary
+
+	# Display results if there are any
+	if test `$WC -c ${PARENTRESULTS}|$AWK '{print $1}'` -gt 4
+	then
+		$CAT ${PARENTRESULTS}
+	fi
+
+	# Now check for errors
+	if test -n "$ERRORSTRING" 
+	then
+		error "Execution error: $ERRORSTRING"
+	fi
+
+	# Send the results
+	send_results
+else
+	# Child process: execute commands
+
+	# Check if all commands are available
+	check_commands
+
+	# Make a working directory
+	$MKDIR ${CHILDTMPDIR} || error "Can't create ${CHILDTMPDIR}. Make sure /tmp isn't full."
+	cd ${CHILDTMPDIR}
+
+	# Get the uid and gid files
+	get_uidgid
+
+	# Check uids
+	check_uid
+	$RM -f $UIDFILE
+
+	# Check gids
+	check_gid
+	$RM -f $GIDFILE
+
+	cd /
+	$RMDIR ${CHILDTMPDIR}
+fi
+

@@ -1,0 +1,71 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX", "label": "Length"} ],
+      "rows": [
+        [ -17 ],
+        [ -15 ],
+        [ -10 ],
+        [ -5 ],
+        [ 0 ],
+        [ 5 ],
+        [ 7 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "clip": "atBounds",
+          "color": [
+            {
+              "id": "cid",
+              "field": {"$ref": "fX"},
+              "mapping": [
+                {"at": "0%", "color": "#0000ff"},
+                {"at": "50%", "color": "white"},
+                {"at": "100%", "color": "#ff0000"}
+              ]
+            }
+          ],
+          "style": {
+            "outline": "black",
+            "size": 30,
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "lineStyle": {"fill": {"b": 68, "g": 140, "r": 255}},
+      "markStyle": {"fill": {"b": 255, "g": 140, "r": 120}},
+      "method": "continuous",
+      "tickStyle": {
+        "fill": {"b": 160, "g": 160, "r": 160},
+        "align": "middle",
+        "font": {
+          "family": "Arial",
+          "size": 10,
+          "weight": "bold",
+          "style": "italic"
+        },
+        "valign": "middle"
+      }
+    }
+  ],
+  "size": {"width": 700, "height": 300},
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

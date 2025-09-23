@@ -1,0 +1,18 @@
+{
+	"tests":[
+		{
+			"name":"system",
+			"location":"Tests/sysTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"connections.pathCon":"/opt/IBM/Connections",
+		"connections.pathShare":"/data/Connections/shared",
+		"connections.pathConInst":"/root/IBM_Connections_Install_Linux",
+		"system.pathDB2":"/opt/ibm/db2",
+		"system.pathInstMan":"/opt/IBM/InstallationManager",
+		"websphere.pathWAS":"/opt/IBM/WebSphere"
+	}
+}

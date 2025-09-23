@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<agent-input>
+  <variables>
+    <variable name='sharedLocation' value='<%= node[:ihs][:paths][:shared] %>'/>
+  </variables>
+  <server>
+    <repository location='<%= node[:ihs][:install][:repositoryLocation] %>'/>
+  </server>
+  <profile id='IBM HTTP Server V8.5' installLocation='<%= node[:ihs][:paths][:install] %>'>
+    <data key='eclipseLocation' value='<%= node[:ihs][:paths][:eclipse] %>'/>
+    <data key='user.import.profile' value='false'/>
+    <data key='cic.selector.os' value='linux'/>
+    <data key='cic.selector.arch' value='<%= node[:ihs][:settings][:arch] %>'/>
+    <data key='cic.selector.ws' value='gtk'/>
+    <data key='user.ihs.http.server.service.name' value='none'/>
+    <data key='user.ihs.httpPort' value='<%= node[:ihs][:settings][:port] %>'/>
+    <data key='user.ihs.installHttpService' value='false'/>
+    <data key='cic.selector.nl' value='en'/>
+    <data key='user.ihs.allowNonRootSilentInstall' value='true'/>
+  </profile>
+  <install modify='false'>
+<<<<<<< HEAD
+    <!-- IBM HTTP Server for WebSphere Application Server () 8.5.5.1 -->
+    <offering profile='IBM HTTP Server V8.5' id='com.ibm.websphere.IHS.v85' features='core.feature,arch.<%= node[:ihs][:install][":bits"] %>bit' installFixes='none'/>
+=======
+    <!-- IBM HTTP Server for WebSphere Application Server (ILAN) 8.5 -->
+    <offering profile='IBM HTTP Server V8.5' id='com.ibm.websphere.IHSILAN.v85' <%= node[:ihs][:install][:versionString] %> features='core.feature,arch.<%= node[:ihs][:install][":bits"] %>bit' installFixes='none'/>
+>>>>>>> ba545d77f8d418e104afe94b69e6344e543b30b9
+  </install>
+  <profile id='Web Server Plug-ins for IBM WebSphere Application Server V8.5' installLocation='<%= node[:ihs][:paths][:plugins] %>'>
+    <data key='eclipseLocation' value='<%= node[:ihs][:paths][:plugins] %>'/>
+    <data key='user.import.profile' value='false'/>
+    <data key='cic.selector.os' value='linux'/>
+    <data key='cic.selector.arch' value='<%= node[:ihs][:settings][:arch] %>'/>
+    <data key='cic.selector.ws' value='gtk'/>
+    <data key='cic.selector.nl' value='en'/>
+    <data key='user.ihs.allowNonRootSilentInstall' value='true'/>
+  </profile>
+  <install modify='false'>
+<<<<<<< HEAD
+    <!-- Web Server Plug-ins for IBM WebSphere Application Server() 8.5.5.1 -->
+    <offering profile='Web Server Plug-ins for IBM WebSphere Application Server V8.5' id='com.ibm.websphere.PLG.v85' features='core.feature,com.ibm.jre.6_<%= node[:ihs][:install][":bits"] %>bit' installFixes='none'/>
+=======
+    <!-- Web Server Plug-ins for IBM WebSphere Application Server (ILAN) 8.5 -->
+    <offering profile='Web Server Plug-ins for IBM WebSphere Application Server V8.5' id='com.ibm.websphere.PLGILAN.v85' <%= node[:ihs][:install][:versionString] %> features='core.feature,com.ibm.jre.6_<%= node[:ihs][:install][":bits"] %>bit' installFixes='none'/>
+>>>>>>> ba545d77f8d418e104afe94b69e6344e543b30b9
+  </install>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+  <preference name='com.ibm.cic.common.core.preferences.connectTimeout' value='30'/>
+  <preference name='com.ibm.cic.common.core.preferences.readTimeout' value='45'/>
+  <preference name='com.ibm.cic.common.core.preferences.downloadAutoRetryCount' value='0'/>
+  <preference name='offering.service.repositories.areUsed' value='true'/>
+  <preference name='com.ibm.cic.common.core.preferences.ssl.nonsecureMode' value='false'/>
+  <preference name='com.ibm.cic.common.core.preferences.http.disablePreemptiveAuthentication' value='false'/>
+  <preference name='http.ntlm.auth.kind' value='NTLM'/>
+  <preference name='http.ntlm.auth.enableIntegrated.win32' value='true'/>
+  <preference name='com.ibm.cic.common.core.preferences.preserveDownloadedArtifacts' value='true'/>
+  <preference name='com.ibm.cic.common.core.preferences.keepFetchedFiles' value='false'/>
+  <preference name='PassportAdvantageIsEnabled' value='false'/>
+  <preference name='com.ibm.cic.common.core.preferences.searchForUpdates' value='false'/>
+  <preference name='com.ibm.cic.agent.ui.displayInternalVersion' value='false'/>
+  <preference name='com.ibm.cic.common.sharedUI.showErrorLog' value='true'/>
+  <preference name='com.ibm.cic.common.sharedUI.showWarningLog' value='true'/>
+  <preference name='com.ibm.cic.common.sharedUI.showNoteLog' value='true'/>
+</agent-input>

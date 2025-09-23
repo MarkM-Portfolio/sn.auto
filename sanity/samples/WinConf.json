@@ -1,0 +1,58 @@
+{
+	"tests":[
+		{
+			"name":"IHSPost",
+			"location":"Tests\\IHSPTest.py",
+			"children":[],
+			"dependencies":[]
+		},
+		{
+			"name":"system",
+			"location":"Tests\\sysTest.py",
+			"children":[],
+			"dependencies":[]
+		},
+		{
+			"name":"WASPost",
+			"location":"Tests\\WASPTest.py",
+			"children":[],
+			"dependencies":[]
+		},
+		{
+			"name":"websphere",
+			"location":"Tests\\WASTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"IHSPost.pathCon":"C:\\Program Files\\IBM\\Connections",
+		"IHSPost.pathIHS":"C:\\Program Files\\IBM\\HTTPServer",
+		"IHSPost.pathWAS":"C:\\Program Files\\IBM\\WebSphere",
+		"IHSPost.server":"ictools4.swg.usma.ibm.com",
+		"IHSPost.srvName":"GroupHttpServer",
+		"IHSPost.pathKey":"C:\\Program Files\\IBM\\HTTPServer\\Keys\\testserver-key.kdb",
+		"IHSPost.pathStash":"C:\\Program Files\\IBM\\HTTPServer\\Keys\\testserver-key.sth",
+		"system.pathCon":"C:\\Program Files\\IBM\\Connections",
+		"system.pathShare":"C:\\Program Files\\IBM\\Connections\\data\\shared",
+		"system.pathDB2":"C:\\Program Files\\IBM\\SQLLIB",
+		"system.pathWAS":"C:\\Program Files\\IBM\\WebSphere\\AppServer",
+		"system.pathConInst":"C:\\Users\\IBM_ADMIN\\IBM_Connections_Install_Windows",
+		"system.pathInstMan":"C:\\Program Files\\IBM\\Installation Manager",
+		"WASPost.pathCon":"C:\\Program Files\\IBM\\Connections",
+		"WASPost.pathWAS":"C:\\Program Files\\IBM\\WebSphere",
+		"WASPost.username":"admin",
+		"WASPost.password":"admin",
+		"WASPost.cell":"ictools4Cell01",
+		"WASPost.server":"ictools4.swg.usma.ibm.com",
+		"WASPost.srvName":"GroupHttpServer",
+		"WASPost.appSrvName":"AppSrv01",
+		"WASPost.pathProf":"C:\\Program Files\\IBM\\WebSphere\\AppServer\\profiles",
+		"websphere.pathCon":"C:\\Program Files\\IBM\\Connections",
+		"websphere.pathWAS":"C:\\Program Files\\IBM\\WebSphere",
+		"websphere.username":"admin",
+		"websphere.password":"admin",
+		"websphere.appSrvName":"AppSrv01",
+		"websphere.pathProf":"C:\\Program Files\\IBM\\WebSphere\\AppServer\\profiles"
+	}
+}

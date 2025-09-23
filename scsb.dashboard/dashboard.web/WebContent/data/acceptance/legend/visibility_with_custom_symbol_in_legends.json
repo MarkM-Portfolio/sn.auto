@@ -1,0 +1,122 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX", "label": "Price"},
+        {"id": "fY", "label": "Quantity"},
+        {
+          "id": "facet1",
+          "label": "Three Colors",
+          "categories": [ "a", "b", "c" ]
+        },
+        {
+          "id": "facet2",
+          "label": "Two Sizes",
+          "categories": [ "category A", "category B" ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 22, 339, 0, 0 ],
+        [ 1999, 290, 0, 0 ],
+        [ 1980, 95, 0, 0 ],
+        [ 985, 159, 0, 1 ],
+        [ 2000, 223, 0, 1 ],
+        [ 200, 299, 1, 1 ],
+        [ 500, 254, 1, 1 ],
+        [ 299, 277, 2, 0 ],
+        [ 2000, 412, 2, 0 ],
+        [ 39, 268, 2, 0 ],
+        [ 399, 297, 2, 0 ],
+        [ 799, 386, 1, 0 ],
+        [ 1599, 297, 1, 1 ],
+        [ 1997, 188, 2, 1 ],
+        [ 209, 269, 2, 1 ],
+        [ 149, 265, 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 9
+                }
+              }
+            }
+          }
+        ],
+        "style": {
+          "fill": "white",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "visibility": [
+            {"id": "colorId", "field": {"$ref": "facet1"}}
+          ],
+          "style": {
+            "width": 30,
+            "height": 30,
+            "outline": "black",
+            "symbol": {
+              "shape": [
+                {
+                  "x": "30%",
+                  "y": "20%",
+                  "r": "15%",
+                  "scaleDimensions": "none"
+                },
+                {
+                  "x": "70%",
+                  "y": "20%",
+                  "r": "15%",
+                  "scaleDimensions": "none"
+                },
+                {"path": "M0.5,0.4L0.4,0.6L0.6,0.6"},
+                {
+                  "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                }
+              ],
+              "scaleDimensions": "both"
+            }
+          }
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 10}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "1.3"
+}

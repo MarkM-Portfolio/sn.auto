@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX", "label": "Length"} ],
+      "rows": [
+        [ -17 ],
+        [ -15 ],
+        [ -10 ],
+        [ -5 ],
+        [ 0 ],
+        [ 5 ],
+        [ 7 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "clip": "atBounds",
+          "color": [
+            {
+              "id": "cid",
+              "field": {"$ref": "fX"},
+              "mapping": [
+                {"at": "0%", "color": "#0000ff"},
+                {"at": "50%", "color": "white"},
+                {"at": "100%", "color": "#ff0000"}
+              ]
+            }
+          ],
+          "style": {
+            "outline": "black",
+            "size": 30,
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {"outline": "blue"},
+      "method": "continuous"
+    }
+  ],
+  "size": {"width": 700, "height": 300},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

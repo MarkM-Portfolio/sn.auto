@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<organization>
+
+	<org grpID ="orga" name = "orga" uri = "https://orga50.swg.usma.ibm.com"  />
+	<org grpID ="orgb" name = "orgb" uri = "https://orgb50.swg.usma.ibm.com" />	
+	
+</organization>

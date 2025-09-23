@@ -1,0 +1,123 @@
+{
+  "data": [
+    {
+      "id": "otherPoints",
+      "fields": [
+        {"id": "pY"},
+        {"id": "pX"},
+        {
+          "id": "pLabelContent",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ]
+        }
+      ],
+      "rows": [
+        [ 1, 1, 0 ],
+        [ 2, 2, 1 ],
+        [ 5, 3, 2 ],
+        [ 6, 4, 3 ],
+        [ 9, 5, 4 ],
+        [ 10, 6, 5 ],
+        [ 13, 7, 6 ],
+        [ 14, 8, 7 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {
+          "fill": "pink",
+          "effect": {"shadow": {"dx": 6, "dy": -6, "color": "grey"}}
+        }
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "otherPoints"},
+          "position": [
+            {"field": {"$ref": "pY"}},
+            {"field": {"$ref": "pX"}}
+          ],
+          "style": {
+            "fill": {"a": 0.8, "b": 50, "g": 50, "r": 50},
+            "stroke": {"width": 8},
+            "effect": {
+              "shadow": {"color": "#a3a", "dx": 5, "dy": 5}
+            }
+          }
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "otherPoints"},
+          "position": [
+            {"field": {"$ref": "pY"}},
+            {"field": {"$ref": "pX"}}
+          ],
+          "color": [ {"field": {"$ref": "pLabelContent"}} ],
+          "style": {
+            "effect": {
+              "shadow": {
+                "color": "#a33",
+                "dx": 5,
+                "dy": 5,
+                "stdDev": 1
+              }
+            },
+            "outline": "black",
+            "size": 30
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": "lightblue",
+        "effect": {
+          "shadow": {
+            "color": "darkred",
+            "dx": -6,
+            "dy": 6,
+            "stdDev": 4
+          }
+        },
+        "outline": "navy",
+        "padding": 50
+      }
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "#888",
+        "stroke": {"width": 4},
+        "effect": {"shadow": {"dx": 6, "dy": -6}},
+        "outline": "#f00",
+        "padding": 10
+      },
+      "itemStyle": {
+        "effect": {
+          "shadow": {"color": "#0ff", "dx": -2, "dy": 2}
+        }
+      },
+      "labelStyle": {"fill": "white"},
+      "titleStyle": {
+        "fill": "white",
+        "effect": {"shadow": {"dx": 3, "dy": -3}},
+        "padding": {"bottom": 10, "top": 10}
+      }
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 20}
+}

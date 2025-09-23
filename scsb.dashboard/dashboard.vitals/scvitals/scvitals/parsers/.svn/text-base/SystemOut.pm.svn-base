@@ -1,0 +1,101 @@
+#################################################
+#  Licensed Materials -- Property of IBM
+#
+#  (c) Copyright IBM Corporation, 2010, 2014.
+#      ALL RIGHTS RESERVED.
+#
+#  US Government Users Restricted Rights -
+#  Use, duplication or disclosure restricted by
+#  GSA ADP Schedule Contract with IBM Corp.
+#################################################
+
+sub processLog {
+  $default_hung = $default_active = $default_size = $default_max = $hamanager_hung = $hamanager_active = $hamanager_size = $hamanager_max = $orb_hung = $orb_active = $orb_size = $orb_max = $process_hung = $process_active = $process_size = $process_max = $sibfapi_hung = $sibfapi_active = $sibfapi_size = $sibfapi_max = $sibfap_hung = $sibfap_active = $sibfap_size = $sibfap_max = $sibjmsra_hung = $sibjmsra_active = $sibjmsra_size = $sibjmsra_max = $tcp_hung = $tcp_active = $tcp_size = $tcp_max = $web_hung = $web_active = $web_size = $web_max = $server_hung = $server_active = $server_size = $server_max = $soapconnector_hung = $soapconnector_active = $soapconnector_size = $soapconnector_max = 0;
+  while (<LOGFILE>) {
+    chomp;
+    $line = $_;
+    if ($line =~ /ThreadMonitor A/) {
+      ($time, $rawpools) = ($line =~ m/\[(.+?)\].+\{(.+)\}/);
+      $time =~ /^(\d{1,2})\/(\d{1,2})\/(\d{2})\s(\d{1,2}):(\d{1,2}):(\d{1,2})/;
+      $year = "20".sprintf("%02d",$3);
+      $month = sprintf("%02d",$1);
+      $day = sprintf("%02d",$2);
+      $timestamp = $year."-".$month."-".$day." ".$4.":".$5.":".$6;
+
+      @pools = split(/,/, $rawpools);
+      foreach my $pool (@pools) {
+        ($name, $values) = split(/:/, $pool);
+        @threads = split(/\//, $values);
+
+        if ($name =~ /^Default/) {
+          $default_hung = $threads[0];
+          $default_active = $threads[1];
+          $default_size = $threads[2];
+          $default_max = $threads[3];
+        }
+        if ($name =~ /^HAManager\.thread\.pool/) {
+          $hamanager_hung = $threads[0];
+          $hamanager_active = $threads[1];
+          $hamanager_size = $threads[2];
+          $hamanager_max = $threads[3];
+        }
+        if ($name =~ /^ORB\.thread\.pool/) {
+          $orb_hung = $threads[0];
+          $orb_active = $threads[1];
+          $orb_size = $threads[2];
+          $orb_max = $threads[3];
+        }
+        if ($name =~ /^ProcessDiscovery/) {
+          $process_hung = $threads[0];
+          $process_active = $threads[1];
+          $process_size = $threads[2];
+          $process_max = $threads[3];
+        }
+        if ($name =~ /^SIBFAPInboundThreadPool/) {
+          $sibfapi_hung = $threads[0];
+          $sibfapi_active = $threads[1];
+          $sibfapi_size = $threads[2];
+          $sibfapi_max = $threads[3];
+        }
+        if ($name =~ /^SIBFAPThreadPool/) {
+          $sibfap_hung = $threads[0];
+          $sibfap_active = $threads[1];
+          $sibfap_size = $threads[2];
+          $sibfap_max = $threads[3];
+        }
+        if ($name =~ /^SIBJMSRAThreadPool/) {
+          $sibjmsra_hung = $threads[0];
+          $sibjmsra_active = $threads[1];
+          $sibjmsra_size = $threads[2];
+          $sibjmsra_max = $threads[3];
+        }
+        if ($name =~ /^TCPChannel\.DCS/) {
+          $tcp_hung = $threads[0];
+          $tcp_active = $threads[1];
+          $tcp_size = $threads[2];
+          $tcp_max = $threads[3];
+        }
+        if ($name =~ /^WebContainer/) {
+          $web_hung = $threads[0];
+          $web_active = $threads[1];
+          $web_size = $threads[2];
+          $web_max = $threads[3];
+        }
+        if ($name =~ /^server\.startup/) {
+          $server_hung = $threads[0];
+          $server_active = $threads[1];
+          $server_size = $threads[2];
+          $server_max = $threads[3];
+        }
+        if ($name =~ /^SoapConnectorThreadPool/) {
+          $soapconnector_hung = $threads[0];
+          $soapconnector_active = $threads[1];
+          $soapconnector_size = $threads[2];
+          $soapconnector_max = $threads[3];
+        }
+      }
+      $dbh->do("INSERT DELAYED INTO `".$result->{'name'}.$month."` VALUES (".$dbh->quote($timestamp).",".$ARGV[0].",".$dbh->quote($result->{'application'}).",".$dbh->quote($hostname).",".$default_hung.",".$default_active.",".$default_size.",".$default_max.",".$hamanager_hung.",".$hamanager_active.",".$hamanager_size.",".$hamanager_max.",".$orb_hung.",".$orb_active.",".$orb_size.",".$orb_max.",".$process_hung.",".$process_active.",".$process_size.",".$process_max.",".$sibfapi_hung.",".$sibfapi_active.",".$sibfapi_size.",".$sibfapi_max.",".$sibfap_hung.",".$sibfap_active.",".$sibfap_size.",".$sibfap_max.",".$sibjmsra_hung.",".$sibjmsra_active.",".$sibjmsra_size.",".$sibjmsra_max.",".$tcp_hung.",".$tcp_active.",".$tcp_size.",".$tcp_max.",".$web_hung.",".$web_active.",".$web_size.",".$web_max.",".$server_hung.",".$server_active.",".$server_size.",".$server_max.",".$soapconnector_hung.",".$soapconnector_active.",".$soapconnector_size.",".$soapconnector_max.")");
+    }
+  }
+  $lasteof = tell(LOGFILE);
+}

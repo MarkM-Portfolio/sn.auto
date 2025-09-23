@@ -1,0 +1,2043 @@
+{
+  "data": [
+    {
+      "id": "swimlanes",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [
+            "Learning and Growth",
+            "Internal Business Processes",
+            "Customer",
+            "Financial"
+          ]
+        },
+        {"id": "layerHeight"},
+        {"id": "maxRowValue"},
+        {"id": "idealNodeCountValue"},
+        {
+          "id": "firstIcon",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "firstValue"},
+        {
+          "id": "secondIcon",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "secondValue"},
+        {
+          "id": "thirdIcon",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "thirdValue"},
+        {
+          "id": "perspectiveStatus",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        }
+      ],
+      "rows": [
+        [ 3, 1, 2, 4, 0, 2, 1, 1, 2, 2, 0 ],
+        [ 2, 1, 2, 4, 0, 1, 3, null, 3, null, 0 ],
+        [ 1, 1, 2, 4, 3, null, 3, null, 3, null, 0 ],
+        [ 0, 1, 2, 4, 0, 1, 2, 1, 3, null, 0 ]
+      ]
+    },
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "size"},
+        {
+          "id": "direction",
+          "categories": [ "oneway", "twoway" ]
+        }
+      ],
+      "rows": [
+        [ 8, 5, 1, 0 ],
+        [ 5, 8, 1, 0 ],
+        [ 2, 4, 1, 0 ],
+        [ 2, 0, 1, 0 ],
+        [ 2, 7, 1, 0 ],
+        [ 6, 3, 1, 0 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {"id": "order"},
+        {
+          "id": "name",
+          "categories": [
+            "Grow Revenue",
+            "Lower Operating Costs",
+            "Improve Brand Awareness",
+            "Memorable Shopping Experience",
+            "Improve Vendor Process",
+            "Improve Brand Management Process",
+            "Improve Supply Chain",
+            "Grow Revenue",
+            "Employee Development"
+          ]
+        },
+        {
+          "id": "layer",
+          "categories": [
+            "Learning and Growth",
+            "Internal Business Processes",
+            "Customer",
+            "Financial"
+          ]
+        },
+        {
+          "id": "status",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {
+          "id": "symbol1",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "count1"},
+        {
+          "id": "symbol2",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "count2"},
+        {
+          "id": "symbol3",
+          "categories": [
+            "excellent",
+            "average",
+            "poor",
+            "invalid"
+          ]
+        },
+        {"id": "count3"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 3, 0, 0, 1, 1, 1, 3, null ],
+        [ 1, 1, 1, 3, 2, 0, 1, 2, 2, 3, null ],
+        [ 2, 2, 2, 2, 0, 3, null, 3, null, 3, null ],
+        [ 3, 3, 3, 2, 0, 0, 1, 3, null, 3, null ],
+        [ 4, 4, 4, 1, 0, 3, null, 3, null, 3, null ],
+        [ 5, 5, 5, 1, 0, 3, null, 3, null, 3, null ],
+        [ 6, 6, 6, 1, 0, 3, null, 3, null, 3, null ],
+        [ 7, 7, 7, 0, 0, 3, null, 3, null, 3, null ],
+        [ 8, 8, 8, 0, 0, 0, 1, 2, 1, 3, null ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "color": [
+            {
+              "field": {"$ref": "perspectiveStatus"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {"b": 242, "g": 242, "r": 242}
+                },
+                {
+                  "at": 1,
+                  "color": {"b": 242, "g": 242, "r": 242}
+                },
+                {
+                  "at": 2,
+                  "color": {"b": 242, "g": 242, "r": 242}
+                },
+                {
+                  "at": 3,
+                  "color": {"b": 242, "g": 242, "r": 242}
+                }
+              ],
+              "modifies": {"type": "fill", "part": "main"}
+            }
+          ],
+          "positioning": {
+            "layout": "sliceAndDice",
+            "levels": [ {"$ref": "category"} ],
+            "method": "treemap",
+            "size": {"$ref": "layerHeight"}
+          },
+          "style": {
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "649",
+                  "height": "398",
+                  "part": "main",
+                  "style": {
+                    "fill": "white",
+                    "outline": "lightgray"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "layerPlacement": "centered",
+            "method": "dag",
+            "nodePlacement": "symmetric",
+            "order": {"$ref": "order"},
+            "padding": {"left": 55, "right": 10},
+            "swimLanes": {
+              "id": {"$ref": "category"},
+              "idealNodeCountValue": {
+                "$ref": "idealNodeCountValue"
+              },
+              "maxRowValue": {"$ref": "maxRowValue"}
+            },
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "status"},
+              "scale": {"local": false},
+              "modifies": {"part": "main"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 184,
+                          "g": 220,
+                          "r": 179
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 184,
+                          "g": 220,
+                          "r": 179
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 138,
+                          "g": 197,
+                          "r": 131
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 138,
+                          "g": 197,
+                          "r": 131
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 104,
+                          "g": 168,
+                          "r": 98
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 165,
+                          "g": 230,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 165,
+                          "g": 230,
+                          "r": 255
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 102,
+                          "g": 210,
+                          "r": 255
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 102,
+                          "g": 210,
+                          "r": 255
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 82,
+                          "g": 185,
+                          "r": 229
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 175,
+                          "g": 175,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 175,
+                          "g": 175,
+                          "r": 244
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 124,
+                          "r": 236
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 124,
+                          "r": 236
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 85,
+                          "g": 85,
+                          "r": 227
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {
+            "width": 130,
+            "height": 50,
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "main",
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "cornerRadius": "10",
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "link",
+            "padding": {"left": 55, "right": 10},
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "direction"},
+              "palette": [
+                {"endArrow": "filledArrow"},
+                {
+                  "endArrow": "filledArrow",
+                  "startArrow": "filledArrow"
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 175, "g": 175, "r": 175},
+            "stroke": {"width": 4.0},
+            "symbol": "curved"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "category"} ],
+              "modifies": {"part": "perspectiveLabel"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "firstValue"} ],
+              "modifies": {"part": "label1"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "secondValue"} ],
+              "modifies": {"part": "label2"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "thirdValue"} ],
+              "modifies": {"part": "label3"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            }
+          ],
+          "positioning": {
+            "layout": "sliceAndDice",
+            "levels": [ {"$ref": "category"} ],
+            "method": "treemap",
+            "size": {"$ref": "layerHeight"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "perspectiveStatus"},
+              "scale": {"local": false},
+              "modifies": {"part": "perspectiveSymbol"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "firstIcon"},
+              "scale": {"local": false},
+              "modifies": {"part": "symbol1"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "secondIcon"},
+              "scale": {"local": false},
+              "modifies": {"part": "symbol2"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "thirdIcon"},
+              "scale": {"local": false},
+              "modifies": {"part": "symbol3"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "perspectiveStatus"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "perspectiveSymbol"}
+            },
+            {
+              "field": {"$ref": "firstIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol1"}
+            },
+            {
+              "field": {"$ref": "secondIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol2"}
+            },
+            {
+              "field": {"$ref": "thirdIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol3"}
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "category"} ]}
+          ],
+          "style": {
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": 53,
+                  "height": 72,
+                  "part": "perspectiveStatusesHolder",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 22,
+                  "y": 2,
+                  "width": "623.04",
+                  "height": 14,
+                  "part": "perspectiveLabel",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 12,
+                  "y": 8,
+                  "part": "perspectiveSymbol",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 12,
+                  "y": 30,
+                  "part": "symbol1",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 12,
+                  "y": 47,
+                  "part": "symbol2",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 12,
+                  "y": 64,
+                  "part": "symbol3",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 22,
+                  "y": 24,
+                  "width": 30,
+                  "height": 14,
+                  "part": "label1",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 22,
+                  "y": 41,
+                  "width": 30,
+                  "height": 14,
+                  "part": "label2",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 22,
+                  "y": 58,
+                  "width": 30,
+                  "height": 14,
+                  "part": "label3",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "modifies": {"part": "objectiveLabel"},
+              "style": {
+                "fill": "#222222",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": -1, "top": 4},
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count1"} ],
+              "modifies": {"part": "objectiveLabel1"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count2"} ],
+              "modifies": {"part": "objectiveLabel2"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count3"} ],
+              "modifies": {"part": "objectiveLabel3"},
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 10.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "layerPlacement": "centered",
+            "method": "dag",
+            "nodePlacement": "symmetric",
+            "order": {"$ref": "order"},
+            "padding": {"left": 55, "right": 10},
+            "swimLanes": {
+              "id": {"$ref": "category"},
+              "idealNodeCountValue": {
+                "$ref": "idealNodeCountValue"
+              },
+              "maxRowValue": {"$ref": "maxRowValue"}
+            },
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "status"},
+              "scale": {"local": false},
+              "modifies": {"part": "objectiveStatusSymbol"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "symbol1"},
+              "scale": {"local": false},
+              "modifies": {"part": "objectiveSymbol1"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "symbol2"},
+              "scale": {"local": false},
+              "modifies": {"part": "objectiveSymbol2"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "symbol3"},
+              "scale": {"local": false},
+              "modifies": {"part": "objectiveSymbol3"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "radial",
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 158,
+                          "g": 228,
+                          "r": 151
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 218,
+                          "r": 113
+                        },
+                        "offset": 0.25
+                      },
+                      {
+                        "color": {
+                          "b": 109,
+                          "g": 195,
+                          "r": 99
+                        },
+                        "offset": 0.75
+                      }
+                    ],
+                    "focus": {"x": "50%", "y": "20%"}
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 125,
+                          "g": 217,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 69,
+                          "g": 201,
+                          "r": 255
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 63,
+                          "g": 184,
+                          "r": 233
+                        },
+                        "offset": 0.66
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 126,
+                          "g": 126,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 67,
+                          "g": 67,
+                          "r": 239
+                        },
+                        "offset": 0.33
+                      },
+                      {
+                        "color": {
+                          "b": 64,
+                          "g": 75,
+                          "r": 218
+                        },
+                        "offset": 0.85
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "field": {"$ref": "status"},
+              "scale": {"local": false},
+              "modifies": {"part": "main"},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 184,
+                          "g": 220,
+                          "r": 179
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 184,
+                          "g": 220,
+                          "r": 179
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 138,
+                          "g": 197,
+                          "r": 131
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 138,
+                          "g": 197,
+                          "r": 131
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 104,
+                          "g": 168,
+                          "r": 98
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 165,
+                          "g": 230,
+                          "r": 255
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 165,
+                          "g": 230,
+                          "r": 255
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 102,
+                          "g": 210,
+                          "r": 255
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 102,
+                          "g": 210,
+                          "r": 255
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 82,
+                          "g": 185,
+                          "r": 229
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270.0,
+                    "colors": [
+                      {
+                        "color": {
+                          "b": 175,
+                          "g": 175,
+                          "r": 244
+                        },
+                        "offset": 0.0
+                      },
+                      {
+                        "color": {
+                          "b": 175,
+                          "g": 175,
+                          "r": 244
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 124,
+                          "r": 236
+                        },
+                        "offset": 0.05
+                      },
+                      {
+                        "color": {
+                          "b": 124,
+                          "g": 124,
+                          "r": 236
+                        },
+                        "offset": 0.95
+                      },
+                      {
+                        "color": {
+                          "b": 85,
+                          "g": 85,
+                          "r": 227
+                        },
+                        "offset": 0.95
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "objectiveStatusSymbol"}
+            },
+            {
+              "field": {"$ref": "symbol1"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "objectiveSymbol1"}
+            },
+            {
+              "field": {"$ref": "symbol2"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "objectiveSymbol2"}
+            },
+            {
+              "field": {"$ref": "symbol3"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "objectiveSymbol3"}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "layer"},
+                "/",
+                {"$ref": "name"}
+              ]
+            }
+          ],
+          "style": {
+            "width": 130,
+            "height": 50,
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "main",
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "cornerRadius": "10",
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "objectiveHoverOverArea",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 10,
+                  "y": 10,
+                  "part": "objectiveStatusSymbol",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": "15%",
+                  "y": "0%",
+                  "width": "85%",
+                  "height": "60%",
+                  "part": "objectiveLabel",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 15,
+                  "y": "40",
+                  "part": "objectiveSymbol1",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 55,
+                  "y": "40",
+                  "part": "objectiveSymbol2",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 95,
+                  "y": "40",
+                  "part": "objectiveSymbol3",
+                  "r": 6,
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": {
+                      "a": 0.6,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    }
+                  }
+                },
+                {
+                  "x": 25,
+                  "y": "68%",
+                  "width": 20,
+                  "height": "30%",
+                  "part": "objectiveLabel1",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 65,
+                  "y": "68%",
+                  "width": 20,
+                  "height": "30%",
+                  "part": "objectiveLabel2",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": 105,
+                  "y": "68%",
+                  "width": 20,
+                  "height": "30%",
+                  "part": "objectiveLabel3",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "style": {"fill": "#E0E0DF", "outline": {"a": 0.1}}
+    }
+  ],
+  "version": "1.3"
+}

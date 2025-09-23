@@ -1,0 +1,1 @@
+2014-05-28T22:21:04+0000 user amyjones03@ivthouse.com (id=20063308, customerId=20063304) performed CREATE_BLOG_ENTRY on object (type=BLOG_ENTRY, id=42eb457c-2b40-4556-b9bd-5dd47d5a051c, name="test", customerId=20063304) targeted at (type=BLOG, id=9853a187-bc71-4cfd-8df7-5073a37e4a0f, name="External restricted search test", customerId=20063304) with outcome SUCCESS

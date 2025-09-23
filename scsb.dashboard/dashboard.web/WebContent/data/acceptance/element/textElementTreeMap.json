@@ -1,0 +1,446 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "fProductLine",
+          "label": "Product Line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories"
+          ]
+        },
+        {
+          "id": "fProductType",
+          "label": "Product Type",
+          "categories": [
+            "Cooking Gear",
+            "Sleeping Bags",
+            "Packs",
+            "Tents",
+            "Lanterns",
+            "Irons",
+            "Putters",
+            "Woods",
+            "Golf Accessories",
+            "Climbing Accessories",
+            "Tools",
+            "Rope",
+            "Safety",
+            "First Aid",
+            "Insect Repellents",
+            "Sunscreen",
+            "Binoculars",
+            "Navigation",
+            "Eyewear",
+            "Knives",
+            "Watches"
+          ]
+        },
+        {
+          "id": "fProductName",
+          "label": "Product Name",
+          "categories": [
+            "TrailChef Water Bag",
+            "TrailChef Canteen",
+            "TrailChef Deluxe Cook Set",
+            "TrailChef Double Flame",
+            "TrailChef Kettle",
+            "TrailChef Kitchen Kit",
+            "TrailChef Cup",
+            "TrailChef Cook Set",
+            "TrailChef Single Flame",
+            "TrailChef Utensils",
+            "Hibernator Extreme",
+            "Hibernator Self - Inflating Mat",
+            "Hibernator Lite",
+            "Hibernator",
+            "Hibernator Pad",
+            "Hibernator Camp Cot",
+            "Hibernator Pillow",
+            "Canyon Mule Journey Backpack",
+            "Canyon Mule Extreme Backpack",
+            "Canyon Mule Climber Backpack",
+            "Canyon Mule Weekender Backpack",
+            "Canyon Mule Carryall",
+            "Canyon Mule Cooler",
+            "Star Gazer 2",
+            "Star Gazer 6",
+            "Star Peg",
+            "Star Gazer 3",
+            "Star Lite",
+            "Star Dome",
+            "Firefly Multi-light",
+            "EverGlow Single",
+            "EverGlow Double",
+            "EverGlow Kerosene",
+            "EverGlow Butane",
+            "Flicker Lantern",
+            "Firefly Lite",
+            "Firefly Mapreader",
+            "Firefly 2",
+            "Firefly Extreme",
+            "Firefly 4",
+            "EverGlow Lamp",
+            "Hailstorm Steel Irons",
+            "Lady Hailstorm Steel Irons",
+            "Lady Hailstorm Titanium Irons",
+            "Hailstorm Titanium Irons",
+            "Blue Steel Putter",
+            "Blue Steel Max Putter",
+            "Course Pro Putter",
+            "Hailstorm Titanium Woods Set",
+            "Lady Hailstorm Titanium Woods Set",
+            "Hailstorm Steel Woods Set",
+            "Lady Hailstorm Steel Woods Set",
+            "Course Pro Umbrella",
+            "Course Pro Gloves",
+            "Course Pro Golf and Tee Set",
+            "Course Pro Golf Bag",
+            "Granite Chalk Bag",
+            "Firefly Climbing Lamp",
+            "Firefly Rechargeable Battery",
+            "Granite Carabiner",
+            "Granite Belay",
+            "Granite Pulley",
+            "Firefly Charger",
+            "Granite Hammer",
+            "Granite Shovel",
+            "Granite Grip",
+            "Granite Axe",
+            "Granite Extreme",
+            "Granite Ice",
+            "Husky Rope 200",
+            "Husky Rope 50",
+            "Husky Rope 60",
+            "Husky Rope 100",
+            "Granite Climbing Helmet",
+            "Husky Harness Extreme",
+            "Granite Signal Mirror",
+            "Husky Harness",
+            "Deluxe Family Relief Kit",
+            "Aloe Relief",
+            "Insect Bite Relief",
+            "Compact Relief Kit",
+            "Calamine Relief",
+            "BugShield Extreme",
+            "BugShield Natural",
+            "BugShield Spray",
+            "BugShield Lotion Lite",
+            "BugShield Lotion",
+            "Sun Blocker",
+            "Sun Shelter Stick",
+            "Sun Shelter 15",
+            "Sun Shelter 30",
+            "Sun Shield",
+            "Seeker Mini",
+            "Seeker 35",
+            "Seeker 50",
+            "Seeker Extreme",
+            "Glacier Deluxe",
+            "Glacier GPS",
+            "Glacier GPS Extreme",
+            "Glacier Basic",
+            "Polar Extreme",
+            "Polar Sun",
+            "Polar Sports",
+            "Polar Wave",
+            "Polar Ice",
+            "Single Edge",
+            "Double Edge",
+            "Edge Extreme",
+            "Bear Survival Edge",
+            "Bear Edge",
+            "Mountain Man Analog",
+            "Mountain Man Digital",
+            "Mountain Man Combination",
+            "Mountain Man Extreme",
+            "Mountain Man Deluxe"
+          ]
+        },
+        {
+          "id": "fRevenue",
+          "label": "Revenue",
+          "format": {
+            "numericPattern": "#,###,###.###",
+            "prefix": "",
+            "suffix": ""
+          },
+          "unit": "dollar"
+        },
+        {"id": "fReturns", "label": "Returns"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 244414.16, 394 ],
+        [ 0, 0, 1, 374674.96, 168 ],
+        [ 0, 0, 2, 445494.14, 78 ],
+        [ 0, 0, 3, 1851635.38, 97 ],
+        [ 0, 0, 4, 118595.16, 26 ],
+        [ 0, 0, 5, 570975.16, 176 ],
+        [ 0, 0, 6, 218416.3, 434 ],
+        [ 0, 0, 7, 642494.48, 90 ],
+        [ 0, 0, 8, 666347.78, 108 ],
+        [ 0, 0, 9, 268084.56, 248 ],
+        [ 0, 1, 10, 4715059.4, 98 ],
+        [ 0, 1, 11, 1269691.18, 214 ],
+        [ 0, 1, 12, 1966368, 278 ],
+        [ 0, 1, 13, 3034022.2, 144 ],
+        [ 0, 1, 14, 340411.88, 56 ],
+        [ 0, 1, 15, 307526.3, 16 ],
+        [ 0, 1, 16, 55865.36, 58 ],
+        [ 0, 2, 17, 3622382.68, 22 ],
+        [ 0, 2, 18, 4335772.24, 16 ],
+        [ 0, 2, 19, 1718086.52, 190 ],
+        [ 0, 2, 20, 3123663.86, 60 ],
+        [ 0, 2, 21, 1282681.36, 294 ],
+        [ 0, 2, 22, 545409.6, 38 ],
+        [ 0, 3, 23, 9123447.66, 94 ],
+        [ 0, 3, 24, 7219022.62, 214 ],
+        [ 0, 3, 25, 85937.78, 786 ],
+        [ 0, 3, 26, 1.30449514E7, 140 ],
+        [ 0, 3, 27, 3034718.04, 108 ],
+        [ 0, 3, 28, 1.49486406E7, 256 ],
+        [ 0, 4, 29, 745997, 186 ],
+        [ 0, 4, 30, 1040525.12, 335 ],
+        [ 0, 4, 31, 742592.92, 116 ],
+        [ 0, 4, 32, 387679.14, 112 ],
+        [ 0, 4, 33, 1280152.2, 132 ],
+        [ 0, 4, 34, 324574.64, 30 ],
+        [ 0, 4, 35, 179749.72, 312 ],
+        [ 0, 4, 36, 299616.18, 40 ],
+        [ 0, 4, 37, 1212633.92, 704 ],
+        [ 0, 4, 38, 2118861.48, 218 ],
+        [ 0, 4, 39, 1205443.84, 580 ],
+        [ 0, 4, 40, 1001374, 1000 ],
+        [ 1, 5, 41, 3070916.68, 36 ],
+        [ 1, 5, 42, 960122.46, 4 ],
+        [ 1, 5, 43, 1020884.74, 4 ],
+        [ 1, 5, 44, 3749541.1, 24 ],
+        [ 1, 6, 45, 1036511.04, 48 ],
+        [ 1, 6, 46, 555866.3, 6 ],
+        [ 1, 6, 47, 717989.9, 18 ],
+        [ 1, 7, 48, 6264117.96, 86 ],
+        [ 1, 7, 49, 1947408.48, 12 ],
+        [ 1, 7, 50, 4519643.36, 0 ],
+        [ 1, 7, 51, 1250946.84, 4 ],
+        [ 1, 8, 52, 166896.12, 8 ],
+        [ 1, 8, 53, 172073.98, 154 ],
+        [ 1, 8, 54, 132738.54, 84 ],
+        [ 1, 8, 55, 339808.08, 6 ],
+        [ 2, 9, 56, 182473.3, 6 ],
+        [ 2, 9, 57, 661099.36, 164 ],
+        [ 2, 9, 58, 169982.52, 430 ],
+        [ 2, 9, 59, 159650.06, 8 ],
+        [ 2, 9, 60, 1291486.54, 2 ],
+        [ 2, 9, 61, 440289.36, 90 ],
+        [ 2, 9, 62, 784836.88, 228 ],
+        [ 2, 10, 63, 917666.18, 144 ],
+        [ 2, 10, 64, 470227.7, 44 ],
+        [ 2, 10, 65, 346145.1, 110 ],
+        [ 2, 10, 66, 914520.36, 90 ],
+        [ 2, 10, 67, 1881948.66, 4 ],
+        [ 2, 10, 68, 660718.22, 194 ],
+        [ 2, 11, 69, 2109231.04, 2 ],
+        [ 2, 11, 70, 1198642.74, 24 ],
+        [ 2, 11, 71, 2559977.34, 6 ],
+        [ 2, 11, 72, 4613953.3, 24 ],
+        [ 2, 12, 73, 270910.96, 48 ],
+        [ 2, 12, 74, 461132.5, 0 ],
+        [ 2, 12, 75, 74673, 12 ],
+        [ 2, 12, 76, 721785.48, 90 ],
+        [ 3, 13, 77, 109453.02, 18 ],
+        [ 3, 13, 78, 69346.28, 14 ],
+        [ 3, 13, 79, 162271.06, 0 ],
+        [ 3, 13, 80, 133753.26, 2 ],
+        [ 3, 13, 81, 103541.34, 2 ],
+        [ 3, 14, 82, 426718.18, 8 ],
+        [ 3, 14, 83, 255465.18, 12 ],
+        [ 3, 14, 84, 248145.8, 14 ],
+        [ 3, 14, 85, 335255.84, 260 ],
+        [ 3, 14, 86, 318723.9, 194 ],
+        [ 3, 15, 87, 154769.64, 8 ],
+        [ 3, 15, 88, 58636.58, 6 ],
+        [ 3, 15, 89, 206229.02, 6 ],
+        [ 3, 15, 90, 303590.68, 66 ],
+        [ 3, 15, 91, 285215.14, 116 ],
+        [ 4, 16, 92, 668114.42, 60 ],
+        [ 4, 16, 93, 1422845.46, 18 ],
+        [ 4, 16, 94, 941878.4, 8 ],
+        [ 4, 16, 95, 2050220.6, 10 ],
+        [ 4, 17, 96, 1220672.66, 136 ],
+        [ 4, 17, 97, 1189989.1, 56 ],
+        [ 4, 17, 98, 3089784.26, 78 ],
+        [ 4, 17, 99, 629889.36, 160 ],
+        [ 4, 18, 100, 1234305.04, 6 ],
+        [ 4, 18, 101, 1353474.08, 118 ],
+        [ 4, 18, 102, 1078542.46, 44 ],
+        [ 4, 18, 103, 758843.22, 144 ],
+        [ 4, 18, 104, 456305.76, 20 ],
+        [ 4, 19, 105, 187384.22, 256 ],
+        [ 4, 19, 106, 603263.98, 324 ],
+        [ 4, 19, 107, 2909955.22, 180 ],
+        [ 4, 19, 108, 2150025.36, 268 ],
+        [ 4, 19, 109, 1085148.54, 68 ],
+        [ 4, 20, 110, 727540.68, 52 ],
+        [ 4, 20, 111, 1472303.12, 160 ],
+        [ 4, 20, 112, 661428.4, 60 ],
+        [ 4, 20, 113, 4334879.56, 8 ],
+        [ 4, 20, 114, 1667671.96, 222 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"left": "0%", "top": "0%"},
+      "coordinates": {
+        "style": {
+          "fill": {"b": 211, "g": 211, "r": 211},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "text",
+          "data": {"$ref": "dData"},
+          "color": [
+            {
+              "field": {"$ref": "fReturns"},
+              "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"h": 0.3, "l": 0.25, "s": 0.7}
+                },
+                {
+                  "at": "20%",
+                  "color": {"h": 0.3, "l": 0.6, "s": 0.7}
+                },
+                {
+                  "at": "60%",
+                  "color": {"h": 0.15, "l": 0.95, "s": 0.7}
+                },
+                {
+                  "at": "80%",
+                  "color": {"h": 0.05, "l": 0.5, "s": 0.7}
+                },
+                {
+                  "at": "100%",
+                  "color": {"h": 0.0, "l": 0.35, "s": 1}
+                }
+              ]
+            }
+          ],
+          "content": [ {"$ref": "fProductLine"} ],
+          "positioning": {
+            "layout": "squarify",
+            "leafOnly": true,
+            "levelLabelStyles": {
+              "internal": [
+                {
+                  "content": [ {"$ref": "fProductLine"} ],
+                  "style": {
+                    "fill": "black",
+                    "align": "start",
+                    "font": {
+                      "family": "Arial",
+                      "size": "10pt",
+                      "weight": "bold",
+                      "style": "italic"
+                    },
+                    "padding": 6,
+                    "valign": "start"
+                  }
+                },
+                {
+                  "content": [ {"$ref": "fProductType"} ],
+                  "style": {
+                    "fill": "black",
+                    "align": "end",
+                    "font": {
+                      "family": "Times New Roman",
+                      "size": "8pt",
+                      "weight": "normal"
+                    },
+                    "padding": 4,
+                    "valign": "end"
+                  }
+                }
+              ],
+              "leaf": {
+                "content": [ {"$ref": "fProductName"} ],
+                "style": {
+                  "fill": "black",
+                  "align": "middle",
+                  "font": {"family": "Arial", "size": "0pt"},
+                  "padding": 2,
+                  "valign": "middle"
+                }
+              }
+            },
+            "levelStyles": {
+              "internal": [
+                {
+                  "stroke": {"width": 1.0},
+                  "outline": "black"
+                },
+                {
+                  "stroke": {"width": 1.0},
+                  "outline": "blue"
+                }
+              ],
+              "leaf": {
+                "stroke": {"width": 0.2},
+                "outline": "white"
+              }
+            },
+            "levels": [
+              {"$ref": "fProductLine"},
+              {"$ref": "fProductType"},
+              {"$ref": "fProductName"}
+            ],
+            "method": "treemap",
+            "padding": {
+              "bottom": 15,
+              "left": 15,
+              "right": 90,
+              "top": 15
+            },
+            "size": {"$ref": "fRevenue"}
+          },
+          "tooltip": [
+            {
+              "content": [
+                "Product Line: ",
+                {"$ref": "fProductLine"},
+                "\nProduct Type: ",
+                {"$ref": "fProductType"},
+                "\nProduct Name: ",
+                {"$ref": "fProductName"},
+                "\nRevenue: ",
+                {"$ref": "fRevenue"},
+                "",
+                "\nReturns: ",
+                {"$ref": "fReturns"},
+                ""
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 0, "g": 0, "r": 0},
+            "stroke": {"width": 0.5},
+            "location": "fit",
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "padding": "2%"
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [ {"location": {"left": 920}} ],
+  "size": {"width": 1000.0, "height": 700.0},
+  "version": "1.3"
+}

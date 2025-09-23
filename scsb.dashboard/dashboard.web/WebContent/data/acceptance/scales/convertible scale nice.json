@@ -1,0 +1,98 @@
+{
+  "data": [
+    {
+      "id": "source1",
+      "fields": [
+        {"id": "x"},
+        {"id": "meters", "unit": "meter"},
+        {"id": "feet", "unit": "foot"}
+      ],
+      "rows": [ [ 0, 1000, 3280.84 ], [ 1, 6000, 19685 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "fit": "nice",
+                  "outRange": {"min": 0, "max": 1.0},
+                  "unit": "mile"
+                },
+                {
+                  "fit": "nice",
+                  "outRange": {"min": 0, "max": 1.0},
+                  "unit": "meter"
+                }
+              ]
+            },
+            "axis": [
+              {
+                "gridStyle": {"fill": "red"},
+                "markStyle": {"fill": "red"},
+                "tickStyle": {"fill": "red"},
+                "title": [ "Feet" ]
+              },
+              {
+                "gridStyle": {"fill": "green"},
+                "markStyle": {"fill": "green"},
+                "tickStyle": {"fill": "green"},
+                "title": [ "Meters" ]
+              }
+            ]
+          },
+          {
+            "scale": {"padding": "10%"},
+            "axis": {"markStyle": {}, "tickStyle": {}}
+          }
+        ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "feet"} ],
+              "style": {
+                "fill": "red",
+                "location": "outside",
+                "valign": "start"
+              }
+            }
+          ],
+          "clip":"overlap",
+          "position": [
+            {"field": {"$ref": "feet"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "style": {"fill": "red", "size": 10}
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "meters"} ],
+              "style": {
+                "fill": "green",
+                "location": "outside",
+                "valign": "end"
+              }
+            }
+          ],
+          "clip":"overlap",
+          "position": [
+            {"field": {"$ref": "meters"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "style": {"fill": "green", "size": 10}
+        }
+      ]
+    }
+  ],
+  "version": "3.1",
+  "style": {"fill": "white"}
+}

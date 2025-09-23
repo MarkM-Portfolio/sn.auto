@@ -1,0 +1,21 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2002, 2011                                    -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<component name="XMLMigration/XMLOutput" description="XML Migration Verification Tool Output"
+   type="java" spec-version="1.0">
+   <output-group name="default">
+   </output-group>   
+   <dependency name="libs.auto/junit" type="jar" version="4.5"/>
+</component>

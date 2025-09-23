@@ -1,0 +1,325 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Time",
+          "categories": [ "Q1", "Q2", "Q3", "Q4" ]
+        },
+        {
+          "id": "provinces",
+          "label": "Provinces",
+          "categories": [
+            "Ontario",
+            "Quebec",
+            "Alberta",
+            "B.C.",
+            "Saskatchewan"
+          ]
+        },
+        {"id": "revenue"}
+      ],
+      "rows": [
+        [ 0, 0, 3600 ],
+        [ 1, 0, 950 ],
+        [ 3, 0, 5200 ],
+        [ 0, 1, 500 ],
+        [ 1, 1, 750 ],
+        [ 2, 1, 1700 ],
+        [ 3, 1, 4200 ],
+        [ 0, 2, 300 ],
+        [ 1, 2, 850 ],
+        [ 2, 2, 2300 ],
+        [ 3, 2, 7200 ],
+        [ 0, 3, 1200 ],
+        [ 1, 3, 450 ],
+        [ 2, 3, 2300 ],
+        [ 3, 3, 100 ],
+        [ 0, 4, 800 ],
+        [ 2, 4, 4900 ],
+        [ 3, 4, 2100 ]
+      ]
+    },
+    {
+      "id": "derivedData",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "categories"},
+          "output": {"id": "grouped_cats"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "provinces_summary"},
+          "input": {"$ref": "provinces"}
+        },
+        {
+          "field": {"id": "revenue_summary"},
+          "input": {"$ref": "revenue"}
+        },
+        {
+          "field": {"id": "sumRevenue"},
+          "input": {"$ref": "revenue"},
+          "parameters": {
+            "replicate": true,
+            "summaryFunction": "sum"
+          }
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "sortedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "grouped_cats"}
+        },
+        {
+          "field": {"id": "provinces_final"},
+          "input": {"$ref": "provinces_summary"}
+        },
+        {
+          "field": {"id": "revenue_final"},
+          "input": {"$ref": "revenue_summary"}
+        },
+        {
+          "field": {"id": "summed_revenue"},
+          "input": {"$ref": "sumRevenue"},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "derivedData"}
+    },
+    {
+      "id": "line_derivedData",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "categories"},
+          "output": {"id": "line_grouped_cats"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "line_provinces_summary"},
+          "input": {"$ref": "provinces"}
+        },
+        {
+          "field": {"id": "line_revenue_summary"},
+          "input": {"$ref": "revenue"}
+        },
+        {
+          "field": {"id": "line_sumRevenue"},
+          "input": {"$ref": "revenue"},
+          "parameters": {
+            "replicate": false,
+            "summaryFunction": "sum"
+          }
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "line_sortedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "line_categories_final"},
+          "input": {"$ref": "line_grouped_cats"}
+        },
+        {
+          "field": {"id": "line_provinces_final"},
+          "input": {"$ref": "line_provinces_summary"}
+        },
+        {
+          "field": {"id": "line_revenue_final"},
+          "input": {"$ref": "line_revenue_summary"}
+        },
+        {
+          "field": {"id": "line_summed_revenue"},
+          "input": {"$ref": "line_sumRevenue"},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "line_derivedData"}
+    },
+    {
+      "id": "data2",
+      "type": "integrate",
+      "input": [
+        {
+          "field": {"$ref": "line_categories_final"},
+          "role": "x"
+        },
+        {
+          "field": {"$ref": "line_summed_revenue"},
+          "role": "y"
+        }
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"sortCategories": false},
+          "role": "x"
+        }
+      ],
+      "source": {"$ref": "line_sortedData"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 0.0, "max": 45000.0} ]
+            },
+            "axis": [
+              {
+                "gridStyle": {"fill": "#d5d5d5"},
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {"family": "Arial", "size": "8pt"},
+                  "padding": 3
+                },
+                "title": [ "Revenue" ],
+                "titleStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "8pt",
+                    "weight": "bold"
+                  }
+                }
+              },
+              {
+                "gridStyle": {"fill": "#d5d5d5"},
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickAs": "percentage",
+                "tickStyle": {
+                  "fill": "#898989",
+                  "font": {"family": "Arial", "size": "8pt"},
+                  "padding": 3
+                },
+                "title": [ "Cumulated revenue (%)" ],
+                "titleStyle": {
+                  "fill": "#898989",
+                  "font": {
+                    "family": "Arial",
+                    "size": "8pt",
+                    "weight": "bold"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "scale": {"spans": [ {"method": "data"} ]},
+            "axis": {
+              "lineStyle": {"fill": "#d5d5d5"},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": "#898989",
+                "font": {"family": "Arial", "size": "8pt"},
+                "padding": 3
+              },
+              "title": [ "Quarter" ],
+              "titleStyle": {
+                "fill": "#898989",
+                "font": {
+                  "family": "Arial",
+                  "size": "8pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "revenue_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "provinces_final"},
+              "modifies": "both",
+              "palette": [
+                "#3373AB",
+                "#42B09C",
+                "#DEA10A",
+                "#973D99",
+                "#E06C2D"
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 3},
+            "outline": {"a": 0.0}
+          }
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "symbolStyle": {"fill": "#B3B3B3"},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "y1"} ],
+              "modifies": {"part": "symbol"}
+            }
+          ],
+          "style": {"fill": "#B3B3B3", "size": 1}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "white",
+        "padding": {"left": 10}
+      },
+      "itemStyle": {"outline": "transparent"},
+      "labelStyle": {
+        "fill": "#898989",
+        "font": {"family": "Arial", "size": "8pt"}
+      },
+      "location": {"width": "20%"},
+      "titleStyle": {
+        "fill": "#898989",
+        "align": "start",
+        "font": {
+          "family": "Arial",
+          "size": "8pt",
+          "weight": "bold"
+        },
+        "padding": {"bottom": 5}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 10}
+}

@@ -1,0 +1,46 @@
+BVT Clean Up Tool
+
+Goal:
+The goal of this tool is to delete artifacts created by the GUI and API
+BVT test harnesses on both on premise and smart cloud installations. This 
+tool supports the clean up of any server assuming a property file for the users 
+exists.  Both UI .csv and API .properties file types are supported. 
+
+The tool removes existing artifacts in the following applications:
+- Communities
+- Activites
+- Files (files and folders)
+- Profiles Contacts
+- Bookmarks
+- Blog (on prem only)
+- Wikis (on prem only)
+- Forums (on prem only)
+
+To run against On Prem:
+java -jar bvt.cleanup.jar -s <server url> -u <user file path> [Options]
+
+To run against Smart Cloud:
+java -jar bvt.cleanup.jar -s <server url> -u <user file path> -c [Options]
+
+Other Arguments:
+Other arguments can be found by passing the -h or --help or -? argument to the
+tool. For convenience I've included the table of arguments below:
+    -c, --cloud         Running against a cloud server
+    -p, --onprem        Running against an onprem server (default)
+    -s, --serverurl     Define the server url to run against [REQUIRED]
+    -u, --users         Define the user properties file path [REQUIRED]
+    -P, --pagesize      Define the size of pages to request from the server.
+                        The default is 250. This must be at least as large as
+                        the keep amount. [OPTIONAL]
+    -k, --keepamount    Define the number of items to keep from each component.
+                        The default is 50 [OPTIONAL]
+    -h,-?, --help       Display this help message
+
+Performance Tweaking:
+Because the default page size request is 250 and the tool runs runs users in a
+thread pool of # of Cores or # of Users, which ever is smaller the tool uses a
+large amount of cpu and memory. It is recommended to increasing the maximum
+memory available to the jvm. 2GB should be enough memory for up to 32 threads.
+You can also reduce memory foot print by decreasing page size using the -P
+option. However note that, page size must be at least as large as the number of
+items to keep which is set by the -k option.

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="products">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="product" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute ref="id" use="required"/>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="price" type="xs:decimal" use="required"/>
+            <xs:attribute name="stock" type="xs:integer" use="required"/>
+            <xs:attribute name="country" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="id" type="xs:ID"/>
+</xs:schema> 

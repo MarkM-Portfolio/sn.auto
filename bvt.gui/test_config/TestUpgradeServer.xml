@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="8" name="Upgrade BVT Run" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  -->
+  <groups>
+    <run>
+      <include name="regression" />
+    </run>
+  </groups>
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <parameter name="server_is_grid_hub" value="true"/>
+  
+  <!-- To run tests locally --> 
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+  <parameter name="sametime_enabled" value="true" />
+
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="cloud" />
+
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="cloud" />
+
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <!-- E3 Server -->
+  <parameter name="browser_url" value="https://apps.na.collabserv.com/" />
+ <!-- Daily Server -->
+ <!-- parameter name="browser_url" value="https://apps.collabservdaily.swg.usma.ibm.com/" /-->
+  
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_24_Windows" />
+
+<!-- For E3 Policy testing -->
+<parameter name="default_app_properties" value="test_config/app/J3E3app.properties" />
+<parameter name="default_users_properties" value="test_config/extensions/user/sc_production.properties" />
+<!-- For Daily FVT -->
+<!-- parameter name="default_app_properties" value="test_config/app/J3E3app.properties" /-->
+<!-- parameter name="default_users_properties" value="test_config/extensions/user/sc_production.properties" /-->
+
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+  <!-- 
+  TESTS
+  Specify test structure below. A test is a collection of test classes. 
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+	
+	<test name="Test" preserve-order="true" enabled="true">
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.FVT_SCActionCatalogView" />
+      </classes>
+  	</test> 
+ <!--	  <test name="Test" preserve-order="true" enabled="true">
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.Regression_NoModeratedCommunity" />
+      </classes>
+  </test> 
+  <test name="Test" preserve-order="true" enabled="true">
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.Regression_CheckNoModerated" />
+      </classes>
+  </test>
+   <test name="Test" preserve-order="true" enabled="true">
+      <classes>
+         <class name="com.ibm.conn.auto.tests.communities.FVT_SCActionCatalogView" />
+      </classes>
+  </test>
+ 
+  <test name="Activities" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.activities.Smoke_RO_Activities" />
+    </classes>
+  </test> -->
+  
+</suite>

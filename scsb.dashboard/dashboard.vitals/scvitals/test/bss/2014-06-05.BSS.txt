@@ -1,0 +1,5 @@
+2014-06-05T11:52:25+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-06-05T11:52:25+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20666474, name="db2 upgrade", customerId=20063304) with outcome SUCCESS
+2014-06-05T11:52:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-06-05T11:52:36+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-06-05T11:53:36+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed UPDATESUBSCRIBER on object (type=SUBSCRIBER, id=20063306, name="amy jones01 <script type=\u0022text/javascript\u0022> alert(\u0022Oops!\u0022)</script>", customerId=20063304) with outcome SUCCESS

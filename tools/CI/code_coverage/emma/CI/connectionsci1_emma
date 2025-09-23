@@ -1,0 +1,23 @@
+# for EMMA code coverage tool on this machine
+REMOTE_SCRIPT_HOME='/local/home/icci/lc-update'
+REMOTE_WAS_HOME="/local/opt/IBM/WebSphere/AppServer"
+DIR_EMMA_HOME=/local/home/icci/emma
+DIR_EXTRACTED_EAR=${DIR_EMMA_HOME}/extracted_ear
+DIR_INSTRUMENTED_EAR=${DIR_EMMA_HOME}/instrumented_ear
+DIR_EXTRACTED_WAR=${DIR_EMMA_HOME}/extracted_war
+DIR_INSTRUMENTED_WAR=${DIR_EMMA_HOME}/instrumented_war
+DIR_JARS_INSTRUMENTED=${DIR_EMMA_HOME}/jars_instrumented
+EMMA_JAR=${DIR_EMMA_HOME}/emma.jar
+EMMA_SCRIPT_DIR=${DIR_EMMA_HOME}/scripts
+EMMA_FILTER_FILE=${DIR_EMMA_HOME}/emma_filter.txt
+EMMA_METADATA_DIR=${DIR_EMMA_HOME}/coverage_metadata
+EMMA_RUNTIMEDATA_DIR=${DIR_EMMA_HOME}/coverage_runtimedata
+EMMA_REPORTS_DIR=${DIR_EMMA_HOME}/reports
+EMMA_REPORTS_HTML_DIR=${EMMA_REPORTS_DIR}/html_reports
+COVERAGE_HTML_ALL_DIR=${EMMA_REPORTS_HTML_DIR}/scheduled-builds/all
+COVERAGE_HTML_ALL_SUMMARIES_DIR=${EMMA_REPORTS_HTML_DIR}/all_summaries
+EMMA_REPORTS_XML_DIR=${EMMA_REPORTS_DIR}/xml_reports
+COVERAGE_XML_ALL_DIR=${EMMA_REPORTS_XML_DIR}/scheduled-builds/all
+COVERAGE_XML_LATEST_DIR=${EMMA_REPORTS_XML_DIR}/scheduled-builds/latest
+EMMA_REPORTS_SUMMARY_DIR=${EMMA_REPORTS_DIR}/summary_reports
+JAVA_EXE=${JAVA_HOME}/bin/java

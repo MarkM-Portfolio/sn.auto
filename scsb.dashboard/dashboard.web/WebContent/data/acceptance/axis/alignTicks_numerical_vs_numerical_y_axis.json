@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "outlet",
+          "label": "Outlet",
+          "categories": [ "CA", "NY", "MA" ]
+        },
+        {
+          "id": "line",
+          "label": "Line",
+          "categories": [
+            "Dishwashers",
+            "Stoves",
+            "Microwaves"
+          ]
+        },
+        {"id": "revenue"},
+        {"id": "quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 1, 1 ],
+        [ 1, 1, 2, 2 ],
+        [ 2, 2, 15, 3 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "local": true,
+              "spans": [
+                {
+                  "fit": "exact",
+                  "minorDivisions": 6,
+                  "outRange": {"min": 0, "max": 1}
+                },
+                {
+                  "fit": "exact",
+                  "minorDivisions": 2,
+                  "outRange": {"min": 0, "max": 1}
+                }
+              ]
+            },
+            "axis": [
+              {
+                "alignWithOtherAxis": true,
+                "gridStyle": {"fill": "#00f4"},
+                "minorStyle": {"size": 6},
+                "tickStyle": {
+                  "fill": "blue",
+                  "font": {"weight": "bold"}
+                },
+                "title": [ "Revenue" ]
+              },
+              {
+                "gridStyle": {"fill": "#f004"},
+                "minorStyle": {"size": 3},
+                "tickStyle": {
+                  "fill": "red",
+                  "font": {"weight": "bold"}
+                },
+                "title": [ "Quantity" ]
+              }
+            ]
+          },
+          {"axis": [ {} ]}
+        ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "revenue"}, "span": 0},
+            {"field": {"$ref": "line"}}
+          ],
+          "symbolStyle": {"fill": "blue"},
+          "style": {"fill": "blue", "size": 1}
+        },
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "quantity"}, "span": 1},
+            {"field": {"$ref": "line"}}
+          ],
+          "symbolStyle": {"fill": "red"},
+          "style": {"fill": "red", "size": 1}
+        }
+      ]
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white", "padding": {"top": 10}}
+}

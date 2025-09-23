@@ -1,0 +1,142 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {
+          "id": "base_num",
+          "label": "Number",
+          "categories": [
+            "Biography",
+            "Classics",
+            "General fiction",
+            "History",
+            "Mystery/Fantasy",
+            "Reference",
+            "Romance",
+            "Scifi/Fantasy",
+            "Spirituality"
+          ]
+        },
+        {
+          "id": "base_type",
+          "label": "Hardback",
+          "categories": [ "no", "yes" ]
+        },
+        {
+          "id": "base_count",
+          "label": "Number",
+          "min": 0,
+          "max": 10
+        }
+      ],
+      "rows": [
+        [ 8, 0, 8 ],
+        [ 2, 0, 6 ],
+        [ 0, 0, 8 ],
+        [ 7, 0, 10 ],
+        [ 6, 0, 7 ],
+        [ 5, 0, 10 ],
+        [ 7, 0, 10 ],
+        [ 1, 0, 6 ],
+        [ 6, 0, 8 ],
+        [ 5, 1, 4 ],
+        [ 3, 1, 2 ],
+        [ 4, 1, 4 ],
+        [ 6, 1, 6 ],
+        [ 3, 1, 6 ],
+        [ 2, 1, 8 ],
+        [ 6, 1, 5 ],
+        [ 8, 1, 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "red",
+                "stroke": {"style": "dash"}
+              },
+              "lineStyle": {"fill": "red"},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 10
+                }
+              }
+            }
+          },
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {
+                "fill": "#aaa",
+                "stroke": {"style": "dash"}
+              },
+              "lineStyle": {"fill": "red"},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 10
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ],
+        "style": {"fill": {"b": 235, "g": 235, "r": 235}}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "data": {"$ref": "base"},
+          "position": [
+            {"field": {"$ref": "base_count"}},
+            {"field": {"$ref": "base_num"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "base_type"},
+              "modifies": "both"
+            }
+          ],
+          "style": {"fill": {"a": 0}}
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "base"},
+          "position": [
+            {"field": {"$ref": "base_count"}},
+            {"field": {"$ref": "base_num"}}
+          ],
+          "color": [ {"field": {"$ref": "base_type"}} ],
+          "style": {
+            "fill": "blue",
+            "outline": {"b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 20
+      }
+    }
+  ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3"
+}

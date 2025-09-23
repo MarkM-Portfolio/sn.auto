@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "id": "position",
+      "fields": [
+        {
+          "id": "state",
+          "categories": [
+            "Illinois",
+            "New York",
+            "California"
+          ],
+          "key": true
+        }
+      ],
+      "rows": [ [ 0 ], [ 1 ], [ 2 ] ]
+    },
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Outer X",
+          "categories": [
+            "Illinois",
+            "New York",
+            "California"
+          ]
+        },
+        {
+          "id": "Inner X",
+          "categories": [ "Male", "Female" ]
+        },
+        {"id": "Y"}
+      ],
+      "rows": [
+        [ 0, 0, 25000 ],
+        [ 0, 1, 38000 ],
+        [ 1, 1, 27000 ],
+        [ 2, 0, 19000 ],
+        [ 2, 1, 25000 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"right": -75},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "id": "target",
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "state"} ],
+              "style": {
+                "align": "middle",
+                "font": {"weight": "bold"},
+                "valign": "end"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "state"}} ],
+          "style": {
+            "fill": "transparent",
+            "width": "80%",
+            "height": "40%",
+            "outline": "transparent",
+            "symbol": "rectangle"
+          }
+        }
+      ]
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {} ],
+        "style": {"fill": "white", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "Inner X"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Inner X"},
+              "palette": [ "skyblue", "pink" ]
+            }
+          ],
+          "style": {"outline": "black", "size": "80%"}
+        }
+      ],
+      "facet": {
+        "fields": [
+          {"field": {"$ref": "Outer X"}, "axis": {}}
+        ],
+        "method": "chartInChart",
+        "targetElement": {"$ref": "target"}
+      },
+      "style": {"fill": "transparent", "outline": "white"}
+    }
+  ],
+  "legends": [ {"location": {"width": 75, "right": "-0%"}} ],
+  "size": {"width": 500, "height": 200},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

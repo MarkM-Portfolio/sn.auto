@@ -1,0 +1,301 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "id": "_VOIDS_FIELD_",
+               "label": "_VOIDS_FIELD_"
+            },
+            {
+               "categories": [
+                  "2004",
+                  "2005",
+                  "2006"
+               ],
+               "id": "_SERIES_FIELD_",
+               "label": "Year"
+            },
+            {
+               "id": "_VALUES_FIELD_",
+               "label": "Revenue"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               22,
+               0,
+               3.47505635E7
+            ],
+            [
+               24,
+               1,
+               6.255848856E7
+            ],
+            [
+               26,
+               2,
+               7.426733582E7
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "rgba(128,128,128,0.40)",
+                        "stroke": {
+                           "width": "1px"
+                        }
+                     },
+                     "lineStyle": {
+                        "fill": "transparent"
+                     },
+                     "markStyle": {
+                        "fill": "transparent"
+                     },
+                     "tickStyle": {
+                        "fill": "rgba(97,97,97,1.0)",
+                        "font": {
+                           "size": "8pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     },
+                     "title": [
+                        {
+                           "$ref": "_VALUES_FIELD_"
+                        }
+                     ],
+                     "titleStyle": {
+                        "fill": "rgba(97,97,97,1.0)",
+                        "font": {
+                           "size": "8pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "fit": "nice",
+                           "max": 7.426733582E7,
+                           "min": 0
+                        }
+                     ]
+                  }
+               },
+               {
+                  "axis": {
+                     "lineStyle": {
+                        "fill": "rgba(97,97,97,1.0)",
+                        "stroke": {
+                           "cap": "square",
+                           "width": "1px"
+                        }
+                     },
+                     "markStyle": {
+                        "fill": "transparent",
+                        "stroke": {
+                           "cap": "square",
+                           "width": "1px"
+                        }
+                     },
+                     "tickStyle": {
+                     },
+                     "titleStyle": {
+                        "fill": "rgba(97,97,97,1.0)",
+                        "font": {
+                           "family": "Helvetica",
+                           "size": "8pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     }
+                  }
+               },
+               {
+                  "scale": {
+                     "local": true
+                  }
+               }
+            ],
+            "transforms": [
+               {
+                  "clusterParameters": {
+                     "gaps": [
+                        "10%"
+                     ],
+                     "nest": [
+                        true
+                     ]
+                  },
+                  "type": "cluster"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "_VALUES_FIELD_"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "_SERIES_FIELD_"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "_SERIES_FIELD_"
+                     }
+                  }
+               ],
+               "style": {
+                  "outline": "rgba(97,97,97,1.0)",
+                  "outlineMethod": "inside",
+                  "snap": true,
+                  "stroke": {
+                     "style": "solid",
+                     "width": "1px"
+                  }
+               },
+               "styleBy": [
+                  {
+                     "field": {
+                        "$ref": "_SERIES_FIELD_"
+                     },
+                     "id": "_PALETTE_",
+                     "modifies": "both",
+                     "palette": [
+                        {
+                           "fill": "rgba(58,112,207,1.0)"
+                        },
+                        {
+                           "fill": {
+                              "angle": 0,
+                              "colors": [
+                                 {
+                                    "color": "rgba(255,255,0,1.0)",
+                                    "offset": 0
+                                 },
+                                 {
+                                    "color": "rgba(255,255,255,1.0)",
+                                    "offset": 1
+                                 }
+                              ],
+                              "type": "linear"
+                           }
+                        },
+                        {
+                           "fill": "rgba(110,201,212,1.0)"
+                        },
+                        {
+                           "fill": "rgba(219,116,13,1.0)"
+                        },
+                        {
+                           "fill": "rgba(222,171,18,1.0)"
+                        },
+                        {
+                           "fill": "rgba(35,138,32,1.0)"
+                        },
+                        {
+                           "fill": "rgba(113,196,12,1.0)"
+                        },
+                        {
+                           "fill": "rgba(118,59,161,1.0)"
+                        },
+                        {
+                           "fill": "rgba(150,129,230,1.0)"
+                        },
+                        {
+                           "fill": "rgba(145,102,26,1.0)"
+                        },
+                        {
+                           "fill": "rgba(214,214,34,1.0)"
+                        },
+                        {
+                           "fill": "rgba(162,44,15,1.0)"
+                        },
+                        {
+                           "fill": "rgba(229,95,64,1.0)"
+                        },
+                        {
+                           "fill": "rgba(112,152,181,1.0)"
+                        },
+                        {
+                           "fill": "rgba(197,209,212,1.0)"
+                        }
+                     ]
+                  }
+               ],
+               "type": "interval"
+            }
+         ]
+      }
+   ],
+   "legendPosition": "right",
+   "legends": [
+      {
+         "bounds": {
+            "width": "25%"
+         },
+         "content": [
+            {
+               "aesthetics": [
+                  {
+                     "aesthetic": {
+                        "$ref": "_PALETTE_"
+                     }
+                  }
+               ],
+               "layout": {
+                  "reverse": false
+               },
+               "local": false,
+               "swatchStyle": {
+                  "outlineMethod": "inside",
+                  "padding": {
+                     "bottom": 2,
+                     "right": 4
+                  },
+                  "size": "16px",
+                  "stroke": {
+                     "style": "solid",
+                     "width": "1px"
+                  }
+               },
+               "textStyle": {
+                  "fill": "rgba(97,97,97,1.0)",
+                  "font": {
+                     "size": "8pt",
+                     "style": "normal",
+                     "weight": "normal"
+                  },
+                  "valign": "middleOfFirstLine"
+               }
+            }
+         ],
+         "style": {
+            "align": "middle",
+            "fill": "transparent",
+            "padding": {
+               "left": 4
+            },
+            "valign": "start"
+         }
+      }
+   ],
+   "size": {
+      "height": 350,
+      "width": 800
+   },
+   "version": "1.2"
+}

@@ -1,0 +1,1 @@
+2014-06-05T11:53:38+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed UPDATE on object (type=USER, id=20063306, name="amy jones01 <script type=\u0022text/javascript\u0022> alert(\u0022Oops!\u0022)</script>", customerId=20063304) with outcome SUCCESS

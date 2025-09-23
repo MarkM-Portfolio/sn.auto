@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "outer",
+          "categories": [
+            "Illinois",
+            "New York",
+            "California"
+          ]
+        },
+        {"id": "x", "categories": [ "Male", "Female" ]},
+        {"id": "y", "label": "郎凉秊裏隣兀嗀﨎﨏"}
+      ],
+      "rows": [
+        [ 0, 0, 25000 ],
+        [ 0, 1, 38000 ],
+        [ 1, 1, 27000 ],
+        [ 2, 0, 19000 ],
+        [ 2, 1, 25000 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"min": 0} ]},
+            "axis": {"gridStyle": {"fill": "#ddd"}}
+          },
+          {"axis": {"markStyle": {}, "title": [ "Outer" ]}},
+          {"axis": {"markStyle": {}, "title": [ "Inner" ]}}
+        ],
+        "transforms": [ {"type": "cluster"} ],
+        "style": {"fill": "transparent"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "outer"}},
+            {"field": {"$ref": "x"}}
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "size": {"width": 600, "height": 500},
+  "titles": [
+    {
+      "type": "title",
+      "content": [ {"$ref": "y"} ],
+      "style": {
+        "fill": "blue",
+        "font": {"family": "SimSun,serif", "size": 30}
+      }
+    },
+    {
+      "type": "subtitle",
+      "content": [ {"$ref": "y"} ],
+      "style": {
+        "fill": "red",
+        "font": {"family": "SimSun,serif", "size": 30}
+      }
+    }
+  ],
+  "version": "3.0",
+  "style": {"fill": "white", "padding": 20}
+}

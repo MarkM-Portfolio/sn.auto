@@ -1,0 +1,9 @@
+uid,password,display name,email,first name,last name,members
+wasadmin,password,was admin,wasadmin,,,admin
+tuser1,password,Tom User1,tuser1@janet.iris.com,,,orgh
+tuser2,password,Tom User2,tuser2@janet.iris.com,,,orgh
+tuser3,password,Tom User3,tuser3@janet.iris.com,,,orgh
+tuser4,password,Tom User4,tuser4@janet.iris.com,,,orgh
+tuser5,password,Tom User5,tuser5@janet.iris.com,,,orgh
+hexternal1,password,Rick External1,hexternal1@janet.iris.com,,,external_orgh
+hexternal2,password,Rick External2,hexternal2@janet.iris.com,,,external_orgh

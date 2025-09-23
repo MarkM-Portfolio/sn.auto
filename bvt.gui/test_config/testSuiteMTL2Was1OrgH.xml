@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="10" name="OrgH BVT" parallel="tests" >
+
+  <!-- Test method has to contain all groups to be run if intersect_groups is true -->
+  <parameter name="intersect_groups" value="false" />
+
+  <!-- Organization specific overrides/properties -->
+  <!-- Test by overriding browser_url to the organization url -->
+   <parameter name="browser_url" value="https://l2-was1-orgh.cnx.cwp.pnp-hcl.com/" />
+   <parameter name="default_users_properties" value="test_config/extensions/user/l2was1_MT_orgh_users.properties" />
+
+
+  <!-- TESTS -->
+  <test name="Activities" thread-count="2" parallel="methods"  preserve-order="true" enabled="true">
+    <groups>
+      <run>
+        <include name="level2" />
+        <exclude name="mt-exclude" />
+        <exclude name="mtlevel2" />
+      </run>
+    </groups> 
+    <packages>
+      <package name="com.ibm.conn.auto.tests.activities" />
+    </packages>
+  </test>
+
+  <test name="Calendar" preserve-order="true" enabled="true">
+     <groups>
+      <run>
+        <include name="level2" />
+        <exclude name="mt-exclude" />
+        <exclude name="mtlevel2" />
+      </run>
+    </groups> 
+    <packages>
+      <package name="com.ibm.conn.auto.tests.calendar" />
+    </packages>
+  </test>
+
+  <test name="Communities" thread-count="2" parallel="methods" preserve-order="true" enabled="true">
+    <groups>
+      <run>
+        <include name="level2" />
+        <exclude name="mt-exclude" />
+        <exclude name="mtlevel2" />
+      </run>
+    </groups> 
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+    </classes>
+  </test>
+
+  <test name="Embedded Experience" preserve-order="true" enabled="true">
+     <groups>
+      <run>
+        <include name="level2" />
+        <exclude name="mt-exclude" />
+        <exclude name="mtlevel2" />
+      </run>
+    </groups> 
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE" />
+    </classes>
+  </test>
+
+  <test name="Files" preserve-order="true" enabled="true">
+    <groups>
+      <run>
+        <include name="level2" />
+        <exclude name="mt-exclude" />
+        <exclude name="mtlevel2" />
+      </run>
+    </groups> 
+    <packages>
+      <package name="com.ibm.conn.auto.tests.files" />
+    </packages>
+  </test>
+</suite>

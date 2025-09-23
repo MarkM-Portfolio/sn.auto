@@ -1,0 +1,292 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "f1", "min": 0, "max": 7, "unit": "meter"}
+      ],
+      "rows": [ [ 1 ], [ 2 ], [ 4 ], [ 6 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": 90,
+        "height": "48%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle": {"font": {"size": 10}}}},
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "25%"}
+          ],
+          "color": [
+            {
+              "id": "c",
+              "field": {"$ref": "f1"},
+              "scale": {"local": false},
+              "mapping": [
+                {"at": "0%", "color": "lime"},
+                {"at": "50%", "color": "black"},
+                {"at": 6, "color": "blue"}
+              ]
+            }
+          ],
+          "style": {"size": 20}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "75%"}
+          ],
+          "color": [
+            {
+              "id": "d",
+              "field": {"$ref": "f1"},
+              "scale": {"local": true},
+              "mapping": [
+                {"at": "0%", "color": "lime"},
+                {"at": "50%", "color": "black"},
+                {"at": 6, "color": "blue"}
+              ]
+            }
+          ],
+          "style": {"size": 20, "symbol": "square"}
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": 90,
+        "height": "48%",
+        "left": 0,
+        "top": "50%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle": {"font": {"size": 10}}}},
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "25%"}
+          ],
+          "color": [
+            {
+              "id": "e",
+              "field": {"$ref": "f1"},
+              "scale": {
+                "local": false,
+                "reverse": true,
+                "spans": [ {"min": -1, "max": 3} ]
+              },
+              "mapping": [
+                {"at": "0%", "color": "lime"},
+                {"at": "50%", "color": "black"},
+                {"at": 6, "color": "blue"}
+              ]
+            }
+          ],
+          "style": {"size": 20}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "75%"}
+          ],
+          "color": [
+            {
+              "id": "f",
+              "field": {"$ref": "f1"},
+              "scale": {
+                "local": true,
+                "spans": [ {"min": -1, "max": 3} ]
+              },
+              "mapping": [
+                {"at": "0%", "color": "lime"},
+                {"at": "50%", "color": "black"},
+                {"at": 6, "color": "blue"}
+              ]
+            }
+          ],
+          "style": {"size": 20, "symbol": "square"}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 100,
+        "top": 0
+      },
+      "title": [ "Default" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 200,
+        "top": 0
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"min": 4, "max": 10} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 300,
+        "top": 0
+      },
+      "title": [ "min:4, max:10" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "d"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 400,
+        "top": 0
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"min": 4, "max": 10} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "d"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 500,
+        "top": 0
+      },
+      "title": [ "min:4, max:10" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 100,
+        "top": "50%"
+      },
+      "title": [ "Default" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 200,
+        "top": "50%"
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"min": 4, "max": 10} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 300,
+        "top": "50%"
+      },
+      "title": [ "min:4, max:10" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "f"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 400,
+        "top": "50%"
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"min": 4, "max": 10} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "f"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 500,
+        "top": "50%"
+      },
+      "title": [ "min:4, max:10" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    }
+  ],
+  "size": {"width": 610, "height": 500},
+  "titles": [
+    {
+      "type": "title",
+      "content": [
+        "FIELD MIN=0, MAX=7\n",
+        "MAPPING: 0% -> red; 50% -> black; 6 -> blue\n",
+        "DATA CONTAINS: 1, 2, 4, 6\n",
+        "CIRCLES: scale.local.FALSE      SQUARES: scale.local.TRUE\n",
+        "TOP: default range    BOTTOM: aesthetic scale min=-1, max=3"
+      ],
+      "style": {
+        "align": "start",
+        "font": {"family": "Arial", "size": "10pt"},
+        "padding": 5
+      }
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 5}
+}

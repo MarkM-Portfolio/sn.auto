@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "index", "unit": "categorical"},
+        {"id": "low", "format": {"numericPattern": "#,###"}},
+        {
+          "id": "high",
+          "format": {"numericPattern": "#,###"}
+        },
+        {"id": "count"}
+      ],
+      "rows": [
+        [ 0, 7472153, 6000000, 21 ],
+        [ 1, 6000000, 5000000, 47 ],
+        [ 2, 5000000, 4000000, 88 ],
+        [ 3, 4000000, 3000000, 79 ],
+        [ 4, 3000000, 1000000, 130 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "labelCollisionMethod": "none",
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"value": "100%"},
+            {"field": {"$ref": "index"}}
+          ],
+          "style": {
+            "fill": "#bbb",
+            "cornerRadius": 5,
+            "size": "90%"
+          }
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "count"}},
+            {"field": {"$ref": "index"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "low"},
+              "palette": [
+                "green",
+                "#a00",
+                "red",
+                "#a06",
+                "purple",
+                "#fa2"
+              ]
+            }
+          ],
+          "style": {"cornerRadius": 5, "size": "90%"}
+        },
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                "FREQUENCY\n\n",
+                {"$ref": "low"},
+                " ",
+                " to\n",
+                {"$ref": "high"},
+                "\n\n# OF DAYS"
+              ],
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {"family": "Arial", "size": 10},
+                "location": "inside",
+                "padding": 3,
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count"} ],
+              "style": {
+                "fill": "black",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 36,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": 5, "bottom":-4},
+                "valign": "end"
+              }
+            }
+          ],
+          "position": [
+            {"value": "100%"},
+            {"field": {"$ref": "index"}}
+          ],
+          "style": {"fill": "transparent", "size": "90%"}
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 135},
+  "version": "3.0",
+  "style": {"fill": "white", "padding": 10}
+}

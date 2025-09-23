@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "fX", "label": "X"},
+        {
+          "id": "fA",
+          "label": "A",
+          "categories": [
+            "㖞㘚",
+            "㘎⺗㥮",
+            "㤘",
+            "㧏㧟㩳㧐",
+            "㭎㱮㳠"
+          ]
+        }
+      ],
+      "rows": [
+        [ 2, 0 ],
+        [ 3, 1 ],
+        [ 3, 2 ],
+        [ 2, 3 ],
+        [ 5, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "fA"},
+                "\n(n=",
+                {"$ref": "fX"},
+                ")"
+              ],
+              "style": {
+                "fill": "white",
+                "angle": "tangent",
+                "font": {
+                  "family": "SimSun",
+                  "size": 14.0,
+                  "weight": "bold"
+                },
+                "location": "outside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "color": [ {"field": {"$ref": "fA"}} ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "angle": 90.0,
+              "colors": [
+                {"color": {"a": 0.5}, "offset": 0.0},
+                {"color": {"a": 0.6}, "offset": 0.0010},
+                {"color": {"a": 0.65}, "offset": 0.95},
+                {
+                  "color": {
+                    "a": 1.0,
+                    "b": 0,
+                    "g": 0,
+                    "r": 0
+                  },
+                  "offset": 1
+                }
+              ],
+              "global": true
+            },
+            "stroke": {"width": 10},
+            "outline": "black",
+            "outlineMethod": "inside"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "version": "4.0"
+}

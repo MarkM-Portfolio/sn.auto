@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Files" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="true"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto111.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Files" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.files.test"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.files.test.FilesPopulate"/>
+      <class name="com.ibm.lconn.automation.framework.services.files.test.FilesOrgAdminAPITest"/>
+    </classes>
+  </test> <!-- Files -->
+  <test thread-count="1" name="Files IMPERSONATEDTEST" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.files.impersonated"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.files.impersonated.FilesImpersonatedTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.files.impersonated.FilesMigration"/>
+    </classes>
+  </test> <!-- Files IMPERSONATEDTEST -->
+</suite> <!-- Files -->

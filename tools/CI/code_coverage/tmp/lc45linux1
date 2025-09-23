@@ -1,0 +1,63 @@
+REMOTE_HOST="lc45linux1.swg.usma.ibm.com"
+REMOTE_WAS_OWN_BY_ROOT="no"
+REMOTE_USER='lcuser'
+REMOTE_SCRIPT_HOME='/home/lcuser/lc-update'
+REMOTE_SCRIPT_UPDATE_CMD="git pull"
+#REMOTE_SCRIPT_UPDATE_CMD="svn update"
+DB_SERVER="${DB2_SERVER:-$REMOTE_HOST}"
+DB_OWNER="db2inst1"
+REMOTE_WAS_HOME="/opt/IBM/WebSphere/AppServer"
+REMOTE_WAS_TYPE="standalone"
+REMOTE_WAS_PROFILE="AppSrv01"
+REMOTE_WAS_SERVER="server1"
+REMOTE_WAS_USER="wasadmin"
+REMOTE_WAS_PSWD="lcsecret"
+REMOTE_LC_DATA_DIR="/data/Connections"
+TEAMRM_SERVER_DOC="lc45linux1.swg.usma.ibm.com"
+REMOTE_HTTP_DOC_DIR="/opt/IBM/HTTPServer/htdocs"
+COGNOS_SERVER=lcuser@lc45cognos.swg.usma.ibm.com
+
+# for profiles population
+DB_TYPE=db2
+DB_HOST=lc45linux1.swg.usma.ibm.com
+DB_PORT=50000
+DB_NAME=peopledb
+DB_PASSWORD=lcsecret
+LDAP_SERVER=tds62ldap.swg.usma.ibm.com
+LDAP_SERVER_MODIFY=tds62vm-a.swg.usma.ibm.com
+LDAP_PORT=389
+LDAP_USER="uid=Fvt Admin,cn=users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_PASSWORD=fvtadmin
+LDAP_MODIFY_USER="uid=Fvt Admin,cn=users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_MODIFY_PASSWORD=fvtadmin
+LDAP_BASE="cn=users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com"
+LDAP_FILTER="(\\&(objectClass=inetOrgPerson)(!(carLicense=api)))"
+
+DB2HOME=/home/db2inst1
+
+API_AUTOMATION_HOME=$HOME/janet_remote
+API_AUTOMATION_ARGS=lc45linux1
+
+DATA_POPULATION_HOME=${HOME}/lc.data.pop
+DATA_POPULATION_URL=http://lc45linux1.swg.usma.ibm.com
+
+DASHBOARD_TOOL_HOME=${HOME}/sn.auto/dashboard/
+GUI_AUTOMATION_HOME=${HOME}/sn.auto/tool/GUI_BVT_automation/
+
+# for EMMA code coverage tool on remote machine
+DIR_WAS_BIN=${REMOTE_WAS_HOME}/bin
+DIR_WAS_JRE_LIB_EXT=${REMOTE_WAS_HOME}/java/jre/lib/ext
+DIR_EARS=${REMOTE_WAS_HOME}/profiles/${REMOTE_WAS_PROFILE}/installedApps/lc45linux1Node01Cell
+DIR_EMMA_HOME=$HOME/emma
+DIR_JARS_INSTRUMENTED=${DIR_EMMA_HOME}/jars_instrumented
+EMMA_JAR=${DIR_EMMA_HOME}/emma.jar
+EMMA_SCRIPT_DIR=${DIR_EMMA_HOME}/scripts
+EMMA_FILTER_FILE=${DIR_EMMA_HOME}/emma_filter.txt
+EMMA_METADATA_DIR=${DIR_EMMA_HOME}/coverage_metadata
+EMMA_RUNTIMEDATA_DIR=${DIR_EMMA_HOME}/coverage_runtimedata
+EMMA_REPORTS_DIR=${DIR_EMMA_HOME}/reports
+EMMA_REPORTS_HTML_DIR=${EMMA_REPORTS_DIR}/html_reports
+EMMA_REPORTS_XML_DIR=${EMMA_REPORTS_DIR}/xml_reports
+EMMA_REPORTS_SUMMARY_DIR=${EMMA_REPORTS_DIR}/summary_reports
+JAVA_EXE=${REMOTE_WAS_HOME}/java/jre/bin/java
+

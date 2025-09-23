@@ -1,0 +1,227 @@
+buildscript {
+    repositories {
+        maven { url "https://artifactory.cwp.pnp-hcl.com/artifactory/v-toscana-gradle-bootstrap"
+            credentials {
+                username = "${REPO_USERNAME}"
+                password = "${REPO_PASSWORD}"
+            }
+        }
+    }
+
+    configurations.classpath {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
+
+    dependencies {
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:${PLUGIN_ARTIFACTORY_BUILD_EXTRACTOR}"
+    }
+}
+
+allprojects  {
+  apply plugin: 'maven-publish'
+  apply plugin: 'com.jfrog.artifactory'
+  group = PROJECT_GROUP_ID
+  def buildEnvironment = System.getenv()
+  def STREAM = getStream(buildEnvironment)
+  version = STREAM + '-SNAPSHOT'
+  project.ext.main = ''
+  if (!project.hasProperty("publish_repo")) {
+        ext.publish_repo = REPO_KEY
+  }
+
+  tasks.withType(Jar) {
+  
+	doFirst {
+		manifest {
+			attributes(
+			'Gradle-Version': gradle.gradleVersion,
+			'Created-By': 'IBM Corp.',
+			'Copyright-info': 'Copyright IBM Corp. 2002, 2015  All Rights Reserved.',
+			'Specification-Title': project.version,
+			'Specification-Vendor': 'IBM Corp.',
+			'Specification-Version': version,
+			'Implementation-Title': project.name,
+			'Implementation-Version': project.version,
+			'Implementation-Vendor': 'IBM Corp.',
+			'Main-Class': project.main,
+			'Class-Path': configurations.compile.collect { 'lib/' + it.getName() }.join(' ')
+			)
+		}
+	}
+  }
+  
+  publishing {
+    repositories {
+        maven {
+    		url "https://artifactory.cwp.pnp-hcl.com/artifactory/${publish_repo}"
+			credentials {
+				username = "${REPO_USERNAME}"
+				password = "${REPO_PASSWORD}"
+			}
+  		}
+    }
+  }
+}
+
+subprojects {
+	apply plugin: 'java'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	compileJava.options.encoding = 'ISO-8859-1'
+	sourceSets {
+		main {
+			java {
+				srcDir 'src'
+			}
+			resources {
+				srcDir 'src'
+			}
+		}
+	}
+	
+	tasks.withType(Javadoc){
+       source = sourceSets.main.java.srcDirs
+       classpath += configurations.compile
+       options.addStringOption('Xdoclint:none', '-quiet')
+       failOnError false
+       destinationDir = new File(buildDir, '../doc')
+    }
+
+	publishing {
+    	publications {
+        	mavenJava(MavenPublication) {
+            	from components.java
+        	}
+    	}
+	}
+
+  
+  repositories {
+    mavenLocal()
+    
+    maven { 
+		url "https://artifactory.cwp.pnp-hcl.com/artifactory/connections-prereqs"
+		credentials {
+			username = "${REPO_USERNAME}"
+			password = "${REPO_PASSWORD}"
+		}
+	}
+	maven {
+		url "https://artifactory.cwp.pnp-hcl.com/artifactory/public"
+	}
+    maven { 
+		url "https://artifactory.cwp.pnp-hcl.com/artifactory/${publish_repo}"
+		credentials {
+			username = "${REPO_USERNAME}"
+			password = "${REPO_PASSWORD}"
+		}
+	}
+  }
+  
+}
+
+task clean() {
+  doLast {
+    delete "${rootDir}/build"
+    delete "${rootDir}/version.txt"
+  }
+}
+
+task versionTxt()  {
+	doLast {
+		def buildEnvironment = System.getenv()
+		def TIMESTAMP = getTimestamp(buildEnvironment)
+		new File(projectDir, "version.txt").text = """
+Version:$version
+Buildtime:$TIMESTAMP
+"""
+    }
+}
+
+task dist(type: Zip) {
+	from project(':bvt.gui').jar
+	from project(':bvt.api').jar
+	from project(':bvt.restassured.api').jar
+	from project(':bvt.cleanup').jar
+	into('bin') {
+		from project(':bss_populate').jar
+		from("$rootDir/bss_populate/resources")
+		exclude '*.properties'
+	}
+    from(subprojects.configurations.runtime) { 
+		into 'lib' 
+	}
+	from(subprojects.projectDir) {
+		include 'resources/**'
+		include 'test_config/**'
+		include 'config/**'
+	}
+	from("$rootDir/bvt.adm2") {
+		include '*.txt'
+		include '*.sh'
+		include 'test'
+		include 'test/*.py'
+		into 'bvt.adm2'
+	}
+	from("$rootDir") {
+		include 'README.html'
+		include 'version.txt'
+		file('logs').mkdir()
+		include 'logs'
+	}
+	into('doc') {
+	   from("$rootDir/bvt.gui/doc")
+	}
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	destinationDir = file('build/distribution')
+	archiveName = 'bvt.zip'
+}
+
+task build() {
+  subprojects.each { 
+     dependsOn("${it.name}:build")
+     dependsOn("${it.name}:javadoc")
+  }
+  dependsOn 'versionTxt'
+  finalizedBy "dist"
+}
+
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId PROJECT_ARTIFACT_ID
+            artifact dist
+        }
+    }
+}
+
+artifactory {
+  contextUrl = ARTIFACTORY_CONTEXTURL
+  publish {
+    repository {
+      repoKey = REPO_KEY
+      username = "${REPO_USERNAME}"
+      password = "${REPO_PASSWORD}"
+    }
+  }
+  def buildEnvironment = System.getenv()
+  def TIMESTAMP = getTimestamp(buildEnvironment)
+  clientConfig.info.setBuildNumber(TIMESTAMP)
+}
+
+artifactoryPublish {
+    publications(publishing.publications.mavenJava)
+    publishArtifacts = true
+    publishPom = false
+}
+
+def getTimestamp(Map<String, String> env) {
+	return env.TIMESTAMP ? env.TIMESTAMP : (new Date().format('yyyyMMdd-HHmmss')).toString()
+}
+
+def getStream(Map<String, String> env) {
+	def branch = env.BRANCH_NAME ? env.BRANCH_NAME : 'IC10'
+	return branch == 'master' ? 'IC10' : branch
+}

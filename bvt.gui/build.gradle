@@ -1,0 +1,19 @@
+
+description = 'bvt.gui'
+dependencies {
+	compile project(':waffle')
+  	compile project(':lc.data.pop')
+  	compile project(':bvt.restassured.api')
+  	compile group: 'com.gargoylesoftware', name: 'htmlunit', version:'2.33'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.6.4'
+    compile group: 'org.apache.commons', name: 'commons-net', version:'2.0'
+	compile group: 'org.reportng', name: 'reportng', version:'1.1.4-ibm1.1'
+	compile group: 'ch.qos.logback', name: 'logback-core', version: '1.0.1'
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.1'
+	compile group: 'org.apache.httpcomponents', name: 'httpcore', version:'4.4.10'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.9'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+}
+
+project.ext.main = 'com.ibm.atmn.waffle.core.Main'

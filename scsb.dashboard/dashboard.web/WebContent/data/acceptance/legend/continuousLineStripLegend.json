@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year Published",
+          "min": 1980.0,
+          "max": 2008.0
+        },
+        {
+          "id": "fY",
+          "label": "Length",
+          "min": 95.0,
+          "max": 586.0
+        },
+        {
+          "id": "fSourceVariable",
+          "label": "Price",
+          "min": 3.49,
+          "max": 54.95
+        }
+      ],
+      "rows": [
+        [ 1999, 339, 12.99 ],
+        [ 2003, 290, 6.99 ],
+        [ 1980, 95, 6.49 ],
+        [ 1985, 159, 16.95 ],
+        [ 2008, 223, 9.99 ],
+        [ 2007, 299, 9.49 ],
+        [ 2003, 254, 8.49 ],
+        [ 2007, 277, 8.99 ],
+        [ 2003, 412, 13.99 ],
+        [ 1996, 268, 6.99 ],
+        [ 1992, 297, 7.99 ],
+        [ 2001, 386, 9.95 ],
+        [ 2005, 297, 34.95 ],
+        [ 1997, 188, 8.99 ],
+        [ 2007, 190, 12.99 ],
+        [ 2006, 265, 8.49 ],
+        [ 1998, 501, 19.95 ],
+        [ 2001, 501, 54.95 ],
+        [ 2005, 228, 9.99 ],
+        [ 2000, 351, 39.95 ],
+        [ 2007, 484, 27.49 ],
+        [ 1995, 233, 3.49 ],
+        [ 2000, 361, 16.95 ],
+        [ 1992, 473, 44.95 ],
+        [ 1996, 383, 12.99 ],
+        [ 2007, 586, 37.45 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fSourceVariable"} ],
+              "style": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "align": "end",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorAesthetic",
+              "field": {"$ref": "fSourceVariable"},
+              "mapping": [
+                {"at": "0%", "color": "red"},
+                {"at": "100%", "color": "yellow"}
+              ]
+            }
+          ],
+          "size": [
+            {
+              "id": "sizeAesthetic",
+              "field": {"$ref": "fSourceVariable"},
+              "mapping": [
+                {"at": "0%", "size": 10},
+                {"at": "100%", "size": 200}
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": 0.0},
+            "outline": {"a": 1, "b": 0, "g": 0, "r": 0},
+            "size": 50.0
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 6
+      }
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [
+        {"aesthetic": {"$ref": "sizeAesthetic"}}
+      ],
+      "method": "axis"
+    }
+  ],
+  "version": "1.3"
+}

@@ -1,0 +1,91 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "_VOIDS_FIELD_",
+					"label" : "_VOIDS_FIELD_"
+				}, {
+					"id" : "_CATEGORY_FIELD_",
+					"label" : "Product line",
+					"categories" : ["Camping Equipment", "Golf Equipment", "Mountaineering Equipment", "Outdoor Protection", "Personal Accessories"]
+				}, {
+					"id" : "_SERIES_FIELD_",
+					"label" : "Order method type",
+					"categories" : ["Fax"]
+				}, {
+					"id" : "_VALUES_FIELD_",
+					"label" : "Quantity"
+				}
+			],
+			"rows" : [[null, 0, 0, 82275], [null, 1, 0, 18819], [null, 2, 0, 80000], [null, 3, 0, 20372], [null, 4, 0, 35424]]
+		}
+	],
+	"grammar" : [{
+			"coordinates" : {
+				"dimensions" : [{
+						"axis" : {}
+						
+					}, {
+						"axis" : {}
+						
+					}
+				]
+			},
+			"elements" : [{
+					"type" : "line",
+					"label" : [{
+							"content" : ["Expected"],
+							"modifies" : {
+								"part" : "symbol"
+							},
+							"style" : {
+								"valign" : "start",
+								"font" : {
+									"weight" : "bold"
+								}
+							}
+						}
+					],
+					"position" : [{
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							}
+						}, {
+							"field" : {
+								"$ref" : "_CATEGORY_FIELD_"
+							}
+						}
+					],
+					"symbolStyle" : {
+						"fill" : {
+							"a" : 1,
+							"b" : 0,
+							"g" : 0,
+							"r" : 255
+						},
+						"outline" : "red",
+						"size" : 30,
+						"symbol" : "circle"
+					},
+					"style" : {
+						"stroke" : {
+							"width" : 3
+						}
+					}
+				}
+			],
+			"style" : {
+				"fill" : "transparent",
+				"padding" : 30
+			}
+		}
+	],
+	"size" : {
+		"width" : 700,
+		"height" : 450
+	},
+	"style" : {
+		"fill" : "#eee"
+	}
+}

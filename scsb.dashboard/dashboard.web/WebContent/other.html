@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>SCSB Metrics</title>
+	<!-- Bootstrap and SB-admin css -->
+	<!-- This version of bootstrap has customized screen cutoffs: md:1024, lg:1600 -->
+	<link rel="stylesheet" href="bootstrap-custom/css/bootstrap.min.css"/>
+	<!-- Datepicker css -->
+	<link href="datepicker/css/datepicker3.css" rel="stylesheet"/>
+	<!-- my css -->
+	<link rel="stylesheet" href="css/production.css" />
+	
+	<!-- Initializing Dojo for RAVE -->
+	<script src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<!-- jquery -->
+	<script src="jquery-1.11.1.js"></script>
+	<!-- my js -->
+	<script src="js/other.js"></script>
+	
+	<!-- bootstrap and datepicker js -->
+	<script src="datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="bootstrap-custom/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="margin-bottom: 0">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Dashboard</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<div class="nav navbar-top-links">
+					<ul id="top-menu" class="nav navbar-nav navbar-top-links">
+						<li><a href="./">Home</a></li>
+						<li class="active"><a href="./other.html">Other</a></li>
+						<li><a href="./return.html">Return Rate</a></li>
+					</ul>
+					<!-- for testing only -->
+					<button type="button" class="btn navbar-btn btn-info" onclick="logVisJSON()">Log visJSON</button>
+					<div class="navbar-form navbar-right">
+						<div class="form-group">
+							<div class="checkbox navbar-text">
+								<label>
+									<input type="checkbox" id="reload" onclick="toggleReload()"> Require Graph Reload
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<select id="typeSelect" onChange="changeType()" class="form-control">
+								<option>Environments</option>
+								<option>Customers</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select id="unitSelect" onChange="changeUnit()" class="form-control">
+								<option>Day</option>
+								<option>Month</option>
+								<option>Date Range</option>
+							</select>
+						</div>
+						<div id="datepicker" class="form-group">
+							<input class="datepicker form-control" data-provide="datepicker">
+						</div>
+						<div id="button-holder" class="form-group">
+							<button class="btn" type="button" onclick="submitDate()">Submit</button>
+						</div>
+						<div class="form-group">
+							<div class="checkbox navbar-text">
+								<label>
+									<input type="checkbox" id="uniqueHits" onclick="toggleUnique()" checked> View Unique Hits
+								</label>
+							</div>
+						</div>
+					</div><!-- closes navbar-form -->
+				</div><!-- closes navbar-top-links -->
+			</div><!-- closes navbar-collapse -->
+		</div><!-- closes container-fluid -->
+	</nav><!-- closes navbar -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 id="graph-title"></h3>
+				<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visEnv" style="width: 100%; height: 800px;"></div>
+			</div>
+		</div><!-- closes row -->
+		<div class="loading" style="display:none">loading...
+		</div>
+	</div><!-- closes container-fluid -->
+</body>
+</html>

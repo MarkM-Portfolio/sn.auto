@@ -1,0 +1,416 @@
+{
+
+  "version": "1.2",
+
+
+
+
+  "data": [
+
+
+
+
+
+    {
+
+
+
+
+
+      "id": "dDelimitedFileSource",
+
+
+
+
+
+      "fields": [
+
+
+
+
+
+        {
+
+
+
+
+
+          "id": "fCategories",
+
+
+
+
+
+          "label": "Category",
+
+
+
+
+
+          "categories": [ "A", "B", "C", "D" ]
+
+
+
+
+
+        },
+
+
+
+
+
+        {
+
+
+
+
+
+          "id": "fValues",
+
+
+
+
+
+          "label": "N",
+
+
+
+
+
+          "min": 0,
+
+
+
+
+
+          "max": 100000
+
+
+
+
+
+        },
+
+
+
+
+
+        {
+
+
+
+
+
+          "id": "fMin",
+
+
+
+
+
+          "label": "N",
+
+
+
+
+
+          "min": 0,
+
+
+
+
+
+          "max": 100000
+
+
+
+
+
+        },
+
+
+
+
+
+        {
+
+
+
+
+
+          "id": "fMax",
+
+
+
+
+
+          "label": "N",
+
+
+
+
+
+          "min": 0,
+
+
+
+
+
+          "max": 100000
+
+
+
+
+
+        }
+
+
+
+
+
+      ],
+
+
+
+
+
+      "rows": [
+
+
+
+
+
+        [ 3, 1000, 1000, 1500 ],
+
+
+
+
+
+        [ 2, 50000, 50000, 49000 ],
+
+
+
+
+
+        [ 1, 75000, 75000, 60000 ],
+
+
+
+
+
+        [ 0, 30000, 30000, 32000 ]
+
+
+
+
+
+      ]
+
+
+
+
+
+    }
+
+
+
+
+
+  ],
+
+
+
+
+
+  "copyright": "(C) Copyright IBM Corp. 2012",
+
+
+
+
+
+  "grammar": [
+
+
+
+
+
+    {
+
+
+
+
+
+      "coordinates": {
+
+
+
+
+
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+
+
+
+
+
+      },
+
+
+
+
+
+      "elements": [
+
+
+
+
+
+        {
+
+
+
+
+
+          "type": "interval",
+
+
+
+
+
+          "position": [
+
+
+
+
+
+            {"field": {"$ref": "fValues"}},
+
+
+
+
+
+            {"field": {"$ref": "fCategories"}}
+
+
+
+
+
+          ],
+
+
+
+
+
+          "style": {"width": "80%"}
+
+
+
+
+
+        },
+
+
+
+
+
+        {
+
+
+
+
+
+          "type": "interval",
+
+
+
+
+
+          "position": [
+
+
+
+
+
+            {"field": {"$ref": "fMin"}},
+
+
+
+
+
+            {"field": {"$ref": "fMax"}},
+
+
+
+
+
+            {"field": {"$ref": "fCategories"}}
+
+
+
+
+
+          ],
+
+
+
+
+
+          "style": {
+
+
+
+
+
+            "fill": "blue",
+
+
+
+
+
+            "stroke": {"width": 3.0},
+
+
+
+
+
+            "width": "20%",
+
+
+
+
+
+            "symbol": "t-beam"
+
+
+
+
+
+          }
+
+
+
+
+
+        }
+
+
+
+
+
+      ]
+
+
+
+
+
+    }
+
+
+
+
+
+  ]
+
+
+
+
+
+}

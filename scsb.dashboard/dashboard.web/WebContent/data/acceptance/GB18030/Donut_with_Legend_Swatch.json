@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "ds",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [
+            "⺁⺄⺈-1",
+            "⺋⺌-2",
+            "⺗⺧⺪⺮-3",
+            "⺳⺶⺷-4",
+            "⺻⻊-5"
+          ]
+        },
+        {
+          "id": "values",
+          "min": 0.0,
+          "max": 100.0,
+          "format": {"numericPattern": "#.0", "suffix": "%"}
+        },
+        {"id": "sizeValues"}
+      ],
+      "rows": [
+        [ 0, 2.8, 1.0 ],
+        [ 1, 2.8, 1.0 ],
+        [ 2, 2.8, 1.0 ],
+        [ 3, 2.8, 1.0 ],
+        [ 4, 2.8, 1.0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [ {"content": [ {"$ref": "values"} ]} ],
+          "data": {"$ref": "ds"},
+          "position": [ {"field": {"$ref": "values"}} ],
+          "color": [
+            {
+              "id": "clusterType",
+              "field": {"$ref": "category"}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "Cluster:",
+                {"$ref": "category"},
+                "\n",
+                "Cluster Size = ",
+                {"$ref": "sizeValues"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.5},
+            "stroke": {"width": 1.0},
+            "width": "30%"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 20
+      }
+    }
+  ],
+  "legendPosition": "top",
+  "legends": [
+    {
+      "aesthetics": [
+        {"aesthetic": {"$ref": "clusterType"}}
+      ],
+      "boundsStyle": {
+        "fill": "white",
+        "stroke": {"width": 5}
+      },
+      "title": [ "Clusters" ],"labelStyle":{"font":{"family":"SimSun"}}
+    }
+  ],
+  "size": {"width": 450, "height": 450},
+  "version": "4.1"
+}

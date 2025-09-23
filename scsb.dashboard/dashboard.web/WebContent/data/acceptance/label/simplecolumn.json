@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [ "California", "Illinois" ]
+        },
+        {"id": "fValues", "label": "Price"}
+      ],
+      "rows": [ [ 1, 50 ], [ 0, 1 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ "Test" ],
+              "lineMinSize": 5,
+              "lineStyle": {
+                "fill": "rgba(255,0,0,0.5)",
+                "stroke": {"width": "2px", "style": "Dot"},
+                "effect": {"shadow": {"dy": 1, "stdDev": 1}}
+              },
+              "style": {
+                "fill": "blue",
+                "location": "outside",
+                "padding": 20,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "3.0"
+}

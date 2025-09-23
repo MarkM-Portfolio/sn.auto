@@ -1,0 +1,38 @@
+2014-05-29T08:14:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:14:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20663230, name="bht6inviteguest 000", customerId=0) with outcome SUCCESS
+2014-05-29T08:14:31+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-05-29T08:14:41+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-05-29T08:28:06+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:28:46+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:28:56+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:29:04+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:30:42+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:30:53+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:31:27+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:08+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:26+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:36+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:57+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:37:44+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:37:51+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20663254, name="bht6inviteguest112 bhtinviteguest", customerId=0) with outcome SUCCESS
+2014-05-29T08:37:54+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-05-29T08:38:00+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-05-29T08:14:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:14:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20663230, name="bht6inviteguest 000", customerId=0) with outcome SUCCESS
+2014-05-29T08:14:31+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-05-29T08:28:46+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:28:56+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:29:04+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:30:42+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:30:53+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:31:27+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:26+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:36+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:37:51+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20663254, name="bht6inviteguest112 bhtinviteguest", customerId=0) with outcome SUCCESS
+2014-05-29T08:14:41+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-05-29T08:28:06+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:08+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:33:57+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:37:44+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-05-29T08:37:54+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-05-29T08:38:00+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed ADDTOKEN with outcome SUCCESS

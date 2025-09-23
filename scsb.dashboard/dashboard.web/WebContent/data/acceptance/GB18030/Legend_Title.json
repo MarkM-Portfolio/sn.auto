@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Align",
+          "categories": [ "start", "middle", "end" ]
+        },
+        {
+          "id": "fY",
+          "label": "V-Align",
+          "categories": [ "start", "middle", "end" ]
+        },
+        {
+          "id": "case",
+          "categories": [
+            "This is a long string",
+            "This is another long string",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I"
+          ],
+          "unit": "categorical"
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 1 ],
+        [ 0, 2, 2 ],
+        [ 1, 0, 3 ],
+        [ 1, 1, 4 ],
+        [ 1, 2, 5 ],
+        [ 2, 0, 6 ],
+        [ 2, 1, 7 ],
+        [ 2, 2, 8 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "fY"} ]}},
+          {"axis": {"title": [ {"$ref": "fX"} ]}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "id": "labelColor",
+                "field": {"$ref": "case"},
+                "mapping": [ {"at": 0, "color": "red"} ]
+              },
+              "content": [ {"$ref": "case"} ],
+              "style": {"font": {"size": 50}}
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {"id": "pointColor", "field": {"$ref": "case"}}
+          ],
+          "size": [
+            {"id": "pointSize", "field": {"$ref": "case"}}
+          ],
+          "style": {
+            "fill": {"a": 0.2},
+            "outline": "black",
+            "symbol": "circle"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [
+        {"aesthetic": {"$ref": "pointColor"}}
+      ],
+      "title": [ "成我戒戓戔戕或戗战戙戚戛戜戝戞戟\n㐀㐁㐂㐃㐄㐅㐆㐇㐈㐉㐊㐋㐌㐍㐎㐏" ],
+"titleStyle":{"font":{"family":"SimSun"}}
+    }
+  ],
+  "size": {"width": 400, "height": 300},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

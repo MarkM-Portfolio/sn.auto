@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="8" name="ff_0_Linux-0" parallel="tests">
+  <groups>
+    <run>
+      <include name="level2"/>
+    </run>
+  </groups>
+  <groups>
+    <run>
+      <include name="level2"/>
+    </run>
+  </groups>
+  <parameter name="file_server" value="testautolb.cnx.cwp.pnp-hcl.com"/>
+  <parameter name="filenet_enabled" value="false"/>
+  <parameter name="push_videos" value="true"/>
+  <parameter name="timeout_implicit_wait" value="60000"/>
+  <parameter name="browser_url" value="http://lcauto109.cnx.cwp.pnp-hcl.com/"/>
+  <parameter name="browser_start_command" value="ff_0_Linux"/>
+  <parameter name="pch_enable_dojo_pageload" value="false"/>
+  <parameter name="special_characters" value="false"/>
+  <parameter name="timeout_async_script" value="30000"/>
+  <parameter name="server_is_grid_hub" value="true"/>
+  <parameter name="timeout_page_navigate_timeout" value="60000"/>
+  <parameter name="pch_post_event_pause" value="700"/>
+  <parameter name="location_use_fallback_strategy" value="false"/>
+  <parameter name="max_retries" value="1"/>
+  <parameter name="server_host" value="testautolb.cnx.cwp.pnp-hcl.com"/>
+  <parameter name="location_force_script" value="false"/>
+  <parameter name="upload_files_folder_name" value="TestFiles"/>
+  <parameter name="server_is_legacy_grid" value="false"/>
+  <parameter name="default_app_properties" value="test_config/app/app.properties"/>
+  <parameter name="pch_enable_standard_pageload" value="false"/>
+  <parameter name="server_port" value="4444"/>
+  <parameter name="fluent_wait_timeout" value="60"/>
+  <parameter name="root_folder_name" value="SeleniumServer"/>
+  <parameter name="users_typeahead_preference" value="display name"/>
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties"/>
+  <parameter name="users_login_preference" value="email"/>
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener"/>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="8" name="FileDetailsOverlay" parallel="tests">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.fileviewer.BVT_FileViewer_Iframe"/>
+    </classes>
+  </test> <!-- FileDetailsOverlay -->
+  <test thread-count="8" name="FileDetailsOverlay" parallel="tests">
+    <groups>
+      <run>
+        <include name="level2"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.fileviewer.BVT_FileViewer_Iframe"/>
+    </classes>
+  </test> <!-- FileDetailsOverlay -->
+  <test thread-count="8" name="FileDetailsOverlay" parallel="tests">
+    <groups>
+      <run>
+        <include name="level2"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.ibm.conn.auto.tests.fileviewer.BVT_FileViewer_Iframe"/>
+    </classes>
+  </test> <!-- FileDetailsOverlay -->
+</suite> <!-- ff_0_Linux-0 -->

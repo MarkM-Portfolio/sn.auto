@@ -1,0 +1,130 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "_VOIDS_FIELD_",
+					"label" : "_VOIDS_FIELD_"
+				}, {
+					"id" : "_SERIES_FIELD_",
+					"label" : "Product line",
+					"categories" : ["Camping Equipment", "Golf Equipment", "Outdoor Protection", "Personal Accessories"]
+				}, {
+					"id" : "_VALUES_FIELD_",
+					"label" : "Revenue"
+				}
+			],
+			"rows" : [[90, 0, 20471328.88], [92, 1, 5597980.86], [94, 2, 1536456.24], [96, 3, 7144797.52]]
+		}
+	],
+	"size" : {
+		"height" : 200,
+		"width" : 900
+	},
+	"grammar" : [{
+			"coordinates" : {
+				"transforms" : [{
+						"type" : "stack"
+					}, {
+						"type" : "polar",
+						"polarParameters" : {
+							"startAngle" : 0,
+							"CCW" : false
+						}
+					}
+				],
+				"dimensions" : [{}
+					
+				]
+			},
+			"elements" : [{
+					"type" : "interval",
+					"position" : [{
+							"field" : {
+								"$ref" : "_VALUES_FIELD_"
+							}
+						}
+					],
+					"style" : {
+						"fill" : {
+							"type" : "linear",
+							"angle" : 270,
+							"colors" : [{
+									"offset" : 0.4,
+									"color" : {
+										"dAlpha" : 0,
+										"dValue" : 0.06,
+										"dSaturation" : 0.3
+									}
+								}, {
+									"offset" : 1,
+									"color" : {
+										"dAlpha" : 0,
+										"dValue" : -0.18,
+										"dSaturation" : 0.3
+									}
+								}
+							]
+						}
+					},
+					"color" : [{
+							"id" : "_PALETTE_",
+							"field" : {
+								"$ref" : "_SERIES_FIELD_"
+							},
+							"modifies" : "both",
+							"palette" : ["rgba(38, 101, 209, 1.0)", "rgba(89, 199, 212, 1.0)", "rgba(219, 110, 0, 1.0)", "rgba(227, 170, 0, 1.0)", "rgba(47, 153, 43, 1.0)", "rgba(102, 186, 0, 1.0)", "rgba(112, 43, 161, 1.0)", "rgba(147, 88, 224, 1.0)", "rgba(173, 95, 0, 1.0)", "rgba(232, 146, 7, 1.0)", "rgba(168, 34, 0, 1.0)", "rgba(222, 55, 18, 1.0)", "rgba(92, 151, 158, 1.0)", "rgba(108, 185, 204, 1.0)"]
+						}
+					]
+				}
+			]
+		}
+	],
+	"legends" : [{
+			"content" : [{
+					"local" : false,
+					"aesthetics" : [{
+							"aesthetic" : {
+								"$ref" : "_PALETTE_"
+							}
+						}
+					],
+					"swatchStyle" : {
+						"padding" : {
+							"right" : 4,
+							"bottom" : 2
+						},
+						"size" : "16px",
+						"stroke" : {
+							"width" : 0
+						}
+					},
+					"textStyle" : {
+						"fill" : "#000000",
+						"font" : {
+							"family" : "Arial",
+							"size" : "10pt",
+							"weight" : "normal",
+							"style" : "normal"
+						}
+					},
+					"layout" : {
+						"reverse" : false
+					}
+				}
+			],
+			"style" : {
+				"fill" : "transparent",
+				"padding" : {
+					"bottom" : 4
+				},
+				"align" : "middle",
+				"valign" : "start"
+			},
+			"bounds" : {
+				"height" : "50%"
+			}
+		}
+	],
+	"legendPosition" : "bottom"
+}

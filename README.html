@@ -1,0 +1,66 @@
+<html>
+</body>
+<h1>Connections BVT Suite</h1>
+<p>This package includes both the GUI and API BVT tests</>
+
+<h2>Download</h2>
+<p>
+Download all the <tt>bvt.zip</tt> file, ane unzip it into a directory.
+You should see the following:
+    <ul>
+    <li><b><tt>README.html</tt></b> - this file</li>
+    <li><b><tt>bvt.gui.jar</tt></b> - the executable jar package</li>
+    <li><b><tt>bvt.api.jar</tt></b> - the API test suite, and data population tool.</li>
+    <li><b><tt>bvt.adm2</tt></b> - the Connectiosn wsadmin test suite.</li>
+    <li><b><tt>lib</tt></b> - libraries required to run the tools.</li>
+    <li><b><tt>logs</tt></b> - log files goes to here</li>
+    <li><b><tt>resource</tt></b> - the files used during test, such as attachments</li>
+    <li><b><tt>test_config</tt></b> - sample test configurations</li>
+    </ul>
+</p>
+
+<h2>GUI BVT</h2>
+
+<h3>Spedify the server/browser info, and selecte tests to run</h3>
+<p>
+    Make a copy of <tt>test_config/testTemplate_PREBVT.xml</tt> to <tt>testConfig.xml</tt>,
+    and open edit the new file , simply follow the comments inside itself. You can set
+    the server URL, and your browser type, as well as what test suite  you need to run.
+</p>
+
+<h3>Run GUI Tests:</h3>
+<p>
+    <pre>java -jar bvt.gui.jar testConfig.xml</pre>
+    This will lauch the browser you specified in <tt>testConfig.xml</tt> and do the tests.
+<p>
+<p>
+Test result report are in <tt>test-output</tt> directory, after run.
+</p>
+
+<h2>API BVT and the Data Population Tool</h2>
+This is the new API framework, not the <i>Janet</i> tool.
+<p>
+    <pre>java -jar bvt.api.jar http://yourserver.com/</pre>
+    <pre> * Test Users are recorded in ./resources/ProfileData_{BVTserver}.properties inside bvt.api.jar</pre>
+    <pre> * Get a properties file, such as ProfileData_lc45linux1.properties, as sample.  Create a ProfileData_{yourserver}.properties</pre>
+    <pre> * ProfileData_{yourserver}.properties should be under ./resources inside or outside bvt.api.jar</pre>
+    <pre> * For AS Search API, modify ./resources/ASSearch_crawler.properties for Connections admin user/password</pre>
+    This will run all the tests and data population against the specified server.
+<p>
+
+<h2>Admin Tests</h2>
+<p>
+<pre>
+cd bvt.adm2
+export WAS_HOME=/opt/IBM/WebSphere/Appserver
+export SERVER_HOST=lc45linux.swg.usma.ibm.com
+export SERVER_SOAP=8880
+export ADMIN_USER=wasadmin
+export ADMIN_PSWD=passw0rd
+export IC_ADMIN_DIR=/opt/IBM/WebServer/profiles/AppSrv01/bin
+./runtest.sh
+</pre>
+</p>
+
+</body>
+</html>

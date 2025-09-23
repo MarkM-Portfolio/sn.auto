@@ -1,0 +1,194 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Division",
+          "categories": [ "United States", "Canada" ]
+        },
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping",
+            "Golf",
+            "Mountaineering",
+            "Outdoor",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [
+            "Web",
+            "Phone",
+            "Store",
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 73 ],
+        [ 0, 0, 1, 73 ],
+        [ 0, 0, 2, 73 ],
+        [ 0, 0, 3, 73 ],
+        [ 0, 0, 4, 73 ],
+        [ 0, 0, 5, 73 ],
+        [ 0, 3, 1, 63 ],
+        [ 0, 3, 2, 63 ],
+        [ 0, 3, 3, 63 ],
+        [ 0, 3, 4, 63 ],
+        [ 0, 4, 2, 43 ],
+        [ 0, 1, 2, 24 ],
+        [ 0, 2, 0, 31 ],
+        [ 0, 5, 1, 15 ],
+        [ 0, 6, 2, 25 ],
+        [ 0, 7, 2, 25 ],
+        [ 0, 8, 2, 25 ],
+        [ 0, 9, 2, 25 ],
+        [ 0, 10, 2, 25 ],
+        [ 0, 11, 2, 25 ],
+        [ 0, 12, 2, 25 ],
+        [ 0, 13, 2, 25 ],
+        [ 1, 3, 1, 11 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": 700,
+        "height": "50%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "categoryStructure": {"align": "start"}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "#FCC8",
+                "outline": "black"
+              },
+              "title": [ "Width 10" ]
+            }
+          },
+          {
+            "scale": {"local" : false,"categoryStructure": {"gap": 20}},
+            "axis": {
+              "boxStyle": {
+                "fill": "#FCC8",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {
+              "categoryStructure": {
+                "width": 10,
+                "nest": true
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Division"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [ {"field": {"$ref": "Order method"}} ],
+          "style": {
+            "fill": {"a": 0.5},
+            "outline": "gray",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    },
+    {
+      "bounds": {
+        "width": 700,
+        "height": "50%",
+        "left": 0,
+        "top": "50%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "categoryStructure": {"align": "start"}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "#FCC8",
+                "outline": "black"
+              },
+              "title": [ "Default width" ]
+            }
+          },
+          {
+            "scale": {"local" : false,"categoryStructure": {"gap": 20}},
+            "axis": {
+              "boxStyle": {
+                "fill": "#FCC8",
+                "outline": "black"
+              }
+            }
+          },
+          {"scale": {"categoryStructure": {"nest": true}}}
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Division"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [ {"field": {"$ref": "Order method"}} ],
+          "style": {
+            "fill": {"a": 0.5},
+            "outline": "gray",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    }
+  ],
+  "size": {"width": 800, "height": 400},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,280 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "fTo", "label": "To"},
+        {"id": "fFrom", "label": "From"},
+        {"id": "fCount", "label": "N"}
+      ],
+      "rows": [
+        [ 1, 0, 589 ],
+        [ 2, 0, 1130 ],
+        [ 3, 0, 567 ],
+        [ 4, 0, 824 ],
+        [ 5, 1, 185 ],
+        [ 6, 1, 271 ],
+        [ 7, 1, 133 ],
+        [ 8, 2, 107 ],
+        [ 9, 2, 346 ],
+        [ 10, 2, 677 ],
+        [ 11, 4, 167 ],
+        [ 12, 4, 251 ],
+        [ 13, 4, 406 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "fNode", "label": "Node"},
+        {"id": "fMean", "label": "Mean", "unit": "dollar"},
+        {"id": "fN", "label": "N"},
+        {
+          "id": "fLabel",
+          "label": "Label",
+          "categories": [
+            "Price Primary Vehicle",
+            "Income category in thousands: <= Under $25",
+            "Income category in thousands: (Under $25, $25 - $49]",
+            "Income category in thousands: ($25 - $49, $50 - $74]",
+            "Income category in thousands: > $50 - $74",
+            "Age in years: <= 26.0",
+            "Age in years: (26.0, 52.0]",
+            "Age in years: > 52.0",
+            "Age in years: (26.0, 34.0]",
+            "Age in years: > 34.0",
+            "Age in years: <= 40.0",
+            "Age in years: (40.0, 48.0]",
+            "Age in years: > 48.0"
+          ]
+        },
+        {
+          "id": "fGroup",
+          "label": "Group",
+          "categories": [ "Medium", "Low", "High" ]
+        },
+        {
+          "id": "fUnusual",
+          "label": "Unusual",
+          "categories": [
+            "Neither",
+            "Unusually High",
+            "Unusually Low"
+          ],
+          "unit": "categorical"
+        }
+      ],
+      "rows": [
+        [ 0, 29.8611, 3110, 0, 0, 0 ],
+        [ 1, 9.463, 589, 1, 1, 2 ],
+        [ 2, 17.6634, 1130, 2, 1, 0 ],
+        [ 3, 30.2125, 567, 3, 2, 0 ],
+        [ 4, 60.9275, 824, 4, 0, 0 ],
+        [ 5, 9.5303, 185, 5, 1, 0 ],
+        [ 6, 10.2487, 271, 6, 1, 0 ],
+        [ 7, 7.7684, 133, 7, 1, 0 ],
+        [ 8, 15.5832, 107, 5, 1, 0 ],
+        [ 9, 17.2555, 346, 8, 1, 0 ],
+        [ 10, 18.2006, 677, 9, 1, 0 ],
+        [ 11, 52.3725, 167, 10, 2, 0 ],
+        [ 12, 60.161, 251, 11, 2, 0 ],
+        [ 13, 64.9204, 406, 12, 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fLabel"} ],
+              "style": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "effect": {
+                  "glow": {"color": "white", "stdDev": 5.0}
+                },
+                "font": {
+                  "family": "Arial",
+                  "size": "7pt",
+                  "weight": "bold"
+                },
+                "location": "inside"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "fMean"},
+              "mapping": [
+                {"at": "0%", "color": "#FBE4DC"},
+                {"at": "100%", "color": "#ff8022"}
+              ],
+              "modifies": "both"
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "fNode"},
+            "from": {"$ref": "fFrom"},
+            "orientation": "left-to-right",
+            "to": {"$ref": "fTo"},
+            "method": "dag"
+          },
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": -90,
+              "colors": [
+                {"color": {"a": 0.9}, "offset": 0},
+                {
+                  "color": {
+                    "a": 0.9,
+                    "dSaturation": 0.1,
+                    "dValue": -0.1
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "width": 100,
+            "height": 25,
+            "outline": {"dValue": -0.25},
+            "symbol": "rectangle"
+          }
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "fNode"},
+            "from": {"$ref": "fFrom"},
+            "orientation": "left-to-right",
+            "to": {"$ref": "fTo"},
+            "method": "dag"
+          },
+          "symbol": [
+            {
+              "id": "symbolId",
+              "field": {"$ref": "fUnusual"},
+              "scale": {
+                "spans": [ {"categories": [ 1, 2 ]} ]
+              },
+              "palette": [
+                "plus",
+                {
+                  "shape": [
+                    {
+                      "x": "0%",
+                      "y": "40%",
+                      "width": "100%",
+                      "height": "20%"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "visibility": [
+            {
+              "field": {"$ref": "fUnusual"},
+              "mapping": [
+                {"at": 0, "visible": false},
+                {"at": 1, "visible": true},
+                {"at": 2, "visible": true}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#85a54a",
+            "effect": {"shadow": {}},
+            "outline": "#85a54a",
+            "size": "30%"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "fNode"},
+            "from": {"$ref": "fFrom"},
+            "to": {"$ref": "fTo"},
+            "method": "link"
+          },
+          "size": [
+            {
+              "field": {"$ref": "fCount"},
+              "mapping": [
+                {"at": "0%", "size": "25%"},
+                {"at": "100%", "size": "100%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#c7c7c7",
+            "stroke": {"width": 5.0, "cap": "butt"},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 10}
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "labelStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": "10.5pt",
+          "weight": "bold"
+        }
+      },
+      "location": {
+        "width": "15%",
+        "height": "45%",
+        "left": 3,
+        "top": 3
+      },
+      "title": [ "Avg. Price of Primary Vehicle" ],
+      "method": "stagger"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "symbolId"}} ],
+      "labelStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": "10.5pt",
+          "weight": "bold"
+        }
+      },
+      "location": {
+        "width": "25%",
+        "height": "25%",
+        "left": 3,
+        "top": "75%"
+      },
+      "title": [  ],
+      "titleStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": "10.5pt",
+          "weight": "bold"
+        }
+      }
+    }
+  ],
+  "size": {"width": 600, "height": 400},
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

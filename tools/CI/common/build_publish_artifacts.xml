@@ -1,0 +1,14 @@
+<project name="${env.APPLICATION} CI" default="development" basedir="."> 
+    <taskdef name="artifactFilePublisher" classname="com.ibm.team.build.ant.task.ArtifactFilePublisherTask" />
+    <target name="publish-artifacts">
+      <echo>Publishing ${env.APPLICATION} artifacts now...</echo>
+
+      <artifactFilePublisher repositoryAddress="${env.repositoryAddress}"
+		                       buildResultUUID="${env.buildResultUUID}"
+		                       userId="icci@us.ibm.com"
+		                       passwordFile="${env.CI_COMMON_HOME}/.vf"
+		                       verbose="true"
+		                       filePath="${env.CI_HOME}/test-results.zip"
+		                       label="${env.APPLICATION} CI Test Results" />   
+    </target>
+</project>

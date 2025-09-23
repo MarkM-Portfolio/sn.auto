@@ -1,0 +1,25 @@
+<project name="bvt.adm2" default="development" basedir=".">
+
+    <!--
+    <property name="skip.javadoc" value="true"/>
+    <property name="skip.javadoc.public" value="true"/>
+    <property name="skip.javadoc.full" value="true"/>
+    -->
+
+    <import file="${env.WPLC_IMPORT}/std_props.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_dirs.xml"/>
+
+    <import file="${env.WPLC_IMPORT}/check.xml"/>
+    <import file="${env.WPLC_IMPORT}/compile.xml"/>
+    <import file="${env.WPLC_IMPORT}/rmic.xml"/>
+    <import file="${env.WPLC_IMPORT}/package_extra.xml"/>
+    <import file="${env.WPLC_IMPORT}/javadoc.xml"/>
+    <import file="${env.WPLC_IMPORT}/jdepend.xml"/>
+    <import file="${env.WPLC_IMPORT}/clean.xml"/>
+    <import file="${env.WPLC_IMPORT}/comp_zip.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_targets.xml"/>
+    <import file="${env.WPLC_IMPORT}/process_nls.xml"/>
+    <import file="${env.WPLC_IMPORT}/performance.xml"/>
+
+</project>
+

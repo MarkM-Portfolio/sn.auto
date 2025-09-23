@@ -1,0 +1,382 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "California",
+                  "Illinois",
+                  "New York",
+                  "Texas"
+               ],
+               "id": "fCategories",
+               "key": true,
+               "label": "State"
+            },
+            {
+               "id": "fValues",
+               "label": "Price",
+               "max": 3972,
+               "min": 3427,
+               "unit": "date"
+            }
+         ],
+         "id": "dDelimitedFileSource",
+         "rows": [
+            [
+               3,
+               3672
+            ],
+            [
+               2,
+               3972
+            ],
+            [
+               1,
+               3727
+            ],
+            [
+               0,
+               3785
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "fit": "nice",
+                           "tickLabel": [
+                              {
+                                 "style": {
+                                    "fill": "Brown",
+                                    "font": {
+                                       "size": 18,
+                                       "style": "italic",
+                                       "weight": "bold"
+                                    }
+                                 },
+                                 "value": "Date"
+                              },
+                              {
+                                 "args": "tick",
+                                 "style": {
+                                    "fill": "blue"
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               },
+               {
+                  "axis": {
+                     "method": "vertical",
+                     "tickStyle": {
+                        "angle": -45
+                     },
+                     "title": [
+                        "Categories of \"",
+                        {
+                           "$ref": "fCategories",
+                           "style": {
+                              "fill": "green",
+                              "font": {
+                                 "size": "24",
+                                 "style": "italic"
+                              }
+                           }
+                        },
+                        "\""
+                     ],
+                     "titleStyle": {
+                        "fill": {
+                           "b": 150,
+                           "g": 50,
+                           "r": 50
+                        },
+                        "font": {
+                           "family": "Technical, Times New Roman",
+                           "size": "18",
+                           "style": "italic"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "fit": "nice",
+                           "tickLabel": [
+                              {
+                                 "style": {
+                                    "fill": "Purple",
+                                    "font": {
+                                       "size":18,
+                                       "style": "italic",
+                                       "weight": "bold"
+                                    }
+                                 },
+                                 "value": "US"
+                              },
+                              {
+                                 "$ref": "fCategories",
+                                 "style": {
+                                    "fill": "orange"
+                                 }
+                              },
+                              " ",
+                              {
+                                 "args": "tick"
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "fValues"
+                     },
+                     "mapping": [
+                        {
+                           "at": "0%",
+                           "color": {
+                              "b": 255,
+                              "g": 0,
+                              "r": 0
+                           }
+                        },
+                        {
+                           "at": "100%",
+                           "color": {
+                              "b": 0,
+                              "g": 255,
+                              "r": 255
+                           }
+                        }
+                     ],
+                     "scale": {
+                        "spans": [
+                           {
+                              "fit": "nice",
+                              "tickLabel": [
+                                 {
+                                    "style": {
+                                       "fill": "green",
+                                       "font": {
+                                          "style": "italic",
+                                          "weight": "bold"
+                                       }
+                                    },
+                                    "value": "Date"
+                                 },
+                                 "-",
+                                 {
+                                    "args": "tick"
+                                 }
+                              ]
+                           }
+                        ]
+                     }
+                  }
+               ],
+               "data": {
+                  "$ref": "dDelimitedFileSource"
+               },
+               "label": [
+                  {
+                     "color": {
+                        "field": {
+                           "$ref": "fCategories"
+                        },
+                         "mapping": [
+                           {
+                              "at": 0,
+                              "color": "blue"
+                           },
+                           {
+                              "at": 1,
+                              "color": "green"
+                           },
+                           {
+                              "at": 2,
+                              "color": "red"
+                           },
+                           {
+                              "at": 3,
+                              "color": "purple"
+                           }
+                        ]
+                     },
+                     "content": [
+                        {
+                           "style": {
+                              "font": {
+                                 "size": 16,
+                                 "style": "italic",
+                                 "weight": "bold"
+                              }
+                           },
+                           "value": "Val"
+                        },
+                        " ",
+                        {
+                           "$ref": "fValues"
+                        }
+                     ]
+                  }
+               ],
+               "meta": [
+                  {
+                     "field": {
+                        "$ref": "fCategories"
+                     },
+                     "key": "category"
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "fValues"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "fCategories"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "angle": 180.0,
+                     "colors": [
+                        {
+                           "color": {
+                              "b": 150,
+                              "g": 57,
+                              "r": 1
+                           },
+                           "offset": 0.0
+                        },
+                        {
+                           "color": {
+                              "a": 0.2,
+                              "b": 0,
+                              "g": 0,
+                              "r": 0
+                           },
+                           "offset": 1.0
+                        }
+                     ],
+                     "type": "linear"
+                  },
+                  "outline": {
+                     "a": 0.0,
+                     "b": 0,
+                     "g": 0,
+                     "r": 0
+                  },
+                  "width": "80%"
+               },
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": {
+               "angle": 135.0,
+               "colors": [
+                  {
+                     "color": {
+                        "b": 255,
+                        "g": 221,
+                        "r": 221
+                     },
+                     "offset": 0.0
+                  },
+                  {
+                     "color": {
+                        "b": 255,
+                        "g": 255,
+                        "r": 255
+                     },
+                     "offset": 1.0
+                  }
+               ],
+               "type": "linear"
+            },
+            "outline": {
+               "b": 0,
+               "g": 0,
+               "r": 0
+            },
+            "stroke": {
+               "width": 0.5
+            }
+         }
+      }
+   ],
+   "legends": [
+      {
+      }
+   ],
+   "size": {
+      "height": 500.0,
+      "width": 600.0
+   },
+   "titles": [
+      {
+         "content": [
+            {
+               "style": {
+                  "fill": "Blue",
+                  "font": {
+                     "size": 20,
+                     "style": "italic",
+                     "weight": "bold"
+                  }
+               },
+               "value": "Bar chart"
+            }," ",
+            "with",
+            " ",
+            {
+               "style": {
+                  "fill": "green",
+                  "font": {
+                     "size": 20,
+                     "style": "italic",
+                     "weight": "bold"
+                  }
+               },
+               "value": "labels"
+            },
+            " using different ",
+            {
+               "style": {
+                  "fill": "Purple",
+                  "font": {
+                     "size": 24
+                  }
+               },
+               "value": "styles"
+            }
+         ],
+         "type": "title"
+      }
+   ],
+   "version": "4.1"
+}

@@ -1,0 +1,560 @@
+{
+  "version": "1.2",
+
+
+  "data": [
+
+
+    {
+
+
+      "id": "data",
+
+
+      "fields": [
+
+
+        {
+
+
+          "id": "categories",
+
+
+          "label": "States",
+
+
+          "categories": [
+
+
+            "California",
+
+
+            "Illinois",
+
+
+            "New York",
+
+
+            "Texas",
+
+
+            "Minnesota",
+
+
+            "Vermont",
+
+
+            "Georgia",
+
+
+            "Washington",
+
+
+            "Florida",
+
+
+            "North Dakota",
+
+
+            "South Dakota",
+
+
+            "Hawaii"
+
+
+          ]
+
+
+        },
+
+
+        {"id": "values", "max": 19}
+
+
+      ],
+
+
+      "rows": [
+
+
+        [ 11, 11 ],
+
+
+        [ 9, 9 ],
+
+
+        [ 7, 7 ],
+
+
+        [ 5, 5 ],
+
+
+        [ 3, 3 ],
+
+
+        [ 1, 1 ]
+
+
+      ]
+
+
+    },
+
+
+    {
+
+
+      "id": "data2",
+
+
+      "fields": [
+
+
+        {
+
+
+          "id": "categories2",
+
+
+          "label": "States",
+
+
+          "categories": [
+
+
+            "California",
+
+
+            "Illinois",
+
+
+            "New York",
+
+
+            "Texas",
+
+
+            "Minnesota",
+
+
+            "Vermont",
+
+
+            "Georgia",
+
+
+            "Washington",
+
+
+            "Florida",
+
+
+            "North Dakota",
+
+
+            "South Dakota",
+
+
+            "Hawaii"
+
+
+          ]
+
+
+        },
+
+
+        {"id": "values2", "max": 19}
+
+
+      ],
+
+
+      "rows": [
+
+
+        [ 9, 9 ],
+
+
+        [ 7, 7 ],
+
+
+        [ 5, 5 ],
+
+
+        [ 4, 4 ],
+
+
+        [ 3, 3 ],
+
+
+        [ 2, 2 ],
+
+
+        [ 1, 1 ]
+
+
+      ]
+
+
+    }
+
+
+  ],
+
+
+  "copyright": "(C) Copyright IBM Corp. 2011",
+
+
+  "grammar": [
+
+
+    {
+
+
+      "bounds": {"height": "33%", "top": 0},
+
+
+      "coordinates": {
+
+
+        "dimensions": [
+
+
+          {"axis": {}},
+
+
+          {
+
+
+            "scale": {"local": false},
+
+
+            "axis": {
+
+
+              "title": [ "Data 1: No Local Scales" ],
+
+
+              "titleStyle": {"fill": "blue"}
+
+
+            }
+
+
+          }
+
+
+        ]
+
+
+      },
+
+
+      "elements": [
+
+
+        {
+
+
+          "type": "interval",
+
+
+          "position": [
+
+
+            {"field": {"$ref": "values"}},
+
+
+            {"field": {"$ref": "categories"}}
+
+
+          ],
+
+
+          "color": [
+
+
+            {
+
+
+              "field": {"$ref": "categories"},
+
+
+              "scale": {"local": false}
+
+
+            }
+
+
+          ],
+
+
+          "style": {"width": 30}
+
+
+        }
+
+
+      ],
+
+
+      "style": {"fill": "white", "padding": {"right": 20}}
+
+
+    },
+
+
+    {
+
+
+      "bounds": {"height": "33%", "top": "33%"},
+
+
+      "coordinates": {
+
+
+        "dimensions": [
+
+
+          {"axis": {}},
+
+
+          {
+
+
+            "scale": {"local": true},
+
+
+            "axis": {
+
+
+              "method": "vertical",
+
+
+              "title": [
+
+
+                "Data 2: Horizontal dimension scale is local"
+
+
+              ],
+
+
+              "titleStyle": {"fill": "blue"}
+
+
+            }
+
+
+          }
+
+
+        ]
+
+
+      },
+
+
+      "elements": [
+
+
+        {
+
+
+          "type": "interval",
+
+
+          "position": [
+
+
+            {"field": {"$ref": "values2"}},
+
+
+            {"field": {"$ref": "categories2"}}
+
+
+          ],
+
+
+          "color": [
+
+
+            {
+
+
+              "field": {"$ref": "categories2"},
+
+
+              "scale": {"local": false}
+
+
+            }
+
+
+          ],
+
+
+          "style": {"width": 30}
+
+
+        }
+
+
+      ],
+
+
+      "style": {"fill": "white", "padding": {"right": 20}}
+
+
+    },
+
+
+    {
+
+
+      "bounds": {"height": "33%", "top": "66%"},
+
+
+      "coordinates": {
+
+
+        "dimensions": [
+
+
+          {"scale": {"local": true}, "axis": {}},
+
+
+          {
+
+
+            "scale": {"local": false},
+
+
+            "axis": {
+
+
+              "title": [
+
+
+                "Data 2: Vertical dimension scale and Color scale are local"
+
+
+              ],
+
+
+              "titleStyle": {"fill": "blue"}
+
+
+            }
+
+
+          }
+
+
+        ]
+
+
+      },
+
+
+      "elements": [
+
+
+        {
+
+
+          "type": "interval",
+
+
+          "position": [
+
+
+            {"field": {"$ref": "values2"}},
+
+
+            {"field": {"$ref": "categories2"}}
+
+
+          ],
+
+
+          "color": [
+
+
+            {
+
+
+              "field": {"$ref": "categories2"},
+
+
+              "scale": {"local": true}
+
+
+            }
+
+
+          ],
+
+
+          "style": {"width": 30}
+
+
+        }
+
+
+      ],
+
+
+      "style": {"fill": "white", "padding": {"right": 20}}
+
+
+    }
+
+
+  ],
+
+
+  "legends": [
+
+
+    {
+
+
+      "content": [
+
+
+        {
+
+
+          "categories": [ 1, 0, 2 ],
+
+
+          "local": false,
+
+
+          "swatchStyle": {"padding": 1, "symbol": "star-4", "stroke":{"width": 2 }, "outline": "rgba(238,235,128,1.0)"},
+
+
+          "textStyle": {"fill": "navy"}
+
+
+        }
+
+
+      ]
+
+
+    }
+
+
+  ],
+
+
+  "size": {"height": 800},
+
+
+  "style": {"fill": "white", "padding": 5}
+
+
+}

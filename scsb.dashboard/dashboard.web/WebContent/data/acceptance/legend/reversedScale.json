@@ -1,0 +1,65 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY", "label": "Price"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "Alabama",
+            "Arkansas",
+            "California",
+            "Florida",
+            "Georgia",
+            "New York",
+            "Texas",
+            "Virginia"
+          ]
+        }
+      ],
+      "rows": [
+        [ 495, 29.95, 0 ],
+        [ 136, 6.99, 1 ],
+        [ 185, 6.49, 2 ],
+        [ 446, 12.95, 3 ],
+        [ 446, 12.95, 4 ],
+        [ 446, 12.95, 5 ],
+        [ 446, 12.95, 6 ],
+        [ 446, 12.95, 7 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "gray"}}},
+          {"axis": {"gridStyle": {"fill": "gray"}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "store"},
+              "scale": {"reverse": true}
+            }
+          ],
+          "style": {"outline": "black", "size": 30}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [ {} ],
+  "style": {"fill": "white"}
+}

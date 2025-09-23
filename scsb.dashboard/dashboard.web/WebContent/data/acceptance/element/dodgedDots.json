@@ -1,0 +1,206 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dDelimitedFileSource",
+		"fields": [{
+			"id": "fCategories",
+			"label": "Store",
+			"categories": ["California",
+			"Illinois",
+			"New York",
+			"Texas"]
+		},
+		{
+			"id": "fValues",
+			"label": "Price"
+		},
+		{
+			"id": "fAmount",
+			"label": "Amount"
+		}],
+		"rows": [[3,
+		6.49,
+		14],
+		[2,
+		6.99,
+		3],
+		[2,
+		10,
+		3],
+		[2,
+		10,
+		16],
+		[2,
+		10,
+		5],
+		[2,
+		10,
+		9],
+		[2,
+		10,
+		20],
+		[1,
+		27.95,
+		4],
+		[0,
+		24.99,
+		13]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			}],
+			"style": {
+				"fill": {
+					"type": "linear",
+					"angle": 135,
+					"colors": [{
+						"color": {
+							"b": 255,
+							"g": 221,
+							"r": 221
+						},
+						"offset": 0
+					},
+					{
+						"color": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						},
+						"offset": 1
+					}]
+				},
+				"stroke": {
+					"width": 0.5
+				},
+				"outline": {
+					"b": 0,
+					"g": 0,
+					"r": 0
+				}
+			}
+		},
+		"elements": [{
+			"type": "point",
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fValues"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "fValues"
+				},
+				"mapping": [{
+					"color": {
+						"b": 255,
+						"g": 0,
+						"r": 0
+					},
+					"offset": 0
+				},
+				{
+					"color": {
+						"b": 0,
+						"g": 255,
+						"r": 255
+					},
+					"offset": 1
+				}]
+			}],
+			"positionModifier": "dodge",
+			"size": [{
+				"field": {
+					"$ref": "fAmount"
+				},
+				"mapping": [{
+					"offset": 0,
+					"size": 30
+				},
+				{
+					"offset": 1,
+					"size": 100
+				}]
+			}],
+			"style": {
+				"width": "80%",
+				"outline": {
+					"a": 1,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				}
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"outline": {
+				"a": 0,
+				"b": 0,
+				"g": 0,
+				"r": 0
+			},
+			"padding": 28.800001
+		}
+	}],
+	"size": {
+		"width": 600,
+		"height": 300
+	}
+}

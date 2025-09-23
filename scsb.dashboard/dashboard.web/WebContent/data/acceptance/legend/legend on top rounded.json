@@ -1,0 +1,77 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY", "label": "Price"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [
+        [ 185, 6.49, 3 ],
+        [ 136, 6.99, 2 ],
+        [ 495, 29.95, 1 ],
+        [ 446, 12.95, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill": "gray"}}},
+          {"axis": {}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fY"} ],
+              "style": {
+                "location": "outside",
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "color": [
+            {
+              "id": "colorAesthetic",
+              "field": {"$ref": "store"}
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "cornerRadius": 6,
+            "outline": "black",
+            "symbol": "rect"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legendPosition": "top",
+  "legends": [ {} ],
+  "version": "1.3",
+  "style": {
+    "fill": "white",
+    "cornerRadius": 10,
+    "outline": "brown"
+  }
+}

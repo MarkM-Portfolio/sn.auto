@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>Chart Practice</title>
+	<script language="JavaScript" src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<script type="text/javascript">
+	// load rave build layer
+	require(["com/ibm/vis/main", "dojo/dojo-core-layer"], function() {
+		//once we have the rave layer loaded, we can use all rave modules
+		require(["com/ibm/init/ready", "dojo/parser", "dijit/registry", "dojo/_base/lang", "dojo/on", "com/ibm/vis/widget/VisControl", "dojo/_base/event"], function(ready, parser, registry, lang, on) {
+			//ready function is needed to ensure the rave system is properly loaded
+			var widget;
+			ready(function() {
+				parser.parse();					
+				widget = registry.byId("visControl");
+				widget.initRenderer().then(function(w) {
+					widget.setSpecificationFromUrl("data/HealthCareStocksPercent.json");
+				});
+				on( widget, "mousemove", lang.hitch(this, "visOnMouseMove"));
+				visControl.on("mousemove", visOnMouseMove);
+			});
+			visOnMouseMove = function(dojoEvent) {
+				var visControl = registry.byId("vizControl");
+				var interaction = widget.interactivity();
+				var item = interaction.getTooltipItem(dojoEvent.clientX, dojoEvent.clientY);
+				//for highlighting
+				/*var items = interaction.getItemsAtPointForType(dojoEvent.pageX, dojoEvent.pageY,"element");
+				var mainItem = items[0];
+				//var seconds = new Array();
+				//seconds[0] = items[1];
+				//seconds[1] = items[2];
+				var state = interaction.makeHighlightState();
+				if(mainItem.subType()!="label")
+					state.setSingle(mainItem,0);
+				//state.setMultiple(seconds, 2);
+				state.apply();*/
+				if(item!=null){
+					var string = item.tooltipText();
+					showFloatingTooltip(dojoEvent,string);
+					//showStaticTooltip(string);
+					return;
+				}
+				hideFloatingTooltip();
+			}
+			//used code from http://vottrave.ottawa.ibm.com/documentation/rave/raveJSGuide.xml#ravejs_tooltips
+			showFloatingTooltip = function(event, txt){
+				if(!this.tooltipDiv)
+					makeToolTipDiv();
+				
+				this.tooltipDiv.style.top = (event.pageY + 20)+"px";
+				this.tooltipDiv.style.left = (event.pageX)+"px";
+				this.tooltipDiv.style.display = "block";
+				
+				this.tooltipDiv.innerHTML = txt;
+			}
+			hideFloatingTooltip = function() {
+				if (this.tooltipDiv)
+					this.tooltipDiv.style.display = "none";
+			}
+			
+			makeToolTipDiv = function() {
+				this.tooltipDiv = document.createElement("div");
+				this.tooltipDiv.style.position = "absolute";
+				this.tooltipDiv.style.backgroundColor= "white";
+				this.tooltipDiv.style.display = "none";
+				this.tooltipDiv.style.zIndex = 1000;
+				document.body.appendChild(this.tooltipDiv);
+			};
+		});
+	});
+	</script>
+</head>
+<body>
+	<body>
+		<table>
+			<tr>
+				<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControl" style="width: 400px; height: 400px;"/>
+			</tr>
+		</table>
+	</body>
+</body>
+</html>

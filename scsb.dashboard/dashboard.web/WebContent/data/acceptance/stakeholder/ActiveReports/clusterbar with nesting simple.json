@@ -1,0 +1,63 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [ "Camping Equipment", "Golf Equipment" ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [ [ 0, 0, 73 ], [ 0, 2, 43 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"categoryStructure": {"nest": false}, "local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {"categoryStructure": {"nest": true}},
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              },
+              "gridStyle": {"fill": "#000", "stroke": {"width": 9}}
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [ {"id": "colorId", "field": {"$ref": "Order method"}} ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3"
+}

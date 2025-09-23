@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year Published",
+          "categories": [
+            "第一",
+            "第二",
+            "第三",
+            "第四",
+            "第五",
+            "第六"
+          ]
+        },
+        {
+          "id": "fY",
+          "label": "Length",
+          "min": 95.0,
+          "max": 300.0
+        },
+        {
+          "id": "fSourcefield",
+          "label": "Price",
+          "min": 3.49,
+          "max": 54.95
+        }
+      ],
+      "rows": [
+        [ 0, 95, 6.49 ],
+        [ 5, 159, 16.95 ],
+        [ 1, 223, 9.99 ],
+        [ 2, 299, 9.49 ],
+        [ 4, 254, 8.49 ],
+        [ 3, 277, 8.99 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {"tickStyle":{"font": {"family": "SimSun"}}}} ]
+      },
+      "elements": [
+        {
+          "type": "text",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "fY"}}
+          ],
+          "content": [ {"$ref": "fX"} ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "angle": 0.0,
+              "colors": [
+                {
+                  "color": {"b": 0, "g": 0, "r": 255},
+                  "offset": 0.0
+                },
+                {
+                  "color": {"b": 0, "g": 0, "r": 0},
+                  "offset": 1.0
+                }
+              ]
+            },
+            "stroke": {"width": 0.0},
+            "angle": 45,
+            "font": {"family": "SimSun"},
+            "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+            "size": 45.0
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 28.800001
+      }
+    }
+  ],
+  "size": {"width": 470.0, "height": 400.0},
+  "version": "4.1"
+}

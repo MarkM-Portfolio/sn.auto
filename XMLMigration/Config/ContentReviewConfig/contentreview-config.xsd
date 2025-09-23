@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2008, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- 5724_S68                                                          -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="contentreview-config-i18n.xsd"/>
+  <xs:element name="config">
+	  <xs:complexType>
+	    <xs:sequence>
+	      <xs:element maxOccurs="unbounded" minOccurs="0" ref="flagCategories">
+	      </xs:element>
+	      <xs:element maxOccurs="1" minOccurs="0" ref="commModerationConfiguration">
+	      </xs:element>
+	      <xs:element maxOccurs="unbounded" minOccurs="0" ref="serviceConfiguration">
+		  </xs:element>
+	    </xs:sequence>
+		<xs:attribute name="id" type="xs:NMTOKEN" use="required"/>
+	  	<xs:attribute name="version" type="xs:NMTOKEN" use="required"/>
+	  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="flagCategories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="flagCategory"></xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="flagCategory">
+	  <xs:complexType>
+	    <xs:sequence>
+	      <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="xs:string"/>
+	      <xs:element maxOccurs="unbounded" minOccurs="0" name="description">
+			  	<xs:complexType mixed="true">
+			  		<xs:attribute ref="xml:lang"/>
+			  	</xs:complexType>
+	      </xs:element>
+	      <xs:element maxOccurs="unbounded" minOccurs="0" ref="reviewer">
+	      </xs:element>
+	    </xs:sequence>
+	      <xs:attribute name="id" type="xs:string"/>
+	  </xs:complexType>
+  </xs:element>
+  
+	<xs:element name="email" type="xs:string">
+	</xs:element>
+
+	<xs:element name="userid" type="xs:string">
+	</xs:element>
+
+  <xs:element name="reviewer">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element ref="email" minOccurs="0" maxOccurs="1"/>
+       <xs:element ref="userid" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+        <xs:attribute name="email" type="xs:string"/>
+        <xs:attribute name="userid" type="xs:string"/>
+     </xs:complexType>
+   </xs:element>
+          
+    <xs:element name="moderator">
+	   <xs:complexType>
+        <xs:attribute name="email" type="xs:string" use="required"/>
+       </xs:complexType>
+    </xs:element>
+ 
+    <xs:element name="serviceConfiguration">
+      <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="service">
+        </xs:element>
+      </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+       
+    <xs:element name="service">
+      <xs:complexType>
+      <xs:sequence>
+      	<xs:element maxOccurs="1" minOccurs="1" ref="contentApproval">
+	 	</xs:element>
+	 	<xs:element maxOccurs="1" minOccurs="1" ref="contentFlagging">
+	 	</xs:element>
+	 	<xs:element maxOccurs="unbounded" minOccurs="0" name="moderator">
+        </xs:element>
+      </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:complexType>
+    </xs:element> 
+        
+    <!-- Default = TRUE -->
+    <xs:element name="contentFlagging">
+      <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ownerModerate" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="automaticQuarantine" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="issueCategorization" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+        <xs:attribute name="enabled" type="xs:boolean" default="true"/>
+      </xs:complexType>
+    </xs:element>
+        
+<!-- Default = FALSE -->
+    <xs:element name="contentApproval">
+    <xs:complexType>
+    <xs:sequence>
+        <xs:element ref="ownerModerate" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>        
+       <xs:attribute name="enabled" type="xs:boolean" default="false"/>
+    </xs:complexType>
+    </xs:element>
+    
+  
+  <!-- Default = FALSE, threshold = 10 -->
+  <xs:element name="automaticQuarantine">
+  <xs:complexType>
+  	<xs:attribute name="enabled" type="xs:boolean" default="false"/>
+  	<xs:attribute name="threshold" type="xs:positiveInteger" default="10"/>
+  </xs:complexType>
+  </xs:element>
+
+  <!-- Default = TRUE -->
+  <xs:element name="issueCategorization">
+  <xs:complexType>
+  <xs:sequence>
+    <xs:element ref="flagCategory" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>    
+  	<xs:attribute name="enabled" type="xs:boolean" default="false"/>
+  </xs:complexType>
+  </xs:element>
+
+  <!-- Default = FALSE -->
+  <xs:element name="ownerModerate">
+  <xs:complexType>
+    <xs:attribute name="enabled" type="xs:boolean" default="false"/>
+  </xs:complexType>
+  </xs:element> 
+
+  <xs:element name="commModerationConfiguration">
+  <xs:complexType>
+  	<xs:sequence>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="preModeration">
+  		</xs:element>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="postModeration">
+  		</xs:element>
+  	</xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="preModeration">
+  <xs:complexType>
+  	<xs:sequence>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="forceForAllCommunities">
+  		</xs:element>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="enabledByCreation">
+  		</xs:element>
+  	</xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="postModeration">
+  <xs:complexType>
+  	<xs:sequence>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="forceForAllCommunities">
+  		</xs:element>
+  		<xs:element maxOccurs="1" minOccurs="1" ref="enabledByCreation">
+  		</xs:element>
+  	</xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="forceForAllCommunities">
+  <xs:complexType>
+	<xs:attribute name="enabled" type="xs:boolean" default="true"></xs:attribute>
+  </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="enabledByCreation">
+  <xs:complexType>
+  	<xs:attribute name="enabled" type="xs:boolean" default="true"></xs:attribute>
+  </xs:complexType>
+  </xs:element>
+</xs:schema>

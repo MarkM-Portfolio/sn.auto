@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "group", "categories": [ "Same", "Mixed" ]},
+        {"id": "samelabel"},
+        {"id": "difflabel"},
+        {"id": "X"},
+        {"id": "Y"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 3, 330000 ],
+        [ 0, 0, 0, 0.5, 45000 ],
+        [ 1, 0, 0, 0.8, 360000 ],
+        [ 1, 0, 1, 2.8, 145000 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "50%", "top": 0},
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {"content": [ {"$ref": "difflabel"} ]}
+          ],
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "style": {"fill":"yellow","size": 30}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    },
+    {
+      "bounds": {"height": "50%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {"content": [ {"$ref": "samelabel"} ]}
+          ],
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "style": {"fill":"yellow","size": 30}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "1.2"
+}

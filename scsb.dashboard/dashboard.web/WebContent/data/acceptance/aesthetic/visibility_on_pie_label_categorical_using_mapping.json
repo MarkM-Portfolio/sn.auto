@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {"id": "fX", "label": "X"},
+        {
+          "id": "fA",
+          "label": "A",
+          "categories": [
+            "Fun",
+            "Cool",
+            "Important",
+            "Exciting",
+            "Interesting"
+          ],
+          "key": true
+        }
+      ],
+      "rows": [ [ 2, 0 ], [ 3, 1 ], [ 3, 2 ], [ 2, 3 ], [ 5, 4 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar", "polarParameters": {"startAngle": 0}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fA"} ],
+              "visibility": {
+                "field": {"$ref": "fA"},
+                "mapping": [
+                  {"at": 0, "visible": false},
+                  {"at": 1, "visible": true},
+                  {"at": 2, "visible": false},
+                  {"at": 3, "visible": true}
+                ]
+              },
+              "style": {
+                "fill": "white",
+                "angle": "tangent",
+                "font": {"family": "Arial", "size": 14.0, "weight": "bold"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fX"}} ],
+          "color": [ {"field": {"$ref": "fA"}} ],
+          "style": {
+            "stroke": {"width": 3},
+            "outline": "black",
+            "outlineMethod": "inside"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.3"
+}

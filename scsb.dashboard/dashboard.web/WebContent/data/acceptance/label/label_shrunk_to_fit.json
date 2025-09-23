@@ -1,0 +1,105 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "volume1",
+          "format": {
+            "fitMethod": "reducePrecision",
+            "noSpaceFormat": {"pattern": "x"}
+          }
+        },
+        {
+          "id": "volume2",
+          "format": {
+            "fitMethod": "reducePrecision",
+            "noSpaceFormat": {"pattern": "y"}
+          }
+        },
+        {"id": "country", "categories": [ "CA", "US" ]}
+      ],
+      "rows": [
+        [ 20100233, 20200233, 0 ],
+        [ 20200233, 20300233, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "tickLabel": [
+                    "Sales ",
+                    {"args": "tick"},
+                    " dollars"
+                  ]
+                }
+              ]
+            },
+            "axis": {
+              "gridStyle": {
+                "fill": "lightgray",
+                "stroke": {"style": "Dot"}
+              },
+              "preferredSize": {"max": 91, "preferred": 70},
+              "title": [ "Volume" ]
+            }
+          },
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [
+                "Desk Hutch sales increased from ",
+                {"$ref": "volume1"},
+                " to ",
+                {"$ref": "volume2"},
+                " in location ",
+                {"$ref": "country"}
+              ],
+              "style": {
+                "fill": "blue",
+                "location": "inside",
+                "padding": 10,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "volume2"}},
+            {"field": {"$ref": "volume2"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "country"},
+              "mapping": [
+                {"at": 0, "size": "40%"},
+                {"at": 1, "size": "100%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "transparent",
+            "outline": {"b": 188, "g": 135, "r": 0},
+            "size": 150,
+            "symbol": "rect"
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "size": {"width": 600, "height": 400},
+  "version": "4.1",
+  "style": {"fill": "yellow"}
+}

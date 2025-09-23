@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="10" name="OrgC BVT" parallel="tests">
+
+	<!-- Test method has to contain all groups to be run if intersect_groups is true -->
+	<parameter name="intersect_groups" value="false" />
+    <parameter name="auth_type" value="form" />
+  
+	<!-- Organization specific overrides/properties -->
+	<!-- Test by overriding browser_url to the organization url -->
+	<parameter name="browser_url" value="https://mtbvt-orgc.cnx.cwp.pnp-hcl.com/" />
+	<parameter name="default_users_properties"
+		value="test_config/extensions/user/mt1_MT_orgc_users.properties" />
+
+
+	<!-- TESTS -->
+	<test name="New UX" thread-count="3" parallel="methods"
+		preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<groups>
+			<run>
+				<include name="cnx8ui-cplevel2" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage" />
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_Discover" />
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_LatestUpdate" />
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_TopUpdates" />
+			<class	
+				name="com.ibm.conn.auto.tests.communities.BVT_Cnx8UI_Communities_Search" />
+			<class	
+				name="com.ibm.conn.auto.tests.profiles.BVT_Cnx8UI_Profiles_Search" />
+			<class	
+				name="com.ibm.conn.auto.tests.files.BVT_Cnx8UI_Files_Search" />
+			<class	
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_Search" />
+			<class name="com.ibm.conn.auto.tests.profiles.BVT_Level_2_Profiles" />
+
+		</classes>
+	</test>
+ 	
+	<test name="New ITM" thread-count="3" parallel="methods"
+		preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<groups>
+			<run>
+				<include name="cnx8ui-cplevel2" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.orientme.BVT_Level_2_OrientMe_ImportantToMe">
+                <methods>
+					<include name="clickOnCommunityInItm" />
+				</methods>
+            </class>
+		</classes>
+	</test>
+	
+	<test name="New Share" thread-count="3" parallel="methods"
+		preserve-order="true" enabled="true">
+		<parameter name="use_new_ui" value="true" />
+		<groups>
+			<run>
+				<include name="cnx8ui-cplevel2" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.share.BVT_Cnx8_UI_ShareInConnections" />
+		</classes>
+	</test>
+
+	<test name="New HomePage AppReg" preserve-order="true" enabled="true">
+        <parameter name="use_new_ui" value="true" />
+        <groups>
+            <run>
+                <include name="cnx8ui-cplevel2" />
+                <exclude name="mt-exclude" />
+            </run>
+        </groups>
+        <classes>
+            <class
+                name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_AdminBanner" />
+        </classes>
+    </test>
+   
+    <test name="New Share AppReg" preserve-order="true" enabled="true">
+        <parameter name="use_new_ui" value="true" />
+        <groups>
+            <run>
+                <include name="cnx8ui-cplevel2" />
+                <exclude name="mt-exclude" />
+            </run>
+        </groups>
+        <classes>
+            <class
+                name="com.ibm.conn.auto.tests.share.BVT_Cnx8_UI_ShareInTeams" />
+        </classes>
+    </test>
+    
+    <test name="Homepage Nav Appreg" enabled="true" preserve-order="true">
+		<parameter name="use_new_ui" value="true" />
+		<groups>
+			<run>
+				<include name="cnx8ui-cplevel2" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.homepage.BVT_Cnx8UI_Homepage_Navigation">
+			</class>
+		</classes>
+	</test>
+	
+ 	<test name="Gallery" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery" />
+		</classes>
+	</test>
+
+	<test name="TouchpointRedirection" preserve-order="true"
+		enabled="true">
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.touchpoint.BVT_Touchpoint_Redirection" />
+		</classes>
+	</test> 
+	
+	<test name="Homepage" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<classes>
+			<class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+		</classes>
+	</test>
+
+	<test name="OrientMe" preserve-order="true" enabled="true">	
+		<groups>
+			<run>
+				<include name="level2" />
+				<include name="regression" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.orientme" />
+		</packages>
+	</test>
+
+	<test name="iWidget Container" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<packages>
+			<package name="com.ibm.conn.auto.tests.cre" />
+		</packages>
+	</test>
+
+	<test name="Mentions" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<packages>
+			<package name="com.ibm.conn.auto.tests.mentions" />
+		</packages>
+	</test>
+
+	<test name="News" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<classes>
+			<class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_AS" />
+		</classes>
+	</test>
+
+	<test name="Profiles" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<packages>
+			<package name="com.ibm.conn.auto.tests.profiles" />
+		</packages>
+	</test>
+
+	<test name="Search" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<packages>
+			<package name="com.ibm.conn.auto.tests.globalsearch" />
+		</packages>
+	</test>
+
+	<test name="Widgets" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>	
+		<classes>
+			<class
+				name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Widgets" />
+		</classes>
+	</test>
+	
+		
+	<test name="HomePageAS_Bosch" thread-count="2" parallel="methods" preserve-order="true" enabled="true">
+		<groups>
+			<run>
+				<include name="regression" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.homepage.BVT_BoschUAT_Homepage_AS">
+			</class>
+		</classes>
+	</test>
+
+	<test name="Profiles_Bosch" preserve-order="true" enabled="true">
+		<groups>
+			<run>
+				<include name="regression" />
+				<exclude name="mt-exclude" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.profiles.BVT_BoschUAT_Profiles">
+			</class>
+		</classes>
+	</test>
+	    
+    <test name="Communities_RecentlyVisited" preserve-order="true" enabled="true">
+    	<groups>
+			<run>
+				<include name="mtlevel2" />
+			</run>
+		</groups>
+    	<classes>
+      		<class name="com.ibm.conn.auto.tests.communities.BVT_ComponentPack_Communities" />
+   		</classes>
+  	</test>
+  	
+  	<test name="Metrics_ElasticSearch" preserve-order="true" enabled="true">
+  		<groups>
+			<run>
+				<include name="mtlevel2" />
+			</run>
+		</groups>
+    	<classes>
+     		<class name="com.ibm.conn.auto.tests.metrics_elasticSearch.regression.Community_ContentView" />
+    	</classes>
+  	</test>
+  	
+  	<test name="Communities_QuickResult" preserve-order="true" enabled="true">
+  	  	<groups>
+			<run>
+				<include name="mtlevel2" />
+			</run>
+		</groups>
+    	<classes>
+      		<class name="com.ibm.conn.auto.tests.communities.BVT_ComponentPack_QuickResults" />
+    	</classes>
+  	</test>
+  	
+  	<test name="Files_RecentlyVisited" preserve-order="true" enabled="true">
+   		<groups>
+			<run>
+				<include name="mtlevel2" />
+			</run>
+		</groups>
+    	<classes>
+      		<class name="com.ibm.conn.auto.tests.files.BVT_ComponentPack_FilesRecentlyVisited" />
+    	</classes>
+  	</test>
+  	
+   <test name="Middleware-jsonapi service" thread-count="5" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+       <class name="com.hcl.lconn.automation.framework.tests.MiddlewareJsonapiServiceTest" />
+    </classes>
+   </test>   	
+
+</suite>

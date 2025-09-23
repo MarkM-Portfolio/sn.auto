@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": "cat_data",
+      "fields": [
+        {
+          "id": "categories",
+          "categories": [ "Zero", "One", "Two", "Three" ]
+        }
+      ],
+      "rows": [ [ 0 ], [ 1 ], [ 2 ], [ 3 ] ]
+    },
+    {
+      "id": "num_data",
+      "fields": [ {"id": "numbers", "min": 0, "max": 8} ],
+      "rows": [ [ 2 ], [ 4 ], [ 7 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "bottom": -5,
+        "left": 5,
+        "right": "50%",
+        "top": 5
+      },
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "cat_data"},
+          "position": [ {"field": {"$ref": "categories"}} ],
+          "color": [ {"field": {"$ref": "categories"}} ],
+          "style": {
+            "size": {"max": "50%", "preferred": 100},
+            "symbol": "square"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": "5"
+      }
+    },
+    {
+      "bounds": {
+        "bottom": -5,
+        "left": "50%",
+        "right": -5,
+        "top": 5
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "num_data"},
+          "position": [ {"field": {"$ref": "numbers"}} ],
+          "color": [ {"scale" : {"spans" : [{"min" : 2, "max" : 7}]},"field": {"$ref": "numbers"}} ],
+          "style": {
+            "size": {"min": "50%%", "preferred": 10},
+            "symbol": "star"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 0, "g": 255, "r": 255},
+        "padding": "10"
+      }
+    }
+  ],
+  "size": {"width": 200, "height": 200},
+  "version": "1.2",
+  "style": {"fill": {"b": 255, "g": 255, "r": 0}}
+}

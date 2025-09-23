@@ -1,0 +1,155 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "shops",
+          "label": "Shops",
+          "categories": [
+            "McDonalds",
+            "Kentucky Fried Chicken",
+            "Spaghetti House",
+            "Gnocchi Heaven"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [ [ 0, 60 ], [ 2, 45 ], [ 3, 15 ] ]
+    },
+    {
+      "id": "derivedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "shops"}
+        },
+        {
+          "field": {"id": "values_final"},
+          "input": {"$ref": "values"},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "data2",
+      "type": "integrate",
+      "input": [
+        {"field": {"$ref": "categories_final"}, "role": "x"},
+        {"field": {"$ref": "values_final"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"sortCategories": false},
+          "role": "x"
+        }
+      ],
+      "source": {"$ref": "derivedData"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "local": true,
+              "spans": [
+                {
+                  "min": 0,
+                  "fit": "exact",
+                  "outRange": {"min": 0, "max": 1}
+                },
+                {
+                  "min": 0,
+                  "fit": "exact",
+                  "minorDivisions": 3,
+                  "outRange": {"min": 0, "max": 1},
+                  "tickDelta": 20
+                }
+              ]
+            },
+            "axis": [
+              {
+                "alignWithOtherAxis": true,
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickStyle": {"fill": "#898989"}
+              },
+              {
+                "lineStyle": {"fill": "#d5d5d5"},
+                "markStyle": {},
+                "tickAs": "percentage",
+                "tickStyle": {"fill": "#898989"}
+              }
+            ]
+          },
+          {
+            "scale": {"spans": [ {"method": "data"} ]},
+            "axis": {
+              "lineStyle": {"fill": "#d5d5d5"},
+              "markStyle": {},
+              "tickStyle": {"fill": "#898989"}
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "derivedData"},
+          "position": [
+            {"field": {"$ref": "values_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories_final"},
+              "modifies": "both",
+              "palette": [ "#3373AB", "#42B09C", "#DEA10A" ]
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "symbolStyle": {"fill": "#B3B3B3"},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "y1"} ],
+              "modifies": {"part": "symbol"}
+            }
+          ],
+          "style": {"fill": "#B3B3B3", "size": 1}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "boundsStyle": {
+        "fill": "white",
+        "padding": {"left": 10}
+      },
+      "itemStyle": {"outline": "transparent"},
+      "labelStyle": {"fill": "#898989"},
+      "titleStyle": {
+        "align": "start",
+        "padding": {"bottom": 5}
+      }
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 20}
+}

@@ -1,0 +1,11 @@
+# Put class exclusions and inclusions into this file, one per line.
+# -com.ibm.tango.exception would exclude that class
+# +com.ibm.openactivities.startup would cause only that class to be included.
+# * and ? wildcarding is allowed.
+
+# News
+-com.ibm.lconn.web.taglib.i18n.HelpLangUrl
+-com.ibm.lconn.news.widget.catalog.service.WidgetLayoutServicesImpl
+
+# Homepage
+-com.ibm.lconn.news.data.dao.impl.ibatis.widget.WidgetDao

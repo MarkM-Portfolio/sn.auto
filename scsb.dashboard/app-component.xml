@@ -1,0 +1,19 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2014                                    -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<app-component name="scsb.dashboard" spec-version="4.0">
+  <level>0</level>
+  <description>SCSB Metrics Dashboard</description>
+  <owner>vfrancis@us.ibm.com</owner>
+</app-component>

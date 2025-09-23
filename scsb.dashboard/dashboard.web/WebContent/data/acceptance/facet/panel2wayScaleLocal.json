@@ -1,0 +1,138 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX", "label": "Price"},
+        {"id": "fY", "label": "Quantity"},
+        {
+          "id": "facet1",
+          "label": "For faceting",
+          "categories": [ "C", "B", "A" ]
+        },
+        {
+          "id": "facet2",
+          "label": "Also for faceting",
+          "categories": [ "Asia", "Europe" ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 322, 339, 0, 0 ],
+        [ 1999, 290, 0, 0 ],
+        [ 1090, 95, 0, 0 ],
+        [ 985, 159, 0, 1 ],
+        [ 1385, 309, 0, 1 ],
+        [ 2000, 223, 0, 1 ],
+        [ 200, 299, 1, 1 ],
+        [ 500, 254, 1, 1 ],
+        [ 1299, 177, 2, 0 ],
+        [ 1500, 254, 1, 1 ],
+        [ 109, 27, 2, 0 ],
+        [ 2000, 412, 2, 0 ],
+        [ 399, 297, 2, 0 ],
+        [ 739, 268, 2, 0 ],
+        [ 2229, 297, 1, 1 ],
+        [ 1997, 188, 2, 1 ],
+        [ 809, 269, 2, 1 ],
+        [ 149, 265, 2, 1 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"local": true},
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 9
+                }
+              }
+            }
+          }
+        ],
+        "style": {
+          "fill": "beige",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [ {"field": {"$ref": "facet1"}} ],
+          "size": [ {"field": {"$ref": "fY"}} ],
+          "style": {
+            "fill": {"a": 0.75, "b": 128, "g": 0, "r": 0},
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0},
+            "size": "20"
+          }
+        },
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [ {"field": {"$ref": "facet1"}} ],
+          "style": {
+            "fill": {"a": 0.5, "b": 128, "g": 0, "r": 0}
+          }
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"value": "0%"},
+            {"value": "90%"},
+            {"value": 1400},
+            {"value": 1400}
+          ]
+        },
+        {
+          "type": "edge",
+          "position": [
+  
+            {"value": 150},
+            {"value": 150},
+          	{"value": "0%"},
+            {"value": "100%"}
+          ]
+        }
+      ],
+      "facet": {
+        "fields": [
+          {"field": {"$ref": "facet1"}},
+          {"field": {"$ref": "facet2"}}
+        ],
+        "method": "panel"
+      },
+      "style": {"fill": {"a": 0}, "padding": 10}
+    }
+  ],
+  "size": {"width": 600, "height": 500}
+}

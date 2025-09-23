@@ -1,0 +1,173 @@
+{
+    "version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "data",
+			
+			"fields" : [
+				{
+					
+					"id" : "Division",
+					
+					"categories" : ["United States", "Canada"]
+					
+				},
+				{
+					
+					"id" : "Product line",
+					
+					"label" : "Product line",
+					
+					"categories" : [
+						
+						"Camping",
+						
+						"Golf",
+						
+						"Mountaineering",
+						
+						"Outdoor Protection"
+						
+					]
+					
+				},
+				{
+					
+					"id" : "Order method",
+					
+					"label" : "Order method",
+					
+					"categories" : ["Web", "Phone", "Store"]
+					
+				},
+				{
+					"id" : "Quantity",
+					"label" : "Quantity"
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[0, 0, 0, 73],
+				
+				[0, 0, 1, 63],
+				
+				[0, 0, 2, 43],
+				
+				[0, 1, 0, 14],
+				
+				[0, 1, 1, 12],
+				
+				[0, 1, 2, 24],
+				
+				[0, 2, 0, 31],
+				
+				[0, 2, 1, 15],
+				
+				[0, 2, 2, 25],
+				
+				[1, 3, 0, 14],
+				
+				[1, 3, 1, 11],
+				
+				[1, 3, 2, 14]
+				
+			]
+			
+		}
+		
+	],
+	
+	"grammar" : [
+		{
+			
+			"bounds" : {
+				
+				"width" : 800,
+								
+				"left" : 0,
+				
+				"top" : 0
+				
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [
+					{
+						"axis" : {}
+						
+					},
+					{
+						
+						"axis" : {
+							
+						}
+						
+					},
+					{
+						
+						"axis" : {
+						}
+						
+					},
+					{}
+					
+				],
+				
+				"transforms" : [
+					{
+						
+						"type" : "cluster",
+						
+						"clusterParameters" : {
+							"nest" : [false, true],
+							"gaps" : [10, 0]
+						}
+						
+					}
+					
+				]
+				
+			},
+			
+			"elements" : [
+				{
+					
+					"type" : "interval",
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "Quantity"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "Division"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "Product line"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "Order method"
+							}
+						}
+						
+					]
+					
+				}
+				
+			]
+			
+		}
+		
+	]
+}

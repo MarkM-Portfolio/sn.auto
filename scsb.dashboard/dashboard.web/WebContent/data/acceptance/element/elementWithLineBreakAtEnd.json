@@ -1,0 +1,206 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "_VOIDS_FIELD_", "label": "_VOIDS_FIELD_"},
+        {
+          "id": "_SERIES_FIELD_",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories"
+          ]
+        },
+        {"id": "_VALUES_FIELD_", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 2181, 0, 1283142 ],
+        [ 2183, 1, 157441 ],
+        [ 2185, 2, 662369 ],
+        [ 2187, 3, 274667 ],
+        [ 2189, 4, 510040 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": "70%",
+        "height": "100%",
+        "right": "100%",
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 0}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "_VALUES_FIELD_"} ],
+              "style": {
+                "fill": "gray",
+                "font": {
+                  "family": "Tahoma",
+                  "size": "10pt",
+                  "weight": "normal",
+                  "style": "normal"
+                },
+                "outlineMethod": "inside"
+              }
+            },
+            {
+              "content": [
+                {"$ref": "_SERIES_FIELD_"},
+                "\n\n"
+              ],
+              "style": {
+                "fill": "black",
+                "font": {
+                  "family": "Tahoma",
+                  "size": "12pt",
+                  "weight": "normal",
+                  "style": "normal"
+                },
+                 "outlineMethod": "inside"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "_VALUES_FIELD_"}}
+          ],
+          "styleBy": [
+            {
+              "id": "_PALETTE_",
+              "field": {"$ref": "_SERIES_FIELD_"},
+              "palette": [
+                {
+                  "fill": {
+                    "h": 0.6056,
+                    "s": 0.819,
+                    "v": 0.816
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.5167,
+                    "s": 0.584,
+                    "v": 0.827
+                  }
+                },
+                {"fill": {"h": 0.0833, "s": 1, "v": 0.859}},
+                {"fill": {"h": 0.125, "s": 1, "v": 0.886}},
+                {
+                  "fill": {
+                    "h": 0.3278,
+                    "s": 0.72,
+                    "v": 0.601
+                  }
+                },
+                {"fill": {"h": 0.2417, "s": 1, "v": 0.733}},
+                {
+                  "fill": {
+                    "h": 0.7639,
+                    "s": 0.729,
+                    "v": 0.631
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.7389,
+                    "s": 0.613,
+                    "v": 0.878
+                  }
+                },
+                {"fill": {"h": 0.0917, "s": 1, "v": 0.682}},
+                {
+                  "fill": {
+                    "h": 0.1028,
+                    "s": 0.967,
+                    "v": 0.906
+                  }
+                },
+                {"fill": {"h": 0.0333, "s": 1, "v": 0.659}},
+                {
+                  "fill": {
+                    "h": 0.0306,
+                    "s": 0.924,
+                    "v": 0.867
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.5167,
+                    "s": 0.419,
+                    "v": 0.624
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.5333,
+                    "s": 0.472,
+                    "v": 0.8
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {
+        "width": "30%",
+        "height": "100%",
+        "left": 0,
+        "top": 0
+      },
+      "content": [
+        {
+          "text": [
+            "Custom Legend Title that is very long and should have a line break right after this sentence.\nAnd this should continue on and be split up accordingly."
+          ]
+        },
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "_PALETTE_"}}
+          ],
+          "swatchStyle": {
+            "padding": {"bottom": 2, "left": 4},
+            "size": 16
+          },
+          "textStyle": {
+            "fill": "#ff0000",
+            "font": {
+              "family": "\"Tahoma\", \"Times New Roman\"",
+              "size": "16pt",
+              "weight": "normal",
+              "style": "normal"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 0, "right": 4}
+      }
+    }
+  ],
+  "size": {"width": 700, "height": 450},
+  "version": "1.2"
+}

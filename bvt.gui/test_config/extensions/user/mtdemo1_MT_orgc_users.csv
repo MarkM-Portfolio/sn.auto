@@ -1,0 +1,14 @@
+uid,password,display name,email,first name,last name,members
+wasadmin,password,was admin,wasadmin,,,admin
+jadams1,password,John Adams1,jadams1@janet.iris.com,,,jadams1
+jadams2,password,John Adams2,jadams2@janet.iris.com,,,jadams2
+jadams3,password,John Adams3,jadams3@janet.iris.com,,,jadams3
+jadams4,password,John Adams4,jadams4@janet.iris.com,,,jadams4
+jadams5,password,John Adams5,jadams5@janet.iris.com,,,jadams5
+jadams6,password,John Adams6,jadams6@janet.iris.com,,,jadams6
+jadams7,password,John Adams7,jadams7@janet.iris.com,,,jadams7
+jadams8,password,John Adams8,jadams8@janet.iris.com,,,jadams8
+jadams9,password,John Adams9,jadams9@janet.iris.com,,,jadams9
+jadams10,password,John Adams10,jadams10@janet.iris.com,,,jadams10
+jexternal1,password,John External1,jexternal1@janet.iris.com,,,external_orgc
+jexternal2,password,John External2,jexternal2@janet.iris.com,,,external_orgc

@@ -1,0 +1,305 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Countries",
+          "categories": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10"
+          ]
+        },
+        {"id": "values", "label": "Population"}
+      ],
+      "rows": [
+        [ 9, 1400 ],
+        [ 8, 2450 ],
+        [ 7, 2200 ],
+        [ 6, 1100 ],
+        [ 5, 450 ],
+        [ 4, 1400 ],
+        [ 3, 2650 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "90%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                },
+                "padding": 5
+              },
+              "title": [ "Population(In Million)" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "Countries" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "styleBy": [
+            {
+              "id": "imageID",
+              "field": {"$ref": "categories"},
+              "palette": [
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr1Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr2Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr3Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr4Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr5Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr6Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr7Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr8Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr9Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                },
+                {
+                  "image": {
+					"method": "texture",
+                    "source": {"$ref": "txtr10Id"},
+                    "align": "end",
+                    "valign": "end"
+                  }
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                "\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.05,
+                    "dValue": 0.1
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.25,
+                    "dValue": -0.15
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "stroke": {"width": 0.3},
+            "width": "50%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+			"aesthetics": [
+				{"aesthetic": {"$ref": "imageID"}}
+			]
+    }
+  ],
+ "resource": [
+    {
+      "id": "txtr1Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile1.jpg" ]
+    },
+    {
+      "id": "txtr2Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile2.jpg" ]
+    },
+    {
+      "id": "txtr3Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile3.jpg" ]
+    },
+    {
+      "id": "txtr4Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile4.jpg" ]
+    },
+    {
+      "id": "txtr5Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile5.jpg" ]
+    },
+    {
+      "id": "txtr6Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile6.jpg" ]
+    },
+    {
+      "id": "txtr7Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile7.jpg" ]
+    },
+    {
+      "id": "txtr8Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile8.jpg" ]
+    },
+    {
+      "id": "txtr9Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile9.jpg" ]
+    },
+    {
+      "id": "txtr10Id",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/tile10.jpg" ]
+    }
+  ],
+  "size": {"width": 800.0, "height": 600.0},
+  "version": "4.1",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

@@ -1,0 +1,219 @@
+{
+    "version": "1.2",
+	"data": [{
+		"id": "data",
+		"fields": [{
+			"id": "X"
+		},
+		{
+			"id": "Y"
+		},
+		{
+			"id": "group",
+			"categories": ["A",
+			"B"]
+		}],
+		"rows": [[0,
+		450,
+		0],
+		[3,
+		3300,
+		0],
+		[4,
+		3000,
+		0],
+		[5,
+		800,
+		0],
+		[0,
+		550,
+		1],
+		[2,
+		3000,
+		1],
+		[4,
+		3100,
+		1],
+		[5,
+		2000,
+		1]]
+	}],
+	"grammar": [{
+		"bounds": {
+			"height": "30%",
+			"top": 0
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"title": ["Part:Symbol"]
+				}
+			}]
+		},
+		"elements": [{
+			"type": "line",
+			"data": {
+				"$ref": "data"
+			},
+			"position": [{
+				"field": {
+					"$ref": "Y"
+				}
+			},
+			{
+				"field": {
+					"$ref": "X"
+				}
+			}],
+			"color": [{
+				"id": "s",
+				"field": {
+					"$ref": "group"
+				},
+				"modifies": {
+					"part": "symbol"
+				}
+			}],
+			"symbolStyle": {
+				"outline": "red",
+				"size": 20,
+				"symbol": "circle",
+				"fill": "black"
+			},
+			"style": {
+				"fill": "black",
+				"stroke": {
+					"width": 4
+				}
+			}
+		}],
+		"style": {
+			"fill": "white",
+			"padding": 15
+		}
+	},
+	{
+		"bounds": {
+			"height": "30%",
+			"top": "30%"
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"title": ["Part:Line"]
+				}
+			}]
+		},
+		"elements": [{
+			"type": "line",
+			"data": {
+				"$ref": "data"
+			},
+			"position": [{
+				"field": {
+					"$ref": "Y"
+				}
+			},
+			{
+				"field": {
+					"$ref": "X"
+				}
+			}],
+			"color": [{
+				"id": "s2",
+				"field": {
+					"$ref": "group"
+				},
+				"modifies": {
+					"part": "line"
+				}
+			}],
+			"symbolStyle": {
+				"outline": "red",
+				"size": 20,
+				"symbol": "circle",
+				"fill": "black"
+			},
+			"style": {
+				"fill": "black",
+				"stroke": {
+					"width": 4
+				}
+			}
+		}],
+		"style": {
+			"fill": "white",
+			"padding": 15
+		}
+	},
+	{
+		"bounds": {
+			"height": "30%",
+			"top": "60%"
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"title": ["Default (Both Parts)"]
+				}
+			}]
+		},
+		"elements": [{
+			"type": "line",
+			"data": {
+				"$ref": "data"
+			},
+			"position": [{
+				"field": {
+					"$ref": "Y"
+				}
+			},
+			{
+				"field": {
+					"$ref": "X"
+				}
+			}],
+			"color": [{
+				"id": "s3",
+				"field": {
+					"$ref": "group"
+				}
+			}],
+			"symbolStyle": {
+				"fill": "black",
+				"outline": "red",
+				"size": 20,
+				"symbol": "circle"
+			},
+			"style": {
+				"fill": "black",
+				"stroke": {
+					"width": 4
+				}
+			}
+		}],
+		"style": {
+			"fill": "white",
+			"padding": 15
+		}
+	}],
+	"size": {
+		"width": 500,
+		"height": 700
+	}
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright IBM Corp. 2007, 2013  All Rights Reserved.              -->
+<config version="4.5" id="directory.services"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="directory.services.xsd">
+
+	<!-- *************************** -->
+	<!--   Waltz Service Provider    -->
+	<!--  default service provider   -->
+	<!--  abstract w/ auto-detection -->
+	<!-- *************************** -->
+	<!-- <profileProvider class="com.ibm.connections.directory.services.provider.WaltzServiceProvider" /> -->
+	<profileProvider class="com.ibm.connections.directory.services.provider.WaltzServiceProvider">
+		<property name="com.ibm.connections.directory.services.waltz.custom.user.id.attribute.type">uid</property>
+		<property name="com.ibm.connections.directory.services.waltz.custom.group.id.attribute.type">cn</property>
+		<property name="com.ibm.connections.directory.services.waltz.custom.policy.id.attribute.type">uid</property>
+		<property name="com.ibm.connections.directory.services.waltz.custom.organization.id.attribute.type">ou</property>		
+		<property name="com.ibm.connections.directory.services.returned.attribute.person">ibm-saasOrgID</property>
+		<property name="com.ibm.connections.directory.services.returned.attribute.group">ibm-saasOrgID</property>
+		<property name="com.ibm.connections.directory.services.returned.attribute.organization">ibm-vmmOrgPolicyID</property>		
+		<property name="com.ibm.connections.directory.services.attribute.id.organization">ou</property>
+		<property name="com.ibm.connections.directory.services.attribute.name.organization">cn</property>
+		<property name="com.ibm.connections.directory.services.attribute.id.policy">uid</property>		
+		<property name="com.ibm.connections.directory.services.attribute.name.policy">uid</property>
+		<property name="com.ibm.connections.directory.services.returned.attribute.policy">ibm-saasHasGroups</property>
+		<property name="com.ibm.connections.directory.services.returned.attribute.policy">ibm-saasSharingIntent</property>		
+	</profileProvider>
+
+	<!-- *************************** -->
+	<!--   Memory Service Provider   -->
+	<!--   legacy service provider   -->
+	<!--  for rapid development env. -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.MemoryServiceProvider"/>
+	-->
+
+	<!-- *************************** -->
+	<!--   LDAP Service Provider     -->
+	<!--  stand-alone LDAP user reg. -->
+	<!--    on Tomcat & WebSphere    -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.LDAPServiceProvider"/>
+	-->
+	<!-- *************************** -->
+	<!--   LDAP Service Provider     -->
+	<!--       WPI Extension         -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.LDAPServiceProviderWPIEx"/>
+	-->
+
+	<!-- *************************** -->
+	<!--   VMM Service Provider      -->
+	<!-- for federated repositories  -->
+	<!--   on WebSphere & Portal     -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.VMMServiceProvider"/>
+	-->
+	<!-- *************************** -->
+	<!--   VMM Service Provider      -->
+	<!--       WPI Extension         -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.VMMServiceProviderWPIEx"/>
+	-->
+
+	<!-- *************************** -->
+	<!--   CUR Service Provider      -->
+	<!-- standalone custom user reg. -->
+	<!--    on WebSphere & Portal    -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.CURServiceProvider"/>
+	-->
+	<!-- *************************** -->
+	<!--   CUR Service Provider      -->
+	<!--       WPI Extension         -->
+	<!-- *************************** -->
+	<!--
+	<profileProvider class="com.ibm.connections.directory.services.provider.CURServiceProviderWPIEx"/>
+	-->
+
+	<!-- *************************** -->
+	<!--    Global settings to be    -->
+	<!--  added with Provider above  -->
+	<!-- These settings are used for -->
+	<!-- the 3rd party applications  -->
+	<!-- w/o having the Connections' -->
+	<!-- Configuration file in place -->
+	<!-- *************************** -->
+	<!-- *** This setting will turn off the usage of LDAP group membership globally *** 
+		<property name="com.ibm.connections.directory.services.ldap.group.membership.service.enabled">false</property>
+	-->
+	<!-- *** WPI can only be used when Profiles services is available ***
+		<property name="com.ibm.connections.directory.services.waltz.profiles.integration.service.enabled">true</property>
+		<property name="com.ibm.connections.directory.services.waltz.profiles.integration.service.url">https://profiles.ibm.com/profiles/</property>
+		<property name="com.ibm.connections.directory.services.waltz.profiles.integration.service.auth">DSX-Admin</property>
+		<property name="com.ibm.connections.directory.services.waltz.profiles.integration.service.auth.alias">connectionsAdmin</property>
+	-->		
+	<!-- *** WCI can only be used when Waltz is running on SSO enabled environment ***
+		<property name="com.ibm.connections.directory.services.waltz.communities.integration.service.enabled">true</property>
+		<property name="com.ibm.connections.directory.services.waltz.communities.integration.service.url">https://communities.ibm.com/communities/</property>
+		<property name="com.ibm.connections.directory.services.waltz.communities.integration.service.auth">DSX-Admin</property>
+		<property name="com.ibm.connections.directory.services.waltz.communities.integration.service.auth.alias">connectionsAdmin</property>
+	-->		
+	<!-- *** User these custom id settings below with VMM/Waltz provider only, when you like to set up different id attribute type per object class *** 
+		<property name="com.ibm.connections.directory.services.waltz.custom.user.id.attribute.type">customUserID</property>
+		<property name="com.ibm.connections.directory.services.waltz.custom.group.id.attribute.type">customGroupID</property>
+	-->
+	
+	
+</config>

@@ -1,0 +1,5 @@
+00 01 * * * /root/scvitals/scvitals/cronjobs/daily_optimize.pl >/dev/null 2>&1
+00 02 * * * /root/scvitals/scvitals/cronjobs/daily_truncate.pl >/dev/null 2>&1
+00 03 * * * /root/scvitals/scvitals/cronjobs/unzip_rp1a_access_log.sh >/dev/null 2>&1
+00 04 * * * /root/scvitals/scvitals/scvitals/monitor.pl rp1a.bht6.swg.usma.ibm.com >/dev/null 2>&1
+00 05 * * * /root/scvitals/scvitals/scvitals/monitor.pl rp1b.bht6.swg.usma.ibm.com >/dev/null 2>&1

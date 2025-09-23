@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Profiles" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="false"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto113.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="Profiles" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.ProfilesPopulate"/>
+    </classes>
+  </test> <!-- Profiles -->
+  <test thread-count="1" name="ProfilesTestSuite" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.profiles.photo.user"/>
+      <package name="com.ibm.lconn.automation.framework.services.profiles.tags.user"/>
+      <package name="com.ibm.lconn.automation.framework.services.profiles.connection.user"/>
+      <package name="com.ibm.lconn.automation.framework.services.profiles.pronunciation.user"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.photo.user.ProfilePhotoTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.photo.user.SimplePhotoTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.tags.user.ProfilesTagsTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.tags.user.ExtensibleTagTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.connection.user.ColleagueTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.connection.user.ExtensibleConnectionTest"/>
+      <class name="com.ibm.lconn.automation.framework.services.profiles.pronunciation.user.ProfilePronunciationTest"/>
+    </classes>
+  </test> <!-- ProfilesTestSuite -->
+</suite> <!-- Profiles -->

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers
+END
+native_stderr.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/native_stderr.pm
+END
+access_log_bp.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/access_log_bp.pm
+END
+access_log_iw.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/access_log_iw.pm
+END
+access_log_w3c.pm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/access_log_w3c.pm
+END
+debug_log_w3c.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/debug_log_w3c.pm
+END
+SystemOut.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/SystemOut.pm
+END
+error_log.pm
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/repo/ltd/!svn/ver/6/trunk/vitals/vitals/parsers/error_log.pm
+END

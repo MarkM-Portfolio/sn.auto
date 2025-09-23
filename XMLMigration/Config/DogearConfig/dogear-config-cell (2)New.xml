@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	
+ 		@Platform@
+    
+
+	
+	
+		${DOGEAR_FAVICON_DIR}
+		
+		90 
+		
+		6 
+		
+		5 
+		100
+	    true
+	
+	
+	
+	
+		true
+		true
+	
+		 	 
+	  
+	 
+	 	
+	 
+	 	 
+	 	 
+	 
+	  
+	  	30 
+	  	2000 
+	  	20 
+		30 
+		100000 
+		10000 
+		10 
+	  
+	  
+	  
+	  
+	  	30  
+		1  
+	  	4000 
+	  
+	  
+	   
+	  
+	  	30  
+		5  
+	  	1500 
+	  
+	  
+	  
+	  
+	  
+	  	
+		
+	  
+	  
+	  
+		
+			
+		
+	  
+	  
+	  
+	  
+	  
+	 
+	  
+	 
+	  
+		
+			dogear.freshness
+			services/cache/dogear.freshness
+		
+	  
+		  	  
+	 
+	 
+	 	
+	 	15  
+		
+		60  
+		
+		30 
+	 
+	 
+	 
+	 
+	    false
+	 
+	   
+	  
+	    
+	    Times,Arial,Times New Roman,Verdana,Helvetica,Geneva
+	    
+	    red,blue,green,yellow,orange,black,white,gold,snow
+	  

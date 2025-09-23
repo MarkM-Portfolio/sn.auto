@@ -1,0 +1,1 @@
+ssh -t Administrator@ilyaWin.swg.usma.ibm.com ". /etc/profile; cd /cygdrive/c/BVTTEsts/; bash runTests.sh"

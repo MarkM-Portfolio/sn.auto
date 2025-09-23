@@ -1,0 +1,250 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Country",
+          "categories": [ "US", "Canada", "Mexico" ]
+        },
+        {
+          "id": "Division",
+          "categories": [ "A", "Null Y", "C", "D" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 73 ],
+        [ 0, 1, null ],
+        [ 0, 2, 50 ],
+        [ 1, 2, null ],
+        [ 2, 0, null ],
+        [ 2, 2, 20 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "20%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "title": [ "Unclustered, local:false" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "color": [ {"field": {"$ref": "Country"}} ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    },
+    {
+      "bounds": {"height": "20%", "top": "20%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              },
+              "title": [ "local:false, nest false" ]
+            }
+          },
+          {
+            "scale": {
+              "local": false,
+              "categoryStructure": {"nest": false}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    },
+    {
+      "bounds": {"height": "20%", "top": "40%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              },
+              "title": [ "local:false, nest:true" ]
+            }
+          },
+          {
+            "scale": {
+              "local": false,
+              "categoryStructure": {"nest": true}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    },
+    {
+      "bounds": {"height": "20%", "top": "60%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              },
+              "title": [ "local:true, nest:true" ]
+            }
+          },
+          {
+            "scale": {
+              "local": true,
+              "categoryStructure": {"nest": true}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    },
+    {
+      "bounds": {"height": "20%", "top": "80%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              },
+              "title": [ "local:true, nest:false" ]
+            }
+          },
+          {
+            "scale": {
+              "local": true,
+              "categoryStructure": {"nest": false}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    }
+  ],
+  "size": {"height": 800},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2010                                          -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<project name="perf" default="development" basedir=".">
+    <import file="${env.WPLC_IMPORT}/std_props.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_dirs.xml"/>
+    <import file="${env.WPLC_IMPORT}/dependencies.xml"/>
+    <import file="${env.WPLC_IMPORT}/dependants.xml"/>
+    <import file="${env.WPLC_IMPORT}/wp_compile.xml"/>
+    <import file="${env.WPLC_IMPORT}/wp_globalize.xml"/>
+    
+    <property name="output.jar" value="${dir.build}/lib/perf.jar"/>
+    <property name="include.pattern" value="**/*" />
+    <property name="skip.messages" value="true" />
+    <property name="skip.globalize" value="true" />
+    <property name="skip.javadoc" value="true"/>
+    <property name="skip.javadoc.public" value="true"/>
+
+
+
+    <import file="${env.WPLC_IMPORT}/javadoc.xml"/>
+    <import file="${env.WPLC_IMPORT}/jdepend.xml"/>
+    <import file="${env.WPLC_IMPORT}/clean.xml"/>
+    <import file="${env.WPLC_IMPORT}/check.xml"/>
+    <import file="${env.WPLC_IMPORT}/comp_zip.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_targets.xml"/>
+    <import file="${env.WPLC_IMPORT}/package.xml"/>
+
+	<property name="prereq_fes" value="${env.BUILD_HOME}/prereq_fes"/>
+	
+	<path id="classpath.prereq">	
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/spring256">
+				<include name="**/*.jar"/>
+			</fileset>		
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/spring.test256">
+				<include name="**/*.jar"/>
+			</fileset>		
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/junit-4.8.2">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/was610">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/wp600">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/jakarta.commons">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${prereq_fes}/sn.prereqs/lwp/prereqs.sn/jdom1.0">
+				<include name="**/*.jar"/>
+			</fileset>
+	</path>
+	
+	<target name="run-unit-tests" >
+		<property name="jmeter.home" value="/home/lorenzo/code/apache-jmeter-2.9"/>
+		<echo message="Running ${output.jar} using this jmeter.home: ${jmeter.home}"/>
+		<junit maxmemory="1792m"  haltonfailure="yes" showoutput="true" printsummary="withOutAndErr" >
+	        <sysproperty key="jmeter.home" value="${jmeter.home}" />
+				<classpath>
+                        <pathelement location="${output.jar}" />
+                		<path refid="classpath.prereq" />
+                </classpath>
+                <formatter type="plain" usefile="true" />
+                <formatter type="xml" usefile="true" />
+                <test name="com.ibm.lconn.perf.TestAll" />
+        </junit>
+	</target>
+	
+</project>

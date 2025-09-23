@@ -1,0 +1,218 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from", "key": true},
+        {"id": "to", "key": true},
+        {"id": "size"},
+        {
+          "id": "out",
+          "categories": [
+            "right-icon1",
+            "right-icon2",
+            "right-icon3"
+          ]
+        },
+        {"id": "in", "categories": [ "left-icon1" ]}
+      ],
+      "rows": [
+        [ 0, 3, 1, 0, 0 ],
+        [ 1, 3, 1, 1, 0 ],
+        [ 1, 3, 1, 0, 0 ],
+        [ 2, 3, 1, 2, 0 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id", "key": true},
+        {"id": "name", "categories": [ "A", "B", "C", "D" ]},
+        {
+          "id": "left-icon",
+          "categories": [ "NO", "EXPAND", "COLLAPSE" ]
+        },
+        {
+          "id": "right-icon",
+          "categories": [ "NO", "EXPAND", "COLLAPSE" ]
+        },
+        {
+          "id": "nodeSize",
+          "label": "Two Sizes",
+          "categories": [ "category A", "category B" ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 0, 0, 2, 0, 1 ],
+        [ 1, 1, 2, 0, 0 ],
+        [ 2, 2, 2, 0, 1 ],
+        [ 3, 3, 2, 0, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "dag",
+            "orientation": "left-to-right",
+            "to": {"$ref": "to"}
+          },
+          "size": [
+            {
+              "id": "sizeId",
+              "field": {"$ref": "nodeSize"},
+              "mapping": [
+                {"at": 0, "size": 75},
+                {"at": 1, "size": 120}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 192, "g": 192, "r": 192},
+            "width": 78,
+            "height": 50,
+            "outline": "black",
+            "symbol": {
+              "shape": [
+                {
+                  "type": "rect",
+                  "bounds": {"width": "10"},
+                  "part": "left-icon1",
+                  "style": {
+                    "fill": {
+                      "type": "linear",
+                      "angle": 270.0,
+                      "colors": [
+                        {
+                          "color": "lightblue",
+                          "offset": 0.0
+                        },
+                        {
+                          "color": "lightblue",
+                          "offset": 0.5
+                        },
+                        {"color": "blue", "offset": 1.0}
+                      ]
+                    },
+                    "stroke": {"width": 0.5}
+                  }
+                },
+                {
+                  "type": "rect",
+                  "shape": [
+                    {
+                      "type": "path",
+                      "bounds": {
+                        "width": "80%",
+                        "height": "80%",
+                        "top": "10%"
+                      },
+                      "path": "M0,0L0.5,0.5L0.0,1L0,0",
+                      "style": {"fill": "blue"}
+                    }
+                  ],
+                  "bounds": {"left": "15", "right": "-35"},
+                  "part": "main",
+                  "style": {
+                    "fill": {
+                      "a": 0.5,
+                      "b": 40,
+                      "g": 148,
+                      "r": 247
+                    },
+                    "outline": "black"
+                  }
+                },
+                {
+                  "type": "rect",
+                  "shape": [
+                    {
+                      "type": "rect",
+                      "bounds": {
+                        "width": "10",
+                        "height": "10",
+                        "top": "25%"
+                      },
+                      "part": "right-icon1",
+                      "style": {"fill": "green"}
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {
+                        "width": "15",
+                        "height": "10",
+                        "top": "50%"
+                      },
+                      "part": "right-icon2",
+                      "style": {"fill": "red"}
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {
+                        "width": "10",
+                        "height": "10",
+                        "top": "75%"
+                      },
+                      "part": "right-icon3",
+                      "style": {"fill": "blue"}
+                    }
+                  ],
+                  "bounds": {"width": "15", "right": "-20"},
+                  "part": "connectionBox",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "black"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "attachmentPoint": {
+              "inPoint": {"field": {"$ref": "in"}},
+              "outPoint": {"field": {"$ref": "out"}}
+            },
+            "from": {"$ref": "from"},
+            "method": "link",
+            "to": {"$ref": "to"}
+          },
+          "size": [
+            {
+              "field": {"$ref": "size"},
+              "mapping": [
+                {"at": "0.0%", "size": 5},
+                {"at": "100.0%", "size": 5}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "black",
+            "stroke": {"width": 5.0, "cap": "butt"},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": {"left": 45}}
+    }
+  ],
+  "size": {"width": 500, "height": 500},
+  "version": "3.0",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>Couch DB and RAVE test</title>
+	<script language="JavaScript" src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<script src="jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+	
+	require(["com/ibm/vis/main", "dojo/dojo-core-layer"], function() {
+		require(["com/ibm/init/ready", "dojo/parser", "dijit/registry", "dojo/_base/lang", "dojo/on", "com/ibm/vis/widget/VisControl"], function(ready, parser, registry, lang, on) {
+		function process(original, extra)
+			{
+				//get original data from visJSON
+				var newData = original.data[0].rows;
+				var numFields = original.data[0].fields.length;
+				//iterate over new entries
+				for(var i=0; i < extra.data.length; i++){
+					//temporary array to hold data values
+					var newRow = new Array(numFields);
+					//iterate over categories, in the order of the original visJSON
+					for(var j=0; j < numFields; j++){
+						//get field id from visJSON
+						var fieldName = original.data[0].fields[j].id;
+						var fieldValue = extra.data[i][fieldName];
+						//If it has categories
+						if(typeof original.data[0].fields[j].categories != "undefined"){
+							//check if already listed in categories, and record index
+							var index = original.data[0].fields[j].categories.indexOf(fieldValue);
+							//console.log(index);
+							if(index < 0){	
+								index = original.data[0].fields[j].categories.length;
+								//This requires that the order array represents alphabetical order of categories
+								//otherwise the binary search will return an odd value
+								if(typeof original.data[0].fields[j].order != "undefined"){
+									var tempArray = new Array(index);
+									for(var k =0; k<index; k++){
+										tempArray[k] = original.data[0].fields[j].categories[original.data[0].fields[j].order[k]];
+									}
+									//console.log(tempArray);
+									var orderIndex = findSpot(tempArray,fieldValue);
+									//console.log(orderIndex);
+									original.data[0].fields[j].order.splice(orderIndex,0,index);
+								}
+								//add to categories
+								original.data[0].fields[j].categories.push(fieldValue);
+								//console.log(original.data[0].fields[j].categories);
+							}
+							//add index to entry
+							newRow[j]=index;
+						}
+						else {
+							//add data value to entry
+							//temporary
+							newRow[j] = parseFloat(fieldValue);
+						}
+					}
+					//add new entry to data
+					newData.push(newRow);
+				}
+				//put data back in visJSON
+				original.data[0].rows = newData;
+				var widget;
+				ready(function() {
+					parser.parse();
+					widget = registry.byId("visControl");
+					widget.initRenderer().then(function(w) {
+						widget.setSpecification(original);
+					});
+				});
+				//original._id += "Update";
+				//delete original._rev;
+				//console.log(original._id);
+			}
+			//binary search on sorted array
+			function findSpot(array, item){
+				var a = 0;
+				var b = array.length;
+				var c = Math.floor(length/2);
+				while(a<b){
+					if(item == array[c])
+						return c;
+					else if(item<array[c]){
+						b=c;
+						c=Math.floor((a+b)/2);
+					}
+					else{
+						a=c+1;
+						c=Math.floor((a+b)/2);
+					}
+				}
+				return a;
+			}
+			$.ajax({
+				url:"sampleVitalsVisJSON.json",
+				dataType: "text"
+			})
+				.done(function(origdata){
+					var visJSON = JSON.parse(origdata);
+					console.log(visJSON);
+					$.ajax({
+						url: "http://SCSBMetrics.swg.usma.ibm.com:5984/vitals_tests/hourly",
+						dataType: "json"
+					})
+						.done(function(moreData){
+							var extraData = moreData;
+							console.log(extraData);
+							process(visJSON,extraData);
+							/*$.ajax({
+								url: "http://127.0.0.1:5984/first_database",
+								type: "POST",
+								data: JSON.stringify(visJSON),
+								contentType: "application/json",
+								complete: function(data){console.log(data)}
+							});*/
+						});
+				
+				});
+		});
+	});	
+	</script>
+</head>
+<body>
+	<body>
+		<table>
+			<tr>
+				<div data-dojo-type="com.ibm.vis.widget.VisControl" id= "visControl" style= "width: 400px; height: 400px;"/>
+			</tr>
+		</table>
+	</body>
+</body>
+</html>

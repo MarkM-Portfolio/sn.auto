@@ -1,0 +1,97 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "States",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas",
+            "Minnesota",
+            "Vermont",
+            "Georgia",
+            "Washington",
+            "Florida",
+            "North Dakota",
+            "South Dakota",
+            "Hawaii"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 11, 4100 ],
+        [ 10, 4600 ],
+        [ 9, 4100 ],
+        [ 8, 4600 ],
+        [ 7, 4100 ],
+        [ 6, 4600 ],
+        [ 5, 4500 ],
+        [ 4, 4400 ],
+        [ 3, 4300 ],
+        [ 2, 4200 ],
+        [ 1, 4100 ],
+        [ 0, 4450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "minorStyle": {
+                "fill": {"b": 75, "g": 75, "r": 75}
+              },
+              "title": [ "Count" ],
+              "titleStyle": {
+                "fill": {"b": 150, "g": 50, "r": 50},
+                "font": {"size": "18", "weight": "bold"}
+              }
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 11.1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "tooltip": [{
+            "content": [
+              {"$ref": "categories"},
+              " \n ",
+              {"$ref": "values"}
+            ]
+          }],
+          "style": {"width": "80%", "outline": {"a": 0.0}}
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ]
+}

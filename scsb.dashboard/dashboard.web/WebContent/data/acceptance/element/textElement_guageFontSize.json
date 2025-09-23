@@ -1,0 +1,204 @@
+{
+  "data": [
+    {
+      "id": "dataSet",
+      "fields": [
+        {
+          "id": "categories",
+          "categories": [ "Product A" ],
+          "key": true
+        },
+        {
+          "id": "size",
+          "min": 0,
+          "max": 100,
+          "format": {"suffix": "%"}
+        }
+      ],
+      "rows": [ [ 0, 80 ] ]
+    }
+  ],
+  "copyright": "Licensed Materials - Property of IBM. IBM Cognos Products: RS. (c) Copyright IBM Corp. 2013. US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "id": "main",
+          "position": [
+            {"field": {"$ref": "categories"}},
+            {"value": "50%"}
+          ],
+          "style": {
+            "fill": "transparent",
+            "size": "95%%",
+            "symbol": "square"
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "categories"}},
+            {"value": "50%"}
+          ],
+          "style": {
+            "fill": {
+              "angle": 270,
+              "colors": [
+                {"color": "#092233", "offset": 0},
+                {"color": "#0e4368", "offset": 1}
+              ]
+            },
+            "size": "100%%",
+            "symbol": "circle"
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "categories"}},
+            {"value": "50%"}
+          ],
+          "style": {
+            "fill": {
+              "angle": 270,
+              "colors": [
+                {"color": "#3488b4", "offset": 0},
+                {"color": "#106c92", "offset": 1}
+              ]
+            },
+            "effect": {
+              "shadow": {
+                "color": "#54abd2",
+                "dx": 0.1,
+                "dy": -1.5,
+                "stdDev": 1
+              }
+            },
+            "size": "66%%",
+            "symbol": "circle"
+          }
+        },
+        {
+          "type": "text",
+          "position": [ {"value": "50%"}, {"value": "50%"} ],
+          "content": [ {"$ref": "size"} ],
+          "style": {
+            "fill": {"a": 1, "h": 0, "s": 0, "v": 1},
+            "align": "middle",
+            "effect": {
+              "shadow": {
+                "color": "#000",
+                "dx": 0,
+                "dy": 1,
+                "stdDev": 0.5
+              }
+            },
+            "font": {
+              "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+              "size": 40
+            },
+            "valign": "middle"
+          }
+        }
+      ]
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"value": "75%"},
+            {"value": "100%"},
+            {"value": 0},
+            {"value": 100}
+          ],
+          "style": {
+            "fill": {
+              "angle": 270,
+              "colors": [
+                {
+                  "color": {
+                    "a": 0.3,
+                    "h": 0,
+                    "s": 0,
+                    "v": 0
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.1,
+                    "h": 0,
+                    "s": 0,
+                    "v": 0
+                  },
+                  "offset": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"value": "75%"},
+            {"value": "100%"},
+            {"value": 0},
+            {"field": {"$ref": "size"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "categories"},
+              "palette": [
+                "#35e5da",
+                "#333",
+                "red",
+                "#333",
+                "purple",
+                "#333"
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "colors": [
+                {
+                  "color": {
+                    "a": 1,
+                    "dSaturation": 0.3,
+                    "dValue": -0.7
+                  },
+                  "offset": 0
+                },
+                {"color": {}, "offset": 0.95}
+              ],
+              "focus": {"x": "50%", "y": "50%"},
+              "global": true
+            }
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "categories"}} ],
+        "targetElement": {"$ref": "main"},
+        "method": "chartInChart"
+      }
+    }
+  ],
+  "size": {"width": 250, "height": 250},
+  "version": "4.0",
+  "style": {"fill": "transparent"}
+}

@@ -1,0 +1,30 @@
+<component name="lc.data.pop"
+    description="Connections Data Population Framework"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/lib/lc.data.pop.jar"
+            preferredInstallLocation="/lib"/>
+        <output type="dir" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/resources"
+            preferredInstallLocation="/resources"/>
+    </output-group>
+
+    <output-group name="to_war">
+        <output type="jar" visibility="public" platform="all"
+            preferredInstallLocation="WEB-INF/lib"
+            location="${env.LWP_COMP_BUILD}/lib/lc.data.pop.jar" />
+    </output-group>
+
+	<dependency name="libs.auto/wink-json4j" type="jar" version="1.1" />
+	<dependency name="libs.auto/json4j" type="jar" version="1.0" />
+	<dependency name="libs.auto/json-path" type="jar" version="0.5" />
+    <dependency name="libs.auto/junit" type="jar" version="4.5" />
+    <dependency name="libs.auto/apache-abdera-1.1.2" type="jar" version="1.1.2" />
+    <dependency name="libs.auto/httpcore" type="jar" version="4.0" />
+	<dependency name="libs.auto/httpclient" type="jar" version="4.0" />
+	<dependency name="libs.auto/commons-io" type="jar" version="1.4" />
+    <dependency name="libs.auto/slf4j" type="jar" version="1.7" />
+	<dependency name="libs.auto/testng" type="jar" version="6.4" />
+</component>

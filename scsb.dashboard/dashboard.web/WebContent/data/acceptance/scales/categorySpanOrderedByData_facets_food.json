@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "shops",
+          "categories": [
+            "McDonalds",
+            "Kentucky Fried Chicken",
+            "Spaghetti House",
+            "Gnocchi Heaven"
+          ]
+        },
+        {"id": "values"},
+        {"id": "countries", "categories": [ "US", "Italy" ]}
+      ],
+      "rows": [
+        [ 0, 0.8, 0 ],
+        [ 1, 0.2, 0 ],
+        [ 2, 0.65, 1 ],
+        [ 3, 0.1, 1 ],
+        [ 0, 0.25, 1 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "local": true,
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "shops"}}
+          ],
+          "color": [ {"field": {"$ref": "shops"}} ]
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "countries"}} ],
+        "method": "panel"
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1"
+}

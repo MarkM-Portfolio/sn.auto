@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "fX",
+          "categories": [
+            "Poor",
+            "Fair",
+            "Good",
+            "Better",
+            "Best"
+          ]
+        },
+        {"id": "fY", "unit": "categorical"}
+      ],
+      "rows": [ [ 2, 2 ], [ 0, 0 ], [ 4, 4 ], [ 1, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"local": false},
+            "axis": {"gridStyle": {"fill": "#ccc"}}
+          },
+          {"scale": {"local": false}, "axis": {}}
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "clip": "overlap",
+          "symbolStyle": {
+            "fill": "red",
+            "size": 10,
+            "symbol": "square"
+          },
+          "style": {
+            "fill": "black",
+            "outline": "black",
+            "size": 3
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

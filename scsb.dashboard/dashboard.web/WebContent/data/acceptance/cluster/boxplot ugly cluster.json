@@ -1,0 +1,163 @@
+{
+   "copyright": "(C) Copyright IBM Corp. 2011",
+   "data": [
+      {
+         "fields": [
+            {
+               "id": "x",
+               "unit": "categorical"
+            },
+            {
+               "id": "x2",
+               "unit": "categorical"
+            },
+            {
+               "id": "y",
+               "max": 7,
+               "min": -0.5
+            },
+            {
+               "id": "a"
+            },
+            {
+               "id": "b"
+            },
+            {
+               "id": "c"
+            },
+            {
+               "id": "d"
+            }
+         ],
+         "id": "dData",
+         "rows": [
+            [
+               1, 1,
+               1,
+               -0.5,
+               0,
+               2,
+               3
+            ],
+            [
+               4, 4, 
+               4,
+               2,
+               3,
+               5,
+               6
+            ],
+            [
+               3, 3, 
+               3,
+               1,
+               2,
+               5,
+               7
+            ],
+            [
+               5, 1, 
+               1.5,
+               0.5,
+               0.75,
+               1.75,
+               2.7
+            ],
+            [
+               2,3,
+               2,
+               0.5,
+               1,
+               2.5,
+               3.5
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+ "transforms": [
+               {
+                  "type": "cluster"
+               }
+            ],
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "#ddf"
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                  }
+               },
+               {
+                  "axis": {
+                  }
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "x"
+                     }
+                  }
+               ],
+               "components": [
+                  {
+                     "field": {
+                        "$ref": "a"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "b"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "c"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "d"
+                     }
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "y"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "x"
+                     }
+                  },
+{
+                     "field": {
+                        "$ref": "x2"
+                     }
+                  }
+               ],
+               "style": {
+                  "stroke": {
+                     "width": 2
+                  },
+                  "width": "50%"
+               },
+               "type": "schema:boxplot"
+            }
+         ]
+      }
+   ],
+   "version": "1.2"
+}

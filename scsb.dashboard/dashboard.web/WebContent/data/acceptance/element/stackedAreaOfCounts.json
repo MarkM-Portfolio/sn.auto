@@ -1,0 +1,234 @@
+{
+	"version": "1.2",
+	"data": [{
+		"id": "base",
+		"fields": [{
+			"id": "base_cat",
+			"label": "Category",
+			"categories": ["Q1",
+			"Q2",
+			"Q3",
+			"Q4"]
+		},
+		{
+			"id": "base_type",
+			"label": "Book type",
+			"categories": ["Hardback",
+			"Paperback",
+			"Trade paperback"]
+		}],
+		"rows": [[0,
+		0],
+		[0,
+		0],
+		[1,
+		0],
+		[2,
+		0],
+		[2,
+		0],
+		[2,
+		0],
+		[2,
+		0],
+		[3,
+		0],
+		[0,
+		1],
+		[0,
+		1],
+		[1,
+		1],
+		[1,
+		1],
+		[1,
+		1],
+		[2,
+		1],
+		[2,
+		1],
+		[2,
+		1],
+		[3,
+		1],
+		[0,
+		2],
+		[1,
+		2],
+		[2,
+		2],
+		[2,
+		2],
+		[3,
+		2]]
+	},
+	{
+		"id": "data",
+		"source": {
+			"$ref": "base"
+		},
+		"type": "summary",
+		"group": [{
+			"input": {
+				"$ref": "base_cat"
+			},
+			"output": {
+				"id": "cat"
+			}
+		},
+		{
+			"input": {
+				"$ref": "base_type"
+			},
+			"output": {
+				"id": "type"
+			}
+		}],
+		"output": [{
+			"field": {
+				"id": "count"
+			},
+			"parameters": {
+				"summaryFunction": "count"
+			}
+		}]
+	}],
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"gridStyle": {
+						"fill": {
+							"b": 50,
+							"g": 50,
+							"r": 50
+						},
+						"stroke": {
+							"width": 0.5,
+							"style": "Dot"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"gridStyle": {
+						"fill": {
+							"b": 50,
+							"g": 50,
+							"r": 50
+						},
+						"stroke": {
+							"width": 0.5,
+							"style": "Dot"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			}],
+			"transforms": [{
+				"type": "stack"
+			}],
+			"style": {
+				"fill": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				},
+				"outline": {
+					"b": 0,
+					"g": 0,
+					"r": 0
+				}
+			}
+		},
+		"elements": [{
+			"type": "area",
+			"data": {
+				"$ref": "data"
+			},
+			"position": [{
+				"field": {
+					"$ref": "count"
+				}
+			},
+			{
+				"field": {
+					"$ref": "cat"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "type"
+				},
+				"modifies": "outline"
+			},
+			{
+				"field": {
+					"$ref": "type"
+				},
+				"modifies": "fill"
+			}],
+			"tooltip": [{
+				"content": [{
+					"$ref": "base_type"
+				}]
+			}],
+			"style": {
+				"fill": {
+					"a": 0.5
+				}
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"outline": {
+				"a": 0.0,
+				"b": 0,
+				"g": 0,
+				"r": 0
+			},
+			"padding": 28.8
+		}
+	}]
+}

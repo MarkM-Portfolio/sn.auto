@@ -1,0 +1,111 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY"},
+        {"id": "facet1", "categories": [ "A", "B", "C" ]}
+      ],
+      "rows": [
+        [ 1909, 290, 0 ],
+        [ 1780, 95, 0 ],
+        [ 500, 254, 1 ],
+        [ 799, 386, 1 ],
+        [ 1597, 188, 2 ],
+        [ 209, 269, 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "style": {
+          "fill": "white",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "facet1"}}
+          ],
+          "style": {
+            "outline": "black",
+            "size": 30,
+            "symbol": {
+              "shape": [
+                {"x": "30%", "y": "20%", "r": "15%"},
+                {"x": "70%", "y": "20%", "r": "15%"},
+                {"path": "M0.5,0.4L0.4,0.6L0.6,0.6"},
+                {
+                  "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "scale": {
+        "reverse": true,
+        "spans": [ {"categories": [ 0, 1 ]} ]
+      },
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {
+        "fill": "lightgreen",
+        "stroke": {"width": "5"},
+        "cornerRadius": 15,
+        "outline": "orange"
+      },
+      "itemBoxStyle": {
+        "fill": "pink",
+		"cornerRadius":0.1,
+        "stroke": {"width": "5px"},
+        "outline": {"b": 175, "g": 175, "r": 175},
+        "padding": {
+          "bottom": 8,
+          "left": 4,
+          "right": 6,
+          "top": 6
+        }
+      },
+      "itemStyle": {
+        "padding": {
+          "bottom": 0,
+          "left": 15,
+          "right": 10,
+          "top": 40
+        },
+        "size": 30
+      },
+      "labelStyle": {
+        "fill": "blue",
+        "font": {"size": 24, "weight": "bold"},
+        "padding": 5
+      },
+      "title": [ "Three", " Categories" ],
+      "titleStyle": {
+        "fill": "red",
+        "font": {
+          "family": "Verdana",
+          "size": 18,
+          "weight": "bold"
+        },
+        "outline": {"b": 175, "g": 175, "r": 175},
+        "padding": {"bottom": 15, "left": 20, "top": 30}
+      }
+    }
+  ],
+  "version": "1.3"
+}

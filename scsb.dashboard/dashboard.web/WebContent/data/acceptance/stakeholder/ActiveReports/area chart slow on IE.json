@@ -1,0 +1,480 @@
+{
+	"version": "1.2",
+	"data": [
+		{
+			"id": "data", 
+			"fields": [
+				{
+					"id": "_VOIDS_FIELD_", 
+					"label": "_VOIDS_FIELD_"
+				}, 
+				{
+					"id": "_CATEGORY_FIELD_", 
+					"label": "Year, Month", 
+					"categories": [
+						"January 2004", 
+						"February 2004", 
+						"March 2004", 
+						"April 2004", 
+						"May 2004", 
+						"June 2004", 
+						"July 2004", 
+						"August 2004", 
+						"September 2004", 
+						"October 2004", 
+						"November 2004", 
+						"December 2004", 
+						"January 2005", 
+						"February 2005", 
+						"March 2005", 
+						"April 2005", 
+						"May 2005", 
+						"June 2005", 
+						"July 2005", 
+						"August 2005", 
+						"September 2005", 
+						"October 2005", 
+						"November 2005", 
+						"December 2005", 
+						"January 2006", 
+						"February 2006", 
+						"March 2006", 
+						"April 2006", 
+						"May 2006", 
+						"June 2006", 
+						"July 2006", 
+						"August 2006", 
+						"September 2006", 
+						"October 2006", 
+						"November 2006", 
+						"December 2006"
+					]
+				}, 
+				{
+					"id": "_SERIES_FIELD_", 
+					"label": "Order method type", 
+					"categories": [
+						"Web"
+					]
+				}, 
+				{
+					"id": "_VALUES_FIELD_", 
+					"label": "Quantity"
+				}
+			], 
+			"rows": [
+				[
+					61, 
+					0, 
+					0, 
+					545897
+				], 
+				[
+					78, 
+					1, 
+					0, 
+					628555
+				], 
+				[
+					95, 
+					2, 
+					0, 
+					767058
+				], 
+				[
+					112, 
+					3, 
+					0, 
+					621819
+				], 
+				[
+					129, 
+					4, 
+					0, 
+					812314
+				], 
+				[
+					146, 
+					5, 
+					0, 
+					905745
+				], 
+				[
+					163, 
+					6, 
+					0, 
+					869339
+				], 
+				[
+					180, 
+					7, 
+					0, 
+					892178
+				], 
+				[
+					197, 
+					8, 
+					0, 
+					934990
+				], 
+				[
+					214, 
+					9, 
+					0, 
+					915382
+				], 
+				[
+					231, 
+					10, 
+					0, 
+					1002751
+				], 
+				[
+					248, 
+					11, 
+					0, 
+					1154802
+				], 
+				[
+					267, 
+					12, 
+					0, 
+					1343367
+				], 
+				[
+					284, 
+					13, 
+					0, 
+					1518520
+				], 
+				[
+					301, 
+					14, 
+					0, 
+					1351725
+				], 
+				[
+					318, 
+					15, 
+					0, 
+					1340473
+				], 
+				[
+					335, 
+					16, 
+					0, 
+					1300260
+				], 
+				[
+					352, 
+					17, 
+					0, 
+					1423380
+				], 
+				[
+					369, 
+					18, 
+					0, 
+					1294364
+				], 
+				[
+					386, 
+					19, 
+					0, 
+					1364500
+				], 
+				[
+					403, 
+					20, 
+					0, 
+					1589833
+				], 
+				[
+					420, 
+					21, 
+					0, 
+					1474611
+				], 
+				[
+					437, 
+					22, 
+					0, 
+					1672932
+				], 
+				[
+					454, 
+					23, 
+					0, 
+					1833358
+				], 
+				[
+					473, 
+					24, 
+					0, 
+					1536501
+				], 
+				[
+					490, 
+					25, 
+					0, 
+					1943343
+				], 
+				[
+					507, 
+					26, 
+					0, 
+					1818226
+				], 
+				[
+					524, 
+					27, 
+					0, 
+					1767412
+				], 
+				[
+					541, 
+					28, 
+					0, 
+					1997152
+				], 
+				[
+					558, 
+					29, 
+					0, 
+					2222216
+				], 
+				[
+					575, 
+					30, 
+					0, 
+					1887573
+				], 
+				[
+					592, 
+					31, 
+					0, 
+					1967747
+				], 
+				[
+					609, 
+					32, 
+					0, 
+					1981004
+				], 
+				[
+					626, 
+					33, 
+					0, 
+					1954052
+				], 
+				[
+					643, 
+					34, 
+					0, 
+					1943112
+				], 
+				[
+					660, 
+					35, 
+					0, 
+					2035793
+				]
+			]
+		}
+	], 
+	"size": {
+		"height": 550, 
+		"width": 900
+	}, 
+	"grammar": [
+		{
+			"coordinates": {
+				"transforms": [
+				], 
+				"dimensions": [
+					{
+						"scale": {
+							
+							"spans": [
+								{ "fit": "nice", 
+									"min": 0, 
+									"max": 2222216
+								}
+							]
+						}, 
+						"axis": {
+							"lineStyle": {
+								"fill": "transparent"
+							}, 
+							"tickStyle": {
+								"fill": "#8fbfd3", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"markStyle": {
+								"fill": "transparent"
+							}, 
+							"titleStyle": {
+								"fill": "#8fbfd3", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"gridStyle": {
+								"fill": "rgba(95,95,95,1.0)", 
+								"stroke": {
+									"width": "1pt", 
+									"style": "solid"
+								}
+							}
+						}
+					}, 
+					{
+						"axis": {
+						    "method":"vertical",
+							"lineStyle": {
+								"fill": "rgba(143,191,211,1.0)", 
+								"stroke": {
+									"width": "3px"
+								}
+							}, 
+							"tickStyle": {
+								"fill": "#8fbfd3", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"markStyle": {
+								"fill": "transparent", 
+								"stroke": {
+									"width": "3px"
+								}
+							}, 
+							"titleStyle": {
+								"fill": "#8fbfd3", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"gridStyle": {
+								"fill": "rgba(53,53,53,1.0)", 
+								"stroke": {
+									"width": "1pt", 
+									"style": "solid"
+								}
+							}
+						}, 
+						"scale": {
+							"spans": [
+								{
+									"fit": "exact"
+								}
+							]
+						}
+					}, 
+					{
+					}
+				]
+			}, 
+			"elements": [
+				{
+					"type": "area", 
+					"position": [
+						{
+							"field": {
+								"$ref": "_VALUES_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_CATEGORY_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_SERIES_FIELD_"
+							}
+						}
+					], 
+					"style": {
+						"fill": {
+							"type": "linear", 
+							"angle": 270, 
+							"colors": [
+								{
+									"offset": 0, 
+									"color": {
+										"dAlpha": 1, 
+										"dValue": 0.2, 
+										"dSaturation": 0.8
+									}
+								}, 
+								{
+									"offset": 1, 
+									"color": {
+										"dAlpha": 0, 
+										"dValue": 0, 
+										"dSaturation": 0
+									}
+								}
+							]
+						}, 
+						"stroke": {
+							"width": "3px", 
+							"style": "solid"
+						}, 
+						"outline": "rgba(238,235,128,1.0)"
+					}, 
+					"color": [
+						{
+							"id": "_PALETTE_", 
+							"field": {
+								"$ref": "_SERIES_FIELD_"
+							}, 
+							"modifies": "both", 
+							"palette": [
+								"rgba(43,106,124,1.0)"
+							]
+						}
+					]
+				}, 
+				{
+					"type": "point", 
+					"position": [
+						{
+							"field": {
+								"$ref": "_VALUES_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_CATEGORY_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_SERIES_FIELD_"
+							}
+						}
+					], 
+					"style": {
+						"size": 0
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright IBM Corp. 2009, 2013  All Rights Reserved.              -->
+
+<feed xmlns="http://www.w3.org/2005/Atom"
+  xmlns:app="http://www.w3.org/2007/app"   
+  xmlns:snx="http://www.ibm.com/xmlns/prod/sn">
+  <generator uri="http://www.ibm.com/xmlns/prod/sn" version="2.5">Lotus Connections - Forum</generator>
+  <id>urn:lsid:ibm.com:forum:223G092D5BA5383078E825CFF6D9AA001A8B</id>
+  <title>Forum Test Server and user Info</title>
+  <updated>2009-02-24T17:13:00Z</updated> 
+  <author>
+  <name>Amy Jones2</name>
+  <email>ajones2</email>
+  <snx:password>jones2</snx:password>
+  <!--<snx:userid>C5977D64-35E7-498B-B2C3-330BF10AC7F3</snx:userid>-->
+  <snx:role>owner</snx:role>
+  </author>
+  <author>
+    <name>Amy Jones1</name>
+    <email>ajones1</email>
+    <snx:password>jones1</snx:password>
+    <snx:role>admin</snx:role>
+  </author>
+  <author>
+    <name>Amy Jones4</name>
+    <email>ajones4</email>
+    <snx:password>jones4</snx:password>
+    <snx:role>owner</snx:role>
+  </author>
+  <snx:enablecategory>false</snx:enablecategory>
+  <snx:enableattachment>true</snx:enableattachment>
+  <link href="CI_UT_SERVER_HTTPS_URL/forums/atom/service" rel="self" type="application/atomsvc+xml"/>
+  <link href="CI_UT_SERVER_HTTPS_URL/communities/service/atom/communities/my" rel="service" type="application/atom+xml"/>
+  <content type="html">test</content>
+</feed>

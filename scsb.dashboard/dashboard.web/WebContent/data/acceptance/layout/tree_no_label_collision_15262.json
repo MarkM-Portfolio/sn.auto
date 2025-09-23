@@ -1,0 +1,341 @@
+{
+  "data": [
+    {
+      "id": "dataSet",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Year",
+          "categories": [ "2010", "2011", "2012", "2013" ]
+        },
+        {
+          "id": "categories2",
+          "label": "Region",
+          "categories": [
+            "Americas",
+            "Asia Pacific",
+            "Central Europe",
+            "Northern Europe",
+            "Southern Europe"
+          ]
+        },
+        {
+          "id": "categories3",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Outdoor Protection",
+            "Personal Accessories",
+            "Mountaineering Equipment"
+          ]
+        },
+        {
+          "id": "sizeValue",
+          "label": "Quantity",
+          "min": 0.0,
+          "max": 3405444.0,
+          "format": {
+            "numericPattern": "#,###,###.###",
+            "prefix": "",
+            "suffix": ""
+          }
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0, 1860321 ],
+        [ 0, 0, 1, 343122 ],
+        [ 0, 0, 2, 1751496 ],
+        [ 0, 0, 3, 2484630 ],
+        [ 0, 1, 0, 1559212 ],
+        [ 0, 1, 1, 295951 ],
+        [ 0, 1, 2, 1468394 ],
+        [ 0, 1, 3, 1749258 ],
+        [ 0, 2, 0, 1289125 ],
+        [ 0, 2, 1, 229385 ],
+        [ 0, 2, 2, 1274712 ],
+        [ 0, 2, 3, 1696146 ],
+        [ 0, 3, 0, 659251 ],
+        [ 0, 3, 1, 124811 ],
+        [ 0, 3, 2, 599385 ],
+        [ 0, 3, 3, 811853 ],
+        [ 0, 4, 0, 527144 ],
+        [ 0, 4, 1, 99713 ],
+        [ 0, 4, 2, 520369 ],
+        [ 0, 4, 3, 830452 ],
+        [ 1, 0, 0, 2046972 ],
+        [ 1, 0, 1, 374714 ],
+        [ 1, 0, 4, 819837 ],
+        [ 1, 0, 2, 1176453 ],
+        [ 1, 0, 3, 2673992 ],
+        [ 1, 1, 0, 1880658 ],
+        [ 1, 1, 1, 338004 ],
+        [ 1, 1, 4, 713054 ],
+        [ 1, 1, 2, 1056707 ],
+        [ 1, 1, 3, 1919010 ],
+        [ 1, 2, 0, 1511987 ],
+        [ 1, 2, 1, 286026 ],
+        [ 1, 2, 4, 547836 ],
+        [ 1, 2, 2, 1030673 ],
+        [ 1, 2, 3, 2044606 ],
+        [ 1, 3, 0, 761073 ],
+        [ 1, 3, 1, 147623 ],
+        [ 1, 3, 4, 302618 ],
+        [ 1, 3, 2, 446962 ],
+        [ 1, 3, 3, 985096 ],
+        [ 1, 4, 0, 703074 ],
+        [ 1, 4, 1, 151426 ],
+        [ 1, 4, 4, 261368 ],
+        [ 1, 4, 2, 400263 ],
+        [ 1, 4, 3, 944653 ],
+        [ 2, 0, 0, 2418684 ],
+        [ 2, 0, 1, 466769 ],
+        [ 2, 0, 4, 1087241 ],
+        [ 2, 0, 2, 488028 ],
+        [ 2, 0, 3, 3405444 ],
+        [ 2, 1, 0, 2357422 ],
+        [ 2, 1, 1, 390870 ],
+        [ 2, 1, 4, 922000 ],
+        [ 2, 1, 2, 410054 ],
+        [ 2, 1, 3, 2536752 ],
+        [ 2, 2, 0, 1747328 ],
+        [ 2, 2, 1, 314117 ],
+        [ 2, 2, 4, 817867 ],
+        [ 2, 2, 2, 340779 ],
+        [ 2, 2, 3, 2442008 ],
+        [ 2, 3, 0, 898610 ],
+        [ 2, 3, 1, 186840 ],
+        [ 2, 3, 4, 432885 ],
+        [ 2, 3, 2, 187879 ],
+        [ 2, 3, 3, 1219836 ],
+        [ 2, 4, 0, 977112 ],
+        [ 2, 4, 1, 178176 ],
+        [ 2, 4, 4, 440269 ],
+        [ 2, 4, 2, 172845 ],
+        [ 2, 4, 3, 1101975 ],
+        [ 3, 0, 0, 1775705 ],
+        [ 3, 0, 1, 359806 ],
+        [ 3, 0, 4, 1041455 ],
+        [ 3, 0, 2, 203480 ],
+        [ 3, 0, 3, 2434402 ],
+        [ 3, 1, 0, 1568839 ],
+        [ 3, 1, 1, 313581 ],
+        [ 3, 1, 4, 936245 ],
+        [ 3, 1, 2, 179805 ],
+        [ 3, 1, 3, 1993724 ],
+        [ 3, 2, 0, 1355988 ],
+        [ 3, 2, 1, 241707 ],
+        [ 3, 2, 4, 780504 ],
+        [ 3, 2, 2, 154759 ],
+        [ 3, 2, 3, 1834014 ],
+        [ 3, 3, 0, 727629 ],
+        [ 3, 3, 1, 132894 ],
+        [ 3, 3, 4, 395712 ],
+        [ 3, 3, 2, 76578 ],
+        [ 3, 3, 3, 937664 ],
+        [ 3, 4, 0, 675015 ],
+        [ 3, 4, 1, 138166 ],
+        [ 3, 4, 4, 401200 ],
+        [ 3, 4, 2, 74824 ],
+        [ 3, 4, 3, 862190 ]
+      ]
+    }
+  ],
+  "copyright": "Licensed Materials - Property of IBM. IBM Cognos Products: rs. (C) Copyright IBM Corp. 2013. US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.",
+  "grammar": [
+    {
+      "bounds": {"left": "0%", "top": "0%"},
+      "coordinates": {
+        "style": {
+          "fill": {"b": 255, "g": 255, "r": 255},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dataSet"},
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "scale": {"local": false},
+              "modifies": "fill",
+              "palette": [
+                "#8599D3",
+                "#E3AE6C",
+                "#839862",
+                "#B7C873",
+                "#8484A8",
+                "#C0CCED",
+                "#8C5580",
+                "#C789BC",
+                "#D5BAEF",
+                "#83683F",
+                "#DCB05A",
+                "#F4DF9E",
+                "#5F8A8C",
+                "#96C4B2",
+                "#CBE8E7",
+                "#AE6564",
+                "#D88C6F",
+                "#E3C9B0",
+                "#848484",
+                "#a4a4a4",
+                "#C7C7C7"
+              ]
+            }
+          ],
+          "positioning": {
+            "layout": "pivotBySize",
+            "leafOnly": false,
+            "levelLabelStyles": {
+              "internal": [
+                {
+                  "content": [ {"$ref": "categories"} ],
+                  "style": {
+                    "fill": {"a": 1, "h": 0, "s": 0, "v": 1},
+                    "align": "start",
+                    "effect": {
+                      "shadow": {
+                        "color": "#000",
+                        "dx": 0.5,
+                        "dy": 0.7,
+                        "stdDev": 1
+                      }
+                    },
+                    "font": {
+                      "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+                      "size": "12pt",
+                      "weight": "bold",
+                      "style": "normal"
+                    },
+                    "padding": 5,
+                    "valign": "start"
+                  }
+                },
+                {
+                  "content": [ {"$ref": "categories2"} ],
+                  "style": {
+                    "fill": {"a": 1, "h": 0, "s": 0, "v": 1},
+                    "align": "start",
+                    "effect": {
+                      "shadow": {
+                        "color": "#000",
+                        "dx": 0.5,
+                        "dy": 0.7,
+                        "stdDev": 1
+                      }
+                    },
+                    "font": {
+                      "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+                      "size": "10pt",
+                      "style": "italic",
+                      "weight":"normal"
+                    },
+                    "padding": 5,
+                    "valign": "end"
+                  }
+                }
+              ],
+              "leaf": {
+                "content": [ {"$ref": "categories3"} ],
+                "style": {
+                  "fill": {
+                    "a": 0.85,
+                    "h": 0,
+                    "s": 0,
+                    "v": 1
+                  },
+                  "font": {
+                    "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+                    "size": "7pt"
+                  },
+                  "padding": 2
+                }
+              }
+            },
+            "levelStyles": {
+              "internal": [
+                {
+                  "stroke": {"width": 1.45},
+                  "outline": "#666"
+                }
+              ],
+              "leaf": {
+                "stroke": {"width": 0.75},
+                "outline": "#333"
+              }
+            },
+            "levels": [
+              {"$ref": "categories"},
+              {"$ref": "categories2"},
+              {"$ref": "categories3"}
+            ],
+            "padding": {
+              "bottom": 2,
+              "left": 2,
+              "right": 2,
+              "top": 2
+            },
+            "size": {"$ref": "sizeValue"},
+            "method": "treemap"
+          },
+          "tooltip": [
+            {
+              "content": [
+                "Product Line: ",
+                {"$ref": "categories"},
+                "\nProduct Type: ",
+                {"$ref": "categories2"},
+                "\nProduct Name: ",
+                {"$ref": "categories3"},
+                "\nRevenue: ",
+                {"$ref": "sizeValue"},
+                ""
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"b": 0, "g": 0, "r": 0},
+            "stroke": {"width": 0.5},
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "padding": "2%"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "legendPosition": "right",
+  "legends": [
+    {
+      "scale": {"local": false, "reverse": false},
+      "boundsStyle": {
+        "fill": "transparent",
+        "padding": {"left": "4%", "top": "2%"},
+        "valign": "start"
+      },
+      "labelStyle": {
+        "fill": "#808080",
+        "font": {
+          "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+          "size": "9pt"
+        }
+      },
+      "title": [ {"$ref": "categories"} ],
+      "titleStyle": {
+        "fill": "#808080",
+        "align": "start",
+        "font": {
+          "family": "Arial Unicode MS, Andale WT, Tahoma, Arial, MS UI Gothic, Gulim, SimSun, PMingLiU, Raghu8, sans-serif",
+          "size": "9pt",
+          "weight": "bold"
+        }
+      }
+    }
+  ],
+  "size": {"width": "600", "height": "500"},
+  "version": "3.0",
+  "style": {"fill": "transparent", "padding": "2%"}
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<title>Dashboard</title>
+	<!-- Bootstrap and SB-admin css -->
+	<!-- This version of bootstrap has customized screen cutoffs: md:1024, lg:1600 -->
+	<link rel="stylesheet" href="bootstrap-custom/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="sb-admin-v2/css/sb-admin.css" />
+	<link rel="stylesheet" href="sb-admin-v2/font-awesome/css/font-awesome.min.css" />
+	<!-- Datepicker css -->
+	<link href="datepicker/css/datepicker3.css" rel="stylesheet"/>
+	<!-- my css -->
+	<link rel="stylesheet" href="css/templateControls.css"/>
+	<link rel="stylesheet" href="css/dashboardold.css" />
+	
+	<!-- Initializing Dojo for RAVE -->
+	<script src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<!-- jquery -->
+	<script src="jquery-1.11.1.js"></script>
+	<!-- my js -->
+	<script src="js/dashboardold.js"></script>
+	
+	<script src="datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="sb-admin-v2/js/sb-admin.js"></script>
+	<script src="sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="bootstrap-custom/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="margin-bottom: 0">
+	
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#dashboard">Dashboard</a>
+		</div>
+		<div class="nav navbar-top-links">
+			<ul id="top-menu" class="nav navbar-nav navbar-top-links">
+				<li class="active"><a href="#dashboard" data-toggle="pill">Temp Dashboard</a></li>
+				<li><a href="#general" data-toggle="pill">View General App Charts</a></li>
+				<li><a href="#more" data-toggle="pill">View Other Charts</a></li>
+			</ul>
+			<!-- for testing only -->
+			<button type="button" class="btn navbar-btn btn-info" onclick="logVisJSONs()">Log visJSON's</button>
+			<button type="button" class="btn navbar-btn btn-info" onclick="updateDesignDocs()">Update ddocs</button>
+			<div class="navbar-form navbar-right">
+				<div class="form-group">
+					<button class="btn btn-primary" id="tooltipbutton" type="button" onclick="toggleTooltips()">Hide Tooltips</button>
+				</div>
+				<div class="form-group">
+					<select class="form-control" style="width:100px;" id="timeUnit" onChange="changeUnit()">
+						<option>hour</option>
+						<option>day</option>
+						<option>week</option>
+						<option>month</option>
+						<option>year</option>
+					</select>
+				</div>
+				<div id="datepicker" class="form-group">
+				</div>
+				<div id="button-holder" class="form-group">
+				</div>
+				<div class="form-group">
+					<div class="checkbox navbar-text">
+						<label>
+							<input type="checkbox" id="uniqueHits" onclick="toggleUnique()"> View Unique Hits
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="app-menu">
+					
+				</ul>
+			</div>
+		
+	</nav>
+	<div id="page-wrapper">
+		<div id="row">
+			<div id="app-tabs-content" class="tab-content">
+				<div class="tab-pane active" id="dashboard">
+					<div class="row">
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12">
+									<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visDashboardArea" style="width: 100%; height: 600px;"></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visDashboardSpeed" style="width: 100%; height: 600px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3"><h1>Stats</h1></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visDashboardPie" style="width: 100%; height: 600px;"></div>
+						</div>
+						<div class="col-md-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visDashboardNested" style="width: 100%; height: 600px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="general">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="form-inline">
+								<div class="form-group">
+									<div class="btn-group" data-toggle="buttons" id="graphType" onChange="switchGraph()">
+										<label class="btn btn-primary active">
+											<input type="radio" name="graphOption" id="graphOption1" value="area">
+											Area
+										</label>
+										<label class="btn btn-primary">
+											<input type="radio" name="graphOption" id="graphOption2" value="line">
+											Line
+										</label>
+										<label class="btn btn-primary">
+											<input type="radio" name="graphOption" id="graphOption3" value="pie">
+											Pie
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlGeneral1" style="width: 100%; height: 600px;"></div>
+						</div>
+						<div class="col-md-2">
+							<form>
+								<label>Choose Apps:</label>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-lg-6">
+											<button class="btn btn-success" id="selectAllApps" type="button" onclick="selectAll()">Select All Apps</button>
+										</div>
+										<div class="col-lg-6">
+											<button class="btn btn-danger" id="deselectApps" type="button"  onclick="deselectAll()">Deselect All Apps</button>
+										</div>
+									</div>
+								</div>
+								<div id="appBoxes" class="form-group">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="more">
+					<div class="row">
+						<div class="col-lg-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlChord" style="width: 100%; height: 600px;"></div>
+						</div>
+						<div class="col-lg-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlAgent" style="width:100%;height:600px;"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlFancy" style="width:100%;height:1200px;"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlNestedOS" style="width:100%;height:600px"></div>
+						</div>
+						<div class="col-lg-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlScatter" style="width:100%;height:600px"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControlSpeed" style="width:100%;height:600px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

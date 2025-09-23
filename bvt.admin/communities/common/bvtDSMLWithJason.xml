@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dsml>
+
+   <directory-entries>
+
+   <entry dn="cn=Amy Jones85">
+      <objectclass>
+         <oc-value>inetOrgPerson</oc-value>
+      </objectclass>
+      <attr name="ou"><value>Engineering</value></attr>
+      <attr name="sn"><value>Smith </value></attr>
+      <attr name="uid"><value>Amy Jones85</value></attr>
+      <attr name="mail"><value>ajones85@janet.iris.com</value></attr>
+      <attr name="givenname"><value>Jane</value></attr>
+      <attr name="cn"><value>Jane Smith</value></attr>
+      <attr name="initials"><value>JS</value></attr>
+      <attr name="employeenumber"><value>E_1974</value></attr>
+      <attr name="title"><value>Research and Development</value></attr>
+      <attr name="telephonenumber"><value>(888) 555-1614</value></attr>
+      <attr name="mobile"><value>(888) 555-8216</value></attr>
+      <attr name="homepostaladdress"><value>15440 Laguna Canyon Rd, Irvine, CA 92614</value></attr>
+      <attr name="roomnumber"><value>G-114</value></attr>
+      <attr name="homephone"><value>(888) 555-3222</value></attr>
+      <attr name="pager"><value>(888) 555-7756</value></attr>
+      <attr name="erAliases">
+         <value>j.smith</value>
+         <value>jane_smith</value>
+         <value>JaneSmith</value>
+      </attr>
+      <attr name="erRoles">
+         <value>Engineering</value>
+         <value>Development</value>
+      </attr>
+   </entry>
+   <entry dn="cn=Amy Jones88">
+      <objectclass>
+         <oc-value>inetOrgPerson</oc-value>
+      </objectclass>
+      <attr name="ou"><value>Sales-West</value></attr>
+      <attr name="sn"><value>Doe</value></attr>
+      <attr name="uid"><value>Amy Jones88</value></attr>
+      <attr name="mail"><value>ajones88@janet.iris.com</value></attr>
+      <attr name="givenname"><value>John</value></attr>
+      <attr name="cn"><value>JohnDoe</value></attr>
+      <attr name="initials"><value>JD</value></attr>
+      <attr name="employeenumber"><value>S_1308</value></attr>
+      <attr name="title"><value>Sales Engineer</value></attr>
+      <attr name="telephonenumber"><value>(888) 555-1620</value></attr>
+      <attr name="mobile"><value>(888) 555-8210</value></attr>
+      <attr name="homepostaladdress"><value>15440 Laguna Canyon Rd, Irvine, CA 92614</value></attr>
+      <attr name="roomnumber"><value>G-120</value></attr>
+      <attr name="homephone"><value>(888) 555-3228</value></attr>
+      <attr name="pager"><value>(888) 555-7750</value></attr>
+      <attr name="erAliases">
+         <value>j.doe</value>
+         <value>john_doe</value>
+         <value>JohnDoe</value>
+      </attr>
+      <attr name="erRoles">
+         <value>Sales</value>
+      </attr>
+   </entry>
+		<entry dn="cn=Jason Nomail1,cn=Users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com">
+			<attr name="objectclass">
+				<value>top</value>
+				<value>organizationalPerson</value>
+				<value>inetOrgPerson</value>
+				<value>ePerson</value>
+				<value>person</value>
+			</attr>
+			<attr name="uid">
+				<value>jnomail1</value>
+			</attr>
+			<attr name="displayname">
+				<value>Jason Nomail1</value>
+			</attr>
+			<attr name="cn">
+				<value>Jason Nomail1</value>
+			</attr>
+			<attr name="sn">
+				<value>Nomail1</value>
+			</attr>
+			<attr name="manager">
+				<value>cn=Jason Nomail2,cn=Users,l=WestfordFVT,st=Massachusetts,c=US,ou=Lotus,o=Software Group,dc=ibm,dc=com</value>
+			</attr>
+			<attr name="givenName">
+				<value>Jason</value>
+			</attr>
+                </entry>
+
+</directory-entries>
+
+</dsml>

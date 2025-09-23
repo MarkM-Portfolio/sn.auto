@@ -1,0 +1,203 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {
+          "id": "base_num",
+          "label": "Number",
+          "min": 0,
+          "max": 100
+        },
+        {
+          "id": "base_type",
+          "label": "Hardback",
+          "categories": [ "no", "yes" ]
+        }
+      ],
+      "rows": [
+        [ 36, 0 ],
+        [ 75, 0 ],
+        [ 84, 0 ],
+        [ 32, 0 ],
+        [ 28, 0 ],
+        [ 47, 0 ],
+        [ 66, 0 ],
+        [ 75, 0 ],
+        [ 80, 1 ],
+        [ 96, 0 ],
+        [ 25, 0 ],
+        [ 12, 1 ],
+        [ 32, 0 ],
+        [ 22, 0 ],
+        [ 33, 0 ],
+        [ 43, 0 ],
+        [ 42, 0 ],
+        [ 66, 0 ],
+        [ 82, 0 ],
+        [ 25, 1 ],
+        [ 36, 0 ],
+        [ 52, 0 ],
+        [ 42, 0 ],
+        [ 28, 1 ],
+        [ 18, 1 ],
+        [ 8, 0 ],
+        [ 42, 0 ],
+        [ 48, 0 ],
+        [ 46, 0 ],
+        [ 41, 0 ],
+        [ 45, 0 ],
+        [ 48, 0 ],
+        [ 50, 0 ],
+        [ 7, 0 ],
+        [ 52, 0 ],
+        [ 52, 0 ],
+        [ 55, 1 ],
+        [ 62, 0 ],
+        [ 6, 0 ],
+        [ 66, 0 ],
+        [ 66, 0 ],
+        [ 62, 0 ],
+        [ 62, 0 ],
+        [ 72, 0 ],
+        [ 85, 0 ],
+        [ 88, 0 ],
+        [ 82, 0 ],
+        [ 82, 0 ],
+        [ 86, 0 ],
+        [ 8, 1 ],
+        [ 5, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 98, 0 ],
+        [ 92, 0 ],
+        [ 97, 0 ],
+        [ 7, 0 ],
+        [ 97, 1 ],
+        [ 8, 0 ],
+        [ 90, 0 ],
+        [ 5, 1 ],
+        [ 22, 0 ],
+        [ 53, 1 ],
+        [ 51, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 8, 1 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 2, 0 ],
+        [ 5, 0 ],
+        [ 8, 1 ],
+        [ 2, 0 ],
+        [ 8, 1 ],
+        [ 5, 0 ],
+        [ 7, 0 ],
+        [ 8, 0 ],
+        [ 8, 1 ],
+        [ 2, 0 ],
+        [ 8, 0 ]
+      ]
+    },
+    {
+      "id": "data",
+      "source": {"$ref": "base"},
+      "type": "summary",
+      "group": [
+        {
+          "granularity": 5,
+          "input": {"$ref": "base_num"},
+          "output": {"id": "cat"}
+        },
+        {
+          "input": {"$ref": "base_type"},
+          "output": {"id": "type"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "count"},
+          "parameters": {"summaryFunction": "count"}
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {},
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "#aaa",
+                "stroke": {"style": "dash"}
+              },
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 10
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [
+          {"type": "polar"}
+        ],
+        "style": {
+          "fill": {"b": 235, "g": 235, "r": 235},
+          "outline": "#aaa"
+        }
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "count"}},
+            {"field": {"$ref": "cat"}}
+          ],
+          "color": [ {"field": {"$ref": "type"}} ],
+          "style": {"fill": "blue"}
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "count"}},
+            {"field": {"$ref": "cat"}}
+          ],
+          "color": [ {"field": {"$ref": "type"}} ],
+          "style": {
+            "fill": "blue",
+            "outline": {"b": 0, "g": 0, "r": 0}
+          }
+        },
+        {
+          "type": "interval",
+          "data": { "$ref": "base" },
+          "position": [
+            {"value": 5},
+            {"value": 8},
+            {"value": "0%"},
+            {"value": "100%"}
+          ],
+          "style": {
+            "fill": {"a": 0.25, "b": 0, "g": 255, "r": 255},
+            "outline": {"a": 0.75}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 20
+      }
+    }
+  ]
+}

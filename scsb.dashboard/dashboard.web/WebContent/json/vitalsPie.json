@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "app",
+          "label": "Applications",
+          "categories": [  ]
+        },
+        {"id": "hits", "label": "Total Hits"},
+        {"id": "uhits", "label": "Unique Hits"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [  ],
+      "output": [
+        {"field": {"id": "fapp"}, "input": {"$ref": "app"}},
+        {
+          "field": {
+            "id": "fuhits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "uhits"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {
+            "id": "fhits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "hits"},
+          "parameters": {"summaryFunction": "percent"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"center": true},
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": true, "spans": [  ]}}
+        ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+              "diameter": {"max": "80%"},
+              "startAngle": 90
+            }
+          }
+        ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fapp"} ],
+              "lineStyle": {},
+              "style": {
+                "align": "middle",
+                "font": {"family": "Arial"},
+                "location": "callout",
+                "padding": 3,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fuhits"}} ],
+          "color": [
+            {
+              "field": {"$ref": "fapp"},
+              "scale": {"local": false},
+              "palette": [  ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "fapp"},
+                "<br>",
+                {"$ref": "fuhits"},
+                "%"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

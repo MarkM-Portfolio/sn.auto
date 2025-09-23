@@ -1,0 +1,6 @@
+<app-component name="sc.tools" spec-version="1.0">
+  <level>0</level>
+  <description>Utitily for SmartCloud Tests</description>
+  <owner>Yu Guo</owner>
+</app-component>
+

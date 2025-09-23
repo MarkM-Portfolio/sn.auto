@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Outer X",
+          "categories": [
+            "Illinois",
+            "New York",
+            "California"
+          ]
+        },
+        {
+          "id": "Inner X",
+          "categories": [ "Male", "Female" ]
+        },
+        {"id": "Y"}
+      ],
+      "rows": [
+        [ 0, 0, 25000 ],
+        [ 0, 1, 38000 ],
+        [ 1, 1, 27000 ],
+        [ 2, 0, 19000 ],
+        [ 2, 1, 25000 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black", "snap": true
+              }
+            }
+          },
+          {}
+        ],
+        "transforms": [ {"type": "cluster", "clusterParameters":{"gaps":[20]}} ],
+        "style": {"fill": "white", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "Outer X"}},
+            {"field": {"$ref": "Inner X"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Inner X"},
+              "palette": [ "skyblue", "pink" ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 500, "height": 100},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

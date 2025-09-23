@@ -1,0 +1,137 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "time",
+          "label": "Timestamp",
+          "timeZone": "UCT",
+          "unit": "timestamp"
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 45000, 160 ],
+        [ 43200, 95 ],
+        [ 41400, 45 ],
+        [ 39600, 140 ],
+        [ 37800, 180 ],
+        [ 36000, 160 ],
+        [ 34200, 95 ],
+        [ 32400, 75 ],
+        [ 30600, 140 ],
+        [ 28800, 80 ],
+        [ 27000, 160 ],
+        [ 25200, 95 ],
+        [ 23400, 35 ],
+        [ 21600, 140 ],
+        [ 19800, 130 ],
+        [ 18000, 150 ],
+        [ 16200, 95 ],
+        [ 14400, 55 ],
+        [ 12600, 140 ],
+        [ 10800, 180 ],
+        [ 9000, 160 ],
+        [ 7200, 105 ],
+        [ 5400, 145 ],
+        [ 3600, 140 ],
+        [ 1800, 135 ],
+        [ 0, 160 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0.05, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9.5pt"},
+                "padding": 5
+              },
+              "title": [ "Number of Log Records" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9.5pt"}
+              }
+            }
+          },
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9.0pt"},
+                "padding": 5
+              },
+              "title": [ {"$ref": "time"} ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9.5pt"}
+              },
+              "method": "vertical"
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "time"}}
+          ],
+          "symbolStyle": {"symbol": "circle"},
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "time"},
+                ":\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "a": 0.9,
+              "h": 0.5805,
+              "l": 0.65,
+              "s": 0.59
+            },
+            "width": "80%"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "version": "4.2"
+}

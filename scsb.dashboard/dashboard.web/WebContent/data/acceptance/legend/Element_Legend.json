@@ -1,0 +1,214 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "States",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas",
+            "Minnesota",
+            "Vermont",
+            "Georgia",
+            "Washington",
+            "Florida",
+            "North Dakota",
+            "South Dakota",
+            "Hawaii"
+          ],
+          "key": true
+        },
+        {"id": "values", "label": "Count"}
+      ],
+      "rows": [
+        [ 11, 2100 ],
+        [ 10, 2600 ],
+        [ 9, 3100 ],
+        [ 8, 3600 ],
+        [ 7, 4100 ],
+        [ 6, 4600 ],
+        [ 5, 5500 ],
+        [ 4, 4400 ],
+        [ 3, 3300 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "60%", "left": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "minorStyle": {
+                "fill": {"b": 75, "g": 75, "r": 75}
+              },
+              "title": [ "Count" ],
+              "titleStyle": {
+                "fill": {"b": 150, "g": 50, "r": 50},
+                "font": {"size": "18", "weight": "bold"}
+              }
+            }
+          },
+          {
+            "scale": {"local": true},
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 11.1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "areaEltId",
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "description": [
+            "description",
+            " for ",
+            {"$ref": "categories"},
+            " field!"
+          ]
+        },
+        {
+          "id": "intervalEltId",
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "values"}} ],
+          "description": [
+            "description",
+            " for ",
+            {"$ref": "categories"},
+            " field !"
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                " \n ",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {"width": "80%", "outline": {"a": 0.0}}
+        },
+        {
+          "id": "lineEltId",
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "description": [
+            "description",
+            " for ",
+            {"$ref": "values"},
+            " field!"
+          ],
+          "style": {"fill": "red", "stroke": {"width": 2}}
+        },
+        {
+          "id": "customElt",
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "values"},
+              "modifies": {"part": "leftEye"}
+            }
+          ],
+          "description": [ "desc for custom element." ],
+          "style": {
+            "width": 30,
+            "height": 30,
+            "outline": "black",
+            "symbol": {
+              "shape": [
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "30.0%",
+                    "height": "30.0%",
+                    "left": "15.0%",
+                    "top": "5.0%"
+                  },
+                  "part": "leftEye"
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "30.0%",
+                    "height": "30.0%",
+                    "left": "55.0%",
+                    "top": "5.0%"
+                  }
+                },
+                {
+                  "type": "path",
+                  "path": "M0.5,0.4L0.4,0.6L0.6,0.6"
+                },
+                {
+                  "type": "path",
+                  "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [
+    {
+      "elements": [
+        {"$ref": "intervalEltId"},
+        {"$ref": "lineEltId"},
+        {"$ref": "areaEltId"}
+      ],"itemStyle":{"padding":10}
+,"boundsStyle":{"outline":"black","fill":"white"},
+      "location": {"width": "40%","height":"30%","top":"0%", "right": "-0%"},
+      "title": [ "Element description" ]
+    },
+    {
+      "elements": [ {"$ref": "customElt"} ],
+      "location": {
+        "width": "40%","height":"20%",
+        "right": "-0%",
+        "top": "50%"
+      },"boundsStyle":{"outline":"black","fill":"white"},
+      "title": [ "Element description for Custom Shape" ]
+    }
+  ],
+  "size": {"width": 800, "height": 500},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

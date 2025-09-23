@@ -1,0 +1,166 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX", "label": "Price"},
+        {"id": "fY", "label": "Quantity", "max": 2.5},
+        {"id": "target", "label": "Target"},
+        {
+          "id": "facet1",
+          "label": "For faceting",
+          "categories": [
+            "Alabama",
+            "Alaska",
+            "Arkansas",
+            "California",
+            "Connecticut",
+            "Delaware",
+            "Illinois",
+            "Michigan",
+            "Minnesota",
+            "Nevada",
+            "New Mexico",
+            "Ohio"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 1.53, 1.4, 0 ],
+        [ 0, 0.97, 1.2, 1 ],
+        [ 0, 0.2, 0.5, 2 ],
+        [ 0, 1.05, 0.75, 3 ],
+        [ 0, 0.73, 0.8, 4 ],
+        [ 0, 0.83, 0.9, 5 ],
+        [ 0, 0.18, 1.0, 6 ],
+        [ 0, 1.88, 1.2, 7 ],
+        [ 0, 2, 1.5, 8 ],
+        [ 0, 0.32, 0.9, 9 ],
+        [ 0, 0.54, 0.4, 10 ],
+        [ 0, 0.54, 0.3, 11 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "description": "minichart with bullets",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "max": 2,
+                  "fit": "nice",
+                  "outRange": {"min": 0, "max": 1},
+                  "tickDelta": 0.625
+                }
+              ]
+            },
+            "axis": {
+              "lineStyle": {"fill": "#D5D5D5"},
+              "tickStyle":{"fill": "#4D4D4D"},
+              "tickAs": "percentage"
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {"fill": "#D5D5D5"},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {
+          "fill": {
+            "type": "linear",
+            "angle": 0.0,
+            "colors": [
+              {
+                "color": {"b": 215, "g": 215, "r": 215},
+                "offset": 0.0
+              },
+              {
+                "color": {"b": 255, "g": 255, "r": 255},
+                "offset": 0.25
+              },
+              {
+                "color": {"b": 200, "g": 200, "r": 200},
+                "offset": 0.25
+              },
+              {
+                "color": {"b": 225, "g": 225, "r": 225},
+                "offset": 0.5
+              },
+              {
+                "color": {"b": 150, "g": 150, "r": 150},
+                "offset": 0.5
+              },
+              {
+                "color": {"b": 200, "g": 200, "r": 200},
+                "offset": 0.75
+              },
+              {
+                "color": {"b": 100, "g": 100, "r": 100},
+                "offset": 0.75
+              },
+              {
+                "color": {"b": 150, "g": 150, "r": 150},
+                "offset": 1
+              }
+            ]
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": {"a": 1.0, "b": 0, "g": 0, "r": 0},
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0},
+            "size": "20"
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "target"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "symbolStyle": {
+            "fill": {"a": 0.75, "b": 0, "g": 0, "r": 255},
+            "outline": "white",
+            "size": 10
+          },
+          "style": {
+            "fill": {"a": 1.0, "b": 0, "g": 0, "r": 215},
+            "width": 3,
+            "height": "80%%",
+            "symbol": "rectangle"
+          }
+        }
+      ],
+      "facet": {
+        "fields": [
+          {
+            "field": {"$ref": "facet1"},
+            "axis": {"tickStyle": {"fill": "#4D4D4D"}}
+          }
+        ],
+        "sharedAxes": [ 0 ],
+        "method": "panel"
+      },
+      "labelCollisionMethod": "full",
+      "style": {"fill": {"a": 0}, "padding": {"left":5, "right":16, "top":4}}
+    }
+  ],
+  "size": {"width": 400, "height": 500},
+  "version": "5.0",
+  "style": {"fill": "white"}
+}

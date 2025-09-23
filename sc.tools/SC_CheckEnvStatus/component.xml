@@ -1,0 +1,13 @@
+<component name="sc.tools/SC_CheckEnvStatus" description="SmartCloud Tools to check environment status"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+                preferredInstallLocation="bin"
+                location="${env.LWP_COMP_BUILD}/lib/SC_CheckEnvStatus.jar" />
+    </output-group>
+
+    <dependency name="libs.auto/log4j" type="jar" version="1.2.15" />
+    <dependency name="libs.auto/zookeeper" type="jar" version="1.0" />
+
+</component>

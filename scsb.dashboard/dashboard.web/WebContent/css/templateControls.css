@@ -1,0 +1,17 @@
+#template-controls {
+	padding-top: 8px;
+	padding-bottom: 64px;
+}
+
+.control-item {
+	display: inline;
+	margin: 0 10px;
+}
+
+.control-item-first {
+	margin-left: 0;
+}
+
+.control-item-last {
+	margin-right: 0;
+}

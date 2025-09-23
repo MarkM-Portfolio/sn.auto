@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX"}, {"id": "fY"} ],
+      "rows": [  ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"fit": "exact", "method": "log"} ]
+            },
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12
+                }
+              }
+            }
+          },
+          {
+            "scale": {
+              "spans": [ {"fit": "exact", "method": "log"} ]
+            },
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12
+                }
+              }
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "symbolStyle": {"size": 32}
+        }
+      ]
+    }
+  ],
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

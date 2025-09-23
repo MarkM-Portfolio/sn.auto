@@ -1,0 +1,156 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "x", "key": true, "unit": "categorical"},
+        {"id": "y", "unit": "categorical"},
+        {"id": "headsize", "min": 0, "max": 1},
+        {"id": "tailsize", "min": 0, "max": 1},
+        {"id": "size", "min": 0, "max": 1},
+        {
+          "id": "color",
+          "categories": [
+            "numeric",
+            "date",
+            "categorical",
+            "text"
+          ]
+        },
+        {
+          "id": "name",
+          "categories": [
+            "salary",
+            "date",
+            "status",
+            "comment"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0.5, 0.8, 0.8, 0, 0 ],
+        [ 1, 0, 0.95, 0.3, 0.8, 1, 1 ],
+        [ 0, 1, 0.35, 0.4, 0.2, 2, 2 ],
+        [ 1, 1, 0.45, 0.1, 0.9, 3, 3 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "#000a",
+                "font": {"size": 20},
+                "location": "fit",
+                "padding": 30
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "color"},
+              "modifies": {"part": "head"}
+            },
+            {
+              "field": {"$ref": "color"},
+              "modifies": {"part": "tail"}
+            }
+          ],
+          "size": [
+            {"field": {"$ref": "size"}},
+            {
+              "field": {"$ref": "headsize"},
+              "modifies": {"type": "height", "part": "head"}
+            },
+            {
+              "field": {"$ref": "tailsize"},
+              "modifies": {"type": "height", "part": "tail"}
+            }
+          ],
+          "style": {
+            "size": "100%",
+            "symbol": {
+                  "scaleDimensions": "none",
+              "shape": [
+                {
+                  "type": "path",
+                  "part": "head",
+                  "scaleDimensions": "both",
+                  "path": "M0.8,0.55Q0.8,0.8,0.4,0.8Q0.1,0.8,0,0.5Q0.1,0.2,0.4,0.2Q0.8,0.2,0.8,0.45Z",
+
+                  "style": {
+                    "fill": {
+                      "type": "linear",
+                      "colors": [
+                        {
+                          "color": {
+                            "dLightness": 0.15,
+                            "dValue": 0.1
+                          },
+                          "offset": 0
+                        },
+                        {
+                          "color": {"dValue": -0.35},
+                          "offset": 1
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "path",
+                  "part": "tail",
+                  "path": "M0.79,0.4Q0.8,0,1,0Q0.9,0.5,1,1Q0.8,1,0.79,0.6Z",
+                  "scaleDimensions": "both",
+                  "style": {"fill": {"dValue": -0.35}}
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "8.0%",
+                    "height": "8.0%",
+                    "left": "16.0%",
+                    "top": "36.0%"
+                  },
+                  "part": "eye",
+                  "scaleDimensions": "none",
+                  "style": {
+                    "fill": "white",
+                    "stroke": {"width": 0.5},
+                    "outline": "black"
+                  }
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "3.0%",
+                    "height": "3.0%",
+                    "left": "17.5%",
+                    "top": "38.5%"
+                  },
+                  "scaleDimensions": "none",
+                  "style": {"fill": "black"}
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "version": "3.0"
+}

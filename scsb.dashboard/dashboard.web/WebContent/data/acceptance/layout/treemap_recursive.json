@@ -1,0 +1,171 @@
+{
+  "version": "1.2",
+"copyright": "(C) Copyright IBM Corp. 2012",
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "fName",
+          "label": "Country",
+          "categories": [
+            "Continents",
+            "America",
+            "Asia",
+            "Europe",
+            "US",
+            "Canada",
+            "Brazil",
+            "India",
+            "China",
+            "Japan",
+            "Pakistan",
+            "Srilanka",
+            "UK",
+            "Germany",
+            "France",
+            "Scotland"
+          ]
+        },
+        {
+          "id": "fParent",
+          "label": "Parent",
+          "categories": [
+            "WW",
+            "Continents",
+            "America",
+            "Asia",
+            "Europe"
+          ]
+        },
+        {"id": "fRevenue", "label": "Revenue"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 1, 1, 0 ],
+        [ 2, 1, 0 ],
+        [ 3, 1, 0 ],
+        [ 4, 2, 15000000 ],
+        [ 5, 2, 5000000 ],
+        [ 6, 2, 3000000 ],
+        [ 7, 3, 5000000 ],
+        [ 8, 3, 8000000 ],
+        [ 9, 3, 3000000 ],
+        [ 10, 3, 4000000 ],
+        [ 11, 3, 4000000 ],
+        [ 12, 4, 12000000 ],
+        [ 13, 4, 10000000 ],
+        [ 14, 4, 3500000 ],
+        [ 15, 4, 4000000 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "100%", "left": 0, "top": "0%"},
+      "coordinates": {
+        "style": {"outline": {"h": 0, "l": 0, "s": 0}}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fName"} ],
+              "style": {
+                "align": "end",
+                "font": {
+                  "family": "Arial",
+                  "size": "10pt",
+                  "weight": "bold"
+                },
+                "padding": 1,
+                "valign": "end"
+              }
+            }
+          ],
+          "data": {"$ref": "dData"},
+          "color": [
+            {
+              "field": {"$ref": "fRevenue"},
+              "mapping": [
+                {
+                  "color": {"h": 0.33, "l": 0.9, "s": 0.3},
+                  "offset": 0
+                },
+                {
+                  "color": {"h": 0.33, "l": 0.6, "s": 0.4},
+                  "offset": 0.5
+                },
+                {
+                  "color": {"h": 0.33, "l": 0.3, "s": 0.5},
+                  "offset": 1
+                }
+              ]
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "fName"},
+            "layout": "squarify",
+            "levelLabelStyles": {
+              "internal": [
+                {},
+                {},
+                {
+                  "content": [ {"$ref": "fName"} ],
+                  "style": {
+                    "align": "start",
+                    "font": {
+                      "family": "Arial",
+                      "size": "10pt",
+                      "weight": "bold"
+                    },
+                    "padding": 3,
+                    "valign": "start"
+                  }
+                }
+              ],
+              "leaf": {
+                "content": [ {"$ref": "fName"} ],
+                "style": {
+                  "align": "end",
+                  "font": {
+                    "family": "Arial",
+                    "size": "8pt",
+                    "weight": "bold"
+                  },
+                  "padding": 1,
+                  "valign": "end"
+                }
+              }
+            },
+            "levelStyles": {
+              "internal": [
+                {"stroke": {"width": 2}, "outline": "black"}
+              ],
+              "leaf": {
+                "stroke": {"width": 1},
+                "outline": "white"
+              }
+            },
+            "method": "treemap",
+            "padding": 10,
+            "parent": {"$ref": "fParent"},
+            "recursive": {
+              "child": {"$ref": "fName"},
+              "parent": {"$ref": "fParent"}
+            },
+            "size": {"$ref": "fRevenue"},
+            "spacing": 5
+          },
+          "style": {
+            "stroke": {"width": 0.8},
+            "outline": {"h": 0, "l": 0, "s": 0}
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500.0, "height": 500.0}
+}

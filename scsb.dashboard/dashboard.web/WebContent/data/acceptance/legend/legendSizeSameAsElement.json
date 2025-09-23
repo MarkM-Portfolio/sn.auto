@@ -1,0 +1,110 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "fX", "unit": "categorical"},
+        {
+          "id": "fY",
+          "label": "Length",
+          "min": 95.0,
+          "max": 586.0
+        },
+        {
+          "id": "fSourceVariable",
+          "label": "Price",
+          "min": 3.49,
+          "max": 54.95
+        }
+      ],
+      "rows": [
+        [ 19, 339, 12.99 ],
+        [ 23, 290, 6.99 ],
+        [ 0, 95, 6.49 ],
+        [ 5, 159, 16.95 ],
+        [ 28, 223, 9.99 ],
+        [ 27, 299, 9.49 ],
+        [ 23, 254, 8.49 ],
+        [ 27, 277, 8.99 ],
+        [ 23, 412, 13.99 ],
+        [ 16, 268, 6.99 ],
+        [ 12, 297, 7.99 ],
+        [ 21, 386, 9.95 ],
+        [ 25, 297, 34.95 ],
+        [ 17, 188, 8.99 ],
+        [ 27, 190, 12.99 ],
+        [ 26, 265, 8.49 ],
+        [ 18, 501, 19.95 ],
+        [ 21, 501, 54.95 ],
+        [ 25, 228, 9.99 ],
+        [ 20, 351, 39.95 ],
+        [ 27, 484, 27.49 ],
+        [ 15, 233, 3.49 ],
+        [ 20, 361, 16.95 ],
+        [ 12, 473, 44.95 ],
+        [ 16, 383, 12.99 ],
+        [ 27, 586, 37.45 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fSourceVariable"} ],
+              "style": {
+                "fill": {"a": 1, "b": 0, "g": 0, "r": 0},
+                "align": "end",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorAesthetic",
+              "field": {"$ref": "fX"}
+            }
+          ],
+          "symbol": [
+            {
+              "id": "symbolAesthetic",
+              "field": {"$ref": "fX"}
+            }
+          ]
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 6
+      }
+    }
+  ],
+  "legends": [
+    {
+      "content": [
+        {"text": [ "X" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "symbolAesthetic"}},
+            {"aesthetic": {"$ref": "colorAesthetic"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 400, "height": 400},
+  "version": "1.2"
+}

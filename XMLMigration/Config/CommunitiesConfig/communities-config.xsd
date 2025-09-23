@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S68                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2007, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/connections/communities/communities-config/1.0"
+    xmlns:tns="http://www.ibm.com/connections/communities/communities-config/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    
+    <xs:annotation>
+        <xs:documentation>
+            IBM Lotus Connections Communities Licensed
+            Materials - Property of IBM. (C) Copyright IBM Corp. 2008
+            All Rights Reserved. US Government Users Restricted Rights -
+            Use, duplication or disclosure restricted by GSA ADP
+            Schedule Contract with IBM Corp.
+        </xs:documentation>
+    </xs:annotation>
+    
+    <xs:attributeGroup name="Common.Attributes">
+        <xs:annotation>
+            <xs:documentation>Attributes for _every_ element in TangoConfig</xs:documentation>
+        </xs:annotation>
+        <xs:anyAttribute namespace="##other" />
+    </xs:attributeGroup>
+    
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="security" type="tns:tangoSecurityConfig" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="pagingSupport" type="tns:pagingSupport" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="activeContentFilter" type="tns:activeContentFilter" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="descriptionSummary" type="tns:descriptionSummary" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="showStartCommunityToUnauthenticated" type="tns:showStartCommunityToUnauthenticated" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="communityTypes" type="tns:communityTypes" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="themes" type="tns:themes" minOccurs="1" maxOccurs="1" />
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="scheduledTasks" type="tns:scheduledTasks" minOccurs="1" maxOccurs="1" />
+                
+                <xs:element name="eventLogCleanupTask" type="tns:eventLogCleanupTask" minOccurs="0" maxOccurs="1" />
+                <xs:element name="tagCloud" type="tns:tagCloud" minOccurs="0" maxOccurs="1" />
+                <xs:element name="communityPages" type="tns:communityPages" minOccurs="0" maxOccurs="1" />
+                <xs:element name="searchScope" type="tns:searchScope" minOccurs="0" maxOccurs="1" />
+                <xs:element name="customTypeAheadWidget" type="tns:customTypeAheadWidget" minOccurs="0" maxOccurs="1" />
+                <xs:element name="communityBusinessOwner" type="tns:communityBusinessOwner" minOccurs="0" maxOccurs="1" />
+                <xs:element name="communityHandle" type="tns:communityHandle" minOccurs="0" maxOccurs="1" />
+                <xs:element name="forceImportAvailable" type="tns:forceImportAvailable" minOccurs="0" maxOccurs="1" />
+				<xs:element name="group" type="tns:group" minOccurs="0" maxOccurs="1" />
+    			<xs:element name="explicitMembershipEntityLimit" type="tns:intGTE0" minOccurs="0" maxOccurs="1" />
+    
+                <xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attributeGroup ref="tns:Common.Attributes" />
+            <xs:attribute name="id" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="eventLogCleanupTask">
+        <xs:attribute name="eventLogEntryAgeInDays" type="xs:int" />
+    </xs:complexType>
+
+    <xs:complexType name="tagCloud">
+        <xs:sequence>
+            <xs:element name="refreshIntervalInMinutes" type="xs:int" minOccurs="0" maxOccurs="1" />
+            <xs:element name="LRUcacheSizeInNumber" type="xs:int" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>      
+        <!-- xs:attribute name="refreshIntervalInMinutes" type="xs:int" />
+        <xs:attribute name="LRUcacheSizeInNumber" type="xs:int" / -->
+    </xs:complexType>
+    
+    <xs:complexType name="communityTypes">
+        <xs:sequence>
+            <xs:element name="communityType" type="tns:communityType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="communityType">
+        <xs:sequence>
+            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="36" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="description" type="tns:descriptionText" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="tangoSecurityConfig">
+        <xs:sequence>
+            <xs:element name="requirePlainJson" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+            <xs:element name="loginConfigs" type="tns:loginConfigs" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="pagingSupport">
+        <xs:sequence>
+            <xs:element name="defaultPageSize" type="tns:pageSizeValue" minOccurs="1" maxOccurs="1" />
+            <xs:element name="pageSize" type="tns:pageSize" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="activeContentFilter">
+        <xs:attribute name="enabled" type="xs:boolean" use="required" />
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="descriptionSummary">
+        <xs:attribute name="size" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:int">
+                    <xs:minInclusive value="1" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:simpleType name="showStartCommunityToUnauthenticated">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    
+    <xs:complexType name="loginConfigs">
+        <xs:sequence>
+            <xs:element name="loginConfig" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="tns:propertyList">
+                            <xs:attribute name="name" type="xs:NCName" use="required" />
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="propertyList">
+        <xs:sequence>
+            <xs:element name="property" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="name" type="xs:NCName" use="required" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="port">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="65535" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="pageSize">
+        <xs:simpleContent>
+            <xs:extension base="tns:pageSizeValue">
+                <xs:attribute name="name" type="xs:NCName" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="pageSizeValue">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="descriptionText">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1024" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="themes">
+        <xs:sequence>
+            <xs:element name="theme" type="tns:theme" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+    
+    <xs:complexType name="theme">
+        <xs:sequence>
+            <xs:element name="themeUuid" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="36" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="displayNameKey" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="isScriptKey" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+            <xs:element name="cssUrl" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="cssRtlUrl" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="thumbnailUrl" type="xs:string" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:Common.Attributes" />
+    </xs:complexType>
+
+    <xs:complexType name='communityPages'>        
+        <xs:sequence>
+            <xs:element name="item" type="tns:item" minOccurs='0' maxOccurs='unbounded'/>
+        </xs:sequence>                   
+    </xs:complexType>
+    
+    <xs:complexType name='searchScope'>        
+        <xs:sequence>
+            <xs:element name="item" type="tns:item" minOccurs='0' maxOccurs='unbounded'/>
+        </xs:sequence>                   
+    </xs:complexType>
+    
+    <xs:complexType name='customTypeAheadWidget'>        
+        <xs:sequence>
+            <xs:element name="item" type="tns:item" minOccurs='0' maxOccurs='unbounded'/>
+        </xs:sequence>
+        <xs:attribute name='enabled' type='xs:boolean' use='required'/>
+        <xs:attribute name='widget'  type='xs:string'  use='required'/>                    
+    </xs:complexType>    
+    
+    <xs:complexType name='communityBusinessOwner'>
+        <xs:attribute name='enabled' type='xs:boolean' use='required'/>
+    </xs:complexType>    
+    
+    <xs:complexType name='item'>        
+        <xs:attribute name='name'  type='xs:string' use='required'/>
+        <xs:attribute name='value' type='xs:string' use='required'/>
+    </xs:complexType> 
+    
+    <xs:complexType name="scheduledTasks">
+        <xs:sequence>
+            <xs:element name="task" type="tns:task" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name='task'>
+        <xs:sequence>
+        <xs:element name="args" type='tns:args'  minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="interval" type="xs:string" use="required" />
+        <xs:attribute name="startby" type="xs:string" use="required" />
+
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:attribute name="enabled" type="xs:boolean" use="required" />
+        <xs:attribute name="targetName" type="xs:string" use="required" />
+        <xs:attribute name="mbeanMethodName" type="xs:string" use="required" />
+        <xs:attribute name="scope" type="xs:string" use="required" />
+        <xs:attribute name="serverName" type="xs:string" use="required" />
+        <xs:attribute name="description" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name='args'>
+       <xs:sequence>
+          <xs:element name="property" type='tns:property' minOccurs='0'  maxOccurs='unbounded'/>
+       </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name='property' mixed='true'>
+       <xs:attribute name='name' type='xs:NMTOKEN'/>
+    </xs:complexType>
+
+    <xs:complexType name='communityHandle'>
+        <xs:attribute name='enabled' type='xs:boolean' use='required'/>
+    </xs:complexType>
+
+    <xs:complexType name='forceImportAvailable'>
+        <xs:attribute name='enabled' type='xs:boolean' use='required'/>
+    </xs:complexType>
+    
+
+	<xs:simpleType name="intGTE0">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	    		
+	<xs:complexType name="group">
+		<xs:all>
+			<xs:element name="membershipCache" type="tns:membershipCache" minOccurs="1" maxOccurs="1" />
+		</xs:all>
+		<xs:attribute name="enabled" type="xs:boolean" use="required" />		
+	</xs:complexType>
+
+	<xs:complexType name="membershipCache">
+		<xs:attribute name="maximumAgeOnLoginInSeconds" type="tns:intGTE0" use="required" />
+		<xs:attribute name="maximumAgeOnRequestInSeconds" type="tns:intGTE0" use="required" />
+	</xs:complexType>
+
+</xs:schema>

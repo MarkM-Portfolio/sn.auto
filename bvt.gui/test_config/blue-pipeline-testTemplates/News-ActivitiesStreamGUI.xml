@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- TEMPLATE VERSION
+2012.11.04-2200
+--><!-- SEE TESTNG.ORG for documentation on using testng xml config files. DTD available at above link and also in testng.jar --><suite name="ff_0_Linux-0" parallel="tests" thread-count="8">
+<!-- <suite thread-count="8" name="Conn PREBVT" parallel="methods" > -->
+
+  <!--
+  GROUPS - LEAVE AS-IS FOR PREBVT!
+  Specifying groups will cause only the tests of that group (that are found in the test classes specified under <test>s below) to be run.
+  Groups may also me specified under <test>.
+  -->
+
+    <groups>
+     <run>
+       <include name="level2"/>
+     </run>
+    </groups>
+
+
+  <!--
+  SELENIUM GRID/REMOTE SERVER SETTINGS
+  To run locally:
+  '<parameter name="server_is_grid_hub" value="false" />'
+  '<parameter name="server_host" value="localhost" />'
+  '<parameter name="server_port" value="" />'
+  Remote server:
+  '<parameter name="server_is_grid_hub" value="false" />'
+  '<parameter name="server_host" value="[address of hub host]" />' e.g.hub.lab.ibm.com
+  '<parameter name="server_port" value="[port number used when starting server]" />'
+   -->
+  <parameter name="server_is_grid_hub" value="true"/>
+  <parameter name="server_host" value="testautolb.cnx.cwp.pnp-hcl.com"/>
+  <parameter name="server_port" value="4444"/>
+  <parameter name="server_is_legacy_grid" value="false"/>
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="http://lcauto110.cnx.cwp.pnp-hcl.com/"/><!-- address of application host -->
+
+  <!-- BROWSER START COMMAND
+  The appropriate browser start commmand is formed from the browser_start_command string in format [browser_name]_[browser_version]_[browser_environment_os].
+  All 3 parts are required.
+  If using selenium grid(i.e. '<parameter name="server_is_grid_hub" value="true" />'), browser start command will be used to set capabilities.
+  You must request capabilities that match what is available on the grid. View grid capabilities at 'http://[server_host]:[server_port]/grid/'.
+  If using -IBMtemplate argument with executable jar, desired browsers must be delimited by a semi-colon (e.g. 'GoogleChrome_9_Windows;Firefox_8_Windows').
+  -->
+  <parameter name="browser_start_command" value="ff_0_Linux"/>
+  <!-- <parameter name="browser_start_command" value="ie_9_Windows" /> -->
+
+  <!--
+  WAFFLE CONFIGURATION PARAMETERS
+  Will be used in configuration of waffle. May also contain parameters used in configuration of test tool
+  -->
+  <parameter name="fluent_wait_timeout" value="60"/>
+  <parameter name="timeout_implicit_wait" value="60000"/>
+  <parameter name="timeout_async_script" value="30000"/>
+  <parameter name="timeout_page_navigate_timeout" value="60000"/>
+  <parameter name="pch_enable_dojo_pageload" value="false"/>
+  <parameter name="pch_enable_standard_pageload" value="false"/>
+  <parameter name="pch_post_event_pause" value="700"/>
+  <parameter name="location_force_script" value="false"/><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false"/>
+  <parameter name="max_retries" value="1"/>
+  <parameter name="push_videos" value="true"/>
+  <parameter name="file_server" value="testautolb.cnx.cwp.pnp-hcl.com"/>
+
+<!--
+  CUSTOM PARAMETERS
+  'Root' folder must be in drive root (e.g. 'C:\[root_folder_name]' expected absolute path if windows).
+  Intended to be used for accessing files placed in advance, whether browser is on a local or remote machine.
+  -->
+  <!-- What field from ldap CSV to use as login username (case sensitive) e.g. 'uid' OR 'Display name' OR 'email' -->
+  <parameter name="users_login_preference" value="email"/>
+  <parameter name="users_typeahead_preference" value="display name"/>
+  <!-- 'Root' folder may specify drive root (e.g. 'C:\[root_folder_name]' absolute path if windows). Default drive for windows is C:
+  Intended to be used for accessing files placed in advance, whether browser is on a remote machine or not. -->
+  <parameter name="root_folder_name" value="SeleniumServer"/>
+  <!-- An immediate child directory of 'root_folder'. Contains files for file upload.
+  Make sure you have downloaded the required test files to this location if the prebvt for your component includes file upload -->
+  <parameter name="upload_files_folder_name" value="TestFiles"/><!-- An immediate child directory of 'root_folder' -->
+  <parameter name="special_characters" value="false"/><!-- Changes tests to use special characters -->
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties.properties"/>
+  <parameter name="default_app_properties" value="test_config/app/app.properties"/>
+  <parameter name="filenet_enabled" value="false"/>
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener"/>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener"/>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+
+  <!--
+  TESTS
+  Specify test structure below. A test is a collection of test classes.
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+
+  <test enabled="true" name="AcitivityStreams" preserve-order="true">
+     <classes>
+       <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_AS"/>
+     </classes>
+  </test>
+
+
+</suite>

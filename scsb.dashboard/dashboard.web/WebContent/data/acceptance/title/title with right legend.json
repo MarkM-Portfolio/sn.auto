@@ -1,0 +1,369 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "id": "_VOIDS_FIELD_",
+               "label": "_VOIDS_FIELD_"
+            },
+            {
+               "categories": [
+                  "Camping Equipment",
+                  "Mountaineering Equipment",
+                  "Golf Equipment",
+                  "Outdoor Protection",
+                  "Personal Accessories"
+               ],
+               "id": "_CATEGORY_FIELD_",
+               "label": "Product_Line"
+            },
+            {
+               "categories": [
+                  "2008",
+                  "2007"
+               ],
+               "id": "_SERIES_FIELD_",
+               "label": "This is my Default Graph Title"
+            },
+            {
+               "id": "_VALUES_FIELD_",
+               "label": "Revenue"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               24,
+               0,
+               0,
+               21473531
+            ],
+            [
+               26,
+               0,
+               1,
+               22372620
+            ],
+            [
+               31,
+               1,
+               0,
+               7469549
+            ],
+            [
+               33,
+               1,
+               1,
+               6639706
+            ],
+            [
+               38,
+               2,
+               0,
+               5618412
+            ],
+            [
+               40,
+               2,
+               1,
+               7626235
+            ],
+            [
+               45,
+               3,
+               0,
+               11046962
+            ],
+            [
+               47,
+               3,
+               1,
+               10036935
+            ],
+            [
+               52,
+               4,
+               0,
+               140679545
+            ],
+            [
+               54,
+               4,
+               1,
+               132434304
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                     "gridStyle": {
+                        "fill": "rgba(128,128,128,0.50)",
+                        "stroke": {
+                           "style": "solid",
+                           "width": "1px"
+                        }
+                     },
+                     "lineStyle": {
+                        "fill": "transparent"
+                     },
+                     "markStyle": {
+                        "fill": "transparent"
+                     },
+                     "tickStyle": {
+                        "fill": "#000000",
+                        "font": {
+                           "family": "Arial",
+                           "size": "10pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     },
+                     "titleStyle": {
+                        "fill": "#000000",
+                        "font": {
+                           "family": "Arial",
+                           "size": "10pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "spans": [
+                        {
+                           "fit": "nice",
+                           "max": 140679545,
+                           "min": 0
+                        }
+                     ]
+                  }
+               },
+               {
+                  "axis": {
+                     "lineStyle": {
+                        "fill": "#000000",
+                        "stroke": {
+                           "width": "1px"
+                        }
+                     },
+                     "markStyle": {
+                        "fill": "transparent",
+                        "stroke": {
+                           "width": "1px"
+                        }
+                     },
+                     "tickStyle": {
+                        "fill": "#000000",
+                        "font": {
+                           "family": "Arial",
+                           "size": "10pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     },
+                     "titleStyle": {
+                        "fill": "#000000",
+                        "font": {
+                           "family": "Arial",
+                           "size": "10pt",
+                           "style": "normal",
+                           "weight": "normal"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "categoryStructure": {
+                        "align": "start",
+                        "gap": "10px"
+                     }
+                  }
+               },
+               {
+                  "scale": {
+                     "categoryStructure": {
+                        "nest": true
+                     }
+                  }
+               }
+            ],
+            "transforms": [
+               {
+                  "type": "cluster"
+               },
+               {
+                  "type": "transpose"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "_SERIES_FIELD_"
+                     },
+                     "id": "_PALETTE_",
+                     "modifies": "both",
+                     "palette": [
+                        "rgba(38, 101, 209, 1.0)",
+                        "rgba(89, 199, 212, 1.0)",
+                        "rgba(219, 110, 0, 1.0)",
+                        "rgba(227, 170, 0, 1.0)",
+                        "rgba(47, 153, 43, 1.0)",
+                        "rgba(102, 186, 0, 1.0)",
+                        "rgba(112, 43, 161, 1.0)",
+                        "rgba(147, 88, 224, 1.0)",
+                        "rgba(173, 95, 0, 1.0)",
+                        "rgba(232, 146, 7, 1.0)",
+                        "rgba(168, 34, 0, 1.0)",
+                        "rgba(222, 55, 18, 1.0)",
+                        "rgba(92, 151, 158, 1.0)",
+                        "rgba(108, 185, 204, 1.0)"
+                     ]
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "_VALUES_FIELD_"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "_CATEGORY_FIELD_"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "_SERIES_FIELD_"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "angle": -90,
+                     "colors": [
+                        {
+                           "color": {
+                              "dAlpha": 0,
+                              "dSaturation": 0.3,
+                              "dValue": 0.06
+                           },
+                           "offset": 0.4
+                        },
+                        {
+                           "color": {
+                              "dAlpha": 0,
+                              "dSaturation": 0.3,
+                              "dValue": -0.18
+                           },
+                           "offset": 1
+                        }
+                     ],
+                     "type": "linear"
+                  },
+                  "outline": {
+                     "dValue": -0.25
+                  },
+                  "stroke": {
+                     "style": "solid",
+                     "width": "1px"
+                  },
+                  "width": "80%"
+               },
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none"
+      }
+   ],
+   "legendPosition": "right",
+   "legends": [
+      {
+         "aesthetics": [
+            {
+               "aesthetic": {
+                  "$ref": "_PALETTE_"
+               }
+            }
+         ],
+         "boundsStyle": {
+            "align": "end",
+            "fill": "transparent",
+            "padding": {
+               "right": 4
+            },
+            "valign": "start"
+         },
+         "itemStyle": {
+            "outline": "#000000",
+            "padding": {
+               "bottom": 2,
+               "right": 4
+            },
+            "size": "48px",
+            "stroke": {
+               "style": "solid",
+               "width": "1px"
+            },
+            "symbol": "circle"
+         },
+         "labelStyle": {
+            "fill": "#000000",
+            "font": {
+               "size": "24pt",
+               "style": "italic",
+               "weight": "bold"
+            }
+         },
+         "location": {
+            "width": "30%"
+         },
+         "scale": {
+            "local": false,
+            "reverse": false
+         },
+         "title": [
+            "This is my Default Graph Title"
+         ],
+         "titleStyle": {
+            "fill": "#000000",
+            "font": {
+               "size": "48pt",
+               "style": "italic",
+               "weight": "bold"
+            }
+         }
+      }
+   ],
+   "size": {
+      "height": 350,
+      "width": 500
+   },
+   "titles": [
+      {
+         "backgroundStyle": {
+            "fill": "red"
+         },
+         "content": [
+            "Revenue and stuff"
+         ],
+         "style": {
+            "align": "end",
+            "fill": "blue",
+            "font": {
+               "family": "serif",
+               "size": 30
+            },
+            "padding": 50
+         },
+         "type": "title"
+      }
+   ],
+   "version": "3.0"
+}

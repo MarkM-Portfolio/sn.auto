@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="10" name="OrgA BVT" parallel="tests" >
+
+  <groups>
+    <run>
+      <include name="level2" />
+      <exclude name="mt-exclude" />      
+    </run>
+  </groups>
+
+  <!-- Organization specific overrides/properties -->
+  <!-- Test by overriding browser_url to the organization url -->
+  <parameter name="browser_url" value="https://connmt-orga.cnx.cwp.pnp-hcl.com" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/connmt_MT_orga_users.properties" />
+
+
+  <!-- TESTS -->
+  <test name="Activities" thread-count="2" parallel="methods"  preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.activities" />
+    </packages>
+  </test>
+
+  <test name="Calendar" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.calendar" />
+    </packages>
+  </test>
+
+  <test name="Communities" thread-count="2" parallel="methods" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+    </classes>
+  </test>
+
+  <test name="Embedded Experience" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_EE" />
+    </classes>
+  </test>
+
+  <test name="Files" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.files" />
+    </packages>
+  </test>
+
+</suite>

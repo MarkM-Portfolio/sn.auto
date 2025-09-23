@@ -1,0 +1,125 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "catId",
+          "label": "Categories",
+          "categories": [ "CatA", "CatB", "CatC" ]
+        },
+        {
+          "id": "seriesId",
+          "label": "Series",
+          "categories": [
+            "1-Series-1",
+            "2-Series-2-2-Series-2",
+            "3-Series-3-3-Series-3",
+            "4-Series-4-4-Series-4",
+            "5-Series-5"
+          ]
+        },
+        {"id": "valuesId", "label": "Revenue", "max": 30}
+      ],
+      "rows": [
+        [ 0, 0, 20 ],
+        [ 0, 1, 5 ],
+        [ 0, 2, 10 ],
+        [ 0, 3, 2 ],
+        [ 0, 4, 8 ],
+        [ 1, 0, 25 ],
+        [ 1, 1, 1 ],
+        [ 1, 2, 1 ],
+        [ 1, 3, 2 ],
+        [ 1, 4, 11 ],
+        [ 2, 0, 28 ],
+        [ 2, 1, 11 ],
+        [ 2, 2, 15 ],
+        [ 2, 3, 3 ],
+        [ 2, 4, 17 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "rgba(128,128,128,0.40)",
+                "stroke": {"width": "1px"}
+              },
+              "title": [ {"$ref": "valuesId"} ]
+            }
+          },
+          {"axis": {}},
+          {"scale": {"local": true}}
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [
+                {"$ref": "seriesId"},
+                "\n",
+                "Test"
+              ],
+              "lineMinSize": "5",
+              "lineStyle": {
+                "fill": "rgba(255,0,0,0.5)",
+                "stroke": {"width": "1px", "style": "Solid"}
+              },
+              "style": {
+                "fill": "black",
+                "location": "outside",
+                "padding": 45,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "valuesId"}},
+            {"field": {"$ref": "catId"}},
+            {"field": {"$ref": "seriesId"}}
+          ],
+          "color": [
+            {
+              "id": "paletteId",
+              "field": {"$ref": "seriesId"},
+              "modifies": "both",
+              "palette": [
+                "rgba(240,240,240,0.5)",
+                "red",
+                "green",
+                "orange",
+                "purple"
+              ]
+            }
+          ],
+          "style": {
+            "width": "97%",
+            "outline": {"dValue": -0.25},
+            "outlineMethod": "inside"
+          }
+        }
+      ]
+    }
+  ],
+  "legendPosition": "right",
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "paletteId"}} ],
+      "location": {"width": "25%"}
+    }
+  ],
+  "size": {"width": 750, "height": 500},
+  "version": "3.0"
+}

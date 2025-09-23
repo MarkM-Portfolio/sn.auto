@@ -1,0 +1,161 @@
+{
+  "data": [
+    {
+      "id": "ds",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [
+            "Oshorty",
+            "One really\nlong line\nwyth extra \nlyne",
+            "Medyum 2\nwords"
+          ]
+        },
+        {
+          "id": "values",
+          "min": 0.0,
+          "max": 100.0,
+          "format": {"numericPattern": "#.0", "suffix": "%"}
+        },
+        {"id": "sizeValues"}
+      ],
+      "rows": [
+        [ 0, 2.8, 1.0 ],
+        [ 1, 2.8, 1.0 ],
+        [ 2, 2.8, 1.0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [ {"content": [ {"$ref": "values"} ]} ],
+          "data": {"$ref": "ds"},
+          "position": [ {"field": {"$ref": "values"}} ],
+          "color": [
+            {
+              "id": "clusterType",
+              "field": {"$ref": "category"}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "Cluster:",
+                {"$ref": "category"},
+                "\n",
+                "Cluster Size = ",
+                {"$ref": "sizeValues"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.5},
+            "stroke": {"width": 1.0},
+            "width": "30%"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 20
+      }
+    }
+  ],
+  "legendPosition": "left",
+  "legends": [
+    {
+      "bounds": {"width": "30%"},
+      "content": [
+        {"text": [ "start default\nsmall text big swatch" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "clusterType"}}
+          ],
+          "swatchStyle": {"size": 20, "symbol": "square"},
+          "textStyle": {
+            "align": "start",
+            "font": {"size": 12},
+            "valign": "middleOfFirstLine"
+          }
+        }
+      ],
+      "style": {"fill": "white", "stroke": {"width": 1}}
+    },
+    {
+      "bounds": {"width": "30%"},
+      "content": [
+        {"text": [ "middle\nsmall sw. big text" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "clusterType"}}
+          ],
+          "swatchStyle": {"size": 5, "symbol": "square"},
+          "textStyle": {
+            "align": "middle",
+            "font": {"size": 15},
+            "valign": "middleOfFirstLine"
+          }
+        }
+      ],
+      "style": {"fill": "white", "stroke": {"width": 1}}
+    },
+    {
+      "bounds": {"width": "30%"},
+      "content": [
+        {"text": [ "end\nswatch height  = text height" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "clusterType"}}
+          ],
+          "swatchStyle": {"size": 12},
+          "textStyle": {
+            "align": "end",
+            "font": {"size": 12},
+            "valign": "middleOfFirstLine"
+          }
+        }
+      ],
+      "style": {"fill": "white", "stroke": {"width": 1}}
+    },
+    {
+      "bounds": {"width": "30%"},
+      "content": [
+        {"text": [ "legend\nfull control" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "clusterType"}}
+          ],
+          "layout": {"method": "swatch"},
+          "swatchStyle": {
+            "padding": {
+              "bottom": 5,
+              "left": 2,
+              "right": 5,
+              "top": 5
+            },
+            "size": 20,
+            "symbol": "star-7"
+          },
+          "textStyle": {
+            "align": "end",
+            "font": {"size": 12},
+            "valign": "middleOfFirstLine"
+          }
+        }
+      ],
+      "style": {"fill": "white", "stroke": {"width": 1}}
+    }
+  ],
+  "size": {"width": 440, "height": 640},
+  "version": "1.2"
+}

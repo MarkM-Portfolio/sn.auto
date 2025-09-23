@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length", "min": -20}
+      ],
+      "rows": [
+        [ 0 ],
+        [ 50 ],
+        [ 100 ],
+        [ 150 ],
+        [ 200 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "mapping": [
+                {"at": 0, "color": "red"},
+                {"at": 200, "color": "yellow"},
+                {"at": 100, "color": "green"}
+              ],
+              "field": { "$ref": "fX" }
+            }
+          ]
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "4.1", "size": { "width": 100 },
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,243 @@
+{
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+                  "Bangladesh",
+                  "Bhutan",
+                  "India",
+                  "Maldives",
+                  "Nepal",
+                  "Pakistan",
+                  "Sri Lanka"
+               ],
+               "id": "Country",
+               "label": "Country"
+            },
+            {
+               "id": "Population",
+               "label": "Population"
+            }
+         ],
+         "id": "data",
+         "rows": [
+            [
+               0,
+               152518015
+            ],
+            [
+               1,
+               697000
+            ],
+            [
+               2,
+               1210193422
+            ],
+            [
+               3,
+               396334
+            ],
+            [
+               4,
+               26620080
+            ],
+            [
+               5,
+               180440000
+            ],
+            [
+               6,
+               20277597
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "bounds": {
+            "left": 0,
+            "width": "80%"
+         },
+         "coordinates": {
+            "dimensions": [
+               {
+                   "scale": {
+                     "spans": [
+                        {
+                           "tickLabel": [
+                                 {
+                                    "$ref": "Population"
+                                 },
+                                 ": ",
+                                 {
+                                    "args": "tick"
+                                 }
+                              ]
+                        }
+                     ]
+                  },
+                  "axis": {
+                     "gridStyle": {
+                        "fill": {
+                           "a": 0.1,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "lineStyle": {
+                        "fill": {
+                           "a": 0.0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "14.5pt"
+                        },
+                        "padding": 3
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "lineStyle": {
+                        "fill": {
+                           "a": 0.25,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "markStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        }
+                     },
+                     "tickStyle": {
+                        "align": "start",
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "12.5pt",
+                           "weight": "bold"
+                        },
+                        "padding": 5,
+                        "valign": "start"
+                     },
+                     "title": [
+                        "Country"
+                     ],
+                     "titleStyle": {
+                        "fill": {
+                           "a": 0.6,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "font": {
+                           "family": "Arial",
+                           "size": "10.5pt"
+                        }
+                     }
+                  },
+                  "scale": {
+                     "categoryStructure": {
+                        "gap": "20px"
+                     }
+                  }
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+			"$ref": "Population"                     
+		     },
+                     "id": "colorId"
+                  }
+               ],
+               "position": [
+                  {
+                     "field": {
+                        "$ref": "Population"
+                     }
+                  },
+                  {
+                     "field": {
+                        "$ref": "Country"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "a": 0.9
+                  },
+                  "outline": {
+                     "dValue": -0.25
+                  },
+                  "stroke": {
+                     "width": 0.3
+                  },
+                  "width": "90%"
+               },
+               "type": "interval"
+            }
+         ],
+         "labelCollisionMethod": "none",
+         "style": {
+            "fill": {
+               "h": 0,
+               "l": 1,
+               "s": 0
+            },
+            "padding": {
+               "bottom": "2%",
+               "left": "2%",
+               "right": "2%",
+               "top": "5%"
+            }
+         }
+      }
+   ],
+   "size": {
+      "height": 400,
+      "width": 900
+   },
+   "style": {
+      "fill": {
+         "h": 0,
+         "l": 1,
+         "s": 0
+      }
+   },
+   "version": "4.1"
+}

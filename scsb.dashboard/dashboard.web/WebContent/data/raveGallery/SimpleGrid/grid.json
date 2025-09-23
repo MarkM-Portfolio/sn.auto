@@ -1,0 +1,158 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "v", "format": {"suffix": "%"}},
+        {
+          "id": "cat1",
+          "categories": [
+            "< 100",
+            "100 - 199",
+            "200 - 300",
+            "> 300"
+          ]
+        },
+        {
+          "id": "cat2",
+          "categories": [ "Low", "Medium", "High" ]
+        }
+      ],
+      "rows": [
+        [ 50.0, 1, 0 ],
+        [ 44.0, 2, 0 ],
+        [ 57.0, 3, 0 ],
+        [ 63.0, 0, 0 ],
+        [ 38.0, 1, 1 ],
+        [ 39.0, 2, 1 ],
+        [ 74.0, 3, 1 ],
+        [ 21.0, 0, 1 ],
+        [ 25.0, 1, 2 ],
+        [ 32.0, 2, 2 ],
+        [ 32.0, 3, 2 ],
+        [ 49.0, 0, 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 5
+              },
+              "title": [ "Metric 1" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Metric 2" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "v"} ],
+              "style": {
+                "font": {
+                  "family": "Arial",
+                  "size": "12pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "cat1"}},
+            {"field": {"$ref": "cat2"}}
+          ],
+          "clip": "none",
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "v"}
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "v"},
+                "\n",
+                {"$ref": "cat1"},
+                "/",
+                {"$ref": "cat2"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.5},
+            "outline": "#444",
+            "symbol": "rect"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": "2%"
+      }
+    }
+  ],
+  "size": {"width": 400.0, "height": 200.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

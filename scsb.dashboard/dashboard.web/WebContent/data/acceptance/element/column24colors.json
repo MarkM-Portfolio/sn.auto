@@ -1,0 +1,163 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "States",
+          "categories": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 18, 1100 ],
+        [ 17, 2100 ],
+        [ 16, 2600 ],
+        [ 15, 1100 ],
+        [ 14, 2100 ],
+        [ 13, 2600 ],
+        [ 12, 1100 ],
+        [ 11, 2100 ],
+        [ 10, 2600 ],
+        [ 9, 3100 ],
+        [ 8, 3600 ],
+        [ 7, 4100 ],
+        [ 6, 4600 ],
+        [ 5, 4000 ],
+        [ 4, 4400 ],
+        [ 3, 3300 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.08, "b": 0, "g": 0, "r": 0},
+                "stroke": {"style": "solid"}
+              },
+              "lineStyle": {
+                "fill": {"a": 0, "b": 0, "g": 0, "r": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.4, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": 11,
+                  "weight": "bold"
+                },
+                "padding": 5
+              },
+              "title": [ "Count" ],
+              "titleStyle": {
+                "fill": {"a": 0.5, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Arial,SanSerif",
+                  "size": 12
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.2, "b": 0, "g": 0, "r": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.45, "b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": 11.5,
+                  "weight": "bold"
+                },
+                "padding": 5
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "categories"},
+              "mapping": [
+                {"color": "#6eb0f6", "offset": 0},
+                {"color": "#609bd1", "offset": 1},
+                {"color": "#446d94", "offset": 2},
+                {"color": "#32516f", "offset": 3},
+                {"color": "#b8d282", "offset": 4},
+                {"color": "#9cb16d", "offset": 5},
+                {"color": "#798a55", "offset": 6},
+                {"color": "#58643f", "offset": 7},
+                {"color": "#ffd059", "offset": 8},
+                {"color": "#e2be51", "offset": 9},
+                {"color": "#bd9f45", "offset": 10},
+                {"color": "#997f37", "offset": 11},
+                {"color": "#ff9a5b", "offset": 12},
+                {"color": "#d7854f", "offset": 13},
+                {"color": "#b36f42", "offset": 14},
+                {"color": "#8d5834", "offset": 15},
+                {"color": "#db6d6d", "offset": 16},
+                {"color": "#bb5d5d", "offset": 17},
+                {"color": "#994c4c", "offset": 18},
+                {"color": "#743a3a", "offset": 19},
+                {"color": "#b895e0", "offset": 20},
+                {"color": "#9f81c0", "offset": 21},
+                {"color": "#76608f", "offset": 22},
+                {"color": "#5a496d", "offset": 23}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                " \n ",
+                {"$ref": "values"}
+              ] 
+            }
+          ],
+          "style": {"width": { "max": "80%", "preferred": 50,  "min": "50%"}, "outline": {"a": 1.0}}
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "version": "1.2"
+}

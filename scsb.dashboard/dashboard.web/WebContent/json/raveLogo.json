@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX", "min": 0, "max": 500},
+        {"id": "fY", "min": 0, "max": 500},
+        {
+          "id": "index",
+          "categories": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h"
+          ]
+        },
+        {"id": "circleSize"},
+        {
+          "id": "textID",
+          "label": "Countries",
+          "categories": [ null, "rave" ]
+        }
+      ],
+      "rows": [
+        [ 350, 210, 0, 30, 0 ],
+        [ 210, 210, 3, 30, 0 ],
+        [ 325, 450, 4, 20, 0 ],
+        [ 390, 400, 5, 12, 0 ],
+        [ 390, 540, 6, 12, 0 ],
+        [ 230, 135, 7, 0, 1 ]
+      ]
+    }
+  ],
+  "description": "RAVE logo. The font used in the chart is Neon 80s, which must be installed previously in the machine where this is rendered. The font can be downloaded from http://www.dafont.com/neon-80s.font. For steps on how to install fonts in your machine refer to http://www.dafont.com/faq.php.",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "index"},
+              "palette": [
+                {"a": 1.0, "b": 222, "g": 228, "r": 187},
+                {"a": 0.85, "b": 248, "g": 234, "r": 201},
+                {"a": 0.9, "b": 111, "g": 137, "r": 245},
+                {"a": 0.9, "b": 242, "g": 218, "r": 161},
+                {"a": 0.9, "b": 73, "g": 213, "r": 247}
+              ]
+            }
+          ],
+          "size": [ {"field": {"$ref": "circleSize"}} ],
+          "visibility": [
+            {
+              "field": {"$ref": "index"},
+              "palette": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+              ]
+            }
+          ],
+          "style": {"size": "900%"}
+        },
+        {
+          "type": "text",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "content": [ {"$ref": "textID"} ],
+          "style": {
+            "fill": {"b": 51, "g": 51, "r": 51},
+            "font": {"family": "Neon 80s", "size": "255pt"},
+            "location": "outside",
+            "padding": {"bottom": 20, "right": 10},
+            "valign": "middle"
+          }
+        },
+        {
+          "type": "point",
+          "position": [ {"value": 320}, {"value": 250} ],
+          "style": {
+            "fill": {
+              "a": 0.85,
+              "b": 169,
+              "g": 184,
+              "r": 249
+            },
+            "size": "900%",
+            "symbol": "circle"
+          }
+        },
+        {
+          "type": "point",
+          "position": [ {"value": 315}, {"value": 200} ],
+          "style": {
+            "fill": {
+              "a": 0.85,
+              "b": 105,
+              "g": 220,
+              "r": 249
+            },
+            "outline": "transparent",
+            "size": "600%",
+            "symbol": "circle"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 1000.0, "height": 600},
+  "version": "6.0",
+  "style": {"fill": "white"}
+}

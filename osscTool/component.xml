@@ -1,0 +1,17 @@
+<component name="osscTool"
+    description="Connections Open Source Scan Tool"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/lib/ossc.jar"
+            preferredInstallLocation="/lib"/>
+    </output-group>
+    <output-group name="dist">
+        <output type="tar" visibility="public" platform="all"
+            location="${env.LWP_COMP_BUILD}/ossc.tar"
+            preferredInstallLocation="./"/>
+    </output-group>
+
+    <dependency name="libs.auto/commons-cli" type="jar" version="1.1" />
+</component>

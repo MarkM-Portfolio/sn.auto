@@ -1,0 +1,297 @@
+{
+  "version": "1.2",
+	"data" : [{
+			"id" : "dData",
+			"fields" : [{
+					"id" : "fProductLine",
+					"label" : "Product line",
+					"categories" : [
+						"Camping Equipment",
+						"Golf Equipment",
+						"Personal Accessories",
+						"Mountaineering Equipment",
+						"Outdoor Protection"
+					]
+				}, {
+					"id" : "fRegion",
+					"label" : "Region",
+					"categories" : ["North", "South", "East", "West"]
+				}, {
+					"id" : "fOrderMethod",
+					"label" : "Order method",
+					"categories" : ["Web", "Phone", "Store", "Event"]
+				}, {
+					"id" : "fSales",
+					"label" : "Sales"
+				}
+			],
+			"rows" : [
+				[0, 0, 0, 950],
+				[0, 0, 1, 810],
+				[0, 0, 2, 945],
+				[0, 0, 3, 702],
+				[0, 1, 0, 977],
+				[0, 1, 1, 604],
+				[0, 1, 2, 361],
+				[0, 1, 3, 227],
+				[0, 2, 0, 888],
+				[0, 2, 1, 628],
+				[0, 2, 2, 811],
+				[0, 2, 3, 232],
+				[0, 3, 0, 406],
+				[0, 3, 1, 200],
+				[0, 3, 2, 602],
+				[0, 3, 3, 569],
+				[1, 0, 0, 389],
+				[1, 0, 1, 736],
+				[1, 0, 2, 861],
+				[1, 0, 3, 366],
+				[1, 1, 0, 954],
+				[1, 1, 1, 514],
+				[1, 1, 2, 931],
+				[1, 1, 3, 800],
+				[1, 2, 0, 197],
+				[1, 2, 1, 672],
+				[1, 2, 2, 343],
+				[1, 2, 3, 486],
+				[1, 3, 0, 746],
+				[1, 3, 1, 142],
+				[1, 3, 2, 450],
+				[1, 3, 3, 900],
+				[2, 0, 0, 872],
+				[2, 0, 1, 891],
+				[2, 0, 2, 863],
+				[2, 0, 3, 281],
+				[2, 1, 0, 768],
+				[2, 1, 1, 828],
+				[2, 1, 2, 915],
+				[2, 1, 3, 850],
+				[2, 2, 0, 438],
+				[2, 2, 1, 332],
+				[2, 2, 2, 567],
+				[2, 2, 3, 798],
+				[2, 3, 0, 135],
+				[2, 3, 1, 513],
+				[2, 3, 2, 990],
+				[2, 3, 3, 263],
+				[3, 0, 0, 571],
+				[3, 0, 1, 595],
+				[3, 0, 2, 928],
+				[3, 0, 3, 865],
+				[3, 1, 0, 713],
+				[3, 1, 1, 123],
+				[3, 1, 2, 604],
+				[3, 1, 3, 694],
+				[3, 2, 0, 327],
+				[3, 2, 1, 170],
+				[3, 2, 2, 991],
+				[3, 2, 3, 661],
+				[3, 3, 0, 223],
+				[3, 3, 1, 875],
+				[3, 3, 2, 598],
+				[3, 3, 3, 185],
+				[4, 0, 0, 371],
+				[4, 0, 1, 695],
+				[4, 0, 2, 528],
+				[4, 0, 3, 965],
+				[4, 1, 0, 713],
+				[4, 1, 1, 323],
+				[4, 1, 2, 104],
+				[4, 1, 3, 594],
+				[4, 2, 0, 227],
+				[4, 2, 1, 470],
+				[4, 2, 2, 991],
+				[4, 2, 3, 461],
+				[4, 3, 0, 223],
+				[4, 3, 1, 475],
+				[4, 3, 2, 598],
+				[4, 3, 3, 385]
+			]
+		}
+	],
+	"copyright" : "(C) Copyright IBM Corp. 2011",
+	"grammar" : [{
+			"bounds" : {
+				"left" : "0%",
+				"top" : "0%"
+			},
+			"coordinates" : {
+				"style" : {
+					"fill" : "white",
+					"outline" : {
+						"b" : 0,
+						"g" : 0,
+						"r" : 0
+					}
+				}
+			},
+			"elements" : [{
+					"type" : "interval",
+					"label" : [{
+							"content" : [{
+									"$ref" : "fProductLine"
+								}
+							],
+							"style" : {
+								"align" : "start",
+								"font" : {
+									"family" : "Arial",
+									"size" : "7pt"
+								},
+								"padding" : 2,
+								"valign" : "start"
+							}
+						}
+					],
+					"data" : {
+						"$ref" : "dData"
+					},
+					"positioning" : {
+						"layout" : "pivotBySize",
+						"leafOnly" : false,
+						"levelLabelStyles" : {
+							"internal" : [{
+									"content" : [{
+											"$ref" : "fProductLine"
+										}
+									],
+									"style" : {
+										"fill" : "#ffffff",
+										"align" : "end",
+										"effect" : {
+											"shadow" : {
+												"dy" : 1,
+												"stdDev" : 1
+											}
+										},
+										"font" : {
+											"family" : "Arial",
+											"size" : "18pt",
+											"weight" : "normal"
+										},
+										"padding" : 6,
+										"valign" : "start"
+									}
+								}, {
+									"content" : [{
+											"$ref" : "fRegion"
+										}
+									],
+									"style" : {
+										"fill" : "#222222",
+										"align" : "start",
+										"font" : {
+											"family" : "Arial",
+											"size" : "13pt",
+											"weight" : "bold"
+										},
+										"padding" : 4,
+										"valign" : "end"
+									}
+								}
+							],
+							"leaf" : {
+								"content" : [{
+										"$ref" : "fOrderMethod"
+									}
+								],
+								"style" : {
+									"fill" : "#444444",
+									"align" : "end",
+									"font" : {
+										"family" : "Arial",
+										"size" : "0pt",
+										"weight" : "normal"
+									},
+									"padding" : 4,
+									"valign" : "end"
+								}
+							}
+						},
+						"levelStyles" : {
+							"internal" : [{
+									"stroke" : {
+										"width" : 2.5
+									},
+									"outline" : "#636363"
+								}, {
+									"stroke" : {
+										"width" : 1.5
+									},
+									"outline" : "#8a8a8a"
+								}
+							],
+							"leaf" : {
+								"fill" : {
+									"h" : 0,
+									"l" : 0.85,
+									"s" : 0
+								},
+								"stroke" : {
+									"width" : 1
+								},
+								"outline" : "white"
+							}
+						},
+						"levels" : [{
+								"$ref" : "fProductLine"
+							}, {
+								"$ref" : "fRegion"
+							}, {
+								"$ref" : "fOrderMethod"
+							}
+						],
+						"method" : "treemap",
+						"padding" : 10,
+						"size" : {
+							"$ref" : "fSales"
+						}
+					},
+					"tooltip" : [{
+							"content" : [
+								"Product Line: ", {
+									"$ref" : "fProductLine"
+								},
+								"\nRegion: ", {
+									"$ref" : "fRegion"
+								},
+								"\nOrder Method: ", {
+									"$ref" : "fOrderMethod"
+								},
+								"\nSales: ", {
+									"$ref" : "fSales"
+								}
+							]
+						}
+					],
+					"style" : {
+						"fill" : {
+							"b" : 0,
+							"g" : 0,
+							"r" : 0
+						},
+						"stroke" : {
+							"width" : 0.5
+						},
+						"outline" : {
+							"b" : 0,
+							"g" : 0,
+							"r" : 0
+						},
+						"padding" : "2%"
+					}
+				}
+			]
+		}
+	],
+	"legends" : [{
+			"bounds" : {
+				"left" : 920
+			}
+		}
+	],
+	"size" : {
+		"width" : 900.0,
+		"height" : 600.0
+	}
+}

@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX", "label": "Length"},
+        {"id": "fY", "label": "Price"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ]
+        }
+      ],
+      "rows": [ [ 50, 6.49, 3 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {"gridStyle": {"fill": "gray"}}
+          },
+          {
+            "scale": {"spans": [ {"method": "linear"} ]},
+            "axis": {"gridStyle": {"fill": "gray"}}
+          }
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fX"},
+              "scale": {"spans": [ {"method": "log"} ]}
+            }
+          ]
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [ {} ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

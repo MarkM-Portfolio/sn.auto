@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "_VOIDS_FIELD_", "label": "_VOIDS_FIELD_"},
+        {
+          "id": "_SERIES_FIELD_",
+          "label": "Custom Legend Title",
+          "categories": [
+            "Golf Equipment",
+            "Skiing",
+            "Luge",
+            "Swimming",
+            "Equestrian"
+          ]
+        },
+        {"id": "_VALUES_FIELD_", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 2181, 0, 1283142 ],
+        [ 2183, 1, 157441 ],
+        [ 2185, 2, 662369 ],
+        [ 2187, 3, 274667 ],
+        [ 2189, 4, 510040 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                "Sport:\n",
+                {"$ref": "_SERIES_FIELD_"}
+              ],
+              "style": {"location": "inside"}
+            },
+            {
+              "backgroundStyle": {
+                "fill": "#f002",
+                "outline": "red"
+              },
+              "content": [ {"$ref": "_SERIES_FIELD_"} ],
+              "lineStyle": {"fill": "red"},
+              "style": {
+                "font": {"size": 20, "style": "italic"},
+                "location": "callout"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "_VALUES_FIELD_"}}
+          ],
+          "color": [
+            {
+              "id": "_PALETTE_",
+              "field": {"$ref": "_SERIES_FIELD_"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>Chart Practice</title>
+	<link rel="stylesheet" href="sb-admin-v2/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="sb-admin-v2/font-awesome/css/font-awesome.css"/>
+	<link href="sb-admin-v2/css/sb-admin.css" rel="stylesheet"/>
+	<!--<link rel="stylesheet" href="dojo/dijit/themes/claro/claro.css"/>-->
+	<!--The following is a css file from the Template demo on the rave website-->
+	<link rel="stylesheet" href="css/templateControls.css"/>
+	<script language="JavaScript" src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+	<script src="jquery-1.11.1.js"></script>
+	<script src="js/helper.js"></script>
+	<script src="js/ravebuttonscript.js"></script>
+	
+	<!--sb admin js files-->
+	<script src="sb-admin-v2/js/bootstrap.min.js"></script>
+	<script src="sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	
+	<script src="sb-admin-v2/js/sb-admin.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header"></div>
+			
+			<ul class="nav navbar-top-links navbar-right"></ul>
+			
+			<div class="navbar-default navbar-static-side" role="navigation">
+				<div class="sidebar-collapse">
+					<ul class="nav" id="side-menu">
+					
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="control-item control-item-first">
+						<button class="btn" id="tooltipbutton" type="button" onclick="toggleTooltips()">Hide Tooltips</button>
+					</div>
+					<div class="control-item control-item-last">
+						<label id="fileLabel" for="raveSpec">data/</label>
+						<select class="form-control" style="width:250px; display:inline-block" id="raveSpec" name="ravespec" onChange ="changeFile()">
+							<option>airlines.json</option>
+							<option selected>HealthCareStocksPercent.json</option>
+							<option>HealthCareStocks.json</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="control-item control-item-first">
+						<select class="form-control" style="width:100px;display:inline-block" id="timeUnit" onChange="changeUnit()">
+							<option></option>
+							<option>hour</option>
+							<option>day</option>
+							<option>week</option>
+							<option>month</option>
+							<option>year</option>
+						</select>
+					</div>
+					<div class="control-item control-item-last">
+						<label for="timePeriod">Choose search period</label>
+						<select class="form-control" id="timePeriod" style="width:250px;display:inline-block" disabled>
+						<option>Choose Unit First</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControl" style="width: 400px; height: 400px;"/>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</body>
+</html>

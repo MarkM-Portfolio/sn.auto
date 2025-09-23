@@ -1,0 +1,129 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Cities",
+          "categories": [
+            "City 1",
+            "City 2",
+            "City 3",
+            "City 4",
+            "City 5",
+            "City 6"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 5, 450 ],
+        [ 4, 1400 ],
+        [ 3, 1800 ],
+        [ 2, 1600 ],
+        [ 1, 1100 ],
+        [ 0, 950 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                },
+                "padding": 5
+              },
+              "title": [ "Population (In Million)" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Cities" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                "\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "a": 0.9,
+              "h": 0.5805,
+              "l": 0.65,
+              "s": 0.59
+            },
+            "stroke": {"width": 1},
+            "width": "50%",
+            "outline": {"h": 0.5805, "l": 0.4, "s": 0.59}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top":"5%","bottom":"2%","left":"2%","right":"2%"}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0}
+}

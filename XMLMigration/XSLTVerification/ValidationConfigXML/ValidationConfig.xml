@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Contains configuration for XMLValidator-->
+
+<config>
+	<!-- output defines the output target as well as the verbosity level -->
+	<!-- possible length: short verbose -->
+	<!-- possible target: console file string exception -->
+	<outputType length="short" target="file"/>
+	
+	<!-- if outputType target="file" file tag must be set target="path/filename" -->
+	<file target="shortFile.log"/>
+	
+	<!--Batch mode-->
+	<!--in this section, you can specify multiple XML files to check, along with their corresponding reference files-->
+	<!-- the multiple tag defines elements in the XML to validate that can occur more than once and the attribute that uniquely defines them -->
+	<!-- if a tag occurs multiple times and does not contain a unique attribute, specify this by attr=null -->
+	<!-- each reference should have its own set of multiple tags -->
+	
+	<reference file="ConnectionsXMLFiles/LotusConnections-config.xml">
+	
+		<checkFile file="ConnectionsXMLFiles/LotusConnections-configBAD.xml" />
+		<checkFile file="ConnectionsXMLFiles/LotusConnections-configBADtag.xml" />
+		<checkFile file="ConnectionsXMLFiles/LotusConnections-config.xml" />
+		
+		<multiple element="sloc:serviceReference" attr="serviceName" />
+		
+	</reference>
+	
+	<reference file="SampleXML/sample.xml">
+	
+		<checkFile file="SampleXML/sample.xml" />
+		<checkFile file="SampleXML/sample2.xml" />
+
+		
+		<multiple element="person" attr="username" />
+		
+	</reference>
+</config>

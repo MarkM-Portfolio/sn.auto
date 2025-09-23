@@ -1,0 +1,295 @@
+{
+
+
+
+
+
+  "data": [
+
+
+
+
+
+    {
+
+
+
+
+
+      "id": "source",
+
+
+
+
+
+      "fields": [
+
+
+
+
+
+        {"id": "Group", "categories": [ "A", "B", "C" ]},
+
+
+
+
+
+        {"id": "X", "categories": [ "X", "Y" ]},
+
+
+
+
+
+        {"id": "Ymin"},
+
+
+
+
+
+        {"id": "Ymax"}
+
+
+
+
+
+      ],
+
+
+
+
+
+      "rows": [
+
+
+
+
+
+        [ 0, 0, 2, 7 ],
+
+
+
+
+
+        [ 0, 1, 3, 8 ],
+
+
+
+
+
+        [ 1, 0, 2, 3 ],
+
+
+
+
+
+        [ 1, 1, 3, 8 ],
+
+
+
+
+
+        [ 2, null, 2, 7 ]
+
+
+
+
+
+      ]
+
+
+
+
+
+    }
+
+
+
+
+
+  ],
+
+
+
+
+
+  "grammar": [
+
+
+
+
+
+    {
+
+
+
+
+
+      "coordinates": {
+
+
+
+
+
+        "dimensions": [ {"axis": {}}, {"axis": {}}, {} ],
+
+
+
+
+
+        "transforms": [
+
+
+
+
+
+          {
+
+
+
+
+
+            "type": "cluster",
+
+
+
+
+
+            "clusterParameters": {"nest": [ true ]}
+
+
+
+
+
+          }
+
+
+
+
+
+        ],
+
+
+
+
+
+        "style": {"fill": "lightGray"}
+
+
+
+
+
+      },
+
+
+
+
+
+      "elements": [
+
+
+
+
+
+        {
+
+
+
+
+
+          "type": "interval",
+
+
+
+
+
+          "position": [
+
+
+
+
+
+            {"field": {"$ref": "Ymax"}},
+
+
+
+
+
+            {"field": {"$ref": "Group"}},
+
+
+
+
+
+            {"field": {"$ref": "X"}}
+
+
+
+
+
+          ],
+
+
+
+
+
+          "color": [ {"field": {"$ref": "Group"}} ],
+
+
+
+
+
+          "style": {"outline": "black"}
+
+
+
+
+
+        }
+
+
+
+
+
+      ],
+
+
+
+
+
+      "style": {"fill": "white", "padding": 15}
+
+
+
+
+
+    }
+
+
+
+
+
+  ],
+
+
+
+
+
+  "legends": [ {} ],
+
+
+
+
+
+  "version": "1.2",
+
+
+
+
+
+  "style": {"fill": "white"}
+
+
+
+
+
+}

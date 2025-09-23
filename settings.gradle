@@ -1,0 +1,8 @@
+rootProject.name = 'automation'
+include ':bvt.gui'
+include ':bvt.api'
+include ':bvt.restassured.api'
+include ':bvt.cleanup'
+include ':waffle'
+include ':lc.data.pop'
+include ':bss_populate'

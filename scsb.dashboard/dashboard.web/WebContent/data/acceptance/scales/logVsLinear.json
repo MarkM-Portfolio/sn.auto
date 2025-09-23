@@ -1,0 +1,111 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Year",
+          "categories": [
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010"
+          ]
+        },
+        {"id": "fValues", "label": "Widgets"}
+      ],
+      "rows": [
+        [ 0, 1 ],
+        [ 1, 2 ],
+        [ 2, 4 ],
+        [ 3, 8 ],
+        [ 4, 16 ],
+        [ 5, 32 ],
+        [ 6, 64 ],
+        [ 7, 128 ],
+        [ 8, 256 ],
+        [ 9, 512 ],
+        [ 10, 1024 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "bounds": {"height": "50%", "top": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "padding": 10,
+              "spans": [ {"method": "log"} ]
+            }
+          },
+          {"axis": {"title": [ "Log Scale" ]}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ]
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "style": {"outline": "blue", "size": 10}
+        }
+      ]
+    },
+    {
+      "bounds": {"height": "50%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "padding": 10,
+              "spans": [ {"method": "linear"} ]
+            }
+          },
+          {"axis": {"title": [ "Linear Scale" ]}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ]
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "clip":"overlap",
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "style": {"outline": "red", "size": 10}
+        }
+      ]
+    }
+  ],
+  "version": "2.0"
+}

@@ -1,0 +1,228 @@
+{
+  "data": [
+    {
+      "id": "annotations",
+      "fields": [
+        {"id": "aDataX", "unit": "date"},
+        {"id": "aAnchorX", "unit": "date"},
+        {"id": "aDataY"},
+        {"id": "aAnchorY"},
+        {
+          "id": "aText",
+          "label": "Text",
+          "categories": [
+            "19-Mar-2011  to 16-Apr-2011\n狢狣狤狥狦狧狪狫",
+            "12-Nov-2011  to 31-Dec-2011\n通桐酮瞳同铜彤童",
+            "07-Apr-2012\n⺁⺄⺈⺋⺌⺗⺧⺪⺮⺳⺶⺷⺻⻊",
+            "06-Oct-2012\n亐亖亗亙亜亝亞\n亐亖亗亙亜亝亞\n亐亖亗亙亜亝亞\n亐亖亗亙亜亝亞\n亐亖亗亙亜亝亞\n亐亖亗亙亜亝亞."
+          ]
+        }
+      ],
+      "rows": [
+        [ 15052, 15052, 2, 2, 0 ],
+        [ 15290, 15262, 3, 6.3, 1 ],
+        [ 15437, 15374, 7, 10.5, 2 ],
+        [ 15619, 15577, 7, 9.8, 3 ]
+      ]
+    },
+    {
+      "id": "points",
+      "fields": [
+        {"id": "pDate", "unit": "date"},
+        {"id": "pValue"},
+        {
+          "id": "pColor",
+          "categories": [ null, "blue", "red", "yellow" ]
+        },
+        {"id": "pTooltip", "categories": [ null, null ]}
+      ],
+      "rows": [
+        [ 14618, 2, 1, 1 ],
+        [ 14625, 3, 1, 1 ],
+        [ 14632, 1, 1, 1 ],
+        [ 14639, 2, 1, 1 ],
+        [ 14646, 3, 1, 1 ],
+        [ 14653, 1, 1, 1 ],
+        [ 14660, 2, 1, 1 ],
+        [ 14667, 3, 1, 1 ],
+        [ 14674, 1, 1, 1 ],
+        [ 14681, 2, 1, 1 ],
+        [ 14688, 3, 1, 1 ],
+        [ 14695, 1, 1, 1 ],
+        [ 14702, 2, 1, 1 ],
+        [ 14709, 3, 1, 1 ],
+        [ 14716, 1, 1, 1 ],
+        [ 14723, 2, 1, 1 ],
+        [ 14730, 3, 1, 1 ],
+        [ 14737, 1, 1, 1 ],
+        [ 14744, 2, 1, 1 ],
+        [ 14751, 3, 1, 1 ],
+        [ 14758, 1, 1, 1 ],
+        [ 14765, 2, 1, 1 ],
+        [ 14772, 3, 1, 1 ],
+        [ 14779, 1, 1, 1 ],
+        [ 15605, 2, 1, 1 ],
+        [ 15612, 1, 1, 1 ],
+        [ 15619, 7, 2, 1 ]
+      ]
+    },
+    {
+      "id": "ranges",
+      "fields": [
+        {"id": "rStart", "label": "Start", "unit": "date"},
+        {"id": "rEnd", "label": "End", "unit": "date"},
+        {
+          "id": "rValue",
+          "label": "Tickets OOC (%)",
+          "format": {"suffix": "%"}
+        },
+        {
+          "id": "rType",
+          "label": "Type",
+          "categories": [ "LNPL", "UNPL", "Mean", "VOC" ]
+        }
+      ],
+      "rows": [
+        [ 14618, 14702, 0, 0 ],
+        [ 14618, 14702, 7.743655914, 1 ],
+        [ 14618, 14702, 2.709677419, 2 ],
+        [ 14709, 14786, 0, 0 ],
+        [ 14709, 14786, 4.95444, 1 ],
+        [ 14709, 14786, 1.9777777, 2 ],
+        [ 14793, 15045, 0, 0 ],
+        [ 14793, 15045, 12.66909091, 1 ],
+        [ 14793, 15045, 5.575757576, 2 ],
+        [ 15052, 15521, 0, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"bottom": "90%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "minorStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": 12}
+              },
+              "title": [ {"$ref": "rValue"} ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          },
+          {"axis": {}}
+        ],
+        "style": {
+          "fill": {"h": 0, "l": 1, "s": 0},
+          "outline": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "rValue"}},
+            {"field": {"$ref": "rValue"}},
+            {"field": {"$ref": "rStart"}},
+            {"field": {"$ref": "rEnd"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "rType"},
+              "palette": [ "red", "red", "green", "purple" ]
+            }
+          ],
+          "style": {"stroke": {"width": 2}}
+        },
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "pValue"}},
+            {"field": {"$ref": "pDate"}}
+          ],
+          "style": {"fill": "navy"}
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "aAnchorY"}},
+            {"field": {"$ref": "aDataY"}},
+            {"field": {"$ref": "aAnchorX"}},
+            {"field": {"$ref": "aDataX"}}
+          ],
+          "style": {
+            "stroke": {"width": 1},
+            "startArrow": "filledArrow"
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "pValue"}},
+            {"field": {"$ref": "pDate"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "pColor"},
+              "palette": [ "navy", "red", "yellow" ]
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "pTooltip"} ]}
+          ],
+          "style": {"size": 8, "symbol": "circle"}
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "#ffed",
+                "outline": "black",
+                "padding": 3
+              },
+              "content": [ {"$ref": "aText"} ],
+              "style": {
+                "font": {"family":"SimSun","size": 11},
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "aAnchorY"}},
+            {"field": {"$ref": "aAnchorX"}}
+          ],
+          "style": {"font": {"size": 12}, "size": 0}
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 1000.0, "height": 400.0},
+  "version": "3.0",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

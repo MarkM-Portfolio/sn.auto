@@ -1,0 +1,141 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ],
+          "key": true
+        },
+        {
+          "id": "fValues",
+          "label": "Price",
+          "min": 3427,
+          "max": 3972,
+          "unit": "date"
+        }
+      ],
+      "rows": [
+        [ 3, 3672 ],
+        [ 2, 3972 ],
+        [ 1, 3427 ],
+        [ 0, 3785 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "title": [
+                "Categories of \"",
+                {"$ref": "fCategories"},
+                "\""
+              ],
+              "titleStyle": {
+                "fill": {"b": 150, "g": 50, "r": 50},
+                "font": {
+                  "family": "Technical, Times New Roman",
+                  "size": "18",
+                  "style": "italic"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [ {"content": [ {"$ref": "fValues"} ]} ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fValues"},
+              "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"b": 255, "g": 0, "r": 0}
+                },
+                {
+                  "at": "100%",
+                  "color": {"b": 0, "g": 255, "r": 255}
+                }
+              ]
+            }
+          ],
+          "meta": [
+            {
+              "field": {"$ref": "fCategories"},
+              "key": "category"
+            }
+          ],
+          "tooltip": [
+            {"content": [ {"$ref": "fValues"} ]}
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 180.0,
+              "colors": [
+                {
+                  "color": {"b": 150, "g": 57, "r": 1},
+                  "offset": 0.0
+                },
+                {
+                  "color": {
+                    "a": 0.2,
+                    "b": 0,
+                    "g": 0,
+                    "r": 0
+                  },
+                  "offset": 1.0
+                }
+              ]
+            },
+            "width": "80%",
+            "cornerRadius": "10",
+            "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "style": {
+        "fill": {
+          "type": "linear",
+          "angle": 135.0,
+          "colors": [
+            {
+              "color": {"b": 255, "g": 221, "r": 221},
+              "offset": 0.0
+            },
+            {
+              "color": {"b": 255, "g": 255, "r": 255},
+              "offset": 1.0
+            }
+          ]
+        },
+        "stroke": {"width": 0.5},
+        "cornerRadius": "10",
+        "outline": {"b": 0, "g": 0, "r": 0}
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 400.0, "height": 300.0},
+  "version": "1.3"
+}

@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "fields": [ {"id": "a", "unit": "timestamp"} ],
+      "rows": [ [ 1000000.0 ], [ 3500000.0 ], [ 0.0 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "a"} ],
+              "style": {"location": "inside"}
+            }
+          ],
+          "position": [ {"field": {"$ref": "a"}} ],
+          "style": {
+            "width": 80,
+            "height": 25,
+            "symbol": "rect"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "4.1"
+}

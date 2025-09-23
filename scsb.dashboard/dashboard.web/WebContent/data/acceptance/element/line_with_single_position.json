@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year",
+          "categories": [
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011"
+          ]
+        },
+        {
+          "id": "fY1",
+          "label": "Audience  score",
+          "format": {
+            "numericPattern": "###,###,###,###,##0.00"
+          }
+        },
+        {
+          "id": "categories",
+          "label": "Genre",
+          "categories": [ "Musical" ]
+        }
+      ],
+      "rows": [ [ 0, 2.48, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "b": 0, "g": 0, "r": 0}
+              },
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "minorStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {"family": "Arial", "size": "9pt"}
+              },
+              "title": [ {"$ref": "fY1"} ],
+              "titleStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "9pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "b": 0, "g": 0, "r": 0}
+              },
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "minorStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {"family": "Arial", "size": "9pt"},
+                "padding": 3
+              },
+              "title": [ {"$ref": "fX"} ],
+              "titleStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "9pt",
+                  "weight": "bold"
+                }
+              }
+            }
+          }
+        ],
+        "style": {
+          "fill": "transparent",
+          "outline": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "palette": [
+                {"b": 105, "g": 77, "r": 14},
+                {"b": 166, "g": 121, "r": 18},
+                {"b": 186, "g": 159, "r": 23},
+                {"b": 202, "g": 188, "r": 58},
+                {"b": 202, "g": 208, "r": 128}
+              ]
+            }
+          ],
+          "symbolStyle": {
+            "outline": "white",
+            "size": 10,
+            "symbol": "circle"
+          },
+          "style": {"stroke": {"width": 2}}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": "transparent",
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "boundsStyle": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "5%"}
+      },
+      "tickStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": "9pt",
+          "weight": "bold"
+        }
+      },
+      "title": [  ]
+    }
+  ],
+  "version": "5.0",
+  "style": {"fill": "transparent"}
+}

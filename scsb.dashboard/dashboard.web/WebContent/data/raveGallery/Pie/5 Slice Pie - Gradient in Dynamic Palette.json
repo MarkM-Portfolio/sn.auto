@@ -1,0 +1,151 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Population",
+          "format": {"numericPattern": "0,000,000"}
+        },
+        {
+          "id": "y",
+          "label": "Cities",
+          "categories": [ "C1", "C2", "C3", "C4", "C5" ]
+        }
+      ],
+      "rows": [
+        [ 78000000, 0 ],
+        [ 55000000, 1 ],
+        [ 28000000, 2 ],
+        [ 48000000, 3 ],
+        [ 32000000, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "x"} ],
+              "style": {
+                "fill": {"h": 0, "l": 1, "s": 0},
+                "align": "middle",
+                "effect": {"shadow": {"dy": 1, "stdDev": 1}},
+                "font": {
+                  "family": "Arial",
+                  "size": 15.0,
+                  "weight": "bold"
+                },
+                "padding": 20,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "y"},
+              "modifies": "fill",
+              "palette": [
+                {"h": 0.6222, "s": 0.72, "v": 0.81},
+                {"h": 0.2833, "s": 0.71, "v": 0.7},
+                {"h": 0.1416, "s": 0.85, "v": 0.85},
+                {"h": 0.0888, "s": 0.85, "v": 0.9},
+                {"h": 0.0, "s": 0.73, "v": 0.77},
+                {"h": 0.8, "s": 0.7, "v": 0.78},
+                {"h": 0.7722, "s": 0.75, "v": 0.68},
+                {"h": 0.3194, "s": 0.73, "v": 0.44},
+                {"h": 0.2083, "s": 0.75, "v": 0.65},
+                {"h": 0.5833, "s": 0.52, "v": 0.75},
+                {"h": 0.5138, "s": 0.33, "v": 0.8},
+                {"h": 0.6583, "s": 0.8, "v": 0.48},
+                {"h": 0.0666, "s": 0.8, "v": 0.66}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "y"},
+                " :\n",
+                {"$ref": "x"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.05,
+                    "dValue": 0.1
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.25,
+                    "dValue": -0.15
+                  },
+                  "offset": 1
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": "10%", "right": "100%", "top": 0},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

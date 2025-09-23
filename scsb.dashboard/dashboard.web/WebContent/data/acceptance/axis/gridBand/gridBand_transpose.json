@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [
+            "California State",
+            "Illinois State",
+            "Texas",
+            "Arizona"
+          ]
+        },
+        {"id": "fValues", "label": "Price"},
+        {"id": "fNum", "label": "Number"},
+        {
+          "id": "fDate",
+          "label": "date",
+          "min": 3427,
+          "max": 3972,
+          "unit": "date"
+        }
+      ],
+      "rows": [
+        [ 0, 4, 2, 3672 ],
+        [ 1, 2, 4, 3972 ],
+        [ 2, 5, 15, 3427 ],
+        [ 3, 1, 20, 3785 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "50%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {
+              "gridBand": {
+                "fill": [
+                  {"a": 0.3, "r": 255},
+                  {"a": 0.2, "g": 255, "r": 255}
+                ]
+              },
+              "gridStyle": {"fill": "red"},
+              "method": "between"
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fValues"}}
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none"
+    },
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "50%",
+        "left": "50%",
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {
+              "gridBand": {
+                "fill": [
+                  {"a": 0.3, "r": 255},
+                  {"a": 0.2, "g": 255, "r": 255}
+                ]
+              },
+              "gridStyle": {"fill": "red"}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fValues"}}
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "size": {"width": 800, "height": 800},
+  "titles": [
+    {
+      "type": "title",
+      "content": [
+        "Grid Bands on Polar chart - Story 14054"
+      ],
+      "style": {"fill": "red", "font": {"size": 22}}
+    },
+    {
+      "type": "title",
+      "content": [
+        "1 contains X axis Grid Band with transpose and axis method = between."
+      ],
+      "style": {"fill": "blue", "font": {"size": 18}}
+    },
+    {
+      "type": "title",
+      "content": [
+        "2 contains X axis Grid Band with transpose."
+      ],
+      "style": {"fill": "blue", "font": {"size": 18}}
+    }
+  ],
+  "version": "4.1"
+}

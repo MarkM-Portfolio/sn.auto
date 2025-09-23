@@ -1,0 +1,214 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year",
+          "categories": [
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008"
+          ]
+        },
+        {"id": "fY1", "label": "Revenue"}
+      ],
+      "rows": [
+        [ 0, 50 ],
+        [ 1, 70 ],
+        [ 2, -65 ],
+        [ 3, 80 ],
+        [ 4, -60 ],
+        [ 5, 75 ],
+        [ 6, 60 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"bottom": "50%", "right": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "title": [ "Threshold = '25' on y-axis" ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "interpolation": "smooth",
+          "style": {
+            "fill": {
+              "type": "linearByYDimension",
+              "angle": 90,
+              "colors": [
+                {"color": "red", "offset": 25},
+                {"color": "green", "offset": 25}
+              ],
+              "global": true
+            },
+            "stroke": {"width": 1}
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {"right": "50%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "title": [ "Threshold = '2005' on x-axis" ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "interpolation": "smooth",
+          "style": {
+            "fill": {
+              "type": "linearByXDimension",
+              "angle": 0,
+              "colors": [
+                {"color": "red", "offset": 3},
+                {"color": "green", "offset": 3}
+              ],
+              "global": true
+            },
+            "stroke": {"width": 1}
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {"bottom": "50%", "left": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "title": [ "Threshold = '25' on y-axis" ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "interpolation": "smooth",
+          "style": {
+            "fill": {
+              "type": "linearByYDimension",
+              "angle": 90,
+              "colors": [
+                {"color": "red", "offset": -60},
+                {
+                  "color": {
+                    "a": 1.0,
+                    "b": 255,
+                    "g": 255,
+                    "r": 255
+                  },
+                  "offset": 25
+                },
+                {
+                  "color": {
+                    "a": 1.0,
+                    "b": 255,
+                    "g": 255,
+                    "r": 255
+                  },
+                  "offset": 25
+                },
+                {"color": "blue", "offset": 60}
+              ],
+              "global": true
+            },
+            "stroke": {"width": 1}
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {"left": "50%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "title": [ "Threshold = '2005' on x-axis" ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "interpolation": "smooth",
+          "style": {
+            "fill": {
+              "type": "linearByXDimension",
+              "angle": 0,
+              "colors": [
+                {"color": "red", "offset": 0},
+                {
+                  "color": {
+                    "a": 1.0,
+                    "b": 255,
+                    "g": 255,
+                    "r": 255
+                  },
+                  "offset": 3
+                },
+                {
+                  "color": {
+                    "a": 1.0,
+                    "b": 255,
+                    "g": 255,
+                    "r": 255
+                  },
+                  "offset": 3
+                },
+                {"color": "blue", "offset": 6}
+              ],
+              "global": true
+            },
+            "stroke": {"width": 1}
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 800.0, "height": 650.0},
+  "version": "4.1",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fY"},
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [ "California", "Illinois" ]
+        }
+      ],
+      "rows": [ [ 60, 0 ], [ 10, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "size": [
+            {
+              "field": {"$ref": "fY"},
+              "scale": {"spans": [ {"fit": "exact"} ]},
+              "mapping": [
+                {"at": 9, "size": 5},
+                {"at": "100%", "size": 40}
+              ]
+            }
+          ],
+          "style": {"fill": "yellow", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [ {"method": "axis"} ],
+  "style": {"fill": "white"},
+  "version": "2.0"
+}

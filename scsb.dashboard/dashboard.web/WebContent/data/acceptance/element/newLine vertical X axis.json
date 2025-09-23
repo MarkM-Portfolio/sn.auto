@@ -1,0 +1,328 @@
+{
+	"version": "1.2",
+	"data" : [{
+			"id" : "data",
+			"fields" : [{
+					"id" : "categories",
+					"label" : "\nWorld\nCities",
+					"categories" : ["\nCity1", "\nCity2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "City11\n12\n13", "C12", "C13", "C14", "C15", "C16"]
+				}, {
+					"id" : "values"
+				}
+			],
+			"rows" : [[15, 1400], [14, 3000], [13, 2200], [12, 1100], [11, 450], [10, 1400], [9, 1400], [8, 3000], [7, 2200], [6, 1100], [5, 450], [4, 1400], [3, 3000], [2, 2200], [1, 1100], [0, 450]]
+		}
+	],
+	"copyright" : "(C) Copyright IBM Corp. 2011",
+	"grammar" : [{
+			"bounds" : {
+				"width" : "90%",
+				"left" : 0
+			},
+			"coordinates" : {
+				"dimensions" : [{
+						"axis" : {
+							"gridStyle" : {
+								"fill" : {
+									"a" : 0.1,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								}
+							},
+							"lineStyle" : {
+								"fill" : {
+									"a" : 0.0,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								}
+							},
+							"markStyle" : {
+								"fill" : {
+									"a" : 0,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								}
+							},
+							"tickStyle" : {
+								"fill" : {
+									"a" : 0.6,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								},
+								"font" : {
+									"family" : "Arial",
+									"size" : "10.5pt"
+								},
+								"padding" : 5
+							},
+							"title" : ["Population\n(In Million)\nthird line"],
+							"titleStyle" : {
+								"fill" : {
+									"a" : 0.6,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								},
+								"font" : {
+									"family" : "Arial",
+									"size" : "10.5pt"
+								}
+							}
+						}
+					}, {
+						"axis" : {
+							"lineStyle" : {
+								"fill" : {
+									"a" : 0.25,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								}
+							},
+							"markStyle" : {
+								"fill" : {
+									"a" : 0,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								}
+							},
+							"method" : "between",
+							"tickStyle" : {
+								"fill" : {
+									"a" : 0.6,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								},
+								"font" : {
+									"family" : "Arial",
+									"size" : "10.5pt",
+									"weight" : "bold"
+								},
+								"padding" : 3
+							},
+							"title" : [{
+									"$ref" : "categories"
+								}
+							],
+							"titleStyle" : {
+								"fill" : {
+									"a" : 0.6,
+									"h" : 0,
+									"l" : 0,
+									"s" : 0
+								},
+								"font" : {
+									"family" : "Arial",
+									"size" : "10.5pt"
+								}
+							}
+						}
+					}
+				]
+			},
+			"elements" : [{
+					"type" : "interval",
+					"label" : [{
+							"content" : ["\n$", "\n", {
+									"$ref" : "values"
+								}
+							],
+							"style" : {
+								"align": "middle",
+								"valign" : "start"
+							}
+						}
+					],
+					"position" : [{
+							"field" : {
+								"$ref" : "values"
+							}
+						}, {
+							"field" : {
+								"$ref" : "categories"
+							}
+						}
+					],
+					"color" : [{
+							"id" : "colorId",
+							"field" : {
+								"$ref" : "categories"
+							},
+							"modifies" : "both",
+							"palette" : [{
+									"h" : 0.5805,
+									"s" : 0.5,
+									"v" : 0.85
+								}, {
+									"h" : 0.683,
+									"s" : 0.25,
+									"v" : 0.85
+								}, {
+									"h" : 0.2194,
+									"s" : 0.45,
+									"v" : 0.75
+								}, {
+									"h" : 0.1194,
+									"s" : 0.7,
+									"v" : 0.85
+								}, {
+									"h" : 0.0666,
+									"s" : 0.63,
+									"v" : 0.85
+								}, {
+									"h" : 0.0,
+									"s" : 0.54,
+									"v" : 0.83
+								}, {
+									"h" : 0.5805,
+									"s" : 0.35,
+									"v" : 0.56
+								}, {
+									"h" : 0.7444,
+									"s" : 0.34,
+									"v" : 0.75
+								}, {
+									"h" : 0.2194,
+									"s" : 0.44,
+									"v" : 0.54
+								}, {
+									"h" : 0.1194,
+									"s" : 0.62,
+									"v" : 0.67
+								}, {
+									"h" : 0.0666,
+									"s" : 0.68,
+									"v" : 0.68
+								}, {
+									"h" : 0.0,
+									"s" : 0.57,
+									"v" : 0.67
+								}, {
+									"h" : 0.5777,
+									"s" : 0.65,
+									"v" : 0.43
+								}, {
+									"h" : 0.7416,
+									"s" : 0.38,
+									"v" : 0.41
+								}, {
+									"h" : 0.2194,
+									"s" : 0.52,
+									"v" : 0.38
+								}, {
+									"h" : 0.1194,
+									"s" : 0.68,
+									"v" : 0.5
+								}, {
+									"h" : 0.0666,
+									"s" : 0.73,
+									"v" : 0.53
+								}, {
+									"h" : 0.0,
+									"s" : 0.38,
+									"v" : 0.5
+								}
+							]
+						}
+					],
+					"tooltip" : [{
+							"content" : [{
+									"$ref" : "categories"
+								}, "\n", {
+									"$ref" : "values"
+								}
+							]
+						}
+					],
+					"style" : {
+						"fill" : {
+							"a" : 0.9
+						},
+						"stroke" : {
+							"width" : 0.5
+						},
+						"width" : "80%",
+						"outline" : {
+							"dValue" : -0.25
+						}
+					}
+				}
+			],
+			"style" : {
+				"fill" : {
+					"h" : 0,
+					"l" : 1,
+					"s" : 0
+				},
+				"padding" : {
+					"bottom" : "2%",
+					"left" : "2%",
+					"right" : "2%",
+					"top" : "5%"
+				}
+			}
+		}
+	],
+	"legends" : [{
+			"bounds" : {
+				"width" : "12%",
+				"right" : "100%",
+				"top" : 0
+			},
+			"content" : [{
+					"text" : [{
+							"$ref" : "categories"
+						}
+					]
+				}, {
+					"aesthetics" : [{
+							"aesthetic" : {
+								"$ref" : "colorId"
+							}
+						}
+					],
+					"textStyle" : {
+						"fill" : {
+							"a" : 0.6,
+							"h" : 0,
+							"l" : 0,
+							"s" : 0
+						},
+						"font" : {
+							"family" : "Arial",
+							"size" : "10.5pt",
+							"weight" : "bold"
+						}
+					}
+				}
+			],
+			"style" : {
+				"fill" : {
+					"h" : 0,
+					"l" : 1,
+					"s" : 0
+				},
+				"padding" : {
+					"top" : "4.5%"
+				}
+			}
+		}
+	],
+	"size" : {
+		"width" : 800.0,
+		"height" : 500.0
+	},
+	"style" : {
+		"fill" : {
+			"h" : 0,
+			"l" : 1,
+			"s" : 0
+		}
+	}
+}

@@ -1,0 +1,160 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        { "id": "m1", "label": "Measure1", "min": 0.0, "max": 100.0 },
+        { "id": "m2", "label": "Measure2", "min": 0.0, "max": 100.0 },
+        { "id": "cat", "label": "Name",
+		 "categories": [ "Bob", "Nancy", "Ed", "Pat", "Ann", "Bill", "Janet", "Brad",
+				"Mary", "Roger", "Melissa", "Jack", "Bo", "Kate", "Tina", "Jonah"
+		]
+	}
+      ],
+
+
+      "rows": [
+	[ 50.0, 30.0,  0 ],
+	[ 44.0, 25.0,  1 ],
+	[ 57.0, 15.0,  2 ],
+	[ 63.0, 40.0,  3 ],
+	[ 38.0, 35.0,  4 ],
+	[ 39.0, 22.0,  5 ],
+	[ 74.0, 46.0,  6 ],
+	[ 21.0, 23.0,  7 ],
+	[ 25.0,  8.0,  8 ],
+	[ 32.0, 74.0,  9 ],
+	[ 32.0, 16.0, 10 ],
+	[ 49.0, 22.0, 11 ],
+	[ 51.0, 41.0, 12 ],
+	[ 29.0, 34.0, 13 ],
+	[ 26.0, 19.0, 14 ],
+	[ 24.0, 62.0, 15 ]
+      ]
+    }
+  ],
+
+
+  "copyright": "(C) Copyright IBM Corp. 2011",
+
+
+  "grammar": [
+    {
+
+
+      "bounds": {"width": "80%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": { "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0} },
+              "lineStyle": { "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0} },
+              "markStyle": { "fill": {"a": 0, "h": 0, "l": 0, "s": 0} },
+              "tickStyle": {
+			"fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+			"font": { "family": "Arial", "size": "10.5pt" },
+                	"padding": 5
+             },
+             "title": [ {"$ref": "m1"} ],
+             "titleStyle": {
+			"fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+			"font": { "family": "Arial", "size": "10.5pt" }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": { "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0} },
+              "markStyle": { "fill": {"a": 0, "h": 0, "l": 0, "s": 0} },
+	      "tickStyle": {
+			"fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+			"font": { "family": "Arial", "size": "10.5pt", "weight": "bold" },
+			"padding": 3
+              },
+              "title": [ {"$ref": "m2"} ],
+              "titleStyle": {
+			"fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+			"font": { "family": "Arial", "size": "10.5pt" }
+              }
+            }
+          }
+        ]
+      },
+
+
+      "elements": [
+       {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "cat"},
+              "modifies": "both",
+              "palette": [
+                {"h": 0.5805, "s": 0.5, "v": 0.85},
+                {"h": 0.683, "s": 0.25, "v": 0.85},
+                {"h": 0.2194, "s": 0.45, "v": 0.75},
+                {"h": 0.1194, "s": 0.7, "v": 0.85},
+                {"h": 0.0666, "s": 0.63, "v": 0.85},
+                {"h": 0.0, "s": 0.54, "v": 0.83},
+                {"h": 0.5805, "s": 0.35, "v": 0.56},
+                {"h": 0.7444, "s": 0.34, "v": 0.75},
+                {"h": 0.2194, "s": 0.44, "v": 0.54},
+                {"h": 0.1194, "s": 0.62, "v": 0.67},
+                {"h": 0.0666, "s": 0.68, "v": 0.68},
+                {"h": 0.0, "s": 0.57, "v": 0.67},
+                {"h": 0.5777, "s": 0.65, "v": 0.43},
+                {"h": 0.7416, "s": 0.38, "v": 0.41},
+                {"h": 0.2194, "s": 0.52, "v": 0.38},
+                {"h": 0.1194, "s": 0.68, "v": 0.5},
+                {"h": 0.0666, "s": 0.73, "v": 0.53},
+                {"h": 0.0, "s": 0.38, "v": 0.5}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [ {"$ref": "cat"}, "\n", {"$ref": "m1"}, "/", {"$ref": "m2"} ]
+            }
+          ],
+
+          "style": { "fill": {"a": 0.9}, "stroke": {"width": 0.5}, "width": "80%", "outline": {"dValue": -0.25} }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": { "bottom": "2%", "left": "2%", "right": "2%", "top": "5%" }
+      }
+    }
+  ],
+
+  "legends": [
+    {
+      "bounds": {"width": "20%", "right": "100%", "top": 0},
+      "content": [
+      	{ "text": [ { "$ref": "cat"} ] },
+        {
+          "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": { "family": "Arial", "size": "10.5pt", "weight": "bold" }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+
+
+  "size": {"width": 800.0, "height": 500.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+
+}

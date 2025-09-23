@@ -1,0 +1,187 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "Year", "label": "", "unit": "categorical"},
+        {
+          "id": "Month",
+          "categories": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        },
+        {"id": "Cancelled"}
+      ],
+      "rows": [
+        [ 1998.0, 0.0, 13880.0 ],
+        [ 1998.0, 1.0, 10484.0 ],
+        [ 1998.0, 2.0, 9847.0 ],
+        [ 1998.0, 3.0, 6952.0 ],
+        [ 1998.0, 4.0, 9393.0 ],
+        [ 1998.0, 5.0, 12870.0 ],
+        [ 1998.0, 6.0, 9330.0 ],
+        [ 1998.0, 7.0, 14726.0 ],
+        [ 1998.0, 8.0, 11893.0 ],
+        [ 1998.0, 9.0, 7815.0 ],
+        [ 1998.0, 10.0, 6419.0 ],
+        [ 1998.0, 11.0, 9900.0 ],
+        [ 2008.0, 0.0, 17308.0 ],
+        [ 2008.0, 1.0, 20596.0 ],
+        [ 2008.0, 2.0, 16183.0 ],
+        [ 2008.0, 3.0, 10355.0 ],
+        [ 2008.0, 4.0, 6229.0 ],
+        [ 2008.0, 5.0, 10931.0 ],
+        [ 2008.0, 6.0, 10598.0 ],
+        [ 2008.0, 7.0, 9835.0 ],
+        [ 2008.0, 8.0, 9913.0 ],
+        [ 2008.0, 9.0, 3249.0 ],
+        [ 2008.0, 10.0, 4458.0 ],
+        [ 2008.0, 11.0, 17779.0 ]
+      ]
+    }
+  ],
+  "description": "Airline flight cancelations, reported by month, for 19998 and 2008",
+  "grammar": [
+    {
+      "axesOverflow": false,
+      "axisPadding": true,
+      "coordinates": {
+        "dimensions": [
+          {},
+          {
+            "axis": [
+              {
+                "gridStyle": {
+                  "fill": "white",
+                  "stroke": {"width": 0.5, "style": "Dot"}
+                },
+                "lineStyle": {"fill": "white"},
+                "markStyle": {},
+                "segmented": true,
+                "tickAs": "normal",
+                "tickStyle": {
+                  "fill": "white",
+                  "font": {
+                    "family": "Arial,SanSerif",
+                    "size": 14,
+                    "weight": "bold"
+                  }
+                },
+                "titleStyle": {
+                  "fill": "white",
+                  "font": {
+                    "family": "Arial,SanSerif",
+                    "size": 12,
+                    "weight": "bold"
+                  }
+                },
+                "visible": true,
+                "method": "auto"
+              }
+            ]
+          }
+        ],
+        "transforms": [ {"type": "polar"} ],
+        "style": {"fill": "black", "outline": "white"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "Year"} ],
+              "style": {
+                "fill": "white",
+                "font": {
+                  "family": "Arial,SanSerif",
+                  "size": 12,
+                  "weight": "bold"
+                }
+              }
+            }
+          ],
+          "position": [
+            {
+              "field": {"$ref": "Cancelled"},
+              "includeInRange": false
+            },
+            {
+              "field": {"$ref": "Month"},
+              "includeInRange": false
+            }
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Year"},
+              "modifies": "both",
+              "palette": [
+                {
+                  "a": 1.0,
+                  "b": 87.04000000000002,
+                  "g": 87.04000000000002,
+                  "r": 163.20000000000002
+                },
+                {"a": 1.0, "b": 255.0, "g": 34.0, "r": 34.0}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "a": 0.5,
+              "b": 26.0,
+              "g": 26.0,
+              "r": 26.0
+            },
+            "font": {
+              "family": "Arial,SanSerif",
+              "size": 12,
+              "weight": "bold"
+            },
+            "size": 60,
+            "symbol": {
+              "shape": [
+                {
+                  "type": "path",
+                  "path": "M0.44735,0.9874L0.4577,0.95595L0.63865,1.0L0.63865,0.9773L0.4797,0.87425L0.49135,0.81285L0.50225,0.76125L0.50225,0.56885L0.5573,0.58435L0.56525,0.6016L0.57225,0.5833L0.6152,0.59465L0.6208,0.62105L0.628,0.5973L0.6823,0.6122L0.68705,0.6342L0.6932,0.6102L0.8947,0.67745L0.8842,0.62695L0.59835,0.4783L0.607,0.43695L0.607,0.40905L0.59825,0.3844L0.5551,0.3844L0.54805,0.4114L0.5495,0.43915L0.54895,0.4543L0.4989,0.41065L0.49795,0.2675L0.49345,0.22405L0.48115,0.17455L0.46165,0.1099L0.45645,0.0944L0.44735,0.08815L0.43825,0.0944L0.43305,0.1099L0.41355,0.17455L0.40125,0.22405L0.39675,0.2675L0.3958,0.41065L0.34575,0.4543L0.3452,0.43915L0.34665,0.4114L0.3396,0.3844L0.29645,0.3844L0.2877,0.40905L0.2877,0.43695L0.29635,0.4783L0.0105,0.62695L0.0,0.67745L0.2015,0.6102L0.20765,0.6342L0.2124,0.6122L0.2667,0.5973L0.2739,0.62105L0.2795,0.59465L0.32245,0.5833L0.32945,0.6016L0.3374,0.58435L0.39245,0.56885L0.39245,0.76125L0.40335,0.81285L0.415,0.87425L0.25605,0.9773L0.25605,1.0L0.437,0.95595L0.44735,0.9874Z"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": {"a": 0}, "padding": 10}
+    }
+  ],
+  "legendPosition": "right",
+  "legends": [
+    {
+      "labelStyle": {
+        "fill": "white",
+        "font": {
+          "family": "Arial,SanSerif",
+          "size": 12,
+          "weight": "bold"
+        }
+      },
+      "mirroredLabels": false,
+      "multiline": "consistent",
+      "titleStyle": {"fill": "white"},
+      "method": "swatch"
+    }
+  ],
+  "size": {"width": 550, "height": 480},
+  "version": "6.0",
+  "style": {"fill": "black"}
+}

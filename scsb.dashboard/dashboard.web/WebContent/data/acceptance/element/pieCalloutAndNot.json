@@ -1,0 +1,76 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Population",
+          "format": {"numericPattern": "#######,###"}
+        },
+        {
+          "id": "y",
+          "label": "Cities",
+          "categories": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6"
+          ]
+        }
+      ],
+      "rows": [
+        [ 32000000, 2 ],
+        [ 55000000, 1 ],
+        [ 32000000, 4 ],
+        [ 28000000, 5 ],
+        [ 48000000, 3 ],
+        [ 78000000, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "y"} ],
+              "style": {"location": "callout"}
+            },
+            {"content": [ {"$ref": "x"} ]}
+          ],
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [ {"field": {"$ref": "y"}} ]
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 800.0, "height": 500.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

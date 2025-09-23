@@ -1,0 +1,245 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "data",
+		"fields": [{
+			"id": "categories",
+			"categories": ["CA",
+			"IL",
+			"NY",
+			"ND",
+			"SD"]
+		},
+		{
+			"id": "values",
+			"min": 0,
+			"max": 3300
+		}],
+		"rows": [[4,
+		3300],
+		[3,
+		3300],
+		[2,
+		2200],
+		[1,
+		1100],
+		[0,
+		450]]
+	}],
+	"grammar": [{
+		"bounds": {
+			"left": 5,
+			"right": "50%",
+			"top": 5,
+			"bottom": "50%"
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					
+				}
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"position": [{
+				"field": {
+					"$ref": "values"
+				}
+			},
+			{
+				"field": {
+					"$ref": "categories"
+				}
+			}]
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"padding": "10%"
+		}
+	},
+	{
+		"bounds": {
+			"left": "50%",
+			"right": -5,
+			"top": 5,
+			"bottom": "50%"
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 255
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": "8.0pt"
+						}
+					}
+				}
+			}],
+			"style": {
+				"fill": {
+					"b": 235,
+					"g": 235,
+					"r": 200
+				},
+				"outline": {
+					"b": 255,
+					"g": 0,
+					"r": 0
+				}
+			}
+		},
+		"elements": [{
+			"type": "interval",
+			"position": [{
+				"field": {
+					"$ref": "values"
+				}
+			},
+			{
+				"field": {
+					"$ref": "categories"
+				}
+			}],
+			"style": {
+				"size": "80%"
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 200,
+				"g": 255,
+				"r": 200
+			},
+			"padding": "10%"
+		}
+	},
+	{
+		"bounds": {
+			"left": 5,
+			"right": "50%",
+			"top": "50%",
+			"bottom": -5
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					
+				}
+			}]
+		},
+		"elements": [{
+			"type": "point",
+			"position": [{
+				"field": {
+					"$ref": "values"
+				}
+			},
+			{
+				"field": {
+					"$ref": "categories"
+				}
+			}],
+			"style": {
+				"size": 10
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"padding": "10%"
+		}
+	},
+	{
+		"bounds": {
+			"left": "50%",
+			"right": -5,
+			"top": "50%",
+			"bottom": -5
+		},
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					
+				}
+			}]
+		},
+		"elements": [{
+			"type": "point",
+			"position": [{
+				"field": {
+					"$ref": "values"
+				}
+			},
+			{
+				"field": {
+					"$ref": "categories"
+				}
+			}],
+			"style": {
+				"size": "200%",
+				"outline": "green",
+				"fill": "pink"
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"padding": "10%"
+		}
+	}],
+	"style": {
+		"fill": {
+			"r": 0,
+			"g": 255,
+			"b": 255
+		}
+	},
+	"size": {
+		"width": 400,
+		"height": 400
+	}
+}

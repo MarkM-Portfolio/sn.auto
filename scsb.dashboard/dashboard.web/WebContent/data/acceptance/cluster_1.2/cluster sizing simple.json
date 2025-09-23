@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 73 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "axis": {
+              "boxStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0},
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ],
+          "style": {"width": "50%", "align": "middle"}
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 400},
+  "version": "1.2"
+}

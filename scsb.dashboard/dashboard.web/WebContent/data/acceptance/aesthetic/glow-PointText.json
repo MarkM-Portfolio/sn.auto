@@ -1,0 +1,182 @@
+{
+    "version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dDelimitedFileSource",
+		"fields": [{
+			"id": "fX",
+			"label": "Year Published",
+			"min": 1975,
+			"max": 2008
+		},
+		{
+			"id": "Categories",
+			"categories": ["A",
+			"B"]
+		},
+		{
+			"id": "fSourcefield",
+			"label": "Price",
+			"min": 3.49,
+			"max": 34.95
+		}],
+		"rows": [[1979,
+		0,
+		12.99],
+		[1980,
+		0,
+		16.99],
+		[1990,
+		0,
+		16.95],
+		[1995,
+		0,
+		9.99],
+		[2000,
+		1,
+		19.49],
+		[2005,
+		1,
+		8.49]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"gridStyle": {
+						"fill": {
+							"b": 128,
+							"g": 128,
+							"r": 128
+						},
+						"stroke": {
+							"width": 0.5,
+							"style": "Dot"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"gridStyle": {
+						"fill": {
+							"b": 128,
+							"g": 128,
+							"r": 128
+						},
+						"stroke": {
+							"width": 0.5,
+							"style": "Dot"
+						}
+					},
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			}],
+			"style": {
+				"fill": {
+					"b": 255,
+					"g": 255,
+					"r": 255
+				}
+			}
+		},
+		"elements": [{
+			"type": "point",
+			"label": [{
+				"content": [{
+					"$ref": "Categories"
+				}],
+				"style": {
+					"fill": "white",
+					"effect": {
+						"glow": {
+							"color": "red",
+							"stdDev": 1
+						}
+					}
+				}
+			}],
+			"position": [{
+				"field": {
+					"$ref": "fSourcefield"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fX"
+				}
+			}],
+			"styleBy": [{
+				"field": {
+					"$ref": "Categories"
+				},
+				"palette": [{
+					"fill": "red",
+					"effect": {
+						"glow": {
+							"color": "blue",
+							"stdDev": 10
+						}
+					},
+					"font":  {
+							"family": "Serif" },
+					"size": 20
+				},
+				{
+					"fill": "orange"
+				}]
+			}],
+			"style": {
+				"padding": 0,
+				"size": 10
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 200,
+				"g": 200,
+				"r": 200
+			},
+			"padding": 18
+		}
+	}],
+	"size": {
+		"width": 300,
+		"height": 300
+	}
+	}

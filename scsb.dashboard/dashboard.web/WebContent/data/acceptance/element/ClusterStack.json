@@ -1,0 +1,270 @@
+{
+    "version": "1.2",
+	"data": [{
+		"id": "data",
+		"fields": [{
+			"id": "Product line",
+			"label": "Product line",
+			"categories": ["Camping Equipment",
+			"Golf Equipment",
+			"Mountaineering Equipment",
+			"Outdoor Protection",
+			"Personal Accessories",
+			"Camping Equipment2",
+			"Golf Equipment2"]
+		},
+		{
+			"id": "Order method",
+			"label": "Order method",
+			"categories": ["Web",
+			"Phone",
+			"Store"]
+		},
+		{
+			"id": "ColorBy",
+			"label": "ColorBy",
+			"categories": ["Yes",
+			"No"]
+		},
+		{
+			"id": "Quantity",
+			"label": "Quantity"
+		}],
+		"rows": [[0,
+		0,
+		0,
+		73],
+		[0,
+		1,
+		0,
+		0],
+		[0,
+		2,
+		0,
+		43],
+		[1,
+		0,
+		0,
+		14],
+		[1,
+		1,
+		0,
+		12],
+		[1,
+		2,
+		0,
+		24],
+		[2,
+		0,
+		0,
+		31],
+		[2,
+		1,
+		0,
+		5],
+		[2,
+		2,
+		0,
+		10],
+		[3,
+		0,
+		0,
+		14],
+		[3,
+		1,
+		0,
+		11],
+		[3,
+		2,
+		0,
+		14],
+		[4,
+		0,
+		0,
+		10],
+		[4,
+		1,
+		0,
+		33],
+		[4,
+		2,
+		0,
+		20],
+		[5,
+		0,
+		0,
+		73],
+		[5,
+		1,
+		0,
+		23],
+		[5,
+		2,
+		0,
+		93],
+		[6,
+		0,
+		0,
+		14],
+		[6,
+		1,
+		0,
+		41],
+		[6,
+		2,
+		0,
+		34],
+		[0,
+		0,
+		1,
+		73],
+		[0,
+		2,
+		1,
+		43],
+		[1,
+		0,
+		1,
+		14],
+		[1,
+		1,
+		1,
+		12],
+		[1,
+		2,
+		1,
+		24],
+		[2,
+		0,
+		1,
+		31],
+		[2,
+		1,
+		1,
+		5],
+		[2,
+		2,
+		1,
+		10],
+		[3,
+		0,
+		1,
+		14],
+		[3,
+		1,
+		1,
+		11],
+		[3,
+		2,
+		1,
+		14],
+		[4,
+		0,
+		1,
+		10],
+		[4,
+		1,
+		1,
+		33],
+		[4,
+		2,
+		1,
+		20],
+		[5,
+		0,
+		1,
+		73],
+		[5,
+		1,
+		1,
+		23],
+		[5,
+		2,
+		1,
+		93],
+		[6,
+		0,
+		1,
+		14],
+		[6,
+		1,
+		1,
+		41],
+		[6,
+		2,
+		1,
+		34]]
+	}],
+	"grammar": [{
+		"coordinates": {
+            "dimensions": [
+               {
+                  "axis": {}
+               },
+               {
+                  "axis": {
+                     "boxStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "outline": "black"
+                     }
+                  }
+               },
+               {
+                  "axis": {
+                     "boxStyle": {
+                        "fill": {
+                           "a": 0,
+                           "h": 0,
+                           "l": 0,
+                           "s": 0
+                        },
+                        "outline": "black"
+                     }
+                  }
+               }
+            ],
+			"transforms": [{
+				"type": "cluster"
+			},
+			{
+				"type": "stack"
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"position": [{
+				"field": {
+					"$ref": "Quantity"
+				}
+			},
+			{
+				"field": {
+					"$ref": "Product line"
+				}
+			},
+			{
+				"field": {
+					"$ref": "Order method"
+				}
+			}],
+			"color": [{
+				"id": "colorId",
+				"field": {
+					"$ref": "ColorBy"
+				}
+			}]
+		}]
+	}],
+	"legends": [{
+		
+	}],
+	"size": {
+		"width": 600,
+		"height": 500
+	}
+}

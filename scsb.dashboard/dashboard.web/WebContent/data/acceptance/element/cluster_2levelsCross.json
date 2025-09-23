@@ -1,0 +1,136 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"},
+        {
+          "id": "Company",
+          "label": "Company",
+          "categories": [
+            "Company 1",
+            "Company 2",
+            "Company 3"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 73, 0 ],
+        [ 0, 1, 0, 0 ],
+        [ 0, 2, 43, 0 ],
+        [ 1, 0, 14, 0 ],
+        [ 1, 1, 12, 0 ],
+        [ 1, 2, 24, 0 ],
+        [ 2, 0, 31, 0 ],
+        [ 2, 1, 15, 0 ],
+        [ 2, 2, 0, 0 ],
+        [ 3, 0, 14, 0 ],
+        [ 3, 1, 11, 0 ],
+        [ 3, 2, 14, 0 ],
+        [ 0, 0, 10, 1 ],
+        [ 0, 1, 33, 1 ],
+        [ 0, 2, 20, 1 ],
+	[ 1, 0, 0, 1 ],
+	[ 1, 1, 0, 1 ],
+	[ 1, 2, 0, 1 ],
+	[ 2, 0, 73, 1 ],
+        [ 2, 1, 23, 1 ],
+        [ 2, 2, 93, 1 ],
+        [ 3, 0, 14, 1 ],
+        [ 3, 1, 41, 1 ],
+        [ 3, 2, 34, 1 ],
+        [ 0, 0, 10, 2 ],
+        [ 0, 1, 33, 2 ],
+        [ 0, 2, 20, 2 ],
+        [ 1, 0, 73, 2 ],
+        [ 1, 1, 23, 2 ],
+        [ 1, 2, 0, 2 ],
+        [ 2, 0, 0, 2 ],
+        [ 2, 1, 0, 2 ],
+        [ 2, 2, 0, 2 ],
+        [ 3, 0, 14, 2 ],
+        [ 3, 1, 41, 2 ],
+        [ 3, 2, 34, 2 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+            "dimensions": [
+               {
+                  "axis": {
+                  }
+               },
+               {
+                  "axis": {
+				"boxStyle": {
+                			"fill": {"a": 0.0, "h": 0, "l": 0, "s": 0},
+                			"outline": "black"
+              			}
+                  }
+               },
+               {
+			"axis":{
+				"boxStyle": {
+                			"fill": {"a": 0.0, "h": 0, "l": 0, "s": 0},
+                			"outline": "black"
+              			}
+			}
+               },
+               {
+			"axis":{
+				"tickStyle":{
+                 			"font": {"size": "8.5pt"}
+              			}
+			}
+               }
+            ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {
+              "gaps": [ 20, 5 ],
+              "nest": [ false, false ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Company"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 750, "height": 500}
+}

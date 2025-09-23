@@ -1,0 +1,107 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "name", "categories": [ "IBM" ]},
+        {
+          "id": "date",
+          "min": 3860,
+          "max": 3866,
+          "unit": "date"
+        },
+        {"id": "open", "unit": "dollar"},
+        {"id": "high", "unit": "dollar"},
+        {"id": "low", "unit": "dollar"},
+        {"id": "close", "unit": "dollar"},
+        {"id": "volume"},
+        {"id": "closedUp", "categories": [ "down", "up" ]}
+      ],
+      "rows": [
+        [ 0, 3861, 64.13, 66.25, 64.0, 65.0, 270800, 1 ],
+        [ 0, 3862, 65.13, 66.5, 64.38, 65.13, 410600, 1 ],
+        [ 0, 3863, 65.25, 66.0, 65.13, 65.5, 555700, 1 ],
+        [ 0, 3864, 65.0, 65.38, 64.38, 65.25, 644100, 0 ],
+        [ 0, 3865, 64.75, 65.38, 64.38, 65.13, 450700, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "bottom": "66%",
+        "left": 0,
+        "right": -15,
+        "top": 10
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "lightgray",
+                "stroke": {"style": "Dot"}
+              },
+              "preferredSize": {"preferred": 60},
+              "title": [ "Stock price" ]
+            }
+          },
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "close"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "style": {
+            "fill": {"a": 0.4, "b": 188, "g": 135, "r": 0},
+            "stroke": {"width": 5}
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    },
+    {
+      "bounds": {
+        "bottom": "100%",
+        "left": 0,
+        "right": -15,
+        "top": "70%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "lightgray",
+                "stroke": {"style": "Dot"}
+              },
+              "preferredSize": {"preferred": 60},
+              "title": [ "Volume" ]
+            }
+          },
+          {"axis": { "method" : "between" }}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "volume"}},
+            {"field": {"$ref": "date"}}
+          ],
+          "style": {
+            "fill": {"a": 0.4, "b": 188, "g": 135, "r": 0},
+            "outline": {"b": 188, "g": 135, "r": 0}
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ]
+}

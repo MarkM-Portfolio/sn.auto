@@ -1,0 +1,147 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Time",
+          "categories": [ "Q1", "Q2", "Q3", "Q4" ]
+        },
+        {
+          "id": "provinces",
+          "label": "Provinces",
+          "categories": [
+            "Ontario",
+            "Quebec",
+            "Alberta",
+            "B.C.",
+            "Saskatchewan"
+          ]
+        },
+        {"id": "revenue"}
+      ],
+      "rows": [
+        [ 0, 0, 3600 ],
+        [ 1, 0, 950 ],
+        [ 3, 0, 5200 ],
+        [ 0, 1, 500 ],
+        [ 1, 1, 750 ],
+        [ 2, 1, 1700 ],
+        [ 3, 1, 4200 ],
+        [ 0, 2, 300 ],
+        [ 1, 2, 850 ],
+        [ 2, 2, 2300 ],
+        [ 3, 2, 7200 ],
+        [ 0, 3, 1200 ],
+        [ 1, 3, 450 ],
+        [ 2, 3, 2300 ],
+        [ 3, 3, 100 ],
+        [ 0, 4, 800 ],
+        [ 2, 4, 4900 ],
+        [ 3, 4, 2100 ]
+      ]
+    },
+    {
+      "id": "derivedData",
+      "source": {"$ref": "data"},
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "categories"},
+          "output": {"id": "grouped_cats"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "provinces_summary"},
+          "input": {"$ref": "provinces"}
+        },
+        {
+          "field": {"id": "revenue_summary"},
+          "input": {"$ref": "revenue"}
+        },
+        {
+          "field": {"id": "sumRevenue"},
+          "input": {"$ref": "revenue"},
+          "parameters": {
+            "replicate": true,
+            "summaryFunction": "sum"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sortedData",
+      "source": {"$ref": "derivedData"},
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "grouped_cats"}
+        },
+        {
+          "field": {"id": "provinces_final"},
+          "input": {"$ref": "provinces_summary"}
+        },
+        {
+          "field": {"id": "revenue_final"},
+          "input": {"$ref": "revenue_summary"}
+        },
+        {
+          "field": {"id": "summed_revenue"},
+          "input": {"$ref": "sumRevenue"},
+          "parameters": {"ascending": true},
+          "role": "sort"
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ "My Revenue" ]}},
+          {
+            "scale": {"spans": [ {"method": "data"} ]},
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              },
+              "title": [ "Quarter" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "revenue_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {"field": {"$ref": "provinces_final"}}
+          ],
+          "style": {
+            "stroke": {"width": 3},
+            "width": "80%",
+            "outline": {"a": 0.0}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1"
+}

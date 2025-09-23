@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [
+            "€ Test1",
+            "⺁⺄⺈ test2",
+            "㭎㱮㳠 110tEST",
+            "one 铜彤童 test"
+          ]
+        },
+        {"id": "fValues", "label": "Price"}
+      ],
+      "rows": [ [ 1, 6 ], [ 0, 2 ], [ 2, 2 ], [ 3, 2 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "axis": {
+              "tickStyle": {
+                "font": {"family": "SimSun"}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "localization": {"nationalShaping": {"digits": "EUROPEAN"}},
+  "version": "4.1"
+}

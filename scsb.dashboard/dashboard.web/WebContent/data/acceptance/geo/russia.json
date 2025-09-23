@@ -1,0 +1,111 @@
+{
+   "augment": [
+      {
+         "dataKeys": [
+            {
+               "$ref": "name"
+            }
+         ],
+         "source": "\/GeoJSON\/russiaAndOthers.json",
+         "sourceKeys": [
+            "name"
+         ]
+      }
+   ],
+   "copyright": "(C) Copyright IBM Corp. 2013",
+   "data": [
+      {
+         "fields": [
+            {
+               "categories": [
+ 
+                  "Russia"
+
+               ],
+               "id": "name",
+               "label": "name"
+            },
+            {
+               "format": {
+                  "numericPattern": "#,000"
+               },
+               "id": "pop",
+               "label": "population"
+            }
+         ],
+         "id": "data1",
+         "rows": [
+ 
+            [
+               0,
+               6296254
+            ]
+         ]
+      }
+   ],
+   "grammar": [
+      {
+         "coordinates": {
+            "dimensions": [
+               {
+               },
+               {
+               }
+            ],
+            "transforms": [
+               {
+                  "projectionParameters": {
+                     "name": "mercator"
+                  },
+                  "type": "projection"
+               }
+            ]
+         },
+         "elements": [
+            {
+               "color": [
+                  {
+                     "field": {
+                        "$ref": "pop"
+                     }
+                  }
+               ],
+               "style": {
+                  "fill": {
+                     "colors": [
+                        {
+                           "color": {
+                              "dSaturation": 0.05,
+                              "dValue": 0.1
+                           },
+                           "offset": 0
+                        },
+                        {
+                           "color": {
+                              "dSaturation": 0.2,
+                              "dValue": -0.15
+                           },
+                           "offset": 1
+                        }
+                     ],
+                     "type": "radial"
+                  },
+                  "outline": "black",
+                  "stroke": {
+                     "width": 0.25
+                  }
+               },
+               "type": "polygon"
+            }
+         ]
+      }
+   ],
+   "size": {
+      "height": 1550,
+      "width": 1500
+   },
+   "style": {
+      "fill": "transparent"
+   },
+   "version": "3.0"
+}

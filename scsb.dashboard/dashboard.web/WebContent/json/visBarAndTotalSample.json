@@ -1,0 +1,145 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "month",
+          "label": "month",
+          "categories": [
+            "January 2014",
+            "February 2014",
+            "March 2014",
+            "April 2014",
+            "May 2014",
+            "June 2014",
+            "July 2014",
+            "August 2014",
+            "September 2014",
+            "October 2014",
+            "November 2014",
+            "December 2014"
+          ]
+        },
+        {
+          "id": "numVisits",
+          "label": "# of Visits per Month",
+          "categories": [
+            "Once per month",
+            "Once per week",
+            "Twice per week",
+            "3-4 times a week",
+            "Daily"
+          ]
+        },
+        {"id": "numUsers", "label": "# of Users"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 1, 0, 0 ],
+        [ 2, 0, 0 ],
+        [ 3, 0, 0 ],
+        [ 4, 0, 1566 ],
+        [ 4, 1, 1140 ],
+        [ 4, 2, 1320 ],
+        [ 4, 3, 1588 ],
+        [ 4, 4, 0 ],
+        [ 5, 0, 65577 ],
+        [ 5, 1, 15148 ],
+        [ 5, 2, 1099 ],
+        [ 5, 3, 1288 ],
+        [ 5, 4, 1789 ],
+        [ 6, 0, 0 ],
+        [ 6, 1, 0 ],
+        [ 6, 2, 0 ],
+        [ 6, 3, 0 ],
+        [ 6, 4, 0 ],
+        [ 7, 0, 0 ],
+        [ 8, 0, 0 ],
+        [ 9, 0, 0 ],
+        [ 10, 0, 0 ],
+        [ 11, 0, 0 ]
+      ]
+    },
+    {
+      "id": "totals",
+      "fields": [
+        {
+          "id": "totalMonth",
+          "categories": [
+            "January 2014",
+            "February 2014",
+            "March 2014",
+            "April 2014",
+            "May 2014",
+            "June 2014",
+            "July 2014",
+            "August 2014",
+            "September 2014",
+            "October 2014",
+            "November 2014",
+            "December 2014"
+          ]
+        },
+        {"id": "totalUsers"}
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 0 ],
+        [ 2, 0 ],
+        [ 3, 0 ],
+        [ 4, 5614 ],
+        [ 5, 84901 ],
+        [ 6, 0 ],
+        [ 7, 0 ],
+        [ 8, 0 ],
+        [ 9, 0 ],
+        [ 10, 0 ],
+        [ 11, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {}
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {"fill": "white"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "numUsers"}},
+            {"field": {"$ref": "month"}}
+          ],
+          "color": [ {"field": {"$ref": "numVisits"}} ],
+          "tooltip": [
+            {"content": [ {"$ref": "numVisits"} ]}
+          ],
+          "style": {"width": "80%", "outline": "black"}
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "totals"},
+          "position": [
+            {"field": {"$ref": "totalUsers"}},
+            {"field": {"$ref": "totalMonth"}}
+          ],
+          "style": {"size": 3}
+        }
+      ]
+    }
+  ],
+  "size": {"width": 1000, "height": 600},
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

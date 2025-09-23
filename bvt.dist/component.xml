@@ -1,0 +1,24 @@
+<component name="bvt.dist" description="Connections GUI BVT Suite Distribution"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="dir" visibility="public" platform="all"
+                preferredInstallLocation="/"
+                location="${env.LWP_COMP_BUILD}/dist" />
+    </output-group>
+
+    <dependency name="bvt.gui" type="jar" version="1.0" />
+    <dependency name="fvt.gui" type="jar" version="1.0" />
+    <dependency name="lc.data.pop" type="jar" version="1.0" />
+    <dependency name="bvt.api" type="jar" version="1.0" />
+    <dependency name="bvt.cleanup" type="jar" version="1.0" />
+    <dependency name="sc.gui" type="jar" version="1.0" />
+    <dependency name="svt.gui" type="jar" version="1.0" />
+    <dependency name="el.gui" type="jar" version="1.0" />
+    <dependency name="cch.gui" type="jar" version="1.0" />
+    <dependency name="bss_populate" type="jar" version="1.0" />
+    <dependency name="bvt.adm2" type="directory" version="1.0" />
+    <dependency name="sc.tools/SC_BuildLabels" type="jar" version="1.0" />
+    <dependency name="sc.tools/SC_CheckEnvStatus" type="jar" version="1.0" />
+    <dependency name="sc.tools/SC_RetrieveBuilds" type="jar" version="1.0" />
+</component>

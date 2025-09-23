@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2010                                          -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<project name="lc.data.pop.adapter" default="development" basedir=".">
+    <import file="${env.WPLC_IMPORT}/std_props.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_dirs.xml"/>
+
+    <import file="${env.WPLC_IMPORT}/dependencies.xml"/>
+    <import file="${env.WPLC_IMPORT}/dependants.xml"/>
+    <import file="${env.WPLC_IMPORT}/wp_compile.xml"/>
+    <import file="${env.WPLC_IMPORT}/wp_globalize.xml"/>
+    
+    <property name="output.jar" value="${dir.build}/lib/lc.data.pop.adapter.jar"/>
+    <property name="include.pattern" value="**/*" />
+    <property name="skip.messages" value="true" />
+    <property name="skip.globalize" value="true" />
+    <property name="skip.javadoc" value="true"/>
+    <property name="skip.javadoc.public" value="true"/>
+
+    <import file="${env.WPLC_IMPORT}/javadoc.xml"/>
+    <import file="${env.WPLC_IMPORT}/jdepend.xml"/>
+    <import file="${env.WPLC_IMPORT}/clean.xml"/>
+    <import file="${env.WPLC_IMPORT}/check.xml"/>
+    <import file="${env.WPLC_IMPORT}/comp_zip.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_targets.xml"/>
+    <import file="${env.WPLC_IMPORT}/package.xml"/>
+
+</project>

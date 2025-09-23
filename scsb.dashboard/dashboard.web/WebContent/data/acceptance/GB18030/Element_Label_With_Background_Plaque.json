@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "size"}
+      ],
+      "rows": [
+        [ 0, 1, 1 ],
+        [ 0, 3, 1 ],
+        [ 1, 4, 3 ],
+        [ 2, 3, 2 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {
+          "id": "name",
+          "categories": [ "㘎 €b", "㐅 㐆", "瞳", "㘎㐅","瞳 €b" ]
+        }
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 1 ],
+        [ 2, 2 ],
+        [ 3, 3 ],
+        [ 4, 4 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "rgba(255,0,0,1.0)",
+                "stroke": {"width": "2px", "style": "solid"},
+                "cornerRadius": 4,
+                "outline": "rgba(0,0,0,1.0)",
+                "padding": 4
+              },
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "navy",
+                "font": {"family": "SimSun", "size": 10.0},
+                "location": "inside",
+                "padding": 2
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [ {"field": {"$ref": "id"}} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "network"
+          },
+          "style": {
+            "fill": "white",
+            "size": 50,
+            "symbol": "rect"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "color": [ {"field": {"$ref": "from"}} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "style": {
+            "fill": {"a": 0.6},
+            "stroke": {"width": 3.0, "cap": "round"},
+            "symbol": "straight"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"padding": 10}
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 600, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "#aaa"}
+}

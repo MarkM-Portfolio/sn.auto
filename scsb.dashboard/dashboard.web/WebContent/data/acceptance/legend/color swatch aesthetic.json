@@ -1,0 +1,790 @@
+{
+	"version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "data",
+			
+			"fields" : [
+				{
+					
+					"id" : "_VOIDS_FIELD_",
+					
+					"label" : "_VOIDS_FIELD_"
+					
+				},
+				{
+					
+					"id" : "_CATEGORY_FIELD_",
+					
+					"label" : "Order method",
+					
+					"categories" : [
+						
+						"Web",
+						
+						"Sales visit",
+						
+						"Special",
+						
+						"Telephone",
+						
+						"Fax",
+						
+						"Mail",
+						
+						"E-mail"
+						
+					]
+					
+				},
+				{
+					
+					"id" : "_SERIES_FIELD_",
+					
+					"label" : "Order year",
+					
+					"categories" : [
+						
+						"2006",
+						
+						"2004",
+						
+						"2005"
+						
+					]
+					
+				},
+				{
+					
+					"id" : "_VALUES_FIELD_",
+					
+					"label" : "Quantity"
+					
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[
+					
+					25,
+					
+					0,
+					
+					0,
+					
+					234148
+					
+				],
+				
+				[
+					
+					27,
+					
+					0,
+					
+					1,
+					
+					78824
+					
+				],
+				
+				[
+					
+					29,
+					
+					0,
+					
+					2,
+					
+					161866
+					
+				],
+				
+				[
+					
+					34,
+					
+					1,
+					
+					0,
+					
+					208858
+					
+				],
+				
+				[
+					
+					36,
+					
+					1,
+					
+					1,
+					
+					135262
+					
+				],
+				
+				[
+					
+					38,
+					
+					1,
+					
+					2,
+					
+					191578
+					
+				],
+				
+				[
+					
+					43,
+					
+					2,
+					
+					0,
+					
+					12302
+					
+				],
+				
+				[
+					
+					45,
+					
+					2,
+					
+					1,
+					
+					9080
+					
+				],
+				
+				[
+					
+					47,
+					
+					2,
+					
+					2,
+					
+					23194
+					
+				],
+				
+				[
+					
+					52,
+					
+					3,
+					
+					0,
+					
+					204016
+					
+				],
+				
+				[
+					
+					54,
+					
+					3,
+					
+					1,
+					
+					162320
+					
+				],
+				
+				[
+					
+					56,
+					
+					3,
+					
+					2,
+					
+					205332
+					
+				],
+				
+				[
+					
+					61,
+					
+					4,
+					
+					0,
+					
+					39824
+					
+				],
+				
+				[
+					
+					63,
+					
+					4,
+					
+					1,
+					
+					34462
+					
+				],
+				
+				[
+					
+					65,
+					
+					4,
+					
+					2,
+					
+					41558
+					
+				],
+				
+				[
+					
+					70,
+					
+					5,
+					
+					0,
+					
+					25684
+					
+				],
+				
+				[
+					
+					72,
+					
+					5,
+					
+					1,
+					
+					54874
+					
+				],
+				
+				[
+					
+					74,
+					
+					5,
+					
+					2,
+					
+					43672
+					
+				],
+				
+				[
+					
+					79,
+					
+					6,
+					
+					0,
+					
+					139086
+					
+				],
+				
+				[
+					
+					81,
+					
+					6,
+					
+					1,
+					
+					86884
+					
+				],
+				
+				[
+					
+					83,
+					
+					6,
+					
+					2,
+					
+					122530
+					
+				]
+				
+			]
+			
+		}
+		
+	],
+	
+	"size" : {
+		
+		"height" : 350,
+		
+		"width" : 500
+		
+	},
+	
+	"grammar" : [
+		{
+			
+			"coordinates" : {
+				
+				"transforms" : [
+					{
+						
+						"type" : "cluster",
+						
+						"clusterParameters" : {
+							
+							"nest" : [
+								
+								true
+								
+							],
+							
+							"gaps" : [
+								
+								"25%"
+								
+							],
+							
+							"align" : "middle",
+							
+							"categoryWidth" : "80%"
+							
+						}
+						
+					}
+					
+				],
+				
+				"dimensions" : [
+					{
+						
+						"scale" : {
+							
+							"spans" : [
+								{
+									
+									"fit" : "nice",
+									
+									"min" : 0,
+									
+									"max" : 234148
+									
+								}
+								
+							]
+							
+						},
+						
+						"axis" : {
+							
+							"lineStyle" : {
+								
+								"fill" : "transparent"
+								
+							},
+							
+							"tickStyle" : {
+								
+								"fill" : "rgba(97,97,97,1.0)",
+								
+								"font" : {
+									
+									
+									"size" : "8pt",
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							},
+							
+							"markStyle" : {
+								
+								"fill" : "transparent"
+								
+							},
+							
+							"titleStyle" : {
+								
+								"fill" : "rgba(97,97,97,1.0)",
+								
+								"font" : {
+									
+									
+									"size" : "8pt",
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							},
+							
+							"title" : [
+								{
+									
+									"$ref" : "_VALUES_FIELD_"
+									
+								}
+								
+							],
+							
+							"gridStyle" : {
+								
+								"fill" : "rgba(128,128,128,0.40)",
+								
+								"stroke" : {
+									
+									"width" : "1px",
+									
+									"style" : "solid"
+									
+								}
+								
+							}
+							
+						}
+						
+					},
+					{
+						
+						"axis" : {
+							
+							"lineStyle" : {
+								
+								"fill" : "rgba(97,97,97,1.0)",
+								
+								"stroke" : {
+									
+									"width" : "1px"
+									
+								}
+								
+							},
+							
+							"tickStyle" : {
+								
+								"fill" : "rgba(97,97,97,1.0)",
+								
+								"font" : {
+									
+									
+									"size" : "8pt",
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							},
+							
+							"markStyle" : {
+								
+								"fill" : "transparent",
+								
+								"stroke" : {
+									
+									"width" : "1px"
+									
+								}
+								
+							},
+							
+							"titleStyle" : {
+								
+								"fill" : "rgba(97,97,97,1.0)",
+								
+								"font" : {
+									
+									
+									"size" : "8pt",
+									
+									"weight" : "normal",
+									
+									"style" : "normal"
+									
+								}
+								
+							}
+							
+						}
+						
+					},
+					{}
+					
+				]
+				
+			},
+			
+			"elements" : [
+				{
+					
+					"type" : "interval",
+					
+					"position" : [
+						{
+							
+							"field" : {
+								
+								"$ref" : "_VALUES_FIELD_"
+								
+							}
+							
+						},
+						{
+							
+							"field" : {
+								
+								"$ref" : "_CATEGORY_FIELD_"
+								
+							}
+							
+						},
+						{
+							
+							"field" : {
+								
+								"$ref" : "_SERIES_FIELD_"
+								
+							}
+							
+						}
+						
+					],
+					
+					"style" : {
+						
+						"outline" : {
+							
+							"dValue" : -0.25
+							
+						},
+						
+						"fill" : {
+							
+							"type" : "linear",
+							
+							"angle" : 0,
+							
+							"colors" : [
+								{
+									
+									"offset" : 0.04,
+									
+									"color" : {
+										
+										"dAlpha" : 1,
+										
+										"dValue" : 0.1,
+										
+										"dSaturation" : 0
+										
+									}
+									
+								},
+								{
+									
+									"offset" : 1,
+									
+									"color" : {
+										
+										"dAlpha" : 1,
+										
+										"dValue" : -0.1,
+										
+										"dSaturation" : 0
+										
+									}
+									
+								}
+								
+							]
+							
+						},
+						
+						"width" : "90%",
+						
+						"stroke" : {
+							
+							"width" : "3px",
+							
+							"style" : "solid"
+							
+						}
+						
+					},
+					
+					"color" : [
+						{
+							
+							"id" : "_PALETTE_",
+							
+							"field" : {
+								
+								"$ref" : "_SERIES_FIELD_"
+								
+							},
+							
+							"modifies" : "both",
+							
+							"palette" : [
+								
+								"rgba(58,112,207,1.0)",
+								
+								"rgba(110,201,212,1.0)",
+								
+								"rgba(219,116,13,1.0)",
+								
+								"rgba(222,171,18,1.0)",
+								
+								"rgba(35,138,32,1.0)",
+								
+								"rgba(113,196,12,1.0)",
+								
+								"rgba(118,59,161,1.0)",
+								
+								"rgba(150,129,230,1.0)",
+								
+								"rgba(145,102,26,1.0)",
+								
+								"rgba(214,214,34,1.0)",
+								
+								"rgba(162,44,15,1.0)",
+								
+								"rgba(229,95,64,1.0)",
+								
+								"rgba(112,152,181,1.0)",
+								
+								"rgba(197,209,212,1.0)"
+								
+							]
+							
+						}
+						
+					]
+					
+				}
+				
+			]
+			
+		}
+		
+	],
+	
+	"legends" : [
+		{
+			
+			"content" : [
+				{
+					
+					"local" : false,
+					
+					"aesthetics" : [
+						{
+							
+							"aesthetic" : {
+								
+								"$ref" : "_PALETTE_"
+								
+							}
+							
+						}
+						
+					],
+					
+					"swatchStyle" : {
+						
+						"padding" : {
+							
+							"right" : 4,
+							
+							"bottom" : 2
+							
+						},
+						
+						"size" : "30px",
+						
+						"stroke" : {
+							
+							"width" : "6px",
+							
+							"style" : "solid"
+							
+						},
+						
+						"outline" : "rgba(255,0,0,1.0)"
+						
+					},
+					
+					"textStyle" : {
+						
+						"fill" : "rgba(97,97,97,1.0)",
+						
+						"font" : {
+							
+							
+							"size" : "8pt",
+							
+							"weight" : "normal",
+							
+							"style" : "normal"
+							
+						}
+						
+					},
+					
+					"layout" : {
+						
+						"reverse" : false
+						
+					}
+					
+				}
+				
+			],
+			
+			"style" : {
+				
+				"fill" : "transparent",
+				
+				"padding" : {
+					
+					"left" : 4
+					
+				},
+				
+				"align" : "middle",
+				
+				"valign" : "start"
+				
+			},
+			
+			"bounds" : {
+				
+				"width" : "25%"
+				
+			}
+			
+		}
+		
+	],
+	
+	"legendPosition" : "right"
+}

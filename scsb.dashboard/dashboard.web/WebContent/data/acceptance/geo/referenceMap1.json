@@ -1,0 +1,43 @@
+{
+  "data": [ {"id": "b"} ],
+  "augment": [
+    {
+      "source": "/GeoJSON/tricky.json",
+      "target": {"$ref": "b"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": -3.2, "max": 1.2} ]
+            },
+            "axis": {}
+          },
+          {
+            "scale": {"spans": [ {"min": 98, "max": 106} ]},
+            "axis": {}
+          }
+        ],
+        "style": {
+          "fill": "white",
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "schema",
+          "data": {"$ref": "b"},
+          "style": {
+            "fill": {"a": 0.5, "r": 255},
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "1.2"
+}

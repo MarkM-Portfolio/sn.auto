@@ -1,0 +1,191 @@
+{
+	"version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "source",
+			
+			"fields" : [
+				{
+					"id" : "fX",
+					"label" : "Length"
+				},
+				{
+					"id" : "fY",
+					"label" : "Price"
+				},
+				{
+					
+					"id" : "store",
+					
+					"label" : "Store",
+					
+					"categories" : [
+						
+						"Commonwealth of Pennsylvania is really really long and stuff and this should be cut off at some point",
+						
+						"Illinois",
+						
+						"New York",
+						
+						"Great State of Texas",
+						
+						"Ontario is not a state!"
+						
+					]
+					
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[185, 6.49, 3],
+				
+				[136, 6.99, 2],
+				
+				[495, 29.95, 1],
+				
+				[446, 12.95, 3],
+				
+				[446, 13.95, 4],
+				
+				[416, 12.95, 0]
+				
+			]
+			
+		}
+		
+	],
+	
+	"grammar" : [
+		{
+			
+			"bounds" : {
+				
+				"width" : "100%",
+				
+				"height" : "70%",
+				
+				"left" : 0,
+				
+				"top" : "0%"
+				
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [
+					{
+						"axis" : {
+							"gridStyle" : {
+								"fill" : "gray"
+							}
+						}
+					},
+					{
+						"axis" : {
+							"gridStyle" : {
+								"fill" : "gray"
+							}
+						}
+					}
+					
+				],
+				
+				"style" : {
+					"fill" : "lightGray"
+				}
+				
+			},
+			
+			"elements" : [
+				{
+					
+					"type" : "point",
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "fY"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "fX"
+							}
+						}
+						
+					],
+					
+					"color" : [
+						{
+							"id" : "c",
+							"field" : {
+								"$ref" : "store"
+							}
+						}
+						
+					]
+					
+				}
+				
+			],
+			
+			"style" : {
+				"fill" : "white",
+				"padding" : 15
+			}
+			
+		}
+		
+	],
+	
+	"legends" : [
+		{
+			
+			"bounds" : {
+				
+				"width" : "100%",
+				
+				"height" : "100",
+				
+				"left" : 0,
+				
+				"top" : "70%"
+				
+			},
+			
+			"content" : [
+				{
+					
+					"aesthetics" : [{
+							"aesthetic" : {
+								"$ref" : "c"
+							}
+						}
+					],
+					
+					"layout" : {
+						"flow" : "horizontal"
+					}
+					
+				}
+				
+			]
+			
+		}
+		
+	],
+	
+	"style" : {
+		"fill" : "white"
+	},
+	
+	"size" : {
+		"width" : 800,
+		"height" : 800
+	}
+	
+}

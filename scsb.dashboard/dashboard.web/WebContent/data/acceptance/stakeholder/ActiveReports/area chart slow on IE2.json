@@ -1,0 +1,917 @@
+{
+	"version": "1.2",
+	"data": [
+		{
+			"id": "data", 
+			"fields": [
+				{
+					"id": "_VOIDS_FIELD_", 
+					"label": "_VOIDS_FIELD_"
+				}, 
+				{
+					"id": "_CATEGORY_FIELD_", 
+					"label": "Product name", 
+					"categories": [
+						"TrailChef Water Bag", 
+						"TrailChef Canteen", 
+						"TrailChef Deluxe Cook Set", 
+						"TrailChef Double Flame", 
+						"TrailChef Kettle", 
+						"TrailChef Kitchen Kit", 
+						"TrailChef Cup", 
+						"TrailChef Cook Set", 
+						"TrailChef Single Flame", 
+						"TrailChef Utensils", 
+						"Hibernator Extreme", 
+						"Hibernator Self - Inflating Mat", 
+						"Hibernator Lite", 
+						"Hibernator", 
+						"Hibernator Pad", 
+						"Hibernator Camp Cot", 
+						"Hibernator Pillow", 
+						"Canyon Mule Journey Backpack", 
+						"Canyon Mule Extreme Backpack", 
+						"Canyon Mule Climber Backpack", 
+						"Canyon Mule Weekender Backpack", 
+						"Canyon Mule Carryall", 
+						"Canyon Mule Cooler", 
+						"Star Gazer 2", 
+						"Star Gazer 6", 
+						"Star Peg", 
+						"Star Gazer 3", 
+						"Star Lite", 
+						"Star Dome", 
+						"Firefly Multi-light", 
+						"EverGlow Single", 
+						"EverGlow Double", 
+						"EverGlow Kerosene", 
+						"EverGlow Butane", 
+						"Flicker Lantern", 
+						"Firefly Lite", 
+						"Firefly Mapreader", 
+						"Firefly 2", 
+						"Firefly Extreme", 
+						"Firefly 4", 
+						"EverGlow Lamp", 
+						"Hailstorm Steel Irons", 
+						"Lady Hailstorm Steel Irons", 
+						"Lady Hailstorm Titanium Irons", 
+						"Hailstorm Titanium Irons", 
+						"Blue Steel Putter", 
+						"Blue Steel Max Putter", 
+						"Course Pro Putter", 
+						"Hailstorm Titanium Woods Set", 
+						"Lady Hailstorm Titanium Woods Set", 
+						"Hailstorm Steel Woods Set", 
+						"Lady Hailstorm Steel Woods Set", 
+						"Course Pro Umbrella", 
+						"Course Pro Gloves", 
+						"Course Pro Golf and Tee Set", 
+						"Course Pro Golf Bag", 
+						"Granite Chalk Bag", 
+						"Firefly Climbing Lamp", 
+						"Firefly Rechargeable Battery", 
+						"Granite Carabiner", 
+						"Granite Belay", 
+						"Granite Pulley", 
+						"Firefly Charger", 
+						"Granite Hammer", 
+						"Granite Shovel", 
+						"Granite Grip", 
+						"Granite Axe", 
+						"Granite Extreme", 
+						"Granite Ice", 
+						"Husky Rope 200", 
+						"Husky Rope 50", 
+						"Husky Rope 60", 
+						"Husky Rope 100", 
+						"Granite Climbing Helmet", 
+						"Husky Harness Extreme", 
+						"Granite Signal Mirror", 
+						"Husky Harness", 
+						"Deluxe Family Relief Kit", 
+						"Aloe Relief", 
+						"Insect Bite Relief", 
+						"Compact Relief Kit", 
+						"Calamine Relief", 
+						"BugShield Extreme", 
+						"BugShield Natural", 
+						"BugShield Spray", 
+						"BugShield Lotion Lite", 
+						"BugShield Lotion", 
+						"Sun Blocker", 
+						"Sun Shelter Stick", 
+						"Sun Shelter 15", 
+						"Sun Shelter 30", 
+						"Sun Shield", 
+						"Seeker Mini", 
+						"Seeker 35", 
+						"Seeker 50", 
+						"Seeker Extreme", 
+						"Glacier Deluxe", 
+						"Glacier GPS", 
+						"Glacier GPS Extreme", 
+						"Glacier Basic", 
+						"Polar Extreme", 
+						"Polar Sun", 
+						"Polar Sports", 
+						"Polar Wave", 
+						"Polar Ice", 
+						"Single Edge", 
+						"Double Edge", 
+						"Edge Extreme", 
+						"Bear Survival Edge", 
+						"Bear Edge", 
+						"Mountain Man Analog", 
+						"Mountain Man Digital", 
+						"Mountain Man Combination", 
+						"Mountain Man Extreme", 
+						"Mountain Man Deluxe"
+					]
+				}, 
+				{
+					"id": "_VALUES_FIELD_", 
+					"label": "Revenue"
+				}
+			], 
+			"rows": [
+				[
+					32, 
+					0, 
+					244414.16
+				], 
+				[
+					37, 
+					1, 
+					374674.96
+				], 
+				[
+					42, 
+					2, 
+					445494.14
+				], 
+				[
+					47, 
+					3, 
+					1851635.38
+				], 
+				[
+					52, 
+					4, 
+					118595.16
+				], 
+				[
+					57, 
+					5, 
+					570975.16
+				], 
+				[
+					62, 
+					6, 
+					218416.3
+				], 
+				[
+					67, 
+					7, 
+					642494.48
+				], 
+				[
+					72, 
+					8, 
+					666347.78
+				], 
+				[
+					77, 
+					9, 
+					268084.56
+				], 
+				[
+					82, 
+					10, 
+					4715059.4
+				], 
+				[
+					87, 
+					11, 
+					1269691.18
+				], 
+				[
+					92, 
+					12, 
+					1966368
+				], 
+				[
+					97, 
+					13, 
+					3034022.2
+				], 
+				[
+					102, 
+					14, 
+					340411.88
+				], 
+				[
+					107, 
+					15, 
+					307526.3
+				], 
+				[
+					112, 
+					16, 
+					55865.36
+				], 
+				[
+					117, 
+					17, 
+					3622382.68
+				], 
+				[
+					122, 
+					18, 
+					4335772.24
+				], 
+				[
+					127, 
+					19, 
+					1718086.52
+				], 
+				[
+					132, 
+					20, 
+					3123663.86
+				], 
+				[
+					137, 
+					21, 
+					1282681.36
+				], 
+				[
+					142, 
+					22, 
+					545409.6
+				], 
+				[
+					147, 
+					23, 
+					9123447.66
+				], 
+				[
+					152, 
+					24, 
+					7219022.62
+				], 
+				[
+					157, 
+					25, 
+					85937.78
+				], 
+				[
+					162, 
+					26, 
+					13044951.4
+				], 
+				[
+					167, 
+					27, 
+					3034718.04
+				], 
+				[
+					172, 
+					28, 
+					14948640.6
+				], 
+				[
+					177, 
+					29, 
+					745997
+				], 
+				[
+					182, 
+					30, 
+					1040525.12
+				], 
+				[
+					187, 
+					31, 
+					742592.92
+				], 
+				[
+					192, 
+					32, 
+					387679.14
+				], 
+				[
+					197, 
+					33, 
+					1280152.2
+				], 
+				[
+					202, 
+					34, 
+					324574.64
+				], 
+				[
+					207, 
+					35, 
+					179749.72
+				], 
+				[
+					212, 
+					36, 
+					299616.18
+				], 
+				[
+					217, 
+					37, 
+					1212633.92
+				], 
+				[
+					222, 
+					38, 
+					2118861.48
+				], 
+				[
+					227, 
+					39, 
+					1205443.84
+				], 
+				[
+					232, 
+					40, 
+					1001374
+				], 
+				[
+					237, 
+					41, 
+					3070916.68
+				], 
+				[
+					242, 
+					42, 
+					960122.46
+				], 
+				[
+					247, 
+					43, 
+					1020884.74
+				], 
+				[
+					252, 
+					44, 
+					3749541.1
+				], 
+				[
+					257, 
+					45, 
+					1036511.04
+				], 
+				[
+					262, 
+					46, 
+					555866.3
+				], 
+				[
+					267, 
+					47, 
+					717989.9
+				], 
+				[
+					272, 
+					48, 
+					6264117.96
+				], 
+				[
+					277, 
+					49, 
+					1947408.48
+				], 
+				[
+					282, 
+					50, 
+					4519643.36
+				], 
+				[
+					287, 
+					51, 
+					1250946.84
+				], 
+				[
+					292, 
+					52, 
+					166896.12
+				], 
+				[
+					297, 
+					53, 
+					172073.98
+				], 
+				[
+					302, 
+					54, 
+					132738.54
+				], 
+				[
+					307, 
+					55, 
+					339808.08
+				], 
+				[
+					312, 
+					56, 
+					182473.3
+				], 
+				[
+					317, 
+					57, 
+					661099.36
+				], 
+				[
+					322, 
+					58, 
+					169982.52
+				], 
+				[
+					327, 
+					59, 
+					159650.06
+				], 
+				[
+					332, 
+					60, 
+					1291486.54
+				], 
+				[
+					337, 
+					61, 
+					440289.36
+				], 
+				[
+					342, 
+					62, 
+					784836.88
+				], 
+				[
+					347, 
+					63, 
+					917666.18
+				], 
+				[
+					352, 
+					64, 
+					470227.7
+				], 
+				[
+					357, 
+					65, 
+					346145.1
+				], 
+				[
+					362, 
+					66, 
+					914520.36
+				], 
+				[
+					367, 
+					67, 
+					1881948.66
+				], 
+				[
+					372, 
+					68, 
+					660718.22
+				], 
+				[
+					377, 
+					69, 
+					2109231.04
+				], 
+				[
+					382, 
+					70, 
+					1198642.74
+				], 
+				[
+					387, 
+					71, 
+					2559977.34
+				], 
+				[
+					392, 
+					72, 
+					4613953.3
+				], 
+				[
+					397, 
+					73, 
+					270910.96
+				], 
+				[
+					402, 
+					74, 
+					461132.5
+				], 
+				[
+					407, 
+					75, 
+					74673
+				], 
+				[
+					412, 
+					76, 
+					721785.48
+				], 
+				[
+					417, 
+					77, 
+					109453.02
+				], 
+				[
+					422, 
+					78, 
+					69346.28
+				], 
+				[
+					427, 
+					79, 
+					162271.06
+				], 
+				[
+					432, 
+					80, 
+					133753.26
+				], 
+				[
+					437, 
+					81, 
+					103541.34
+				], 
+				[
+					442, 
+					82, 
+					426718.18
+				], 
+				[
+					447, 
+					83, 
+					255465.18
+				], 
+				[
+					452, 
+					84, 
+					248145.8
+				], 
+				[
+					457, 
+					85, 
+					335255.84
+				], 
+				[
+					462, 
+					86, 
+					318723.9
+				], 
+				[
+					467, 
+					87, 
+					154769.64
+				], 
+				[
+					472, 
+					88, 
+					58636.58
+				], 
+				[
+					477, 
+					89, 
+					206229.02
+				], 
+				[
+					482, 
+					90, 
+					303590.68
+				], 
+				[
+					487, 
+					91, 
+					285215.14
+				], 
+				[
+					492, 
+					92, 
+					668114.42
+				], 
+				[
+					497, 
+					93, 
+					1422845.46
+				], 
+				[
+					502, 
+					94, 
+					941878.4
+				], 
+				[
+					507, 
+					95, 
+					2050220.6
+				], 
+				[
+					512, 
+					96, 
+					1220672.66
+				], 
+				[
+					517, 
+					97, 
+					1189989.1
+				], 
+				[
+					522, 
+					98, 
+					3089784.26
+				], 
+				[
+					527, 
+					99, 
+					629889.36
+				], 
+				[
+					532, 
+					100, 
+					1234305.04
+				], 
+				[
+					537, 
+					101, 
+					1353474.08
+				], 
+				[
+					542, 
+					102, 
+					1078542.46
+				], 
+				[
+					547, 
+					103, 
+					758843.22
+				], 
+				[
+					552, 
+					104, 
+					456305.76
+				], 
+				[
+					557, 
+					105, 
+					187384.22
+				], 
+				[
+					562, 
+					106, 
+					603263.98
+				], 
+				[
+					567, 
+					107, 
+					2909955.22
+				], 
+				[
+					572, 
+					108, 
+					2150025.36
+				], 
+				[
+					577, 
+					109, 
+					1085148.54
+				], 
+				[
+					582, 
+					110, 
+					727540.68
+				], 
+				[
+					587, 
+					111, 
+					1472303.12
+				], 
+				[
+					592, 
+					112, 
+					661428.4
+				], 
+				[
+					597, 
+					113, 
+					4334879.56
+				], 
+				[
+					602, 
+					114, 
+					1667671.96
+				]
+			]
+		}
+	], 
+	"size": {
+		"height": 600, 
+		"width": 800
+	}, 
+	"grammar": [
+		{
+			"coordinates": {
+				"transforms": [
+				], 
+				"dimensions": [
+					{
+						"scale": {
+							
+							"spans": [
+								{ "fit": "nice", 
+									"min": 0, 
+									"max": 14948640.6
+								}
+							]
+						}, 
+						"axis": {
+							"lineStyle": {
+								"fill": "rgba(18,17,118,0.70)", 
+								"stroke": {
+									"width": "3px"
+								}
+							}, 
+							"tickStyle": {
+								"fill": "rgba(85,18,18,0.80)", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"markStyle": {
+								"fill": "rgba(18,17,118,0.70)", 
+								"stroke": {
+									"width": "3px"
+								}
+							}, 
+							"titleStyle": {
+								"fill": "rgba(0,0,0,1.0)", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"title": [
+								{
+									"$ref": "_VALUES_FIELD_"
+								}
+							], 
+							"gridStyle": {
+								"fill": "rgba(128,128,128,0.50)", 
+								"stroke": {
+									"width": "1px", 
+									"style": "solid"
+								}
+							}
+						}
+					}, 
+					{
+						"axis": {
+						    "method":"vertical",
+							"lineStyle": {
+								"fill": "rgba(85,18,18,0.80)", 
+								"stroke": {
+									"width": "1px"
+								}
+							}, 
+							"tickStyle": {
+								"fill": "rgba(85,18,18,0.80)", 
+								"font": {
+									"family": "Arial", 
+									"size": "10pt", 
+									"weight": "normal", 
+									"style": "normal"
+								}
+							}, 
+							"markStyle": {
+								"fill": "rgba(85,18,18,0.80)", 
+								"stroke": {
+									"width": "1px"
+								}
+							}, 
+							"titleStyle": {
+								"fill": "rgba(0,128,128,1.0)", 
+								"font": {
+									"family": "'Andale WT'", 
+									"size": "9pt", 
+									"weight": "bold", 
+									"style": "normal"
+								}
+							}, 
+							"title": [
+								"Product name"
+							], 
+							"gridStyle": {
+								"fill": "rgba(0,0,128,1.0)", 
+								"stroke": {
+									"width": "4px", 
+									"style": "solid"
+								}
+							}
+						}, 
+						"scale": {
+							"spans": [
+								{
+									"fit": "exact"
+								}
+							]
+						}
+					}
+				], 
+				"style": {
+					"stroke": {
+						"width": "5px", 
+						"style": "solid"
+					}, 
+					"outline": "rgba(255,0,0,1.0)", 
+					"fill": "rgba(0,255,255,1.0)"
+				}
+			}, 
+			"elements": [
+				{
+					"type": "area", 
+					"position": [
+						{
+							"field": {
+								"$ref": "_VALUES_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_CATEGORY_FIELD_"
+							}
+						}
+					], 
+					"style": {
+						"fill": {
+							"type": "linear", 
+							"angle": 180, 
+							"colors": [
+								{
+									"offset": 0, 
+									"color": {
+										"dAlpha": 1, 
+										"dValue": 0, 
+										"dSaturation": 0, 
+										"r": 38, 
+										"g": 101, 
+										"b": 209, 
+										"a": 1
+									}
+								}, 
+								{
+									"offset": 1, 
+									"color": {
+										"dAlpha": 0.1, 
+										"dValue": 0, 
+										"dSaturation": 0, 
+										"r": 38, 
+										"g": 101, 
+										"b": 209, 
+										"a": 1
+									}
+								}
+							]
+						}, 
+						"outline": "rgba(2,17,66,0.50)", 
+						"stroke": {
+							"width": "1px", 
+							"style": "solid"
+						}
+					}
+				}, 
+				{
+					"type": "point", 
+					"position": [
+						{
+							"field": {
+								"$ref": "_VALUES_FIELD_"
+							}
+						}, 
+						{
+							"field": {
+								"$ref": "_CATEGORY_FIELD_"
+							}
+						}
+					], 
+					"style": {
+						"size": 0
+					}
+				}
+			]
+		}
+	]
+}

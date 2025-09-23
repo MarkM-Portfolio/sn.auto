@@ -1,0 +1,201 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year Published",
+          "min": 1980.0,
+          "max": 2008.0
+        },
+        {
+          "id": "fY",
+          "label": "Length",
+          "min": 95.0,
+          "max": 586.0
+        },
+        {
+          "id": "fSourcefield",
+          "label": "Price",
+          "min": 3.49,
+          "max": 54.95
+        },
+        {
+          "id": "categories",
+          "label": "Categories",
+          "categories": [ "category A" ]
+        }
+      ],
+      "rows": [ [ 1999, 339, 12.99, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"height": "70%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "mapping": [
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 250,
+                    "g": 60,
+                    "r": 30
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 40,
+                    "g": 50,
+                    "r": 250
+                  },
+                  "offset": 1
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 80,
+                    "g": 200,
+                    "r": 200
+                  },
+                  "offset": 2
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 100,
+                    "g": 140,
+                    "r": 180
+                  },
+                  "offset": 3
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 40,
+                    "g": 140,
+                    "r": 80
+                  },
+                  "offset": 4
+                },
+                {
+                  "color": {
+                    "a": 0.5,
+                    "b": 130,
+                    "g": 130,
+                    "r": 130
+                  },
+                  "offset": 5
+                }
+              ]
+            }
+          ],
+          "size": [
+            {
+              "id": "sizeId",
+              "field": {"$ref": "fSourcefield"},
+              "mapping": [
+                {"offset": 0.0, "size": 25.0},
+                {"offset": 1.0, "size": 100.0}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "angle": 0.0,
+              "colors": [
+                {
+                  "color": {"b": 0, "g": 0, "r": 255},
+                  "offset": 0.0
+                },
+                {
+                  "color": {"b": 0, "g": 0, "r": 0},
+                  "offset": 1.0
+                }
+              ]
+            },
+            "stroke": {"width": 0.0},
+            "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+            "size": 45.0
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 15
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"height": "20%", "top": "70%"},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "layout": {"columns": 4, "flow": "horizontal"}
+        }
+      ],
+      "layout": {"flow": "vertical"}
+    }
+  ],
+  "size": {"width": 600, "height": 200},
+  "version": "1.2"
+}

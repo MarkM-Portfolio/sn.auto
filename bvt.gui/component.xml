@@ -1,0 +1,24 @@
+<component name="bvt.gui" description="Connections GUI BVT common code"
+    project-type="java" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+                preferredInstallLocation="/"
+                location="${env.LWP_COMP_BUILD}/lib/bvt.gui.jar" />
+        <output type="dir" visibility="public" platform="all"
+                preferredInstallLocation="test_config"
+                location="${env.LWP_COMP_BUILD}/test_config" />
+        <output type="dir" visibility="public" platform="all"
+                preferredInstallLocation="resources"
+                location="${env.LWP_COMP_BUILD}/resources" />
+    </output-group>
+
+	<dependency name="libs.auto/testng" type="jar" version="6.4" />
+    <dependency name="libs.auto/selenium" type="jar" version="7.0" />
+    <dependency name="waffle" type="jar" version="1.0" />
+    <dependency name="lc.data.pop" type="jar" version="1.0" />
+    <dependency name="libs.auto/apache-abdera-1.1.2" type="jar" version="1.1.2" />
+    <dependency name="libs.auto/wink-json4j" type="jar" version="1.1" />
+    <dependency name="libs.auto/slf4j" type="jar" version="1.7" />
+    <dependency name="libs.auto/commons-io" type="jar" version="1.4" />
+</component>

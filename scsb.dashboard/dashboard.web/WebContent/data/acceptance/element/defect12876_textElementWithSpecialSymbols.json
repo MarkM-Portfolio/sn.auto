@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "fTags",
+          "categories": [ "gender", "salbegin<<test>>" ],
+          "key": true
+        },
+        {"id": "fImportance", "min": 0, "max": 1},
+        {"id": "fTransformed", "categories": [ "N", "Y" ]},
+        {
+          "id": "fRole",
+          "categories": [
+            "Target",
+            "Input",
+            "None",
+            "RecordID"
+          ]
+        }
+      ],
+      "rows": [ [ 1, 1, 1, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "text",
+          "data": {"$ref": "source"},
+          "content": [ {"$ref": "fTags"} ],
+          "positioning": {
+            "layout": "flow",
+            "method": "cloud"
+          },
+          "size": [ {"field": {"$ref": "fImportance"}} ],
+          "styleBy": [
+            {
+              "field": {"$ref": "fTransformed"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "style": {"font": {"family": "Arial"}}
+                },
+                {
+                  "at": 1,
+                  "style": {
+                    "font": {
+                      "family": "Arial",
+                      "style": "italic"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#1a80a8",
+            "font": {"family": "Arial"},
+            "location": "outside",
+            "padding": {"bottom": 10, "right": 10},
+            "valign": "end"
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0, "b": 0, "g": 0, "r": 0},
+        "padding": 0
+      }
+    }
+  ],
+  "size": {"width": 584, "height": 405},
+  "version": "1.3"
+}

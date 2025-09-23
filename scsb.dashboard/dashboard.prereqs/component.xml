@@ -1,0 +1,27 @@
+<component name="scsb.dashboard/dashboard.prereqs"
+    description="Dependencies for SCSB Dashboard"
+    type="jar" spec-version="1.0">
+
+    <output-group name="default">
+        <output type="jar" visibility="public" platform="all"
+                location="commons-codec-1.8.jar"
+                preferredInstallLocation="lib" />
+
+    <output type="jar" visibility="public" platform="all"
+                location="httpclient-4.3.1.jar"
+                preferredInstallLocation="lib" />
+
+    <output type="jar" visibility="public" platform="all"
+                location="httpcore-4.3.jar"
+                preferredInstallLocation="lib" />
+
+    <output type="jar" visibility="public" platform="all"
+                location="gson-2.2.4.jar"
+                preferredInstallLocation="lib" />
+
+    <output type="jar" visibility="public" platform="all"
+                location="lightcouch-0.1.3.jar"
+                preferredInstallLocation="lib" />
+    </output-group>
+</component>
+

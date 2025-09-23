@@ -1,0 +1,13 @@
+*~
+.vagrant/
+.idea/
+*.iml
+.kitchen/
+.kitchen.local.yml*
+.rakeTasks
+.bundle
+/bin
+/vendor
+Berksfile.lock
+Gemfile.lock
+build

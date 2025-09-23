@@ -1,0 +1,125 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "f", "min": 0, "max": 1} ],
+      "rows": [ [ 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f"}},
+            {"field": {"$ref": "f"}}
+          ],
+          "style": {
+            "size": "300",
+            "symbol": {
+              "shape": [
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "40%",
+                    "height": "40%",
+                    "left": "0%",
+                    "top": "0%"
+                  },
+                  "style": {"fill": "#f00"}
+                },
+                {
+                  "type": "rect",
+                  "shape": [
+                    {
+                      "type": "circle",
+                      "style": {"fill": "#ff0"}
+                    },
+                    {
+                      "type": "cross",
+                      "style": {"fill": "#0f0"}
+                    }
+                  ],
+                  "bounds": {
+                    "width": "40%",
+                    "height": "40%",
+                    "left": "55%",
+                    "top": "0%"
+                  },
+                  "style": {"fill": "#00f"}
+                },
+                {
+                  "type": "group",
+                  "shape": [
+                    {
+                      "type": "poly-5",
+                      "style": {"fill": "#ccc"}
+                    },
+                    {
+                      "type": "plus",
+                      "style": {"fill": "#000"}
+                    }
+                  ],
+                  "bounds": {
+                    "width": "40%",
+                    "height": "40%",
+                    "left": "0%",
+                    "top": "55%"
+                  },
+                  "style": {"fill": "#0ff"}
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "40%",
+                    "height": "40%",
+                    "left": "55%",
+                    "top": "55%"
+                  },
+                  "style": {"fill": "#0ff"}
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "titles": [
+    {
+      "type": "title",
+      "content": [ "A Custom Symbol with 'Group'" ],
+      "style": { "font": { "size": 18, "weight": "bold" } }
+    },
+    {
+      "type": "title",
+      "content": [
+        "The important part is the scene tree structure"
+      ]
+    },
+    {
+      "type": "title",
+      "content": [
+        "(Schema with six shapes, shape[4] a schema with two shapes)"
+      ]
+    },
+    {
+      "type": "title",
+      "content": [
+        "and that you not see any magenta from the schema shape"
+      ]
+    },
+    {
+      "type": "title",
+      "content": [
+        "that contains the gray pentagon and black plus"
+      ]
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

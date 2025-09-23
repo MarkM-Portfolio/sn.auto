@@ -1,0 +1,108 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "xRegions",
+          "categories": [
+            "Southwest",
+            "Southeast",
+            "Mid Atlantic",
+            "Northeast",
+            "Great Lakes",
+            "Aol",
+            "South Central",
+            "Pacific Northwest",
+            "Mountain",
+            "Midwest",
+            "Other"
+          ]
+        },
+        {"id": "yData"},
+        {"id": "wWeight"}
+      ],
+      "rows": [
+        [ 0, 95, 150 ],
+        [ 1, 70, 120 ],
+        [ 2, 60, 95 ],
+        [ 3, 55, 85 ],
+        [ 4, 50, 80 ],
+        [ 5, 48, 75 ],
+        [ 6, 60, 65 ],
+        [ 7, 55, 60 ],
+        [ 8, 30, 25 ],
+        [ 9, 60, 20 ],
+        [ 10, 45, 15 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "description": "A bar chart showing that bars weight and height can both vary.",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "lineStyle": {"fill": {"a": 0}},
+              "markStyle": {"fill": {"a": 0}},
+              "minorStyle": {"fill": {"a": 0}},
+              "tickStyle": {"fill": {"a": 0}}
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {
+                  "categoryWeights": {
+                    "categories": {"$ref": "xRegions"},
+                    "weights": {"$ref": "wWeight"}
+                  },
+                  "method": "orderByWeight"
+                }
+              ]
+            },
+            "axis": {
+              "lineStyle": {"fill": {"a": 0}},
+              "markStyle": {"fill": {"a": 0}},
+              "minorStyle": {"fill": {"a": 0}},
+              "tickStyle": {"fill": {"a": 0.6}}
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "yData"}},
+            {"field": {"$ref": "xRegions"}}
+          ],
+          "style": {
+            "fill": "#8bb8e9",
+            "stroke": {"width": 2},
+            "outline": "#FFF"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"fill": "white"}
+    }
+  ],
+  "size": {"width": 300, "height": 800},
+  "titles": [
+    {
+      "type": "title",
+      "content": [ "Geographic regions" ],
+      "style": {
+        "fill": {"a": 0.6},
+        "align": "start",
+        "font": {"size": 12, "weight": "bold"}
+      }
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "white"}
+}

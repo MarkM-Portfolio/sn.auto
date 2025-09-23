@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION  2015.01.28-1800
+-->
+
+<suite thread-count="1" name="Wikis" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connAPI
+  - for smart cloud maybe something like - scAPI
+  
+  <groups>
+    <run> 
+      <include name="onprem" /> 
+  	  <include name="impersonation" /> 
+   	  <include name="smartcloud" /> 
+   	</run>
+  </groups>
+ -->
+ 
+  <parameter name="SERVER_URL" value="CI_PREBVT_BROWSER_URL" />
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE" />
+  <!--  <parameter name="DEPLOYMENT_TYPE" value="SMARTCLOUD" /> -->
+  <parameter name="MODERATION_ENABLED" value="false" />
+  <parameter name="VMODEL_ENABLED" value="false" />
+  <parameter name="IMPERSONATION_ENABLED" value="true" />
+  <parameter name="AUTHENTICATION" value="basic" />
+      
+ 
+  
+  <!-- TESTS -->
+  
+  <test name="SetUp" preserve-order="true" enabled="true">
+  	<classes>
+   		<class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv" />
+   	</classes>
+  </test>
+
+  <test name="Wikis" preserve-order="true" enabled="true">
+  	<packages>
+   		<package name="com.ibm.lconn.automation.framework.services.wikis.test" />
+   	</packages>
+  </test>
+
+  <!-- IMPERSONATEDTEST START --> 
+  <test name="Wikis IMPERSONATEDTEST" preserve-order="true" enabled="false">
+  	<packages>
+   		<package name="com.ibm.lconn.automation.framework.services.wikis.impersonated" />
+   	</packages>
+  </test>
+  <!-- IMPERSONATEDTEST END -->
+  
+</suite>

@@ -1,0 +1,111 @@
+{
+  "version": "1.2",
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "data": [{
+    "id": "dDelimitedFileSource",
+    "fields": [
+      {
+        "id": "fCategories",
+        "label": "Store",
+        "categories": [
+          "Nya Yorks",
+          "Omaha",
+          "Kalifornien",
+          "Delawares",
+          "Floridas",
+          "Illinois",
+          "Kentucky",
+          "Nya Jerseys",
+          "Nya Mexikos",
+          "Söder Dakota",
+          "Texas"
+        ]
+      },
+      {
+        "id": "fValues",
+        "label": "Price",
+        "min": 6.49,
+        "max": 43.99
+      }
+    ],
+    "rows": [
+      [ 10, 6.49 ],
+      [ 9, 6.99 ],
+      [ 4, 12.99 ],
+      [ 5, 8.99 ],
+      [ 8, 6.99 ],
+      [ 6, 7.99 ],
+      [ 0, 43.99 ],
+      [ 3, 12.99 ],
+      [ 7, 6.99 ],
+      [ 1, 26.95 ],
+      [ 2, 24.99 ]
+    ]
+  }],
+  "grammar": [{
+    "coordinates": {
+      "dimensions": [
+        {
+          "axis": {
+            "gridStyle": {
+              "stroke": { "style": "Dot" },
+              "fill": { "b": 250, "g": 75, "r": 75 }
+            },
+            "lineStyle": { },
+            "markStyle": { },
+            "tickStyle": {
+              "font": { "family": "Arial", "size": "8.0pt" }
+            }
+          }
+        },
+        { }
+      ],
+      "transforms": [ { "type": "transpose" } ],
+      "style": {
+        "fill": {
+          "type": "linear",
+          "angle": 0,
+          "colors": [
+            {
+              "color": { "b": 155, "g": 110, "r": 110 },
+              "offset": 0.0
+            },
+            {
+              "color": { "b": 255, "g": 130, "r": 130 },
+              "offset": 1.0
+            }
+          ]
+        }
+      }
+    },
+    "elements": [
+      {
+        "type": "interval",
+        "label":[{
+          "color": { "field": { "$ref": "fValues" } },
+          "content": [ { "$ref": "fCategories" } ],
+          "style": {
+            "align": "start",
+            "font": { "family": "Arial" },
+            "location": "stretch",
+            "padding": 2
+          }
+        }],
+        "data": { "$ref": "dDelimitedFileSource" },
+        "position": [
+          { "field": { "$ref": "fValues" } },
+          { "field": { "$ref": "fCategories" } }
+        ],
+        "style": {
+          "width": "150%",
+          "fill": { "a": 0.0, "b": 0, "g": 0, "r": 0 }
+        }
+      }
+    ],
+    "style": {
+      "fill": { "a": 0.0, "b": 0, "g": 0, "r": 0 },
+      "padding": 10
+    }
+  }],
+      "size": { "height": 600.0, "width": 400.0 }
+}

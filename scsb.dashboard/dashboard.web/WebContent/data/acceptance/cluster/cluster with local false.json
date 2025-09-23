@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "Country", "categories": [ "US", "Canada" ]},
+        {
+          "id": "Division",
+          "categories": [ "A", "Null Y", "C", "D" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [ [ 0, 0, 73 ], [ 0, 1, null ], [1,3,100] ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "100%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {"local": false},
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          },
+          {
+            "scale": {
+              "local": false,
+              "categoryStructure": {"nest": false}
+            },
+            "axis": {
+              "boxStyle": {
+                "fill": "transparent",
+                "outline": "black"
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Division"}}
+          ],
+          "style": {
+            "fill": "yellow",
+            "outline": "black",
+            "size": "100%"
+          }
+        }
+      ],
+      "style": {"fill": "#eee"}
+    }
+  ],
+  "version": "1.3",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,168 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {
+          "id": "fMonth",
+          "categories": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        },
+        {
+          "id": "fTopTenCount",
+          "label": "# OF TOP 10",
+          "unit": "integral"
+        },
+        {"id": "fEventFreq", "label": "EventFreq", "min": 0}
+      ],
+      "rows": [
+        [ 0, 9, 173640000 ],
+        [ 1, 7, 149933008 ],
+        [ 2, 6, 118440000 ],
+        [ 3, 5, 116487034 ],
+        [ 4, 4, 98622974 ],
+        [ 5, 2, 63660000 ],
+        [ 6, 0, 117900000 ],
+        [ 7, 10, 131340000 ],
+        [ 8, 7, 147660000 ],
+        [ 9, 5, 148450673 ],
+        [ 10, 8, 80757584 ],
+        [ 11, 10, 14220000 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 0, "fit": "exact"} ]
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "24"}
+              },
+              "method": "horizontal"
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "fEventFreq"}},
+            {"field": {"$ref": "fMonth"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fTopTenCount"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {"b": 61, "g": 135, "r": 64}
+                },
+                {
+                  "at": 1,
+                  "color": {"b": 54, "g": 196, "r": 54}
+                },
+                {
+                  "at": 2,
+                  "color": {"b": 87, "g": 217, "r": 164}
+                },
+                {
+                  "at": 3,
+                  "color": {"b": 87, "g": 217, "r": 164}
+                },
+                {
+                  "at": 4,
+                  "color": {"b": 56, "g": 216, "r": 255}
+                },
+                {
+                  "at": 5,
+                  "color": {"b": 0, "g": 193, "r": 252}
+                },
+                {
+                  "at": 6,
+                  "color": {"b": 64, "g": 153, "r": 255}
+                },
+                {
+                  "at": 7,
+                  "color": {"b": 30, "g": 82, "r": 232}
+                },
+                {
+                  "at": 8,
+                  "color": {"b": 30, "g": 82, "r": 232}
+                },
+                {
+                  "at": 9,
+                  "color": {"b": 62, "g": 52, "r": 227}
+                },
+                {
+                  "at": 10,
+                  "color": {"b": 36, "g": 23, "r": 191}
+                }
+              ],
+              "modifies": "both"
+            }
+          ],
+          "style": {
+            "fill": "#ddd",
+            "width": "100%",
+            "outline": {"dValue": -0.05}
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "itemStyle": {"width": 40, "outline": "transparent"},
+      "lineStyle": {"fill": "white", "stroke": {"width": 2}},
+      "markStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0}
+      },
+      "tickStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": 14,
+          "weight": "bold"
+        }
+      },
+      "titleStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {"family": "Arial", "size": "18"}
+      },
+      "method": "continuous"
+    }
+  ],
+  "size": {"width": 600, "height": 400},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 20}
+}

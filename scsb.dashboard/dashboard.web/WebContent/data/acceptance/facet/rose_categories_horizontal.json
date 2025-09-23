@@ -1,0 +1,125 @@
+{
+  "data": [
+    {
+      "id": "BY CATEGORY",
+      "fields": [
+        {
+          "id": "MARKET",
+          "label": "BMC Market",
+          "categories": [ "Benelux", "DACH" ]
+        },
+        {
+          "id": "CATEGORY",
+          "label": "Category",
+          "categories": [
+            "Beauty",
+            "Floor Care",
+            "Garment Care",
+            "Kitchen Applicances",
+            "Lifestyle Entertainment",
+            "Male Grooming",
+            "Mother & Childcare",
+            "Oral Healthcare",
+            "Skincare"
+          ]
+        },
+        {"id": "X1", "label": "Start Width"},
+        {"id": "X2", "label": "End Width"},
+        {"id": "Y", "label": "From Target"}
+      ],
+      "rows": [
+        [ 0, 0, 10, 30, 25 ],
+        [ 0, 1, 30, 35, -5 ],
+        [ 0, 2, 35, 50, 10 ],
+        [ 0, 3, 50, 60, -10 ],
+        [ 0, 4, 60, 70, 5 ],
+        [ 0, 5, 70, 100, -10 ],
+        [ 0, 6, 100, 110, 25 ],
+        [ 0, 7, 110, 120, -10 ],
+        [ 0, 8, 120, 130, 15 ],
+        [ 1, 0, 10, 20, 25 ],
+        [ 1, 1, 20, 25, 22 ],
+        [ 1, 2, 25, 40, -10 ],
+        [ 1, 3, 40, 55, 25 ],
+        [ 1, 4, 55, 60, -5 ],
+        [ 1, 5, 60, 100, -10 ],
+        [ 1, 6, 100, 110, -25 ],
+        [ 1, 7, 110, 120, 10 ],
+        [ 1, 8, 120, 130, -15 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [ {"type": "polar"} ],
+        "style": {
+          "fill": {"a": 0.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "CATEGORY"} ],
+              "style": {
+                "fill": "white",
+                "effect": {"shadow": {}},
+                "font": {"family": "arial", "size": "12pt"},
+                "location": "outside"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"value": 0},
+            {"field": {"$ref": "X1"}},
+            {"field": {"$ref": "X2"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Y"},
+              "mapping": [
+                {"at": -10, "color": "red"},
+                {"at": 25, "color": "cyan"}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"value": 0},
+            {"value": 0},
+            {"value": "0%"},
+            {"value": "100%"}
+          ],
+          "style": {"fill": "gray", "stroke": {"width": 2}}
+        }
+      ],
+      "facet": {
+        "fields": [
+          {
+            "field": {"$ref": "MARKET"},
+            "axis": {
+              "tickStyle": {
+                "fill": "white",
+                "font": {"family": "arial", "size": "18pt"}
+              }
+            }
+          }
+        ],
+        "method": "panelHorizontal"
+      },
+      "style": {
+        "fill": {"b": 0, "g": 0, "r": 0}
+      }
+    }
+  ],
+  "size": {"width": 1200, "height": 800},
+  "version": "4.2",
+  "style": {"fill": "black"}
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright IBM Corp. 2008, 2011  All Rights Reserved.              -->
+<!-- 5724-E76                                                          -->
+<config id="searchConfig" version="10" buildlevel="20110330_1405"
+	xmlns="http://www.ibm.com/LotusConnectionsSearch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/LotusConnectionsSearch search-config.xsd ">
+
+	<indexingSchedule/>	
+
+	<seedlistSettings pageSize="500">
+	</seedlistSettings>
+
+
+	<indexSettings location="${SEARCH_INDEX_DIR}" />
+
+	<crawlerSettings maxCrawlerThreads="2"/>
+
+	<languageSupport defaultLocale="en">
+		<dictionary locale="en" path="${SEARCH_DICTIONARY_DIR}" />
+	</languageSupport>
+	
+
+	<attachmentHandling enabled="true" maxAttachmentSize="52428800">
+		<mimeSupport>
+			<mimeType name="application/msword" />
+			<mimeType name="application/vnd.ms-excel" />
+			<mimeType name="application/vnd.ms-powerpoint" />
+			<mimeType name="application/vnd.visio" />
+			<mimeType name="application/vnd.ms-project" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+			<mimeType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/> 
+			<mimeType name="application/pdf" />
+			<mimeType name="application/postscript" />
+			<mimeType name="application/xhtml+xml" />
+			<mimeType name="application/xml"/>
+			<mimeType name="text/html" />
+			<mimeType name="text/htm" />
+			<mimeType name="text/plain"/>
+			<mimeType name="text/richtext"/>
+			<mimeType name="text/xml"/>
+			<mimeType name="application/rtf"/>
+			<mimeType name="application/vnd.oasis.opendocument.text"/>
+			<mimeType name="application/vnd.oasis.opendocument.spreadsheet"/>
+			<mimeType name="application/vnd.oasis.opendocument.presentation"/>
+			<mimeType name="application/vnd.oasis.opendocument.text-master"/>
+			<mimeType name="application/vnd.lotus-1-2-3"/>
+			<mimeType name="application/vnd.lotus-wordpro"/>
+			<mimeType name="application/vnd.lotus-freelance"/>
+		</mimeSupport>
+		<attachmentCache cacheExpiryTime="30"	cacheFileSize="200000" maxCacheEntries="100000"/>
+		<attachmentConversion maxConcurrentDownloads="3" maxTempDirSize="104857600" downloadThrottle="0"/>
+	</attachmentHandling>
+	<backupSettings type="overwrite" location="${SEARCH_INDEX_BACKUP_DIR}" />
+
+</config>

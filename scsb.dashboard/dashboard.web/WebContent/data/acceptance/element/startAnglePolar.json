@@ -1,0 +1,121 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dData",
+		"fields": [{
+			"id": "fX",
+			"label": "X"
+		},
+		{
+			"id": "fA",
+			"label": "A",
+			"categories": ["Fun",
+			"Cool",
+			"Important",
+			"Exciting",
+			"Interesting"]
+		}],
+		"rows": [[2,
+		0],
+		[3,
+		1],
+		[3,
+		2],
+		[2,
+		3],
+		[5,
+		4]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				}],
+			"transforms": [{
+				"type": "stack"
+			},
+			{
+				"type": "polar",
+				"polarParameters": {
+				"startAngle": -90 }
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"label": [{
+				"content": [{
+					"$ref": "fA"
+				},
+				{
+					"$ref": "fX"
+				},
+				")"],
+				"style": {
+					"fill": "black",
+					"font": {
+						"family": "Georgia",
+						"size": 10.0,
+						"weight": "bold"
+					}
+				}
+			}],
+			"data": {
+				"$ref": "dData"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fX"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "fA"
+				}
+			}],
+			"style": {
+				"fill": {
+					"type": "radial",
+					"angle": 90.0,
+					"colors": [{
+						"color": {
+							"a": 0
+						},
+						"offset": 0.0
+					},
+					{
+						"color": {
+							"a": 0
+						},
+						"offset": 0.001
+					},
+					{
+						"color": {
+							"a": 0
+						},
+						"offset": 0.002
+					},
+					{
+						"color": {
+							"a": 0
+						},
+						"offset": 0.9
+					},
+					{
+						"color": {
+							"a": 0.75
+						},
+						"offset": 0.99
+					},
+					{
+						"color": {
+							"a": 0.75
+						},
+						"offset": 1.0
+					}],
+					"global": true
+				},
+				"width": "100%"
+			}
+		}]
+	}]
+}

@@ -1,0 +1,184 @@
+{
+    "version": "1.2",
+	"data": [{
+		"id": "data",
+		"fields": [{
+			"id": "categories",
+			"label": "States",
+			"categories": ["Q1",
+			"Q2",
+			"Q3",
+			"Q4"]
+		},
+		{
+			"id": "values",
+			"min": 0,
+			"max": 3300
+		}],
+		"rows": [[3,
+		3300],
+		[2,
+		1500],
+		[1,
+		2200],
+		[0,
+		450]]
+	},
+	{
+		"id": "regression1",
+		"source": {
+			"$ref": "data"
+		},
+		"type": "smooth.regression",
+		"input": [{
+			"field": {
+				"$ref": "categories"
+			},
+			"role": "x"
+		},
+		{
+			"field": {
+				"$ref": "values"
+			},
+			"role": "y"
+		}],
+		"output": [{
+			"field": {
+				"id": "rX",
+				"unit": "categorical"
+			},
+			"role": "x"
+		},
+		{
+			"field": {
+				"id": "rY"
+			},
+			"role": "y"
+		},
+		{
+			"field": {
+				"id": "rLabel"
+			},
+			"role": "accuracy"
+		}]
+	}],
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"minorStyle": {
+						"fill": {
+							"b": 75,
+							"g": 75,
+							"r": 75
+						}
+					},
+					"title": ["Quantity shipped"],
+					"titleStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"font": {
+							"size": "18",
+							"weight": "bold",
+							"style": "italic"
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"title": ["Quarters"],
+					"titleStyle": {
+						"fill": {
+							"b": 150,
+							"g": 50,
+							"r": 50
+						},
+						"font": {
+							"family": "Technical, Times New Roman",
+							"size": "18",
+							"style": "italic"
+						}
+					}
+				}
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"position": [{
+				"field": {
+					"$ref": "values"
+				}
+			},
+			{
+				"field": {
+					"$ref": "categories"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "values"
+				}
+			}],
+			"style": {
+				"width": "80%",
+				"outline": {
+					"a": 0.0
+				}
+			}
+		},
+		{
+			"type": "line",
+			"label": [{
+				"content": ["Linear (r2=",
+				{
+					"$ref": "rLabel"
+				},
+				")"],
+				"style": {
+					"fill": {
+						"a": 0.75,
+						"b": 0,
+						"g": 100,
+						"r": 0
+					},
+					"angle": "fit",
+					"padding": 2,
+					"valign": "start"
+				}
+			}],
+			"data": {
+				"$ref": "regression1"
+			},
+			"position": [{
+				"field": {
+					"$ref": "rY"
+				}
+			},
+			{
+				"field": {
+					"$ref": "rX"
+				}
+			}],
+			"style": {
+				"fill": {
+					"a": 0.25,
+					"b": 0,
+					"g": 100,
+					"r": 0
+				},
+				"stroke": {
+					"width": 10
+				}
+			}
+		}],
+		"style": {
+			"fill": "white",
+			"padding": 5
+		}
+	}]
+}

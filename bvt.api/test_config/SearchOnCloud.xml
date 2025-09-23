@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION  2015.01.28-1800
+-->
+
+<suite thread-count="1" name="SearchOnCloud" parallel="tests" >
+
+  <parameter name="SERVER_URL" value="CI_PREBVT_BROWSER_URL" />
+  <!--  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE" /> -->
+  <parameter name="DEPLOYMENT_TYPE" value="SMARTCLOUD" /> 
+  <parameter name="MODERATION_ENABLED" value="false" />
+  <parameter name="VMODEL_ENABLED" value="false" />
+  <parameter name="IMPERSONATION_ENABLED" value="false" />
+  <parameter name="AUTHENTICATION" value="basic" />
+      
+  <!-- TESTS -->
+  
+  <test name="SetUp" preserve-order="true" enabled="true">
+  	<classes>
+   		<class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv" />
+   	</classes>
+  </test>
+  
+  <test name="SearchRestAPITestSuiteRunOnCloud" preserve-order="true" enabled="true">
+  	<classes>
+   		<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.SearchRestAPITestSuiteRunOnCloud" />
+    	
+  		<!-- OnPremise and OnCloud -->
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceBasicTest" /> 
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceCommunityTest" />
+			<!--<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceACLTest" />-->
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceStartParameterTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchServiceScopeParameterTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSortKeyParameterTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSortOrderParameterTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceProfilesTest" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchBoostTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSocialParameterTest" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.ClientSideCachingTestOnCloud" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.RecommendServiceCacheTest" />
+  			<!--<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.RecommendServiceCacheTest" />-->
+  			<!-- PeopleFinder -->
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderBasicTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderApiParametersLimitsTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.PeopleFinderAuthenticationsForCloud" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderResponseTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.PeopleFinderAccentCharTestOnCloud" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderCJKCharTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.PeopleFinderAdditionalFieldsTestOnCloud" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderStartIndexAndCountParameterTest" />
+			
+			
+
+			 <!--  OnCloud Only Search Federation -->
+			
+			 <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrActivities" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrFiles" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrActivitiesScopes" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrFilesScopes" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrWikis" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrWikisScopes" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrForums" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchLuceneToSolrForumsScopes" />
+			 		
+ 		 <!-- UnifySearchTests OnCloud -->
+ 		 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.UnifySearchTests" />
+  			 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SearchServiceSortOrderParameterTestForSolr" />
+  			
+  		<!-- Files app on Solr OnCloud 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.FilesSearchTestsOnSolr" />
+  		-->
+  		<!--QuickResultsTestsRun OnCloud  -->
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.quickresults.QuickResultsQueryTest" />
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.quickresults.QuickResultHighlightingTest" /> 
+		<!--QuickResultsTests for ItemTypes	
+			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.quickresults.QuickResultsItemTypeTests" />
+  		-->
+  		
+  			<!-- JapaneseSearchTests OnCloud -->
+  		 	<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseAndEnglishSearchTests" /> 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseHiraganaSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseKanjiAndHiraganaSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseKatakanaSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseKanjiSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseKanjiAndHiraganaAndKatakanaSearchTests" /> 
+  			
+  			<!-- JapaneseSearchTests that are still not supported, will be added once we support advanced Japanese solution -->
+  			<!-- <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseBasicSearchTests" /> 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseKanjiAndKatakanaSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseInflectionSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseEndVowelSearchTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseIterationMarkSearchTests" /> 
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.JapaneseHalfAndFullWidthSearchTests" /> -->
+  			
+  			<!-- Faceting Tests -->
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SolrLegacyTagFacetingTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SolrLegacyPeopleFacetingTests" />
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.SolrLegacyDateFacetingTests" />
+  			
+  			<!--  Delete the activities created for search tests -->
+  			<class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.only.UnpopulateForSearchTests" />
+  			
+  		</classes>
+  	</test>
+
+</suite>

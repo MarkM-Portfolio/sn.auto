@@ -1,0 +1,188 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource1",
+      "fields": [
+        {
+          "id": "fCategories1",
+          "label": "Store",
+          "categories": [
+            "㖞㘚㘎⺗㥮",
+            "Illinois",
+            "㤘㧏㧟㩳㧐",
+            "㭎㱮㳠"
+          ]
+        },
+        {
+          "id": "fValues1",
+          "label": "Price",
+          "unit": "kilometer"
+        }
+      ],
+      "rows": [
+        [ 3, 70.49 ],
+        [ 2, 20.99 ],
+        [ 1, 27.0 ],
+        [ 0, -14.99 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "min": -20.0,
+                  "max": 15.0,
+                  "outRange": {"min": 0.0, "max": 0.5},
+                  "tickDelta": 5,
+                  "unit": "kilometer"
+                },
+                {
+                  "min": 0.0,
+                  "max": 30.0,
+                  "outRange": {"min": 0.45, "max": 0.9},
+                  "tickDelta": 5,
+                  "unit": "dollar"
+                }
+              ]
+            },
+            "axis": [
+              {
+                "markStyle": {
+                  "fill": {"b": 0, "g": 0, "r": 0}
+                },
+                "tickStyle": {
+                  "fill": {"b": 0, "g": 0, "r": 0},
+                  "font": {
+                    "family": "Verdana,SanSerif",
+                    "size": "10.0pt"
+                  }
+                }
+              },
+              {
+                "lineStyle": {"fill": "blue"},
+                "markStyle": {"fill": "blue"},
+                "tickStyle": {
+                  "fill": "blue",
+                  "font": {
+                    "family": "Verdana,SanSerif",
+                    "size": "8.0pt"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "scale": {
+              "spans": [ {"categories": [ 0, 2, 3 ]} ]
+            },
+            "axis": [
+              {
+                "markStyle": {
+                  "fill": {"b": 0, "g": 0, "r": 0}
+                },
+                "tickStyle": {
+                  "fill": {"b": 0, "g": 0, "r": 0},
+                  "font": {
+                    "family": "SimSun,Verdana,SanSerif",
+                    "size": "18.0pt"
+                  }
+                }
+              },
+              {
+                "lineStyle": {"fill": "blue"},
+                "markStyle": {"fill": "blue"},
+                "tickStyle": {
+                  "fill": "blue",
+                  "font": {
+                    "family": "SimSun,Verdana,SanSerif",
+                    "size": "18.0pt"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "style": {
+          "fill": {
+            "type": "linear",
+            "angle": 135.0,
+            "colors": [
+              {
+                "color": {"b": 255, "g": 221, "r": 221},
+                "offset": 0.0
+              },
+              {
+                "color": {"b": 255, "g": 255, "r": 255},
+                "offset": 1.0
+              }
+            ]
+          },
+          "stroke": {"width": 0.5},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource1"},
+          "position": [
+            {"field": {"$ref": "fValues1"}},
+            {"field": {"$ref": "fCategories1"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fValues1"},
+              "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"b": 255, "g": 0, "r": 0}
+                },
+                {
+                  "at": "100%",
+                  "color": {"b": 0, "g": 255, "r": 255}
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 0.0,
+              "colors": [
+                {
+                  "color": {"b": 150, "g": 57, "r": 1},
+                  "offset": 0.0
+                },
+                {
+                  "color": {
+                    "a": 0.2,
+                    "b": 0,
+                    "g": 0,
+                    "r": 0
+                  },
+                  "offset": 1.0
+                }
+              ]
+            },
+            "width": "80%",
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 28.800001
+      }
+    }
+  ],
+  "size": {"width": 500.0, "height": 500.0},
+  "version": "4.1"
+}

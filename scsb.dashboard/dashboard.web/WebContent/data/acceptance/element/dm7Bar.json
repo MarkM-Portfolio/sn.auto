@@ -1,0 +1,237 @@
+{
+	"version": "1.2",
+	"data": [{
+		"id": "data1",
+		"fields": [{
+			"id": "fCategories",
+			"label": "",
+			"categories": ["Poor",
+			"Fair",
+			"Good"]
+		},
+		{
+			"id": "fMin",
+			"label": ""
+		},
+		{
+			"id": "fMax",
+			"label": "",
+			"min": -1,
+			"max": 1
+		}],
+		"rows": [[0,
+		-1,
+		0.25],
+		[1,
+		0.25,
+		0.5],
+		[2,
+		0.5,
+		1]]
+	},
+	{
+		"id": "data2",
+		"fields": [{
+			"id": "fMin2",
+			"label": ""
+		},
+		{
+			"id": "fMax2",
+			"label": ""
+		}],
+		"rows": [[-1,
+		0.4]]
+	}],
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"grammar": [{
+		"bounds": {
+			"width": 400,
+			"height": 60,
+			"left": 50,
+			"top": 50
+		},
+		"coordinates": {
+			"dimensions": [{
+				"scale": {
+				
+					"spans": [{
+						"min": -1,
+						"max": 1
+					}]
+				},
+				"axis": {
+					"markStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						}
+					},
+					"tickStyle": {
+						"fill": {
+							"b": 0,
+							"g": 0,
+							"r": 0
+						},
+						"font": {
+							"family": "Verdana,SanSerif",
+							"size": 8.9
+						}
+					}
+				}
+			}],
+			"transforms": [{
+				"type": "transpose"
+			}],
+			"style": {
+				"fill": "white",
+				"stroke": {
+					"width": 0.5
+				},
+				"outline": {
+					"b": 0,
+					"g": 0,
+					"r": 0
+				},
+				"padding": 0
+			}
+		},
+		"elements": [{
+		    "clip":"none",
+			"type": "interval",
+			"label": [{
+				"color": {
+					"field": {
+						"$ref": "fCategories"
+					},
+					"mapping": [{
+						"color": {
+							"b": 0,
+							"g": 0,
+							"r": 190
+						},
+						"offset": 0
+					},
+					{
+						"color": {
+							"b": 0,
+							"g": 180,
+							"r": 180
+						},
+						"offset": 1
+					},
+					{
+						"color": {
+							"b": 0,
+							"g": 150,
+							"r": 0
+						},
+						"offset": 2
+					}]
+				},
+				"content": [{
+					"$ref": "fCategories"
+				},
+				"  "],
+				"style": {
+					"align": "end",
+					"padding": 0,
+					"valign": "end"
+				}
+			}],
+			"data": {
+				"$ref": "data1"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fMin"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fMax"
+				}
+			}],
+			"color": [{
+				"field": {
+					"$ref": "fCategories"
+				},
+				"mapping": [{
+					"color": {
+						"a": 0.3,
+						"b": 0,
+						"g": 0,
+						"r": 255
+					},
+					"offset": 0
+				},
+				{
+					"color": {
+						"a": 0.3,
+						"b": 0,
+						"g": 220,
+						"r": 220
+					},
+					"offset": 1
+				},
+				{
+					"color": {
+						"a": 0.3,
+						"b": 0,
+						"g": 200,
+						"r": 0
+					},
+					"offset": 2
+				}]
+			}],
+			"style": {
+				"width": "100%",
+				"outline": {
+					"a": 1.0,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				}
+			}
+		},
+		{
+			"type": "interval",
+			"data": {
+				"$ref": "data2"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fMin2"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fMax2"
+				}
+			}],
+			"style": {
+				"fill": "blue",
+				"width": "40%",
+				"outline": {
+					"a": 1.0,
+					"b": 0,
+					"g": 0,
+					"r": 0
+				}
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"outline": {
+				"b": 0,
+				"g": 0,
+				"r": 0
+			},
+			"padding": 0
+		}
+	}]
+}

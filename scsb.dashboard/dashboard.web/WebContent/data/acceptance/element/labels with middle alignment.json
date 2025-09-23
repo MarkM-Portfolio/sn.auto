@@ -1,0 +1,225 @@
+{
+	"version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "source",
+			
+			"fields" : [
+				{
+					"id" : "fX",
+					"label" : "Length"
+				},
+				{
+					"id" : "fY",
+					"label" : "Price"
+				},
+				{
+					
+					"id" : "store",
+					
+					"label" : "Store",
+					
+					"categories" : [
+						
+						"South Carolina",
+						
+						"Illinois",
+						
+						"Nevada",
+						
+						"North Carolina"
+						
+					]
+					
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[185, 6.49, 3],
+				
+				[136, 6.99, 2],
+				
+				[495, 29.95, 1],
+				
+				[446, 12.95, 0]
+				
+			]
+			
+		}
+		
+	],
+	
+	"grammar" : [
+		{
+			
+			"bounds" : {
+				
+				"width" : 520,
+				
+				"height" : "50%"
+				
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [{
+						"axis" : {}
+						
+					}, {
+						"axis" : {
+							"title" : ["Width 520"]
+						}
+					}
+				],
+				
+				"style" : {
+					"fill" : "lightGray"
+				}
+				
+			},
+			
+			"elements" : [
+				{
+					"clip":"none",
+					"type" : "point",
+					
+					"label" : [
+						{
+							
+							"content" : [{
+									"$ref" : "store"
+								}
+							],
+							
+							"style" : {
+								"font" : {
+									"size" : 18
+								}
+							}
+							
+						}
+						
+					],
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "fY"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "store"
+							}
+						}
+						
+					],
+					
+					"style" : {
+						"fill" : "red"
+					}
+					
+				}
+				
+			],
+			
+			"style" : {
+				"fill" : "white",
+				"padding" : 15
+			}
+			
+		},
+		{
+			
+			"bounds" : {
+				"width" : 480,
+				"height" : "50%",
+				"top" : "50%",
+				"left" : 0
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [{
+						"axis" : {}
+						
+					}, {
+						"axis" : {
+							"title" : ["Width 480"]
+						}
+					}
+				],
+				
+				"style" : {
+					"fill" : "lightGray"
+				}
+				
+			},
+			
+			"elements" : [
+				{
+					"clip":"none",
+					"type" : "point",
+					
+					"label" : [
+						{
+							
+							"content" : [{
+									"$ref" : "store"
+								}
+							],
+							
+							"style" : {
+								"font" : {
+									"size" : 18
+								}
+							}
+							
+						}
+						
+					],
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "fY"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "store"
+							}
+						}
+						
+					],
+					
+					"style" : {
+						"fill" : "red"
+					}
+					
+				}
+				
+			],
+			
+			"style" : {
+				"fill" : "white",
+				"padding" : 15
+			}
+			
+		}
+		
+	],
+	
+	"size" : {
+		"width" : 600
+	},
+	
+	"style" : {
+		"fill" : "white"
+	}
+	
+}

@@ -1,0 +1,121 @@
+{
+  "data": [
+    {
+      "id": "base_ds",
+      "fields": [
+        {"id": "fCategories", "label": "Age"},
+        {"id": "fValues", "label": "Frequence"},
+        {"id": "fTypes", "categories": [ "Overall", "cluster-5" ]}
+      ],
+      "rows": [
+        [ 16, 1, 0 ],
+        [ 18, 1, 0 ],
+        [ 22, 1, 0 ],
+        [ 23, 2, 0 ],
+        [ 28, 2, 0 ],
+        [ 31, 1, 0 ],
+        [ 32, 1, 0 ],
+        [ 33, 1, 0 ],
+        [ 34, 1, 0 ],
+        [ 39, 1, 0 ],
+        [ 41, 1, 0 ],
+        [ 43, 3, 0 ],
+        [ 45, 1, 0 ],
+        [ 46, 1, 0 ],
+        [ 47, 4, 0 ],
+        [ 48, 1, 0 ],
+        [ 49, 3, 0 ],
+        [ 50, 1, 0 ],
+        [ 53, 1, 0 ],
+        [ 57, 1, 0 ],
+        [ 60, 1, 0 ],
+        [ 61, 1, 0 ],
+        [ 63, 1, 0 ],
+        [ 65, 1, 0 ],
+        [ 69, 1, 0 ],
+        [ 74, 2, 0 ],
+        [ 31, 1, 1 ],
+        [ 43, 1, 1 ],
+        [ 53, 1, 1 ],
+        [ 60, 1, 1 ],
+        [ 63, 1, 1 ],
+        [ 74, 1, 1 ]
+      ]
+    },
+    {
+      "id": "ds",
+      "type": "density.kernel",
+      "group": [ {"input": {"$ref": "fTypes"}, "output": {"id": "type"}} ],
+      "input": [ {"field": {"$ref": "fCategories"}, "role": "x"} ],
+      "output": [
+        {"field": {"id": "category"}, "role": "x"},
+        {"field": {"id": "value"}, "role": "y"}
+      ],
+      "source": {"$ref": "base_ds"}
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "markStyle": {"fill": {"b": 0, "g": 0, "r": 0}},
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {"family": "Verdana,SanSerif", "size": 8.9}
+              },
+              "title": [ {"$ref": "fValues"} ]
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {"fill": {"b": 0, "g": 0, "r": 0}},
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {"family": "Verdana,SanSerif", "size": 8.9}
+              },
+              "title": [ {"$ref": "fCategories"} ]
+            }
+          }
+        ],
+        "style": {
+          "fill": {"b": 235, "g": 235, "r": 235},
+          "outline": {"b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "area",
+          "data": {"$ref": "ds"},
+          "position": [
+            {"field": {"$ref": "value"}},
+            {"field": {"$ref": "category"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "type"},
+              "mapping": [
+                {"at": 1, "color": {"a": 0.9, "b": 81, "g": 76, "r": 191}},
+                {"at": 0, "color": {"a": 0.2, "b": 81, "g": 76, "r": 191}}
+              ]
+            }
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 28.8
+      }
+    }
+  ],
+  "legends": [
+    {"aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ], "title": [ " " ]}
+  ],
+  "size": {"width": 400, "height": 420},
+  "version": "4.1"
+}

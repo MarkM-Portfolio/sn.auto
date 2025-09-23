@@ -1,0 +1,369 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Countries",
+          "categories": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 10, 1400 ],
+        [ 9, 1400 ],
+        [ 8, 2450 ],
+        [ 7, 2200 ],
+        [ 6, 1100 ],
+        [ 5, 450 ],
+        [ 4, 1400 ],
+        [ 3, 2650 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {"width": "90%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "effect": {
+                  "glow": {"color": "black", "stdDev": 2}
+                },
+                "font": {
+                  "family": "verdana",
+                  "size": "10.5pt",
+                  "weight": "bold",
+                  "style": "italic"
+                },
+                "padding": 5
+              },
+              "title": [ "Population(In Million)" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"h": 0, "s": 1, "v": 1},
+                "effect": {
+                  "glow": {"color": "black", "stdDev": 2}
+                },
+                "font": {
+                  "family": "verdana",
+                  "size": "10.5pt",
+                  "weight": "bold",
+                  "style": "italic"
+                },
+                "padding": 5
+              },
+              "title": [ "Countries" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "12.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "palette": [
+                {
+                  "fill": {"h": 0.556, "s": 1, "v": 0.75},
+                  "outline": {"h": 0.556, "s": 1, "v": 0.75}
+                },
+                {
+                  "fill": {"h": 0.292, "s": 0.6, "v": 0.6},
+                  "outline": {
+                    "h": 0.292,
+                    "s": 0.6,
+                    "v": 0.6
+                  }
+                },
+                {
+                  "fill": {"h": 0.153, "s": 1, "v": 0.8},
+                  "outline": {"h": 0.153, "s": 1, "v": 0.8}
+                },
+                {
+                  "fill": {"h": 0.083, "s": 0.9, "v": 0.8},
+                  "outline": {
+                    "h": 0.083,
+                    "s": 0.9,
+                    "v": 0.8
+                  }
+                },
+                {
+                  "fill": {"h": 0.019, "s": 0.8, "v": 0.75},
+                  "outline": {
+                    "h": 0.019,
+                    "s": 0.8,
+                    "v": 0.75
+                  }
+                },
+                {
+                  "fill": {"h": 0.875, "s": 0.65, "v": 0.6},
+                  "outline": {
+                    "h": 0.875,
+                    "s": 0.65,
+                    "v": 0.6
+                  }
+                },
+                {
+                  "fill": {"h": 0.611, "s": 0.8, "v": 0.6},
+                  "outline": {
+                    "h": 0.611,
+                    "s": 0.8,
+                    "v": 0.6
+                  }
+                },
+                {
+                  "fill": {"h": 0.556, "s": 0.8, "v": 0.85},
+                  "outline": {
+                    "h": 0.556,
+                    "s": 0.8,
+                    "v": 0.85
+                  }
+                },
+                {
+                  "fill": {"h": 0.292, "s": 0.4, "v": 0.7},
+                  "outline": {
+                    "h": 0.292,
+                    "s": 0.4,
+                    "v": 0.7
+                  }
+                },
+                {
+                  "fill": {"h": 0.153, "s": 0.8, "v": 0.9},
+                  "outline": {
+                    "h": 0.153,
+                    "s": 0.8,
+                    "v": 0.9
+                  }
+                },
+                {
+                  "fill": {"h": 0.083, "s": 0.7, "v": 0.9},
+                  "outline": {
+                    "h": 0.083,
+                    "s": 0.7,
+                    "v": 0.9
+                  }
+                },
+                {
+                  "fill": {"h": 0.019, "s": 0.6, "v": 0.85},
+                  "outline": {
+                    "h": 0.019,
+                    "s": 0.6,
+                    "v": 0.85
+                  }
+                },
+                {
+                  "fill": {"h": 0.878, "s": 0.76, "v": 0.59},
+                  "outline": {
+                    "h": 0.878,
+                    "s": 0.76,
+                    "v": 0.59
+                  }
+                },
+                {
+                  "fill": {"h": 0.611, "s": 0.6, "v": 0.85},
+                  "outline": {
+                    "h": 0.611,
+                    "s": 0.6,
+                    "v": 0.85
+                  }
+                },
+                {
+                  "fill": {"h": 0.556, "s": 0.45, "v": 0.7},
+                  "outline": {
+                    "h": 0.556,
+                    "s": 0.45,
+                    "v": 0.7
+                  }
+                },
+                {
+                  "fill": {"h": 0.292, "s": 0.6, "v": 0.7},
+                  "outline": {
+                    "h": 0.292,
+                    "s": 0.6,
+                    "v": 0.7
+                  }
+                },
+                {
+                  "fill": {"h": 0.153, "s": 0.6, "v": 0.95},
+                  "outline": {
+                    "h": 0.153,
+                    "s": 0.6,
+                    "v": 0.95
+                  }
+                },
+                {
+                  "fill": {"h": 0.081, "s": 0.2, "v": 0.8},
+                  "outline": {
+                    "h": 0.081,
+                    "s": 0.2,
+                    "v": 0.8
+                  }
+                },
+                {
+                  "fill": {"h": 0.019, "s": 0.6, "v": 1},
+                  "outline": {"h": 0.019, "s": 0.6, "v": 1}
+                },
+                {
+                  "fill": {"h": 0.878, "s": 0.4, "v": 0.95},
+                  "outline": {
+                    "h": 0.878,
+                    "s": 0.4,
+                    "v": 0.95
+                  }
+                },
+                {
+                  "fill": {"h": 0.611, "s": 0.25, "v": 0.8},
+                  "outline": {
+                    "h": 0.611,
+                    "s": 0.25,
+                    "v": 0.8
+                  }
+                },
+                {
+                  "fill": {"h": 0.292, "s": 0.4, "v": 0.8},
+                  "outline": {
+                    "h": 0.292,
+                    "s": 0.4,
+                    "v": 0.8
+                  }
+                }
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                "\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.05,
+                    "dValue": 0.1
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.25,
+                    "dValue": -0.15
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "stroke": {"width": 0.3},
+            "width": "50%",
+            "effect": {
+              "glow": {"color": "black", "stdDev": 2}
+            },
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": "10%", "right": "100%", "top": 0},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "swatchStyle": {"padding": 5},
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+  "size": {"width": 850.0, "height": 600.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

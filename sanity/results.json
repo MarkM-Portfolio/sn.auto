@@ -1,0 +1,54 @@
+{
+	"System Pre-install Check":{
+		"Determine if all required Linux libraries have been installed":"PASS",
+		"Determine if enough disk space exists to install Connections (114GB recommended)":"Warning: Free space is less than 114GB;  problems may occur when installing Connections",
+		"Determine if enough memory exists to fulfill the recommended amount (8GB recommended)":"Warning: Total memory is less than 8GB; problems may occur when running Connections",
+		"Determine if permissions to required directories are set properly":"PERMISSION ERROR: Invalid value for access rights in 'install.ini'",
+		"Determine if uLimit is set to at least the recommended value 8200":"PASS"
+	},
+	"WebSphere Pre-install tests":{
+		"Determine if security is enabled":"PASS",
+		"Determine if WebSphere exists":"PASS",
+		"Determine if wsadmin login is successful":"PASS",
+		"Determine if application security is enabled":"PASS"
+	},
+	"DB2 Pre-installation Check":{
+		"ACTIVITIES SERVER: Verify DB2 is Configured for Correct Port":"PASS",
+		"ACTIVITIES SERVER: Verify Wizards Directory Permissions":"Warning: Could not locate Wizards directory.\nEnsure your specified directory location in the configuration file matches the actual location.\n",
+		"ACTIVITIES SERVER: Check Cognos Installation":"PASS",
+		"ACTIVITIES SERVER: Ensure DB2 is Configured for TCPIP":"PASS",
+		"ACTIVITIES SERVER: Verify DB2 Unicode Configuration":"PASS",
+		"ACTIVITIES SERVER: Check Drivers Status":"PASS",
+		"ACTIVITIES SERVER: Confirm Existence of Dedicated User":"PASS",
+		"ACTIVITIES SERVER: Validate Installed Files":"PASS"
+	},
+	"TDI Pre-Installation tests":{
+		"Ensure Host File Has Localhost Entry":"PASS",
+		"Check TDI Version is Up to Date":"PASS",
+		"Validate Installed Files":"PASS",
+		"Check for JVM flags in ibmdisrv file":"Warning: flags not present in ibmdisrv: -Xnojit, -Xmx, -Xms,"
+	},
+	"LDAP Accessibility and Connectivity Group":{
+		"Connection Confirmation":"PASS",
+		"Populated Portion Selected":"PASS"
+	},
+	"WebSphere Post-install tests":{
+		"Determine if plugin-cfg.xml exists":"WAS PLUGIN ERROR: Unable to find 'plugin-cfg.xml'",
+		"Determine if WAS is populated":"PASS",
+		"Determine if LotusConnections-config.xml has portless URIs":"PASS",
+		"Determine if WebSphere is configured to allow SSO":"PASS",
+		"Determine if JVM Heaps have enough space allocated":"Warning: One or more JVMs given less than recommended heap size (2506MB)"
+	},
+	"J2EE and J2C Role Mappings":{
+		"Role Mapping Assignments":"PASS"
+	},
+	"IHS Post-Installation tests":{
+		"Determine if httpd.conf is configured to support SSL":"SSL ERROR: Misplaced line 'SSLEnable'",
+		"Determine if IHS exists":"PASS",
+		"Determine if httpd.conf is configured for files, wikis, and libraries":"PLUGIN ERROR: Unable to find 'plugin-cfg.xml'",
+		"Determine if httpd.conf is configured for WebSphere plugins":"CONFIGURE ERROR: 'WebSpherePluginConfig' line does not exist"
+	},
+	"Application Health Group":{
+		"Application Health Status":"PASS"
+	}
+}

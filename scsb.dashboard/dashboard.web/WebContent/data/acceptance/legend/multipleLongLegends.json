@@ -1,0 +1,114 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Align",
+          "categories": [ "start", "middle", "end" ]
+        },
+        {
+          "id": "fY",
+          "label": "V-Align",
+          "categories": [ "start", "middle", "end" ]
+        },
+        {
+          "id": "case",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I"
+          ],
+          "unit": "categorical"
+        }
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 0, 1, 1 ],
+        [ 0, 2, 2 ],
+        [ 1, 0, 3 ],
+        [ 1, 1, 4 ],
+        [ 1, 2, 5 ],
+        [ 2, 0, 6 ],
+        [ 2, 1, 7 ],
+        [ 2, 2, 8 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "fY"} ]}},
+          {"axis": {"title": [ {"$ref": "fX"} ]}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "id": "labelColor",
+                "field": {"$ref": "case"},
+                "mapping": [ {"color": "red", "offset": 0} ]
+              },
+              "content": [ {"$ref": "case"} ],
+              "style": {"font": {"size": 50}}
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {"id": "pointColor", "field": {"$ref": "case"}}
+          ],
+          "size": [
+            {"id": "pointSize", "field": {"$ref": "case"}}
+          ],
+          "style": {
+            "fill": {"a": 0.2},
+            "outline": "black",
+            "symbol": "circle"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 15}
+    }
+  ],
+  "legends": [
+    {
+      "content": [
+        {"text": [ "Point Color" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "pointColor"}}
+          ]
+        },
+        {"text": [ "Label Color" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "labelColor"}}
+          ]
+        },
+        {"text": [ "Label Size" ]},
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "pointSize"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 400, "height": 300},
+  "style": {"fill": "white"}
+}

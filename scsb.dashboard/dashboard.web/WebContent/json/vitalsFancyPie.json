@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "categories": [  ],
+          "format": {
+            "fitMethod": "none",
+            "noSpaceFormat": {"pattern": "..."}
+          }
+        },
+        {"id": "hits", "label": "Total Hits"},
+        {"id": "uhits", "label": "Unique Hits"}
+      ],
+      "rows": [  ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": true, "spans": [  ]}}
+        ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+              "diameter": {"max": "80%"},
+              "startAngle": 90
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "lineStyle": {},
+              "style": {
+                "align": "middle",
+                "font": {"family": "Arial"},
+                "location": "inside",
+                "padding": 3,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "hits"}},
+            {"field": {"$ref": "uhits"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "name"},
+              "scale": {"local": false},
+              "palette": [
+                "#005D99",
+                "#009987",
+                "#007527",
+                "#CC8F00",
+                "#D9631F",
+                "#B01611",
+                "#D93D9C",
+                "#742299",
+                "#1483C7",
+                "#00B8A4",
+                "#0E9425",
+                "#EBB300",
+                "#EB7D2A",
+                "#D13838",
+                "#F562BC",
+                "#9A34C7",
+                "#38B1F2",
+                "#5FD4C5",
+                "#4FBD4F",
+                "#F5D118",
+                "#F79F4A",
+                "#EA5E5E",
+                "#FF8CD3",
+                "#C462F5"
+              ]
+            }
+          ],
+          "meta": [
+            {"field": {"$ref": "name"}, "key": "appName"}
+          ],
+          "tooltip": [ {"content": [ {"$ref": "name"} ]} ]
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

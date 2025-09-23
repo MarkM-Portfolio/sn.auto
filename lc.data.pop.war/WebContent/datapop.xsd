@@ -1,0 +1,217 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="root"/>
+
+<xs:element name="action">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="loop"/>
+			  <xs:element ref="activity"/>
+			  <xs:element ref="reply"/>
+			  <xs:element ref="section"/>
+			  <xs:element ref="activityEntry"/>
+			  <xs:element ref="todo"/>
+			  <xs:element ref="blog"/>
+			  <xs:element ref="blogentry"/>
+			  <xs:element ref="blogcomment"/>
+			  <xs:element ref="forum"/>
+			  <xs:element ref="forumtopic"/>
+			  <xs:element ref="forumreply"/>
+			  <xs:element ref="bookmark"/>
+			  <xs:element ref="wiki"/>
+			  <xs:element ref="wikipage"/>
+			  
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="loop">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="loop"/>
+			  <xs:element ref="activity"/>
+			  <xs:element ref="reply"/>
+			  <xs:element ref="section"/>
+			  <xs:element ref="activityEntry"/>
+			  <xs:element ref="todo"/>
+			  <xs:element ref="blog"/>
+			  <xs:element ref="blogentry"/>
+			  <xs:element ref="blogcomment"/>
+			  <xs:element ref="forum"/>
+			  <xs:element ref="forumtopic"/>
+			  <xs:element ref="forumreply"/>
+			  <xs:element ref="bookmark"/>
+			  <xs:element ref="wiki"/>
+			  <xs:element ref="wikipage"/>
+			  
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="activity">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="member"/>
+			  <xs:element ref="section"/>
+			  <xs:element ref="activityEntry"/>
+			  <xs:element ref="todo"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="member">
+	<xs:complexType>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="section">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="activityEntry"/>
+			  <xs:element ref="todo"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="activityEntry">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="todo"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="reply">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="reply"/>
+			  <xs:element ref="todo"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="todo">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="todo"/>
+			  <xs:element ref="reply"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="blog">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="blogentry"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="blogentry">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="blogcomment"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="blogcomment">
+	<xs:complexType>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="forum">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="forumtopic"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="forumtopic">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="forumreply"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="forumreply">
+	<xs:complexType>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="bookmark">
+	<xs:complexType>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="wiki">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:choice minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="action"/>
+			  <xs:element ref="wikipage"/>
+			  <xs:element ref="member"/>
+		  </xs:choice>
+		</xs:sequence>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="wikipage">
+	<xs:complexType>
+		<xs:anyAttribute processContents="lax" />
+	</xs:complexType>
+</xs:element>
+
+</xs:schema>

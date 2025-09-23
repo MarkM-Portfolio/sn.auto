@@ -1,0 +1,83 @@
+{
+  "data": [
+    {
+      "id": "otherPoints",
+      "fields": [
+        {"id": "pY"},
+        {"id": "pX"},
+        {
+          "id": "pLabelContent",
+          "categories": [
+            "First",
+            "Second",
+            "Third",
+            "Muddle Puddle",
+            "Tweetle Poodle",
+            "Beetle Noodle",
+            "Bottle Paddle",
+            "Battle"
+          ]
+        }
+      ],
+      "rows": [ [ 3, 1, 0 ], [ 2, 2, 1 ], [ 1, 3, 2 ] ]
+    },
+    {
+      "id": "polyPoints",
+      "fields": [ {"id": "polyY"}, {"id": "polyX"} ],
+      "rows": [
+        [ 6, 4.5 ],
+        [ 8, 4 ],
+        [ 8, 3 ],
+        [ 5, 2 ],
+        [ 2, 3 ],
+        [ 2, 7 ],
+        [ 5, 8 ],
+        [ 8, 7 ],
+        [ 8, 6 ],
+        [ 6, 5.5 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "data": {"$ref": "polyPoints"},
+          "position": [
+            {"field": {"$ref": "polyY"}},
+            {"field": {"$ref": "polyX"}}
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 125.0,
+              "colors": [
+                {"color": "#aaa", "offset": 0.0},
+                {"color": "#bbe", "offset": 0.25},
+                {"color": "#aaa", "offset": 0.5},
+                {"color": "#bbe", "offset": 0.75},
+                {"color": "#aaa", "offset": 1.0}
+              ]
+            },
+            "effect": {
+              "shadow": {
+                "color": "#c22",
+                "dx": 40,
+                "dy": -50,
+                "stdDev": 4
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 60}
+}

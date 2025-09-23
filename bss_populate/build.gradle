@@ -1,0 +1,9 @@
+description = 'bss_populate'
+dependencies {
+	compile group: 'com.google.gson', name: 'gson', version: '2.2.4'
+	compile group: 'org.apache.commons', name: 'commons-httpclient', version:'1.1'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.0'
+	compile group: 'org.apache', name: 'commons-codec', version: '1.6'
+}
+
+project.ext.main = 'com.ibm.conn.auto.bss.Main'

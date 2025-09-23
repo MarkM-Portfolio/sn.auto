@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+		*****************************************************************
+		                                                                  
+		 Licensed Materials - Property of IBM                             
+		                                                                  
+		 5724-S68                                                         
+		                                                                  
+		 Copyright IBM Corp. 2008, 2011  All Rights Reserved.                   
+		                                                                  
+		 US Government Users Restricted Rights - Use, duplication or      
+		 disclosure restricted by GSA ADP Schedule Contract with          
+		 IBM Corp.                                                        
+		                                                                  
+		*****************************************************************
+		--><config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="notification-config" version="4.0" xsi:noNamespaceSchemaLocation="notification-config.xsd" enabled="true" buildlevel="LC4.0_20120605_1157">
+<properties>
+<property name="globalSenderEmailAddress">global-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<!-- If true a link to Connections Mobile service will be included in 
+			Notifications (where applicable)-->
+<property name="includeMobileLinksInNotifications">false</property>
+<!-- If true no embedded experience mime parts will be included in notifications-->
+<property name="disableEmbeddedAppsInNotifications">false</property>
+</properties>
+<handlers>
+		<handler name="email" class="com.ibm.lotus.connections.core.notify.channels.email.EmailNotificationChannelHandler"/>
+		<handler name="event" class="com.ibm.lotus.connections.core.notify.channels.event.EventNotificationChannelHandler"/>
+		<handler name="clientHandler" class="com.ibm.lotus.connections.core.notify.handlers.event.EventNotificationHandler"/>
+	</handlers>
+<channelConfigs>
+		<emailChannelConfig>
+			<useJavaMailProvider>true</useJavaMailProvider>
+			<!--smtpJNDILookup>
+				<smtpJNDILookupURL>dns:[//host[:port]][/domain]</smtpJNDILookupURL>
+	            <authentry>smtpAdmin</authentry>
+	            <javamail>
+	                <property name="mail.debug">false</property>
+	                <property name="mail.smtp.connectiontimeout">120000</property>
+	                <property name="mail.smtp.timeout">120000</property>
+	            	<property name="mail.smtp.port">465</property>
+	                <property name="mail.smtp.socketFactory.port">465</property>
+	                <property name="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</property>
+	                <property name="mail.smtp.socketFactory.fallback">false</property>
+	            </javamail>
+			</smtpJNDILookup-->
+			<maxRecipients>50</maxRecipients>
+		</emailChannelConfig>
+	</channelConfigs>
+<!--Sets default email preferences for users who have not set their own
+		     preferences.-->
+<defaultEmailPreferences>
+<!-- If true, users will be able to override the email address that emails
+		     to them will be delivered to. -->
+<allowEmailAddressOverride>false</allowEmailAddressOverride>
+<!-- If true, then if the user has not specified a preferred langague for
+		     emails to be delivered in then the langauge they last visited the 
+		     web UI for the component generating the email will be used. This 
+		     is the default behaviour in previous versions. -->
+<useLanguageFromCallingComponent>true</useLanguageFromCallingComponent>
+<!-- If useLanguageFromCallingComponent is false, then if the user has not
+		     set their own language preference, this default language will be used. -->
+<defaultLanguage>en</defaultLanguage>
+<!-- The default for whether directed notification (sent from one user to another
+		     or by the system should be received by email. These notification are also 
+		     aggregated onto the Home Page. -->
+<sendEmailsForDirectNotifications>true</sendEmailsForDirectNotifications>
+<!-- Specifies how email notifications for responses to authored content are
+			 sent. Options are INDIVIDUAL (single, immediate emails) DAILY, WEEKLY or NONE. -->
+<defaultResponsesFrequency>INDIVIDUAL</defaultResponsesFrequency>
+<!-- Specifies how email notifications updates about tags a user is following are
+			 sent. Options are INDIVIDUAL (single, immediate emails) DAILY, WEEKLY or NONE. -->
+<defaultTagFollowFrequency>WEEKLY</defaultTagFollowFrequency>
+<!-- The default for whether replyTo is enabled. This defines if user
+			 will have ability to reply to supported notifications to respond
+			 (e.g. replying to a forum response notification to add a new response-->
+<replyToEnabled>true</replyToEnabled>
+<!-- The default amount of stories to be included in every category
+			in the Daily and Weekly Email Digest. Min is 5, Max is 25-->
+<digestItemsPerCategory>10</digestItemsPerCategory>
+</defaultEmailPreferences>
+<templates>
+<!--Example
+				  <source name="Activities" enabled="true" defaultFollowFrequency="DAILY">
+					<type name="notify"  notificationType="DIRECTED">
+					  <channel name="email" enabled="true">
+						<property name="sender">activities-admin@example.com</property>
+						<property name="ftl">notify.ftl</property>
+					  </channel>
+					  <channel name="event" enabled="true">
+						<property name="eventName">activities.notify</property>
+						<property name="transformerClass">sample.ActivityNotifyTransformer</property>
+					  </channel>
+					</type>
+				  </source>
+				-->
+<source name="Activities" enabled="true" defaultFollowFrequency="DAILY">
+<type name="notify" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">activities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">activities.notification.notify</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ActivitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="autocomplete" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">activities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">autoCompleteActivityMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">activities.notification.autocomplete</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ActivitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="create" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">activities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">createMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">activities.notification.create</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ActivitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="add-member" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">activities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">activities.notification.addmember</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ActivitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="invite" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">activities-admin@example.com</property>
+<property name="ftl">inviteMemberMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">activities.notification.invitemember</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ActivitiesNotificationEventTransformer</property>
+</channel>
+</type>
+</source>
+<source name="dogear" enabled="true" defaultFollowFrequency="WEEKLY">
+<type name="notify" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">dogear-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifytemplate.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">dogear.notification.notify</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.DogearNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyReplaceURL" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">dogear-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">replaceurltemplate.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">dogear.notification.replaceurl</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.DogearNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="brokenurl" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">dogear-admin@example.com</property>
+<property name="ftl">notifytemplate.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">dogear.notification.brokenurl</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.DogearNotificationEventTransformer</property>
+</channel>
+</type>
+</source>
+<source name="Blogs" enabled="true" defaultFollowFrequency="WEEKLY">
+<type name="notify" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notify.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.notify</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notify-idea" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notify.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">ideationblog.notification.notify-idea</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="ownermsg" notificationType="RESPONSE">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">ownermsg.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.ownermsg</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyreview" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyreview.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.notifyreview</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="approved" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">approved.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.approved</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="rejected" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">rejected.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.rejected</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyflagged" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyflagged.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.notifyflagged</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="confirmflagged" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">confirmflagged.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.confirmflagged</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="quarantined" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">quarantined.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.quarantined</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="returned" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">returned.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.returned</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyreposted" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyreposted.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">blogs.notification.notifyreposted</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="restored" notificationType="MODERATION">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">restored.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">blogs.notification.restored</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyassigned-owner" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyassigned.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">blogs.notification.notifyassigned-owner</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyassigned-author" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyassigned.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">blogs.notification.notifyassigned-author</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+<type name="notifyassigned-draft" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">blogs-admin@example.com</property>
+<property name="ftl">notifyassigned.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">blogs.notification.notifyassigned-draft</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.BlogsNotificationEventTransformer</property>
+</channel>
+</type>
+</source>
+<source name="Communities" enabled="true" defaultFollowFrequency="DAILY">
+<type name="broadcastMail" notificationType="BROADCAST">
+<channel name="email" enabled="true">
+<property name="sender">communities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">broadcastMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">communities.notification.broadcastmail</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="memberAdded" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">communities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">memberAddedMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">communities.notification.memberadd</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="memberRemoved" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">communities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">memberRemovedMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">communities.notification.memberremove</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="requestToJoin" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">communities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">requestToJoinMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">communities.notification.requesttojoin</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="invite" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">communities-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">invitedToJoinMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">communities.notification.invite</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyEvent" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">communities-admin@example.com</property>
+<property name="ftl">notifyEvent.ftl</property>
+</channel>
+<channel enabled="true" name="event">
+<property name="eventName">communities.notification.notifyEvent</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.CommunitiesNotificationEventTransformer</property>
+</channel>
+</type>
+</source>
+<source name="Profiles" enabled="true" defaultFollowFrequency="WEEKLY">
+<type name="notify" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">profiles-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">inviteColleagueMail.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">profiles.notification.notify</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ProfilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyBoardOwnerForEntry" notificationType="RESPONSE">
+<channel name="email" enabled="true">
+<property name="sender">profiles-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyBoardOwnerForEntry.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">profiles.notification.notifyboardownerforentry</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ProfilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyBoardOwnerForComment" notificationType="RESPONSE">
+<channel name="email" enabled="true">
+<property name="sender">profiles-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyBoardOwnerForComment.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">profiles.notification.notifyboardownerforcomment</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ProfilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyEntryOwnerForComment" notificationType="RESPONSE">
+<channel name="email" enabled="true">
+<property name="sender">profiles-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyEntryOwnerForComment.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">profiles.notification.notifyentryownerforcomment</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ProfilesNotificationEventTransformer</property>
+				</channel>
+</type>
+</source>
+<source name="files" enabled="true" defaultFollowFrequency="DAILY">
+<type name="mediaShare" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">mediaShared.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.share</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="mediaEdit" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">mediaUpdated.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.mediaedit</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="commentAdd" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">commentAdded.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.commentadd</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="collectionMemberUpdate" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">collectionMemberUpdated.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.collectionmemberupdate</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="communityVisibilityUpdate" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">communityVisibilityUpdated.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.communityvisibilityupdated</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="collectionMediaAdd" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">collectionmediaadded.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">files.notification.collectionmediaadded</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="singleDownload" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">files-admin@example.com</property>
+<property name="ftl">singleDownload.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+<property name="eventName">files.notification.singleDownload</property>
+<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.FilesNotificationEventTransformer</property>
+</channel>
+</type>
+</source>
+<source name="wikis" enabled="true" defaultFollowFrequency="DAILY">
+<type name="mediaEdit" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">wikis-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">mediaUpdated.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">wikis.notification.mediaedit</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.WikisNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="commentAdd" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">wikis-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">commentAdded.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">wikis.notification.commentadd</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.WikisNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="roleAdd" notificationType="DIRECTED">
+<channel name="email" enabled="true">
+<property name="sender">wikis-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">libraryMemberUpdated.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">wikis.notification.roleadd</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.WikisNotificationEventTransformer</property>
+				</channel>
+</type>
+</source>
+<source name="Forums" enabled="true" defaultFollowFrequency="DAILY"/>
+<source name="news" enabled="true">
+<type name="followIndividual" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">news-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">followIndividual.ftl</property>
+</channel>
+</type>
+<type name="dailyDigest" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">news-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">dailyDigest.ftl</property>
+</channel>
+</type>
+<type name="weeklyDigest" notificationType="FOLLOW">
+<channel name="email" enabled="true">
+<property name="sender">news-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">weeklyDigest.ftl</property>
+</channel>
+</type>
+<type name="replyToError" notificationType="DIRECTED">
+<channel enabled="true" name="email">
+<property name="sender">news-admin@example.com</property>
+<property name="ftl">replyToError.ftl</property>
+</channel>
+</type>
+</source>
+<source name="moderation" enabled="true">
+<type name="notifyReview" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyreview.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyreview</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyFlagged" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyflagged.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyflagged</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyPending" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifypending.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifypending</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyApproved" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyapproved.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyapproved</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyRejected" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyrejected.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyrejected</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyQuarantined" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyquarantined.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyquarantined</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyRestored" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyrestored.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyrestored</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyDeleted" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifydeleted.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifydeleted</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+<type name="notifyAutoQuarantined" notificationType="MODERATION">
+<channel name="email" enabled="true">
+<property name="sender">moderation-admin@skipper.cnx.cwp.pnp-hcl.com</property>
+<property name="ftl">notifyautoquarantined.ftl</property>
+</channel>
+<channel name="event" enabled="true">
+					<property name="eventName">moderation.notification.notifyautoquarantined</property>
+					<property name="transformerClass">com.ibm.lotus.connections.core.notify.channels.event.ModerationNotificationEventTransformer</property>
+				</channel>
+</type>
+</source>
+</templates>
+</config>

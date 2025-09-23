@@ -1,0 +1,142 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {"id": "id", "unit": "categorical"},
+        {"id": "fEvent_Frequency"},
+        {"id": "fDate", "label": "Date", "unit": "date"}
+      ],
+      "rows": [
+        [ 1, 10, 10 ],
+        [ 2, 10, 10 ],
+        [ 3, 10, 10 ],
+        [ 1, 21, 10 ],
+        [ 2, 22, 10 ],
+        [ 3, 23, 10 ],
+        [ 1, 30, 20 ],
+        [ 2, 30, 21 ],
+        [ 3, 30, 22 ]
+      ]
+    },
+
+    {
+      "id": "dataForDodging",
+      "fields": [
+        {"id": "id2", "unit": "categorical"},
+        {"id": "y"},
+        {"id": "x", "label": "Date", "unit": "date"}
+      ],
+      "rows": [
+        [ 1, 10, 20 ],
+        [ 2, 10, 20 ],
+        [ 3, 10, 20 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 40, "fit": "exact"}
+              ]
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 40, "fit": "exact"}
+              ]
+            }
+          }
+        ],
+        "style": {
+          "fill": {"h": 0, "l": 1, "s": 0},
+          "outline": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "beige",
+                "outline": "navy",
+                "padding": 4
+              },
+              "color": {"field": {"$ref": "id"}},
+              "content": [ {"$ref": "fDate"} ],
+              "lineMinSize": 0,
+              "lineStyle": {"fill": "black"},
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"weight": "bold"},
+                "location": "outside",
+                "padding": 30,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fEvent_Frequency"}},
+            {"field": {"$ref": "fDate"}}
+          ],
+          "color": [ {"field": {"$ref": "id"}} ],
+          "style": {
+            "fill": "#28d",
+            "outline": "black",
+            "size": 20,
+            "symbol": "circle"
+          }
+        },
+
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "beige",
+                "outline": "navy",
+                "padding": 4
+              },
+              "color": {"field": {"$ref": "id"}},
+              "content": [ {"$ref": "fDate"} ],
+              "lineMinSize": 0,
+              "lineStyle": {"fill": "black"},
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"weight": "bold"},
+                "location": "outside",
+                "padding": 30,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+"positionModifier":"dodge",
+          "color": [ {"field": {"$ref": "id2"}} ],
+          "style": {
+            "fill": "#28d",
+            "outline": "black",
+            "size": 20,
+            "symbol": "circle"
+          }
+        }
+      ],
+      "labelCollisionMethod": "lots"
+    }
+  ],
+  "size": {"width": 600.0, "height": 400.0},
+  "version": "3.0",
+  "style": {"fill": "white", "padding": 10}
+}

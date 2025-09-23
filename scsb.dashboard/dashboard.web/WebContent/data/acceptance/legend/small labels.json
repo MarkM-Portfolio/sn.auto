@@ -1,0 +1,67 @@
+{
+  "version": "1.2",
+
+  "data": [
+
+    {
+
+      "id": "data",
+
+      "fields": [
+
+        {"id": "fX", "label": "Price"},
+
+        {"id": "fY", "label": "Quantity"},
+
+        {"id": "facet1", "categories": [ "a" ]}
+
+      ],
+
+      "rows": [
+
+        [ 22, 339, 0 ]
+      ]
+
+    }
+
+  ],
+
+  "copyright": "(C) Copyright IBM Corp. 2011",
+
+  "grammar": [
+
+    {
+
+      "coordinates": {
+
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+
+      },
+
+      "elements": [
+
+        {
+
+          "type": "point",
+
+          "position": [
+
+            {"field": {"$ref": "fY"}},
+
+            {"field": {"$ref": "fX"}}
+
+          ],
+
+          "color": [ {"field": {"$ref": "facet1"}} ]
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "legends": [ {} ]
+
+}

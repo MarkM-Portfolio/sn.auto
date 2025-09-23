@@ -1,0 +1,137 @@
+{
+  "data": [
+    {
+      "id": "otherPoints",
+      "fields": [
+        {"id": "pY"},
+        {"id": "pX"},
+        {
+          "id": "pLabelContent",
+          "categories": [
+            "First",
+            "Second",
+            "Third",
+            "Muddle Puddle",
+            "Tweetle Poodle",
+            "Beetle Noodle",
+            "Bottle Paddle",
+            "Battle"
+          ]
+        }
+      ],
+      "rows": [ [ 3, 1, 0 ], [ 2, 2, 1 ], [ 1, 3, 2 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "effect": {
+                  "shadow": {
+                    "color": {"a": 0.5},
+                    "dx": -10,
+                    "dy": -10,
+                    "stdDev": 1
+                  }
+                },
+                "outline": "black",
+                "padding": 5
+              },
+              "content": [ {"$ref": "pLabelContent"} ],
+              "style": {
+                "align": "start",
+                "effect": {
+                  "shadow": {
+                    "color": {"a": 0.8},
+                    "dx": -10,
+                    "dy": -10,
+                    "stdDev": 1
+                  }
+                },
+                "font": {"size": "12pt"},
+                "location": "outside",
+                "padding": {"right": 10},
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "orange",
+                "effect": {
+                  "shadow": {
+                    "color": {"a": 0.5},
+                    "dx": 10,
+                    "dy": 10,
+                    "stdDev": 1
+                  }
+                },
+                "outline": "black",
+                "padding": 5
+              },
+              "content": [ {"$ref": "pLabelContent"} ],
+              "style": {
+                "align": "end",
+                "effect": {
+                  "shadow": {
+                    "color": {"a": 0.8},
+                    "dx": 3,
+                    "dy": 3,
+                    "stdDev": 1
+                  }
+                },
+                "font": {"size": "12pt"},
+                "location": "outside",
+                "padding": {"left": 10},
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "otherPoints"},
+          "position": [
+            {"field": {"$ref": "pY"}},
+            {"field": {"$ref": "pX"}}
+          ],
+          "color": [ {"field": {"$ref": "pLabelContent"}} ],
+          "style": {
+            "fill": {"a": 0.6},
+            "effect": {
+              "shadow": {
+                "color": {"a": 0.7, "r": 100},
+                "dx": -4,
+                "dy": 12,
+                "stdDev": 1
+              }
+            },
+            "outline": "black",
+            "size": 30
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"a": 0.5, "g": 255},
+        "stroke": {"width": 4},
+        "effect": {
+          "shadow": {
+            "color": "navy",
+            "dx": -15,
+            "dy": -15,
+            "stdDev": 2
+          }
+        },
+        "outline": {"a": 0.5, "b": 255}
+      }
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 60}
+}

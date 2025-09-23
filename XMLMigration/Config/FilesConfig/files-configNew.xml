@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!--*****************************************************************--><!----><!--Licensed Materials - Property of IBM                             --><!----><!--5724-S68                                                         --><!----><!--Copyright IBM Corp. 2009, 2010  All Rights Reserved.             --><!----><!--US Government Users Restricted Rights - Use, duplication or      --><!--disclosure restricted by GSA ADP Schedule Contract with          --><!--IBM Corp.                                                        --><!----><!--*****************************************************************--><config xmlns="http://www.ibm.com/connections/files/files-config/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="files" xsi:schemaLocation="http://www.ibm.com/connections/files/files-config/1.0 files-config.xsd">
+<security reauthenticateAndSaveSupported="true">
+<logout href="/files/ibm_security_logout"/>
+<inlineDownload enabled="false"/>
+</security>
+<activeContentFilter enabled="true">
+<mimeTypes>
+<mimeType>text/html</mimeType>
+<mimeType>application/xhtml+xml</mimeType>
+</mimeTypes>
+</activeContentFilter>
+<cache>
+<user timeout="43200000"/>
+<http publicContentMaxAgeInSecs="604800" publicFeedMaxAgeInSecs="30"/>
+</cache>
+<db dialect="admin_replace"/>
+<search>
+<seedlist maximumIncrementalQuerySpanInDays="30" maximumPageSize="1000"/>
+</search>
+<emailNotification>
+<addOnMediaDownload enabled="true"/>
+</emailNotification>
+<download>
+<modIBMLocalRedirect enabled="false" hrefPathPrefix="admin_replace"/>
+<stats>
+<logging enabled="true"/>
+</stats>
+</download>
+<file>
+<versioning enabled="true"/>
+<storage rootDirectory="${FILES_CONTENT_DIR}" allowOperatingSystemVirusScan="false"/>
+<page maximumSizeInKb="1024"/>
+<attachment maximumSizeInKb="76800"/>
+<media maximumSizeInKb="512000"/>
+<restrictions enabled="false" mode="deny">
+<extensions>
+<extension/>
+</extensions>
+</restrictions>
+<renditions enabled="true">
+<small format="JPG" width="100" height="100"/>
+<medium format="JPG" width="250" height="250"/>
+<large format="JPG" width="500" height="500"/>
+</renditions>
+</file>
+<directory>
+<typeaheadSearch maximumResults="100"/>
+<group>
+<membershipCache maximumAgeOnLoginInSeconds="120" maximumAgeOnRequestInSeconds="120"/>
+</group>
+<community>
+<membershipCache maximumAgeOnLoginInSeconds="120" maximumAgeOnRequestInSeconds="120"/>
+</community>
+</directory>
+<api>
+<indent enabled="false"/>
+</api>
+<publicMedia maximumResults="1000"/>
+<scheduledTasks>
+<task name="SearchClearDeletionHistory" interval="0 0 0,8,16 * * ?" enabled="true" type="internal"/>
+<task name="RenditionDailyGeneration" interval="0 0 0 * * ?" enabled="true" type="internal"/>
+<task name="MetricsDailyCollection" interval="0 0 0 * * ?" enabled="true" type="internal"/>
+<task name="TagUpdateFrequency" interval="0 0 0-22/2 * * ?" enabled="true" type="internal"/>
+<task name="DirectoryGroupSynch" interval="0 0 * * * ?" enabled="true" type="internal">
+<args>
+<property name="maximumDataAgeInHours">48</property>
+<property name="pauseInMillis">50</property>
+</args>
+</task>
+<task name="FileActuallyDelete" interval="0 0 0-23/3 * * ?|0 30 1-23/3 * * ?" enabled="true" type="internal">
+<args>
+<property name="softDeleteMinimumPendingTimeInMins">720</property>
+</args>
+</task>
+</scheduledTasks>
+</config>

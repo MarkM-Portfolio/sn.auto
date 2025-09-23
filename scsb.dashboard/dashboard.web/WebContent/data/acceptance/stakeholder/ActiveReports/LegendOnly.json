@@ -1,0 +1,168 @@
+{  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "_SERIES_FIELD_",
+          "label": "Year, Order method type",
+          "categories": [
+            "E-mail",
+            "Fax",
+            "Mail",
+            "Sales visit",
+            "Special",
+            "Telephone"
+          ]
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [  ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          
+          "styleBy": [
+            {
+              "id": "_PALETTE_",
+              "field": {"$ref": "_SERIES_FIELD_"},
+              "scale": {"local": false},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#1A6B9E", "offset": 0},
+                      {"color": "#2B98DD", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#9C2427", "offset": 0},
+                      {"color": "#D33D41", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#E6CE00", "offset": 0},
+                      {"color": "#FFEA37", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#5C7933", "offset": 0},
+                      {"color": "#87B14B", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#C57211", "offset": 0},
+                      {"color": "#EF9B37", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#99875F", "offset": 0},
+                      {"color": "#BAAC8E", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#B2B2B2", "offset": 0},
+                      {"color": "#DADADA", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#28C9EC", "offset": 0},
+                      {"color": "#71DCF3", "offset": 1}
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 180,
+                    "colors": [
+                      {"color": "#E4BB58", "offset": 0},
+                      {"color": "#EFD79D", "offset": 1}
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {
+        "width": "100%",
+        "height": "100%",
+        "left": 0,
+        "top": 0
+      },
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "_PALETTE_"}}
+          ],
+          "layout": {"flow": "vertical", "rows": 2},
+          "local": false,
+          "swatchStyle": {
+            "padding": {"bottom": 2, "left": 4},
+            "size": 32
+          },
+          "textStyle": {
+            "fill": "#FFFFCC",
+            "font": {
+              "family": "Tahoma",
+              "size": "24pt",
+              "weight": "normal",
+              "style": "normal"
+            }
+          }
+        }
+      ],
+      "style": {"fill": "transparent", "padding": {}}
+    }
+  ],
+  "size": {"width": 700, "height": 200}
+}

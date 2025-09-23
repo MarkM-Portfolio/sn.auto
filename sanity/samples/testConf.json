@@ -1,0 +1,35 @@
+{
+	"tests":[
+		{
+			"name":"testOne",
+			"class":"TestOne",
+			"children":[
+				{
+					"name":"childTestOne",
+					"class":"TestOne",
+					"children":[],
+					"dependencies":[
+						"testTwo"
+					]
+				}
+			],
+			"dependencies":[
+				"testOne.childTestOne"
+			]
+		},
+		{
+			"name":"testTwo",
+			"class":"TestOne",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"testOne.param1":"foobar",
+		"testTwo.param1":"rebar",
+		"testOne.childTestOne.param1":"crowbar",
+		"driver.saveResults":1,
+		"driver.saveResultsPath":"testResults.json",
+		"driver.quietDependencyCheck":0
+	}
+}

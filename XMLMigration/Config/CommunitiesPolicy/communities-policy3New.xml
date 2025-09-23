@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!--		
+     ***************************************************************** 
+	                                                                  
+      Licensed Materials - Property of IBM                            
+                                                                      
+      5724-S68
+	                                                                  
+      Copyright IBM Corp. 2001, 2010  All Rights Reserved.            
+                                                                      
+      US Government Users Restricted Rights - Use, duplication or     
+      disclosure restricted by GSA ADP Schedule Contract with         
+      IBM Corp.                                                       
+                                                                      
+     ***************************************************************** 
+		--><comm:config xmlns:comm="http://www.ibm.com/connections/communities/communities-policy/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="communities-policy" xsi:schemaLocation="http://www.ibm.com/connections/communities/communities-policy/1.0 communities-policy.xsd">
+<comm:policy>
+<!-- reader -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="reader"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="public" action="passive"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="publicInviteOnly" action="passive"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="public" action="passive"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="publicInviteOnly" action="passive"/>
+    </comm:grant>
+<!-- community-creator -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="community-creator"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="public" action="create"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="publicInviteOnly" action="create"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="private" action="create"/>
+    </comm:grant>
+<!-- person -->
+<!-- personNonmember -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="personNonmember"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="public" action="add.self"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="publicInviteOnly" action="requestToJoin"/>
+    </comm:grant>
+<!-- Community member -->
+<comm:grant>
+<comm:principal class="com.ibm.tango.auth.principal.Role" name="member"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="private" action="passive"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="public" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="publicInviteOnly" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="private" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="public" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="publicInviteOnly" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="private" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="public" action="create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="private" action="passive"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="public" action="add.self"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="publicInviteOnly" action="requestToJoin"/>
+</comm:grant>
+<!-- Community explicit-member -->
+<comm:grant>
+<comm:principal class="com.ibm.tango.auth.principal.Role" name="explicit-member"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="private" action="passive"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="public" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="publicInviteOnly" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="private" action="active"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="public" action="remove.self"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="publicInviteOnly" action="remove.self"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="private" action="remove.self"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="public" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="publicInviteOnly" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="private" action="mail"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="public" action="create"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="private" action="passive"/>
+</comm:grant>
+<!-- Reference creator -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="reference.creator"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.delete"/>
+    </comm:grant>
+<!-- Community owner -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="owner"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="public" action="edit"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="publicInviteOnly" action="edit"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="private" action="edit"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="public" action="delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="publicInviteOnly" action="delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="private" action="delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="public" action="add.others, remove.others, define.roles"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="publicInviteOnly" action="add.others, remove.others, define.roles"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="private" action="add.others, remove.others, define.roles"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.update"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="public" action="conditional.delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="publicInviteOnly" action="conditional.delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="private" action="conditional.delete"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="publicInviteOnly" action="create"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="private" action="create"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="*" action="passive, delete.others"/>
+    </comm:grant>
+<!-- Invitee -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="invitee"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="*" action="passive, delete.self"/>
+    </comm:grant>
+<!-- System administrator -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="system.administrator"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="*" action="*"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="*" action="*"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="*" action="*"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="*" action="*"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="*" action="*"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="*" action="*"/>
+    </comm:grant>
+<!-- DSX administrator -->
+<comm:grant>
+      <comm:principal class="com.ibm.tango.auth.principal.Role" name="dsx-admin"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="public" action="passive"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="publicInviteOnly" action="passive"/>
+      <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="private" action="passive"/>
+    </comm:grant>
+<!-- Global Moderators -->
+<comm:grant>
+<comm:principal class="com.ibm.tango.auth.principal.Role" name="global-moderator"/>
+<comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="*" action="passive"/>
+</comm:grant>
+<!-- Privileges granted to anyone in the 'admin' J2EE role on the Communities application. -->
+<comm:grant>
+                <comm:principal class="com.ibm.tango.auth.principal.Role" name="admin"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="*" action="*"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="*" action="*"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="*" action="*"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="*" action="*"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="*" action="*"/>
+                <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="*" action="*"/>
+    </comm:grant>
+<!-- Example of how to grant all permissions to anyone in the 'admin' J2EE role on the Communities application.
+	
+    <comm:grant>
+           <comm:principal class="com.ibm.tango.auth.principal.Role" name="admin" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityManagementPermission" communityType="*" action="*" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityMembershipPermission" communityType="*" action="*" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityAccessPermission" communityType="*" action="*" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityReferencePermission" communityType="*" action="*" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityBroadcastPermission" communityType="*" action="*" />
+           <comm:permission class="com.ibm.tango.auth.permission.CommunityInvitePermission" communityType="*" action="*" />
+    </comm:grant> 
+	 
+	-->
+</comm:policy>
+</comm:config>

@@ -1,0 +1,158 @@
+{
+  "data": [
+    {
+      "id": "descSource",
+      "fields": [ {"id": "descCount"} ],
+      "rows": [ [ 8 ], [ 4 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "25%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"diameter": {"min": "70%"}}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "descCount"},
+                " Records of this type"
+              ],
+              "style": {
+                "font": {"weight": "bold"},
+                "location": "callout"
+              }
+            }
+          ],
+          "data": {"$ref": "descSource"},
+          "position": [ {"field": {"$ref": "descCount"}} ],
+          "split": [ {"field": {"$ref": "descCount"}} ]
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 0}
+    },
+    {
+      "bounds": {"height": "25%", "top": "25%"},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+		"startAngle": 60,
+		"diameter": {"min": "70%"}
+	  }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "descCount"},
+                " Records of this type"
+              ],
+              "style": {
+                "font": {"weight": "bold"},
+                "location": "callout"
+              }
+            }
+          ],
+          "data": {"$ref": "descSource"},
+          "position": [ {"field": {"$ref": "descCount"}} ],
+          "split": [ {"field": {"$ref": "descCount"}} ]
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 0}
+    },
+    {
+      "bounds": {"height": "25%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+		"startAngle": 120,
+		"diameter": {"min": "70%"}
+	  }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "descCount"},
+                " Records of this type"
+              ],
+              "style": {
+                "font": {"weight": "bold"},
+                "location": "callout"
+              }
+            }
+          ],
+          "data": {"$ref": "descSource"},
+          "position": [ {"field": {"$ref": "descCount"}} ],
+          "split": [ {"field": {"$ref": "descCount"}} ]
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 0}
+    },
+    {
+      "bounds": {"height": "25%", "top": "75%"},
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+		"startAngle": 180,
+		"diameter": {"min": "70%"}
+	  }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                {"$ref": "descCount"},
+                " Records of this type"
+              ],
+              "style": {
+                "font": {"weight": "bold"},
+                "location": "callout"
+              }
+            }
+          ],
+          "data": {"$ref": "descSource"},
+          "position": [ {"field": {"$ref": "descCount"}} ],
+          "split": [ {"field": {"$ref": "descCount"}} ]
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 0}
+    }
+  ],
+  "size": {"width": 500, "height": 240},
+  "version": "1.3"
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<components>
+
+    <component name='Activities'>
+        <package name='com.ibm.openactivities'/>
+    </component>
+    
+    <component name='Communities'>
+        <package name='com.ibm.lconn.comm'/>
+        <package name='com.ibm.lconn.communities'/>
+        <package name='com.ibm.tango'/>
+   </component>
+    
+    <component name='Profiles'>
+    </component>
+
+    <component name='Metrics'>
+         <package name='com.ibm.connections.metrics'/>
+   </component>
+
+    <component name='Files'>
+    </component>
+
+    <component name='Waltz'>
+         <package name='com.ibm.connections.directory.services'/>
+    </component>
+
+    <component name='Sonata'>
+         <package name='com.ibm.connections.httpClient'/>
+    </component>
+
+    <component name='LinkedLibrary/Media Gallery'>
+		<package name='com.ibm.lconn.librarywidget'/>
+		<package name='com.ibm.quickr.lw'/>
+	</component>
+
+    <component name='Dogear'>
+    </component>
+
+    <component name='Homepage'>
+    </component>
+
+    <component name='News (ActivityStream and Microblogging)'>
+		<package name='com.ibm.lconn.news'/>
+    </component>
+
+    <component name='ActivityStreamUI'>
+    </component>
+    
+    <component name='Notifications'>
+    </component>
+
+    <component name='Mail-In'>
+    </component>
+
+    <component name='Forums'>
+        <package name='com.ibm.lconn.forum'/>
+    </component>
+    
+    <component name='Blogs'>
+        <package name='org.apache.roller'/>
+        <package name='com.ibm.lconn.blog'/>
+    </component>
+    
+    <component name='Bookmarks'>
+        <package name='com.ibm.bl'/>
+        <package name='com.ibm.dogear'/>
+    </component>
+</components>
+
+
+

@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "shops",
+          "categories": [
+            "McDonalds",
+            "Kentucky Fried Chicken",
+            "Spaghetti House",
+            "Gnocchi Heaven"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [ [ 0, 65 ], [ 2, 30 ], [ 3, 25 ] ]
+    },
+    {
+      "id": "derivedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "shops"}
+        },
+        {
+          "field": {"id": "values_final"},
+          "input": {"$ref": "values"},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "data2",
+      "type": "integrate",
+      "input": [
+        {"field": {"$ref": "categories_final"}, "role": "x"},
+        {"field": {"$ref": "values_final"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"sortCategories": false},
+          "role": "x"
+        }
+      ],
+      "source": {"$ref": "derivedData"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": [ {}, {"tickAs": "percentage"} ]},
+          {
+            "scale": {"spans": [ {"method": "data"} ]},
+            "axis": {"markStyle": {"valign": "end"}}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "derivedData"},
+          "position": [
+            {"field": {"$ref": "values_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {"field": {"$ref": "categories_final"}}
+          ]
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "symbolStyle": {},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "y1"} ],
+              "modifies": {"part": "symbol"}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 20}
+}

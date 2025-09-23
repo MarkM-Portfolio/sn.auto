@@ -1,0 +1,365 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX"},
+        {
+          "id": "fY",
+          "categories": [
+            "8",
+            "12",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21"
+          ]
+        },
+        {"id": "binSize"}
+      ],
+      "rows": [
+        [ 9000, 1, 2 ],
+        [ 9000, 3, 2 ],
+        [ 10397.368, 0, 19 ],
+        [ 10901.154, 1, 65 ],
+        [ 11160, 3, 5 ],
+        [ 12921.428, 0, 14 ],
+        [ 13206.617, 1, 68 ],
+        [ 13627.273, 3, 33 ],
+        [ 13100, 4, 3 ],
+        [ 12750, 5, 1 ],
+        [ 15536.842, 0, 19 ],
+        [ 15475.532, 1, 47 ],
+        [ 15625, 2, 6 ],
+        [ 15741.667, 3, 54 ],
+        [ 15642.857, 4, 7 ],
+        [ 17750, 1, 3 ],
+        [ 17610, 3, 10 ],
+        [ 17702.727, 4, 11 ],
+        [ 18000, 5, 1 ],
+        [ 18750, 0, 1 ],
+        [ 19245, 1, 4 ],
+        [ 19778.571, 3, 7 ],
+        [ 19473, 4, 10 ],
+        [ 19500, 5, 1 ],
+        [ 19500, 7, 1 ],
+        [ 21000, 3, 1 ],
+        [ 21432.8, 4, 12 ],
+        [ 23730, 3, 1 ],
+        [ 23160, 4, 3 ],
+        [ 23250, 6, 1 ],
+        [ 26000, 3, 3 ],
+        [ 26637.143, 4, 7 ],
+        [ 26880, 5, 2 ],
+        [ 26865, 6, 2 ],
+        [ 27480, 7, 3 ],
+        [ 30000, 4, 1 ],
+        [ 29370, 5, 2 ],
+        [ 29242.8, 7, 4 ],
+        [ 30000, 8, 1 ],
+        [ 32490, 4, 1 ],
+        [ 31620, 5, 2 ],
+        [ 32320, 6, 3 ],
+        [ 32278.75, 7, 8 ],
+        [ 33750, 1, 1 ],
+        [ 34980, 5, 2 ],
+        [ 34980, 6, 1 ],
+        [ 34752, 7, 5 ],
+        [ 36240, 6, 1 ],
+        [ 36750, 7, 1 ],
+        [ 37500, 9, 1 ],
+        [ 39990, 7, 1 ],
+        [ 42510, 7, 1 ],
+        [ 42480, 8, 1 ],
+        [ 44100, 4, 1 ],
+        [ 45000, 6, 1 ],
+        [ 44250, 7, 2 ],
+        [ 47490, 4, 1 ],
+        [ 52500, 4, 1 ],
+        [ 60000, 4, 1 ],
+        [ 79980, 7, 1 ]
+      ]
+    },
+    {
+      "id": "binnedHistogram",
+      "source": {"$ref": "source"},
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "fY"},
+          "output": {"id": "binnedCategory"}
+        },
+        {
+          "input": {"$ref": "fX"},
+          "output": {
+            "id": "binX",
+            "format": {"numericPattern": "#,###"}
+          }
+        }
+      ],
+      "input": [
+        {"field": {"$ref": "binSize"}, "role": "weight"}
+      ],
+      "output": [
+        {
+          "field": {
+            "id": "binnedCount",
+            "format": {
+              "numericPattern": "##,###",
+              "prefix": "",
+              "suffix": ""
+            }
+          },
+          "parameters": {"summaryFunction": "count"}
+        },
+        {
+          "field": {
+            "id": "binnedLower",
+            "format": {"numericPattern": "#,###"}
+          },
+          "input": {"$ref": "fX"},
+          "parameters": {"summaryFunction": "min"}
+        },
+        {
+          "field": {
+            "id": "binnedUpper",
+            "format": {"numericPattern": "#,###"}
+          },
+          "input": {"$ref": "fX"},
+          "parameters": {"summaryFunction": "max"}
+        }
+      ]
+    },
+    {
+      "id": "categoryMeans",
+      "source": {"$ref": "source"},
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "fY"},
+          "output": {
+            "id": "categoryForMeans",
+            "unit": "categorical"
+          }
+        }
+      ],
+      "input": [
+        {"field": {"$ref": "binSize"}, "role": "weight"}
+      ],
+      "output": [
+        {
+          "field": {"id": "categoryMean"},
+          "input": {"$ref": "fX"},
+          "parameters": {"summaryFunction": "mean"}
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "9pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "educ" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9pt"}
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "9pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "salbegin" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "9pt"}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "binnedHistogram"},
+          "position": [
+            {"field": {"$ref": "binnedCategory"}},
+            {"field": {"$ref": "binX"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "binnedCount"},
+              "scale": {"spans": [ {"min": 0} ]},
+              "mapping": [
+                {"at": "0%", "color": {"a": 0.2}},
+                {"at": "100%", "color": {"a": 1}}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "educ",
+                " = ",
+                {"$ref": "binnedCategory"},
+                "\n",
+                "salbegin",
+                " = ",
+                {"$ref": "binnedLower"},
+                " to ",
+                {"$ref": "binnedUpper"},
+                "\n",
+                "Number of Records",
+                " = ",
+                {"$ref": "binnedCount"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#1B6A87",
+            "width": "100%",
+            "height": "80%",
+            "symbol": "rectangle"
+          }
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "categoryForMeans"}},
+            {"field": {"$ref": "categoryForMeans"}},
+            {"value": 17016.0864978903},
+            {"field": {"$ref": "categoryMean"}}
+          ],
+          "style": {
+            "fill": "#85a54a",
+            "stroke": {"width": 4}
+          }
+        },
+        {
+          "type": "point",
+          "data": {"$ref": "categoryMeans"},
+          "position": [
+            {"field": {"$ref": "categoryForMeans"}},
+            {"field": {"$ref": "categoryMean"}}
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "educ",
+                " = ",
+                {"$ref": "categoryForMeans"},
+                "\n",
+                "Average",
+                " (",
+                "salbegin",
+                ")",
+                " = ",
+                {"$ref": "categoryMean"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "colors": [
+                {
+                  "color": {
+                    "dAlpha": -0.1,
+                    "h": 0.225,
+                    "s": 0.552,
+                    "v": 0.647
+                  },
+                  "offset": 1
+                }
+              ],
+              "focus": {"x": "30%", "y": "30%"}
+            },
+            "outline": {"dAlpha": -0.75}
+          }
+        },
+        {
+          "type": "edge",
+          "data": { "$ref": "source" },
+          "position": [
+            {"value": "0%"},
+            {"value": "100%"},
+            {"value": 17016.0864978903},
+            {"value": 17016.0864978903}
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "Overall Average",
+                " (",
+                "salbegin",
+                ")",
+                " = ",
+                "17,016.09"
+              ]
+            }
+          ],
+          "style": {
+            "fill": "#85a54a",
+            "stroke": {"width": 4}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 0
+      }
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId"}} ],
+      "method": "stagger",
+      "title": [ "Number of Records" ],
+      "titleStyle": {
+        "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+        "font": {
+          "family": "Arial",
+          "size": "9pt",
+          "weight": "bold"
+        }
+      }
+    }
+  ],
+  "size": {"width": 1257, "height": 421},
+  "version": "1.3"
+}

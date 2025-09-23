@@ -1,0 +1,11 @@
+{
+	"tests":[
+		{
+			"name":"testOne",
+			"location":"Res/basicTestWithSyntaxError.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{}
+}

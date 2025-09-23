@@ -1,0 +1,17 @@
+  <project name="Jacoco Instrumentation" xmlns:jacoco="antlib:org.jacoco.ant">
+
+    <property environment="env"/>
+    
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+      <classpath path="${env.JACOCO_JAR_DIR}/jacocoant.jar"/>
+    </taskdef>
+       
+    <target name="instr">
+
+      <jacoco:instrument destdir="${env.WORKSPACE}/jars_instrumented">
+        <fileset dir="${env.DIR_TO_INCLUDE}" includes="${env.JARS_TO_INCLUDE}" />
+      </jacoco:instrument>
+
+    </target>
+       
+  </project>

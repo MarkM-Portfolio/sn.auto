@@ -1,0 +1,207 @@
+<html>
+<head>
+  <title>Rave Test</title>
+  <script language="JavaScript" src="./dojo/dojo.js" data-dojo-config="locale: 'en-us', async:true, paths:{'com/ibm':'../rave/com/ibm'}, gfxRenderer: 'canvas,silverlight'"></script>
+  <script type="text/javascript">
+
+  // load rave build layer
+  require(["com/ibm/vis/main", "dojo/dojo-core-layer"], function() {
+    //once we have the rave layer loaded, we can use all rave modules
+    require(["com/ibm/init/ready", "dojo/parser", "dijit/registry", "dojo/_base/lang" , "dojo/on", "com/ibm/vis/widget/VisControl"], function(ready, parser, registry, lang, on) {
+      //ready function is needed to ensure the rave system is properly loaded
+      var widget;
+      ready(function() {
+        parser.parse();
+        var vizJSON=
+        {
+          "data": [
+          {
+            "id": "dDelimitedFileSource",
+            "fields": [
+            {
+              "id": "fCategories",
+              "label": "Store",
+              "categories": [
+              "California",
+              "Illinois",
+              "New York",
+              "Texas"
+              ],
+              "key": true
+            },
+            {"id": "fValues", "label": "Price"}
+            ],
+            "rows": [
+            [ 3, 3672 ],
+            [ 2, 3972 ],
+            [ 1, 3427 ],
+            [ 0, 3785 ]
+            ]
+          }
+          ],
+          "copyright": "(C) Copyright IBM Corp. 2011",
+          "grammar": [
+          {
+            "coordinates": {
+            "dimensions": [
+              {"axis": {}},
+              {
+              "axis": {
+                "title": [
+                "Categories of \"",
+                {"$ref": "fCategories"},
+                "\""
+                ],
+                "titleStyle": {
+                "fill": {"b": 150, "g": 50, "r": 50},
+                "font": {
+                  "family": "Technical, Times New Roman",
+                  "size": "18",
+                  "style": "italic"
+                }
+                }
+              }
+              }
+            ]
+            },
+            "elements": [
+            {
+              "type": "interval",
+              "label": [ {"content": [ {"$ref": "fValues"} ]} ],
+              "data": {"$ref": "dDelimitedFileSource"},
+              "position": [
+              {"field": {"$ref": "fValues"}},
+              {"field": {"$ref": "fCategories"}}
+              ],
+              "color": [
+              {
+                "field": {"$ref": "fValues"},
+                "mapping": [
+                {
+                  "at": "0%",
+                  "color": {"b": 255, "g": 0, "r": 0}
+                },
+                {
+                  "at": "100%",
+                  "color": {"b": 0, "g": 255, "r": 255}
+                }
+                ]
+              }
+              ],
+              "meta": [
+              {
+                "field": {"$ref": "fCategories"},
+                "key": "category"
+              }
+              ],
+              "tooltip": [
+              {"content": [ {"$ref": "fValues"} ]}
+              ],
+              "style": {
+              "fill": {
+                "type": "linear",
+                "angle": 180.0,
+                "colors": [
+                {
+                  "color": {"b": 150, "g": 57, "r": 1},
+                  "offset": 0.0
+                },
+                {
+                  "color": {"a": 0.2,"b": 0,"g": 0,"r": 0},
+                  "offset": 1.0
+                }
+                ]
+              },
+              "width": "80%",
+              "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0}
+              }
+            }
+            ],
+            "labelCollisionMethod": "none",
+            "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 135.0,
+              "colors": [
+              {
+                "color": {"b": 255, "g": 221, "r": 221},
+                "offset": 0.0
+              },
+              {
+                "color": {"b": 255, "g": 255, "r": 255},
+                "offset": 1.0
+              }
+              ]
+            },
+            "stroke": {"width": 0.5},
+            "outline": {"b": 0, "g": 0, "r": 0}
+            }
+          }
+          ],
+          "legends": [ {} ],
+          "size": {"width": 400.0, "height": 300.0},
+          "version": "6.0"
+        };
+
+        widget = registry.byId("visControl");
+        widget.initRenderer().then(function(w) {
+          widget.setSpecification(vizJSON);
+        });
+        //Attach a mouse listener to the click event
+        on( widget, "mousedown", lang.hitch(this, "visOnMouseClick"));
+      });
+      visOnMouseClick=function(dojoEvent){
+        var interaction=widget.interactivity();
+        //Get the data coordinates from a coordinates object
+        var items=interaction.getItemsAtPointForType(dojoEvent.clientX,
+          dojoEvent.clientY,"element");
+        var rows=(items==null||items.length<1)?null: items[0].getRows();
+        if(rows!=null){
+          console.log("Data: "+items[0].getDataIndex());
+          console.log("Row: "+items[0].getRows()[0]);
+          console.log("Field on X axis: "+items[0].coordinateFields()[1]);
+          console.log("Value on X axis (category): "+items[0].coordinates()[1]);
+          var category=items[0].coordinates()[1];for(i=0;i<4;i++){
+            var elem='r'+i;document.getElementById(elem).style.background="#fff";
+          }
+          //set desired row
+          var elem='r'+category;document.getElementById(elem).style.background="#aaa";
+        }
+      };
+    });
+
+  }); //end of main layer load
+    </script>
+</head>
+<body>
+  <body>
+     <table>
+       <tr>
+        <div data-dojo-type="com.ibm.vis.widget.VisControl" id="visControl" style="width: 600px; height: 400px;"/>
+       </tr>
+       <tr>
+        <div id="tableDiv">
+         <table>
+          <tr id="r0">
+            <td>"California"</td>
+            <td>3785</td>
+          </tr>
+          <tr id="r1">
+            <td>"Illinois"</td>
+            <td>3427</td>
+          </tr>
+          <tr id="r2">
+            <td>"New york"</td>
+            <td>3972</td>           
+          </tr>           
+          <tr id="r3">
+            <td>"Texas"</td>
+            <td>3672</td>           
+          </tr>
+         </table>
+        </div>
+      </tr>
+     </table>
+   </body>
+</body>
+</html>

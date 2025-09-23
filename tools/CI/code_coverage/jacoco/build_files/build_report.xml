@@ -1,0 +1,33 @@
+  <project name="Jacoco Instrumentation" xmlns:jacoco="antlib:org.jacoco.ant">
+
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+      <classpath path="/local/ci/common/jacoco/jars/jacocoant.jar"/>
+    </taskdef>
+       
+    <target name="report">
+
+      <jacoco:report>
+        
+           <executiondata>
+                  <file file="/local/ci/activities/src/activities.impl/lwp/build/oa.test/bvt/jacoco.exec"/>
+        </executiondata>
+
+        
+        
+        <structure name="Example Project">
+          <group name="mygroup">
+            <classfiles>  
+            <fileset dir="/local/ci/activities/jars_original">
+               </fileset>
+          </classfiles> 
+        </group>
+        </structure>
+        
+            <xml destfile="/local/ci/activities/jacoco_xml_report"/>
+        
+        
+      </jacoco:report>
+
+    </target>
+       
+  </project>

@@ -1,0 +1,344 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from", "key": true},
+        {"id": "to", "key": true},
+        {"id": "size"}
+      ],
+      "rows": [
+        [ 0, 4, 1 ],
+        [ 1, 4, 1 ],
+        [ 2, 4, 1 ],
+        [ 3, 5, 1 ],
+        [ 4, 6, 1 ],
+        [ 5, 6, 1 ],
+        [ 6, 7, 1 ],
+        [ 6, 8, 1 ],
+        [ 6, 9, 1 ],
+        [ 8, 10, 1 ],
+        [ 9, 11, 1 ],
+        [ 6, 11, 1 ],
+        [ 7, 12, 1 ],
+        [ 7, 13, 1 ],
+        [ 14, 0, 1 ],
+        [ 15, 1, 1 ],
+        [ 16, 2, 1 ],
+        [ 17, 3, 1 ],
+        [ 18, 14, 1 ],
+        [ 19, 15, 1 ],
+        [ 20, 16, 1 ],
+        [ 21, 17, 1 ],
+        [ 10, 22, 1 ],
+        [ 11, 23, 1 ],
+        [ 12, 24, 1 ],
+        [ 13, 25, 1 ],
+        [ 22, 26, 1 ],
+        [ 23, 27, 1 ],
+        [ 24, 28, 1 ],
+        [ 25, 29, 1 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id", "key": true},
+        {
+          "id": "name",
+          "categories": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "A1",
+            "B1",
+            "C1",
+            "D1",
+            "A2",
+            "B2",
+            "C2",
+            "D2",
+            "K1",
+            "L1",
+            "M1",
+            "N1",
+            "K2",
+            "L2",
+            "M2",
+            "N2"
+          ]
+        },
+        {
+          "id": "left-icon",
+          "categories": [ "NO", "EXPAND", "COLLAPSE" ]
+        },
+        {
+          "id": "right-icon",
+          "categories": [ "NO", "EXPAND", "COLLAPSE" ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 2, 0 ],
+        [ 1, 1, 2, 0 ],
+        [ 2, 2, 2, 0 ],
+        [ 3, 3, 2, 0 ],
+        [ 4, 4, 2, 0 ],
+        [ 5, 5, 2, 0 ],
+        [ 6, 6, 2, 2 ],
+        [ 7, 7, 0, 2 ],
+        [ 8, 8, 0, 2 ],
+        [ 9, 9, 0, 2 ],
+        [ 10, 10, 0, 2 ],
+        [ 11, 11, 0, 2 ],
+        [ 12, 12, 0, 2 ],
+        [ 13, 13, 0, 2 ],
+        [ 14, 14, 2, 0 ],
+        [ 15, 15, 2, 0 ],
+        [ 16, 16, 2, 0 ],
+        [ 17, 17, 2, 0 ],
+        [ 18, 18, 0, 0 ],
+        [ 19, 19, 0, 0 ],
+        [ 20, 20, 0, 0 ],
+        [ 21, 21, 0, 0 ],
+        [ 22, 22, 0, 2 ],
+        [ 23, 23, 0, 2 ],
+        [ 24, 24, 0, 2 ],
+        [ 25, 25, 0, 2 ],
+        [ 26, 26, 0, 0 ],
+        [ 27, 27, 0, 0 ],
+        [ 28, 28, 0, 0 ],
+        [ 29, 29, 0, 0 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "style": {
+                "fill": "navy",
+                "font": {"size": 10.0}
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [
+            {
+              "field": {"$ref": "id"},
+              "modifies": {"type": "fill"}
+            },
+            {
+              "field": {"$ref": "id"},
+              "modifies": {
+                "type": "fill",
+                "part": "left-icon"
+              }
+            },
+            {
+              "field": {"$ref": "id"},
+              "modifies": {
+                "type": "fill",
+                "part": "right-icon"
+              }
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "orientation": "left-to-right",
+            "to": {"$ref": "to"},
+            "method": "dag"
+          },
+          "symbol": [
+            {
+              "field": {"$ref": "left-icon"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "rect",
+                        "bounds": {
+                          "width": "0.0%",
+                          "height": "0.0%",
+                          "left": "80%",
+                          "top": "50.0%"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "path",
+                        "path": "M1, 0 L1, 1 L0, 1 L 0, 0 ZM1, 0.5 L 0, 0.5 ZM0.5, 1 L 0.5, 0 Z"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 2,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "path",
+                        "path": "M1, 0 L1, 1 L0, 1 L 0, 0 ZM1, 0.5 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "left-icon"}
+            },
+            {
+              "field": {"$ref": "right-icon"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "rect",
+                        "bounds": {
+                          "width": "0.0%",
+                          "height": "0.0%",
+                          "left": "0%",
+                          "top": "50.0%"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "path",
+                        "path": "M1, 0 L1, 1 L0, 1 L 0, 0 ZM1, 0.5 L 0, 0.5 ZM0.5, 1 L 0.5, 0 Z"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "at": 2,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "type": "path",
+                        "path": "M1, 0 L1, 1 L0, 1 L 0, 0 ZM1, 0.5 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "modifies": {"part": "right-icon"}
+            }
+          ],
+          "style": {
+            "width": 78,
+            "height": 20,
+            "symbol": {
+              "shape": [
+                {
+                  "type": "rect",
+                  "bounds": {
+                    "width": "100%",
+                    "height": "100%",
+                    "left": "0.0%",
+                    "top": "0.0%"
+                  }
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "60.0%",
+                    "height": "60.0%",
+                    "left": "-35.5%",
+                    "top": "20.0%"
+                  },
+                  "part": "left-icon",
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": "black"
+                  }
+                },
+                {
+                  "type": "circle",
+                  "bounds": {
+                    "width": "60.0%",
+                    "height": "60.0%",
+                    "left": "78.0%",
+                    "top": "20.0%"
+                  },
+                  "part": "right-icon",
+                  "style": {
+                    "stroke": {"width": 0.5},
+                    "outline": "black"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "color": [ {"field": {"$ref": "from"}} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "attachmentPoint": {
+              "inPoint": {"value": "left-icon"},
+              "outPoint": {"value": "right-icon"}
+            },
+            "from": {"$ref": "from"},
+            "to": {"$ref": "to"},
+            "method": "link"
+          },
+          "size": [
+            {
+              "field": {"$ref": "size"},
+              "mapping": [
+                {"at": "0.0%", "size": "25%"},
+                {"at": "100.0%", "size": "100%"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": "yellow",
+            "stroke": {"width": 5.0, "cap": "butt"},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"padding": 10}
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "#aaa"}
+}

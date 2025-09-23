@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {
+          "id": "fUSECASE",
+          "categories": [
+            "OPM PERFORMANCE",
+            "NODE DROP OFF",
+            "FCM VO JAMMED"
+          ]
+        },
+        {"id": "fHEALTH", "min": 0},
+        {"id": "fEVENTCOUNT", "min": 0}
+      ],
+      "rows": [
+        [ 0, 22, 50 ],
+        [ 1, 55, 18 ],
+        [ 2, 33, 20 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.05, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0.5, "h": 0, "l": 0, "s": 0},
+                "stroke": {"width": 0.5},
+                "snap": true
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": "14"},
+                "padding": 10
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.5, "h": 0, "l": 0, "s": 0},
+                "stroke": {"width": 0.5},
+                "snap": true
+              },
+              "markStyle": {},
+              "method": "horizontal",
+              "tickStyle": {
+                "fill": {"a": 0.5, "h": 0, "l": 0, "s": 0},
+                "font": {"family": "Arial", "size": 12}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "fEVENTCOUNT"}},
+            {"field": {"$ref": "fUSECASE"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fHEALTH"},
+              "modifies": "both"
+            }
+          ],
+          "style": {
+            "fill": "#ddd",
+            "width": "60%",
+            "outline": {"dValue": -0.05}
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 360, "height": 360},
+  "version": "3.0",
+  "style": {"fill": "white", "padding": 20}
+}

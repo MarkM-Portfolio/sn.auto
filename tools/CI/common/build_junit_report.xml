@@ -1,0 +1,14 @@
+<project name="Build JUnit Report for UT" default="development" basedir="."> 
+    <target name="ci.build.junitreport">
+      <echo>Building junit XML report...</echo>
+
+      <junitreport todir="${env.CI_HOME}/src/${env.APPDIR_PRIMARY}/${env.test_result_xml_dir}">
+        <fileset dir="${env.CI_HOME}/src/${env.APPDIR_PRIMARY}/${env.test_result_xml_dir}">
+            <include name="TEST-*.xml"/>
+            <include name="*/TEST-*.xml"/>
+            <include name="*/*/TEST-*.xml"/>
+            <include name="*/*/*/TEST-*.xml"/>
+        </fileset>
+      </junitreport>
+    </target>
+</project>

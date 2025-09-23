@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WAFFLE Framework" default="build-jar" basedir=".">
+
+    <!-- directories -->
+    <property name="build.dir" value="${basedir}/build" />
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="src.dir" value="${basedir}/src" />
+
+    <!-- .jar paths -->
+    <property name="guice.jar" value="${lib.dir}/guice-3.0.jar" />
+    <property name="slf4j.jar" value="${lib.dir}/slf4j-api-1.6.4.jar" />
+    <property name="logback-classic.jar" value="${lib.dir}/logback-classic-1.0.1.jar" />
+    <property name="logback-core.jar" value="${lib.dir}/logback-core-1.0.1.jar" />
+    <property name="reportng.jar" value="${lib.dir}/reportng-1.1.4.jar" />
+    <property name="selenium.jar" value="${lib.dir}/selenium-server-standalone-2.30.0.jar" />
+    <property name="testng.jar" value="${lib.dir}/testng-6.4.jar" />
+    <property name="velocity.jar" value="${lib.dir}/velocity-dep-1.4.jar" />
+	<property name="jserrorcollector.jar" value="${lib.dir}/jserrorcollector-0.5.jar" />
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+        <delete>
+            <fileset dir="${basedir}">
+                <include name="*.log" />
+                <include name="*.out" />
+                <include name="*.err" />
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="prepare-deps" depends="clean">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${build.dir}/test_config" />
+
+        <copy todir="${build.dir}/test_config">
+            <fileset dir="${basedir}/test_config">
+                <include name="**/*" />
+                <exclude name="**/*.jazzignore" />
+            </fileset>
+        </copy>
+
+    </target>
+
+    <path id="classpath">
+        <pathelement location="${classes.dir}" />
+        <pathelement location="${testng.jar}" />
+        <pathelement location="${slf4j.jar}" />
+        <pathelement location="${logback-core.jar}" />
+        <pathelement location="${logback-classic.jar}" />
+        <pathelement location="${guice.jar}" />
+        <pathelement location="${velocity.jar}" />
+        <pathelement location="${reportng.jar}" />
+        <pathelement location="${selenium.jar}" />
+    	<pathelement location="${jserrorcollector.jar}" />
+    </path>
+
+    <target name="compile" depends="prepare-deps">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="false" classpathref="classpath" includes="**/waffle/**" />
+    </target>
+
+    <target name="build-jar" depends="compile">
+        <jar destfile="${build.dir}/waffle.jar" basedir="${classes.dir}" duplicate="preserve">
+            <manifest>
+                <attribute name="Main-Class" value="com.ibm.atmn.waffle.core.Main" />
+                <attribute name="Class-Path" value="." />
+            </manifest>
+            <zipfileset src="${testng.jar}" excludes="META-INF/*" />
+            <zipfileset src="${slf4j.jar}" excludes="META-INF/*" />
+            <zipfileset src="${logback-core.jar}" excludes="META-INF/*" />
+            <zipfileset src="${logback-classic.jar}" excludes="META-INF/*" />
+            <zipfileset src="${guice.jar}" excludes="META-INF/*" />
+            <zipfileset src="${velocity.jar}" excludes="META-INF/*" />
+            <zipfileset src="${reportng.jar}" excludes="META-INF/*" />
+            <zipfileset src="${selenium.jar}" excludes="META-INF/*" />
+        	<zipfileset src="${jserrorcollector.jar}" excludes="META-INF/*" />
+            <!--<zipgroupfileset dir="${lib.dir}" includes="**/*.jar" excludes="**/*selenium*.jar" />-->
+        </jar>
+    </target>
+</project>

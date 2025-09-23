@@ -1,0 +1,82 @@
+{
+  "data": [
+    {"fields": [ {"id": "another"} ], "rows": [  ]},
+    {
+      "id": "data",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY"},
+        {"id": "facet1", "categories": [ "A", "B" ]}
+      ],
+      "rows": [
+        [ null, 339, 0 ],
+        [ 1999, 290, 0 ],
+        [ 1090, 95, 0 ],
+        [ 1385, 309, 1 ],
+        [ 2000, 223, 1 ],
+        [ 200, 299, 1 ]
+      ]
+    },
+    {"fields": [ {"id": "DUMMY"} ], "rows": [  ]}
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": "50%", "left": 0},
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "style": {
+          "fill": "beige",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": {"a": 0.75, "b": 128, "g": 0, "r": 0},
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0},
+            "size": "20"
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "facet1"}} ],
+        "method": "panelHorizontal"
+      }
+    },
+    {
+      "bounds": {"width": "50%", "left": "50%"},
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "style": {
+          "fill": "beige",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": {"a": 0.75, "b": 128, "g": 0, "r": 0},
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0},
+            "size": "20"
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "facet1"}} ],
+        "method": "panelHorizontal"
+      }
+    }
+  ],
+  "size": {"width": 600, "height": 500},
+  "version": "5.0"
+}

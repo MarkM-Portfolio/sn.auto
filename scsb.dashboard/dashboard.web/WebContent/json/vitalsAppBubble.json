@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "categories": [  ],
+          "format": {
+            "fitMethod": "reducePrecision",
+            "noSpaceFormat": {"pattern": "*"}
+          }
+        },
+        {"id": "size"},
+        {"id": "hits"},
+        {"id": "usize"},
+        {"id": "uhits"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [  ],
+      "output": [
+        {
+          "field": {"id": "fname"},
+          "input": {"$ref": "name"}
+        },
+        {
+          "field": {"id": "fusize"},
+          "input": {"$ref": "usize"}
+        },
+        {
+          "field": {"id": "fsize"},
+          "input": {"$ref": "size"}
+        },
+        {
+          "field": {
+            "id": "percentuhits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "uhits"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {
+            "id": "percenthits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "hits"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {
+            "id": "fhits",
+            "format": {"scientific": "never"}
+          },
+          "input": {"$ref": "hits"}
+        },
+        {
+          "field": {
+            "id": "fuhits",
+            "format": {"scientific": "never"}
+          },
+          "input": {"$ref": "uhits"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": true, "spans": [  ]}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fname"} ],
+              "lineStyle": {},
+              "style": {
+                "align": "middle",
+                "font": {"family": "Arial"},
+                "location": "inside",
+                "padding": 3,
+                "valign": "middle"
+              }
+            }
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fname"},
+              "scale": {"local": false},
+              "palette": [
+                "#005D99",
+                "#009987",
+                "#007527",
+                "#CC8F00",
+                "#D9631F",
+                "#B01611",
+                "#D93D9C",
+                "#742299",
+                "#1483C7",
+                "#00B8A4",
+                "#0E9425",
+                "#EBB300",
+                "#EB7D2A",
+                "#D13838",
+                "#F562BC",
+                "#9A34C7",
+                "#38B1F2",
+                "#5FD4C5",
+                "#4FBD4F",
+                "#F5D118",
+                "#F79F4A",
+                "#EA5E5E",
+                "#FF8CD3",
+                "#C462F5"
+              ]
+            }
+          ],
+          "meta": [
+            {"field": {"$ref": "fname"}, "key": "appName"}
+          ],
+          "positioning": {"method": "bubble"},
+          "size": [
+            {
+              "field": {"$ref": "fusize"},
+              "mapping": [
+                {"at": "0%", "size": "0%"},
+                {"at": "100%", "size": "100%"}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "percenthits"},
+                "%<br>",
+                {"$ref": "fuhits"},
+                " hits"
+              ]
+            }
+          ],
+          "style": {"outline": {"a": 0}, "padding": 1}
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

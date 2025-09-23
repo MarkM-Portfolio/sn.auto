@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- Connections Web Editors Edit in Office Online BVT Cloud Test Suite
+Created using TEMPLATE VERSION 2012.05.23-1830 -->
+
+<suite thread-count="1" name="Web Editors Edit in Office Online BVT Test for Cloud env" parallel="tests" >
+
+  <!-- GROUPS --> 
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2-->
+  
+  <groups>
+    <run>
+     <include name="OO_BUILD_BVT" />
+    </run>
+  </groups>
+  
+  <!-- Test method has to contain all groups to be run if intersect_groups is true -->
+  <parameter name="intersect_groups" value="false" />
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS-->
+  <parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="5555" />
+  <!-- To run tests locally
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_host" value="dubxpcvm144.mul.ie.ibm.com" />
+  <parameter name="server_port" value="" />-->
+  
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="cloud" />
+  
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="cloud" />
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <!-- <parameter name="browser_url" value="https://dubxpcvm766.mul.ie.ibm.com:9444" />-->
+  <parameter name="browser_url" value="https://apps.basesandbox66.swg.usma.ibm.com/" />
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_32_Windows" /> 
+  
+  <!-- Smart Cloud properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/WE_smart_cloud.properties" />
+  
+  
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="fluent_wait_timeout" value="45" />
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  <parameter name="max_retries" value="0" />
+  
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />  
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseInterceptorListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+  
+  <!-- TESTS -->
+   
+  <test name="Web Editors Office Online Cloud BVT" preserve-order="true" enabled="true">
+    <packages>
+      	<package name="com.ibm.conn.auto.tests.webeditors.bvt.officeonline" />
+      </packages>
+  </test>
+  
+</suite>

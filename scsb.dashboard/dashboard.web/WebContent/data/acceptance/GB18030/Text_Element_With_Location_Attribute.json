@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "States",
+          "categories": [
+            "成我戒戓戔戕或戗",
+            "㐃㐄㐅㐆㐇㐈",
+            "裏隣兀 嗀﨎﨏",
+            "狥狦狧狪狫",
+            "桐酮瞳同"
+          ],
+          "key": true
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 4, 400 ],
+        [ 3, 1300 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 1450 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "minorStyle": {
+                "fill": {"b": 75, "g": 75, "r": 75}
+              },
+              "title": [ "Count" ],
+              "titleStyle": {
+                "fill": {"b": 150, "g": 50, "r": 50},
+                "font": {"size": "18", "weight": "bold"}
+              }
+            }
+          },
+          {
+            "scale": {"local": true},
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {"family": "SimSun", "size": 11.1}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "text",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "content": [ {"$ref": "categories"} ],
+          "style": {
+            "font": {"family": "SimSun", "style": "italic"},
+            "location": "stretch"
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {"width": "90%", "outline": {"a": 0.0}}
+    }
+  ],
+  "size": {"width": 800, "height": 400},
+  "version": "4.0",
+  "style": {"fill": "white", "padding": 5}
+}

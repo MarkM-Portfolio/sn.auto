@@ -1,0 +1,167 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ]
+        },
+        {"id": "fValues", "label": "Price"}
+      ],
+      "rows": [
+        [ 3, 6.49 ],
+        [ 2, 6.99 ],
+        [ 1, 27.0 ],
+        [ 0, -14.99 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {
+                  "min": 0.0,
+                  "max": 30.0,
+                  "outRange": {"min": 0.8, "max": 1.0},
+                  "tickDelta": 10
+                },
+                {
+                  "min": -20.0,
+                  "max": 0.0,
+                  "outRange": {"min": 0.0, "max": 0.2},
+                  "tickDelta": 15
+                }
+              ]
+            },
+            "axis": {
+              "gridBand": {
+                "fill": [
+                  {"a": 0.7, "b": 0, "g": 128, "r": 255},
+                  {"a": 0.8, "b": 76, "g": 177, "r": 34}
+                ]
+              },
+              "gridStyle": {},
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "18.0pt"
+                }
+              }
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {
+                  "categories": [ 0, 1, 2, 3 ],
+                  "outRange": {"min": 0.5, "max": 1.0}
+                }
+              ]
+            },
+            "axis": {
+              "gridStyle": {},
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "8.0pt"
+                }
+              }
+            }
+          }
+        ],
+        "style": {
+          "fill": {
+            "type": "linear",
+            "angle": 135.0,
+            "colors": [
+              {
+                "color": {"b": 255, "g": 221, "r": 221},
+                "offset": 0.0
+              },
+              {
+                "color": {"b": 255, "g": 255, "r": 255},
+                "offset": 1.0
+              }
+            ]
+          },
+          "stroke": {"width": 0.5}
+        }
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "fValues"},
+              "mapping": [
+                {
+                  "at": 0.0,
+                  "color": {"b": 255, "g": 0, "r": 0}
+                },
+                {
+                  "at": 1.0,
+                  "color": {"b": 0, "g": 255, "r": 255}
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 0.0,
+              "colors": [
+                {
+                  "color": {"b": 150, "g": 57, "r": 1},
+                  "offset": 0.0
+                },
+                {
+                  "color": {
+                    "a": 0.2,
+                    "b": 0,
+                    "g": 0,
+                    "r": 0
+                  },
+                  "offset": 1.0
+                }
+              ]
+            },
+            "width": "80%",
+            "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "padding": 28.800001
+      }
+    }
+  ],
+  "size": {"width": 500.0, "height": 800.0},
+  "version": "4.1"
+}

@@ -1,0 +1,138 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Country",
+          "label": "Country",
+          "categories": [
+            "孟加拉国",
+            "不丹",
+            "印度",
+            "马尔代夫",
+            "尼泊尔",
+            "巴基斯坦",
+            "斯里兰卡"
+          ]
+        },
+        {
+          "id": "Country-Flag",
+          "label": "Country Flag",
+          "categories": [
+            "Bangladesh-Flag",
+            "Bhutan-Flag",
+            "India-Flag",
+            "Maldives-Flag",
+            "Nepal-Flag",
+            "Pakistan-Flag",
+            "Sri-Lanka-Flag"
+          ]
+        },
+        {"id": "Population", "label": "Population"}
+      ],
+      "rows": [
+        [ 0, 0, 152518015 ],
+        [ 1, 1, 697000 ],
+        [ 2, 2, 1210193422 ],
+        [ 3, 3, 396334 ],
+        [ 4, 4, 26620080 ],
+        [ 5, 5, 180440000 ],
+        [ 6, 6, 20277597 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": "80%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"lineStyle": {}, "markStyle": {}}},
+          {
+            "scale": {
+              "spans": [
+                {
+                  "tickLabel": [
+                    {
+                      "$ref": "Country-Flag",
+                      "method": "image"
+                    },
+                    " ",
+                    {"args": "tick"}
+                  ]
+                }
+              ]
+            },
+            "axis": {"lineStyle": {}, "markStyle": {},
+"tickStyle":{"font":{"family":"SimSun"}}}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Population"}},
+            {"field": {"$ref": "Country"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Population"}
+            }
+          ],
+          "style": {"fill": {"a": 0.9}, "width": "90%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "resource": [
+    {
+      "id": "Bangladesh-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Bangladesh-Flag.png" ]
+    },
+    {
+      "id": "Bhutan-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Bhutan-Flag.png" ]
+    },
+    {
+      "id": "India-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/India-Flag.png" ]
+    },
+    {
+      "id": "Maldives-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Maldives-Flag.png" ]
+    },
+    {
+      "id": "Nepal-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Nepal-Flag.png" ]
+    },
+    {
+      "id": "Pakistan-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Pakistan-Flag.png" ]
+    },
+    {
+      "id": "Sri-Lanka-Flag",
+      "type": "image/jpg/binary",
+      "URIs": [ "/Images/Sri-Lanka-Flag.png" ]
+    }
+  ],
+  "size": {"width": 900, "height": 400},
+  "version": "4.0"
+}

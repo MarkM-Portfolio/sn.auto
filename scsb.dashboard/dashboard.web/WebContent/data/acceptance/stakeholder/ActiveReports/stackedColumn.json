@@ -1,0 +1,256 @@
+{
+	"version": "1.2",
+	"data": [{
+		"id": "data",
+		"fields": [{
+			"id": "Product line",
+			"label": "Product line",
+			"categories": ["Camping Equipment",
+			"Golf Equipment",
+			"Mountaineering Equipment",
+			"Outdoor Protection",
+			"Personal Accessories",
+			"Camping Equipment2",
+			"Golf Equipment2",
+			"Mountaineering Equipment2",
+			"Outdoor Protection2",
+			"Personal Accessories2"]
+		},
+		{
+			"id": "Order method",
+			"label": "Order method",
+			"categories": ["Web",
+			"Phone",
+			"Store"]
+		},
+		{
+			"id": "Quantity",
+			"label": "Quantity"
+		}],
+		"rows": [[0,
+		0,
+		7389730],
+		[0,
+		1,
+		3389730],
+		[0,
+		2,
+		4389730],
+		[1,
+		0,
+		1414372],
+		[1,
+		1,
+		1214372],
+		[1,
+		2,
+		2414372],
+		[2,
+		0,
+		3197192],
+		[3,
+		0,
+		1402044],
+		[3,
+		1,
+		1102044],
+		[3,
+		2,
+		1402044],
+		[4,
+		0,
+		10335460],
+		[4,
+		1,
+		335460],
+		[4,
+		2,
+		20335460],
+		[5,
+		0,
+		7389730],
+		[5,
+		1,
+		2389730],
+		[5,
+		2,
+		9389730],
+		[6,
+		0,
+		1414372],
+		[6,
+		1,
+		414372],
+		[6,
+		2,
+		3414372],
+		[7,
+		0,
+		3197192],
+		[7,
+		1,
+		2197192],
+		[7,
+		2,
+		4197192],
+		[8,
+		0,
+		1402044],
+		[8,
+		1,
+		402044],
+		[8,
+		2,
+		3402044],
+		[9,
+		0,
+		10335460],
+		[9,
+		1,
+		8335460],
+		[9,
+		2,
+		12335460]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"scale": {
+				
+					"spans": [{
+						"min": 653565,
+						"max": 30335460,
+						"fit": "nice"
+					}]
+				},
+				"axis": {
+					
+				}
+			},
+			{
+				"axis": {
+					"method":"vertical"
+				}
+			}],
+			"transforms": [{
+				"type": "stack"
+			}]
+		},
+		"elements": [{
+			"type": "interval",
+			"position": [{
+				"field": {
+					"$ref": "Quantity"
+				}
+			},
+			{
+				"field": {
+					"$ref": "Product line"
+				}
+			}],
+			"styleBy": [{
+				"field": {
+					"$ref": "Order method"
+				},
+				"palette": [{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#426AFE",
+							"offset": 0.0
+						},
+						{
+							"color": "#B9C8FF",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#539315",
+							"offset": 0.0
+						},
+						{
+							"color": "#8FE43C",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#FFEE2F",
+							"offset": 0.0
+						},
+						{
+							"color": "#FFF8A7",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#E77903",
+							"offset": 0.0
+						},
+						{
+							"color": "#FDB065",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#AF1527",
+							"offset": 0.0
+						},
+						{
+							"color": "#EB5167",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#871F77",
+							"offset": 0.0
+						},
+						{
+							"color": "#D648C0",
+							"offset": 1.0
+						}]
+					}
+				},
+				{
+					"fill": {
+						"type": "linear",
+						"colors": [{
+							"color": "#252525",
+							"offset": 0.0
+						},
+						{
+							"color": "#434343",
+							"offset": 1.0
+						}]
+					}
+				}]
+			}]
+		}]
+	}],
+	"legends": [{
+		
+	}],
+	"size": {
+		"width": 300,
+		"height": 240
+	}
+}

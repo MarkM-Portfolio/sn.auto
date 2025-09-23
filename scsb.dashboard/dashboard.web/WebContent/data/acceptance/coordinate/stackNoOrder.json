@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Time",
+          "categories": [ "Q1", "Q2", "Q3", "Q4" ]
+        },
+        {
+          "id": "provinces",
+          "label": "Provinces",
+          "categories": [
+            "Ontario",
+            "Quebec",
+            "Alberta",
+            "B.C.",
+            "Saskatchewan"
+          ]
+        },
+        {"id": "revenue"}
+      ],
+      "rows": [
+        [ 0, 0, 3600 ],
+        [ 1, 0, 950 ],
+        [ 3, 0, 5200 ],
+        [ 0, 1, 500 ],
+        [ 1, 1, 750 ],
+        [ 2, 1, 1700 ],
+        [ 3, 1, 4200 ],
+        [ 0, 2, 300 ],
+        [ 1, 2, 850 ],
+        [ 2, 2, 2300 ],
+        [ 3, 2, 7200 ],
+        [ 0, 3, 1200 ],
+        [ 1, 3, 450 ],
+        [ 2, 3, 2300 ],
+        [ 3, 3, 100 ],
+        [ 0, 4, 800 ],
+        [ 2, 4, 4900 ],
+        [ 3, 4, 2100 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ "My Revenue" ]}},
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                }
+              },
+              "title": [ "Quarter" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "revenue"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [ {"field": {"$ref": "provinces"}} ],
+          "style": {
+            "stroke": {"width": 3},
+            "width": "80%",
+            "outline": {"a": 0.0}
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [ {} ],
+  "version": "1.3"
+}

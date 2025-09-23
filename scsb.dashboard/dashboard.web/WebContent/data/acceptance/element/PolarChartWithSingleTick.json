@@ -1,0 +1,142 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "fields": [
+        {"id": "month", "categories": [ "D" ]},
+        {"id": "fY", "label": "5"},
+        {
+          "id": "channels",
+          "categories": [
+            "Channel 1",
+            "Channel 2",
+            "Channel 3",
+            "Channel 4",
+            "Channel 5",
+            "Channel 6",
+            "Channel 7",
+            "Channel 8",
+            "Channel 9",
+            "Channel 10"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 10.7, 0 ],
+        [ 0, 2.7, 1 ],
+        [ 0, 10.7, 2 ],
+        [ 0, 2.7, 3 ],
+        [ 0, 10.7, 4 ],
+        [ 0, 2.7, 5 ],
+        [ 0, 10.7, 6 ],
+        [ 0, 2.7, 7 ],
+        [ 0, 10.7, 8 ],
+        [ 0, 2.7, 9 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {},
+              "title": [ {"$ref": "fY"} ],
+              "titleStyle": {
+                "fill": {"a": 0.44, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": 12.0,
+                  "weight": "bold"
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [
+          {"type": "stack"},
+          {"type": "polar"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "base"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "month"}}
+          ],
+          "split": [ {"field": {"$ref": "channels"}} ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "channels"},
+              "modifies": "both",
+              "palette": [
+                {
+                  "fill": {
+                    "angle": 90,
+                    "colors": [
+                      {
+                        "color": {
+                          "a": 1,
+                          "b": 255,
+                          "g": 170,
+                          "r": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "fill": {
+                    "angle": 90,
+                    "colors": [
+                      {
+                        "color": {
+                          "a": 0.99,
+                          "b": 255,
+                          "g": 255,
+                          "r": 255
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.3},
+            "width": "100%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [  ],
+  "size": {"width": 100, "height": 30},
+  "version": "3.0"
+}

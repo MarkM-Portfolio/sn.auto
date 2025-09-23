@@ -1,0 +1,64 @@
+# Module Verification configuration for IBM Lotus Connections 2.0
+
+# List of artifacts to ignore
+
+###############################################################################
+# Descriptive information about the cataloged modules.
+###############################################################################
+!module_listing_version: Lotus Connections OSSC Approved Module Listing dated February 14, 2017
+
+###############################################################################
+# Files that match the following regular expression are ignored
+###############################################################################
+# ignore any file with dojox/analytics/plugins/dojo.js in any file
+!ignore_file_regex: (resources/ext/timeago/.*Timeago.js|dojox/analytics/plugins/dojo.js|WEB-INF/eclipse/plugins/net.jazz.ajax_2.1.2.[0-9\-\.]*.jar|!com.ibm.socmail.proxy.extension.*_[0-9\-\.]*.jar)
+
+###############################################################################
+# Specified files in the associated container are ignored.
+# 10/17/2008 added installer "verify.jar"
+###############################################################################
+!file: js/dojo/dojo.js                                 qkr.docpicker.war
+!file: roller-ui/scripts/dojo/src/namespaces/dojo.js   blogs.war 
+!file: web-inf/lib/lc.mum.enabler.jar                  dboard.war
+!file: web-inf/lib/lc.mum.enabler1.1.jar               communities.war
+!file: web-inf/lib/lc.mum.enabler1.1.jar               profiles.war
+
+
+
+# this effects.js was written by profiles team...
+!file: css/common/scripts/effects.js                   peoplepages.war
+!file: a6788b6be33f3985fb548a5e5942222a/aixppk/verify.jar  sninstall.jar
+!file: a6788b6be33f3985fb548a5e5942222a/win32ppk/verify.jar sninstall.jar
+!file: a6788b6be33f3985fb548a5e5942222a/linuxppk/verify.jar sninstall.jar
+
+# added April 6, 2012
+#   wraper for JTidy
+!file: WEB-INF/lib/blogs.app.core.jar                  blogs.war
+!file: blogs.app.core.jar
+!file: lc.util.base-3.0.jar
+
+# added April 6, 2012
+!file: lc.shindig.serverapi.remote.jar
+!file: net.jazz.ajax_2.1.2.20120817-1256.jar
+
+
+!file: com.ibm.socmail.proxy.extension.exchange_1.0.0.20120731-2200.jar
+!file: com.ibm.socmail.proxy.extension.exchange_1.0.0.20120731-2200.jar
+!file: qkr.common.resources.jar
+!file: lc.web.osgi.servletbridge.jar
+!file: WEB-INF/lib/lc.web.osgi.servletbridge.jar
+
+# From ConfigEngine for WAS8
+!file: ce.log.jar
+!file: jt400Native.jar
+
+# Install team has story #90620 to add pkg name for ccmdomainTool in RTC
+!file: ccmDomainTool.jar
+
+# ISA LITE 1.3.4
+!file: wasexporter.jar
+
+# ISA bundled
+!file: ISALite/VCETools/wasexporter.jar
+
+!file: shindig-common-2.5.0-update1.jar

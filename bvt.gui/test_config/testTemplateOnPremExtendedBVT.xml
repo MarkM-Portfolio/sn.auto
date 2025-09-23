@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- TEMPLATE VERSION 2012.05.23-1830 -->
+
+<suite thread-count="12" name="Regression Suite" parallel="tests">
+
+	<!-- GROUPS -->
+	<!-- Will need to add some groups for the different products that can be
+		test - for connections maybe something like - connlevel2 - for smart cloud
+		maybe something like - sclevel2 -->
+	<groups>
+		<run>
+			<include name="regression" />
+		</run>
+	</groups>
+	<!-- Test method has to contain all groups to be run if intersect_groups
+		is true -->
+	<parameter name="intersect_groups" value="false" />
+
+	<!-- To run tests on browserstack -->
+	<!-- <parameter name="server_is_browserstack" value="false" />
+	<parameter name="browserstack_username" value="" />
+	<parameter name="browserstack_key" value="" /> -->
+
+	<!-- SET BROWSERSTACK DEBUG -->
+	<parameter name="browserstack_debug" value="false" />
+
+	<!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+ <parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_is_legacy_grid" value="false" />
+  <parameter name="server_host" value="testautolb.cnx.cwp.pnp-hcl.com" />
+  <parameter name="server_port" value="4444" />
+
+	<!-- To run tests locally -->
+	<!-- <parameter name="server_is_grid_hub" value="true" /> <parameter name="server_host"
+		value="lcrft04.cnx.cwp.pnp-hcl.com" /> <parameter name="server_port" value="5555"
+		/> -->
+
+	<!-- PRODUCT TO TEST -->
+	<parameter name="product_name" value="onprem" />
+
+	<!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+	<parameter name="login_type" value="onprem" />
+
+	<!-- APPLICATION UNDER TEST HOST SERVER -->
+	<parameter name="browser_url" value="https://bvtoracle.cnx.cwp.pnp-hcl.com/" />
+	<!--parameter name="browser_url" value="https://apps.collabservdaily.swg.usma.ibm.com/"
+		/ -->
+
+	<!-- BROWSER START COMMAND -->
+	<parameter name="browser_start_command" value="ff_0_Linux" />
+
+	<!-- Connections properties -->
+	<parameter name="default_app_properties" value="test_config/app/app.properties" />
+	<parameter name="default_users_properties"
+		value="test_config/extensions/user/UsersProperties.properties" />
+	<!-- Smart Cloud properties -->
+	<!--parameter name="default_app_properties" value="test_config/app/app.properties"
+		/> <parameter name="default_users_properties" value="test_config/extensions/user/sc_users.properties"
+		/ -->
+
+	<!-- WAFFLE CONFIGURATION PARAMETERS -->
+	<parameter name="fluent_wait_timeout" value="45" />
+	<parameter name="timeout_implicit_wait" value="60000" />
+	<parameter name="browserstack_timeout" value="120" />
+	<parameter name="timeout_async_script" value="30000" />
+	<parameter name="timeout_page_navigate_timeout" value="60000" />
+	<parameter name="pch_enable_dojo_pageload" value="false" />
+	<parameter name="pch_enable_standard_pageload" value="false" />
+	<parameter name="pch_post_event_pause" value="700" />
+	<parameter name="location_force_script" value="false" /><!-- Was
+		false -->
+	<parameter name="location_use_fallback_strategy" value="false" />
+	<parameter name="max_retries" value="2" />
+
+	<!-- CUSTOM PARAMETERS -->
+	<parameter name="bvt_option" value="BVT" />
+	<parameter name="users_login_preference" value="email" />
+	<parameter name="users_typeahead_preference" value="Display name" />
+	<parameter name="root_folder_name" value="SeleniumServer" />
+	<parameter name="upload_files_folder_name" value="TestFiles" />
+	<parameter name="special_characters" value="false" />
+	<parameter name="filenet_enabled" value="false" />
+	<parameter name="push_videos" value="true" />
+	<parameter name="file_server" value="testautolb.cnx.cwp.pnp-hcl.com" />
+
+	<!-- LISTENERS -->
+	<listeners>
+		<listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+		<listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+		<listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener" />
+		<listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+		<listener class-name="com.ibm.atmn.waffle.base.BaseInterceptorListener" />
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	</listeners>
+
+
+	
+		
+  <test name="Communities Regression 1" thread-count="2" parallel="methods" preserve-order="true" >
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.regression.ActivitiesWidget" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.CommLibraryWidget" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Communities_Widgets" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Community_SCFinalization_Smoketest" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.CommunityMember" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.CommunityOrgAdmin" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.GalleryWidget" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.CommunityStatus" />
+
+    </classes>
+  </test>
+  
+  <test name="Communities Regression 2" thread-count="2" parallel="methods" preserve-order="true" >
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.regression.GalleryWidgetRegressionCleanupPhase1" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.GeneralUI" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.CopyExistingCommunity" />
+ 	  <class name="com.ibm.conn.auto.tests.communities.regression.CommunityCatalog" />
+    </classes>
+  </test>
+  
+  <test name="Communities Regression 3 and Touchpoint" thread-count="2" parallel="methods" preserve-order="true" >
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.regression.GeneralWidget" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.MediaGalleryWidget" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.ModerateCommunities" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.PublicCommunities" />
+	  <class name="com.ibm.conn.auto.tests.communities.regression.CommunityTabbedNav" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Regression_CheckNoModerated" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Regression_Communities" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Regression_NoModeratedCommunity" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.RestrictedCommunities" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.RichContentWidget" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Smoke_Communities" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.Smoke_Community_Catalog" />
+      <class name="com.ibm.conn.auto.tests.communities.regression.SubCommunities" />
+	  <class name="com.ibm.conn.auto.tests.communities.BVT_BoschUAT_Communities" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_ExportToPdf_Communities" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_CCH" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Library" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Moderation" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_MT_Boundary" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Widgets" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_TinyEditor_Communities_ActivityStream" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_TinyEditor_Communities_CreateCommunity" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_TinyEditor_Communities_RichContent" />
+      <class name="com.ibm.conn.auto.tests.communities.BVT_TinyEditor_SubCommunity" />
+	  <class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_Touchpoint_FollowColleaguesScreen" />
+      <class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_Touchpoint_FollowCommunitiesScreen" />
+      <class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_Touchpoint_UpdateYourProfileScreen" />
+    </classes>
+  </test>
+
+  <test name="Files,Sharebox and Global Search" thread-count="2" parallel="methods" preserve-order="true" >
+    <classes>
+      <class name="com.ibm.conn.auto.tests.files.BVT_Files_Ownership_Transfer" />
+      <class name="com.ibm.conn.auto.tests.files.BVT_FileFolder" />
+      <class name="com.ibm.conn.auto.tests.files.BVT_Level_2_Files" />
+      <class name="com.ibm.conn.auto.tests.globalsearch.BVT_Level_2_Global_Search" /> 
+      <class name="com.ibm.conn.auto.tests.sharebox.BVT_Level_2_Sharebox" />       
+      <class name="com.ibm.conn.auto.tests.mentions.BVT_Homepage_Mentions" />       
+        
+    </classes>
+  </test>
+
+	<test name="Common UI and Blogs" thread-count="2" parallel="methods"	preserve-order="true" >
+		<packages>
+			<package name="com.ibm.conn.auto.tests.commonui.regression" />
+			<package name="com.ibm.conn.auto.tests.blogs" />
+			<package name="com.ibm.conn.auto.tests.blogs.regression" />
+		</packages>
+	</test>
+
+	<test name="Activities and Forum" thread-count="2" parallel="methods"	preserve-order="true" >
+		<packages>
+			<package name="com.ibm.conn.auto.tests.forums" />
+			<package name="com.ibm.conn.auto.tests.activities" />
+			<package name="com.ibm.conn.auto.tests.forums.regression" />
+			<package name="com.ibm.conn.auto.tests.activities.regression" />
+		</packages>
+	</test>
+
+	<test name="Calendar and Home" thread-count="2" parallel="methods"	preserve-order="true" >
+		<packages>
+			<package name="com.ibm.conn.auto.tests.calendar" />
+			<package name="com.ibm.conn.auto.tests.homepage" />
+			<package name="com.ibm.conn.auto.tests.calendar.regression" />
+			<package name="com.ibm.conn.auto.tests.homepage.regression" />
+		</packages>
+	</test>
+
+	<test name="CEC" thread-count="2" parallel="methods" preserve-order="true" >
+		<packages>
+			<package name="com.ibm.conn.auto.tests.icec.xcc" />
+		</packages>
+	</test>
+
+	<test name="Highlights" preserve-order="true" enabled="true">
+  		<packages>
+      			<package name="com.ibm.conn.auto.tests.icec.highlights" />
+    		</packages>
+  	</test>
+
+	<test name="Wikis and Dogear" thread-count="2" parallel="methods"	preserve-order="true" >
+		<packages>
+			<package name="com.ibm.conn.auto.tests.wikis" />
+			<package name="com.ibm.conn.auto.tests.dogear" />
+			<package name="com.ibm.conn.auto.tests.wikis.regression" />
+			<package name="com.ibm.conn.auto.tests.dogear.regression" />			
+		</packages>
+	</test>
+	
+	<test name="LanguageSelector" parallel="tests" preserve-order="false" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.regression.LanguageSelector" />
+    </classes>
+  </test>
+
+
+</suite>

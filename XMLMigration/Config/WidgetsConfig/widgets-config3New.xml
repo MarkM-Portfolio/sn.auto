@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- *****************************************************************
+--><!--                                                                   --><!-- Copyright IBM Corp. 2001, 2011  All Rights Reserved.              --><!--
+--><config xmlns="http://www.ibm.com/widgets-config" xmlns:tns="http://www.ibm.com/widgets-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="widgets" xsi:schemaLocation="http://www.ibm.com/widgets-config widgets-config.xsd">
+<!-- 
+		    Example widgets: not supported officially but can be used as examples.
+		    
+		    <widgetDef defId="AdditionalInfo" modes="view edit" showInPalette="false" url="{webresourcesSvcRef}/web/lconn.comm/widgets/additionalInfo/additional-info.xml?version={version}" />
+		    
+		    <widgetDef defId="FeedReader" modes="view edit" url="{webresourcesSvcRef}/web/lconn.comm/widgets/feedReader/feedreader.xml?version={version}" description="feedReaderDescription"/>
+		    
+		    // a widget with a fullpage mode
+		    <widgetDef defId="HelloWorld" primaryWidget="false" modes="view fullpage edit search"  url="{webresourcesSvcRef}/web/lconn.comm/widgets/helloWorld/HelloWorld.xml?version={version}"/>
+		    
+		    // a widget with an external jsp as a full page
+		    <widgetDef defId="HelloWorld" primaryWidget="false" modes="view edit search"  url="{webresourcesSvcRef}/web/lconn.comm/widgets/helloWorld/HelloWorld.xml?version={version}"
+		        navBarLink="{communitiesSvcRef}/comm.widgets/helloWorld/HelloWorld.jsp?resourceId={resourceId}&version={version}"/>
+		-->
+
+         
+    <resource type="profile" aclServiceImpl="com.ibm.lconn.profiles.internal.acl.ProfilesACLServiceImpl" xpathMandatedWidgetForMainPage="/tns:config//tns:resource[@type='profile']/tns:widgets/tns:layout/tns:page[@pageId = 'profilesView']">      
+
+        <widgets>
+          <definitions>
+              <widgetDef defId="reportStructure" url="{contextRoot}/widget-catalog/report-chain.xml?version={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_profiles.html">
+                <itemSet>
+                  <item name="numberOfNameToDisplay" value="4"/>
+                </itemSet>
+              </widgetDef>
+              <widgetDef defId="multiFeedReader" url="{contextRoot}/widget-catalog/multifeedreader.xml?version={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_profiles.html">
+                <itemSet>
+                    <item name="numberOfEntriesToDisplay" value="5"/>
+                    <item name="communityResourceId" value="communityResourceId"/>
+                    <item name="communityFeedUrl" value="{communitiesSvcRef}/service/atom/communities/all?userid={userid}&amp;ps=5"/>
+                    <item name="dogearResourceId" value="dogearResourceId"/>
+                    <item name="dogearFeedUrl" value="{dogearSvcRef}/atom?userid={userid}&amp;access=public&amp;sort=date&amp;sortOrder=desc&amp;ps=5&amp;showFavIcon=true{appLangParam}"/>
+                    <item name="blogsResourceId" value="blogsResourceId"/>
+                    <item name="blogsFeedUrl" value="{blogsSvcRef}/atom?userid={userid}&amp;ps=5"/>
+                    <item name="activitiesResourceId" value="activitiesResourceId"/>
+                    <item name="activitiesFeedUrl" value="{activitiesSvcRef}/service/atom2/activities?public=only&amp;userid={userid}&amp;authenticate=no&amp;ps=5"/>
+                    <item name="filesResourceId" value="filesResourceId"/>
+                    <item name="filesFeedUrl" value="{filesSvcRef}/basic/anonymous/api/userlibrary/{userid}/feed?pagesize=5"/>
+                    <item name="forumsResourceId" value="label.personcard.forumlink"/>
+                    <item name="forumsFeedUrl" value="{searchSvcRef}/atom/search/results?component=forums&amp;person={userid}&amp;sortkey=date&amp;sortorder=desc&amp;page=1&amp;ps=5"/>
+                    <item name="wikiResourceId" value="wikiResourceId"/>
+                    <item name="wikiFeedUrl" value="{wikisSvcRef}/basic/anonymous/api/wikis/person/{userid}/feed?pagesize=5"/>
+                </itemSet>
+              </widgetDef>
+              <widgetDef defId="friends" url="{contextRoot}/widget-catalog/friends.xml?version={version}" modes="view fullpage" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_view_colleagues.html"/>
+              <widgetDef defId="follow" url="{contextRoot}/widget-catalog/follow.xml?version={version}" modes="view fullpage" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_view_colleagues.html"/>
+              <widgetDef defId="linkRoll" url="{contextRoot}/widget-catalog/linkroll.xml?version={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_add_external_links.html"/>
+              <widgetDef defId="socialTags" url="{contextRoot}/widget-catalog/tags.xml?version={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_tag_profiles.html"/>
+              <widgetDef defId="commonTags" url="{contextRoot}/widget-catalog/common-tags.xml?version={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_using_org_tag_widget.html"/>      
+                          
+            <widgetDef defId="sand_DYK" bundleRefId="lc_sand" url="{webresourcesSvcRef}/web/lconn.sand/descriptors/DYK.xml?etag={version}" prerequisite="sand" displayLoginRequired="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_using_dyk_widget.html">
+                <itemSet>
+                  <item name="profilesRoot" value="{contextRoot}"/>
+                  <item name="profilesBlank" value="{contextRoot}/nav/common/styles/images/blank.gif"/>
+                  <item name="sandUIRoot" value="{webresourcesSvcRef}/web/lconn.sand/"/>
+                  <item name="sandBackEndRoot" value="{searchSvcRef}"/>
+                  <item name="xhrErrorHandlerAsString" value="lconn.core.errorhandling.DefaultXHRErrorHandler"/>
+                  <item name="inviteErrorHandler" value="lconn.core.errorhandling.DefaultErrorHandler"/>
+                  <item name="inviteXHRErrorHandler" value="lconn.core.errorhandling.DefaultXHRErrorHandler"/>
+               </itemSet>
+            </widgetDef> 
+            <widgetDef defId="sand_recomItems" bundleRefId="lc_sand" url="{webresourcesSvcRef}/web/lconn.sand/descriptors/Recommend.xml?etag={version}" prerequisite="sand" displayLoginRequired="true">
+                <itemSet>
+                  <item name="sandUIRoot" value="{webresourcesSvcRef}/web/lconn.sand/"/>
+                  <item name="sandBackEndRoot" value="{searchSvcRef}"/>
+                  <item name="sourceList" value="blogs,communities,wikis,files,dogear"/>
+                  <item name="ApiUrl" value="{searchSvcRef}/atom/social/recommend"/>
+                  <item name="navContentLocation" value="{contextRoot}/nav"/>
+                  <item name="xhrErrorHandlerAsString" value="lconn.core.errorhandling.DefaultXHRErrorHandler"/>
+               </itemSet>
+            </widgetDef> 
+            
+            <widgetDef defId="sand_thingsInCommon" bundleRefId="lc_sand" url="{webresourcesSvcRef}/web/lconn.sand/descriptors/sharedLC.xml?etag={version}" prerequisite="sand" displayLoginRequired="true" hideWidgetForMyProfile="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_using_tic_widget.html">
+                <itemSet>
+                  <item name="sandUIRoot" value="{webresourcesSvcRef}/web/lconn.sand/"/>
+                  <item name="sandBackEndRoot" value="{searchSvcRef}"/>
+               </itemSet>
+            </widgetDef> 
+             
+            <widgetDef defId="sand_socialPath" bundleRefId="lc_sand" url="{webresourcesSvcRef}/web/lconn.sand/descriptors/socialPath.xml?etag={version}" prerequisite="sand" displayLoginRequired="true" hideWidgetForMyProfile="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/t_pers_using_sp_widget.html">
+                <itemSet>
+                  <item name="sandUIRoot" value="{webresourcesSvcRef}/web/lconn.sand/"/>
+                  <item name="sandBackEndRoot" value="{searchSvcRef}"/>
+               </itemSet>
+            </widgetDef>
+            <widgetDef defId="multiWidget" url="{contextRoot}/widget-catalog/multiWidget.xml?version={version}" skinType="skinless" modes="view">
+                <itemSet>
+                  <item name="containerRecurranceType" value="tabs"/>
+                </itemSet>
+            </widgetDef>            
+            <widgetDef defId="board" url="{contextRoot}/widget-catalog/wall.xml?version={version}" modes="view fullpage" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_wall_intro.html"/>
+            <widgetDef defId="contactInfo" url="{contextRoot}/widget-catalog/profile-details.xml?version={version}" modes="view fullpage" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_profiles.html">
+<itemSet>
+<item name="section" value="contactInformation"/>
+</itemSet>
+</widgetDef>
+            <widgetDef defId="backgroundInfo" url="{contextRoot}/widget-catalog/profile-details.xml?version={version}" modes="view fullpage" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_profiles.html">
+<itemSet>
+<item name="section" value="associatedInformation"/>
+</itemSet>
+</widgetDef>
+<widgetDef helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.profiles.help/c_pers_profiles.html" modes="view fullpage" url="{webresourcesSvcRef}/web/com.ibm.social.as.lconn/widgets/profilesActivityStream.xml?version={version}" defId="Updates"/>
+          </definitions>
+         <layout resourceSubType="temp">
+              <page pageId="profilesView">
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block4"/>
+<widgetInstance defIdRef="Updates" uiLocation="block4"/>
+<widgetInstance uiLocation="block4" defIdRef="contactInfo"/>
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block5"/>
+<widgetInstance uiLocation="block5" defIdRef="backgroundInfo"/>
+<!-- 
+			<widgetInstance uiLocation="tabsWidget1" defIdRef="multiFeedReader"></widgetInstance>
+		-->
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block6"/>
+<widgetInstance uiLocation="block6" defIdRef="socialTags"/>
+<widgetInstance uiLocation="block6" defIdRef="sand_thingsInCommon"/>
+<widgetInstance uiLocation="block6" defIdRef="sand_socialPath"/>
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block7"/>
+<widgetInstance uiLocation="block7" defIdRef="reportStructure"/>
+<widgetInstance uiLocation="block7" defIdRef="friends"/>
+<widgetInstance uiLocation="block7" defIdRef="linkRoll"/>
+</page>
+	    </layout>
+          <layout resourceSubType="default">
+              <page pageId="profilesView">
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block1"/>
+<widgetInstance defIdRef="Updates" uiLocation="block1"/>
+<widgetInstance uiLocation="block1" defIdRef="contactInfo"/>
+<widgetInstance uiLocation="block1" defIdRef="backgroundInfo"/>
+<!-- 
+			<widgetInstance uiLocation="tabsWidget1" defIdRef="multiFeedReader"></widgetInstance>
+		-->
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block2"/>
+<widgetInstance uiLocation="block2" defIdRef="socialTags"/>
+<widgetInstance uiLocation="block2" defIdRef="reportStructure"/>
+<widgetInstance uiLocation="block2" defIdRef="friends"/>
+<widgetInstance uiLocation="block2" defIdRef="linkRoll"/>
+<widgetInstance uiLocation="col2" defIdRef="multiWidget" instanceId="block3"/>
+<widgetInstance uiLocation="block3" defIdRef="sand_thingsInCommon"/>
+<widgetInstance uiLocation="block3" defIdRef="sand_socialPath"/>
+</page>
+              <page pageId="searchResultView">
+                <widgetInstance uiLocation="col1" defIdRef="commonTags"/>
+              </page>
+              <page pageId="searchView">
+                <widgetInstance uiLocation="col1" defIdRef="sand_DYK"/>
+                <widgetInstance uiLocation="col1" defIdRef="commonTags"/>
+                <!-- 
+                <widgetInstance uiLocation="col3" defIdRef="sand_recomItems"/>
+                -->
+              </page>
+              <page pageId="networkView">
+                <widgetInstance uiLocation="col1" defIdRef="sand_DYK"/>
+              </page>
+              <page pageId="editProfileView">
+                <widgetInstance uiLocation="col1" defIdRef="socialTags"/>
+                <!-- 
+                <widgetInstance uiLocation="col1" defIdRef="sand_thingsInCommon"/>
+                -->
+                <widgetInstance uiLocation="col3" defIdRef="sand_socialPath"/>
+                <widgetInstance uiLocation="col3" defIdRef="reportStructure"/>
+                <widgetInstance uiLocation="col3" defIdRef="friends"/>
+                <widgetInstance uiLocation="col3" defIdRef="linkRoll"/>
+              </page>
+          </layout>
+        </widgets>
+    </resource>
+    <resource type="community" aclServiceImpl="com.ibm.lconn.comm.acl.ACLSvcImpl" resourceValuesProvider="com.ibm.tango.internal.service.CommunitiesResourceValuesProvider" xpathMandatedWidgetForMainPage="/tns:config/tns:resource[@type='community']/tns:widgets/tns:layout/tns:page[@pageId = 'communityOverview']">
+        <widgets>
+          <definitions>
+            <widgetDef defId="Members" primaryWidget="false" modes="view fullpage" showInPalette="false" uniqueInstance="true" url="{webresourcesSvcRef}/web/lconn.comm/communityMembers/communityMembers.xml?etag={version}">
+<itemSet>
+<item name="membersPerPage" value="12"/>
+<item name="membersPerPageFullPage" value="16"/>
+</itemSet>
+</widgetDef>
+
+		<widgetDef defId="CustomLibrary" bundleRefId="lc_clib" url="{webresourcesSvcRef}/web/quickr.lw/widgetDefs/LibraryWidget_QCS_Connections.xml?etag={version}" description="CustomLibrary_description" modes="view edit fullpage" primaryWidget="false" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/c_com_library_frame.html" iconUrl="{contextRoot}/nav/common/images/iconFiles16.png" uniqueInstance="true" displayLoginRequired="true">
+<itemSet>
+<item name="proxyUrl" value="{contextRoot}/commonProxy"/>
+</itemSet>
+</widgetDef>
+
+            <widgetDef defId="Blog" prerequisite="blogs" modes="view edit search" url="{blogsSvcRef}/static/{version}!{locale}/iwidgets/blog/blogsWidget.jsp" navBarLink="{blogsSvcRef}/{resourceId}" description="blogsDescription" uniqueInstance="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_blog_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Blogs16.png">
+                <itemSet>
+                    <item name="lang" value="{lang}"/>
+                    <item name="communitiesBaseUrl" value="{communitiesSvcRef}"/>
+                    <item name="blogsBaseUrl" value="{blogsSvcRef}"/>
+                    <item name="profilesBaseUrl" value="{profilesSvcRef}"/>
+                    <item value="{blogsSvcRef}/atom_form/blogs?commUuid={resourceId}&amp;blogType=communityblog" name="atomFeedUrl"/>
+<item value="{blogsSvcRef}/atom/blogs?commUuid={resourceId}&amp;blogType=communityblog" name="atomFeedUrl.basic"/>
+<item value="{blogsSvcRef}/oauth/atom/blogs?commUuid={resourceId}&amp;blogType=communityblog" name="atomFeedUrl.oauth"/>
+                    <item name="atomPubUrl" value="{blogsSvcRef}/api_form/blogs?commUuid={resourceId}&amp;blogType=communityblog"/>
+<item name="atomPubUrl.basic" value="{blogsSvcRef}/api/blogs?commUuid={resourceId}&amp;blogType=communityblog"/>
+<item name="atomPubUrl.oauth" value="{blogsSvcRef}/oauth/api/blogs?commUuid={resourceId}&amp;blogType=communityblog"/>
+                    <item name="searchUrl" value="{blogsSvcRef}/atom_form?search={searchTerm}&amp;commUuid={resourceId}&amp;t=entry&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+<item name="searchUrl.basic" value="{blogsSvcRef}/atom?search={searchTerm}&amp;commUuid={resourceId}&amp;t=entry&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+<item name="searchUrl.oauth" value="{blogsSvcRef}/oauth/atom?search={searchTerm}&amp;commUuid={resourceId}&amp;t=entry&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+                <item value="{blogsSvcRef}/static/{version}!{locale}" name="staticLanguageRoot"/>
+</itemSet>
+                
+                <lifecycle remoteHandlerURL="{blogsInterSvcRef}/roller-ui/BlogsWidgetEventHandler.do" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                    <event>widget.added</event> 
+                    <event>widget.removed</event> 
+                    <event>community.visibility.changed</event> 
+                    <event>community.prepare.delete</event> 
+                    <event>remote.app.transfer</event>
+                    <event>community.updated</event>
+                </lifecycle>                              
+              </widgetDef>
+
+            <widgetDef defId="IdeationBlog" prerequisite="blogs" modes="view edit search" url="{blogsSvcRef}/static/{version}!{locale}/iwidgets/ideationblog/blogsWidget.jsp" navBarLink="{blogsSvcRef}/{widgetInstanceId}" description="ideationBlogsDescription" uniqueInstance="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/ideationblog_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Blogs16.png">
+                <itemSet>
+                    <item name="lang" value="{lang}"/>
+                    <item name="communitiesBaseUrl" value="{communitiesSvcRef}"/>
+                    <item name="blogsBaseUrl" value="{blogsSvcRef}"/>
+                    <item name="profilesBaseUrl" value="{profilesSvcRef}"/>
+                    <item name="atomFeedUrl" value="{blogsSvcRef}/atom_form/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+<item name="atomFeedUrl.basic" value="{blogsSvcRef}/atom/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+<item name="atomFeedUrl.oauth" value="{blogsSvcRef}/oauth/atom/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+                    <item name="atomPubUrl" value="{blogsSvcRef}/api_form/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+<item name="atomPubUrl.basic" value="{blogsSvcRef}/api/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+<item name="atomPubUrl.oauth" value="{blogsSvcRef}/oauth/api/blogs?commUuid={resourceId}&amp;blogType=communityideationblog"/>
+                    <item name="searchUrl" value="{blogsSvcRef}/atom_form?search={searchTerm}&amp;commUuid={resourceId}&amp;t=idea&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+<item name="searchUrl.basic" value="{blogsSvcRef}/atom?search={searchTerm}&amp;commUuid={resourceId}&amp;t=idea&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+<item name="searchUrl.oauth" value="{blogsSvcRef}/oauth/atom?search={searchTerm}&amp;commUuid={resourceId}&amp;t=idea&amp;ps=5&amp;page=0&amp;sortby=0&amp;order=desc&amp;lang=en"/>
+                <item value="{blogsSvcRef}/static/{version}!{locale}" name="staticLanguageRoot"/>
+</itemSet>
+                
+                <lifecycle remoteHandlerURL="{blogsInterSvcRef}/roller-ui/BlogsWidgetEventHandler.do" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                    <event>widget.added</event> 
+                    <event>widget.removed</event> 
+                    <event>community.visibility.changed</event> 
+                    <event>community.prepare.delete</event> 
+                    <event>remote.app.transfer</event>
+                    <event>community.updated</event>
+                </lifecycle>                              
+              </widgetDef>
+
+              <widgetDef defId="Activities" prerequisite="activities" modes="view fullpage search" uniqueInstance="true" url="{webresourcesSvcRef}/web/lconn.communityactivities/ActivityList.xml?etag={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_activity_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Activities16.png" description="commActivitesDescription">
+                <itemSet>
+                    <item name="activityBaseUrl" value="{activitiesSvcRef}"/>
+                    <item name="atomPubUrl" value="{activitiesSvcRef}/service/atom2/service?commUuid={resourceId}"/>
+<item name="atomPubUrl.forms" value="{activitiesSvcRef}/service/atom2/forms/service?commUuid={resourceId}"/>
+<item name="atomPubUrl.oauth" value="{activitiesSvcRef}/oauth/atom2/service?commUuid={resourceId}"/> 
+                    <item name="atomFeedUrl" value="{activitiesSvcRef}/service/atom2/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no"/>
+<item name="atomFeedUrl.forms" value="{activitiesSvcRef}/service/atom2/forms/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no"/>
+<item name="atomFeedUrl.oauth" value="{activitiesSvcRef}/oauth/atom2/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no"/>
+                    <item name="searchUrl" value="{activitiesSvcRef}/service/atom2/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no&amp;search={searchTerm}"/>
+<item name="searchUrl.forms" value="{activitiesSvcRef}/service/atom2/forms/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no&amp;search={searchTerm}"/>
+<item name="searchUrl.oauth" value="{activitiesSvcRef}/oauth/atom2/activities?commUuid={resourceId}&amp;public=yes&amp;authenticate=no&amp;search={searchTerm}"/>
+                    <item name="activitiesPerPage" value="5"/>
+                    <item name="activitiesPerPageFullpage" value="10"/>
+                    <item name="numHistoryItems" value="3"/>
+                    <item name="cPath" value="{contextRoot}"/>
+                </itemSet>
+                      
+                <lifecycle remoteHandlerURL="{activitiesInterSvcRef}/service/atom2/forms/communityEvent" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                    <event>remote.app.removed</event>
+                    <event>remote.app.added</event>
+                    <event doesNotRequireWidget="true">community.visibility.changed</event>
+                    <event doesNotRequireWidget="true">community.prepare.delete</event>
+                    <event>remote.app.transfer</event>
+                    <event doesNotRequireWidget="true">community.updated</event>
+                    <event doesNotRequireWidget="true">community.members.removed</event>
+                <event doesNotRequireWidget="true">community.org.changed</event>
+</lifecycle>
+              </widgetDef>
+            <widgetDef defId="Wiki" prerequisite="wikis" url="{wikisSvcRef}/static/iwidgets/{version}/CommunityWidget/WikiWidget.xml" navBarLink="{wikisSvcRef}/communitywiki?communityUuid={resourceId}" description="wikiDescription" modes="view search edit" uniqueInstance="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_wiki_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Wikis16.png">
+                <itemSet>
+                    <item name="wikisRoot" value="{wikisSvcRef}"/>
+                    <item name="atomPubUrl" value="{wikisSvcRef}/form/api/community/{resourceId}/introspection"/>
+<item name="atomPubUrl.basic" value="{wikisSvcRef}/basic/api/community/{resourceId}/introspection"/>
+<item name="atomPubUrl.oauth" value="{wikisSvcRef}/oauth/api/community/{resourceId}/introspection"/>
+                    <item name="atomFeedUrl" value="{wikisSvcRef}/form/api/communitywiki/{resourceId}/feed"/>
+<item name="atomFeedUrl.basic" value="{wikisSvcRef}/basic/api/communitywiki/{resourceId}/feed"/>
+<item name="atomFeedUrl.oauth" value="{wikisSvcRef}/oauth/api/communitywiki/{resourceId}/feed"/>
+                    <item name="searchUrl" value="{wikisSvcRef}/form/api/communitywiki/{resourceId}/feed?search={searchTerm}"/>
+<item name="searchUrl.basic" value="{wikisSvcRef}/basic/api/communitywiki/{resourceId}/feed?search={searchTerm}"/>
+<item name="searchUrl.oauth" value="{wikisSvcRef}/oauth/api/communitywiki/{resourceId}/feed?search={searchTerm}"/>
+                </itemSet>
+                <lifecycle remoteHandlerURL="{wikisInterSvcRef}/wl/lifecycle/wikis" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                   <event>widget.added</event>
+                   <event>widget.removed</event>
+                   <event>community.visibility.changed</event>
+                   <event>community.updated</event>
+                   <event>community.prepare.delete</event>
+                   <event>remote.app.transfer</event>
+                </lifecycle>
+            </widgetDef>
+            <widgetDef defId="Forum" prerequisite="forums" url="{webresourcesSvcRef}/web/lconn.forums/widgets/topicList.xml?version={version}" modes="view edit fullpage search" description="forumDescription" uniqueInstance="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_forum_frame.html" iconUrl="{contextRoot}/nav/common/images/iconThirdParty16.png">
+                <itemSet>
+                    <item name="contextPath" value="{contextRoot}"/>
+                    <item name="atomPubUrl" value="{forumsSvcRef}/atom/forms/service?communityUuid={resourceId}"/>
+<item name="atomPubUrl.basic" value="{forumsSvcRef}/atom/service?communityUuid={resourceId}"/>
+<item name="atomPubUrl.oauth" value="{forumsSvcRef}/oauth/atom/service?communityUuid={resourceId}"/>                      
+                    <item name="topicFeedPath" value="{forumsSvcRef}/atom/forms/topics?overview=true&amp;communityUuid={resourceId}"/>
+                    <item name="overviewPageSize" value="5"/>
+                    <item name="fullpagePageSize" value="25"/>
+                    <item name="searchUrl" value="{forumsSvcRef}/atom/forms/topics?communityUuid={resourceId}&amp;search={searchTerm}"/>
+<item name="searchUrl.basic" value="{forumsSvcRef}/atom/topics?communityUuid={resourceId}&amp;search={searchTerm}"/>
+<item name="searchUrl.oauth" value="{forumsSvcRef}/oauth/atom/topics?communityUuid={resourceId}&amp;search={searchTerm}"/>    
+                    <item name="atomFeedUrl" value="{forumsSvcRef}/atom/forms/topics?communityUuid={resourceId}"/>
+<item name="atomFeedUrl.basic" value="{forumsSvcRef}/atom/topics?communityUuid={resourceId}"/>
+<item name="atomFeedUrl.oauth" value="{forumsSvcRef}/oauth/atom/topics?communityUuid={resourceId}"/>
+                    <item name="forumsPage" value="{forumsSvcRef}/ajax/comm/forums?communityId={resourceId}"/>
+                    
+                    <item name="forumStyles" value="{forumsSvcRef}/static/{version}/nav/common/styles/base/forums.css"/>
+                    <!--  Special JS bundle just for the widget -->
+                    
+                    <item name="forumsContextPath" value="{forumsSvcRef}"/>
+                </itemSet>
+                <lifecycle remoteHandlerURL="{forumsInterSvcRef}/lifecycle/communityEvent" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                    <event>remote.app.added</event> 
+                    <event>remote.app.removed</event>
+                    <event>community.prepare.delete</event>
+                    <event>community.visibility.changed</event>
+                    <event>community.updated</event>
+                    <event>community.members.removed</event>
+                    <event>remote.app.transfer</event>
+                <event>community.org.changed</event>
+</lifecycle>
+            </widgetDef>                
+            <widgetDef defId="SubcommunityNav" description="subcommunityDescription" modes="view" uniqueInstance="true" url="{webresourcesSvcRef}/web/lconn.comm/widgets/subcommunityNav/subcommunitynav.xml?etag={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/t_com_create_subcommunity.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Places16.png">
+                <itemSet>    
+                    <item name="subcommunitiesFeedUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/subcommunities?communityUuid={resourceId}&amp;ps=200"/>                    
+                    <item name="defaultView" value="images"/>
+                </itemSet>                
+            </widgetDef>
+            <widgetDef defId="Bookmarks" description="commBookmarks" modes="view search" uniqueInstance="true" url="{webresourcesSvcRef}/web/lconn.comm/widgets/feedReader/feedreader.xml?etag={version}" navBarLink="{contextRoot}/service/html/community/bookmarks?communityUuid={resourceId}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_bookmarks_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Bookmarks16.png">
+                <itemSet>
+                    <item name="feedUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/bookmarks?communityUuid={resourceId}&amp;ps=5"/>                      
+                    <item name="atomPubUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/bookmarks/service?communityUuid={resourceId}"/>                      
+                    <item name="searchUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/bookmarks?communityUuid={resourceId}&amp;search={searchTerm}"/>
+                <item value="bookmarks" name="widgetType"/>
+</itemSet>
+                <lifecycle handler="com.ibm.lconn.comm.lifecycle.ReferencesLifecycleHandler">
+                    <event>remote.app.removed</event>
+                </lifecycle>
+            </widgetDef>                
+            <widgetDef defId="Feeds" description="commFeeds" modes="view search" uniqueInstance="true" url="{webresourcesSvcRef}/web/lconn.comm/widgets/feedReader/feedreader.xml?etag={version}" navBarLink="{contextRoot}/service/html/community/feeds?communityUuid={resourceId}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_feeds_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Other/Feed16.png">
+                <itemSet>
+                    <item name="feedUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/feeds?communityUuid={resourceId}&amp;ps=5"/>                         
+                    <item name="atomPubUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/feeds/service?communityUuid={resourceId}"/>                         
+                    <item name="searchUrl" value="{communitiesSvcRef}/service/atom{authSubpath}/community/feeds?communityUuid={resourceId}&amp;search={searchTerm}"/>
+                <item value="feeds" name="widgetType"/>
+</itemSet>
+                <lifecycle handler="com.ibm.lconn.comm.lifecycle.ReferencesLifecycleHandler">
+                    <event>remote.app.removed</event>
+                </lifecycle>
+            </widgetDef>
+            <widgetDef defId="Files" prerequisite="files" url="{filesSvcRef}/static/{version}!{locale}/iwidgets/CommunityReferentialWidget/widget.xml" description="filesDescription" modes="view fullpage search edit" uniqueInstance="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_files_frame.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Files16.png">
+                <itemSet>
+<item name="filesRoot" value="{filesSvcRef}"/>
+<item name="filesJsRoot" value="{filesSvcRef}/static/js/{version}!{locale}"/>
+<item name="contextRoot" value="{contextRoot}"/>
+<item name="staticLanguageRoot" value="{filesSvcRef}/static/{version}!{locale}/"/>
+<item name="atomPubUrl" value="{filesSvcRef}/form/api/community/{resourceId}/introspection"/>
+<item name="atomPubUrl.basic" value="{filesSvcRef}/basic/api/community/{resourceId}/introspection"/>
+<item name="atomPubUrl.oauth" value="{filesSvcRef}/oauth/api/community/{resourceId}/introspection"/>
+<item name="atomFeedUrl" value="{filesSvcRef}/form/api/communitycollection/{resourceId}/feed"/>
+<item name="atomFeedUrl.basic" value="{filesSvcRef}/basic/api/communitycollection/{resourceId}/feed"/>
+<item name="atomFeedUrl.oauth" value="{filesSvcRef}/oauth/api/communitycollection/{resourceId}/feed"/>
+<item name="searchUrl" value="{filesSvcRef}/form/api/communitylibrary/{resourceId}/feed?search={searchTerm}"/>
+<item name="searchUrl.basic" value="{filesSvcRef}/basic/api/communitylibrary/{resourceId}/feed?search={searchTerm}"/>
+<item name="searchUrl.oauth" value="{filesSvcRef}/oauth/api/communitylibrary/{resourceId}/feed?search={searchTerm}"/>
+</itemSet>
+                <lifecycle remoteHandlerURL="{filesInterSvcRef}/wl/lifecycle/files" remoteHandlerAuthenticationAlias="connectionsAdmin">
+                   <event>widget.added</event>
+                   <event>widget.removed</event>
+                   <event doesNotRequireWidget="true">community.visibility.changed</event>
+                   <event doesNotRequireWidget="true">community.updated</event>
+                   <event doesNotRequireWidget="true">community.prepare.delete</event>
+                   <event>remote.app.transfer</event>
+                <event doesNotRequireWidget="true">community.org.changed</event>
+</lifecycle>                
+            </widgetDef>
+            <widgetDef defId="widgetPalette" resourceOwnerWidget="true" showInPalette="false" url="{webresourcesSvcRef}/web/lconn.comm/widgets/applicationPalette/applicationPalette.xml?etag={version}"/>
+            <widgetDef defId="sand_recomComm" bundleRefId="lc_sand" url="{webresourcesSvcRef}/web/lconn.sand/descriptors/CommunityRecommend.xml?etag={version}" prerequisite="sand" showInPalette="false" displayLoginRequired="true" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/t_com_using_recommended_comms_widget.html">
+                <itemSet>
+                  <item name="sandUIRoot" value="{webresourcesSvcRef}/web/lconn.sand/"/>
+                  <item name="sandBackEndRoot" value="{searchSvcRef}"/>
+                  <item name="sourceList" value="communities"/>
+                  <item name="ApiUrl" value="{searchSvcRef}/atom/social/recommend"/>
+                  <item name="navContentLocation" value="{contextRoot}/nav"/>
+                  <item name="xhrErrorHandlerAsString" value="lconn.core.errorhandling.DefaultXHRErrorHandler"/>
+               </itemSet>
+            </widgetDef>
+            <widgetDef defId="MediaGallery" bundleRefId="lc_clib" prerequisite="files" description="MediaGallery.description" uniqueInstance="true" url="{webresourcesSvcRef}/web/quickr.lw/widgetDefs/MediaGalleryWidget_CMIS.xml?etag={version}" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/media_gallery_frame.html" modes="view edit fullpage" primaryWidget="false" iconUrl="{webresourcesSvcRef}/web/quickr.lw/images/mediaGalleryIcon.png">
+               <itemSet>
+                 <item name="svcDocUrl" value="{filesSvcRef}/form/cmis/community/{resourceId}/owned/servicedoc"/>
+                 <item name="svcDocUrlAnon" value="{filesSvcRef}/form/anonymous/cmis/community/{resourceId}/owned/servicedoc"/>
+                 <item name="svcContext" value="{filesSvcRef}"/>
+                 <item name="rootCategory" value="library"/>
+                 <item name="category.folder" value="false"/>
+                 <item name="validPhotoExts" value="jpg,jpeg,gif,png"/>
+                 <item name="validVideoExts" value="mp4,mov,flv"/>
+                 <item name="widgetEnv" value="Connections"/>
+                 <item name="mg_typesToShow" value="photos_and_videos"/>
+                 <item name="mg_photoType" value="ada30772-31fe-44bf-b8b4-dd7e4f072cd6"/>
+                 <item name="mg_videoType" value="ada30772-31fe-44bf-b8b4-dd7e4f072ad6"/>
+                 <item name="mg_fileUrl" value="{contextRoot}/service/html/communityview?communityUuid={resourceId}#fullpageWidgetId={widgetId}&amp;file={objectTypeId}!{fileUuid}"/>
+               </itemSet>
+            </widgetDef>
+<widgetDef primaryWidget="false" showInPalette="true" description="calendarDescription" modes="view edit fullpage search" uniqueInstance="true" url="{communitiesSvcRef}/calendar/Calendar.xml?version={version}" iconUrl="{contextRoot}/nav/common/images/iconCalendar16.png" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/community_events_frame.html" defId="Calendar">
+<itemSet>
+<item name="calendarRoot" value="{communitiesSvcRef}/calendar"/>
+<item name="communitiesBaseUrl" value="{communitiesSvcRef}"/>
+<item name="defaultView" value="list"/>
+<item name="version" value="{version}"/>
+<item name="profilesBaseUrl" value="{profilesSvcRef}"/>
+<item name="atomPubUrl" value="{communitiesSvcRef}/calendar/atom_form/calendar/service?calendarUuid={resourceId}"/>
+<item name="atomPubUrl.basic" value="{communitiesSvcRef}/calendar/atom/calendar/service?calendarUuid={resourceId}"/>
+<item name="atomPubUrl.oauth" value="{communitiesSvcRef}/calendar/oauth/atom/calendar/service?calendarUuid={resourceId}"/>
+<item name="atomFeedUrl" value="{communitiesSvcRef}/calendar/atom_form/calendar/event?type=event&amp;calendarUuid={resourceId}"/>
+<item name="atomFeedUrl.basic" value="{communitiesSvcRef}/calendar/atom/calendar/event?type=event&amp;calendarUuid={resourceId}"/>
+<item name="atomFeedUrl.oauth" value="{communitiesSvcRef}/calendar/oauth/atom/calendar/event?type=event&amp;calendarUuid={resourceId}"/>
+<item name="searchUrl" value="{communitiesSvcRef}/calendar/atom_form/search?search={searchTerm}&amp;calendarUuid={resourceId}"/>
+<item name="searchUrl.basic" value="{communitiesSvcRef}/calendar/atom/search?search={searchTerm}&amp;calendarUuid={resourceId}"/>
+<item name="searchUrl.oauth" value="{communitiesSvcRef}/calendar/oauth/atom/search?search={searchTerm}&amp;calendarUuid={resourceId}"/>
+</itemSet>
+<lifecycle remoteHandlerURL="{communitiesInterSvcRef}/calendar/handleEvent" remoteHandlerAuthenticationAlias="connectionsAdmin">
+<event>remote.app.added</event>
+<event>remote.app.removed</event>
+<event>community.prepare.delete</event>
+<event>community.visibility.changed</event>
+<event>community.updated</event>
+</lifecycle>
+</widgetDef>
+<widgetDef modes="view" uniqueInstance="true" showInPalette="false" description="updatesDescription" url="{webresourcesSvcRef}/web/com.ibm.social.as.lconn/widgets/communitiesActivityStream.xml?etag={version}" navBarLink="{contextRoot}/service/html/community/updates?communityUuid={resourceId}&amp;filter=all" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/t_com_updates.html" fixedPosition="true" defId="RecentUpdates">
+<itemSet>
+<item name="atomFeedUrl" value="{opensocialSvcRef}/rest/ublog/c!{resourceId}/@all?format=atom"/>
+<item name="atomFeedUrl.basic" value="{opensocialSvcRef}/basic/rest/ublog/c!{resourceId}/@all?format=atom"/>
+<item name="atomFeedUrl.oauth" value="{opensocialSvcRef}/oauth/rest/ublog/c!{resourceId}/@all?format=atom"/>
+</itemSet>
+</widgetDef>
+<widgetDef modes="view edit search" prerequisite="microblogging" uniqueInstance="true" showInPalette="true" description="updatesDescription" url="{webresourcesSvcRef}/web/com.ibm.social.as.lconn/widgets/communitiesActivityStream.xml?etag={version}" navBarLink="{contextRoot}/service/html/community/updates?communityUuid={resourceId}&amp;filter=status" helpLink="{helpSvcRef}/topic/com.ibm.lotus.connections.communities.help/t_com_updates.html" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/ComponentsGray/StatusUpdateGray16.png" fixedPosition="true" defId="StatusUpdates">
+<itemSet>
+<item name="atomFeedUrl" value="{opensocialSvcRef}/rest/ublog/urn:lsid:lconn.ibm.com:communities.community:{resourceId}/@all?format=atom"/>
+<item name="atomFeedUrl.basic" value="{opensocialSvcRef}/basic/rest/ublog/urn:lsid:lconn.ibm.com:communities.community:{resourceId}/@all?format=atom"/>
+<item name="atomFeedUrl.oauth" value="{opensocialSvcRef}/oauth/rest/ublog/urn:lsid:lconn.ibm.com:communities.community:{resourceId}/@all?format=atom"/>
+<item name="searchUrl" value="{searchSvcRef}/atomfba/mysearch/results?scope=status_updates&amp;social=%7B%22type%22%3A%22community%22%2C%22id%22%3A%22{resourceId}%22%7D&amp;query={searchTerm}"/>
+<item name="searchUrl.basic" value="{searchSvcRef}/atom/mysearch/results?scope=status_updates&amp;social=%7B%22type%22%3A%22community%22%2C%22id%22%3A%22{resourceId}%22%7D&amp;query={searchTerm}"/>
+<item name="searchUrl.oauth" value="{searchSvcRef}/oauth/atom/mysearch/results?scope=status_updates&amp;social=%7B%22type%22%3A%22community%22%2C%22id%22%3A%22{resourceId}%22%7D&amp;query={searchTerm}"/>
+</itemSet>
+<lifecycle remoteHandlerURL="{newsInterSvcRef}/widget/communityHandler.do" remoteHandlerAuthenticationAlias="connectionsAdmin">
+<event>remote.app.added</event>
+<event>remote.app.removed</event>
+<event>widget.added</event>
+<event>widget.removed</event>
+<event>remote.app.transfer</event>
+<event>community.visibility.changed</event>
+<event>community.updated</event>
+<event>community.org.changed</event>
+<event>community.prepare.delete</event>
+</lifecycle>
+</widgetDef>
+<widgetDef primaryWidget="false" showInPalette="true" description="relatedCommunitiesDescription" modes="view fullpage" uniqueInstance="true" url="{communitiesSvcRef}/recomm/Recomm.xml?version={version}" iconUrl="{webresourcesSvcRef}/web/com.ibm.oneui3.styles/imageLibrary/Icons/Components/Places16.png" defId="RelatedCommunities">
+<itemSet>
+<item name="recommRoot" value="{communitiesSvcRef}/recomm"/>
+<item name="communitiesBaseUrl" value="{communitiesSvcRef}"/>
+<item name="version" value="{version}"/>
+<item name="atomPubUrl" value="{communitiesSvcRef}/recomm/atom_form/service?communityUuid={resourceId}"/>
+<item name="atomPubUrl.basic" value="{communitiesSvcRef}/recomm/atom/service?communityUuid={resourceId}"/>
+<item name="atomPubUrl.oauth" value="{communitiesSvcRef}/recomm/oauth/atom/service?communityUuid={resourceId}"/>
+<item name="feedUrl" value="{communitiesSvcRef}/recomm/atom_form/relatedCommunities?communityUuid={resourceId}&amp;ps=10"/>
+<item name="feedUrl.basic" value="{communitiesSvcRef}/recomm/atom/relatedCommunities?communityUuid={resourceId}&amp;ps=10"/>
+<item name="feedUrl.oauth" value="{communitiesSvcRef}/recomm/oauth/atom/relatedCommunities?communityUuid={resourceId}&amp;ps=10"/>
+</itemSet>
+<lifecycle remoteHandlerURL="{communitiesInterSvcRef}/recomm/handleEvent" remoteHandlerAuthenticationAlias="connectionsAdmin">
+<event>remote.app.added</event>
+<event>remote.app.removed</event>
+<event>community.prepare.delete</event>
+<event>community.visibility.changed</event>
+<event>community.updated</event>
+</lifecycle>
+</widgetDef>               
+          </definitions>
+          <!-- mandated widgets -->
+          <layout resourceSubType="default">
+              <page pageId="communityOverview">
+<widgetInstance uiLocation="col2recentposts" defIdRef="RecentUpdates"/>
+<widgetInstance uiLocation="col3" defIdRef="Members"/>
+</page>
+              <page pageId="allCommunities">
+                <widgetInstance uiLocation="col1" defIdRef="sand_recomComm"/>
+               </page>
+              <page pageId="myCommunities">
+                <widgetInstance uiLocation="col1" defIdRef="sand_recomComm"/>
+              </page>
+          </layout>
+        </widgets> 
+        <templates>
+            <!-- default template will be used to display the default widgets -->
+            <template id="default">
+                <widgetInstance uiLocation="col2" defIdRef="Forum" instanceId="ForumInstance1"/>
+                <widgetInstance uiLocation="col2" defIdRef="Bookmarks" instanceId="BookmarksInstance1"/>
+                <widgetInstance uiLocation="col2" defIdRef="Files" instanceId="FilesInstance1"/>
+            <widgetInstance uiLocation="col2statusposts" defIdRef="StatusUpdates" instanceId="StatusUpdates1"/>
+</template>
+        </templates>     
+    </resource>
+<resource type="share">
+<widgets>
+<definitions>
+<widgetDef defId="microbloggingWidget" url="{webresourcesSvcRef}/web/lconn.news.microblogging.sharebox/globalMicrobloggingForm.xml" inline="true"/>
+<widgetDef defId="uploadFile" url="{webresourcesSvcRef}/web/com.ibm.social.sharebox/UploadFile.xml"/>
+</definitions>
+</widgets>
+</resource>
+<resource type="communityShare">
+<widgets>
+<definitions>
+<widgetDef defId="commUploadFile" url="{webresourcesSvcRef}/web/com.ibm.social.sharebox/CommunityUploadFile.xml"/>
+</definitions>
+</widgets>
+</resource>
+</config>

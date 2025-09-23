@@ -1,0 +1,117 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Time",
+          "categories": [
+            "2009 Q1",
+            "2009 Q2",
+            "2009 Q3",
+            "2009 Q4",
+            "2010 Q1",
+            "2010 Q2",
+            "2010 Q3",
+            "2010 Q4"
+          ]
+        },
+        {
+          "id": "provinces",
+          "label": "Provinces",
+          "categories": [ "Ontario", "Quebec", "Alberta" ]
+        },
+        {"id": "revenue"}
+      ],
+      "rows": [
+        [ 7, 0, null ],
+        [ 6, 0, 1000 ],
+        [ 5, 0, null ],
+        [ 4, 0, -5600 ],
+        [ 3, 0, -4000 ],
+        [ 2, 0, -2000 ],
+        [ 1, 0, -1950 ],
+        [ 0, 0, 1500 ],
+        [ 7, 1, 2500 ],
+        [ 6, 1, 2500 ],
+        [ 5, 1, 2500 ],
+        [ 4, 1, 3200 ],
+        [ 3, 1, 3200 ],
+        [ 2, 1, -1700 ],
+        [ 1, 1, -750 ],
+        [ 0, 1, -500 ],
+        [ 7, 2, 2500 ],
+        [ 6, 2, 1500 ],
+        [ 5, 2, -2500 ],
+        [ 4, 2, -5000 ],
+        [ 3, 2, -5000 ],
+        [ 2, 2, -3300 ],
+        [ 1, 2, -850 ],
+        [ 0, 2, -300 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 50, "g": 50, "r": 50},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "minorStyle": {
+                "fill": {"b": 75, "g": 75, "r": 75}
+              },
+              "title": [ "Revenue" ],
+              "titleStyle": {
+                "font": {"size": "18", "weight": "bold"}
+              }
+            }
+          },
+          {
+            "axis": {
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 11.1
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "area",
+          "position": [
+            {"field": {"$ref": "revenue"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "provinces"},
+              "modifies": {"type": "both"}
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.5},
+            "stroke": {"width": 2},
+            "width": "80%"
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 5}
+    }
+  ],
+  "legends": [ {} ]
+}

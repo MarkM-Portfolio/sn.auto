@@ -1,0 +1,178 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fTasksNames",
+          "label": "Tasks",
+          "categories": [
+            "Start",
+            "Task A",
+            "Task B",
+            "Task C",
+            "Task D",
+            "Task E",
+            "Task F",
+            "Task G",
+            "Task H",
+            "End"
+          ]
+        },
+        {"id": "fTimeStart", "unit": "date"},
+        {"id": "fTimeEnd"}
+      ],
+      "rows": [
+        [ 1, 15795, 15804 ],
+        [ 2, 15795, 15805 ],
+        [ 3, 15804, 15806 ],
+        [ 4, 15806, 15808 ],
+        [ 5, 15808, 15812 ],
+        [ 6, 15812, 15815 ],
+        [ 7, 15812, 15818 ],
+        [ 8, 15818, 15822 ]
+      ]
+    },
+    {
+      "id": "d2",
+      "fields": [
+        {
+          "id": "fMilestones",
+          "label": "Milestones",
+          "categories": [
+            "Start",
+            "M 1",
+            "M 2",
+            "M 3",
+            "End"
+          ]
+        },
+        {"id": "fTime"},
+        {
+          "id": "fTasksNames2",
+          "label": "Tasks",
+          "categories": [
+            "Start",
+            "Task A",
+            "Task B",
+            "Task C",
+            "Task D",
+            "Task E",
+            "Task F",
+            "Task G",
+            "Task H",
+            "End"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, 15795, 0 ],
+        [ 1, 15805, 2 ],
+        [ 2, 15812, 5 ],
+        [ 3, 15818, 7 ],
+        [ 4, 15822, 9 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "description": "A simple Gantt chart featuring tasks and milestones",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"min": 15796} ]},
+            "axis": {
+              "gridBand": {
+                "fill": [
+                  {"a": 0.5, "b": 240, "g": 240, "r": 240},
+                  {"a": 0.5, "b": 248, "g": 248, "r": 248}
+                ]
+              },
+              "gridStyle": {
+                "fill": "gray",
+                "stroke": {"style": "Dot"}
+              },
+              "lineStyle": {"fill": "#898989"},
+              "markStyle": {"fill": "#898989"},
+              "minorStyle": {
+                "fill": "#898989",
+                "stroke": {"width": 1}
+              },
+              "tickStyle": {
+                "fill": "#898989",
+                "font": {"family": "Arial", "size": "10pt"},
+                "padding": 3
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {"fill": "#898989"},
+              "markStyle": {"fill": "#898989"},
+              "tickStyle": {
+                "fill": "#898989",
+                "font": {"family": "Arial", "size": "10pt"},
+                "padding": 3
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fTimeStart"}},
+            {"field": {"$ref": "fTimeEnd"}},
+            {"field": {"$ref": "fTasksNames"}}
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 90,
+              "colors": [
+                {"color": "#175394", "offset": 0},
+                {"color": "#3373AB", "offset": 1}
+              ]
+            },
+            "width": "80%"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fMilestones"} ],
+              "style": {
+                "fill": "#898989",
+                "align": "end",
+                "angle": -45
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fTime"}},
+            {"field": {"$ref": "fTasksNames2"}}
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "colors": [
+                {"color": "#C7471C", "offset": 0},
+                {"color": "#E06C2D", "offset": 1}
+              ]
+            },
+            "size": 12,
+            "symbol": "star"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 800, "height": 400},
+  "version": "6.0",
+  "style": {"fill": "white"}
+}

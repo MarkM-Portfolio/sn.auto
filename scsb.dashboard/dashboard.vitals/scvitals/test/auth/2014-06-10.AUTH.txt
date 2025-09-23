@@ -1,0 +1,6 @@
+2014-06-10T09:58:18+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed LOGIN with outcome SUCCESS
+2014-06-10T10:16:48+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed LOGIN with outcome SUCCESS
+2014-06-10T13:57:44+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed LOGOUT with outcome SUCCESS
+2014-06-10T14:13:28+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed LOGOUT with outcome SUCCESS
+2014-06-10T14:47:42+0000 user amyjones03@ivthouse.com (id=20063308, customerId=20063304) performed LOGIN_BASIC with outcome SUCCESS
+2014-06-10T16:58:46+0000 user amyjones03@ivthouse.com (id=20063308, customerId=20063304) performed LOGOUT with outcome SUCCESS

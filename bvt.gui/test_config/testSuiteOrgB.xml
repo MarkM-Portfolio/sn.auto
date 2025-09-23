@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="10" name="OrgB BVT" parallel="tests" >
+
+  <groups>
+    <run>
+      <include name="level2" />
+      <exclude name="mt-exclude" />
+    </run>
+  </groups>
+
+  <!-- Organization specific overrides/properties -->
+  <!-- Test by overriding browser_url to the organization url -->
+  <parameter name="browser_url" value="https://orgb.cnx.cwp.pnp-hcl.com" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties_MT_orgb.properties" />
+
+  <!-- TESTS -->
+   <test name="Gallery" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Gallery" />
+    </classes>   
+  </test>
+
+  <test name="Homepage" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage" />
+    </classes>
+  </test>
+
+  <test name="iWidget Container" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.cre" />
+    </packages>
+  </test>
+
+  <test name="Mentions" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.mentions" />
+    </packages>
+  </test>  
+
+  <test name="News" preserve-order="true" enabled="true">
+    <classes>
+      <class name="com.ibm.conn.auto.tests.homepage.BVT_Level_2_Homepage_AS" />
+    </classes>
+  </test>
+
+  <test name="Profiles" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.profiles" />
+    </packages>
+  </test>
+
+  <test name="Search" preserve-order="true" enabled="true">
+    <packages>
+      <package name="com.ibm.conn.auto.tests.globalsearch" />
+    </packages>
+  </test>
+
+  <test name="Widgets" preserve-order="true" enabled="true">	
+    <classes>
+      <class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_Widgets" />
+    </classes>
+  </test>
+
+
+</suite>

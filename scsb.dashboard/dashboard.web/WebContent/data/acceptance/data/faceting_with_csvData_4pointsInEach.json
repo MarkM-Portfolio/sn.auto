@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "base",
+      "provider": {
+        "args": [
+          {"source": {"$ref": "data"}},
+          {"hasHeader": true}
+        ],
+        "providerId": "com.ibm.rave.CSVDataProvider"
+      }
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "Close"}},
+            {"field": {"$ref": "Date"}}
+          ],
+          "color": [ {"field": {"$ref": "Decade"}} ],
+          "style": {"fill": "navy"}
+        }
+      ],
+      "facet": {
+        "fields": [
+          {"field": {"$ref": "Decade"}, "axis": {}}
+        ],
+        "method": "panel"
+      },
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "resource": [
+    {
+      "id": "data",
+      "type": "data/csv/text",
+      "URIs": [ "/csv/all.csv" ]
+    }
+  ],
+  "size": {"width": 400.0, "height": 500.0},
+  "version": "5.0"
+}

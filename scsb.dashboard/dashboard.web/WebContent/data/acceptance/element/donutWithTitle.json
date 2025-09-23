@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Values",
+          "format": {"numericPattern": "0,000,000"}
+        },
+        {
+          "id": "y",
+          "label": "Stores",
+          "categories": [
+            "Store 1",
+            "Store 2",
+            "Store 3",
+            "Store 4",
+            "Store 5",
+            "Store 6",
+            "Store 7",
+            "Store 8"
+          ]
+        }
+      ],
+      "rows": [
+        [ 78000000, 0 ],
+        [ 55000000, 1 ],
+        [ 58000000, 2 ],
+        [ 48000000, 3 ],
+        [ 42000000, 4 ],
+        [ 50000000, 5 ],
+        [ 58000000, 6 ],
+        [ 38000000, 7 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [
+            {"id": "colorId", "field": {"$ref": "y"}}
+          ],
+          "style": {"stroke": {"width": 0}, "width": "50%", "align":"end"}
+        },
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [
+                "A long title that should really wrap and be nice in the space available for this element"
+              ]
+            }
+          ],
+          "position": [ {"value": "100%"} ],
+          "content": [ "80%" ],
+          "style": {"fill": "transparent", "size": "100%"}
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "2%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 200.0, "height": 200.0},
+  "version": "3.0",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

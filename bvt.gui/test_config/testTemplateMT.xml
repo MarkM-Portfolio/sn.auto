@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.05.23-1830
+-->
+
+<suite thread-count="3" name="Complete MT BVT Run" parallel="tests" >
+
+  <!-- GROUPS -->
+  <!-- Will need to add some groups for the different products that can be test
+  - for connections maybe something like - connlevel2
+  - for smart cloud maybe something like - sclevel2
+  - for Multi tenant maybe something like - mtlevel2
+  -->
+  <groups>
+    <run>
+      <include name="mtlevel2" />
+    </run>
+  </groups>
+  <!-- Test method has to contain all groups to be run if intersect_groups is true -->
+  <parameter name="intersect_groups" value="false" />
+
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!--parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm023.mul.ie.ibm.com" />
+  <parameter name="server_port" value="5555" /-->
+  <!-- To run tests locally -->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+
+  <!-- PRODUCT TO TEST -->
+  <parameter name="product_name" value="onprem" />
+
+  <!-- LOGIN TYPE <onprem | cloud | icsaml> -->
+  <parameter name="login_type" value="onprem" />
+
+  <!-- ENABLE MT TO TEST -->
+  <parameter name="is_mt" value="true" />
+  <parameter name="auth_type" value="form" />
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="https://orga.cnx.cwp.pnp-hcl.com/" />
+  <parameter name="browser_url_mt_orga" value="https://orga.cnx.cwp.pnp-hcl.com/" />
+  <parameter name="browser_url_mt_orgb" value="https://orgb.cnx.cwp.pnp-hcl.com/" />
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_45_Windows" />
+
+  <!-- Connections properties-->
+  <parameter name="default_app_properties" value="test_config/app/app.properties" />
+  <parameter name="default_users_properties" value="test_config/extensions/user/UsersProperties_MT.properties" />
+
+  <!-- WAFFLE CONFIGURATION PARAMETERS -->
+  <parameter name="fluent_wait_timeout" value="45" />
+  <parameter name="timeout_implicit_wait" value="30000" />
+  <parameter name="timeout_async_script" value="30000" />
+  <parameter name="timeout_page_navigate_timeout" value="60000" />
+  <parameter name="pch_enable_dojo_pageload" value="false" />
+  <parameter name="pch_enable_standard_pageload" value="false" />
+  <parameter name="pch_post_event_pause" value="700" />
+  <parameter name="location_force_script" value="false" /><!-- Was false -->
+  <parameter name="location_use_fallback_strategy" value="false" />
+  <parameter name="max_retries" value="0" />
+
+  <!-- CUSTOM PARAMETERS -->
+  <parameter name="bvt_option" value="BVT" />
+  <parameter name="users_login_preference" value="email" />
+  <parameter name="users_typeahead_preference" value="Display name" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+  <parameter name="upload_files_folder_name" value="TestFiles" />
+  <parameter name="special_characters" value="false" />
+  <parameter name="filenet_enabled" value="false" />
+  <parameter name="push_videos" value="false" />
+  <parameter name="file_server" value="ictube.swg.usma.ibm.com/videos" />
+
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseSuiteListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseRetryListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseInterceptorListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter" />
+  </listeners>
+
+  <!-- Standard BVT TESTS -->
+  <suite-files>
+     <suite-file path="test_config/testSuiteOrgA.xml" />
+     <suite-file path="test_config/testSuiteOrgB.xml" />
+  </suite-files>
+
+  <!-- Other MT Specific TESTS -->
+	<test name="Activities Boundary" parallel="tests" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.activities.BVT_Level_2_Activities_MT_Boundary" />
+		</classes>
+	</test>
+
+	<test name="Communities Boundary" parallel="tests" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.communities.BVT_Level_2_Communities_MT_Boundary" />
+		</classes>
+	</test>
+
+	<test name="Search Boundary" parallel="tests" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.globalsearch.BVT_Level_2_Global_Search_MT_Boundary" />
+		</classes>
+	</test>
+
+	<test name="Mentions Boundary" parallel="tests" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.mentions.BVT_Mentions_MT_Boundary" />
+		</classes>
+	</test>
+	
+	<test name="Switch URL" parallel="tests" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.ibm.conn.auto.tests.mt.BVT_Level_2_MT_Boundary_switchURL" />
+		</classes>
+	</test>
+	
+</suite>

@@ -1,0 +1,24 @@
+2014-06-04T05:21:03+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-06-04T05:21:05+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20665172, name="岳 袁", customerId=0) with outcome SUCCESS
+2014-06-04T05:21:07+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-06-04T05:21:15+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-06-04T05:26:22+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-06-04T05:26:22+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20665173, name="bht6InviteGuest 007", customerId=0) with outcome SUCCESS
+2014-06-04T05:26:24+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-06-04T05:26:27+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-06-04T15:46:44+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETAPPPASSWORDS with outcome FAILURE, reason=ORGANIZATION_NOT_ENABLED_FOR_APP_PASSWORDS.
+2014-06-04T15:47:06+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed UPDATESUBSCRIBER on object (type=SUBSCRIBER, id=20063307, name="09876543210987654321 12345678901234567890", customerId=20063304) with outcome SUCCESS
+2014-06-04T15:47:07+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETAPPPASSWORDS with outcome FAILURE, reason=ORGANIZATION_NOT_ENABLED_FOR_APP_PASSWORDS.
+2014-06-04T18:24:38+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETAPPPASSWORDS with outcome FAILURE, reason=ORGANIZATION_NOT_ENABLED_FOR_APP_PASSWORDS.
+2014-06-04T18:24:57+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed UPDATESUBSCRIBER on object (type=SUBSCRIBER, id=20063307, name="12345678901234567890 09876543210987654321", customerId=20063304) with outcome SUCCESS
+2014-06-04T18:24:58+0000 user amyjones02@ivthouse.com (id=20063307, customerId=20063304) performed GETAPPPASSWORDS with outcome FAILURE, reason=ORGANIZATION_NOT_ENABLED_FOR_APP_PASSWORDS.
+2014-06-04T19:15:26+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed GETUSERDATACENTERS with outcome SUCCESS
+2014-06-04T19:15:26+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDSUBSCRIBER on object (type=SUBSCRIBER, id=20666314, name="amy jones22", customerId=20063304) with outcome SUCCESS
+2014-06-04T19:15:28+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-06-04T19:15:29+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ENTITLESUBSCRIBER with outcome SUCCESS
+2014-06-04T19:15:34+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed ADDTOKEN with outcome SUCCESS
+2014-06-04T19:15:59+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed CHANGEQUOTA with outcome SUCCESS
+2014-06-04T19:16:30+0000 user amyjones22@ivthouse.com (id=20666314, customerId=20063304) performed VALIDATETOKEN with outcome SUCCESS
+2014-06-04T19:16:51+0000 user amyjones22@ivthouse.com (id=20666314, customerId=20063304) performed VALIDATETOKEN with outcome SUCCESS
+2014-06-04T19:16:51+0000 user unauthenticated (id=unknown, customerId=unknown) performed UPDATESUBSCRIBER on object (type=SUBSCRIBER, id=20666314, name="amy jones22", customerId=20063304) with outcome SUCCESS
+2014-06-04T19:16:52+0000 user amyjones22@ivthouse.com (id=20666314, customerId=20063304) performed SETPASSWORD with outcome SUCCESS

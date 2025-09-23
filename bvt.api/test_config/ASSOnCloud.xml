@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION  2015.01.28-1800
+-->
+
+<suite thread-count="1" name="AS Search on Cloud" parallel="tests" >
+
+  <parameter name="SERVER_URL" value="CI_PREBVT_BROWSER_URL" /> 
+  <!--  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE" /> -->
+  <parameter name="DEPLOYMENT_TYPE" value="SMARTCLOUD" /> 
+  <parameter name="MODERATION_ENABLED" value="false" />
+  <parameter name="VMODEL_ENABLED" value="false" />
+  <parameter name="IMPERSONATION_ENABLED" value="true" />
+  <parameter name="AUTHENTICATION" value="basic" />
+      
+
+
+  <test name="SetUp" preserve-order="true" enabled="true">
+  	<classes>
+   		<class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv" />
+   	</classes>
+  </test>
+  
+  <test name="AS Search on Cloud" preserve-order="true" enabled="true">
+  	<classes>
+  	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.population.ExecuteASsearchAPIBVTOnCloudTests" />
+  	    
+   	
+   	
+   	  <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityWordSearchInEntryTestWithDate" />
+   	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityWordAndWordSearchInEntryTestWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityWordOrWordSearchInEntryTestWithDate" />
+   	  
+   	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtQueryWithHighlightParameterTestWithDate" /> 
+   	  <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtJsonResponsesTestWithDate" />
+   	  
+   	  <!-- 
+   	   
+   	  <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestMultiParametersWithDate" />
+   	  <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtActivityCreatedWordQueryTestWithDate" />
+	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtActivityCreatedWordAndWordQueryTestWithDate" />
+	 
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestMultiValuesWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeSourceWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeTagsWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeCommunityWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeActorWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeInvolvedWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFiltersTestTypeTargetPersonWithDate" />
+   	 
+   	  <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFacetsTopPeopleTestWithDate" />
+   	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtASSearchInvolvedUserTestWithDate" />
+   	 
+   	 
+   	 <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityCreatedWordQueryTestWithDate" />
+     //partial 
+    
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityCreatedWordOrWordQueryTestWithDate" />
+     //partial
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityCreatedWordAndWordQueryTestWithDate" />
+     
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunityCreatedSentenceQueryTestWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtCommunitiyCreatedAccentCharactersQueryTestWithDate" /> 
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtSubCommunityCreatedWordQueryTestWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtSubCommunityCreatedSentenceQueryTestWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtSubCommunityCreatedWordOrWordQueryTestWithDate" />
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtSubCommunityCreatedWordAndWordQueryTestWithDate" />
+         
+      <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtTopicCreatedWordQueryTestWithDate" />
+     
+     
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFacetsTopCommunitiesTestWithDate" />
+    
+     <class name="com.ibm.lconn.automation.framework.activitiesStreamSearch.apibvt.testsWithDate.FvtFilesCheckContentUpdateWithDate" /> -->
+     
+     
+   	</classes>
+  </test>
+
+
+</suite>

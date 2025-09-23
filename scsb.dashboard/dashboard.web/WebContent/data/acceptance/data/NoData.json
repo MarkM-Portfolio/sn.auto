@@ -1,0 +1,94 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {"id": "fX", "label": "Year Published"},
+        {"id": "fY", "label": "Length"},
+        {"id": "fSourcefield", "label": "Price"}
+      ],
+      "rows": [  ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "8.0pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"}
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0}
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": "8.0pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "angle": 0.0,
+              "colors": [
+                {
+                  "color": {"b": 0, "g": 0, "r": 255},
+                  "offset": 0.0
+                },
+                {
+                  "color": {"b": 0, "g": 0, "r": 0},
+                  "offset": 1.0
+                }
+              ]
+            },
+            "stroke": {"width": 0.0},
+            "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+            "size": 45.0
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": {"a": 0.0, "b": 0, "g": 0, "r": 0},
+        "padding": 28.800001
+      }
+    }
+  ],
+  "size": {"width": 400.0, "height": 400.0}
+}

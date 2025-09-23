@@ -1,0 +1,85 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "shops",
+          "categories": [
+            "McDonalds",
+            "Kentucky Fried Chicken",
+            "Spaghetti House",
+            "Gnocchi Heaven"
+          ]
+        },
+        {"id": "values"},
+        {"id": "countries", "categories": [ "US", "Italy" ]}
+      ],
+      "rows": [
+        [ 0, 0.6, 0 ],
+        [ 1, 0.2, 0 ],
+        [ 3, 1, 0 ],
+        [ 2, 0.65, 1 ],
+        [ 3, 0.1, 1 ],
+        [ 0, 0.25, 1 ]
+      ]
+    },
+    {
+      "id": "derivedData",
+      "source": {"$ref": "data"},
+      "type": "order",
+      "group": [
+        {
+          "input": {"$ref": "countries"},
+          "output": {"id": "facet"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "categories_final"},
+          "input": {"$ref": "shops"}
+        },
+        {
+          "field": {"id": "values_final"},
+          "input": {"$ref": "values"},
+          "role": "sort"
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {
+            "scale": {
+              "local": false,
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "derivedData"},
+          "position": [
+            {"field": {"$ref": "values_final"}},
+            {"field": {"$ref": "categories_final"}}
+          ],
+          "color": [
+            {"field": {"$ref": "categories_final"}}
+          ]
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "facet"}} ],
+        "method": "panel"
+      }
+    }
+  ],
+  "legends": [ {} ],
+  "version": "4.1"
+}

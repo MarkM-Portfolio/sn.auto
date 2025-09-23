@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<note>
+	<to>Dove
+		<c1heading/>
+	</to>
+	<to>Tove</to>
+	<from>Jani</from>
+	<from/>
+	<heading font="Ariel"> Reminder
+		<aheading> Go away
+			<a1heading> too deep </a1heading>
+			<a1heading> too double 
+				<c2aheading/>
+			</a1heading>
+		</aheading>
+		<bheading> lookatme </bheading>
+		<cheading> cheading time
+			<c1heading/>
+			<c2heading>
+				<c2aheading/>
+				<c2aheading/>
+				<c2aheading/>
+			</c2heading>
+		</cheading>
+		<cheading> doubles </cheading>
+	</heading>
+	<body>Don't forget me this weekend!</body>
+</note>

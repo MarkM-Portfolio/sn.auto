@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright IBM Corp. 2010, 2011  All Rights Reserved.              -->
+
+<!-- 5724-S68                                                          -->
+
+<forum:config id="forums-policy"
+    version = "5"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ibm.com/connections/forums/forums-policy/1.0 forum-policy.xsd"
+    xmlns:forum="http://www.ibm.com/connections/forums/forums-policy/1.0">
+
+    <forum:policy type="categories_enabled">
+
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="reader" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+        </forum:grant>
+
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="person" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+        </forum:grant>
+
+        <!-- owner: applies to forum owners in 3.0. note we may have owner roles in the no categories mode -->
+        <!-- if the mode has flipped from 'categories_disabled'. need to reduce their privileges           -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="owner" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <!--forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" /-->
+            <!--forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_forum" /-->
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+        </forum:grant>
+
+        <!-- forum moderator -->    
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="moderator" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="premoderate" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="postmoderate" />
+        </forum:grant>
+
+        <!-- member: applies to community members in 3.0 -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="community_member" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+            <!-- no forum tags yet -->
+        </forum:grant>
+
+        <!-- commnuity owner: applies to community owners in 3.0 -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="community_owner" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+        </forum:grant>
+
+        <!-- this role is to support the j2ee creator role where individuals are granted basic content creation -->
+        <!-- priveleges                                                                                         -->
+        <!--
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="creator" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+          <! tbd >
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+        </forum:grant>
+        -->
+
+    </forum:policy>
+
+    <forum:policy type="categories_disabled">
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="reader" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+        </forum:grant>
+
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="person" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+            <!-- privleges below give create privelges to authenticated users-->
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+        </forum:grant>
+
+        <!-- owner: applies to forum owners in 3.0 -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="owner" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="add_member" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="delete_member" />
+        </forum:grant>
+
+        <!-- forum moderator -->    
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="moderator" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+          <!--tbd-->
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="premoderate" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="postmoderate" />
+        </forum:grant>
+
+        <!-- member: applies to community members in 3.0 -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="community_member" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+            <!-- no forum tags yet -->
+        </forum:grant>
+
+        <!-- owner: applies to community owners in 3.0 -->
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="community_owner" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="pin_topic" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="lock_node" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+          <!--tbd-->
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_all_question" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forumtag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_all_forumtag" />
+        </forum:grant>
+
+        <!-- this role is to support the j2ee creator role where individuals are granted basic content creation -->
+        <!-- priveleges                                                                                         -->
+        <!--
+        <forum:grant>
+            <forum:principal class="com.ibm.lconn.forum.constants.Role" name="creator" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_category" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="view_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_forum" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="edit_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_post" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="subscribe" />
+          <! tbd  >
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="create_topictag" />
+            <forum:permission class="com.ibm.lconn.forum.constants.ForumPermission" action="del_personal_topictag" />
+        </forum:grant>
+        -->
+
+    </forum:policy>
+
+</forum:config>

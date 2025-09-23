@@ -1,0 +1,295 @@
+{
+  "version": "1.2",
+
+  "data": [
+
+    {
+
+      "id": "d3",
+
+      "fields": [
+
+        {"id": "fX3", "label": "Length"},
+
+        {"id": "fY3", "label": "Price"},
+
+        {
+
+          "id": "store3",
+
+          "label": "Store",
+
+          "categories": [ "gray", "red", "white", "blue" ]
+
+        }
+
+      ],
+
+      "rows": [
+
+        [ 136, 6.99, 2 ],
+
+        [ 495, 29.95, 3 ],
+
+        [ 446, 12.95, 0 ]
+
+      ]
+
+    }
+
+  ],
+
+  "grammar": [
+
+    {
+
+      "bounds": {"height": "50%", "top": 0},
+
+      "coordinates": {
+
+        "dimensions": [
+
+          {"axis": {"gridStyle": {"fill": "gray"}}},
+
+          {
+
+            "scale": {"local": true},
+
+            "axis": {"title": [ "aesthetic.local:true" ]}
+
+          }
+
+        ],
+
+        "style": {"fill": "lightGray"}
+
+      },
+
+      "elements": [
+
+        {
+
+          "type": "interval",
+
+          "label": [
+
+            {
+
+              "content": [ {"$ref": "fY3"} ],
+
+              "style": {
+
+                "fill": "black",
+
+                "location": "outside"
+
+              }
+
+            }
+
+          ],
+
+          "position": [
+
+            {"field": {"$ref": "fY3"}},
+
+            {"field": {"$ref": "store3"}}
+
+          ],
+
+          "color": [
+
+            {
+
+              "id": "c1",
+
+              "field": {"$ref": "store3"},
+
+              "scale": {
+
+                "local": true,
+
+                "spans": [ {"categories": [ 1, 2, 3 ]} ]
+
+              },
+
+              "palette": [ "red", "white", "blue" ]
+
+            }
+
+          ],
+
+          "style": {"fill": "gray", "outline": "black"}
+
+        }
+
+      ],
+
+      "style": {"fill": "transparent", "padding": 15}
+
+    },
+
+    {
+
+      "bounds": {"height": "50%", "top": "50%"},
+
+      "coordinates": {
+
+        "dimensions": [
+
+          {"axis": {"gridStyle": {"fill": "gray"}}},
+
+          {
+
+            "scale": {"local": true},
+
+            "axis": {"title": [ "aesthetic.local:false" ]}
+
+          }
+
+        ],
+
+        "style": {"fill": "lightGray"}
+
+      },
+
+      "elements": [
+
+        {
+
+          "type": "interval",
+
+          "label": [
+
+            {
+
+              "backgroundStyle": {
+
+                "fill": "rgba(255,255,255,0.75)",
+
+                "outline": "#222222"
+
+              },
+
+              "content": [ {"$ref": "fY3"} ],
+
+              "style": {
+
+                "fill": "black",
+
+                "location": "outside"
+
+              }
+
+            },
+
+            {
+
+              "backgroundStyle": {
+
+                "fill": "rgba(255,255,255,0.75)",
+
+                "outline": "#222222"
+
+              },
+
+              "content": [ {"$ref": "store3"} ],
+
+              "style": {
+
+                "fill": "black",
+
+                "location": "outside",
+
+                "valign": "start"
+
+              }
+
+            }
+
+          ],
+
+          "position": [
+
+            {"field": {"$ref": "fY3"}},
+
+            {"field": {"$ref": "store3"}}
+
+          ],
+
+          "color": [
+
+            {
+
+              "id": "c2",
+
+              "field": {"$ref": "store3"},
+
+              "scale": {
+
+                "local": false,
+
+                "spans": [ {"categories": [ 1, 2, 3 ]} ]
+
+              },
+
+              "palette": [ "red", "white", "blue" ]
+
+            }
+
+          ],
+
+          "style": {"fill": "gray", "outline": "black"}
+
+        }
+
+      ],
+
+      "style": {"fill": "transparent", "padding": 15}
+
+    }
+
+  ],
+
+  "legends": [
+
+    {
+
+      "content": [
+
+        {
+
+          "aesthetics": [ {"aesthetic": {"$ref": "c1"}} ],
+
+          "categories": [ 1, 2, 3 ],
+
+          "local": false
+
+        }
+
+      ]
+
+    },
+    
+	{
+
+      "content": [
+        {
+
+          "aesthetics": [ {"aesthetic": {"$ref": "c2"}} ],
+
+          "categories": [ 1, 2, 3 ],
+
+          "local": false
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "style": {"fill": "white"}
+
+}

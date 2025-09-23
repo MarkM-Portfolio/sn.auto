@@ -1,0 +1,75 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "symbol", "unit": "categorical"} ],
+      "rows": [
+        [ 0 ],
+        [ 1 ],
+        [ 2 ],
+        [ 3 ],
+        [ 4 ],
+        [ 5 ],
+        [ 6 ],
+        [ 7 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"min": 0, "max": 3} ]}},
+          {"axis": {}}
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"includeInRange": true, "value": 2},
+            {"field": {"$ref": "symbol"}}
+          ],
+          "symbol": [ {"field": {"$ref": "symbol"}} ],
+          "style": {
+            "fill": "black",
+            "width": "100%",
+            "height": 40
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"includeInRange": true, "value": 1},
+            {"field": {"$ref": "symbol"}}
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "symbol"},
+              "palette": [
+                "polygon",
+                "poly-3",
+                "polygon-6",
+                "polygon-8",
+                "star-3",
+                "star-4",
+                "star-8",
+                "star-20"
+              ]
+            }
+          ],
+          "style": {
+            "fill": "black",
+            "width": "100%",
+            "height": 40
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "size": {"width": 800},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

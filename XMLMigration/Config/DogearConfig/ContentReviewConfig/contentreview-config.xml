@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright IBM Corp. 2009, 2011  All Rights Reserved.              --><!-- 5724_S68                                                          --><config id="contentreview-config" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="contentreview-config.xsd">
+<!-- 
+Flag categories are used when issueCategorization is enabled for a specific service. 
+When turned on, end users who flag content as inappropriate must select a category for 
+the content. Two default categories are provided. You can edit those categories or extend 
+the list by adding new categories in this section. For more information, see the topic 
+"Managing content moderation and flagged content" in the Administration section of the 
+product documentation.
+ -->
+  <flagCategories>
+	  <flagCategory>
+	    <id>001</id>
+	    <description xml:lang="en">Legal issue</description>
+	    <description xml:lang="ar">مشكلة قانونية</description>
+	    <description xml:lang="ca">Assumpte legal</description>
+	    <description xml:lang="cs">Právní informace</description>
+	    <description xml:lang="da">Juridisk afdeling</description>
+	    <description xml:lang="de">Rechtlich</description>
+	    <description xml:lang="el">Νομικές πληροφορίες</description>
+	    <description xml:lang="es">Legal</description>
+	    <description xml:lang="fi">Käyttöehdot</description>
+	    <description xml:lang="fr">Légal</description>
+	    <description xml:lang="hu">Jogi információk</description>
+	    <description xml:lang="it">Note legali</description>
+	    <description xml:lang="iw">מידע משפטי</description>
+	    <description xml:lang="ja">法的問題</description>
+	    <description xml:lang="kk">Заңды мәселе</description>
+	    <description xml:lang="ko">법적 문제</description>
+	    <description xml:lang="nl">Kennisgevingen</description>
+	    <description xml:lang="no">Juridisk</description>
+	    <description xml:lang="pl">Informacje prawne</description>
+	    <description xml:lang="pt-BR">Problema jurídico</description>
+	    <description xml:lang="pt">Legal</description>
+	    <description xml:lang="ru">Юридическая информация</description>
+	    <description xml:lang="sl">Zakonska izdaja</description>
+	    <description xml:lang="sv">Juridiska problem</description>
+	    <description xml:lang="th">ประเด็นด้านกฎหมาย</description>
+	    <description xml:lang="tr">Yasal</description>
+	    <description xml:lang="zh-TW">法律條款</description>
+	    <description xml:lang="zh">法律条款</description>
+	  </flagCategory>
+	  <flagCategory>
+	    <id>002</id>
+	    <description xml:lang="en">Human Resources issue</description>
+	    <description xml:lang="ar">مشكلة تتعلق بالموارد البشرية</description>
+	    <description xml:lang="ca">Assumpte de recursos humans</description>
+	    <description xml:lang="cs">Lidské zdroje</description>
+	    <description xml:lang="da">Personaleafdeling</description>
+	    <description xml:lang="de">Personalwesen</description>
+	    <description xml:lang="el">Ανθρώπινοι πόροι</description>
+	    <description xml:lang="es">Recursos humanos</description>
+	    <description xml:lang="fi">Henkilöstöhallinto</description>
+	    <description xml:lang="fr">Ressources humaines</description>
+	    <description xml:lang="hu">Emberi erőforrások</description>
+	    <description xml:lang="it">Risorse umane</description>
+	    <description xml:lang="iw">משאבי אנוש</description>
+	    <description xml:lang="ja">人事の問題</description>
+	    <description xml:lang="kk">Еңбек ресурстары мәселесі</description>
+	    <description xml:lang="ko">인적 자원 문제</description>
+	    <description xml:lang="nl">Human resources</description>
+	    <description xml:lang="no">Personale</description>
+	    <description xml:lang="pl">Kadry</description>
+	    <description xml:lang="pt-BR">Problema de Recursos Humanos</description>
+	    <description xml:lang="pt">Recursos Humanos</description>
+	    <description xml:lang="ru">Управление персоналом</description>
+	    <description xml:lang="sl">Izdaja za kadrovsko službo</description>
+	    <description xml:lang="sv">Personalproblem</description>
+	    <description xml:lang="th">ประเด็นด้านทรัพยากรบุคคล</description>
+	    <description xml:lang="tr">İnsan Kaynakları</description>
+	    <description xml:lang="zh-TW">人力資源</description>
+	    <description xml:lang="zh">人力资源</description>
+	  </flagCategory>
+  </flagCategories>   
+  
+   
+<!-- content moderation settings -->
+
+<!--
+See the topic "Managing content moderation" in the Connection Information Center for details. 
+ 
+<reviewer>, these are the reviewers that will receive email notification when categorization is 
+turned on for the flag inappropriate content feature. Reviewers must be assigned the J2EE moderator role. 
+<flagCategory id="xxxx">, id is the <id> element defined in the <flagCategory> above
+When categorization is turned on, flagging content will require users to select a category
+and e-mail notification will be sent to the reviewers assigned to the selected category
+-->            
+  <serviceConfiguration>
+	<service id="blogs">
+		<contentApproval enabled="true">
+		    <ownerModerate enabled="true"/>
+		</contentApproval>
+		<contentFlagging enabled="true">
+		    <ownerModerate enabled="true"/>
+			<issueCategorization enabled="true">
+                <flagCategory id="001">
+			<reviewer email="ajones1@janet.iris.com"/>
+	                <reviewer email="ajones2@janet.iris.com"/>
+                </flagCategory>
+                <flagCategory id="002">
+                    <reviewer email="ajones2@janet.iris.com"/>
+                    <reviewer email="ajones3@janet.iris.com"/>
+                </flagCategory>
+			</issueCategorization>
+		</contentFlagging>
+		<!-- 
+		Moderators specified here will receive e-mail notification about content 
+		needing moderation for this service. 
+		-->		
+		<moderator email="ajones1@janet.iris.com"/>
+		<moderator email="ajones2@janet.iris.com"/>          
+	</service>
+
+	<service id="files">
+		<contentApproval enabled="true">
+		    <ownerModerate enabled="true"/>
+        </contentApproval>
+		<contentFlagging enabled="true">
+		    <ownerModerate enabled="true"/>
+		</contentFlagging>
+        <!-- 
+        Moderators specified here will receive e-mail notification about content 
+        needing moderation for this service. 
+        -->		
+		<moderator email="ajones3@janet.iris.com"/>
+		<moderator email="ajones4@janet.iris.com"/>                
+	</service>
+	
+	<service id="forums">
+		<contentApproval enabled="true">
+            <ownerModerate enabled="true"/>
+        </contentApproval>
+		<contentFlagging enabled="true">
+			<ownerModerate enabled="true"/>
+			<automaticQuarantine enabled="true" threshold="2"/>
+			<issueCategorization enabled="true">
+                <flagCategory id="001">
+                    <reviewer email="ajones1@janet.iris.com"/>
+                    <reviewer email="ajones2@janet.iris.com"/>
+                </flagCategory>
+                <flagCategory id="002">
+                    <reviewer email="ajones2@janet.iris.com"/>
+                    <reviewer email="ajones3@janet.iris.com"/>
+                </flagCategory>
+            </issueCategorization>
+		</contentFlagging>
+        <!-- 
+        Moderators specified here will receive e-mail notification about content 
+        needing moderation for this service. 
+        -->
+		<moderator email="ajones5@janet.iris.com"/>
+		<moderator email="ajones6@janet.iris.com"/>                
+	</service>
+  </serviceConfiguration>
+  		
+</config>

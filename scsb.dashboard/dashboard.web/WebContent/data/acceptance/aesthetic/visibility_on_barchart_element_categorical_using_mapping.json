@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fCategories",
+          "label": "Store",
+          "categories": [ "male", "female", "unknown", "n/a" ]
+        },
+        {"id": "fValues", "label": "Price"}
+      ],
+      "rows": [ [ 0, 4 ], [ 1, 6 ], [ 2, 1 ], [ 3, 1 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fValues"}},
+            {"field": {"$ref": "fCategories"}}
+          ],
+          "visibility": [
+            {
+              "field": {"$ref": "fCategories"},
+              "mapping": [
+                {"at": 0, "visible": true},
+                {"at": 1, "visible": true},
+                {"at": 2, "visible": true},
+                {"at": 3, "visible": false}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "1.3"
+}

@@ -1,0 +1,110 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "x"},
+        {"id": "dy"},
+        {"id": "percent"}
+      ],
+      "rows": [
+        [ 0, -4, 0.5 ],
+        [ 1, 2, 0.3 ],
+        [ 2, 6, 0.4 ],
+        [ 3, -4, 0.3 ],
+        [ 4, -4, 0.2 ],
+        [ 5, 2, 0.5 ]
+      ]
+    },
+    {
+      "id": "wf",
+      "source": {"$ref": "data"},
+      "type": "integrate",
+      "input": [
+        {"field": {"$ref": "x"}, "role": "x"},
+        {"field": {"$ref": "dy"}, "role": "y"},
+        {"field": {"$ref": "percent"}, "role": "yPercent"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "role": "x"
+        },
+        {
+          "field": {"id": "from", "unit": "categorical"},
+          "role": "from"
+        },
+        {"field": {"id": "yPercent"}, "role": "yPercent"},
+        {"field": {"id": "type"}, "role": "type"}
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "gray",
+                "stroke": {"width": 0.5, "style": "Dot"}
+              }
+            }
+          },
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "wf"},
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "palette": [ "lightgreen", "pink" ]
+            }
+          ],
+          "style": {"width": "50%", "outline": "black"}
+        },
+        {
+          "type": "interval",
+          "data": {"$ref": "wf"},
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "yPercent"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "style": {
+            "fill": "lightgray",
+            "width": "50%",
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "from"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "style": {
+            "stroke": {"width": 3},
+            "padding": "-25%"
+          }
+        }
+      ]
+    }
+  ],
+  "version": "3.0",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" name="OrgC TouchPoint" parallel="tests">
+
+	<!-- Test method has to contain all groups to be run if intersect_groups is true -->
+	<parameter name="intersect_groups" value="false" />
+  
+	<!-- Organization specific overrides/properties -->
+	<!-- Test by overriding browser_url to the organization url -->
+	<parameter name="browser_url" value="https://mt1-orgc.cnx.cwp.pnp-hcl.com/" />
+<parameter name="default_users_properties"
+		value="test_config/extensions/user/mt1_MT_users.properties" />
+	<!-- TESTS -->
+	<test name="Touchpoint_Configure" parallel="tests" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="tpconfig" />
+		  </run>
+	   </groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_TouchPoint_MT_Boundary" >
+		      <methods>
+		      	<include name="configureTouchPoint"/>
+		      </methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="Touchpoint_MT_Boundary" parallel="tests" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="mtlevel2" />
+		  </run>
+	   </groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_TouchPoint_MT_Boundary" />
+		</classes>
+	</test>
+	
+	<test name="Touchpoint" parallel="tests" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="level2" />
+			<exclude name="mt-exclude" />
+			<exclude name="mtlevel2" />
+		  </run>
+	   </groups>
+		<packages>
+			<package name="com.ibm.conn.auto.tests.touchpoint" />
+		</packages>
+	</test>
+	
+	<test name="Touchpoint_Unconfigure" parallel="tests" preserve-order="true" enabled="true">
+	   <groups>
+		  <run>
+			<include name="tpconfig" />
+		  </run>
+	   </groups>
+		<classes>
+			<class name="com.ibm.conn.auto.tests.touchpoint.BVT_Level_2_TouchPoint_MT_Boundary" >
+		      <methods>
+		      	<include name="unconfigureTouchPoint"/>
+		      </methods>
+			</class>
+		</classes>
+	</test>
+	 
+</suite>

@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "xYear",
+          "label": "Year",
+          "categories": [
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008"
+          ]
+        },
+        {"id": "ySales", "label": "Sales"},
+        {"id": "wWorkforce", "label": "Total workforce"}
+      ],
+      "rows": [
+        [ 0, 70, 70 ],
+        [ 1, 40, 30 ],
+        [ 2, 45, 50 ],
+        [ 3, 30, 60 ],
+        [ 4, 60, 20 ],
+        [ 5, 75, 150 ],
+        [ 6, 60, 80 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.6},
+                "stroke": {"style": "dash"}
+              },
+              "lineStyle": {"fill": {"a": 0}},
+              "markStyle": {"fill": {"a": 0}},
+              "minorStyle": {"fill": {"a": 0}},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "padding": 3
+              },
+              "title": [ {"$ref": "ySales"} ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {"weight": "bold"}
+              }
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {
+                  "categoryWeights": {
+                    "categories": {"$ref": "xYear"},
+                    "weights": {"$ref": "wWorkforce"}
+                  }
+                }
+              ]
+            },
+            "axis": {
+              "lineStyle": {"fill": {"a": 0}},
+              "markStyle": {"fill": {"a": 0.6}},
+              "minorStyle": {"fill": {"a": 0}},
+              "tickStyle": {
+                "fill": {"a": 0.6},
+                "padding": 3
+              },
+              "title": [ {"$ref": "xYear"} ],
+              "titleStyle": {
+                "fill": {"a": 0.6},
+                "font": {"weight": "bold"}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "wWorkforce"} ],
+              "style": {
+                "fill": "#111a",
+                "font": {"size": 20}
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "ySales"}},
+            {"field": {"$ref": "xYear"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "xYear"},
+              "modifies": "both"
+            }
+          ],
+          "style": {
+            "width": "80%",
+            "outline": {"dValue": -0.1}
+          }
+        }
+      ],
+      "labelCollisionMethod": "none",
+      "style": {
+        "fill": "white",
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 800, "height": 400},
+  "version": "4.2",
+  "style": {"fill": "white"}
+}

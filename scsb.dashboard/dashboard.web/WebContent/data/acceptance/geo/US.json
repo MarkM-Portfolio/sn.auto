@@ -1,0 +1,232 @@
+{
+  "data": [ {} ],
+  "augment": [
+    {"source": "/GeoJSON/US States detailed.json"}
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "48%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"fit": "exact"} ]}},
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#8888"},
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {"name": "mercator"}
+          }
+        ],
+        "style": {"fill": "#afa"}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "style": {
+            "fill": "#99f",
+            "stroke": {"width": 0.25},
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"value": 34.1},
+            {"value": 41.78},
+            {"value": -118.7},
+            {"value": -87.75}
+          ],
+          "style": {
+            "fill": "#c00",
+            "stroke": {"width": 4},
+            "endArrow": "arrow",
+            "outline": "black"
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "48%",
+        "left": "50%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"fit": "exact"} ]}},
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#8888"},
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {"name": "miller"}
+          }
+        ],
+        "style": {"fill": "#afa"}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "style": {
+            "fill": "#99f",
+            "stroke": {"width": 0.25},
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+         
+          "position": [
+            {"value": 34.1},
+            {"value": 41.78},
+            {"value": -118.7},
+            {"value": -87.75}
+          ],
+          "style": {
+            "fill": "#c00",
+            "stroke": {"width": 4},
+            "endArrow": "arrow",
+            "outline": "black"
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "48%",
+        "left": "0%",
+        "top": "50%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"fit": "exact"} ]}},
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#8888"},
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {
+              "name": "stereographic"
+            }
+          }
+        ],
+        "style": {"fill": "#afa"}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "style": {
+            "fill": "#99f",
+            "stroke": {"width": 0.25},
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+          
+          "position": [
+            {"value": 34.1},
+            {"value": 41.78},
+            {"value": -118.7},
+            {"value": -87.75}
+          ],
+          "style": {
+            "fill": "#c00",
+            "stroke": {"width": 4},
+            "endArrow": "arrow",
+            "outline": "black"
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "48%",
+        "left": "50%",
+        "top": "50%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"spans": [ {"fit": "exact"} ]}},
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#8888"},
+              "lineStyle": {},
+              "markStyle": {},
+              "tickStyle": {}
+            }
+          }
+        ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {"name": "winkel"}
+          }
+        ],
+        "style": {"fill": "#afa"}
+      },
+      "elements": [
+        {
+          "type": "polygon",
+          "style": {
+            "fill": "#99f",
+            "stroke": {"width": 0.25},
+            "outline": "black"
+          }
+        },
+        {
+          "type": "edge",
+          
+          "position": [
+            {"value": 34.1},
+            {"value": 41.78},
+            {"value": -118.7},
+            {"value": -87.75}
+          ],
+          "style": {
+            "fill": "#c00",
+            "stroke": {"width": 4},
+            "endArrow": "arrow",
+            "outline": "black"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "version": "4.0"
+}

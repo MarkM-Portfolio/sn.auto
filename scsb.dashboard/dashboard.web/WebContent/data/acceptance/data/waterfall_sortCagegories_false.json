@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [ "A", "B", "C", "D", "E", "F" ]
+        },
+        {"id": "delta_y"}
+      ],
+      "rows": [
+        [ 0, 1 ],
+        [ 1, 10 ],
+        [ 5, 50 ],
+        [ 3, 30 ],
+        [ 4, 40 ],
+        [ 2, 20 ]
+      ]
+    },
+    {
+      "id": "data2",
+      "source": {"$ref": "data"},
+      "type": "integrate",
+      "input": [
+        {"field": {"$ref": "category"}, "role": "x"},
+        {"field": {"$ref": "delta_y"}, "role": "y"}
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"sortCategories": false},
+          "role": "x"
+        },
+        {
+          "field": {"id": "from", "unit": "categorical"},
+          "role": "from"
+        },
+        {
+          "field": {
+            "id": "type",
+            "categories": [
+              "zero",
+              "add",
+              "sub",
+              "total_zero",
+              "total_add",
+              "total_sub"
+            ]
+          },
+          "role": "type"
+        }
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"gridStyle": {"fill":"gray","stroke":{"width":0.5,"style":"Dot"}}}},
+          {"axis": {}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [ {"content": [ {"$ref": "yc"} ]} ],
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "type"},
+              "scale": {"local": false},
+              "palette": [
+                "gray",
+                "lightgreen",
+                "pink",
+                "white",
+                "white",
+                "white"
+              ]
+            }
+          ],
+          "style": {"width": "50%", "outline": "black"}
+        },
+        {
+          "type": "edge",
+          "position": [
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "y0"}},
+            {"field": {"$ref": "from"}},
+            {"field": {"$ref": "xc"}}
+          ],
+          "style": {
+            "stroke": {"width": 3},
+            "padding": "-25%"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 300, "height": 250},
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

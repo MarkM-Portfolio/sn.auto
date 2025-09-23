@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright IBM Corp. 2006, 2011  All Rights Reserved.              -->
+
+<!-- 5724-L21                                                          -->
+<config version="27" id="oa-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="oa-config.xsd">
+
+    <!--  Activities Configuration   -->
+
+    <!--
+        The Event Broker is used to control which events cause notifications to be sent to users.
+        Activities email notification is controlled by settings in the common notification-config.xml file.
+    -->
+
+    <eventBroker>
+        <!-- Maintain this XML formatting for the subscriber element so it can be handled by the installer -->
+        <!-- This provider sends email notifications to users -->
+        <subscriber class="com.ibm.openactivities.notifications.email.ConnectionsEmailNotifier">
+           <events>
+              <event>com.ibm.openactivities.events.ActivityCreatedEvent</event>
+              <event>com.ibm.openactivities.events.MemberAddedEvent</event>
+           </events>
+        </subscriber>
+    </eventBroker>
+
+
+    <!--
+        The Object Store is used to store activity data objects such as attachments and large messages.
+        Multiple object stores can be specified, but only one can be marked as "default".   The default
+        store is used for all new content.  The "id" element must be a unique name, it does not need to specify
+        a specific type or be a keyword like "filesystem".
+    -->
+
+    <objectStore>
+
+        <!-- SPR TBEN7B4QVX some glitch where the env variable must be the last declared property -->
+        <store default="true" class="com.ibm.openactivities.objectstore.filesystem.FileSystemObjectStore">
+            <id>filesystem</id>
+            <property name="use.historic">false</property>
+            <property name="root.directory">${ACTIVITIES_CONTENT_DIR}</property>
+        </store>
+
+        <!-- Setting a size limit on content, by mime type or filename, will prevent the content from being accepted and
+            stored if the content's size is larger than specified. Use a regular expression to match the desired
+            mime type or filename. If none of the expressions match, then there's no size limit on that type of content.
+            These settings apply to all content store objects for new data.
+
+            The size limit should be denoted in bytes.
+            1024 bytes equals 1 Kb. 1,048,576 bytes equal 1 MB. -->
+
+        <sizeLimits>
+            <limit mimeFilenameRegex=".*\.exe">0</limit>
+            <limit mimeFilenameRegex=".*\.bat">0</limit>
+            <limit mimeFilenameRegex=".*\.sh">0</limit>
+            <limit mimeFilenameRegex=".*\.oa">0</limit>
+            <limit mimeFilenameRegex=".*">10485760</limit>
+        </sizeLimits>
+
+        <!-- Used to limit the number of concurrent file attachment downloads to prevent losing server performance
+            or using too many server resources (each download consumes an HTTP thread for the duration of the
+            download).
+        -->
+        <max-concurrent-downloads>10</max-concurrent-downloads>
+
+    </objectStore>
+
+
+    <management>
+        <jmx enabled="true" />
+    </management>
+
+    <stats>
+        <!-- Specify where statistics files should be kept. -->
+        <!-- Define the ACTIVITIES_STATS_DIR variable in WAS and then
+             update the statsDirectory field -->
+        <statsDirectory>${ACTIVITIES_STATS_DIR}</statsDirectory>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.data.totals.activities</field>
+                <field>activities.data.totals.entries</field>
+                <field>activities.data.totals.members</field>
+            </fields>
+            <file>Totals.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.requests.concurrent.max</field>
+                <field>activities.service.eventqueue.entries.current</field>
+                <field>activities.users.active.current</field>
+                <field>activities.users.active.max</field>
+            </fields>
+            <file>Current.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.fatals</field>
+                <field>activities.errors</field>
+                <field>activities.warnings</field>
+                <field>activities.service.virus.scan.found.count</field>
+                <field>activities.service.acf.badcontent.found</field>
+            </fields>
+            <file>Events.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.service.db.totals.Average</field>
+                <field>activities.service.api.totals.Average</field>
+                <field>activities.service.directoryprofile.totals.Average</field>
+                <field>activities.service.smtp.totals.Average</field>
+                <field>activities.service.trash.totals.Average</field>
+            </fields>
+            <file>Average.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.service.db.totals.Count</field>
+                <field>activities.service.api.totals.Count</field>
+                <field>activities.service.directoryprofile.totals.Count</field>
+                <field>activities.service.smtp.totals.Count</field>
+                <field>activities.service.trash.totals.Count</field>
+            </fields>
+            <file>Counts.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.service.contentstore.filesystem.upload.bytes</field>
+            </fields>
+            <file>AddedData.txt</file>
+            <samples>144</samples>
+        </stat>
+        <stat>
+            <fields>
+                <field>dates</field>
+                <field>activities.service.contentstore.filesystem.upload.Count</field>
+                <field>activities.service.contentstore.filesystem.download.Count</field>
+                <field>activities.service.contentstore.filesystem.remove.Count</field>
+            </fields>
+            <file>ContentStore.txt</file>
+            <samples>144</samples>
+        </stat>
+    </stats>
+
+   <!-- Define content that will be removed from activity data -->
+   <activeContentFilter enabled="true">
+      <mimeTypes>
+         <mimeType>text/html</mimeType>
+         <mimeType>application/xhtml+xml</mimeType>
+      </mimeTypes>
+   </activeContentFilter>
+
+
+    <PublishFile enabled="false" allowCustomServers="false" requireSSO="true">
+      <server>http://localhost:8080</server>
+      <server>http://localhost:8080</server>
+    </PublishFile>
+
+
+    <scheduledTasks>
+        <!-- cluster scoped jobs -->
+
+        <!-- TrashAutoPurgeJob - weekly on Sundays at 2:00AM  0 0 2 ? * SUN  -->
+        <task name="TrashAutoPurgeJob" description="Permanently removes Activities Trash"
+              interval="0 0 2 ? * SUN" startby=""
+              enabled="true" scope="cluster" type="class"
+              targetName="com.ibm.openactivities.jobs.TrashAutoPurgeJobWS"
+              mbeanMethodName="" serverName="unsupported" >
+              <!-- Specify the number of days that deleted content is left in the database as
+                   being soft deleted (trash view); Note: the trashRetentionInDays property value must be 1 or greater;
+                   if the value is less than 1 the trash will not be purged by this job -->
+              <args>
+                   <property name="trashRetentionInDays">90</property>
+              </args>
+        </task>
+
+        <!-- ActivityAutoCompleteJob - weekly on Sat at 11pm  -->
+        <task name="ActivityAutoCompleteJob" description="Automatically mark unmodified activities as completed"
+              interval="0 0 23 ? * SAT" startby=""
+              enabled="true" scope="cluster" type="class"
+              targetName="com.ibm.openactivities.jobs.AutoCompleteJobWS"
+              mbeanMethodName="" serverName="unsupported" >
+              <args>
+                   <!-- Activities not modified in this many days will be marked complete -->
+                   <property name="autoCompletionPeriod">90</property>
+                   <!-- Disable email notifications of future auto completions by setting this to false -->
+                   <property name="prenotification">true</property>
+              </args>
+        </task>
+
+        <!-- DatabaseRuntimeStats - every hour  -->
+        <task name="DatabaseRuntimeStats" description="Activities Database Statistics Collector Service"
+              interval="0 0 * * * ?" startby=""
+              enabled="true" scope="cluster" type="class"
+              targetName="com.ibm.openactivities.jobs.DatabaseStatisticsCollectorJobWS"
+              mbeanMethodName="" serverName="unsupported" >
+        </task>
+
+        <!-- local scoped jobs -->
+
+        <!-- DailyStats - every day @ 11 am -->
+        <task name="DailyStats" description="Activities Daily Statistic Collector Service"
+              interval="0 0 11 * * ?" startby=""
+              enabled="true" scope="local" type="class"
+              targetName="com.ibm.openactivities.jobs.StatsPersistJobWS"
+              mbeanMethodName="" serverName="unsupported" >
+        </task>
+
+        <!-- 30MinStats - every 30 min  -->
+        <task name="30MinStats" description="Activities 30 Minute Statistic Collector Service"
+              interval="0 0/30 * * * ?" startby=""
+              enabled="true" scope="local"  type="class"
+              targetName="com.ibm.openactivities.jobs.StatsPersistJobWS"
+              mbeanMethodName="" serverName="unsupported" >
+        </task>
+
+    </scheduledTasks>
+
+</config>

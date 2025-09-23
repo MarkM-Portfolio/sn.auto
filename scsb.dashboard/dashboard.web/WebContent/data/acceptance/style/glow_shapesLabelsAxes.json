@@ -1,0 +1,180 @@
+{
+  "data": [
+    {
+      "id": "otherPoints",
+      "fields": [
+        {"id": "pY"},
+        {"id": "pX"},
+        {
+          "id": "pLabelContent",
+          "categories": [
+            "Bigger",
+            "Words",
+            "Make",
+            "It",
+            "Easier",
+            "To",
+            "See",
+            "Glow"
+          ]
+        }
+      ],
+      "rows": [
+        [ 4, 2, 0 ],
+        [ 5, 3, 1 ],
+        [ 8, 4, 2 ],
+        [ 9, 5, 3 ],
+        [ 12, 6, 4 ],
+        [ 13, 7, 5 ],
+        [ 16, 8, 6 ],
+        [ 17, 9, 7 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 22, "tickDelta": 4}
+              ]
+            },
+            "axis": {
+              "lineStyle": {
+                "fill": "#999",
+                "stroke": {"width": 2},
+                "effect": {
+                  "glow": {"color": "#fff", "stdDev": 6}
+                }
+              },
+              "markStyle": {
+                "fill": "#999",
+                "stroke": {"width": 2},
+                "font": {"size": 18}
+              },
+              "tickStyle": {
+                "fill": "#fff",
+                "effect": {
+                  "glow": {"color": "#fff", "stdDev": 8}
+                },
+                "font": {"size": 32, "weight": "bold"}
+              }
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 10, "tickDelta": 1}
+              ]
+            },
+            "axis": {
+              "lineStyle": {
+                "fill": "#999",
+                "stroke": {"width": 2},
+                "effect": {
+                  "glow": {"color": "#fff", "stdDev": 6}
+                }
+              },
+              "markStyle": {
+                "fill": "#999",
+                "stroke": {"width": 2},
+                "font": {"size": 18}
+              },
+              "tickStyle": {
+                "fill": "#111",
+                "effect": {
+                  "glow": {"color": "#fff", "stdDev": 5}
+                },
+                "font": {"size": 18, "weight": "bold"}
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "pLabelContent"} ],
+              "style": {
+                "fill": "#6f6",
+                "effect": {
+                  "glow": {"color": "#0f0", "stdDev": 8}
+                },
+                "font": {"size": 30},
+                "location": "outside",
+                "padding": {"bottom": 50},
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "otherPoints"},
+          "position": [
+            {"field": {"$ref": "pY"}},
+            {"field": {"$ref": "pX"}}
+          ],
+          "style": {
+            "fill": "#faa",
+            "effect": {
+              "glow": {"color": "#f22", "stdDev": 16}
+            },
+            "size": 30
+          }
+        },
+        {
+          "type": "line",
+          "data": {"$ref": "otherPoints"},
+          "position": [
+            {"field": {"$ref": "pY"}},
+            {"field": {"$ref": "pX"}}
+          ],
+          "style": {
+            "fill": "#ffa",
+            "stroke": {"width": 4},
+            "effect": {
+              "glow": {"color": "#ff0", "stdDev": 8}
+            }
+          }
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "size": {"width": 800, "height": 600},
+  "titles": [
+    {
+      "type": "title",
+      "content": [ "An Inset Shadow Title" ],
+      "style": {
+        "fill": "#622",
+        "effect": {
+          "shadow": {
+            "color": "#999",
+            "dx": 0,
+            "dy": 1,
+            "stdDev": 1
+          }
+        },
+        "font": {"size": 50, "weight": "bold"},
+        "padding": {"bottom": 50, "top": 10},
+        "valign": "start"
+      }
+    }
+  ],
+  "version": "4.1",
+  "style": {
+    "fill": {
+      "type": "linear",
+      "angle": 270,
+      "colors": [
+        {"color": "#ccc", "offset": 0.0},
+        {"color": "#111", "offset": 0.2}
+      ]
+    },
+    "padding": 20
+  }
+}

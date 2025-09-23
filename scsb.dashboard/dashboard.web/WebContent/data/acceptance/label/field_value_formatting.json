@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "X",
+          "categories": [
+            "Worst",
+            "Poor",
+            "Fair",
+            "Good",
+            "Better",
+            "Best"
+          ]
+        },
+        {"id": "fY", "label": "Y"}
+      ],
+      "rows": [ [ 3, 2 ], [ 1, 0 ], [ 4, 4 ], [ 2, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"local": false},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [
+                {"$ref": "fY", "method": "label"}
+              ]
+            }
+          },
+          {
+            "scale": {"local": false},
+            "axis": {
+              "title": [
+                {"$ref": "fX", "method": "label"}
+              ]
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [
+                "row ",
+                {"$ref": "fX", "method": "row"},
+                "/",
+                {"$ref": "fX", "method": "count"},
+                " (",
+                {"$ref": "fY", "method": "label"},
+                "=",
+                {"$ref": "fY"},
+                ", ",
+                {"$ref": "fX", "method": "label"},
+                "=",
+                {"$ref": "fX"},
+                ")"
+              ],
+              "lineMinSize": 5,
+              "style": {
+                "fill": "blue",
+                "location": "outside",
+                "padding": 10,
+                "valign": "start"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "clip": "overlap",
+          "symbolStyle": {"fill": "red", "symbol": "square"},
+          "style": {
+            "fill": "black",
+            "outline": "black",
+            "size": 3
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "4.0",
+  "style": {"fill": "white"}
+}

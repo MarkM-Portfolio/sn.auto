@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S68                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2001, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xsd:schema targetNamespace="http://www.ibm.com/service-location"
+    xmlns="http://www.ibm.com/service-location"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <xsd:element name="serviceReference">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="anonymousLogin" type="anonymousLoginType" minOccurs="0" maxOccurs="1" form="qualified"/>
+                <xsd:element name="href" type="hrefType" minOccurs="0" maxOccurs="1" form="qualified"/>
+				<xsd:element name="searchScope" type="searchScopeType" minOccurs="0" maxOccurs="unbounded" form="qualified" />
+            </xsd:sequence>
+            <!--  <xsd:anyAttribute namespace="##any"/>-->
+            <xsd:attribute name="serviceName" type="serviceNames"
+                use="required" />
+            <xsd:attribute name="href" type="xsd:anyURI" use="optional" /> <!-- backwards compatibility with 2.0.1, should not be used in 2.5 -->
+            <xsd:attribute name="enabled" type="xsd:boolean"
+                use="optional" />
+            <xsd:attribute name="ssl_href" type="xsd:anyURI" use="optional" /> <!-- backwards compatibility with 2.0.1, should not be used 2.5 -->
+            <xsd:attribute name="ssl_enabled" type="xsd:boolean"
+                use="optional" />
+
+            <xsd:attribute name="feed_href" type="xsd:anyURI"
+                use="optional" />
+            <xsd:attribute name="feed_enabled" type="xsd:boolean"
+                use="optional" />
+            <xsd:attribute name="ssl_feed_href" type="xsd:anyURI"
+                use="optional" />
+            <xsd:attribute name="ssl_feed_enabled" type="xsd:boolean"
+                use="optional" />
+
+            <xsd:attribute name="sso_ltpa_token_enabled"
+                type="xsd:boolean" use="optional"/>
+            <xsd:attribute name="jaas_alias_auth_enabled"
+                type="xsd:boolean" use="optional"/>
+
+            <xsd:attribute name="waltz_profiles_integration_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="waltz_profiles_integration_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="waltz_profiles_integration_auth"
+                type="xsd:string" use="optional" />
+
+            <xsd:attribute name="profiles_directory_service_extension_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="profiles_directory_service_extension_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="profiles_directory_service_extension_auth"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="profiles_directory_service_extension_auth_alias"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="profiles_directory_service_extension_failover"
+                type="xsd:string" use="optional" />
+                
+            <xsd:attribute name="waltz_communities_integration_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="waltz_communities_integration_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="waltz_communities_integration_auth"
+                type="xsd:string" use="optional" />
+
+            <xsd:attribute name="communities_directory_service_extension_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="communities_directory_service_extension_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="communities_directory_service_extension_auth"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="communities_directory_service_extension_auth_alias"
+                type="xsd:string" use="optional" />
+
+            <xsd:attribute name="cognos_directory_service_extension_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="cognos_directory_service_extension_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="cognos_directory_service_extension_auth"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="cognos_directory_service_extension_auth_alias"
+                type="xsd:string" use="optional" />
+
+            <xsd:attribute name="lotuslive_directory_service_extension_enabled"
+                type="xsd:boolean" use="optional" />
+            <xsd:attribute name="lotuslive_directory_service_extension_href"
+                type="xsd:anyURI" use="optional" />
+            <xsd:attribute name="lotuslive_directory_service_extension_auth"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="lotuslive_directory_service_extension_auth_alias"
+                type="xsd:string" use="optional" />
+
+            <xsd:attribute name="waltz_ldap_group_membership_enabled"
+                type="xsd:boolean" use="optional" />
+
+            <xsd:attribute name="ldap_group_membership_directory_service_enabled"
+                type="xsd:boolean" use="optional" />
+
+            <xsd:attribute name="custom_user_id_attribute"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="custom_group_id_attribute"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="custom_display_name_attribute"
+                type="xsd:string" use="optional" />
+				
+            <xsd:attribute name="cache_index_capacity"
+                type="xsd:integer" use="optional"/>
+
+            <xsd:attribute name="provider_use_feed_enabled"
+                type="xsd:boolean" use="optional" />
+                
+            <xsd:attribute name="bootstrapHost"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="bootstrapPort"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="clusterName"
+                type="xsd:string" use="optional" />
+                
+            <xsd:attribute name="remoteServiceJndiName"
+                type="xsd:string" use="optional" />
+                
+            <xsd:attribute name="deployment_id"
+                type="xsd:NCName" use="optional" />
+
+            <!--  personTag attributes -->
+            <xsd:attribute name="person_card_service_url_pattern"
+                type="xsd:string" use="optional" />
+            <xsd:attribute name="person_card_service_name_js_eval"
+                type="xsd:string" use="optional" />
+
+            <!-- ACF config file location -->
+            <xsd:attribute name="acf_config_file" type="xsd:string" use="optional"/>
+            
+            <!-- SametimeProxy setting attributes -->
+            <xsd:attribute name="isConnectClient" type="xsd:boolean" use="optional" />
+            
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="serviceNames">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="activities" />
+            <xsd:enumeration value="bookmarklet" />
+            <xsd:enumeration value="blogs" />
+            <xsd:enumeration value="communities" />
+            <xsd:enumeration value="directory" />
+            <xsd:enumeration value="dogear" />
+            <xsd:enumeration value="personTag" />
+            <xsd:enumeration value="presenceAwareness" />
+            <xsd:enumeration value="profiles" />
+            <xsd:enumeration value="homepage" />
+            <xsd:enumeration value="quickr" />
+            <xsd:enumeration value="search" />
+            <xsd:enumeration value="wikis" />
+            <xsd:enumeration value="files" />
+            <xsd:enumeration value="global" />
+            <xsd:enumeration value="news" />
+            <xsd:enumeration value="opensocial" />
+            <xsd:enumeration value="opensocialLocked" />
+            <xsd:enumeration value="connectionsmail" />
+            <xsd:enumeration value="mobile" />
+            <xsd:enumeration value="forums" />
+            <xsd:enumeration value="moderation" />
+            <xsd:enumeration value="metrics" />
+            <xsd:enumeration value="cognos" />
+            <xsd:enumeration value="sand" />
+            <xsd:enumeration value="webresources" />
+            <xsd:enumeration value="sametimeProxy" />
+            <xsd:enumeration value="help" />
+            <xsd:enumeration value="mediaGallery" />
+            <xsd:enumeration value="oauth" />
+            <xsd:enumeration value="bss" />
+            <xsd:enumeration value="microblogging" />
+            <xsd:enumeration value="oauthprovider" />
+			<xsd:enumeration value="cre" /> 
+			<xsd:enumeration value="socialmail" /> 
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="anonymousLoginType">
+            <xsd:attribute name="enabled" type="xsd:boolean" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name ="hrefType">
+        <xsd:sequence>
+            <xsd:element name="hrefPathPrefix" type="xsd:string" minOccurs="0" maxOccurs="1" form="qualified"/>
+            <xsd:element name="static" type="staticHrefStrategy" minOccurs="0" maxOccurs="1" form="qualified"/>
+            <xsd:element name="dynamic" type="dynamicHrefStrategy" minOccurs="0" maxOccurs="1" form="qualified"/>
+            <xsd:element name="interService" type="interServiceHrefStrategy" minOccurs="0" maxOccurs="1" form="qualified"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="staticHrefStrategy">
+        <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+        <xsd:attribute name="ssl_href" type="xsd:anyURI" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="dynamicHrefStrategy">
+        <xsd:attribute name="strategy" type="xsd:string" use="required" />
+        <xsd:attribute name="ordinal" type="xsd:integer" use="optional" />
+    </xsd:complexType>
+  
+    <xsd:complexType name="interServiceHrefStrategy">
+        <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+    </xsd:complexType>
+
+	<xsd:complexType name="searchScopeType">
+		<xsd:sequence>
+			<xsd:element name="searchApplicationURL" type="hrefType" minOccurs="1" maxOccurs="1" form="qualified" />
+			<xsd:element name="searchScopeIconURL" type="hrefType" minOccurs="0" maxOccurs="1" form="qualified" />
+			<xsd:element name="searchScopeIconClass" type="xsd:string" minOccurs="0" maxOccurs="1" form="qualified" />
+			<xsd:element name="staticQueryText" type="xsd:string" minOccurs="0" maxOccurs="1" form="qualified" />
+		</xsd:sequence>
+		
+		<xsd:attribute name="scopeName" type="xsd:string" use="required" />
+		<xsd:attribute name="enabled" type="xsd:boolean" use="required" />
+		<xsd:attribute name="isGlobal" type="xsd:boolean" use="required" />
+		
+		<xsd:attribute name="bundleIdRef" type="xsd:string" use="optional" />
+		<xsd:attribute name="labelKey" type="xsd:string" use="optional" />
+	</xsd:complexType>
+
+</xsd:schema>

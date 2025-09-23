@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX"}, {"id": "fY"} ],
+      "rows": [ [ 1, 1 ], [ 10, 10 ], [ 100, 100 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "30%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {"gridStyle": {"fill": "gray"}}
+          },
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "title": [ "log" ]
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "symbolStyle": {"fill": "red"}
+        }
+      ]
+    },
+    {
+      "bounds": {"height": "30%", "top": "35%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {"gridStyle": {"fill": "gray"}}
+          },
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "method": "horizontal",
+              "title": [ "log horizontal" ]
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "symbolStyle": {"fill": "red"}
+        }
+      ]
+    },
+    {
+      "bounds": {"height": "30%", "top": "70%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"method": "log"} ]},
+            "axis": {"gridStyle": {"fill": "gray"}}
+          },
+          {
+            "scale": {"spans": [ {"method": "linear"} ]},
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "title": [ "linear" ]
+            }
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "symbolStyle": {"fill": "red"}
+        }
+      ]
+    }
+  ],
+  "size": {"width": 500, "height": 500},
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

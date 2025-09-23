@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2007, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- 5724-S68                                                          -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.ibm.com/connections/communities/communities-policy/1.0"
+	xmlns:tns="http://www.ibm.com/connections/communities/communities-policy/1.0"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+	<xs:annotation>
+		<xs:documentation>
+			Tango - IBM Tango Communities Licensed
+			Materials - Property of IBM. (C) Copyright IBM Corp. 2006
+			All Rights Reserved. US Government Users Restricted Rights -
+			Use, duplication or disclosure restricted by GSA ADP
+			Schedule Contract with IBM Corp.
+		</xs:documentation>
+	</xs:annotation>
+		
+	<xs:attributeGroup name="Common.Attributes">
+		<xs:annotation>
+			<xs:documentation>Attributes for _every_ element in TangoConfig</xs:documentation>
+		</xs:annotation>
+		<xs:anyAttribute namespace="##other"/>
+	</xs:attributeGroup>
+	
+	<xs:element name="config">
+		<xs:complexType>
+			<xs:sequence>
+					<xs:element name="policy" type="tns:policy" minOccurs="1" maxOccurs="1"/>
+					<xs:any namespace="##other" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="tns:Common.Attributes"/>
+ 	        	<xs:attribute name="id" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+ 
+  <xs:complexType name='policy'>
+   <xs:sequence>
+     <xs:element ref='tns:grant' minOccurs='0' maxOccurs="unbounded"/>
+   </xs:sequence>
+  </xs:complexType> 
+
+ <xs:element name='grant'>
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element ref='tns:principal' minOccurs='1' maxOccurs="1"/>
+     <xs:element ref='tns:permission' minOccurs='1' maxOccurs="unbounded"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='principal'>
+  <xs:complexType>
+   <xs:attribute name='class' use='required'/>
+   <xs:attribute name='name' use='required'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='permission'>
+  <xs:complexType>
+   <xs:attribute name='class' use='required'/>
+   <xs:attribute name='communityType' use='required'/>
+   <xs:attribute name='action' use='required'/>
+  </xs:complexType>
+ </xs:element>
+	
+</xs:schema>

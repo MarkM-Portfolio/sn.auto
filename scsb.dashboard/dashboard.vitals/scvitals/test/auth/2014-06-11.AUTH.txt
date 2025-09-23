@@ -1,0 +1,8 @@
+2014-06-11T01:43:10+0000 user sharonwhite01@bluebox.lotus.com (id=20132390, customerId=20132389) performed LOGIN with outcome SUCCESS
+2014-06-11T12:46:53+0000 user sharonwhite01@bluebox.lotus.com (id=20132390, customerId=20132389) performed LOGOUT with outcome SUCCESS
+2014-06-11T19:35:56+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGIN with outcome SUCCESS
+2014-06-11T19:36:48+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGIN with outcome SUCCESS
+2014-06-11T19:37:38+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGIN with outcome SUCCESS
+2014-06-11T19:39:31+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGIN with outcome SUCCESS
+2014-06-11T22:18:55+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGOUT with outcome SUCCESS
+2014-06-11T22:26:08+0000 user sharonwhite06@bluebox.lotus.com (id=20584961, customerId=20132389) performed LOGOUT with outcome SUCCESS

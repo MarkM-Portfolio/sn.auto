@@ -1,0 +1,36 @@
+/*body {padding-top:70px}*/
+.myDiv {padding:3px}
+.tab-content {padding-top:2px}
+/*.myBody {margin-left:120px;background:white}*/
+body {padding-top:100px}
+@media(min-width:1600px){
+	body{padding-top:50px}
+}
+/* #app0 {background:#005D99}
+#app1 {background:#009987}
+#app2 {background:#007527}
+#app3 {background:#CC8F00}
+#app4 {background:#D9631F}
+#app5 {background:#B01611}
+#app6 {background:#D93D9C}
+#app7 {background:#742299}
+#app8 {background:#1483C7}
+#app9 {background:#00B8A4}
+#app10 {background:#0E9425}
+#app11 {background:#EBB300}
+#app12 {background:#EB7D2A}
+#app13 {background:#D13838}
+#app14 {background:#F562BC}
+#app15 {background:#9A34C7}
+#app16 {background:#38B1F2}
+#app17 {background:#5FD4C5}
+#app18 {background:#4FBD4F}
+#app19 {background:#F5D118}
+#app20 {background:#F79F4A}
+#app21 {background:#EA5E5E}
+#app22 {background:#FF8CD3}
+#app23 {background:#C462F5} */
+.myBox {padding:6px}
+/*body {padding-top:50px;height:100%}
+.sidebar {width:120px; height:inherit; position:absolute; background:#222222}
+.myRow{padding-left:0px;padding-right:0px;margin-left:0px;margin-right:0px}*/

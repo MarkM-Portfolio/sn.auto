@@ -1,0 +1,441 @@
+{
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection",
+            "Personal Accessories"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store", "Event" ]
+        },
+        {"id": "Quantity", "label": "Quantity"}
+      ],
+      "rows": [
+        [ 0, 0, 15 ],
+        [ 0, 1, 17 ],
+        [ 0, 2, 16 ],
+        [ 0, 3, 12 ],
+        [ 1, 0, 24 ],
+        [ 1, 1, 22 ],
+        [ 1, 2, 26 ],
+        [ 1, 3, 19 ],
+        [ 2, 0, 28 ],
+        [ 2, 1, 16 ],
+        [ 2, 2, 18 ],
+        [ 2, 3, 14 ],
+        [ 3, 0, 14 ],
+        [ 3, 1, 18 ],
+        [ 3, 2, 14 ],
+        [ 3, 3, 12 ],
+        [ 4, 0, 12 ],
+        [ 4, 1, 15 ],
+        [ 4, 2, 13 ],
+        [ 4, 3, 10 ]
+      ]
+    },
+    {
+      "id": "summaryData",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "Order method"},
+          "output": {"id": "summary_OrderMethod"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "summary_ProductLine"},
+          "input": {"$ref": "Product line"}
+        },
+        {
+          "field": {"id": "summary_Quantity"},
+          "input": {"$ref": "Quantity"}
+        },
+        {
+          "field": {"id": "maxQuantity"},
+          "input": {"$ref": "Quantity"},
+          "parameters": {
+            "replicate": true,
+            "summaryFunction": "max"
+          }
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "sortedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "OrderMethod_final"},
+          "input": {"$ref": "summary_OrderMethod"}
+        },
+        {
+          "field": {"id": "ProductLine_final"},
+          "input": {"$ref": "summary_ProductLine"}
+        },
+        {
+          "field": {"id": "Quantity_final"},
+          "input": {"$ref": "summary_Quantity"}
+        },
+        {
+          "field": {"id": "maxQuantity_sorted"},
+          "input": {"$ref": "maxQuantity"},
+          "parameters": {"ascending": false},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "summaryData"}
+    },
+    {
+      "id": "line_summaryData",
+      "type": "summary",
+      "group": [
+        {
+          "input": {"$ref": "Order method"},
+          "output": {"id": "line_summary_OrderMethod"}
+        }
+      ],
+      "output": [
+        {
+          "field": {"id": "line_summary_ProductLine"},
+          "input": {"$ref": "Product line"}
+        },
+        {
+          "field": {"id": "line_summary_Quantity"},
+          "input": {"$ref": "Quantity"}
+        },
+        {
+          "field": {"id": "line_maxQuantity"},
+          "input": {"$ref": "Quantity"},
+          "parameters": {"summaryFunction": "max"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    },
+    {
+      "id": "line_sortedData",
+      "type": "order",
+      "output": [
+        {
+          "field": {"id": "line_OrderMethod_final"},
+          "input": {"$ref": "line_summary_OrderMethod"}
+        },
+        {
+          "field": {"id": "line_ProductLine_final"},
+          "input": {"$ref": "line_summary_ProductLine"}
+        },
+        {
+          "field": {"id": "line_Quantity_final"},
+          "input": {"$ref": "line_summary_Quantity"}
+        },
+        {
+          "field": {"id": "line_maxQuantity_sorted"},
+          "input": {"$ref": "line_maxQuantity"},
+          "parameters": {"ascending": false},
+          "role": "sort"
+        }
+      ],
+      "source": {"$ref": "line_summaryData"}
+    },
+    {
+      "id": "data2",
+      "type": "integrate",
+      "input": [
+        {
+          "field": {"$ref": "line_OrderMethod_final"},
+          "role": "x"
+        },
+        {
+          "field": {"$ref": "line_maxQuantity_sorted"},
+          "role": "y"
+        }
+      ],
+      "output": [
+        {"field": {"id": "yc"}, "role": "y"},
+        {"field": {"id": "y0"}, "role": "y0"},
+        {"field": {"id": "y1"}, "role": "y1"},
+        {
+          "field": {"id": "xc", "unit": "categorical"},
+          "parameters": {"sortCategories": false},
+          "role": "x"
+        },
+        {
+          "field": {"id": "z"},
+          "input": {"$ref": "line_ProductLine_final"}
+        }
+      ],
+      "source": {"$ref": "line_sortedData"}
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": "50%", "top": "0%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": [
+              {
+                "gridStyle": {
+                  "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+                },
+                "lineStyle": {
+                  "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+                },
+                "markStyle": {
+                  "fill": {"a": 1, "h": 0, "l": 0, "s": 0}
+                },
+                "tickStyle": {
+                  "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                  "font": {
+                    "family": "Arial",
+                    "size": "10.5pt"
+                  },
+                  "padding": 3
+                },
+                "title": [ "Revenue" ],
+                "titleStyle": {
+                  "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                  "font": {
+                    "family": "Arial",
+                    "size": "10.5pt"
+                  }
+                }
+              },
+              {"tickAs": "percentage"}
+            ]
+          },
+          {
+            "scale": {
+              "categoryStructure": {"gap": "5%"},
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Order Channel" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {}
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}},
+            {"value": "50%"}
+          ],
+          "symbolStyle": {"fill": "red"},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "y1"} ],
+              "modifies": {"part": "symbol"}
+            }
+          ]
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity_final"}},
+            {"field": {"$ref": "OrderMethod_final"}},
+            {"field": {"$ref": "ProductLine_final"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "ProductLine_final"},
+              "modifies": "both",
+              "palette": [
+                {"h": 0.5805, "s": 0.5, "v": 0.85},
+                {"h": 0.683, "s": 0.25, "v": 0.85},
+                {"h": 0.2194, "s": 0.45, "v": 0.75},
+                {"h": 0.1194, "s": 0.7, "v": 0.85},
+                {"h": 0.0666, "s": 0.63, "v": 0.85}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "ProductLine_final"},
+                "\n",
+                {"$ref": "Quantity_final"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.3},
+            "width": "90%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ]
+    },
+    {
+      "bounds": {"height": "50%", "top": "50%"},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": [
+              {
+                "gridStyle": {
+                  "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+                },
+                "lineStyle": {
+                  "fill": {"a": 0.0, "h": 0, "l": 0, "s": 0}
+                },
+                "markStyle": {
+                  "fill": {"a": 1, "h": 0, "l": 0, "s": 0}
+                },
+                "tickStyle": {
+                  "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                  "font": {
+                    "family": "Arial",
+                    "size": "10.5pt"
+                  },
+                  "padding": 3
+                },
+                "title": [ "Revenue" ],
+                "titleStyle": {
+                  "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                  "font": {
+                    "family": "Arial",
+                    "size": "10.5pt"
+                  }
+                }
+              },
+              {"tickAs": "percentage"}
+            ]
+          },
+          {
+            "scale": {
+              "categoryStructure": {"gap": "5%"},
+              "spans": [ {"method": "data"} ]
+            },
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Order Channel" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {}
+        ],
+        "transforms": [ {"type": "cluster"} ]
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "data2"},
+          "position": [
+            {"field": {"$ref": "y1"}},
+            {"field": {"$ref": "xc"}},
+            {"value": 2}
+          ],
+          "symbolStyle": {"fill": "red"},
+          "tooltip": [
+            {
+              "content": [ {"$ref": "y1"} ],
+              "modifies": {"part": "symbol"}
+            }
+          ]
+        },
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity_final"}},
+            {"field": {"$ref": "OrderMethod_final"}},
+            {"field": {"$ref": "ProductLine_final"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "ProductLine_final"},
+              "modifies": "both",
+              "palette": [
+                {"h": 0.5805, "s": 0.5, "v": 0.85},
+                {"h": 0.683, "s": 0.25, "v": 0.85},
+                {"h": 0.2194, "s": 0.45, "v": 0.75},
+                {"h": 0.1194, "s": 0.7, "v": 0.85},
+                {"h": 0.0666, "s": 0.63, "v": 0.85}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "ProductLine_final"},
+                "\n",
+                {"$ref": "Quantity_final"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.9},
+            "stroke": {"width": 0.3},
+            "width": "90%",
+            "outline": {"dValue": -0.25}
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 750, "height": 500},
+  "version": "4.1",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

@@ -1,0 +1,143 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {
+          "id": "direction",
+          "categories": [ "oneway", "twoway", "backwards" ]
+        }
+      ],
+      "rows": [
+        [ 0, 2, 0 ],
+        [ 0, 1, 0 ],
+        [ 0, 6, 0 ],
+        [ 0, 7, 0 ],
+        [ 0, 4, 0 ],
+        [ 5, 7, 0 ],
+        [ 5, 6, 0 ],
+        [ 5, 4, 0 ],
+        [ 5, 3, 0 ],
+        [ 5, 2, 0 ],
+        [ 5, 1, 0 ],
+        [ 5, 0, 0 ],
+        [ 0, 3, 0 ],
+        [ 2, 0, 0 ],
+        [ 2, 1, 0 ],
+        [ 2, 2, 0 ],
+        [ 2, 3, 0 ],
+        [ 2, 4, 0 ],
+        [ 0, 5, 0 ],
+        [ 8, 10, 0 ],
+        [ 8, 9, 0 ],
+        [ 8, 14, 0 ],
+        [ 8, 15, 0 ],
+        [ 8, 12, 0 ],
+        [ 13, 15, 0 ],
+        [ 13, 14, 0 ],
+        [ 13, 12, 0 ],
+        [ 13, 11, 0 ],
+        [ 13, 10, 0 ],
+        [ 13, 9, 0 ],
+        [ 13, 8, 0 ],
+        [ 8, 11, 0 ],
+        [ 10, 8, 0 ],
+        [ 10, 9, 0 ],
+        [ 10, 10, 0 ],
+        [ 10, 11, 0 ],
+        [ 10, 12, 0 ],
+        [ 8, 13, 0 ],
+        [ 13, 2, 0 ],
+        [ 13, 3, 0 ],
+        [ 10, 5, 0 ],
+        [ 13, 0, 0 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "name"},
+        {"id": "dummy"},
+        {"id": "layer"}
+      ],
+      "rows": [
+        [ 0, 0, 0 ],
+        [ 1, 0, 0 ],
+        [ 2, 0, 0 ],
+        [ 3, 0, 0 ],
+        [ 4, 0, 0 ],
+        [ 5, 0, 0 ],
+        [ 6, 0, 0 ],
+        [ 7, 0, 0 ],
+        [ 8, 0, 1 ],
+        [ 9, 0, 1 ],
+        [ 10, 0, 1 ],
+        [ 11, 0, 1 ],
+        [ 12, 0, 1 ],
+        [ 13, 0, 1 ],
+        [ 14, 0, 1 ],
+        [ 15, 0, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "name"} ]} ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "name"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "layerPlacement": "centered",
+            "method": "dag",
+            "nodePlacement": "symmetric",
+            "to": {"$ref": "to"}
+          },
+          "style": {
+            "width": 50,
+            "height": 50,
+            "symbol": "rect"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "name"},
+            "attachmentPoint": "center",
+            "from": {"$ref": "from"},
+            "method": "link",
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "direction"},
+              "palette": [
+                {"endArrow": "arrow"},
+                {"endArrow": "arrow", "startArrow": "arrow"},
+                {"startArrow": "arrow"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.2},
+            "stroke": {"width": 3.0},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ]
+    }
+  ],
+
+  "version": "1.3"
+}

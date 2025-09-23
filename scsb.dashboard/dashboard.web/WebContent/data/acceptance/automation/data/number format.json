@@ -1,0 +1,181 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "no format"},
+        {
+          "id": "prefix suffix",
+          "format": {"prefix": "$", "suffix": "(US)"}
+        },
+        {
+          "id": "no decimal",
+          "format": {"numericPattern": "$#$"}
+        },
+        {
+          "id": "two decimals",
+          "format": {"numericPattern": "#.00"}
+        },
+        {
+          "id": "grouping",
+          "format": {"numericPattern": "#,###.00"}
+        }
+      ],
+      "rows": [
+        [ 1000.123, 1000.123, 1000.123, 1000.123, 1000.123 ],
+        [ 1001, 1001, 1001, 1001, 1001 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"height": 80, "top": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [ "no format" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "no format"}} ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    },
+    {
+      "bounds": {"height": 100, "top": 90},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "method": "stagger",
+              "preferredSize": {"preferred": 50},
+              "title": [ "prefix suffix" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "prefix suffix"}}
+          ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    },
+    {
+      "bounds": {"height": 80, "top": 200},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [ "no decimal" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "no decimal"}} ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    },
+    {
+      "bounds": {"height": 80, "top": 290},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [ "two decimals" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "two decimals"}}
+          ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    },
+    {
+      "bounds": {"height": 80, "top": 380},
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [ "grouping" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "grouping"}} ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    }
+  ],
+  "size": {"width": 600, "height": 460},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

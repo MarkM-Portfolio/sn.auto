@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="SearchOnPremise" parallel="tests">
+  <parameter name="IMPERSONATION_ENABLED" value="false"/>
+  <parameter name="DEPLOYMENT_TYPE" value="ON_PREMISE"/>
+  <parameter name="AUTHENTICATION" value="basic"/>
+  <parameter name="MODERATION_ENABLED" value="false"/>
+  <parameter name="VMODEL_ENABLED" value="false"/>
+  <parameter name="SERVER_URL" value="https://lcauto113.cnx.cwp.pnp-hcl.com"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  <test thread-count="1" name="SetUp" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.common.TestNGEnv"/>
+    </classes>
+  </test> <!-- SetUp -->
+  <test thread-count="1" name="SearchSetup" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.searchsetup"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchWikiSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchCommunitiesSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchFilesSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchForumsSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchActivitiesSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchDogearSetup"/>
+      <class name="com.ibm.lconn.automation.framework.services.searchsetup.SearchBlogsSetup"/>
+    </classes>
+  </test> <!-- SearchSetup -->
+  <test thread-count="1" name="SearchRestAPITestSuiteRunOnPremise" parallel="tests">
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.SearchRestAPITestSuiteRunOnPremise"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.SearchServiceBasicTestOnPremise"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.SearchFileExtractionBasicTestOnPremise"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.SearchServiceACLTestOnPremise"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.QuickResultsSanityTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderBasicTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderApiParametersLimitsTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderAuthentications"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderAdditionalFieldsTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderSearchFieldsTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderAccentCharTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderCJKCharTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderQueryTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderEmailNameParamTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.on.premise.only.PeopleFinderPhoneticTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.PeopleFinderResponseTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.EventTrackerMetricsListenerTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.EventTrackerAnonymousTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceBasicTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceCommunityTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceACLTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceStartParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServicePageParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServicePageSizeParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceScopeParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSortKeyParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSortOrderParameterTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceProfilesTest"/>
+      <class name="com.ibm.lconn.automation.framework.search.rest.api.tests.cloud.and.on.premise.SearchServiceSocialParameterTest"/>
+    </classes>
+  </test> <!-- SearchRestAPITestSuiteRunOnPremise -->
+  <test thread-count="1" name="Basic Search" parallel="tests">
+    <packages>
+      <package name="com.ibm.lconn.automation.framework.services.search"/>
+    </packages>
+    <classes>
+      <class name="com.ibm.lconn.automation.framework.services.search.SearchBasicTests"/>
+    </classes>
+  </test> <!-- Basic Search -->
+</suite> <!-- SearchOnPremise -->

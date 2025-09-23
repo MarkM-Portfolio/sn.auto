@@ -1,0 +1,204 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {
+          "id": "fTime_Testing_lower",
+          "label": "Time Testing lower"
+        },
+        {
+          "id": "fTime_Testing_upper",
+          "label": "Time Testing upper"
+        },
+        {
+          "id": "fNumber_of_Records",
+          "label": "Number of Records"
+        },
+        {
+          "id": "fSkewness_highlight",
+          "label": "Skewness highlight"
+        },
+        {"id": "fOutlier_range", "label": "Outlier range"},
+        {"id": "fMidPoint", "label": "MidPoint"},
+        {
+          "id": "fType",
+          "label": "Type",
+          "categories": [ "Target" ]
+        }
+      ],
+      "rows": [
+        [ 2, 10.43, 17, 0, 0, 6.215, 0 ],
+        [ 10.43, 18.25, 16, 0, 0, 14.34, 0 ],
+        [ 18.25, 26.08, 19, 0, 0, 22.165, 0 ],
+        [ 26.08, 33.9, 7, 0, 0, 29.99, 0 ],
+        [ 33.9, 41.73, 11, 1, 0, 37.815, 0 ],
+        [ 49.56, 57.38, 4, 1, 0, 53.47, 0 ],
+        [ 57.38, 65.21, 2, 1, 0, 61.295, 0 ],
+        [ 73.03, 80.86, 1, 1, 0, 76.945, 0 ],
+        [ 96.51, 104.34, 2, 1, 1, 100.425, 0 ],
+        [ 112.16, 120, 2, 1, 1, 116.08, 0 ]
+      ]
+    },
+    {
+      "id": "normal",
+      "source": {"$ref": "data1"},
+      "type": "distribution.normal",
+      "input": [
+        {"field": {"$ref": "fMidPoint"}, "role": "x"},
+        {
+          "field": {"$ref": "fNumber_of_Records"},
+          "role": "weight"
+        }
+      ],
+      "output": [
+        {"field": {"id": "kX"}, "role": "x"},
+        {"field": {"id": "kY"}, "role": "y"}
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                },
+                "padding": 5
+              },
+              "title": [ {"$ref": "fNumber_of_Records"} ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {
+                "fill": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+              },
+              "markStyle": {},
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": {"bottom": 3, "top": 3}
+              },
+              "title": [ "Time Testing" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "data": {"$ref": "data1"},
+          "position": [
+            {"field": {"$ref": "fNumber_of_Records"}},
+            {"field": {"$ref": "fMidPoint"}}
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 180,
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.45,
+                    "h": 0.68,
+                    "l": 0.47,
+                    "s": 0.26
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.15,
+                    "dValue": 0.6,
+                    "h": 0.68,
+                    "l": 0.47,
+                    "s": 0.26
+                  },
+                  "offset": 0.35
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.2,
+                    "dValue": -0.1,
+                    "h": 0.68,
+                    "l": 0.47,
+                    "s": 0.26
+                  },
+                  "offset": 0.65
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.3,
+                    "dValue": -0.05,
+                    "h": 0.68,
+                    "l": 0.47,
+                    "s": 0.26
+                  },
+                  "offset": 0.9
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.1,
+                    "dValue": -0.25,
+                    "h": 0.68,
+                    "l": 0.47,
+                    "s": 0.26
+                  },
+                  "offset": 1
+                }
+              ]
+            },
+            "width": "100%",
+            "outline": "black"
+          }
+        },
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "kY"}},
+            {"field": {"$ref": "kX"}}
+          ],
+          "style": {"fill": "gold", "stroke": {"width": 3}}
+        }
+      ],
+      "style": {
+        "fill": {"b": 255, "g": 255, "r": 255},
+        "outline": "black",
+        "padding": 0
+      }
+    }
+  ],
+  "version": "1.2"
+}

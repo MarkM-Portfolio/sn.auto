@@ -1,0 +1,216 @@
+{
+	"version": "1.2",
+	
+	"data" : [
+		{
+			
+			"id" : "source",
+			
+			"fields" : [
+				{
+					"id" : "fX",
+					"label" : "Length"
+				},
+				{
+					"id" : "fY",
+					"label" : "Price"
+				},
+				{
+					
+					"id" : "store",
+					
+					"label" : "Store",
+					
+					"categories" : [
+						
+						"California",
+						
+						"Illinois",
+						
+						"New York",
+						
+						"Texas"
+						
+					]
+					
+				}
+				
+			],
+			
+			"rows" : [
+				
+				[185, 16, 3],
+				
+				[495, 30, 1],
+				
+				[446, 10.1, 0]
+				
+			]
+			
+		}
+		
+	],
+	
+	"grammar" : [
+		{
+			
+			"bounds" : {
+				"width" : "80%",
+				"left" : "0%"
+			},
+			
+			"coordinates" : {
+				
+				"dimensions" : [
+					{
+						
+						"scale" : {
+							"spans" : [{
+									"fit" : "exact"
+								}
+							]
+						},
+						
+						"axis" : {
+							"gridStyle" : {
+								"fill" : "gray"
+							}
+						}
+						
+					},
+					{
+						"axis" : {}
+						
+					}
+					
+				],
+				
+				"style" : {
+					"fill" : "black"
+				}
+				
+			},
+			
+			"elements" : [
+				{
+					
+					"type" : "point",
+					
+					"position" : [
+						{
+							"field" : {
+								"$ref" : "fY"
+							}
+						},
+						{
+							"field" : {
+								"$ref" : "store"
+							}
+						}
+						
+					],
+					
+					"color" : [
+						{
+							
+							"id" : "c",
+							
+							"field" : {
+								"$ref" : "fY"
+							},
+							
+							"scale" : {
+								
+								"local" : true,
+								
+								"spans" : [{
+										"fit" : "exact"
+									}
+								]
+								
+							},
+							
+							"mapping" : [
+								{
+									"color" : "green",
+									"offset" : 0
+								},
+								{
+									"color" : "cyan",
+									"offset" : 1
+								}
+								
+							]
+							
+						}
+						
+					],
+					
+					"style" : {
+						
+						"fill" : "black",
+						
+						"outline" : "black",
+						
+						"size" : 30
+						
+					}
+					
+				}
+				
+			],
+			
+			"style" : {
+				"fill" : "black",
+				"outline" : "black",
+				"stroke" : { "width": 2 }
+			}
+			
+		}
+		
+	],
+	
+	"legends" : [
+		{
+			
+			"bounds" : {
+				"width" : "20%",
+				"right" : "100%"
+			},
+			
+			"content" : [
+				{
+					
+					"aesthetics" : [{
+							"aesthetic" : {
+								"$ref" : "c"
+							}
+						}
+					],
+					
+					"local" : true
+					
+				}
+				
+			],
+			
+			"style" : {
+				"fill" : "black",
+				"outline" : "black",
+				"stroke" : { "width": 2 }
+			}
+			
+		}
+		
+	],
+	
+	"size" : {
+		"width" : 400,
+		"height" : 400
+	},
+	
+	"style" : {
+		"fill" : "red"
+	}
+	
+}

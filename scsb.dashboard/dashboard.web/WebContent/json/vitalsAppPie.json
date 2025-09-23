@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "categories": [  ],
+          "format": {
+            "fitMethod": "none",
+            "noSpaceFormat": {"pattern": "..."}
+          }
+        },
+        {"id": "uhits", "label": "Unique Hits"},
+        {"id": "hits", "label": "Total Hits"}
+      ],
+      "rows": [  ]
+    },
+    {
+      "id": "percentified",
+      "type": "percent",
+      "group": [  ],
+      "output": [
+        {
+          "field": {"id": "fName"},
+          "input": {"$ref": "name"}
+        },
+        {
+          "field": {
+            "id": "fuhits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "uhits"},
+          "parameters": {"summaryFunction": "percent"}
+        },
+        {
+          "field": {
+            "id": "fhits",
+            "format": {"numericPattern": "#.#"}
+          },
+          "input": {"$ref": "hits"},
+          "parameters": {"summaryFunction": "percent"}
+        }
+      ],
+      "source": {"$ref": "data"}
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": true, "spans": [  ]}}
+        ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {
+              "CCW": true,
+              "diameter": {"preferred": "80%"},
+              "startAngle": 90
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fName"} ],
+              "lineStyle": {},
+              "visibility": {
+                "field": {"$ref": "fhits"},
+                "mapping": [
+                  {"at": 0, "visible": false},
+                  {"at": 1, "visible": true},
+                  {"at": 2, "visible": true}
+                ]
+              },
+              "style": {
+                "align": "start",
+                "font": {"family": "Arial"},
+                "location": "callout",
+                "padding": 3,
+                "size": 0,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "fhits"}} ],
+          "color": [
+            {
+              "field": {"$ref": "fName"},
+              "scale": {"local": false},
+              "palette": [
+                "#005D99",
+                "#009987",
+                "#007527",
+                "#CC8F00",
+                "#D9631F",
+                "#B01611",
+                "#D93D9C",
+                "#742299",
+                "#1483C7",
+                "#00B8A4",
+                "#0E9425",
+                "#EBB300",
+                "#EB7D2A",
+                "#D13838",
+                "#F562BC",
+                "#9A34C7",
+                "#38B1F2",
+                "#5FD4C5",
+                "#4FBD4F",
+                "#F5D118",
+                "#F79F4A",
+                "#EA5E5E",
+                "#FF8CD3",
+                "#C462F5"
+              ]
+            }
+          ],
+          "meta": [
+            {"field": {"$ref": "fName"}, "key": "appName"}
+          ],
+          "size": [ {"field": {"$ref": "fhits"}} ],
+          "tooltip": [
+            {"content": [ {"$ref": "fhits"}, "%" ]}
+          ]
+        }
+      ],
+      "labelCollisionMethod": "none"
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

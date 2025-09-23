@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "time",
+          "categories": [
+            "time 1",
+            "time 2",
+            "time 3",
+            "time 4",
+            "time 5"
+          ]
+        },
+        {
+          "id": "legend",
+          "categories": [
+            "Legend 1",
+            "Legend 2",
+            "Legend 3",
+            "Legend 4",
+            "Legend 5",
+            "Legend 6",
+            "Legend 7"
+          ]
+        },
+        {"id": "value"}
+      ],
+      "rows": [
+        [ 0, 0, 25 ],
+        [ 0, 1, 45 ],
+        [ 0, 2, 25 ],
+        [ 0, 3, 15 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "value"}},
+            {"field": {"$ref": "time"}}
+          ],
+          "color": [
+            {"id": "barColor", "field": {"$ref": "legend"}}
+          ]
+        }
+      ],
+      "style": {
+        "fill": "white",
+        "stroke": {"width": 4},
+        "outlineMethod": "inside"
+      }
+    }
+  ],
+  "legendPosition": "right",
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "barColor"}} ],
+      "boundsStyle": {
+        "fill": "white",
+        "stroke": {"width": 4},
+        "outline": "red",
+        "outlineMethod": "inside"
+      },
+      "location": {"height": "50%"},
+      "title": [  ],
+      "titleStyle": {}
+    }
+  ],
+  "size": {"width": 500, "height": 300},
+  "version": "1.3",
+  "style": {
+    "fill": "cyan",
+    "stroke": {"width": 4},
+    "outline": "lightgreen",
+    "outlineMethod": "inside",
+    "padding": 10
+  }
+}

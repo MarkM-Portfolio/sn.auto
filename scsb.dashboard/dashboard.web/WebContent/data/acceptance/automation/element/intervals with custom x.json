@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {
+          "id": "store",
+          "label": "Store",
+          "categories": [
+            "California",
+            "Illinois",
+            "New York",
+            "Texas"
+          ]
+        },
+        {"id": "min"},
+        {"id": "max"}
+      ],
+      "rows": [
+        [ 0, 0, 100 ],
+        [ 1, 20, 50 ],
+        [ 2, -100, -80 ],
+        [ 3, -40, 30 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "100%",
+        "left": "0%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": 40, "fit": "exact"} ]
+            },
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "max"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "clip": "none",
+          "color": [ {"field": {"$ref": "store"}} ],
+          "style": {"fill": "yellow", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white", "padding": {"bottom": 400}}
+    },
+    {
+      "bounds": {
+        "width": "50%",
+        "height": "100%",
+        "left": "50%",
+        "top": "0%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"min": -20, "fit": "exact"} ]
+            },
+            "axis": {
+              "gridStyle": {"fill": "gray"},
+              "markStyle": {}
+            }
+          },
+          {"axis": {"markStyle": {}}}
+        ],
+        "style": {"fill": "lightGray"}
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "max"}},
+            {"field": {"$ref": "store"}}
+          ],
+          "clip": "none",
+          "color": [ {"field": {"$ref": "store"}} ],
+          "style": {"fill": "yellow", "outline": "black"}
+        }
+      ],
+      "style": {"fill": "white", "padding": {"bottom": 400}}
+    }
+  ],
+  "size": {"width": 800, "height": 800},
+  "version": "1.2"
+}

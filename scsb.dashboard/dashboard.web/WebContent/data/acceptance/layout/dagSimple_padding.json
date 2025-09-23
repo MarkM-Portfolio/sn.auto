@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [ {"id": "from"}, {"id": "to"} ],
+      "rows": [ [ 0, 1 ], [ 0, 2 ], [ 3, 2 ] ]
+    },
+    {
+      "id": "nodes",
+      "fields": [ {"id": "id"} ],
+      "rows": [ [ 0 ], [ 1 ], [ 2 ], [ 3 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+      },
+      "elements": [
+        {
+          "type": "point",
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "method": "dag",
+            "orientation": "left-to-right",
+            "padding": {
+              "bottom": 75,
+              "left": 25,
+              "right": 75,
+              "top": 25
+            },
+            "to": {"$ref": "to"}
+          },
+          "style": {
+            "width": 0,
+            "height": 0,
+            "symbol": {
+              "shape": [ {"x": 0, "y": 0, "r": 25} ]
+            }
+          }
+        }
+      ],
+      "style": {"fill": "white", "padding": 0}
+    },
+    {
+      "bounds": {
+        "width": 150,
+        "height": 150,
+        "left": 25,
+        "top": 25
+      },
+      "coordinates": {
+      },
+      "style": {"fill": "transparent", "outline": "red"}
+    }
+  ],
+  "size": {"width": 250, "height": 250},
+  "version": "2.0"
+}

@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "ID"},
+        {
+          "id": "K",
+          "categories": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unit": "categorical"
+        }
+      ],
+      "rows": [
+        [ 0, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "positioning": {
+            "id": {"$ref": "ID"},
+            "method": "dag"
+          },
+          "symbol": [
+            {
+              "field": {"$ref": "K"},
+              "palette": [
+                "plus",
+                "triangle",
+                "triangle"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "size": {"width": 600, "height": 400},
+  "version": "1.2"
+}

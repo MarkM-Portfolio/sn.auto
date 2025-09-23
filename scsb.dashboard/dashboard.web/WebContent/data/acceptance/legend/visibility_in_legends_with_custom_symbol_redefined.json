@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "x",
+          "label": "ABC",
+          "categories": [ "a", "b", "c" ]
+        },
+        {
+          "id": "y",
+          "label": "DE",
+          "categories": [ "d", "e" ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 0 ],
+        [ 2, 0 ],
+        [ 0, 1 ],
+        [ 1, 1 ],
+        [ 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "visibility": [
+            {"id": "visibility", "field": {"$ref": "x"}}
+          ],
+          "style": {
+            "width": 30,
+            "height": 30,
+            "outline": "black",
+            "symbol": "circle"
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "itemStyle": {
+        "padding": {"left": 5, "right": 5, "top": 5},
+        "size": 30,
+        "symbol": {
+          "shape": [
+            {
+              "x": "50%",
+              "y": "0%",
+              "r": "18%",
+              "style": {"fill": "red"}
+            },
+            {
+              "x": "50%",
+              "y": "35%",
+              "r": "18%",
+              "style": {"fill": "yellow"}
+            },
+            {
+              "x": "50%",
+              "y": "70%",
+              "r": "18%",
+              "style": {"fill": "green"}
+            }
+          ]
+        }
+      },
+      "title": [ "Symbol should be traffic lights" ]
+    }
+  ],
+  "version": "2.0"
+}

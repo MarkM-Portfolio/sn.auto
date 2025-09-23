@@ -1,0 +1,2 @@
+2014-06-19T09:51:26+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed USER_JOIN on object (type=MEETING, id=7628-0613, name="7628-0613", customerId=20669136) with outcome SUCCESS (isAnonymous="false")
+2014-06-19T10:03:23+0000 user amyjones01@ivthouse.com (id=20063306, customerId=20063304) performed USER_LEAVE on object (type=MEETING, id=7628-0613, name="7628-0613", customerId=20669136) with outcome SUCCESS (isAnonymous="false")

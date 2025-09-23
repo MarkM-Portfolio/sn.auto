@@ -1,0 +1,185 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Categories",
+          "categories": [
+            "Strongly disagree",
+            "Disagree",
+            "Neither agree nor disagree",
+            "Agree",
+            "Strongly agree"
+          ]
+        },
+        {"id": "fY", "label": "Value"},
+        {
+          "id": "field",
+          "label": "Field",
+          "categories": [
+            "Overall_Management_a_My_department_GV1",
+            "Performance_a_I_understand_w_GV1"
+          ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 0, 43, 0 ],
+        [ 0, 56, 1 ],
+        [ 1, 57, 0 ],
+        [ 1, 54, 1 ],
+        [ 2, 41, 0 ],
+        [ 2, 37, 1 ],
+        [ 3, 58, 0 ],
+        [ 3, 50, 1 ],
+        [ 4, 53, 0 ],
+        [ 4, 53, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 190, "g": 190, "r": 190},
+                "stroke": {"width": 1}
+              },
+              "preferredSize": {"preferred": "50%%"},
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12
+                }
+              },
+              "title": [
+                "Overall_Management_a_My_department_GV1 vs Performance_a_I_understand_w_GV1"
+              ],
+              "titleStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12,
+                  "weight": "bold"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "tickStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12
+                }
+              },
+              "title": [ "Count" ],
+              "titleStyle": {
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 12,
+                  "weight": "bold"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}},
+            {"field": {"$ref": "fY"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "field"},
+              "palette": [
+                "#f04e37",
+                "#ad1987",
+                "#838329",
+                "#00649f"
+              ]
+            }
+          ],
+          "symbol": [
+            {
+              "id": "sizeId",
+              "field": {"$ref": "field"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {"x": "30%", "y": "20%", "r": "15%"},
+                      {"x": "70%", "y": "20%", "r": "15%"},
+                      {"path": "M0.5,0.4L0.4,0.6L0.6,0.6"},
+                      {
+                        "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "radial",
+              "colors": [
+                {
+                  "color": {
+                    "a": 0.25,
+                    "h": 0.0,
+                    "l": 0.7843,
+                    "s": 0.0
+                  },
+                  "offset": 0
+                },
+                {"offset": 1}
+              ],
+              "focus": {"x": "30%", "y": "30%"}
+            },
+            "stroke": {"width": 1.5},
+            "size": 20
+          }
+        }
+      ],
+      "style": {
+        "fill": {
+          "type": "linear",
+          "angle": 135,
+          "colors": [
+            {
+              "color": {"b": 251, "g": 244, "r": 228},
+              "offset": 0
+            },
+            {
+              "color": {"b": 255, "g": 255, "r": 255},
+              "offset": 1
+            }
+          ]
+        },
+        "outline": {"b": 0, "g": 0, "r": 0},
+        "padding": 8
+      }
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [
+        {"aesthetic": {"$ref": "sizeId"}},
+        {"aesthetic": {"$ref": "colorId"}}
+      ],
+      "title": [ "Field" ]
+    }
+  ],
+  "version": "1.3"
+}

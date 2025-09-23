@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "no min max"},
+        {"id": "matching min max", "min": 10, "max": 80},
+        {
+          "id": "theoretical min max",
+          "min": -50,
+          "max": 200
+        },
+        {"id": "reversed min max", "min": 200, "max": -50},
+        {"id": "clipping min max", "min": 30, "max": 70}
+      ],
+      "rows": [
+        [ 10, 10, 10, 10, 10 ],
+        [ 80, 80, 80, 80, 80 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"}, {"fit":"exact"} ]},
+            "axis": {
+              "gridStyle": {"fill": "#ccc"},
+              "title": [ "no min max" ]
+            }
+          }
+        ],
+        "transforms": [ {"type": "transpose"} ],
+        "style": {"fill": "#eee", "outline": "black"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [ {"field": {"$ref": "no min max"}} ],
+          "clip": "overlap",
+          "style": {"fill": "red", "outline": "black"}
+        }
+      ],
+      "style": {
+        "fill": "transparent",
+        "padding": {"left": 10, "right": 10}
+      }
+    }
+  ],
+  "size": {"width": 400, "height": 440},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,33 @@
+{
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+      },
+      "elements": [
+        {
+          "type": "text",
+          "content": [ "Content" ],
+          "style": {
+            "fill": {"a": 1.0, "b": 0, "g": 0, "r": 255},
+            "size": 100
+          }
+        }
+      ],
+  "style": {
+    "fill": "white",
+    "stroke": {"width": 1},
+    "padding": 0
+  }
+    }
+  ],
+  "version": "1.3",
+  "style": {
+    "fill": "yellow",
+    "stroke": {"width": 10},
+    "cornerRadius": 50,
+    "outline": "black",
+    "outlineMethod": "center",
+    "padding": 0
+  }
+}

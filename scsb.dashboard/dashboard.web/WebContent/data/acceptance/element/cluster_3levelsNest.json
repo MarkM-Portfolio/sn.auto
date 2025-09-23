@@ -1,0 +1,135 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "Product line",
+          "label": "Product line",
+          "categories": [
+            "Camping Equipment",
+            "Golf Equipment",
+            "Mountaineering Equipment",
+            "Outdoor Protection"
+          ]
+        },
+        {
+          "id": "Order method",
+          "label": "Order method",
+          "categories": [ "Web", "Phone", "Store" ]
+        },
+        {"id": "Quantity", "label": "Quantity"},
+        {
+          "id": "Company",
+          "label": "Company",
+          "categories": [
+            "Company 1",
+            "Company 2",
+            "Company 3"
+          ]
+        },
+        {
+          "id": "Country",
+          "label": "Country",
+          "categories": [ "Country A", "Country B" ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 73, 0, 0 ],
+        [ 0, 1, 63, 0, 0 ],
+        [ 0, 2, 43, 0, 0 ],
+        [ 2, 0, 31, 0, 0 ],
+        [ 2, 1, 15, 0, 0 ],
+        [ 3, 0, 14, 0, 0 ],
+        [ 3, 1, 11, 0, 0 ],
+        [ 3, 2, 14, 0, 0 ],
+        [ 0, 0, 10, 1, 0 ],
+        [ 0, 2, 20, 1, 0 ],
+        [ 1, 0, 20, 1, 0 ],
+        [ 1, 1, 43, 1, 0 ],
+        [ 1, 2, 30, 1, 0 ],
+        [ 2, 0, 73, 1, 0 ],
+        [ 2, 1, 23, 1, 0 ],
+        [ 2, 2, 93, 1, 0 ],
+        [ 3, 0, 14, 1, 0 ],
+        [ 3, 1, 41, 1, 0 ],
+        [ 3, 2, 34, 1, 0 ],
+        [ 0, 0, 10, 2, 0 ],
+        [ 0, 1, 33, 2, 0 ],
+        [ 0, 2, 20, 2, 0 ],
+        [ 1, 0, 73, 2, 0 ],
+        [ 1, 1, 23, 2, 0 ],
+        [ 1, 2, 23, 2, 0 ],
+        [ 2, 0, 73, 2, 0 ],
+        [ 2, 1, 23, 2, 0 ],
+        [ 2, 2, 23, 2, 0 ],
+        [ 3, 0, 14, 2, 0 ],
+        [ 3, 1, 41, 2, 0 ],
+        [ 0, 0, 63, 0, 1 ],
+        [ 0, 1, 53, 0, 1 ],
+        [ 0, 2, 23, 0, 1 ],
+        [ 2, 0, 41, 0, 1 ],
+        [ 2, 2, 15, 0, 1 ],
+        [ 0, 0, 20, 1, 1 ],
+        [ 0, 1, 43, 1, 1 ],
+        [ 0, 2, 20, 1, 1 ],
+        [ 2, 0, 63, 1, 1 ],
+        [ 2, 1, 43, 1, 1 ],
+        [ 0, 0, 20, 2, 1 ],
+        [ 0, 1, 43, 2, 1 ],
+        [ 0, 2, 20, 2, 1 ],
+        [ 2, 0, 33, 2, 1 ],
+        [ 2, 1, 43, 2, 1 ],
+        [ 2, 2, 13, 2, 1 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"axis": {}},
+          {"axis": {}},
+          {"axis": {}},
+          {
+            "axis": {
+              "tickStyle": {"font": {"size": "9.0pt"}}
+            }
+          },
+          {}
+        ],
+        "transforms": [
+          {
+            "type": "cluster",
+            "clusterParameters": {
+              "gaps": [ 60, 30, 10 ],
+              "nest": [ true, true, true ]
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "Quantity"}},
+            {"field": {"$ref": "Country"}},
+            {"field": {"$ref": "Company"}},
+            {"field": {"$ref": "Product line"}},
+            {"field": {"$ref": "Order method"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "Order method"}
+            }
+          ],
+          "style": {"size": "100%"}
+        }
+      ]
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 800, "height": 500}
+}

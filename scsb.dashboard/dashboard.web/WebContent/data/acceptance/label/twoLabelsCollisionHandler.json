@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {"id": "fY"},
+        {"id": "fX"},
+        {
+          "id": "label",
+          "categories": [
+            "Two-line\nLabel",
+            "Another long\nlabel"
+          ]
+        }
+      ],
+      "rows": [ [ 10, 10, 1 ], [ 11, 10, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "bounds": {
+        "width": 400,
+        "height": 150,
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 20, "fit": "exact"}
+              ]
+            }
+          },
+          {
+            "scale": {
+              "spans": [
+                {"min": 0, "max": 20, "fit": "exact"}
+              ]
+            }
+          }
+        ],
+        "style": {
+          "fill": {"h": 0, "l": 1, "s": 0},
+          "outline": "gray"
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "#0002",
+                "outline": "black",
+                "padding": 0
+              },
+              "content": [ {"$ref": "label"} ],
+              "lineMinSize": 0,
+              "lineStyle": {"fill": "black"},
+              "style": {
+                "fill": "black",
+                "font": {"size": "14"},
+                "location": "outside",
+                "padding": {"bottom": 50}
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "style": {
+            "fill": "red",
+            "size": 5,
+            "symbol": "square"
+          }
+        }
+      ],
+      "labelCollisionMethod": "full",
+      "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white"}
+}

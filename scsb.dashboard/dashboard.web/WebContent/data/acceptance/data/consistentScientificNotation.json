@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [ {"id": "fY"}, {"id": "fX"} ],
+      "rows": [ [ 100000, 100000 ], [ 103846, 103847 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "fX"} ],
+              "style": {"align": "start", "valign": "end"}
+            }
+          ],
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [ {"field": {"$ref": "fX"}} ]
+        }
+      ],
+      "style": {"fill": "white", "padding": 30}
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 400.0, "height": 400.0},
+  "version": "4.1"
+}

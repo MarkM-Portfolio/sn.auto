@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [ {"id": "X"}, {"id": "Y"} ],
+      "rows": [
+        [ 0, 450 ],
+        [ 4, 3000 ],
+        [ 3, 3300 ],
+        [ 5, 800 ],
+        [ 3, 2000 ],
+        [ 0.5, 3500 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "path",
+          "data": {"$ref": "data"},
+          "position": [
+            {"field": {"$ref": "Y"}},
+            {"field": {"$ref": "X"}}
+          ],
+          "style": {"fill": "blue", "endArrow": "arrow"}
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.3"
+}

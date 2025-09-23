@@ -1,0 +1,194 @@
+{
+  "version": "1.2",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year",
+          "categories": [
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008"
+          ]
+        },
+        {"id": "fY1", "label": "Revenue"},
+        {
+          "id": "categories",
+          "label": "Categories",
+          "categories": [ "Store A", "Store B" ]
+        }
+      ],
+      "rows": [
+        [ 0, 50, 0 ],
+        [ 1, 70, 0 ],
+        [ 2, 65, 0 ],
+        [ 3, 80, 0 ],
+        [ 4, 60, 0 ],
+        [ 5, 75, 0 ],
+        [ 6, 60, 0 ],
+        [ 0, 60, 1 ],
+        [ 1, 40, 1 ],
+        [ 2, 65, 1 ],
+        [ 3, 80, 1 ],
+        [ 4, 55, 1 ],
+        [ 5, 70, 1 ],
+        [ 6, 60, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": "100%",
+        "height": "90%",
+        "right": "100%",
+        "top": "10%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "minorStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              },
+              "title": [ "Amount in Million $" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"a": 0.1, "h": 0, "l": 0, "s": 0}
+              },
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "minorStyle": {
+                "fill": {"a": 0, "h": 0, "l": 0, "s": 0}
+              },
+              "tickStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Year" ],
+              "titleStyle": {
+                "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ],
+        "transforms": [ {"type": "stack"} ],
+        "style": {
+          "fill": {"h": 0, "l": 1, "s": 0},
+          "outline": {"a": 0.25, "h": 0, "l": 0, "s": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY1"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"}
+            }
+          ],
+		  "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"}
+              ]
+            }
+          ],
+          "symbolStyle": {"size": 6, "symbol": "circle"},
+          "style": {"stroke": {"width": 2}}
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {
+        "width": "25%",
+        "height": "10%",
+        "right": "100%",
+        "top": "0%"
+      },
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "layout": {"columns": 2, "flow": "horizontal"},
+          
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "1%",
+          "right": "2%",
+          "top": "1%"
+        }
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 400.0},
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

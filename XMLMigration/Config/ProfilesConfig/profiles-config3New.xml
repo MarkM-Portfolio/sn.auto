@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><!--        
+*****************************************************************
+                                                                 
+ Licensed Materials - Property of IBM                            
+                                                                 
+ 5724-S68                                                        
+                                                                 
+ Copyright IBM Corp. 2001, 2011  All Rights Reserved.            
+                                                                 
+ US Government Users Restricted Rights - Use, duplication or     
+ disclosure restricted by GSA ADP Schedule Contract with         
+ IBM Corp.                                                       
+                                                                 
+*****************************************************************
+        --><config xmlns="http://www.ibm.com/profiles-config" xmlns:tns="http://www.ibm.com/profiles-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="profiles" xsi:schemaLocation="http://www.ibm.com/profiles-config profiles-config.xsd">
+<!-- START PROFILES DATA MODELS SECTION -->
+<profileDataModels>	
+	<profileExtensionAttributes>
+		<simpleAttribute extensionId="spoken_Lang" length="64"/>
+		<simpleAttribute extensionId="office_hours" length="64"/>
+		<simpleAttribute extensionId="hobbies" length="64"/>
+			<!-- 
+				This extension attribute is required by the 'MyLinks' profile widget
+			-->
+			<xmlFileAttribute extensionId="profileLinks" schemaFile="profile-links.xsd" indexBindingExpr="/linkroll/link/@name | /linkroll/link/@url">
+				<indexFields>
+				    <indexField fieldName="linkName" fieldExpr="/linkroll/link/@name"/>
+				</indexFields>
+			</xmlFileAttribute>
+		</profileExtensionAttributes>
+	
+		<profileDataModel>
+			<!-- =================================================================================== -->
+			<!-- This section is used to define attributes that are updated via the drafting process -->
+			<!--   In most deployments you should never edit the config for this section.			 -->
+			<!-- Example: <draftableAttribute>displayName</draftableAttribute>                  	 -->
+			<!-- Example: Example: <draftableExtensionAttribute extensionIdRef="tieline"/>			 -->
+			<!-- =================================================================================== -->
+		</profileDataModel>	
+	</profileDataModels>
+<!-- END PROFILES DATA MODELS SECTION -->
+<!-- START LAYOUT CONFIGURATION SECTION -->
+<layoutConfiguration>
+<!--UI Template rendering configuration information-->
+<templateConfiguration>
+<!--FTL template reloading to test customization, in production this value should be set to 0, but during customization set to value in seconds-->
+<templateReloading>0</templateReloading>
+<!--Comma-delimited set of bundle identifiers custom resource bundles to make available to FTL templates-->
+<templateNlsBundles>profExtAttr</templateNlsBundles>
+<!--Configuration for specific templates by name [businessCardInfo, searchResults]-->
+<template name="businessCardInfo">
+<templateDataModel>
+<!--include if you render associated data for workLocation, organization, or department-->
+<templateData>codes</templateData>
+<!--include if you render profile extension fields in the template-->
+<!--<templateData>extensions</templateData%gt;-->
+<!--include if you render secretary name or email in the template-->
+<!--<templateData>secretary</templateData>-->
+<!--include if you render manager name or email in the template-->
+<!--<templateData>manager</templateData>-->
+</templateDataModel>
+</template>
+<template name="searchResults">
+<templateDataModel>
+<!--include if you render associated data for workLocation, organization, or department-->
+<templateData>codes</templateData>
+<!--include if you render profile extension fields in the template-->
+<templateData>extensions</templateData>
+<!--include if you render secretary name or email in the template-->
+<!--<templateData>secretary</templateData>-->
+<!--include if you render manager name or email in the template-->
+<!--<templateData>manager</templateData>-->
+</templateDataModel>
+</template>
+</templateConfiguration>
+<vcardExport>
+			<charset name="UTF-8">
+				<label labelKey="label.vcard.encoding.utf8"/>
+			</charset>
+			<charset name="ISO-8859-1">
+				<label labelKey="label.vcard.encoding.iso88591"/>
+			</charset>
+			<charset name="Cp943c">
+				<label labelKey="label.vcard.encoding.cp943c"/>
+			</charset>
+		</vcardExport>
+<searchLayout>
+		    	<attribute showLabel="true">displayName</attribute>
+		    	<attribute showLabel="false">preferredFirstName</attribute>
+		    	<attribute showLabel="false">preferredLastName</attribute>
+		    	<attribute showLabel="true">profileTags</attribute>
+		    	<attribute showLabel="true">jobResp</attribute>
+		    	<attribute showLabel="false">experience</attribute>
+		    	<attribute showLabel="false">background</attribute>
+		    	<attribute showLabel="true">organizationTitle</attribute>
+		      	<attribute showLabel="false">workLocation.city</attribute>
+		    	<attribute showLabel="false">workLocation.state</attribute>
+		    	<attribute showLabel="false">countryDisplayValue</attribute>
+		    	<attribute showLabel="false">email</attribute>
+		    	<attribute showLabel="false">telephoneNumber</attribute>
+                     <extensionAttribute showLabel="true" extensionIdRef="spoken_Lang"/>
+		</searchLayout>
+<businessCardLayout profileType="default">
+<actions>
+				<action urlPattern="mailto:{email}" emailEnabledRequired="true" liClass="lotusSendMail">
+					<label labelKey="personCardSendMail"/>
+					<icon href="{profilesSvcRef}/nav/common/styles/images/iconSendMail.gif">
+						<alt labelKey="personCardSendMail"/>
+					</icon>
+				</action>
+				<action urlPattern="javascript:lconn.profiles.bizCard.bizCardUI.openNetworkInviteDialog('{key}', window.X_loggedInUserKey, ((window.dojo &amp;&amp; typeof(dojo.getObject) == 'function' &amp;&amp; dojo.getObject('lconn.profiles.Friending.currentViewDomNode')) || (document.getElementById('lotusSearchResultsContent') || new Object()).id || (document.getElementById('contentArea') || new Object()).id || (document.getElementById('lotusMain') || new Object()).id || null))" liClass="lotusMenuSeparator" requireAcl="profile.colleague$profile.colleague.connect">
+					<label labelKey="personCardAddAsColleagues"/>
+				</action>
+				<action urlPattern="javascript:lconn.profiles.bizCard.bizCardUI.openVCardDialog('{key}','{lastMod}')" liClass="lotusMenuSeparator">
+					<label labelKey="personCardDownloadVCard"/>
+				</action>
+			</actions>
+</businessCardLayout>
+</layoutConfiguration>
+<!-- END LAYOUT CONFIGURATION SECTION -->
+<!-- START CACHE CONFIGURATION SECTION -->
+<caches>
+		<fullReportsToChainCache>
+			<enabled>true</enabled>
+			<size>500</size>
+			<refreshTime>23:00</refreshTime>
+<!-- 24 hour time -->
+			<refreshInterval>20</refreshInterval>
+			<!-- minutes -->
+			<startDelay>5</startDelay>
+<!-- minutes -->
+			<ceouid>CEO_UID</ceouid>
+<!-- the uid of the top of the org structure pyramid-->
+		</fullReportsToChainCache>
+		<profileObjectCache>
+			<refreshTime>22:30</refreshTime> <!-- 24 hour time -->
+			<refreshInterval>15</refreshInterval> <!-- minutes -->
+			<startDelay>10</startDelay> <!-- minutes -->
+		</profileObjectCache>
+	</caches>
+<!-- END CACHE CONFIGURATION SECTION -->
+<!-- START DATA ACCESS CONFIGURATION -->
+<dataAccess>
+<organizationalStructureEnabled enabled="true"/>
+<resolvedCodes>
+			<resolvedCode>workLocationCode</resolvedCode>
+			<resolvedCode>orgId</resolvedCode>
+			<resolvedCode>employeeTypeCode</resolvedCode>
+			<resolvedCode>countryCode</resolvedCode>
+			<resolvedCode>departmentCode</resolvedCode>
+		</resolvedCodes>
+<search>
+<maxRowsToReturn>250</maxRowsToReturn>
+<pageSize>10</pageSize>
+<sortNameSearchResultsBy default="displayName"/>
+<sortIndexSearchResultsBy default="relevance"/>
+</search>
+<directory>
+			<!-- 
+				Specifies the profiles field that is used to resolve person records via WALTZ / Javelin 
+			-->
+			<lconnUserIdField>guid</lconnUserIdField>
+			
+			<!-- 
+				Lists fields that will be used to resolve user at login time
+			 -->
+			<loginAttributes>
+				<loginAttribute>uid</loginAttribute>
+				<loginAttribute>email</loginAttribute>
+				<loginAttribute>loginId</loginAttribute>
+			</loginAttributes>
+		</directory>
+<allowJsonpJavelin enabled="true"/>
+<includeExtensionsInJavelinJS enabled="false"/>
+<nameOrdering enabled="false"/>
+</dataAccess>
+<!-- END DATA ACCESS CONFIGURATION -->
+<acf enabled="true"/>
+<sametimeAwareness enabled="false" href="http://localhost:59449/stwebapi/" ssl_href="http://localhost:59449/stwebapi/" sametimeInputType="uid"/>
+<javelinGWMailSearch enabled="false"/>
+<!-- START ADDITIONAL CONFIGURATION SETTINGS -->
+<properties>
+<property name="com.ibm.lconn.profiles.config.MakeFollowingInfoPublic" value="false"/>
+<property name="com.ibm.lconn.profiles.ui.reportingChain.isBottomUp" value="true"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.fireOnKeys" value="1"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.delayBetweenKeys" value="0"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.maxResults" value="20"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.liveNameSupport" value="true"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.expandThumbnails" value="true"/>
+<property name="com.ibm.lconn.profiles.config.ui.ptas.blankOnEmpty" value="true"/>
+</properties>
+<!-- END ADDITIONAL CONFIGURATION SETTINGS -->
+<!-- START SCHEDULED TASKS CONFIGURATION -->
+<scheduledTasks>
+<task name="DbCleanupTask" enabled="true" interval="0 0 0 * * ?" type="internal">
+<args>
+<property name="draftTrashRetentionInDays">30</property>
+<property name="eventLogTrashRetentionInDays">30</property>
+<property name="eventLogMaxBulkPurge">8000</property>
+</args>
+</task>
+<task name="ProcessLifeCycleEventsTask" enabled="true" interval="0 */2 * * * ?" type="internal">
+<args>
+<property name="platformCommandBatchSize">2000</property>
+</args>
+</task>
+<task name="ProcessTDIEventsTask" enabled="true" interval="0 */2 * * * ?" type="internal">
+<args>
+<property name="platformCommandBatchSize">2000</property>
+</args>
+</task>
+<task name="StatsCollectorTask" enabled="true" interval="0 0 1 * * ?" type="internal" scope="local">
+<args>
+<property name="filePath">${PROFILES_STATS_DIR}//LC_NODE_NAME//${WAS_SERVER_NAME}</property>
+<property name="fileName">profilesStats</property>
+</args>
+</task>
+<task name="RefreshSystemObjectsTask" enabled="true" interval="0 */2 * * * ?" type="internal"/>
+</scheduledTasks>
+<!-- END SCHEDULED TASKS CONFIGURATION -->
+</config>

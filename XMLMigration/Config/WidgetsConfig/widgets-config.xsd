@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2010, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- 5724-S68                                                          -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://www.ibm.com/widgets-config" targetNamespace="http://www.ibm.com/widgets-config">
+  <xsd:element name="config">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Q1:resource"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="item">
+    <xsd:complexType>
+      <xsd:attribute name="value" type="xsd:string" use="required"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="layout">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="Q1:page"/>
+      </xsd:sequence>
+      <xsd:attribute name="resourceSubType" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="lifecycle">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="Q1:event"/>
+      </xsd:sequence>
+      <xsd:attribute name="handler" type="xsd:string">
+      <xsd:annotation>
+      	 <xsd:documentation>
+      	 	The java class name - private Use only
+      	 </xsd:documentation>
+      </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="remoteHandlerURL" type="xsd:string">
+      <xsd:annotation>
+      	 <xsd:documentation>
+      	 	The HTTP URL for the remote event handler
+      	 </xsd:documentation>
+      </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="remoteHandlerAuthenticationAlias" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="event" >
+    <xsd:complexType>
+      <xsd:simpleContent>
+  	    <xsd:extension base="Q1:EventNames">
+          <xsd:attribute name="doesNotRequireWidget" type="xsd:boolean">
+            <xsd:annotation>
+         	  <xsd:documentation>
+      	     	If true, the event will be sent even if no widget exists.
+      	      </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="EventNames">
+	<xsd:restriction base="xsd:string">
+		<xsd:enumeration value="widget.added" />
+		<xsd:enumeration value="widget.removed" />
+		<xsd:enumeration value="managed.app.added" />
+		<xsd:enumeration value="managed.app.removed" />
+		<xsd:enumeration value="remote.app.added" />
+		<xsd:enumeration value="remote.app.removed" />
+		<xsd:enumeration value="remote.app.transfer" />
+		<xsd:enumeration value="community.visibility.changed" />
+		<xsd:enumeration value="community.updated" />
+		<xsd:enumeration value="community.members.added" />
+		<xsd:enumeration value="community.members.removed" />
+		<xsd:enumeration value="community.prepare.delete" />
+		<xsd:enumeration value="community.org.changed" />
+		<xsd:enumeration value="community.members.modified" />
+	</xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:element name="page">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Q1:widgetInstance"/>
+      </xsd:sequence>
+      <xsd:attribute name="pageId" use="required">
+      	<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="communityOverview" />
+				<xsd:enumeration value="allCommunities" />
+				<xsd:enumeration value="myCommunities" />
+				<xsd:enumeration value="profilesView" />
+				<xsd:enumeration value="searchResultView" />
+				<xsd:enumeration value="searchView" />				
+				<xsd:enumeration value="networkView" />
+				<xsd:enumeration value="editProfileView" />
+			</xsd:restriction>
+      	</xsd:simpleType>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="itemSet">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Q1:item"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="definitions">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Q1:widgetDef"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="resource">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Q1:widgets" maxOccurs="1" minOccurs="1"/>
+        <xsd:element minOccurs="0" maxOccurs="1" ref="Q1:templates"/>
+      </xsd:sequence>
+      <xsd:attribute name="aclServiceImpl" type="xsd:string"/>
+      <xsd:attribute name="type" type="xsd:string" use="required"/>
+      <xsd:attribute name="xpathMandatedWidgetForMainPage" type="xsd:string"/>
+      <xsd:attribute name="resourceValuesProvider" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="widgetDef">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="1" ref="Q1:itemSet"/>
+        <xsd:element minOccurs="0" maxOccurs="1" ref="Q1:lifecycle"/>
+      </xsd:sequence>
+      <xsd:attribute name="defId" type="xsd:string"  use="required">
+	      <xsd:annotation>
+		      <xsd:documentation>Used to identify the iWidget. Must be unique. defId is also used as a title.
+		      The defId will be used as a key in the resource bundle. If no key is found, the defId value will be used.</xsd:documentation>
+	      </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="description" type="xsd:string">
+      	<xsd:annotation>
+      		<xsd:documentation>Used to identify the description. The description will be used as a key in the resource bundle. If no key is found, the description value will be used.
+      		This information is displayed in the widget palette.
+      		</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="category" type="xsd:string">
+      	<xsd:annotation>
+      		<xsd:documentation>the category that the widget will be placed in the widget palette. The category will be used as a key in the resource bundle. If no key is found, the category value will be used.</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="prerequisite" type="xsd:string"/>
+      <xsd:attribute name="requiredFeatures" type="xsd:string"/>
+      <xsd:attribute name="url" type="xsd:string"  use="required"/>
+      <xsd:attribute name="iconUrl" type="xsd:string"/>
+      <xsd:attribute name="uniqueInstance" type="xsd:boolean"/>
+      <xsd:attribute name="navBarLinkText" type="xsd:string"/>
+      <xsd:attribute name="navBarLink" type="xsd:string"/>
+      <xsd:attribute name="helpLink" type="xsd:string">      
+		<xsd:annotation>
+			<xsd:documentation>
+				URL the a help html file. Opens as a popup window. Could contain sub variables.
+			</xsd:documentation>
+		</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="fixedPosition" type="xsd:boolean"/>
+      <xsd:attribute name="modes" type="xsd:string"/>
+      <xsd:attribute name="showInPalette" type="xsd:boolean"/>
+      <xsd:attribute name="resourceOwnerWidget" type="xsd:boolean"/>
+      <xsd:attribute name="loginRequired" type="xsd:boolean">
+      	<xsd:annotation>
+      		<xsd:documentation>display the iWidget only if a user is logged in</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="displayLoginRequired" type="xsd:boolean">
+      	<xsd:annotation>
+      		<xsd:documentation>Display "Login require" message if a user isn't logged in</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="hideWidgetForMyProfile" type="xsd:boolean">
+      	<xsd:annotation>
+      		<xsd:documentation>Hides widget when the logged in user don't need to see widget in his profile.</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="primaryWidget" type="xsd:boolean"/>
+      <!-- maybe removed in 2.5 release -->
+      <xsd:attribute name="bundleRefId" type="xsd:string">
+      	<xsd:annotation>
+      		<xsd:documentation>The resource bundle reference ID that is defined in the LotusConnections-config.xml. 
+      This is used to determine the bundles strings for widget category, widget description, and widget title.</xsd:documentation>
+      	</xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="skinType">
+	      <xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="use25OneUISkin" />
+				<xsd:enumeration value="use25LotusSectionSkin" />
+				<xsd:enumeration value="skinless" />
+			</xsd:restriction>      
+	      </xsd:simpleType>
+      </xsd:attribute>   
+	  <xsd:attribute name="inline" type="xsd:boolean"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="widgetInstance">
+    <xsd:complexType>
+      <xsd:attribute name="uiLocation" type="xsd:string" use="required"/>
+      <xsd:attribute name="instanceId" type="xsd:string"/>
+      <xsd:attribute name="defIdRef" type="xsd:string" use="required"/>
+      <xsd:attribute name="enabled" type="xsd:boolean"/>      
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="templates">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Q1:template" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="widgets">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Q1:definitions" minOccurs="1" maxOccurs="1"/>
+        <xsd:element ref="Q1:layout" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="template">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Q1:widgetInstance"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

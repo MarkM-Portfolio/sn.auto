@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "userId"},
+        {"id": "quantity"},
+        {"id": "orderType", "categories": [ "buy", "sell" ]}
+     ],
+      "rows": [
+        [ 190, 114, 0 ],
+        [ 190, 362, 1 ],
+        [ 440, 275, 0 ],
+        [ null, 127, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ],
+        "transforms": [ {"type": "stack"} ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "quantity"}},
+            {"field": {"$ref": "userId"}}
+          ],
+          "color": [
+            {"field": {"$ref": "orderType"}, "modifies": "both"}
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "4.2"
+}

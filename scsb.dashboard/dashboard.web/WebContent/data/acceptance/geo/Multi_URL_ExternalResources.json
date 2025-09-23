@@ -1,0 +1,36 @@
+{
+  "data": [ {} ],
+  "augment": [
+    {
+      "source": {"$ref": "geo_id1"},
+      "thinningDistanceFraction": 0.01
+    }
+  ],
+   "resource" : [
+     {
+         "id" : "geo_id1",
+        "type" : "geo/json/text",
+        "URIs" : ["http://localhost/rave_build/UCWebEngine/WebContent/Tests/internal/TestVisEngine.html?file=resources/GeoJSON/test.json",
+		"/GeoJSON/simple.json"]
+     }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ],
+        "transforms": [
+          {
+            "type": "projection",
+            "projectionParameters": {"name": "mercator"}
+          }
+        ],
+        "style": {"fill": "#dfd"}
+      },
+      "elements": [ {"type": "path"} ]
+    }
+  ],
+  "size": {"width": 600, "height": 320},
+  "version": "3.0",
+  "style": {"fill": "#dfd"}
+}

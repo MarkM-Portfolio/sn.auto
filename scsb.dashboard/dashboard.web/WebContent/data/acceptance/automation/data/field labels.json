@@ -1,0 +1,83 @@
+{
+  "data": [
+    {
+      "fields": [
+        {"id": "no label"},
+        {"id": "blank label", "label": ""},
+        {"id": "short label", "label": "x"},
+        {"id": "long label", "label": "long label"},
+        {
+          "id": "extreme label",
+          "label": "extremely long label"
+        },
+        {"id": "split label", "label": "split\nlabel"}
+      ],
+      "rows": [ [ 1, 1, 1, 1, 1, 1 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": 40, "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "no label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {"width": 40, "left": 40},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "blank label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {"width": 40, "left": 80},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "short label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {"width": 40, "left": 120},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "long label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {"width": 40, "left": 160},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "extreme label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    },
+    {
+      "bounds": {"width": 60, "left": 200},
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"title": [ {"$ref": "split label"} ]}}
+        ]
+      },
+      "elements": [  ],
+      "style": {"fill": "transparent"}
+    }
+  ],
+  "size": {"width": 260, "height": 200},
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

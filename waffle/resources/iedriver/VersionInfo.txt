@@ -1,0 +1,7 @@
+Current version of the IE drivers:
+Windows x64:
+2.37
+
+Windows x32:
+2.37
+

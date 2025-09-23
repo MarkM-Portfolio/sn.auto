@@ -1,0 +1,253 @@
+{
+  "data": [
+    {
+      "id": "data1",
+      "fields": [
+        {"id": "fNode", "key": true},
+        {"id": "fParent"},
+        {
+          "id": "fMean",
+          "format": {
+            "numericPattern": "##,##0.00",
+            "prefix": "",
+            "suffix": ""
+          }
+        },
+        {"id": "fN"},
+        {
+          "id": "fLabel",
+          "categories": [
+            "y-continuous",
+            "x1 = a;l",
+            "x1 =  e",
+            "x1 =  f",
+            "x1 =  h",
+            ""
+          ]
+        },
+        {
+          "id": "fUnusual",
+          "categories": [
+            "Neither",
+            "Unusually High",
+            "Unusually Low"
+          ]
+        }
+      ],
+      "rows": [
+        [ 0, null, -13.363961359548707, 0, 0, 0 ],
+        [ 1, 0, -116.39589928947981, 59, 1, 2 ],
+        [ 2, 0, 10.50114217083721, 50, 2, 0 ],
+        [ 3, 0, 5.430023311786956, 50, 3, 0 ],
+        [ 4, 0, 9.056095048291391, 176, 4, 0 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "fLabel"} ],
+              "style": {
+                "align": "start",
+                "font": {"family": "Arial", "size": "7pt"},
+                "padding": 2,
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "data1"},
+          "color": [
+            {
+              "id": "colorId_0",
+              "field": {"$ref": "fMean"},
+              "mapping": [
+                {"at": "0%", "color": "#FBE4DC"},
+                {"at": "100%", "color": "#ff8022"}
+              ]
+            }
+          ],
+          "positioning": {
+            "layout": "squarify",
+            "leafOnly": false,
+            "levelLabelStyles": {
+              "internal": [
+                {},
+                {
+                  "content": [ {"$ref": "fLabel"} ],
+                  "style": {
+                    "fill": {"a": 0.7},
+                    "align": "start",
+                    "font": {
+                      "family": "Arial",
+                      "size": "10pt",
+                      "weight": "bold",
+                      "style": "italic"
+                    },
+                    "padding": {"bottom": 5},
+                    "valign": "start"
+                  }
+                },
+                {
+                  "content": [ {"$ref": "fLabel"} ],
+                  "style": {
+                    "fill": {"a": 0.7},
+                    "align": "start",
+                    "font": {
+                      "family": "Arial",
+                      "size": "9pt"
+                    },
+                    "padding": 2,
+                    "valign": "start"
+                  }
+                }
+              ],
+              "labelCollisionHandling": "hide",
+              "leaf": {
+                "content": [ {"$ref": "fLabel"} ],
+                "style": {
+                  "fill": "black",
+                  "align": "middle",
+                  "font": {"family": "Arial", "size": "8pt"},
+                  "padding": 2,
+                  "valign": "end"
+                }
+              }
+            },
+            "levelStyles": {
+              "internal": [
+                {
+                  "stroke": {"width": 3},
+                  "outline": "#497c91"
+                },
+                {
+                  "stroke": {"width": 3},
+                  "outline": "#59a0bd"
+                },
+                {
+                  "stroke": {"width": 3},
+                  "outline": "#9dc7d9"
+                },
+                {
+                  "stroke": {"width": 3},
+                  "outline": "#c7e0e9"
+                }
+              ],
+              "leaf": {
+                "fill": {
+                  "type": "linear",
+                  "angle": -90,
+                  "colors": [
+                    {"color": {"a": 0.9}, "offset": 0},
+                    {
+                      "color": {
+                        "a": 0.9,
+                        "dSaturation": 0.1,
+                        "dValue": -0.1
+                      },
+                      "offset": 1
+                    }
+                  ]
+                },
+                "stroke": {"width": 0.5},
+                "outline": "white"
+              }
+            },
+            "method": "treemap",
+            "padding": {
+              "bottom": 15,
+              "left": 15,
+              "right": 15,
+              "top": 15
+            },
+            "recursive": {
+              "child": {"$ref": "fNode"},
+              "parent": {"$ref": "fParent"}
+            },
+            "size": {"$ref": "fN"}
+          },
+          "style": {
+            "fill": {"b": 0, "g": 0, "r": 0},
+            "stroke": {"width": 0.5},
+            "outline": {"b": 0, "g": 0, "r": 0},
+            "padding": "2%"
+          }
+        },
+        {
+          "type": "point",
+          "positioning": {
+            "layout": "squarify",
+            "leafOnly": true,
+            "method": "treemap",
+            "padding": {
+              "bottom": 15,
+              "left": 15,
+              "right": 15,
+              "top": 15
+            },
+            "recursive": {
+              "child": {"$ref": "fNode"},
+              "parent": {"$ref": "fParent"}
+            },
+            "size": {"$ref": "fN"}
+          },
+          "symbol": [
+            {
+              "id": "symbolId",
+              "field": {"$ref": "fUnusual"},
+              "scale": {
+                "local": false,
+                "spans": [ {"categories": [ 1, 2 ]} ]
+              },
+              "mapping": [
+                {"at": 1, "symbol": "plus"},
+                {
+                  "at": 2,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "x": 0,
+                        "y": "40%",
+                        "width": "100%",
+                        "height": "20%"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "visibility": [
+            {
+              "field": {"$ref": "fUnusual"},
+              "palette": [ false, true, true ]
+            }
+          ],
+          "style": {
+            "fill": "#85a54a",
+            "effect": {"shadow": {}}
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "colorId_0"}} ],
+      "itemStyle": {"stroke": {"width": 1, "style": "solid"}},
+      "title": [ "Avg. y-continuous" ]
+    },
+    {
+      "scale": {"local": false},
+      "aesthetics": [ {"aesthetic": {"$ref": "symbolId"}} ],
+      "title": [ "" ]
+    }
+  ],
+  "size": {"width": 600, "height": 173},
+  "version": "1.3"
+}

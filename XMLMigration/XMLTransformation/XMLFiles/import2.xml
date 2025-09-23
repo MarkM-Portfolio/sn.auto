@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRODUCTS>
+  <PRODUCT id="p1" price="3250" stock="4"/>
+  <PRODUCT id="p2" price="1000" stock="5"/>
+  <PRODUCT id="p3" price="1200" stock="19"/>
+  <PRODUCT id="p4" price="1500" stock="5"/>
+  <PRODUCT id="p5" price="1225" stock="3"/>
+</PRODUCTS> 

@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [
+        {"id": "fX"},
+        {"id": "fY", "unit": "timestamp"}
+      ],
+      "rows": [ [ 0, 0 ], [ 60, 60 ], [ -60, -60 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {"spans": [ {"fit": "exact"} ]},
+            "axis": {"gridStyle": {"fill": "#ccc"}}
+          },
+          {
+            "scale": {"spans": [ {"tickDelta": 15} ]},
+            "axis": {"gridStyle": {"fill": "#ccc"}}
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "clip": "overlap",
+          "symbolStyle": {
+            "fill": "red",
+            "size": 20,
+            "symbol": "triangle"
+          },
+          "style": {
+            "fill": "black",
+            "outline": "black",
+            "size": 4
+          }
+        }
+      ],
+      "style": {"fill": "white"}
+    }
+  ],
+  "version": "1.2",
+  "style": {"fill": "white"}
+}

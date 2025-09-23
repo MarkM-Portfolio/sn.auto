@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- 5724-S31                                                          -->
+<!--                                                                   -->
+<!-- Copyright IBM Corp. 2006, 2012  All Rights Reserved.              -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with           -->
+<!-- IBM Corp.                                                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ibm.com/dogear-config-cell" targetNamespace="http://www.ibm.com/dogear-config-cell">
+  <xsd:element name="personThresholds">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="capacity" type="xsd:string"/>
+  <xsd:element name="jndi" type="xsd:string"/>
+  <xsd:element name="ipRange">
+    <xsd:complexType>
+      <xsd:attribute name="to" type="xsd:string"/>
+      <xsd:attribute name="from" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="urlPattern" type="xsd:string"/>
+  <xsd:element name="type">
+  	<xsd:complexType>
+	    <xsd:sequence>
+	    	<xsd:element ref="urlPattern" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+	    </xsd:sequence>
+	    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+  	</xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tag" type="xsd:string"/>
+  <xsd:element name="contextParameters">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="stringProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tags">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="tag"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="stringProperty">
+    <xsd:complexType mixed="true">
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:string">
+     	 		<xsd:attribute name="name" type="xsd:string"/>
+     	 	</xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="integerProperty">
+    <xsd:complexType mixed="true">
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:integer">
+     	 		<xsd:attribute name="name" type="xsd:string"/>
+     	 	</xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="longProperty">
+    <xsd:complexType mixed="true">
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:long">
+     	 		<xsd:attribute name="name" type="xsd:string"/>
+     	 	</xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="booleanProperty">
+    <xsd:complexType mixed="true">
+    	<xsd:simpleContent>
+    		<xsd:extension base="xsd:boolean">
+     	 		<xsd:attribute name="name" type="xsd:string"/>
+     	 	</xsd:extension>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="privateIntranetAllocationTable">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="ipRange"/>
+		<xsd:element minOccurs="0" maxOccurs="unbounded" ref="urlPattern"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="name" type="xsd:string"/>
+  <xsd:element name="activeContentFilter">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tags"/>
+      </xsd:sequence>
+      <xsd:attribute name="enabled" type="xsd:boolean"/>
+       <xsd:attribute name="enhanced" type="xsd:boolean"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="contentTypes">
+  	<xsd:complexType>
+  		<xsd:sequence>
+  			<xsd:element minOccurs="0" maxOccurs="unbounded" ref="type"/>
+  		</xsd:sequence>
+  		<xsd:attribute name="enabled" use="required" type="xsd:boolean"/>
+  	</xsd:complexType>
+  </xsd:element>
+ 
+  <xsd:element name="structuredTags" >
+	  <xsd:complexType>
+		  <xsd:sequence>
+			  <xsd:element minOccurs="0" maxOccurs="unbounded" ref="tag"/>
+		  </xsd:sequence>
+		  <xsd:attribute name="enabled" use="required" type="xsd:boolean"/>
+	  </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="redirectDogearThis">
+	  <xsd:complexType>
+		  <xsd:attribute name="enabled" use="required" type="xsd:boolean"/>
+		  <xsd:attribute name="destination" use="required" type="xsd:string"/>
+	  </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cachePublicData">
+	  <xsd:complexType>
+		  <xsd:attribute name="enabled" use="required" type="xsd:boolean"/>
+		  <xsd:attribute name="max-age" use="required" type="xsd:int"/>
+	  </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cacheFactory">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="cache"/>
+      </xsd:sequence>
+      <xsd:attribute name="defaultCapacity" type="xsd:string" use="optional"/>
+      <xsd:attribute name="class" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cache">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="name"/>
+        <xsd:element minOccurs="0" ref="capacity"/>
+        <xsd:element minOccurs="0" ref="jndi"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element> 
+  <xsd:element name="linkPurgingTask">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="transactionSyncLogConsumerTask">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+        <xsd:element maxOccurs="unbounded" ref="longProperty"/>
+        <xsd:element maxOccurs="unbounded" ref="stringProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="favIconService">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="stringProperty"/>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+        <xsd:element maxOccurs="unbounded" ref="booleanProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="brokenURLService">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:element maxOccurs="unbounded" ref="booleanProperty"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+  </xsd:element>
+  <xsd:element name="serviceBehavior">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="booleanProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="config">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="contextParameters"/>
+        <xsd:element ref="favIconService"/>
+        <xsd:element ref="brokenURLService"/>
+        <xsd:element ref="privateIntranetAllocationTable"/>
+        <xsd:element ref="linkThresholds"/>
+        <xsd:element ref="tagThresholds"/>
+        <xsd:element ref="personThresholds"/>
+        <xsd:element ref="contentTypes"/>
+        <xsd:element ref="activeContentFilter"/>
+		<xsd:element ref="redirectDogearThis"/>
+		<xsd:element ref="cachePublicData"/>
+        <xsd:element ref="cacheFactory"/>
+        <xsd:element ref="linkPurgingTask"/>
+        <xsd:element ref="serviceBehavior"/>
+        <xsd:element ref="embedStyle"/>
+        <xsd:element minOccurs="0" maxOccurs="1" ref="transactionSyncLogConsumerTask" />
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string" use="required"/>
+      <xsd:attribute name="buildlevel" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="linkThresholds">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tagThresholds">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="integerProperty"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="embedStyle">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="stringProperty"/>
+      </xsd:sequence>
+      <xsd:attribute name="enabled" type="xsd:boolean"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

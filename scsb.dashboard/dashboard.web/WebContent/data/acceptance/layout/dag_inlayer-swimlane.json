@@ -1,0 +1,847 @@
+{
+  "data": [
+    {
+      "id": "swimlanes",
+      "fields": [
+        {
+          "id": "category",
+          "categories": [
+            "Learning and Innovation",
+            "Internal",
+            "Customer",
+            "Financial"
+          ]
+        },
+        {"id": "layerHeight"},
+        {"id": "maxRowValue"},
+        {"id": "idealNodeCountValue"},
+        {
+          "id": "firstIcon",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {"id": "firstValue"},
+        {
+          "id": "secondIcon",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {"id": "secondValue"},
+        {
+          "id": "thirdIcon",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {"id": "thirdValue"}
+      ],
+      "rows": [
+        [ 3, 1, 1, null, 1, 8, 0, 7, 3, null ],
+        [ 2, 2, 2, null, 2, 8, 1, 2, 2, 1 ],
+        [ 1, 1, 1, null, 2, 8, 1, 2, 3, null ],
+        [ 0, 1, 1, null, 2, 8, 0, 2, 3, null ]
+      ]
+    },
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"},
+        {"id": "size"},
+        {
+          "id": "direction",
+          "categories": [ "oneway", "twoway" ]
+        }
+      ],
+      "rows": [
+        [ 3, 0, 1, 0 ],
+        [ 4, 1, 1, 0 ],
+        [ 4, 2, 1, 0 ],
+        [ 5, 3, 1, 0 ],
+        [ 6, 5, 1, 0 ],
+        [ 7, 2, 1, 0 ],
+        [ 7, 4, 1, 1 ],
+        [ 0, 2, 1, 0 ],
+        [ 0, 1, 1, 0 ],
+        [ 1, 0, 1, 0 ],
+        [ 2, 1, 1, 0 ],
+        [ 2, 0, 1, 0 ],
+        [ 4, 3, 1, 0 ],
+        [ 4, 5, 1, 0 ],
+        [ 7, 3, 1, 0 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "id"},
+        {
+          "id": "name",
+          "categories": [
+            "0 Operation Profit",
+            "1 Net Income",
+            "2 Net Profit",
+            "3 Net Profit",
+            "4 Net Income",
+            "5 Net Income",
+            "6 Motivational Sales Representatives With Mojo",
+            "7 Net Profit"
+          ]
+        },
+        {
+          "id": "layer",
+          "categories": [
+            "Learning and Innovation",
+            "Internal",
+            "Customer",
+            "Financial"
+          ]
+        },
+        {
+          "id": "status",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {"id": "count1"},
+        {"id": "count2"},
+        {"id": "count3"},
+        {
+          "id": "symbol1",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {
+          "id": "symbol2",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        },
+        {
+          "id": "symbol3",
+          "categories": [ "good", "soso", "bad", "invalid" ]
+        }
+      ],
+      "rows": [
+        [ 0, 0, 3, 2, 8, 2, 1, 2, 1, 0 ],
+        [ 1, 1, 3, 1, 2, 8, 1, 2, 1, 0 ],
+        [ 2, 2, 3, 0, 2, 8, null, 2, 0, 3 ],
+        [ 3, 3, 2, 0, 2, 8, null, 2, 0, 3 ],
+        [ 4, 4, 2, 1, 2, 1, 1, 2, 1, 0 ],
+        [ 5, 5, 2, 0, 2, 8, null, 2, 0, 3 ],
+        [ 6, 6, 0, 0, 2, 8, null, 2, 0, 3 ],
+        [ 7, 7, 0, 1, 2, 8, null, 2, 0, 3 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "name"} ],
+              "modifies": {"part": "label"},
+              "style": {
+                "fill": "#222222",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 12.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": 4, "top": 4},
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count1"} ],
+              "modifies": {"part": "label1"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count2"} ],
+              "modifies": {"part": "label2"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "count3"} ],
+              "modifies": {"part": "label3"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "color": [
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "color": "#294724"},
+                {"at": 1, "color": "#5f3601"},
+                {"at": 2, "color": "#72152b"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "statusSymbol"
+              }
+            },
+            {
+              "field": {"$ref": "symbol1"},
+              "mapping": [
+                {"at": 0, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 1, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 2, "color": "#72152b"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol1"
+              }
+            },
+            {
+              "field": {"$ref": "symbol2"},
+              "mapping": [
+                {"at": 0, "color": "#294724"},
+                {"at": 1, "color": "#5f3601"},
+                {"at": 2, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol2"
+              }
+            },
+            {
+              "field": {"$ref": "symbol3"},
+              "mapping": [
+                {"at": 0, "color": "#294724"},
+                {"at": 1, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 2, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol3"
+              }
+            },
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "color": "#76a140"},
+                {"at": 1, "color": "#f8b800"},
+                {"at": 2, "color": "#be2f54"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "statusSymbol"
+              }
+            },
+            {
+              "field": {"$ref": "symbol1"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {"b": 44, "g": 194, "r": 0}
+                },
+                {
+                  "at": 1,
+                  "color": {"b": 0, "g": 204, "r": 255}
+                },
+                {"at": 2, "color": "#be2f54"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol1"
+              }
+            },
+            {
+              "field": {"$ref": "symbol2"},
+              "mapping": [
+                {"at": 0, "color": "#76a140"},
+                {"at": 1, "color": "#f8b800"},
+                {
+                  "at": 2,
+                  "color": {"b": 75, "g": 75, "r": 240}
+                },
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol2"
+              }
+            },
+            {
+              "field": {"$ref": "symbol3"},
+              "mapping": [
+                {"at": 0, "color": "#76a140"},
+                {
+                  "at": 1,
+                  "color": {"b": 0, "g": 204, "r": 255}
+                },
+                {
+                  "at": 2,
+                  "color": {"b": 75, "g": 75, "r": 240}
+                },
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol3"
+              }
+            },
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "color": "#b4cd3d"},
+                {"at": 1, "color": "#fad641"},
+                {"at": 2, "color": "#f37c8a"},
+                {
+                  "at": 3,
+                  "color": {
+                    "a": 0.6,
+                    "b": 128,
+                    "g": 128,
+                    "r": 128
+                  }
+                }
+              ],
+              "modifies": {"type": "fill", "part": "main"}
+            },
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "color": "#76a140"},
+                {"at": 1, "color": "#c4911e"},
+                {"at": 2, "color": "#be2f54"},
+                {
+                  "at": 3,
+                  "color": {
+                    "a": 0.7,
+                    "b": 0,
+                    "g": 0,
+                    "r": 0
+                  }
+                }
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "main"
+              }
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "layer": {"$ref": "layer"},
+            "layerPlacement": "adaptive",
+            "method": "dag",
+            "nodePlacement": "maxOverlap",
+            "swimLanes": {
+              "id": {"$ref": "category"},
+              "idealNodeCountValue": {
+                "$ref": "idealNodeCountValue"
+              },
+              "maxRowValue": {"$ref": "maxRowValue"}
+            },
+            "to": {"$ref": "to"}
+          },
+          "symbol": [
+            {
+              "field": {"$ref": "status"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "statusSymbol"}
+            },
+            {
+              "field": {"$ref": "symbol1"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol1"}
+            },
+            {
+              "field": {"$ref": "symbol2"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol2"}
+            },
+            {
+              "field": {"$ref": "symbol3"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol3"}
+            }
+          ],
+          "tooltip": [ {"content": [ {"$ref": "layer"} ]} ],
+          "style": {
+            "width": 170,
+            "height": 60,
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "main",
+                  "style": {"stroke": {"width": 1}}
+                },
+                {
+                  "x": "15%",
+                  "y": "0%",
+                  "width": "85%",
+                  "height": "60%",
+                  "part": "label",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": "10%",
+                  "y": "20%",
+                  "part": "statusSymbol",
+                  "r": "10%"
+                },
+                {
+                  "x": "20%",
+                  "y": "80%",
+                  "part": "symbol1",
+                  "r": "10%"
+                },
+                {
+                  "x": "47.5%",
+                  "y": "80%",
+                  "part": "symbol2",
+                  "r": "10%"
+                },
+                {
+                  "x": "75%",
+                  "y": "80%",
+                  "part": "symbol3",
+                  "r": "10%"
+                },
+                {
+                  "x": "25%",
+                  "y": "69%",
+                  "width": "15%",
+                  "height": "25%",
+                  "part": "label1",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": "52.5%",
+                  "y": "69%",
+                  "width": "15%",
+                  "height": "25%",
+                  "part": "label2",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": "80%",
+                  "y": "69%",
+                  "width": "15%",
+                  "height": "25%",
+                  "part": "label3",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "id"},
+            "attachmentPoint": "center",
+            "from": {"$ref": "from"},
+            "method": "link",
+            "to": {"$ref": "to"}
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "direction"},
+              "palette": [
+                {"endArrow": "arrow"},
+                {"endArrow": "arrow", "startArrow": "arrow"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.6, "b": 160, "g": 160, "r": 160},
+            "stroke": {"width": 4.0},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "content": [ {"$ref": "category"} ],
+              "style": {
+                "fill": "#222222",
+                "align": "start",
+                "font": {
+                  "family": "Arial",
+                  "size": 12.0,
+                  "weight": "bold"
+                },
+                "location": "inside",
+                "padding": {"left": 4, "top": 4},
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "firstValue"} ],
+              "modifies": {"part": "label1"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "secondValue"} ],
+              "modifies": {"part": "label2"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "content": [ {"$ref": "thirdValue"} ],
+              "modifies": {"part": "label3"},
+              "style": {
+                "align": "start",
+                "location": "inside",
+                "valign": "start"
+              }
+            }
+          ],
+          "color": [
+            {
+              "field": {"$ref": "firstIcon"},
+              "mapping": [
+                {"at": 0, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 1, "color": "#5f3601"},
+                {"at": 2, "color": "#72152b"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol1"
+              }
+            },
+            {
+              "field": {"$ref": "secondIcon"},
+              "mapping": [
+                {"at": 0, "color": "#294724"},
+                {"at": 1, "color": "#5f3601"},
+                {"at": 2, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol2"
+              }
+            },
+            {
+              "field": {"$ref": "thirdIcon"},
+              "mapping": [
+                {"at": 0, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 1, "color": {"b": 0, "g": 0, "r": 0}},
+                {"at": 2, "color": "#72152b"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "outline",
+                "part": "symbol3"
+              }
+            },
+            {
+              "field": {"$ref": "firstIcon"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {"b": 44, "g": 194, "r": 0}
+                },
+                {"at": 1, "color": "#f8b800"},
+                {"at": 2, "color": "#be2f54"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol1"
+              }
+            },
+            {
+              "field": {"$ref": "secondIcon"},
+              "mapping": [
+                {"at": 0, "color": "#76a140"},
+                {"at": 1, "color": "#f8b800"},
+                {
+                  "at": 2,
+                  "color": {"b": 75, "g": 75, "r": 240}
+                },
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol2"
+              }
+            },
+            {
+              "field": {"$ref": "thirdIcon"},
+              "mapping": [
+                {
+                  "at": 0,
+                  "color": {"b": 44, "g": 194, "r": 0}
+                },
+                {
+                  "at": 1,
+                  "color": {"b": 0, "g": 204, "r": 255}
+                },
+                {"at": 2, "color": "#be2f54"},
+                {"at": 3, "color": {"a": 0}}
+              ],
+              "modifies": {
+                "type": "fill",
+                "part": "symbol3"
+              }
+            }
+          ],
+          "positioning": {
+            "layer": {"$ref": "category"},
+            "method": "swimlane",
+            "size": {"$ref": "layerHeight"}
+          },
+          "symbol": [
+            {
+              "field": {"$ref": "firstIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol1"}
+            },
+            {
+              "field": {"$ref": "secondIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol2"}
+            },
+            {
+              "field": {"$ref": "thirdIcon"},
+              "mapping": [
+                {"at": 0, "symbol": "circle"},
+                {
+                  "at": 1,
+                  "symbol": {
+                    "shape": [
+                      {
+                        "path": "M0.5, 0 L1, 0.5 L0.5, 1 L 0, 0.5 Z"
+                      }
+                    ]
+                  }
+                },
+                {"at": 2, "symbol": "square"},
+                {
+                  "at": 3,
+                  "symbol": {"shape": [ {"path": "M0, 0"} ]}
+                }
+              ],
+              "modifies": {"part": "symbol3"}
+            }
+          ],
+          "style": {
+            "symbol": {
+              "shape": [
+                {
+                  "x": "0%",
+                  "y": "0%",
+                  "width": "100%",
+                  "height": "100%",
+                  "part": "main",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "lightgray"
+                  }
+                },
+                {
+                  "x": "2%",
+                  "y": "20%",
+                  "part": "symbol1",
+                  "r": "4%"
+                },
+                {
+                  "x": "8%",
+                  "y": "20%",
+                  "part": "symbol2",
+                  "r": "4%"
+                },
+                {
+                  "x": "14%",
+                  "y": "20%",
+                  "part": "symbol3",
+                  "r": "4%"
+                },
+                {
+                  "x": "3.3%",
+                  "y": "15%",
+                  "width": "3.3%",
+                  "height": "12%",
+                  "part": "label1",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": "9.3%",
+                  "y": "15%",
+                  "width": "3.3%",
+                  "height": "12%",
+                  "part": "label2",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                },
+                {
+                  "x": "15.3%",
+                  "y": "15%",
+                  "width": "3.3%",
+                  "height": "12%",
+                  "part": "label3",
+                  "style": {
+                    "fill": "transparent",
+                    "outline": "transparent"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "style": {"fill": "white", "outline": {"a": 0.1}}
+    }
+  ],
+  "version": "2.0.1",
+  "style": {"fill": "#DEDEDE", "padding": 5}
+}

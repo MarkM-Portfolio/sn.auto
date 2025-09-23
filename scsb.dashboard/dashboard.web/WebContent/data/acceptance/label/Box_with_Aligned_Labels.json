@@ -1,0 +1,344 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {"id": "m1", "unit": "categorical"},
+        {"id": "m2", "unit": "categorical"},
+        {"id": "cat", "unit": "categorical"}
+      ],
+      "rows": [ [ 0, 0, 0 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "labelCollisionMethod": "none",
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "style": {
+            "fill": "#ccc",
+            "stroke": {"width": 0.5},
+            "size": "95%",
+            "symbol": "square"
+          }
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "style": {
+            "fill": "#eee",
+            "size": "60%",
+            "symbol": "square"
+          }
+        },
+        {
+          "type": "point",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "alignEdge": "vertical",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "alignEdge": "horizontal",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "alignEdge": "vertical",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "alignEdge": "vertical",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BLO" ],
+              "style": {
+                "fill": "red",
+                "align": "start",
+                "alignEdge": "vertical",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BCO" ],
+              "style": {
+                "fill": "red",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BRO" ],
+              "style": {
+                "fill": "red",
+                "align": "end",
+                "alignEdge": "horizontal",
+                "font": {"size": "10"},
+                "location": "outside",
+                "valign": "end"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "TRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "start"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "CRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BLI" ],
+              "style": {
+                "fill": "green",
+                "align": "start",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BCI" ],
+              "style": {
+                "fill": "green",
+                "align": "middle",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            },
+            {
+              "backgroundStyle": {
+                "fill": "rgba(0,255,0,0.1)",
+                "outline": "brown"
+              },
+              "content": [ "BRI" ],
+              "style": {
+                "fill": "green",
+                "align": "end",
+                "font": {"size": "10"},
+                "location": "inside",
+                "valign": "end"
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "m1"}},
+            {"field": {"$ref": "m2"}}
+          ],
+          "symbol": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "cat"},
+              "modifies": "both",
+              "palette": [
+                "poly-4",
+                "circle",
+                "triangle",
+                "poly-5",
+                "star-5",
+                "i-beam",
+                "poly-11",
+                "cross",
+                "plus"
+              ]
+            }
+          ],
+          "style": {
+            "fill": {"a": 0.15, "b": 150},
+            "stroke": {"width": 0.5},
+            "outline": {"a": 0.2},
+            "size": "60%"
+          }
+        }
+      ],
+      "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+    }
+  ],
+  "size": {"width": 600.0, "height": 600.0},
+  "version": "4.1",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

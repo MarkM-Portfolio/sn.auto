@@ -1,0 +1,172 @@
+{
+  "_id": "_design/Get",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/GetClient",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/GetClientPerApp",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.appId, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.appId, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.appId, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.appId, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.appId, doc.client, doc.clientVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/GetPerApp",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.appId, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.appId, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.appId, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.appId, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.appId, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/GetOSPerApp",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.appId, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.appId, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.appId, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.appId, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.appId, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/GetOS",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.os, doc.osVer, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/AppData",
+  "views": {
+    "Day": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.appId, doc.appData, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Hour": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.day, doc.hour, doc.appId, doc.appData, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Month": {
+      "map": "function(doc) {\n  emit([doc.year, doc.month, doc.appId, doc.appData, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "Year": {
+      "map": "function(doc) {\n  emit([doc.year, doc.appId, doc.appData, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    },
+    "AllTime": {
+      "map": "function(doc) {\n  emit([doc.appId, doc.appData, doc.customer_id, doc.subscriber_id], 1);\n}",
+      "reduce": "_count"
+    }
+  }
+}{
+  "_id": "_design/Validation",
+  "validate_doc_update": "function(newDoc, oldDoc, userCtx) {if (newDoc.customer_id==null) {throw ({forbidden: \"Invalid data\"})}}"
+}

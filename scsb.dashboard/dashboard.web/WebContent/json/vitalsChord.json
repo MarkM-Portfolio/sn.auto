@@ -1,0 +1,77 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "ref",
+          "label": "referrer",
+          "categories": [  ]
+        },
+        {
+          "id": "app",
+          "label": "Applications",
+          "categories": [  ]
+        },
+        {"id": "uhits", "label": "Unique Hits"},
+        {"id": "hits", "label": "Total Hits"}
+      ],
+      "rows": [  ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {"scale": {"local": false}},
+          {"scale": {"local": false}}
+        ]
+      },
+      "elements": [
+        {
+          "type": "edge",
+          "color": [
+            {
+              "field": {"$ref": "app"},
+              "scale": {"local": false},
+              "modifies": "fill",
+              "palette": [ "black" ]
+            }
+          ],
+          "meta": [
+            {"field": {"$ref": "app"}, "key": "appId"}
+          ],
+          "positioning": {
+            "combineCategories": true,
+            "from": {"$ref": "ref"},
+            "size": {"$ref": "hits"},
+            "to": {"$ref": "app"},
+            "method": "chord"
+          },
+          "styles": [
+            {
+              "target": "arc",
+              "style": {
+                "fill": "#FFF",
+                "outline": "#0006",
+                "size": 28
+              }
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                "from ",
+                {"$ref": "ref"},
+                " to ",
+                {"$ref": "app"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "6.0",
+  "style": {"fill": "transparent"}
+}

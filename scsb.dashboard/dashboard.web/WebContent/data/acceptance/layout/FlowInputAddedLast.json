@@ -1,0 +1,1398 @@
+{
+  "data": [
+    {
+      "id": "riskData",
+      "fields": [
+        {
+          "id": "rID",
+          "categories": [ "0", "1", "2", "3", "4", "5" ],
+          "key": true
+        },
+        {
+          "id": "rparent",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "id": "risk_label",
+          "categories": [
+            "RL",
+            "RH",
+            "RVL",
+            "RM",
+            "R3",
+            "R11"
+          ]
+        },
+        {"id": "_rsize"},
+        {
+          "id": "rstatus",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ]
+        },
+        {
+          "id": "riskExternalId",
+          "categories": [
+            "758acc91-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa588-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc90-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc93-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc95-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc97-4195-11e3-ab7d-f34f6f80c44f"
+          ]
+        },
+        {"id": "rdisabled", "categories": [ "0", "1" ]},
+        {"id": "riskColor", "unit": "categorical"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 1, 2, 0, 0, 0 ],
+        [ 1, 2, 1, 1, 0, 1, 0, 1 ],
+        [ 2, 2, 2, 1, 3, 2, 0, 2 ],
+        [ 3, 4, 3, 1, 1, 3, 0, 3 ],
+        [ 4, 5, 4, 1, 2, 4, 0, 4 ],
+        [ 5, 7, 5, 1, 3, 5, 0, 5 ]
+      ]
+    },
+    {
+      "id": "controlData",
+      "fields": [
+        {
+          "id": "cparent",
+          "categories": [
+            "758acc91-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa588-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc90-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc93-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc95-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc97-4195-11e3-ab7d-f34f6f80c44f"
+          ]
+        },
+        {
+          "id": "control_label",
+          "categories": [ "C8", "C1", "C1", "C1" ]
+        },
+        {
+          "id": "control_disabled_label",
+          "categories": [ null, null, null, null ]
+        },
+        {
+          "id": "cstatus",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ]
+        },
+        {
+          "id": "controlExternalId",
+          "categories": [
+            "758acc92-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa589-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc94-4195-11e3-ab7d-f34f6f80c44f",
+            "758acc96-4195-11e3-ab7d-f34f6f80c44f"
+          ]
+        },
+        {"id": "controlColor", "unit": "categorical"}
+      ],
+      "rows": [
+        [ 0, 0, 0, null, 0, 0 ],
+        [ 1, 1, 1, 0, 1, 1 ],
+        [ 3, 2, 2, 1, 2, 2 ],
+        [ 4, 3, 3, 1, 3, 3 ]
+      ]
+    },
+    {
+      "id": "links",
+      "fields": [
+        {
+          "id": "from",
+          "label": "from",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "id": "to",
+          "label": "to",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ]
+        },
+        {"id": "linklabel", "categories": [ "No", "Yes" ]},
+        {
+          "id": "direction",
+          "categories": [ "E", "N", "S", "W" ]
+        },
+        {
+          "id": "linkExternalId",
+          "categories": [
+            "758a7e73-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e74-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e75-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa580-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa581-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e76-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa582-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa583-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa584-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa585-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa586-4195-11e3-ab7d-f34f6f80c44f",
+            "758aa587-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e72-4195-11e3-ab7d-f34f6f80c44f"
+          ]
+        },
+        {"id": "dashing", "unit": "categorical"},
+        {"id": "link_color", "unit": "categorical"},
+        {
+          "id": "link_label_categories",
+          "unit": "categorical"
+        }
+      ],
+      "rows": [
+        [ 0, 1, null, 0, 0, 0, 0, 0 ],
+        [ 1, 2, null, 2, 1, 0, 1, 1 ],
+        [ 2, 4, null, 0, 2, 0, 2, 2 ],
+        [ 3, 2, 0, 3, 3, 0, 3, 3 ],
+        [ 3, 5, 1, 0, 4, 0, 4, 4 ],
+        [ 4, 3, null, 2, 5, 0, 5, 5 ],
+        [ 5, 6, null, 0, 6, 0, 6, 6 ],
+        [ 6, 7, null, 2, 7, 0, 7, 7 ],
+        [ 7, 8, null, 2, 8, 0, 8, 8 ],
+        [ 8, 9, null, 0, 9, 0, 9, 9 ],
+        [ 9, 10, null, 1, 10, 0, 10, 10 ],
+        [ 10, 11, null, 0, 11, 0, 11, 11 ],
+        [ 12, 0, null, 0, 12, 0, 12, 12 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {
+          "id": "id",
+          "categories": [
+            "758a3052-4195-11e3-ab7d-f34f6f80c44f",
+            "758a3053-4195-11e3-ab7d-f34f6f80c44f",
+            "758a3054-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5760-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5761-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5762-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5763-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5764-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5765-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5766-4195-11e3-ab7d-f34f6f80c44f",
+            "758a5767-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e70-4195-11e3-ab7d-f34f6f80c44f",
+            "758a7e71-4195-11e3-ab7d-f34f6f80c44f"
+          ],
+          "key": true
+        },
+        {
+          "id": "label",
+          "categories": [
+            "Lead Generation (BDR)",
+            "Opportunity To Selection (RSM)",
+            "Legal Review (Counsel)",
+            "Contract OK?",
+            "Pricing Review (CFO)",
+            "Credit Check (Controller)",
+            "CRM System Update (Controller)",
+            "Sales Close (RSM, Legal)",
+            "Order Processing (CSS)",
+            "Fullfillment (IT)",
+            "CRM System Update (Controller)",
+            "Sales Summary",
+            "Prospects List"
+          ]
+        },
+        {
+          "id": "description",
+          "categories": [
+            "Sales has identified sales for execution.",
+            "Sales has vetted the opportunity and it meets the selection criteria.",
+            "Legal review of the contract and sales opportunity to ensure compliance.",
+            "Contract has been approved and the approvers signature is on file.",
+            "Pricing in contracts must be reviewed with sales and legal executives.",
+            "Credit check must be performed by business controller.",
+            "Business controller must update records in CRM system with sales and legal approvals on file.",
+            "Sales contract is ready to close.",
+            "",
+            "",
+            "",
+            "Summary document describing what transactions took place.",
+            "Marketing has generated a prospects list from the leads website."
+          ]
+        },
+        {
+          "id": "shape_type",
+          "categories": [ "0", "1", "2", "3" ]
+        },
+        {"id": "_size"},
+        {
+          "id": "node_label_categories",
+          "categories": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {"id": "x"},
+        {"id": "y"}
+      ],
+      "rows": [
+        [ 0, 0, 0, 0, 1, 0, null, null ],
+        [ 1, 1, 1, 0, 0, 1, null, null ],
+        [ 2, 2, 2, 0, 2, 2, null, null ],
+        [ 3, 3, 3, 1, 0, 3, null, null ],
+        [ 4, 4, 4, 0, 1, 4, null, null ],
+        [ 5, 5, 5, 0, 1, 5, null, null ],
+        [ 6, 6, 6, 0, 0, 6, null, null ],
+        [ 7, 7, 7, 0, 1, 7, null, null ],
+        [ 8, 8, 8, 0, 0, 8, null, null ],
+        [ 9, 9, 9, 0, 0, 9, null, null ],
+        [ 10, 10, 10, 0, 0, 10, null, null ],
+        [ 11, 11, 11, 2, 0, 11, null, null ],
+        [ 12, 12, 12, 3, 0, 12, null, null ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2013",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "id": "nodeElement",
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "field": {"$ref": "node_label_categories"},
+                "scale": {"local": false},
+                "palette": [
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(83,71,65,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)",
+                  "rgba(0,97,115,255)"
+                ]
+              },
+              "content": [ {"$ref": "label"} ],
+              "font": {
+                "field": {"$ref": "node_label_categories"},
+                "scale": {"local": false},
+                "palette": [
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"}
+                ]
+              },
+              "modifies": {"part": "label"},
+              "style": {
+                "align": "middle",
+                "location": "inside",
+                "padding": 2,
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "nodes"},
+          "meta": [ {"field": {"$ref": "id"}, "key": "id"} ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "levels": [ {"$ref": "x"}, {"$ref": "y"} ],
+            "linkType": {"$ref": "direction"},
+            "orientation": "top-to-bottom",
+            "to": {"$ref": "to"},
+            "method": "process"
+          },
+          "size": [
+            {
+              "field": {"$ref": "_size"},
+              "scale": {"spans": [ {"min": 0, "max": 10} ]},
+              "mapping": [
+                {"at": 0, "size": 60},
+                {"at": 1, "size": 92},
+                {"at": 10, "size": 345}
+              ],
+              "modifies": "height"
+            }
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "shape_type"},
+              "scale": {"local": false},
+              "palette": [
+                {
+                  "shape": [
+                    {
+                      "type": "rect",
+                      "part": "main",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "part": "selection",
+                      "style": {
+                        "fill": {
+                          "type": "linear",
+                          "angle": 270,
+                          "colors": [
+                            {
+                              "color": "#F2FDFD",
+                              "offset": 0
+                            },
+                            {
+                              "color": "#CEF4FA",
+                              "offset": 1
+                            }
+                          ]
+                        },
+                        "cornerRadius": "4pt",
+                        "outline": "#99C5CC"
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {"height": 0, "top": 0},
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {"height": 60, "top": 0},
+                      "part": "label",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "shape": [
+                    {
+                      "type": "rect",
+                      "shape": [
+                        {
+                          "type": "rect",
+                          "bounds": {
+                            "width": 0,
+                            "height": 0,
+                            "left": "25%",
+                            "top": "25%"
+                          },
+                          "part": "badge1",
+                          "style": {
+                            "fill": "transparent",
+                            "outline": "transparent"
+                          }
+                        },
+                        {
+                          "type": "path",
+                          "part": "label",
+                          "path": "M0.1,0.25L0.1,0.75L0.9,0.75L0.9,0.25Z",
+                          "style": {
+                            "fill": "transparent",
+                            "outline": "transparent"
+                          }
+                        },
+                        {
+                          "type": "path",
+                          "part": "selection",
+                          "path": "M0,0.5L0.5,0L1.0,0.5L0.5,1Z",
+                          "style": {
+                            "fill": {
+                              "type": "linear",
+                              "angle": 270,
+                              "colors": [
+                                {
+                                  "color": "#FCF8F4",
+                                  "offset": 0
+                                },
+                                {
+                                  "color": "#F5EDE1",
+                                  "offset": 1
+                                }
+                              ]
+                            },
+                            "outline": "#C7BFB5"
+                          }
+                        }
+                      ],
+                      "bounds": {
+                        "width": "120%",
+                        "height": "110%",
+                        "left": "-10%",
+                        "top": "-5%"
+                      },
+                      "part": "decision",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "shape": [
+                    {
+                      "type": "rect",
+                      "part": "main",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {"height": 60, "top": 0},
+                      "part": "label",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "selection",
+                      "path": "M0,0L0.8,0L1,0.2L1,1L0,1Z"
+                    },
+                    {
+                      "type": "path",
+                      "part": "fill",
+                      "path": "M0,0L0.8,0L1,0.2L1,1L0,1Z",
+                      "style": {
+                        "fill": {
+                          "type": "linear",
+                          "angle": 270,
+                          "colors": [
+                            {
+                              "color": "#FAFDFD",
+                              "offset": 0
+                            },
+                            {
+                              "color": "#F5FAFB",
+                              "offset": 1
+                            }
+                          ]
+                        },
+                        "outline": "#A5BABD"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "top",
+                      "path": "M0.8,0L1,0.2L0.8,0.2Z",
+                      "style": {"fill": "white"}
+                    },
+                    {
+                      "type": "path",
+                      "part": "label",
+                      "path": "M0,0.2L1,0.2L1,1L0,1Z",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "arrow",
+                      "path": "M0.0455,0.068L0.0455,0.136L0.159,0.136L0.159,0.182L0.25,0.102L0.159,0.023L0.159,0.068L0.0455,0.068Z",
+                      "style": {
+                        "fill": "#3A6188",
+                        "outline": "#3A6188"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "shape": [
+                    {
+                      "type": "rect",
+                      "part": "main",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "rect",
+                      "bounds": {"height": 60, "top": 0},
+                      "part": "label",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "selection",
+                      "path": "M0,0L0.8,0L1,0.2L1,1L0,1Z"
+                    },
+                    {
+                      "type": "path",
+                      "part": "fill",
+                      "path": "M0,0L0.8,0L1,0.2L1,1L0,1Z",
+                      "style": {
+                        "fill": {
+                          "type": "linear",
+                          "angle": 270,
+                          "colors": [
+                            {
+                              "color": "#FAFDFD",
+                              "offset": 0
+                            },
+                            {
+                              "color": "#F5FAFB",
+                              "offset": 1
+                            }
+                          ]
+                        },
+                        "outline": "#A5BABD"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "top",
+                      "path": "M0.8,0L1,0.2L0.8,0.2Z",
+                      "style": {"fill": "white"}
+                    },
+                    {
+                      "type": "path",
+                      "part": "label",
+                      "path": "M0,0.2L1,0.2L1,1L0,1Z",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "transparent"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "part": "arrow",
+                      "path": "M0.0455,0.068L0.0455,0.136L0.159,0.136L0.159,0.182L0.25,0.102L0.159,0.023L0.159,0.068L0.0455,0.068Z",
+                      "style": {
+                        "fill": "transparent",
+                        "outline": "#3A6188"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "style": {
+            "stroke": {"width": "1px"},
+            "width": 90,
+            "height": 90,
+            "cornerRadius": "4pt",
+            "outline": "#98C5CB"
+          }
+        },
+        {
+          "id": "edge",
+          "type": "edge",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "white",
+                "outline": "transparent"
+              },
+              "color": {
+                "field": {"$ref": "link_label_categories"},
+                "scale": {"local": false},
+                "palette": [
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)",
+                  "rgba(0,0,0,255)"
+                ]
+              },
+              "content": [ {"$ref": "linklabel"} ],
+              "font": {
+                "field": {"$ref": "link_label_categories"},
+                "scale": {"local": false},
+                "palette": [
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"},
+                  {"size": "8pt"}
+                ]
+              },
+              "style": {"location": "inside"}
+            }
+          ],
+          "data": {"$ref": "links"},
+          "dashing": [
+            {
+              "field": {"$ref": "dashing"},
+              "scale": {"local": false},
+              "palette": [
+                "Solid",
+                "LongDash",
+                "ShortDash",
+                "Dot",
+                "DashDot",
+                "ShortDashDotDot"
+              ]
+            }
+          ],
+          "meta": [
+            {
+              "field": {"$ref": "linkExternalId"},
+              "key": "id"
+            }
+          ],
+          "positioning": {
+            "id": {"$ref": "id"},
+            "from": {"$ref": "from"},
+            "linkType": {"$ref": "direction"},
+            "to": {"$ref": "to"},
+            "method": "route"
+          },
+          "styleBy": [
+            {
+              "field": {"$ref": "link_color"},
+              "scale": {"local": false},
+              "palette": [
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"},
+                {"fill": "rgba(0,0,0,255)"}
+              ]
+            }
+          ],
+          "style": {"endArrow": "arrow"}
+        }
+      ]
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "id": "riskBackground",
+          "type": "point",
+          "position": [ {"value": "50%"} ],
+          "color": [
+            {
+              "field": {"$ref": "rdisabled"},
+              "scale": {
+                "local": false,
+                "spans": [ {"min": 0, "max": 10} ]
+              },
+              "palette": [ "#AFE3F0", "#EBF1F2" ]
+            }
+          ],
+          "positionModifier": "dodge",
+          "size": [
+            {
+              "field": {"$ref": "_rsize"},
+              "scale": {"spans": [ {"min": 0, "max": 10} ]},
+              "mapping": [
+                {"at": 0, "size": 5},
+                {"at": 10, "size": 245}
+              ],
+              "modifies": "height"
+            }
+          ],
+          "style": {
+            "width": 60,
+            "symbol": {
+              "shape": [
+                {
+                  "type": "rect",
+                  "part": "spacer",
+                  "style": {"fill": "transparent"}
+                },
+                {
+                  "type": "rect",
+                  "bounds": {"top": 0},
+                  "part": "main",
+                  "style": {"fill": "#AFE3F0"}
+                },
+                {
+                  "type": "rect",
+                  "bounds": {"top": 0},
+                  "part": "spacer",
+                  "style": {"fill": "transparent"}
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "rparent"}} ],
+        "targetElement": {"$ref": "nodeElement"},
+        "targetPart": "main",
+        "method": "chartInChart"
+      },
+      "style": {
+        "fill": {"a": 0},
+        "padding": {
+          "bottom": 4,
+          "left": 24,
+          "right": 4,
+          "top": 60
+        }
+      }
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "id": "riskElement",
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "field": {"$ref": "riskColor"},
+                "scale": {"local": false},
+                "palette": [
+                  "rgba(115,76,0,255)",
+                  "rgba(115,0,10,255)",
+                  "rgba(23,102,0,255)",
+                  "rgba(115,61,0,255)",
+                  "rgba(115,76,0,255)",
+                  "rgba(23,102,0,255)"
+                ]
+              },
+              "content": [ {"$ref": "risk_label"} ],
+              "font": {
+                "field": {"$ref": "riskColor"},
+                "scale": {"local": false},
+                "palette": [
+                  {"size": "7pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"}
+                ]
+              },
+              "style": {
+                "align": "middle",
+                "font": {"size": 9},
+                "location": "inside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "riskData"},
+          "position": [ {"value": "50%"}, {"value": "31%"} ],
+          "meta": [
+            {
+              "field": {"$ref": "riskExternalId"},
+              "key": "id"
+            }
+          ],
+          "styleBy": [
+            {
+              "field": {"$ref": "rstatus"},
+              "scale": {"local": false},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(245,150,153,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,101,111,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(199,60,73,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(255,186,117,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(250,154,80,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(224,110,43,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(249,225,73,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(255,186,117,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(191,131,12,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(175,217,114,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(130,186,86,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(80,146,61,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(204,204,204,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(179,179,179,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(128,128,128,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(242,242,242,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,230,230,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(217,217,217,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(242,242,242,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,230,230,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(217,217,217,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(175,217,114,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(130,186,86,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(80,146,61,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(245,150,153,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,101,111,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(199,60,73,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(204,204,204,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(179,179,179,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(128,128,128,255)"
+                },
+                {
+                  "fill": "rgba(0,255,255,255)",
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(0,0,128,255)"
+                }
+              ]
+            }
+          ],
+          "style": {
+            "width": 25,
+            "height": 20,
+            "padding": 3,
+            "symbol": {
+              "shape": [
+                {
+                  "type": "path",
+                  "path": "M0,0.5L0.5,0L1,0.5L0.5,1Z"
+                }
+              ]
+            }
+          },
+          "clip": "none"
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "rID"}} ],
+        "targetElement": {"$ref": "riskBackground"},
+        "targetPart": "main",
+        "method": "chartInChart"
+      }
+    },
+    {
+      "coordinates": {
+        "dimensions": [ {}, {"scale": {"local": true}} ],
+        "transforms": [ {"type": "transpose"} ]
+      },
+      "elements": [
+        {
+          "id": "controlElement",
+          "type": "point",
+          "label": [
+            {
+              "color": {
+                "field": {"$ref": "controlColor"},
+                "scale": {"local": false},
+                "palette": [
+                  "rgba(0,0,0,255)",
+                  "rgba(115,0,10,255)",
+                  "rgba(115,61,0,255)",
+                  "rgba(115,61,0,255)"
+                ]
+              },
+              "content": [ {"$ref": "control_label"} ],
+              "font": {
+                "field": {"$ref": "controlColor"},
+                "scale": {"local": false},
+                "palette": [
+                  {"size": "8pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"},
+                  {"size": "7pt"}
+                ]
+              },
+              "style": {
+                "align": "middle",
+                "font": {"size": 9},
+                "location": "inside",
+                "valign": "middle"
+              }
+            },
+            {
+              "content": [
+                {"$ref": "control_disabled_label"}
+              ],
+              "style": {
+                "fill": "#B3B3B3",
+                "align": "middle",
+                "font": {"size": 9},
+                "location": "inside",
+                "valign": "middle"
+              }
+            }
+          ],
+          "data": {"$ref": "controlData"},
+          "position": [
+            {"value": "74%"},
+            {"field": {"$ref": "control_label"}}
+          ],
+          "meta": [
+            {
+              "field": {"$ref": "controlExternalId"},
+              "key": "id"
+            }
+          ],
+          "styleBy": [
+            {
+              "field": {"$ref": "cstatus"},
+              "scale": {"local": false},
+              "palette": [
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(245,150,153,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,101,111,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(199,60,73,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(255,186,117,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(250,154,80,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(224,110,43,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(249,225,73,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(255,186,117,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(191,131,12,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(175,217,114,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(130,186,86,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(80,146,61,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(204,204,204,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(179,179,179,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(128,128,128,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(242,242,242,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,230,230,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(217,217,217,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(242,242,242,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,230,230,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(217,217,217,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(175,217,114,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(130,186,86,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(80,146,61,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(245,150,153,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(230,101,111,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(199,60,73,255)"
+                },
+                {
+                  "fill": {
+                    "type": "linear",
+                    "angle": 270,
+                    "colors": [
+                      {
+                        "color": "rgba(204,204,204,255)",
+                        "offset": 0
+                      },
+                      {
+                        "color": "rgba(179,179,179,255)",
+                        "offset": 1
+                      }
+                    ]
+                  },
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(128,128,128,255)"
+                },
+                {
+                  "fill": "rgba(0,255,255,255)",
+                  "stroke": {"width": "1"},
+                  "outline": "rgba(0,0,128,255)"
+                }
+              ]
+            }
+          ],
+          "style": {"stroke": {"width": 0.25}, "size": 20},
+          "clip": "none"
+        }
+      ],
+      "facet": {
+        "fields": [ {"field": {"$ref": "cparent"}} ],
+        "targetElement": {"$ref": "riskBackground"},
+        "targetPart": "main",
+        "method": "chartInChart"
+      }
+    }
+  ],
+  "version": "4.0.1",
+  "style": {"fill": "transparent", "padding": 5}
+}

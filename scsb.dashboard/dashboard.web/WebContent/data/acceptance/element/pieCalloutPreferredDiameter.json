@@ -1,0 +1,269 @@
+{
+  "data": [
+    {
+      "id": "dData",
+      "fields": [
+        {
+          "id": "x",
+          "label": "Population",
+          "format": {"numericPattern": "#######,###"}
+        },
+        {
+          "id": "y",
+          "label": "Cities",
+          "categories": [
+            "C1 LongText LongText LongText",
+            "C2",
+            "C3LongTextLongTextLongText",
+            "C4",
+            "C5LongTextLongTextLongText",
+            "C6",
+            "C7 LongText LongText LongText",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22",
+            "C23",
+            "C24"
+          ]
+        }
+      ],
+      "rows": [
+        [ 1178000000, 0 ],
+        [ 55000000, 1 ],
+        [ 1158000000, 2 ],
+        [ 48000000, 3 ],
+        [ 1142000000, 4 ],
+        [ 50000000, 5 ],
+        [ 1158000000, 6 ],
+        [ 38000000, 7 ],
+        [ 73000000, 8 ],
+        [ 69000000, 9 ],
+        [ 67000000, 10 ],
+        [ 32000000, 11 ],
+        [ 78000000, 12 ],
+        [ 55000000, 13 ],
+        [ 58000000, 14 ],
+        [ 48000000, 15 ],
+        [ 42000000, 16 ],
+        [ 50000000, 17 ],
+        [ 58000000, 18 ],
+        [ 38000000, 19 ],
+        [ 73000000, 20 ],
+        [ 69000000, 21 ],
+        [ 67000000, 22 ],
+        [ 32000000, 23 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {} ],
+        "transforms": [
+          {"type": "stack"},
+          {
+            "type": "polar",
+            "polarParameters": {"startAngle": 90 , "diameter":{"preferred":"40%"}}
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "content": [ {"$ref": "y"} ],
+              "style": {
+                "fill": {"h": 0, "l": 1, "s": 0},
+                "align": "middle",
+                "effect": {"shadow": {"dy": 1, "stdDev": 1}},
+                "font": {
+                  "family": "Arial",
+                  "size": 15.0,
+                  "weight": "bold"
+                },
+                "location": "callout",
+                "padding": 20,
+                "valign": "middle"
+              }
+            }
+          ],
+          "position": [ {"field": {"$ref": "x"}} ],
+          "color": [ {"field": {"$ref": "y"}} ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "y"},
+              "palette": [
+                {"fill": {"h": 0.5805, "s": 0.5, "v": 0.85}},
+                {"fill": {"h": 0.683, "s": 0.25, "v": 0.85}},
+                {
+                  "fill": {
+                    "h": 0.2194,
+                    "s": 0.45,
+                    "v": 0.75
+                  }
+                },
+                {"fill": {"h": 0.1194, "s": 0.7, "v": 0.85}},
+                {
+                  "fill": {
+                    "h": 0.0666,
+                    "s": 0.63,
+                    "v": 0.85
+                  }
+                },
+                {"fill": {"h": 0.0, "s": 0.54, "v": 0.83}},
+                {
+                  "fill": {
+                    "h": 0.5805,
+                    "s": 0.35,
+                    "v": 0.56
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.7444,
+                    "s": 0.34,
+                    "v": 0.75
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.2194,
+                    "s": 0.44,
+                    "v": 0.54
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.1194,
+                    "s": 0.62,
+                    "v": 0.67
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.0666,
+                    "s": 0.68,
+                    "v": 0.68
+                  }
+                },
+                {"fill": {"h": 0.0, "s": 0.57, "v": 0.67}},
+                {
+                  "fill": {
+                    "h": 0.5777,
+                    "s": 0.65,
+                    "v": 0.43
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.7416,
+                    "s": 0.38,
+                    "v": 0.41
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.2194,
+                    "s": 0.52,
+                    "v": 0.38
+                  }
+                },
+                {"fill": {"h": 0.1194, "s": 0.68, "v": 0.5}},
+                {
+                  "fill": {
+                    "h": 0.0666,
+                    "s": 0.73,
+                    "v": 0.53
+                  }
+                },
+                {"fill": {"h": 0.0, "s": 0.38, "v": 0.5}}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "y"},
+                " :\n",
+                {"$ref": "x"}
+              ]
+            }
+          ],
+          "style": {
+            "fill": {
+              "type": "linear",
+              "angle": 270,
+              "colors": [
+                {
+                  "color": {
+                    "dSaturation": 0.05,
+                    "dValue": 0.1
+                  },
+                  "offset": 0
+                },
+                {
+                  "color": {
+                    "dSaturation": 0.25,
+                    "dValue": -0.15
+                  },
+                  "offset": 1
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "swatchStyle": {"padding": 5},
+          "textStyle": {
+            "fill": {"a": 0.6, "h": 0, "l": 0, "s": 0},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"h": 0, "l": 1, "s": 0},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "version": "1.2",
+  "style": {"fill": {"h": 0, "l": 1, "s": 0}}
+}

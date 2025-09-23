@@ -1,0 +1,173 @@
+{
+  "data": [
+    {
+      "id": "dDelimitedFileSource",
+      "fields": [
+        {
+          "id": "fX",
+          "label": "Year Published",
+          "min": 1975,
+          "max": 2008
+        },
+        {
+          "id": "Categories",
+          "categories": [
+            "category A",
+            "category C",
+            "category D"
+          ]
+        },
+        {
+          "id": "fSourcefield",
+          "label": "Price",
+          "min": 3.49,
+          "max": 34.95
+        }
+      ],
+      "rows": [
+        [ 1979, 0, 12.99 ],
+        [ 1975, 0, 16.99 ],
+        [ 1977, 0, 16.95 ],
+        [ 1980, 0, 9.99 ],
+        [ 1983, 0, 19.49 ],
+        [ 1984, 0, 8.49 ],
+        [ 2007, 2, 8.99 ],
+        [ 2003, 2, 13.99 ],
+        [ 1992, 2, 7.99 ],
+        [ 2001, 2, 9.95 ],
+        [ 2005, 2, 34.95 ],
+        [ 1997, 2, 8.99 ],
+        [ 2007, 1, 12.99 ],
+        [ 2006, 1, 8.49 ],
+        [ 1998, 1, 19.95 ],
+        [ 2001, 1, 34.95 ],
+        [ 2005, 1, 9.99 ],
+        [ 2000, 1, 32.95 ],
+        [ 2007, 1, 27.49 ],
+        [ 1992, 1, 34.95 ],
+        [ 1996, 1, 12.99 ],
+        [ 2007, 1, 37.45 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"},
+                "snap": true
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "snap": true
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                },
+                "snap": true
+              }
+            }
+          },
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": {"b": 128, "g": 128, "r": 128},
+                "stroke": {"width": 0.5, "style": "Dot"},
+                "snap": true
+              },
+              "markStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "snap": true
+              },
+              "tickStyle": {
+                "fill": {"b": 0, "g": 0, "r": 0},
+                "font": {
+                  "family": "Verdana,SanSerif",
+                  "size": 8.9
+                },
+                "snap": true
+              }
+            }
+          }
+        ],
+        "style": {"fill": {"b": 255, "g": 255, "r": 255}}
+      },
+      "elements": [
+        {
+          "type": "line",
+          "data": {"$ref": "dDelimitedFileSource"},
+          "position": [
+            {"field": {"$ref": "fSourcefield"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Categories"},
+              "mapping": [ {"at": 0, "color": "red"} ],
+              "palette": [ "pink", "yellow", "green" ]
+            }
+          ],
+          "dashing": [ {"field": {"$ref": "Categories"}} ],
+          "style": {"stroke": {"width": 2}, "snap": true}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fSourcefield"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "color": [
+            {
+              "field": {"$ref": "Categories"},
+              "palette": [ "navy", "yellow", "green" ]
+            }
+          ],
+          "size": [
+            {
+              "field": {"$ref": "Categories"},
+              "palette": [ 50, 70, 100 ]
+            }
+          ],
+          "symbol": [
+            {
+              "field": {"$ref": "Categories"},
+              "palette": [
+                "star",
+                "circle",
+                {
+                  "shape": [
+                    {"x": "30%", "y": "20%", "r": "15%"},
+                    {"x": "70%", "y": "20%", "r": "15%"},
+                    {"path": "M0.5,0.4L0.4,0.6L0.6,0.6"},
+                    {
+                      "path": "M0.1,0.5C0.3,0.95,0.7,0.95,0.9,0.5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "style": {
+            "outline": "red",
+            "size": 25,
+            "snap": true
+          }
+        }
+      ],
+      "style": {
+        "fill": {"b": 200, "g": 200, "r": 200},
+        "padding": 18
+      }
+    }
+  ],
+  "size": {"width": 450, "height": 450},
+  "version": "1.3"
+}

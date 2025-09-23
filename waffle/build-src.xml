@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WAFFLE Framework and dependenceny sources" default="build-jar-src" basedir=".">
+
+	<!-- directories -->
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="libsrcs.dir" value="${lib.dir}/sources" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="src.dir" value="${basedir}/src" />
+
+	<!-- .jar paths -->
+	<property name="slf4j.jar" value="${libsrcs.dir}/slf4j-api-1.6.4-sources.jar" />
+	<property name="logback-classic.jar" value="${libsrcs.dir}/logback-classic-1.0.1-sources.jar" />
+	<property name="logback-core.jar" value="${libsrcs.dir}/logback-core-1.0.1-sources.jar" />
+	<property name="testng.jar" value="${libsrcs.dir}/testng-6.4-sources.zip" />
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete>
+			<fileset dir="${basedir}">
+				<include name="*.log" />
+				<include name="*.out" />
+				<include name="*.err" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="prepare-deps" depends="clean">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="build-jar-src" depends="prepare-deps">
+		<jar destfile="${build.dir}/waffle-src.jar" basedir="${src.dir}" duplicate="preserve">
+			<zipfileset src="${testng.jar}" excludes="META-INF/*" />
+			<zipfileset src="${slf4j.jar}" excludes="META-INF/*" />
+			<zipfileset src="${logback-core.jar}" excludes="META-INF/*" />
+			<zipfileset src="${logback-classic.jar}" excludes="META-INF/*" />
+		</jar>
+	</target>
+</project>

@@ -1,0 +1,30 @@
+{
+	"tests":[
+		{
+			"name":"system",
+			"location":"Tests/sysTest.py",
+			"children":[],
+			"dependencies":[]
+		},
+		{
+			"name":"websphere",
+			"location":"Tests/WASTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"system.pathCon":"/opt/IBM/Connections",
+		"system.pathShare":"/data/Connections/shared",
+		"system.pathDB2":"/opt/ibm/db2",
+		"system.pathWAS":"opt/IBM/WebSphere",
+		"system.pathConInst":"/root/IBM_Connections_Install_Linux",
+		"system.pathInstMan":"/opt/IBM/InstallationManager",
+		"websphere.pathCon":"/opt/IBM/Connections",
+		"websphere.pathWAS":"/opt/IBM/WebSphere",
+		"websphere.username":"admin",
+		"websphere.password":"admin",
+		"websphere.appSrvName":"AppSrv01",
+		"websphere.pathProf":"/opt/IBM/WebSphere/AppServer/profiles"
+	}
+}

@@ -1,0 +1,42 @@
+suites:
+  - name: default
+    run_list:
+      - recipe[minitest-handler]
+      - recipe[robin_test::install]
+    attributes:  
+      Robin_Config: 
+        backEnd: 
+          SSH: 
+            username: "vagrant"
+            password: "vagrant"
+          findGateway: 
+            overrideIP: 
+              - "10.0.2.15"
+        frontEnd: 
+          plugincfg: 
+            ports: 
+              - "80"
+              - "443"
+              - "9095"
+      wlp: 
+        archive: 
+          accept_license: "true"
+          base_url: "file:///vagrant/"
+          runtime:
+            url: "file:///vagrant/wlp-developers-runtime-8.5.5.3.jar"
+          extended:
+            url: "file:///vagrant/wlp-developers-extended-8.5.5.3.jar"
+      im: 
+        user: "root"
+        group: "root"
+        install_zip: 
+          file: "/vagrant/IBMIM_linux_x86.zip"
+      ihs: 
+        install: 
+          repositoryLocation: "http://www.ibm.com/software/repositorymanager/V85WASIHSILAN"
+          secureStorageFile: "/vagrant/secure_storage"
+      java: 
+        install_flavor: "ibm"
+        ibm: 
+          url: "file:///vagrant/ibm-java-i386-sdk-7.1-0.0.bin"
+          accept_ibm_download_terms: "true"

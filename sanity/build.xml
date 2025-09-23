@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sanity" default="development" basedir=".">
+	<import file="${env.WPLC_IMPORT}/std_props.xml"/>
+	<import file="${env.WPLC_IMPORT}/std_dirs.xml"/>
+
+	<import file="${env.WPLC_IMPORT}/dependencies.xml"/>
+	<import file="${env.WPLC_IMPORT}/dependants.xml"/>
+	<import file="${env.WPLC_IMPORT}/wp_compile.xml"/>
+	<import file="${env.WPLC_IMPORT}/wp_globalize.xml"/>
+	
+	<property name="output.jar" value="${dir.build}/lib/ldapTest.jar"/>
+    <property name="include.pattern" value="**/*" />
+    <property name="skip.messages" value="true" />
+    <property name="skip.globalize" value="true" />
+    <property name="skip.javadoc" value="true"/>
+    <property name="skip.javadoc.public" value="true"/>
+    <property name="postsimplepackage.override" value="zip_sanity" />
+    <property name="main.class" value="com.ibm.lconn.sanity.ldapVerification" />
+	
+	<locateComponent component="libs.auto/json4j" locateBuildDir="false" property="json4j" />
+	
+	<target name="zip_sanity" depends="compile">	 
+		<mkdir dir="${dir.build}/sanity" />
+		<copy todir="${dir.build}/sanity">
+            <fileset dir="." >
+            	  	
+            	<exclude name ="UnitTests/" />
+            	<include name="**/conf.json" />
+            	<include name="**/cmd_frontend.py" />
+            	<include name="**/web_frontend.py" />
+            	<include name="**/README.txt" />
+            	
+         	</fileset> 	
+        </copy>
+        
+        <mkdir dir="${dir.build}/sanity/samples" />
+        <copy todir="${dir.build}/sanity/samples">
+            <fileset dir="./samples" >
+            	 			
+            	<include name="**/*.json" />
+            	
+         	</fileset> 	
+        </copy>
+        
+		<mkdir dir="${dir.build}/sanity/resources" />
+	    <copy todir="${dir.build}/sanity/resources">
+ 	       <fileset dir="./resources" >
+            	 	
+	           	<include name="**/*.properties" />
+ 	           	<include name="**/*.json" />
+		            	
+	       	</fileset> 	
+	    </copy>
+		
+        <mkdir dir="${dir.build}/sanity/bin" />
+        <copy todir="${dir.build}/sanity/bin">
+            <fileset dir="./bin" >
+            	 	
+            	<include name="**/*.py" />
+            	
+         	</fileset> 	
+        </copy>
+        
+        <mkdir dir="${dir.build}/sanity/tests" />
+        <copy todir="${dir.build}/sanity/tests">
+            	
+         	<fileset dir="./tests" >
+         	
+         		<include name ="**/*.py" />
+         	</fileset> 	
+        </copy>
+		
+		<mkdir dir="${dir.build}/sanity/web" />
+		<copy todir="${dir.build}/sanity/web">
+			
+			<fileset dir="./web" >
+			
+				<include name ="**/*" />
+			</fileset> 	
+		</copy>
+        
+        <mkdir dir="${dir.build}/sanity/lib" />
+        <copy todir="${dir.build}/sanity/lib">			
+         	<fileset dir="${dir.build}/lib" >			
+            	
+            	<include name="**/ldapTest.jar" />
+            
+            </fileset>
+            <fileset dir="${json4j}" >			
+            	
+            	<include name="**/json4j.jar" />
+            
+            </fileset>									
+        </copy>	  
+	</target>
+	
+	<import file="${env.WPLC_IMPORT}/javadoc.xml"/>
+    <import file="${env.WPLC_IMPORT}/jdepend.xml"/>
+    <import file="${env.WPLC_IMPORT}/clean.xml"/>
+    <import file="${env.WPLC_IMPORT}/check.xml"/>
+    <import file="${env.WPLC_IMPORT}/comp_zip.xml"/>
+    <import file="${env.WPLC_IMPORT}/std_targets.xml"/>
+    <import file="${env.WPLC_IMPORT}/package.xml"/>
+	
+</project>

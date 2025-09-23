@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "x",
+          "label": "ABC",
+          "categories": [ "a", "b", "c" ]
+        },
+        {
+          "id": "y",
+          "label": "DE",
+          "categories": [ "d", "e" ],
+          "key": true
+        }
+      ],
+      "rows": [
+        [ 0, 0 ],
+        [ 1, 0 ],
+        [ 2, 0 ],
+        [ 0, 1 ],
+        [ 1, 1 ],
+        [ 2, 1 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {"axis": {}}, {"axis": {}} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "y"}},
+            {"field": {"$ref": "x"}}
+          ],
+          "color": [
+            {"id": "visibility", "field": {"$ref": "x"}}
+          ],
+          "style": {
+            "width": 30,
+            "height": 30,
+            "outline": "black",
+            "symbol": {
+              "shape": [
+                {"x": "30%", "y": "50%", "r": "15%"},
+                {"x": "70%", "y": "40%", "width": "40%", "height": "40%"}
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "itemStyle": {
+        "padding": {"left": 5, "right": 5, "top": 5},
+        "size": 40,
+        "symbol": {
+          "shape": [
+            {"x": "50%", "y": "0%", "r": "25%"},
+            {"x": "50%", "y": "50%", "r": "25%"},
+            {"x": "50%", "y": "100%", "r": "25%"}
+          ]
+        }
+      },
+      "title": [ "Symbol should be 3 points on top of each other" ]
+    }
+  ],
+  "version": "2.0"
+}

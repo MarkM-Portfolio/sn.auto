@@ -1,0 +1,15 @@
+{
+	"tests":[
+		{
+			"name":"wsadmin",
+			"location":"tests/roleTest.py",
+			"children":[],
+			"dependencies":[]
+		}
+	],
+	"params":{
+		"wsadmin.path":"/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wsadmin.sh",
+		"wsadmin.user":"wasadmin",
+		"wsadmin.pass":"passw0rd"
+	}
+}

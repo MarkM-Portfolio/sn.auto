@@ -1,0 +1,225 @@
+{
+  "version": "1.2",
+  "copyright": "(C) Copyright IBM Corp. 2012",
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "categories",
+          "label": "Cities",
+          "categories": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16"
+          ]
+        },
+        {"id": "values"}
+      ],
+      "rows": [
+        [ 15, 1300 ],
+        [ 14, 3000 ],
+        [ 13, 2200 ],
+        [ 12, 1100 ],
+        [ 11, 450 ],
+        [ 10, 1400 ],
+        [ 9, 1400 ],
+        [ 8, 3000 ],
+        [ 7, 2200 ],
+        [ 6, 1100 ],
+        [ 5, 450 ],
+        [ 4, 1400 ],
+        [ 3, 3000 ],
+        [ 2, 2200 ],
+        [ 1, 1100 ],
+        [ 0, 450 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "bounds": {"width": "90%", "left": 0},
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {"fill": {"a": 0.1}},
+              "lineStyle": {"fill": {"a": 0.0}},
+              "markStyle": {"fill": {"a": 0}},
+              "tickStyle": {
+                "fill": {"a": 0.6},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                },
+                "padding": 5
+              },
+              "title": [ "Population(In Million)" ],
+              "titleStyle": {
+                "fill": {"a": 0.6},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          },
+          {
+            "axis": {
+              "lineStyle": {"fill": {"a": 0.25}},
+              "markStyle": {"fill": {"a": 0}},
+              "tickStyle": {
+                "fill": {"a": 0.6},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt",
+                  "weight": "bold"
+                },
+                "padding": 3
+              },
+              "title": [ "Cities" ],
+              "titleStyle": {
+                "fill": {"a": 0.6},
+                "font": {
+                  "family": "Arial",
+                  "size": "10.5pt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "position": [
+            {"field": {"$ref": "values"}},
+            {"field": {"$ref": "categories"}}
+          ],
+          "styleBy": [
+            {
+              "id": "colorId",
+              "field": {"$ref": "categories"},
+              "palette": [
+                {
+                  "fill": {
+                    "h": 0.5805,
+                    "l": 0.65,
+                    "s": 0.59
+                  }
+                },
+                {"fill": {"h": 0.683, "l": 0.77, "s": 0.36}},
+                {"fill": {"h": 0.225, "l": 0.65, "s": 0.39}},
+                {
+                  "fill": {
+                    "dAlpha": 0.75,
+                    "h": 0.1639,
+                    "l": 0.69,
+                    "s": 0.73
+                  }
+                },
+                {"fill": {"h": 0.1056, "l": 0.67, "s": 0.8}},
+                {"fill": {"h": 0.067, "l": 0.62, "s": 0.63}},
+                {"fill": {"h": 0.9194, "l": 0.6, "s": 0.35}},
+                {"fill": {"h": 0.0, "l": 0.68, "s": 0.0}},
+                {
+                  "fill": {
+                    "dAlpha": 0.75,
+                    "h": 0.5806,
+                    "l": 0.5,
+                    "s": 0.31
+                  }
+                },
+                {
+                  "fill": {
+                    "h": 0.68056,
+                    "l": 0.57,
+                    "s": 0.16
+                  }
+                },
+                {"fill": {"h": 0.225, "l": 0.45, "s": 0.24}},
+                {
+                  "fill": {
+                    "h": 0.1639,
+                    "l": 0.58,
+                    "s": 0.45
+                  }
+                },
+                {"fill": {"h": 0.128, "l": 0.52, "s": 0.42}},
+                {"fill": {"h": 0.067, "l": 0.44, "s": 0.46}},
+                {
+                  "fill": {
+                    "dAlpha": 0.75,
+                    "h": 0.922,
+                    "l": 0.41,
+                    "s": 0.24
+                  }
+                },
+                {"fill": {"h": 0.0, "l": 0.45, "s": 0.0}}
+              ]
+            }
+          ],
+          "tooltip": [
+            {
+              "content": [
+                {"$ref": "categories"},
+                "\n",
+                {"$ref": "values"}
+              ]
+            }
+          ],
+          "style": {"fill": {"a": 0.25}, "width": "80%"}
+        }
+      ],
+      "style": {
+        "fill": {"l": 1},
+        "padding": {
+          "bottom": "2%",
+          "left": "2%",
+          "right": "2%",
+          "top": "5%"
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "bounds": {"width": "10%", "right": "100%", "top": 0},
+      "content": [
+        {
+          "aesthetics": [
+            {"aesthetic": {"$ref": "colorId"}}
+          ],
+          "swatchStyle": {"padding": 5},
+          "textStyle": {
+            "fill": {"a": 0.6},
+            "font": {
+              "family": "Arial",
+              "size": "10.5pt",
+              "weight": "bold"
+            }
+          }
+        }
+      ],
+      "style": {
+        "fill": {"l": 1},
+        "padding": {"top": "4.5%"}
+      }
+    }
+  ],
+  "size": {"width": 800.0, "height": 500.0},
+  "style": {"fill": {"l": 1}}
+}

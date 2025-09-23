@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [ {"id": "fX", "label": "Price"} ],
+      "rows": [ [ 10000 ], [ 10002 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"fit": "nice", "method": "log"} ]
+            },
+            "axis": {"gridStyle": {"fill": "#ddd"}}
+          },
+          {
+            "scale": {"spans": [ {"fit": "nice"} ]},
+            "axis": {"title": [ "What I get" ]}
+          }
+        ],
+        "style": {
+          "fill": "white",
+          "outline": {"a": 1.0, "b": 0, "g": 0, "r": 0}
+        }
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fX"}},
+            {"field": {"$ref": "fX"}}
+          ],
+          "clip": "overlap",
+          "color": [
+            {
+              "field": {"$ref": "fX"},
+              "scale": {
+                "spans": [
+                  {"fit": "nice", "method": "log"}
+                ]
+              },
+              "mapping": [
+                {"at": "0%", "color": "yellow"},
+                {"at": "50%", "color": "red"},
+                {"at": "100%", "color": "skyblue"}
+              ]
+            }
+          ],
+          "style": {"outline": "black", "size": 30}
+        }
+      ],
+      "style": {"fill": {"a": 0}, "padding": 10}
+    }
+  ],
+  "legends": [ {} ],
+  "size": {"width": 800, "height": 800},
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": "source",
+      "fields": [ {"id": "fX"}, {"id": "fY"} ],
+      "rows": [
+        [ 100, 1 ],
+        [ 10, 0.1 ],
+        [ 1, 0.01 ]
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "scale": {
+              "spans": [ {"method": "log", "tickDelta": 1} ]
+            },
+            "axis": {"gridStyle": {"fill": "gray"}}
+          },
+          {
+            "scale": {
+              "spans": [ {"method": "log", "tickDelta": 2} ]
+            },
+            "axis": {"gridStyle": {"fill": "gray"}}
+          }
+        ],
+        "style": {"fill": "#eee"}
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "fY"}},
+            {"field": {"$ref": "fX"}}
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "2.0",
+  "style": {"fill": "white"}
+}

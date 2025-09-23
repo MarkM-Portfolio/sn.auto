@@ -1,0 +1,323 @@
+{
+  "data": [
+    {
+      "fields": [
+        {
+          "id": "f1",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ]
+        }
+      ],
+      "rows": [ [ 1 ], [ 2 ], [ 4 ], [ 6 ] ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "bounds": {
+        "width": 90,
+        "height": "48%",
+        "left": 0,
+        "top": 0
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle": {"font": {"size": 10}}}},
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "25%"}
+          ],
+          "color": [
+            {
+              "id": "c",
+              "field": {"$ref": "f1"},
+              "scale": {"local": false},
+              "palette": [
+                "black",
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "blue",
+                "indigo"
+              ]
+            }
+          ],
+          "style": {"size": 20}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "75%"}
+          ],
+          "color": [
+            {
+              "id": "d",
+              "field": {"$ref": "f1"},
+              "scale": {"local": true},
+              "palette": [
+                "black",
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "blue",
+                "indigo"
+              ]
+            }
+          ],
+          "style": {"size": 18, "symbol": "square"}
+        }
+      ]
+    },
+    {
+      "bounds": {
+        "width": 90,
+        "height": "48%",
+        "left": 0,
+        "top": "50%"
+      },
+      "coordinates": {
+        "dimensions": [
+          {"axis": {"tickStyle": {"font": {"size": 10}}}},
+          {}
+        ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "25%"}
+          ],
+          "color": [
+            {
+              "id": "e",
+              "field": {"$ref": "f1"},
+              "scale": {
+                "local": false,
+                "spans": [
+                  {"categories": [ 1, 2, 3, 4, 5 ]}
+                ]
+              },
+              "palette": [
+                "black",
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "blue",
+                "indigo"
+              ]
+            }
+          ],
+          "style": {"size": 20}
+        },
+        {
+          "type": "point",
+          "position": [
+            {"field": {"$ref": "f1"}},
+            {"value": "75%"}
+          ],
+          "color": [
+            {
+              "id": "f",
+              "field": {"$ref": "f1"},
+              "scale": {
+                "local": true,
+                "spans": [
+                  {"categories": [ 1, 2, 3, 4, 5 ]}
+                ]
+              },
+              "palette": [
+                "black",
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "blue",
+                "indigo"
+              ]
+            }
+          ],
+          "style": {"size": 18, "symbol": "square"}
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 100,
+        "top": 0
+      },
+      "title": [ "Default" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 200,
+        "top": 0
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"categories": [ 1, 0, 6, 5 ]} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "c"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 300,
+        "top": 0
+      },
+      "title": [ "1, 0, 6, 5" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "d"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 400,
+        "top": 0
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"categories": [ 1, 0, 6, 5 ]} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "d"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 500,
+        "top": 0
+      },
+      "title": [ "1, 0, 6, 5" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 100,
+        "top": "50%"
+      },
+      "title": [ "Default" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 200,
+        "top": "50%"
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"categories": [ 1, 0, 6, 5 ]} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "e"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 300,
+        "top": "50%"
+      },
+      "title": [ "1, 0, 6, 5" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"reverse": true},
+      "aesthetics": [ {"aesthetic": {"$ref": "f"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 400,
+        "top": "50%"
+      },
+      "title": [ "Reversed Scale" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    },
+    {
+      "scale": {"spans": [ {"categories": [ 1, 0, 6, 5 ]} ]},
+      "aesthetics": [ {"aesthetic": {"$ref": "f"}} ],
+      "boundsStyle": {"fill": "beige", "outline": "grey"},
+      "location": {
+        "width": 95,
+        "height": "48%",
+        "left": 500,
+        "top": "50%"
+      },
+      "title": [ "1, 0, 6, 5" ],
+      "titleStyle": {"font": {"family": "Arial", "size": 9}},
+      "method": "swatch"
+    }
+  ],
+  "size": {"width": 610, "height": 400},
+  "titles": [
+    {
+      "type": "title",
+      "content": [
+        "FIELD CATEGORIES 0, 1, 2, 3, 4, 5, 6, 7\n",
+        "PALETTE: black, red, orange, yellow, green, blue, indigo\n",
+        "DATA CONTAINS: 1, 2, 4, 6\n",
+        "CIRCLES: scale.local.FALSE      SQUARES: scale.local.TRUE\n",
+        "TOP: default categories    BOTTOM: aesthetic.scale.categories: 1, 2, 3, 4, 5"
+      ],
+      "style": {
+        "align": "start",
+        "font": {"family": "Arial", "size": "10pt"},
+        "padding": 5
+      }
+    }
+  ],
+  "version": "4.1",
+  "style": {"fill": "white", "padding": 5}
+}

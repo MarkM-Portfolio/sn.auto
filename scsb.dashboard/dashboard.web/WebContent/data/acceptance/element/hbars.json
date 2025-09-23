@@ -1,0 +1,152 @@
+{
+	"version": "1.2",
+	"copyright": "(C) Copyright IBM Corp. 2011",
+	"data": [{
+		"id": "dDelimitedFileSource",
+		"fields": [{
+			"id": "fCategories",
+			"label": "Store",
+			"categories": ["Omaha",
+			"New York",
+			"California",
+			"Delaware",
+			"Florida",
+			"Illinois",
+			"Kentucky",
+			"New Jersy",
+			"New Mexico",
+			"South Dakota",
+			"Texas"]
+		},
+		{
+			"id": "fValues",
+			"label": "Price"
+		}],
+		"rows": [[10,
+		6.49],
+		[9,
+		6.99],
+		[4,
+		12.99],
+		[5,
+		8.99],
+		[8,
+		6.99],
+		[6,
+		7.99],
+		[0,
+		43.99],
+		[3,
+		12.99],
+		[7,
+		6.99],
+		[1,
+		26.95],
+		[2,
+		24.99]]
+	}],
+	"grammar": [{
+		"coordinates": {
+			"dimensions": [{
+				"axis": {
+					"gridStyle": {
+						"stroke": {
+							"style": "Dot"
+						},
+						"fill": {
+							"b": 255,
+							"g": 255,
+							"r": 255
+						}
+					},
+					"lineStyle": {
+						},
+					"markStyle": {
+						},
+					"tickStyle": {
+						"font": {
+							"family": "Arial",
+							"size": "8.0pt"
+						}
+					}
+				}
+			},
+			{
+				"axis": {
+					"lineStyle": {
+						},
+					"markStyle": {
+						},
+					"tickStyle": {
+						"align": "start",
+						"font": {
+							"family": "Arial",
+							"size": "11.0pt"
+						}
+					}
+				}
+			}],
+			"transforms": [{
+				"type": "transpose"
+			}],
+			"style": {
+				"fill": {
+					"type": "linear",
+					"angle": 0,
+					"colors": [{
+						"color": {
+							"b": 255,
+							"g": 210,
+							"r": 210
+						},
+						"offset": 0.0
+					},
+					{
+						"color": {
+							"b": 255,
+							"g": 230,
+							"r": 230
+						},
+						"offset": 1.0
+					}]
+				}
+			}
+		},
+		"elements": [{
+			"type": "interval",
+			"data": {
+				"$ref": "dDelimitedFileSource"
+			},
+			"position": [{
+				"field": {
+					"$ref": "fValues"
+				}
+			},
+			{
+				"field": {
+					"$ref": "fCategories"
+				}
+			}],
+			"style": {
+				"width": "75%",
+				"fill": {
+					"b": 150,
+					"g": 57,
+					"r": 1
+				}
+			}
+		}],
+		"style": {
+			"fill": {
+				"b": 255,
+				"g": 255,
+				"r": 255
+			},
+			"padding": 10
+		}
+	}],
+	"size": {
+		"height": 400.0,
+		"width": 400.0
+	}
+}

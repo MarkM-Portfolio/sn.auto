@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "fields": [
+        {
+          "id": "catId",
+          "label": "Categories",
+          "categories": [ "CatA", "CatB", "CatC" ]
+        },
+        {
+          "id": "seriesId",
+          "label": "Series",
+          "categories": [
+            "Series-1",
+            "Series-2",
+            "Series-3",
+            "4-Series-4-4-Series-4",
+            "5-Series-5"
+          ]
+        },
+        {"id": "valuesId", "label": "Revenue", "max": 30}
+      ],
+      "rows": [ [ 0, 0, 20 ], [ 0, 1, 5 ], [ 0, 2, 10 ] ]
+    }
+  ],
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [
+          {
+            "axis": {
+              "gridStyle": {
+                "fill": "rgba(128,128,128,0.40)",
+                "stroke": {"width": "1px"}
+              },
+              "title": [ {"$ref": "valuesId"} ]
+            }
+          },
+          {"axis": {}},
+          {"scale": {"local": true}}
+        ],
+        "transforms": [
+          {"type": "cluster"},
+          {"type": "transpose"}
+        ]
+      },
+      "elements": [
+        {
+          "type": "interval",
+          "label": [
+            {
+              "backgroundStyle": {
+                "fill": "rgba(112,200,0,0.2)",
+                "outline": "darkgrey"
+              },
+              "content": [ {"$ref": "seriesId"} ],
+              "lineMinSize": "5px",
+              "lineStyle": {
+                "fill": "rgba(255,0,0,0.5)",
+                "stroke": {"width": "2px", "style": "Dot"}
+              },
+              "style": {
+                "fill": "black",
+                "align": "end",
+                "location": "outside",
+                "padding": 45
+              }
+            }
+          ],
+          "position": [
+            {"field": {"$ref": "valuesId"}},
+            {"field": {"$ref": "catId"}},
+            {"field": {"$ref": "seriesId"}}
+          ],
+          "color": [
+            {
+              "id": "paletteId",
+              "field": {"$ref": "seriesId"},
+              "modifies": "both",
+              "palette": [
+                "blue",
+                "red",
+                "green",
+                "orange",
+                "purple"
+              ]
+            }
+          ],
+          "style": {
+            "width": "97%",
+            "outline": {"dValue": -0.25},
+            "outlineMethod": "inside"
+          }
+        }
+      ]
+    }
+  ],
+  "size": {"width": 300, "height": 200},
+  "style": {"fill": "white"},
+    "version":"3.0"
+}

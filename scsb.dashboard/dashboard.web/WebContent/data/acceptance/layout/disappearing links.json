@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "id": "links",
+      "fields": [
+        {"id": "from"},
+        {"id": "to"}
+      ],
+      "rows": [
+        [ 0, 1 ],
+        [ 1, 2 ],
+        [ 0, 2 ]
+      ]
+    },
+    {
+      "id": "nodes",
+      "fields": [
+        {"id": "name", "unit":"categorical"}
+      ],
+      "rows": [
+        [ 0 ],
+        [ 1 ],
+        [ 2 ]
+      ]
+    }
+  ],
+  "copyright": "(C) Copyright IBM Corp. 2011",
+  "grammar": [
+    {
+      "coordinates": {
+        "dimensions": [ {}, {} ]
+      },
+      "elements": [
+        {
+          "type": "point",
+          "label": [ {"content": [ {"$ref": "name"} ]} ],
+          "data": {"$ref": "nodes"},
+          "positioning": {
+            "id": {"$ref": "name"},
+            "from": {"$ref": "from"},
+            "method": "dag",
+            "to": {"$ref": "to"}
+          },
+          "style": {
+            "width": 50,
+            "height": 50,
+            "symbol": "rect"
+          }
+        },
+        {
+          "type": "edge",
+          "data": {"$ref": "links"},
+          "positioning": {
+            "id": {"$ref": "name"},
+            "from": {"$ref": "from"},
+            "method": "link",
+            "to": {"$ref": "to"}
+          },
+          "style": {
+            "stroke": {"width": 3.0},
+            "endArrow": "arrow",
+            "symbol": "curved"
+          }
+        }
+      ], "style":{"fill":"white", "padding":20}
+    }
+  ],
+  "version": "3.0"
+}
